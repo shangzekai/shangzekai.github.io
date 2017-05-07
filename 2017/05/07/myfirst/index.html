@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/07/myfirst/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="javascript基础学习目录一、JS如何引入及基本语法规范1.页面内的script代码书写格式123&amp;lt;script&amp;gt;	code.....&amp;lt;/script&amp;gt; 2.script标签写在页面的哪个位置？  2.1.页面head里和body后都可以写 2.2.一般我们建议写在body之后  3.是否可以引入第三方js文件？1&amp;lt;script type=&apos;text/javas">
-<meta property="og:updated_time" content="2017-05-07T12:37:22.000Z">
+<meta property="og:updated_time" content="2017-05-07T12:57:07.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript基础学习目录">
 <meta name="twitter:description" content="javascript基础学习目录一、JS如何引入及基本语法规范1.页面内的script代码书写格式123&amp;lt;script&amp;gt;	code.....&amp;lt;/script&amp;gt; 2.script标签写在页面的哪个位置？  2.1.页面head里和body后都可以写 2.2.一般我们建议写在body之后  3.是否可以引入第三方js文件？1&amp;lt;script type=&apos;text/javas">
@@ -323,7 +323,11 @@
 <blockquote>
 <p>当函数调用的前一瞬间,先形成一个激活对象,叫Avtive Object, AO,并会分析以下3个方面的东西:</p>
 <p>1:函数参数，如有，则将此参数付给AO上，并且值为undefined。如没有，则不做任何操作<br>2:函数局部变量，如AO上有，则不做任何操作。如没有，则将此变量赋给AO，并且值为undefined<br>3:函数声明，如AO上有，则会将AO上的对象覆盖。如没有，则不做任何操作</p>
-<p><font color="red">函数内部无论是使用参数,还是使用局部变量,都到AO上找.</font><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">t</span>(<span class="params">age</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(age);</div><div class="line">        <span class="keyword">var</span> age = <span class="number">99</span>;</div><div class="line">        <span class="built_in">console</span>.log(age);</div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">age</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">console</span>.log(age);</div><div class="line">&#125;</div><div class="line">t();</div></pre></td></tr></table></figure></p>
+<font color="red">函数内部无论是使用参数,还是使用局部变量,都到AO上找.</font>
+
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">t</span>(<span class="params">age</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(age);</div><div class="line">        <span class="keyword">var</span> age = <span class="number">99</span>;</div><div class="line">        <span class="built_in">console</span>.log(age);</div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">age</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">console</span>.log(age);</div><div class="line">&#125;</div><div class="line">t();</div></pre></td></tr></table></figure>
+<blockquote>
 <p>分析过程：<br>   1、分析参数，有一个参数，形成一个 AO.age=undefine;<br>   2、分析变量声明，有一个 var age, 发现 AO 上面已经有一个 AO.age，因此不做任何处理<br>   3、分析函数声明，有一个 function age(){} 声明， 则把原有的 age 覆盖成 AO.age=function(){};</p>
 <p>   最终，AO上的属性只有一个age，并且值为一个函数声明</p>
 <p>执行过程<br>    注意：执行过程中所有的值都是从AO对象上去寻找</p>
