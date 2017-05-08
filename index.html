@@ -225,16 +225,13 @@
       
         <h2 id="DOM操作"><a href="#DOM操作" class="headerlink" title="DOM操作"></a>DOM操作</h2><h3 id="一、前戏"><a href="#一、前戏" class="headerlink" title="一、前戏"></a><div id="title">一、前戏</div></h3><p><strong>截止到目前为止，我们已经学习了javascript的一些简单的语法，但是使用这些简单的语法，并不能做出一些我们经常看到的一些效果，比如说表格的全选和反选等，因此为了能够操作网页上的元素，我们需要继续学习DOM相关的知识。</strong></p>
 <p><strong>所谓的DOM，就是使用JS操作整个浏览器，但是这个浏览器对象比较大，因此为了方便操作，又分为三个子对象：</strong></p>
-<p>####1. BOM对象</p>
-<blockquote>
+<h4 id="1-BOM对象"><a href="#1-BOM对象" class="headerlink" title="1. BOM对象"></a>1. BOM对象</h4><blockquote>
 <p>BOM对象主要操作地址栏，浏览历史，窗口的高度等</p>
 </blockquote>
-<p>####2. DOM对象</p>
-<blockquote>
+<h4 id="2-DOM对象"><a href="#2-DOM对象" class="headerlink" title="2. DOM对象"></a>2. DOM对象</h4><blockquote>
 <p>DOM对象主要操作网页上的元素和相关的CSS</p>
 </blockquote>
-<p>####3. window对象</p>
-<blockquote>
+<h4 id="3-window对象"><a href="#3-window对象" class="headerlink" title="3. window对象"></a>3. window对象</h4><blockquote>
 <p>window对象是浏览器的宿主对象，其提供的方法和属性与js语言没有任何关系</p>
 </blockquote>
 <p><img src="http://i.imgur.com/alowdg5.png" alt=""></p>
@@ -398,6 +395,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
 
       
@@ -562,6 +570,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">js</a>
+              </li>
             
             <div class="clearfix"></div>
           </ul>
