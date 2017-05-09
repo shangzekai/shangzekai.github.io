@@ -263,6 +263,106 @@
 
 
   
+    <article id="post-python编码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/07/python编码/">HTML基础学习目录</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/07/python编码/" class="archive-article-date">
+  	<time datetime="2017-05-07T11:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <p>如果你正在使用 Python2.x，那么你一定遇到了一些或者很多关于字符编码解码报错情况。是的，所以，如果你愿意，让我们一层一层一层的剥开它的心，你会发现你会讶异，真TM的简单。</p>
+<h4 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a><strong><div id="title">相关概念</div></strong></h4><ul>
+<li>计算机中的一切均为bytes(字节)。硬盘中的文件为一系列的byte组成，网络中传输的只有byte。所有的信息，在你写的程序中进进出出的，均由byte组成</li>
+<li>字符：我们现在看到的英文字母、中文汉字就是经过计算机解码后对人类友好的抽象符号的表现</li>
+<li>encode() 编码： 将字符转换成二进制流</li>
+<li>decode() 解码： 将二进制流转换成字符</li>
+</ul>
+<hr>
+<h4 id="coding-utf-8和sys-getdefaultencoding"><a href="#coding-utf-8和sys-getdefaultencoding" class="headerlink" title="coding=utf-8和sys.getdefaultencoding()"></a><strong><div id="title">coding=utf-8和sys.getdefaultencoding()</div></strong></h4><p>如果我们的 py文件中包含中文，往往需要在第一行或者第二行添加：<br><code># coding=utf-8</code> 或者 <code># -*- coding: utf-8 -*-</code></p>
+<p>这表示声明该 py文件中定义的字符串变量使用的编码方式为 utf-8。<br>python2.x 中，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>sys.getdefaultencoding()</div><div class="line"><span class="string">'ascii'</span></div></pre></td></tr></table></figure>
+<p>python3.x 中，</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>sys.getdefaultencoding()</div><div class="line"><span class="string">'utf-8'</span></div></pre></td></tr></table></figure>
+<p><strong>注意：</strong></p>
+<blockquote>
+<p>在使用 encode() 和 decode() 的时候，如果不传入任何参数，那么 python 解释器就会使用 sys.getdefaultencoding() 所指代的编码解码方式进行 encode() 和 decode()</p>
+</blockquote>
+<hr>
+<h4 id="Python2-x的字符编码问题"><a href="#Python2-x的字符编码问题" class="headerlink" title="Python2.x的字符编码问题"></a><strong><div id="title">Python2.x的字符编码问题</div></strong></h4><p>1.在python2.x中，str 等价于bytes，是由unicode经过编码(encode)后的字节组成的字节串。在 python2.x 中你不加任何修饰直接定义的字符串，其实是字节串，切记这一点</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>str == bytes</div><div class="line"><span class="keyword">True</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'我们'</span> == <span class="string">b'我们'</span></div><div class="line"><span class="keyword">True</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b'我们'</span> == str(<span class="string">'我们'</span>)</div><div class="line"><span class="keyword">True</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b'我们'</span></div><div class="line"><span class="string">'\xce\xd2\xc3\xc7'</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>len(<span class="string">'我们'</span>)</div><div class="line"><span class="number">4</span></div><div class="line"><span class="comment">#len('我们')在windows平台下长度为4（默认编码为GBK），Linux平台下长度为6（默认编码为UTF-8)</span></div></pre></td></tr></table></figure>
+<p>2.unicode 才是真正意义上的字符串，是由 str 解码(decode)后的字符组成的字符串。定义unicode 字符串，直接在 string 前面加前缀 u 即可</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>len(<span class="string">u'我们'</span>)</div><div class="line"><span class="number">2</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>unicode(<span class="string">'我们'</span>, <span class="string">'utf-8'</span>)</div><div class="line"><span class="string">u'\u6211\u4eec'</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'我们'</span>.decode(<span class="string">'utf-8'</span>)</div><div class="line"><span class="string">u'\u6211\u4eec'</span></div><div class="line"></div><div class="line"><span class="comment">#无论是在Windows下还是在Linux下 u'我们' 的字符串长度都为2，这正是我们所想要的结果。</span></div></pre></td></tr></table></figure>
+<p>3.相互转换<br>str –(decode)–&gt; unicode –(encode)–&gt; str</p>
+<hr>
+<h4 id="Python3-x的字符编码问题"><a href="#Python3-x的字符编码问题" class="headerlink" title="Python3.x的字符编码问题"></a><strong><div id="title">Python3.x的字符编码问题</div></strong></h4><p>在 python3.x 中，字符编码问题就变得不那么混乱了，具体看下面：</p>
+<p>1.bytes 为字节串，如果你想定义一个字节串，不像在 python2.x 中那样直接定义就行了。在 python3.x 中，一般使用下面两种方式定义一个字节串：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#第一种方法，加上 b 前缀</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b'I am a byte'</span></div><div class="line"></div><div class="line"><span class="comment">#第二种方法：</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>bytes(something, encodeing=<span class="string">'xxx'</span>)</div></pre></td></tr></table></figure>
+<p>如果想要定义一个含有中文的字节串，必须使用第二种方法，并且将 encoding参数设置为你为该 py文件设置的字符编码方式，即你在 py文件的头部设置的类似于 # coding: utf-8 中的编码方式。</p>
+<p>2.str，采用 unicode 方式编码的字符串。无论是 ‘我们’ 还是 u’我们’，都是str对象</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(<span class="string">'我们'</span>,str)</div><div class="line"><span class="keyword">True</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(<span class="string">u'我们'</span>,str)</div><div class="line"><span class="keyword">True</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>len(<span class="string">'我们'</span>)</div><div class="line"><span class="number">2</span></div></pre></td></tr></table></figure>
+<p>3.相互转换<br>bytes –(decode)–&gt; str –(encode)–&gt; bytes</p>
+<h4 id="总结建议"><a href="#总结建议" class="headerlink" title="总结建议"></a><div id="title">总结建议</div></h4><blockquote>
+<p>1.在 python2.x 中，对两个字符串进行操作时，如果这两个字符串有一个是 unicode 编码，有一个是非 unicode 编码，python 会自动使用 sys.getdefaultencoding() 的解码方式将非 unicode 编码的字符串 decode 成 unicode 编码，再进行字符串操作，python2.x 悄悄掩盖掉了 byte 到 unicode 的转换，很容易出现问题。而在 python3.x 中，取消了 bytes 和 unicode 之间的自动隐性转换。</p>
+<p>2.在需要转换的时候，全部显式转换。从字节解码成文本，用 your_string.decode(encoding)，从文本编码成字节，用 your_string.encode(encoding)。</p>
+<p>3.任何可能包含中文的字符串，请全部加上 u 前缀，这能减少很多问题。</p>
+<p>4.从外部（网页、文件、数据库等）读取数据时，读取的是字节串，应该将其 decode 成 unicode进行使用；当需要向外部输出字符串时，用该外部媒介所能接收的编码形式 encode 字符串后再传递给它。</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">编码</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/07/python编码/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-html学习基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -276,7 +376,7 @@
 
         
         <a href="/2017/05/07/html学习基础/" class="archive-article-date">
-  	<time datetime="2017-05-07T11:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
+  	<time datetime="2017-05-07T10:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
 </a>
         
       </header>
@@ -444,6 +544,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
             
             <div class="clearfix"></div>
