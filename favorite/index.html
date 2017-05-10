@@ -285,8 +285,11 @@
   <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
 <script>
   var cloudTieConfig = {
-    url: "http://yoursite.com/favorite/index.html", 
-    sourceId: "undefined",
+    //url: "http://yoursite.com/favorite/index.html", 
+    url: document.location.href, 
+    sourceId: "",
+    //sourceId: "undefined",
+    //productKey: "123b873e038145ba94270feb5223d8d8",
     productKey: "123b873e038145ba94270feb5223d8d8",
     target: "cloud-tie-wrapper"
   };
