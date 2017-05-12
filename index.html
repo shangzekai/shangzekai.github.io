@@ -529,6 +529,151 @@
 
 
   
+    <article id="post-pandas的介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/07/pandas的介绍/">python爬虫之数据分析包pandas</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/07/pandas的介绍/" class="archive-article-date">
+  	<time datetime="2017-04-07T11:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <h4 id="pandas的介绍"><a href="#pandas的介绍" class="headerlink" title="pandas的介绍"></a><div id="title">pandas的介绍</div></h4><blockquote>
+<p>pandas 是基于 Numpy 构建的含有更高级数据结构和工具的数据分析包<br>类似于 Numpy 的核心是 ndarray，pandas 也是围绕着 Series 和 DataFrame &gt;两个核心数据结构</p>
+</blockquote>
+<h5 id="1-pandas的引入方式"><a href="#1-pandas的引入方式" class="headerlink" title="1.pandas的引入方式"></a><div id="title">1.pandas的引入方式</div></h5><ul>
+<li><p>安装方式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip3 install pandas</div></pre></td></tr></table></figure>
+</li>
+<li><p>引入方式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="2-pandas的两大数据结构"><a href="#2-pandas的两大数据结构" class="headerlink" title="2.pandas的两大数据结构"></a><div id="title">2.pandas的两大数据结构</div></h5><ul>
+<li><strong>Series</strong></li>
+</ul>
+<p>Series可以看作是一个定长的有序字典。基本任意的一维数据都可以用来构造Series对象：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = Series([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3.0</span>,<span class="string">'abc'</span>])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s</div><div class="line"><span class="number">0</span>      <span class="number">1</span></div><div class="line"><span class="number">1</span>      <span class="number">2</span></div><div class="line"><span class="number">2</span>      <span class="number">3</span></div><div class="line"><span class="number">3</span>    abc</div><div class="line">dtype: object</div></pre></td></tr></table></figure>
+<blockquote>
+<p>在上述的案例中，因为构造器中传入的是一个列表，因此，在显示的时候，index的值是<font color="red">从0开始递增的整数</font>.</p>
+<p>如果传入的是一个类字典的键值对结构，就会生成一个index-value对应的series结构，或者在初始化的时候，以关键字的形式显示的指定一个index对象，比如如下的案例</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s = pd.Series(data=[<span class="number">1</span>,<span class="number">3</span>,<span class="number">5</span>,<span class="number">7</span>],index = [<span class="string">'a'</span>,<span class="string">'b'</span>,<span class="string">'x'</span>,<span class="string">'y'</span>])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s</div><div class="line">a    <span class="number">1</span></div><div class="line">b    <span class="number">3</span></div><div class="line">x    <span class="number">5</span></div><div class="line">y    <span class="number">7</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>Series对象主要包含两个属性：index和values</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.index</div><div class="line">Index([<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'x'</span>, <span class="string">'y'</span>], dtype=<span class="string">'object'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>s.values</div><div class="line">array([<span class="number">1</span>, <span class="number">3</span>, <span class="number">5</span>, <span class="number">7</span>], dtype=int64)</div></pre></td></tr></table></figure>
+<ul>
+<li><strong>DataFrame</strong></li>
+</ul>
+<blockquote>
+<p>DataFrame是我们最常使用的数据结构，它含有一组有序的列，每列可以是不同的值类型</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>data = &#123;<span class="string">'state'</span>:[<span class="string">'Ohino'</span>,<span class="string">'Ohino'</span>,<span class="string">'Ohino'</span>,<span class="string">'Nevada'</span>,<span class="string">'Nevada'</span>],</div><div class="line">        <span class="string">'year'</span>:[<span class="number">2000</span>,<span class="number">2001</span>,<span class="number">2002</span>,<span class="number">2001</span>,<span class="number">2002</span>],</div><div class="line">        <span class="string">'pop'</span>:[<span class="number">1.5</span>,<span class="number">1.7</span>,<span class="number">3.6</span>,<span class="number">2.4</span>,<span class="number">2.9</span>]&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>df = pd.DataFrame(data)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>df</div><div class="line">   pop   state  year</div><div class="line"><span class="number">0</span>  <span class="number">1.5</span>   Ohino  <span class="number">2000</span></div><div class="line"><span class="number">1</span>  <span class="number">1.7</span>   Ohino  <span class="number">2001</span></div><div class="line"><span class="number">2</span>  <span class="number">3.6</span>   Ohino  <span class="number">2002</span></div><div class="line"><span class="number">3</span>  <span class="number">2.4</span>  Nevada  <span class="number">2001</span></div><div class="line"><span class="number">4</span>  <span class="number">2.9</span>  Nevada  <span class="number">2002</span></div><div class="line"></div><div class="line">[<span class="number">5</span> rows x <span class="number">3</span> columns]</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意，在上述案例中，生成的index依然是从0开始递增的整数</p>
+</blockquote>
+<p><strong>上面的使用方式过于简单，我们一般想要处理比较复杂一点的数据结构的时候，就有点满不足不了了，因此，一般我们使用如下完整的数据格式</strong></p>
+<p><code>DataFrame(data=None,index=None,coloumns=None)</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>df = pd.DataFrame(data,index=[<span class="string">'one'</span>,<span class="string">'two'</span>,<span class="string">'three'</span>,<span class="string">'four'</span>,<span class="string">'five'</span>],columns=[<span class="string">'year'</span>,<span class="string">'state'</span>,<span class="string">'pop'</span>,<span class="string">'debt'</span>])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>df</div><div class="line">       year   state  pop debt</div><div class="line">one    <span class="number">2000</span>   Ohino  <span class="number">1.5</span>  NaN</div><div class="line">two    <span class="number">2001</span>   Ohino  <span class="number">1.7</span>  NaN</div><div class="line">three  <span class="number">2002</span>   Ohino  <span class="number">3.6</span>  NaN</div><div class="line">four   <span class="number">2001</span>  Nevada  <span class="number">2.4</span>  NaN</div><div class="line">five   <span class="number">2002</span>  Nevada  <span class="number">2.9</span>  NaN</div><div class="line"></div><div class="line">[<span class="number">5</span> rows x <span class="number">4</span> columns]</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：缺失值由 NaN 补上</p>
+</blockquote>
+<p><strong>DataFrame常用的几种属性</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">属性</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">obj.dtypes</td>
+<td style="text-align:center">查看各行的数据格式</td>
+</tr>
+<tr>
+<td style="text-align:center">obj.head()</td>
+<td style="text-align:center">查看前几行的数据,默认前5行</td>
+</tr>
+<tr>
+<td style="text-align:center">obj.tail()</td>
+<td style="text-align:center">查看后几行的数据,默认后5行</td>
+</tr>
+<tr>
+<td style="text-align:center">obj.columns</td>
+<td style="text-align:center">查看列名</td>
+</tr>
+<tr>
+<td style="text-align:center">obj.values</td>
+<td style="text-align:center">查看数据值</td>
+</tr>
+<tr>
+<td style="text-align:center">obj.describe</td>
+<td style="text-align:center">描述性统计</td>
+</tr>
+<tr>
+<td style="text-align:center">obj.sort(columns = ‘ ‘)</td>
+<td style="text-align:center">按列名进行排序</td>
+</tr>
+<tr>
+<td style="text-align:center">obj[‘列名称’]</td>
+<td style="text-align:center">显示某列名下的数据</td>
+</tr>
+<tr>
+<td style="text-align:center">obj[1:3]</td>
+<td style="text-align:center">获取1-3行数据,该操作叫切片操作,获取行数据</td>
+</tr>
+<tr>
+<td style="text-align:center">obj[‘列名’].drop_duplicates()</td>
+<td style="text-align:center">剔除重复行数据</td>
+</tr>
+</tbody>
+</table>
+<p><strong>DataFrame筛选数据</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">alist = [<span class="string">'023-18996609823'</span>]</div><div class="line"></div><div class="line">df_obj[<span class="string">'用户号码'</span>].isin(alist) <span class="comment">#将要过滤的数据放入字典中,使用isin对数据进行筛选,返回行索引以及每行筛选的结果,若匹配则返回ture</span></div><div class="line"></div><div class="line">df_obj[df_obj[<span class="string">'用户号码'</span>].isin(alist)] <span class="comment">#获取匹配结果为ture的行</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df_obj[df_obj[<span class="string">'作用'</span>].str.contains(<span class="string">r'.*?语音CDMA.*'</span>)] <span class="comment">#使用正则表达式进行模糊匹配,*匹配0次或无限次，？匹配0次或1次</span></div></pre></td></tr></table></figure>
+<p><strong>DataFrame分组聚合数据</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">data_obj[<span class="string">'户型'</span>].groupby(data_obj[<span class="string">'户型'</span>])</div><div class="line"></div><div class="line">简单的写法：</div><div class="line"></div><div class="line">data_obj.groupby(<span class="string">'户型'</span>)[<span class="string">'户型'</span>]</div></pre></td></tr></table></figure></p>
+<p><strong>读取csv中的数据</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#首先输入csv文本地址,然后分割符选择</span></div><div class="line">read_csv(<span class="string">'D:\LQJ.csv'</span>,sep=<span class="string">';'</span>,nrows=<span class="number">2</span>)</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/07/pandas的介绍/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-前言" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
