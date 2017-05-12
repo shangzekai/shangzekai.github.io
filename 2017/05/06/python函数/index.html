@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/06/python函数/index.html">
 <meta property="og:site_name" content="Python">
 <meta property="og:description" content="前言现在老板让你写一个监控程序，监控服务器的系统状况，当cpu＼memory＼disk等指标的使用量超过阀值时即发邮件报警，你掏空了所有的知识量，写出了以下代码">
-<meta property="og:updated_time" content="2017-05-12T11:27:20.000Z">
+<meta property="og:updated_time" content="2017-05-12T11:29:15.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python函数基础">
 <meta name="twitter:description" content="前言现在老板让你写一个监控程序，监控服务器的系统状况，当cpu＼memory＼disk等指标的使用量超过阀值时即发邮件报警，你掏空了所有的知识量，写出了以下代码">
@@ -177,6 +177,7 @@
 </ul>
 <p><strong>此时我们的重点就是要解决上述的两个问题，我们发现，上述的代码中相同的代码非常的多，那能不能把这些相同的代码提取出来，放在一个公共的地方，起个名字，以后谁想调用这段代码，只需要调用这个名字就好了，如下</strong></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">def 发送邮件(内容)</div><div class="line">    #发送邮件提醒</div><div class="line">    连接邮箱服务器</div><div class="line">    发送邮件</div><div class="line">    关闭连接</div><div class="line">     </div><div class="line">while True：</div><div class="line">    if cpu利用率 &gt; 90%:</div><div class="line">        发送邮件('CPU报警')</div><div class="line">     </div><div class="line">    if 硬盘使用空间 &gt; 90%:</div><div class="line">        发送邮件('硬盘报警')</div><div class="line">     </div><div class="line">    if 内存占用 &gt; 80%:</div><div class="line">        发送邮件('内存报警')</div></pre></td></tr></table></figure>
+<hr>
 <h4 id="函数基本语法"><a href="#函数基本语法" class="headerlink" title="函数基本语法"></a><div id="title">函数基本语法</div></h4><h5 id="1-定义"><a href="#1-定义" class="headerlink" title="1. 定义"></a>1. 定义</h5><blockquote>
 <p> 函数是指将一组语句的集合通过一个名字(函数名)封装起来，要想执行这个函数，只需调用其函数名即可</p>
 </blockquote>
@@ -186,6 +187,7 @@
 <li>使程序变得易维护</li>
 </ul>
 <h5 id="3-语法"><a href="#3-语法" class="headerlink" title="3. 语法"></a>3. 语法</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment"># 定义一个函数，名字叫sayHi()</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sayHi</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">"Hello World!"</span>)</div><div class="line"></div><div class="line"><span class="comment"># 调用此函数，函数名 + 括号</span></div><div class="line">sayHi()</div></pre></td></tr></table></figure>
+<hr>
 <h4 id="函数的参数"><a href="#函数的参数" class="headerlink" title="函数的参数"></a><div id="title">函数的参数</div></h4><h5 id="1-形参和实参"><a href="#1-形参和实参" class="headerlink" title="1. 形参和实参"></a>1. 形参和实参</h5><blockquote>
 <p>形参变量只有在被调用时才分配内存单元，在调用结束时，即刻释放所分配的内存单元。因此，形参只在函数内部有效</p>
 <p>实参可以是常量、变量、表达式、函数等，无论实参是何种类型的量，在进行函数调用时，它们都必须有确定的值，以便把这些值传送给形参。因此应预先用赋值，输入等办法使参数获得确定值</p>
