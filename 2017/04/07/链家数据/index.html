@@ -14,12 +14,13 @@
 <meta property="og:url" content="http://yoursite.com/2017/04/07/链家数据/index.html">
 <meta property="og:site_name" content="Python">
 <meta property="og:description" content="前言 侠之大者，为国接盘">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/05/13/591697e5659f1.png">
 <meta property="og:image" content="https://ooo.0o0.ooo/2017/05/12/5915387e5b09d.jpg">
-<meta property="og:updated_time" content="2017-05-13T05:19:17.000Z">
+<meta property="og:updated_time" content="2017-05-13T05:22:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="爬链家二手房数据">
 <meta name="twitter:description" content="前言 侠之大者，为国接盘">
-<meta name="twitter:image" content="https://ooo.0o0.ooo/2017/05/12/5915387e5b09d.jpg">
+<meta name="twitter:image" content="https://ooo.0o0.ooo/2017/05/13/591697e5659f1.png">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
@@ -192,6 +193,8 @@
 <p>此处我们使用的是第三方库–pandas，来对数据进行进一步的清理，如果对词库不了解的同学，可以看之前<br>的文章</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 创建数据表</span></div><div class="line"><span class="comment"># house = pd.DataFrame(&#123; "houseinfo":hi, "followinfo":fi, "totalprice":tp&#125;)</span></div><div class="line">house = pd.DataFrame(&#123;<span class="string">"totalprice"</span>:tp&#125;)</div><div class="line"><span class="comment"># print(house)</span></div><div class="line"><span class="comment"># exit()</span></div><div class="line"><span class="comment"># 查看数据表内容</span></div><div class="line"><span class="comment"># house.head()</span></div><div class="line"></div><div class="line"><span class="comment"># 对房源信息进行分列</span></div><div class="line">houseinfo_split = pd.DataFrame((x.split(<span class="string">'|'</span>) <span class="keyword">for</span> x <span class="keyword">in</span> hi),columns=[<span class="string">'xiaoqu'</span>,<span class="string">'huxing'</span>,<span class="string">'mianji'</span>,<span class="string">'chaoxiang'</span>,<span class="string">'zhuangxiu'</span>,<span class="string">'dianti'</span>])</div><div class="line"><span class="comment"># print(houseinfo_split)</span></div><div class="line"><span class="comment"># houseinfo_split.head()</span></div><div class="line"></div><div class="line">house = pd.merge(house,houseinfo_split,right_index=<span class="keyword">True</span>, left_index=<span class="keyword">True</span>)</div><div class="line">print(house)</div><div class="line"><span class="comment"># house.head()</span></div><div class="line"></div><div class="line">huxing = house.groupby(<span class="string">'huxing'</span>)[<span class="string">'huxing'</span>].agg(len)</div><div class="line">print(huxing.head())</div></pre></td></tr></table></figure>
+<p><strong>最终爬出来的数据如下所示</strong></p>
+<p><img src="https://ooo.0o0.ooo/2017/05/13/591697e5659f1.png" alt="lianjia.png"></p>
 <p><strong>以上就是简单的数据分析，但是看了这么多，感觉怎样呢</strong><br><img src="https://ooo.0o0.ooo/2017/05/12/5915387e5b09d.jpg" alt="house.jpg"></p>
 
       
