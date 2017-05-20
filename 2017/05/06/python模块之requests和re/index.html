@@ -6,14 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives | Python</title>
+  <title>Python常用模块之requests，urllib和re | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Python">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="前言 上一节我们介绍完爬虫是啥之后，现在我们就需要来学习一下怎么样优雅快速的去爬一个网站，从而获得我们想要的信息">
+<meta name="keywords" content="Python,模块">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python常用模块之requests，urllib和re">
+<meta property="og:url" content="http://yoursite.com/2017/05/06/python模块之requests和re/index.html">
 <meta property="og:site_name" content="Python">
+<meta property="og:description" content="前言 上一节我们介绍完爬虫是啥之后，现在我们就需要来学习一下怎么样优雅快速的去爬一个网站，从而获得我们想要的信息">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/05/20/591fc32d011e6.png">
+<meta property="og:updated_time" content="2017-05-20T05:14:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python">
+<meta name="twitter:title" content="Python常用模块之requests，urllib和re">
+<meta name="twitter:description" content="前言 上一节我们介绍完爬虫是啥之后，现在我们就需要来学习一下怎么样优雅快速的去爬一个网站，从而获得我们想要的信息">
+<meta name="twitter:image" content="https://ooo.0o0.ooo/2017/05/20/591fc32d011e6.png">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
@@ -137,561 +144,197 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-python模块之requests和re" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/07/html学习基础/" class="archive-article-date">
-  	<time datetime="2017-05-07T12:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/07/html学习基础/">HTML基础学习目录</a>
+    <h1 class="article-title" itemprop="name">
+      Python常用模块之requests，urllib和re
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTML</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/07/CSS基础学习/" class="archive-article-date">
-  	<time datetime="2017-05-07T11:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/07/CSS基础学习/">CSS基础学习目录</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/07/javascript基础学习目录/" class="archive-article-date">
-  	<time datetime="2017-05-07T11:50:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/07/javascript基础学习目录/">JavaScript基础学习目录</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">基础　</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/07/DOM操作/" class="archive-article-date">
-  	<time datetime="2017-05-07T10:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/07/DOM操作/">DOM操作学习目录</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DOM</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/07/Javascript类库作用以及对比/" class="archive-article-date">
-  	<time datetime="2017-05-07T01:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/07/Javascript类库作用以及对比/">JQuery学习目录</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Jquery</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/07/前端优化的技巧/" class="archive-article-date">
-  	<time datetime="2017-05-07T01:47:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/07/前端优化的技巧/">前端性能优化问题</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/Python简介/" class="archive-article-date">
-  	<time datetime="2017-05-06T15:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/Python简介/">初识Python</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/python常见数据类型/" class="archive-article-date">
-  	<time datetime="2017-05-06T13:05:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/python常见数据类型/">python常见数据类型</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/python函数/" class="archive-article-date">
-  	<time datetime="2017-05-06T13:00:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/python函数/">Python函数基础</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/列表生成式/" class="archive-article-date">
-  	<time datetime="2017-05-06T12:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/列表生成式/">python的各种器</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/python编码/" class="archive-article-date">
-  	<time datetime="2017-05-06T11:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/python编码/">python字符编码</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">编码</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/爬虫入门基础/" class="archive-article-date">
-  	<time datetime="2017-05-06T00:56:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/爬虫入门基础/">爬虫扫盲入门基础</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">模块</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/python常见的模块/" class="archive-article-date">
-  	<time datetime="2017-05-06T00:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/python常见的模块/">Python常用模块</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">模块</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/python模块之requests和re/" class="archive-article-date">
+        
+        <a href="/2017/05/06/python模块之requests和re/" class="archive-article-date">
   	<time datetime="2017-05-06T00:54:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
 </a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#urllib-和-requests"><span class="toc-text">urllib 和 requests</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#正则表达式"><span class="toc-text">正则表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-正则表达式的概念"><span class="toc-text">1.正则表达式的概念</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-常见的正则表达式符号"><span class="toc-text">2.常见的正则表达式符号</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-贪婪模式和非贪婪模式"><span class="toc-text">3.贪婪模式和非贪婪模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-Python的多行匹配和点任意匹配"><span class="toc-text">4.Python的多行匹配和点任意匹配</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-常见的正则表达式"><span class="toc-text">5.常见的正则表达式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-一个简单的抓取网页分析的案例"><span class="toc-text">6.一个简单的抓取网页分析的案例</span></a></li></ol></li></ol>
+          <hr/>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/python模块之requests和re/">Python常用模块之requests，urllib和re</a>
-    </h1>
-  
+        
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
+<p>上一节我们介绍完爬虫是啥之后，现在我们就需要来学习一下怎么样优雅快速的去爬一个网站，从而获得我们想要的信息</p>
+</blockquote>
+<a id="more"></a>
+<blockquote>
+<p>那怎样扒网页呢？其实就是根据URL来获取它的网页信息，虽然我们在浏览器中看到的是一幅幅优美的画面，但是其实是由浏览器解释才呈现出来的，实质它是一段HTML代码，加JS、CSS，如果把网页比作一个人，那么HTML便是他的骨架，JS便是他的肌肉，CSS便是它的衣服。<font color="red">所以最重要的部分是存在于HTML中的</font>，下面我们就写个例子来扒一个网页下来</p>
+</blockquote>
+<h4 id="urllib-和-requests"><a href="#urllib-和-requests" class="headerlink" title="urllib 和 requests"></a><div id="title">urllib 和 requests</div></h4><ul>
+<li>urllib<blockquote>
+<p>Python标准库中提供了：urllib等模块以供Http请求，但是，它的 API 太渣了。它需要巨量的工作，甚至包括各种方法覆盖，来完成最简单的任务，下面是简单的使用urllib来进行请求数据的方法</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib.request</div><div class="line"></div><div class="line">f = urllib.request.urlopen(<span class="string">'http://www.webxml.com.cn//webservices/qqOnlineWebService.asmx/qqCheckOnline?qqCode=424662508'</span>)</div><div class="line">result = f.read().decode(<span class="string">'utf-8'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 或者</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> urllib.request</div><div class="line"></div><div class="line">req = urllib.request.Request(<span class="string">"http://www.baidu.com"</span>)</div><div class="line">response = urllib.urlopen(req)</div><div class="line">print(response.read().decode(<span class="string">'utf-8'</span>))</div></pre></td></tr></table></figure>
+<p><strong>是的，你没有看错，你没有看错，就这样，简简单单的使用urllib库中的request方法，我们就可以将别人家网站的源代码给扒了过来</strong></p>
+<p><strong>在这里，我们需要注意的是，<font color="red">我们更推荐大家使用第二种方法</font>，两种方法请求的结果都一样，只不过第二种中间多了一个request对象，为啥要这样子，因为在构建请求时还需要加入好多内容，因此通过构建一个request，服务器响应请求得到应答，这样显得逻辑上清晰明确</strong></p>
+<p><strong>比如说加入User-Agent参数到请求头，就可以使用如下方式</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib.request</div><div class="line"></div><div class="line">req = urllib.request.Request(<span class="string">'http://www.example.com/'</span>)</div><div class="line"></div><div class="line">req.add_header(<span class="string">"User-Agent"</span>, <span class="string">"Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:39.0) Gecko/20100101 Firefox/39.0"</span>)</div><div class="line"></div><div class="line">r = urllib.request.urlopen(req)</div><div class="line"></div><div class="line">result = f.read().decode(<span class="string">'utf-8'</span>)</div></pre></td></tr></table></figure></p>
+<p><em>注：更多见Python官方文档：<a href="https://docs.python.org/3.5/library/urllib.request.html#module-urllib.request" target="_blank" rel="external">https://docs.python.org/3.5/library/urllib.request.html#module-urllib.request</a></em></p>
+<ul>
+<li>requests</li>
+</ul>
+<blockquote>
+<p>Requests 是使用 Apache2 Licensed 许可证的 基于Python开发的HTTP 库，其在Python内置模块的基础上进行了高度的封装，从而使得进行网络请求时，变得美好了许多，而且使用Requests可以轻而易举的完成浏览器可有的任何操作</p>
+</blockquote>
+<p>1）安装模块</p>
+<p><code>pip3 install requests</code></p>
+<p>2) 初次使用</p>
+<p><strong>来个小栗子，活跃一下气氛</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"> </div><div class="line">r = requests.get(<span class="string">'http://www.shangzekai.xyz'</span>)</div><div class="line"><span class="keyword">print</span> type(r)</div><div class="line"><span class="keyword">print</span> r.status_code  <span class="comment"># 服务器返回状态码</span></div><div class="line"><span class="keyword">print</span> r.encoding <span class="comment"># 使用的编码</span></div><div class="line"><span class="keyword">print</span> r.text <span class="comment"># 返回的内容</span></div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>我们发现，初次使用requests库，简洁大方，确实方便了许多，生活从此也变得美好了起来，继续接着深入了解</p>
+</blockquote>
+<p>3) 基本方法</p>
+<ul>
+<li>get请求</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 1、无参数实例</span></div><div class="line"> </div><div class="line"><span class="keyword">import</span> requests</div><div class="line">ret = requests.get(<span class="string">'https://github.com/timeline.json'</span>)</div><div class="line"> </div><div class="line">print(ret.url)</div><div class="line">print(ret.text)</div><div class="line"> </div><div class="line"></div><div class="line"><span class="comment"># 2、有参数实例</span></div><div class="line"><span class="keyword">import</span> requests</div><div class="line"> </div><div class="line">payload = &#123;<span class="string">'key1'</span>: <span class="string">'value1'</span>, <span class="string">'key2'</span>: <span class="string">'value2'</span>&#125;</div><div class="line">ret = requests.get(<span class="string">"http://httpbin.org/get"</span>, params=payload)</div><div class="line"> </div><div class="line">print(ret.url)</div><div class="line">print(ret.text)</div></pre></td></tr></table></figure>
+<ul>
+<li>post请求</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 1、基本POST实例</span></div><div class="line"> </div><div class="line"><span class="keyword">import</span> requests</div><div class="line"> </div><div class="line">payload = &#123;<span class="string">'key1'</span>: <span class="string">'value1'</span>, <span class="string">'key2'</span>: <span class="string">'value2'</span>&#125;</div><div class="line">ret = requests.post(<span class="string">"http://httpbin.org/post"</span>, data=payload)</div><div class="line"> </div><div class="line">print(ret.text)</div><div class="line"> </div><div class="line"> </div><div class="line"><span class="comment"># 2、发送请求头和数据实例</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> json</div><div class="line"><span class="keyword">import</span> requests</div><div class="line"> </div><div class="line">url = <span class="string">'http://httpbin.org/post'</span></div><div class="line">payload = &#123;<span class="string">'some'</span>: <span class="string">'data'</span>&#125;</div><div class="line">headers = &#123;<span class="string">'content-type'</span>: <span class="string">'application/json'</span>&#125;</div><div class="line"></div><div class="line">ret = requests.post(url, data=json.dumps(payload), headers=headers)</div><div class="line"> </div><div class="line">print(ret.text)</div></pre></td></tr></table></figure>
+<ul>
+<li>其他请求</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">requests.get(url, params=<span class="keyword">None</span>, **kwargs)</div><div class="line">requests.post(url, data=<span class="keyword">None</span>, json=<span class="keyword">None</span>, **kwargs)</div><div class="line">requests.put(url, data=<span class="keyword">None</span>, **kwargs)</div><div class="line">requests.head(url, **kwargs)</div><div class="line">requests.delete(url, **kwargs)</div><div class="line">requests.patch(url, data=<span class="keyword">None</span>, **kwargs)</div><div class="line">requests.options(url, **kwargs)</div><div class="line"> </div><div class="line"><span class="comment"># 以上方法均是在此方法的基础上构建</span></div><div class="line">requests.request(method, url, **kwargs)</div></pre></td></tr></table></figure>
+<ul>
+<li>常见实例</li>
+</ul>
+<p>1) 检测QQ是否在线<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib</div><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">from</span> xml.etree <span class="keyword">import</span> ElementTree <span class="keyword">as</span> ET</div><div class="line"></div><div class="line"><span class="comment"># 使用内置模块urllib发送HTTP请求，或者XML格式内容</span></div><div class="line"><span class="string">"""</span></div><div class="line">f = urllib.request.urlopen('http://www.webxml.com.cn//webservices/qqOnlineWebService.asmx/qqCheckOnline?qqCode=493133139')</div><div class="line">result = f.read().decode('utf-8')</div><div class="line">"""</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment"># 使用第三方模块requests发送HTTP请求，或者XML格式内容</span></div><div class="line">r = requests.get(<span class="string">'http://www.webxml.com.cn//webservices/qqOnlineWebService.asmx/qqCheckOnline?qqCode=493133139'</span>)</div><div class="line">result = r.text</div><div class="line"></div><div class="line"><span class="comment"># 解析XML格式内容</span></div><div class="line">node = ET.XML(result)</div><div class="line"></div><div class="line"><span class="comment"># 获取内容</span></div><div class="line"><span class="keyword">if</span> node.text == <span class="string">"Y"</span>:</div><div class="line">    print(<span class="string">"在线"</span>)</div><div class="line"><span class="keyword">else</span>:</div><div class="line">    print(<span class="string">"离线"</span>)</div></pre></td></tr></table></figure></p>
+<p>2) 查看火车停靠信息</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib</div><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">from</span> xml.etree <span class="keyword">import</span> ElementTree <span class="keyword">as</span> ET</div><div class="line"></div><div class="line"><span class="comment"># 使用内置模块urllib发送HTTP请求，或者XML格式内容</span></div><div class="line"><span class="string">"""</span></div><div class="line">f = urllib.request.urlopen('http://www.webxml.com.cn/WebServices/TrainTimeWebService.asmx/getDetailInfoByTrainCode?TrainCode=G666&amp;UserID=')</div><div class="line">result = f.read().decode('utf-8')</div><div class="line">"""</div><div class="line"></div><div class="line"><span class="comment"># 使用第三方模块requests发送HTTP请求，或者XML格式内容</span></div><div class="line">r = requests.get(<span class="string">'http://www.webxml.com.cn/WebServices/TrainTimeWebService.asmx/getDetailInfoByTrainCode?TrainCode=G666&amp;UserID='</span>)</div><div class="line">result = r.text</div><div class="line"></div><div class="line"><span class="comment"># 解析XML格式内容</span></div><div class="line">root = ET.XML(result)</div><div class="line"><span class="keyword">for</span> node <span class="keyword">in</span> root.iter(<span class="string">'TrainDetailInfo'</span>):</div><div class="line">    print(node.find(<span class="string">'TrainStation'</span>).text,node.find(<span class="string">'StartTime'</span>).text,node.tag,node.attrib)</div></pre></td></tr></table></figure>
+<h4 id="正则表达式"><a href="#正则表达式" class="headerlink" title="正则表达式"></a><div id="title">正则表达式</div></h4><h5 id="1-正则表达式的概念"><a href="#1-正则表达式的概念" class="headerlink" title="1.正则表达式的概念"></a>1.正则表达式的概念</h5><blockquote>
+<p>正则表达式是对字符串操作的一种逻辑公式，就是用事先定义好的一些特定字符、及这些特定字符的组合，组成一个“规则字符串”，这个“规则字符串”用来表达对字符串的一种过滤逻辑</p>
+</blockquote>
+<p>正则表达式是用来匹配字符串非常强大的工具，在其他编程语言中同样有正则表达式的概念，Python同样不例外，利用了正则表达式，我们想要从返回的页面内容提取出我们想要的内容就易如反掌了</p>
+<blockquote>
+<p>正则表达式的大致匹配过程是：</p>
+<p>1.依次拿出表达式和文本中的字符比较，<br>2.如果每一个字符都能匹配，则匹配成功；一旦有匹配不成功的字符则匹配失败。<br>3.如果表达式中有量词或边界，这个过程会稍微有一些不同</p>
+</blockquote>
+<h5 id="2-常见的正则表达式符号"><a href="#2-常见的正则表达式符号" class="headerlink" title="2.常见的正则表达式符号"></a>2.常见的正则表达式符号</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="string">'^'</span>     匹配字符开头，若指定flags MULTILINE,这种也可以匹配上(<span class="string">r"^a"</span>,<span class="string">"\nabc\neee"</span>,flags=re.MULTILINE)</div><div class="line"><span class="string">'$'</span>     匹配字符结尾</div><div class="line"></div><div class="line"><span class="string">'*'</span>     匹配*号前的字符<span class="number">0</span>次或多次，re.findall(<span class="string">"ab*"</span>,<span class="string">"cabb3abcbbac"</span>)  结果为[<span class="string">'abb'</span>, <span class="string">'ab'</span>, <span class="string">'a'</span>]</div><div class="line"><span class="string">'+'</span>     匹配前一个字符<span class="number">1</span>次或多次，re.findall(<span class="string">"ab+"</span>,<span class="string">"abcdabbbba"</span>) 结果[<span class="string">'ab'</span>, <span class="string">'abb'</span>]</div><div class="line"><span class="string">'?'</span>     匹配前一个字符<span class="number">1</span>次或<span class="number">0</span>次</div><div class="line"><span class="string">'.'</span>     默认匹配除\n之外的任意一个字符，若指定flag DOTALL,则匹配任意字符，包括换行</div><div class="line"><span class="string">'&#123;m&#125;'</span>   匹配前一个字符m次</div><div class="line"><span class="string">'&#123;n,m&#125;'</span> 匹配前一个字符n到m次，re.findall(<span class="string">"ab&#123;1,3&#125;"</span>,<span class="string">"abb abc abbcbbb"</span>) 结果<span class="string">'abb'</span>, <span class="string">'ab'</span>, <span class="string">'abb'</span>]</div><div class="line"><span class="string">'|'</span>     匹配|左或|右的字符，re.findall(<span class="string">"abc|ABC"</span>,<span class="string">"ABCBabcCD"</span>)结果<span class="string">'ABC'</span></div><div class="line"><span class="string">'(...)'</span> 分组匹配，re.search(<span class="string">"(abc)&#123;2&#125;a(123|456)c"</span>, <span class="string">"abcabca456c"</span>).group() 结果 abcabca456c</div><div class="line"> </div><div class="line"> </div><div class="line"><span class="string">'\A'</span>    只从字符开头匹配</div><div class="line"><span class="string">'\Z'</span>    匹配字符结尾，同$</div><div class="line"><span class="string">'\d'</span>    匹配数字<span class="number">0</span><span class="number">-9</span></div><div class="line"><span class="string">'\D'</span>    匹配非数字</div><div class="line"><span class="string">'\w'</span>    匹配[A-Za-z0<span class="number">-9</span>]</div><div class="line"><span class="string">'\W'</span>    匹配非[A-Za-z0<span class="number">-9</span>]</div><div class="line"><span class="string">'s'</span>     匹配空白字符空格、\t、\n、\r </div><div class="line"> </div><div class="line"><span class="string">'(?P&lt;name&gt;...)'</span> 分组匹配 re.search(<span class="string">"(?P&lt;province&gt;[0-9]&#123;4&#125;)(?P&lt;city&gt;[0-9]&#123;2&#125;)(?P&lt;birthday&gt;[0-9]&#123;4&#125;)"</span>,<span class="string">"371481199306143242"</span>).groupdict(<span class="string">"city"</span>) 结果&#123;<span class="string">'province'</span>: <span class="string">'3714'</span>, <span class="string">'city'</span>: <span class="string">'81'</span>, <span class="string">'birthday'</span>: <span class="string">'1993'</span>&#125;</div></pre></td></tr></table></figure>
+<p>常见的使用方法</p>
+<ul>
+<li>re.match 从头开始匹配<blockquote>
+<p>match(pattern, string, flags=0)<br>pattern： 正则模型<br>string ： 要匹配的字符串<br>falgs  ： 匹配模式</p>
+<ul>
+<li>re.I(re.IGNORECASE): 忽略大小写（括号内是完整写法，下同）</li>
+<li>re.M(MULTILINE): 多行模式，改变’^’和’$’的行为</li>
+<li>re.S(DOTALL): 点任意匹配模式，改变’.’的行为</li>
+</ul>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 无分组</span></div><div class="line">r = re.match(<span class="string">"h\w+"</span>, origin)</div><div class="line">print(r.group())     <span class="comment"># 获取匹配到的所有结果</span></div><div class="line">print(r.groups())    <span class="comment"># 获取模型中匹配到的分组结果</span></div><div class="line">print(r.groupdict()) <span class="comment"># 获取模型中匹配到的分组结果</span></div><div class="line"></div><div class="line"><span class="comment"># 有分组</span></div><div class="line"></div><div class="line"><span class="comment"># 为何要有分组？提取匹配成功的指定内容（先匹配成功全部正则，再匹配成功的局部内容提取出来）</span></div><div class="line"></div><div class="line">r = re.match(<span class="string">"h(\w+)"</span>, origin)</div><div class="line">print(r.group())     <span class="comment"># 获取匹配到的所有结果</span></div><div class="line">print(r.groups())    <span class="comment"># 获取模型中匹配到的分组结果</span></div><div class="line">print(r.groupdict()) <span class="comment"># 获取模型中匹配到的分组中所有执行了key的组</span></div></pre></td></tr></table></figure>
+<ul>
+<li>re.search 浏览整个字符串去匹配第一个，未匹配成功返回None<blockquote>
+<p>search(pattern, string, flags=0)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 无分组</span></div><div class="line">r = re.search(<span class="string">"a\w+"</span>, origin)</div><div class="line">print(r.group())     <span class="comment"># 获取匹配到的所有结果</span></div><div class="line">print(r.groups())    <span class="comment"># 获取模型中匹配到的分组结果</span></div><div class="line">print(r.groupdict()) <span class="comment"># 获取模型中匹配到的分组结果</span></div><div class="line"></div><div class="line"><span class="comment"># 有分组</span></div><div class="line">r = re.search(<span class="string">"a(\w+)"</span>, origin)</div><div class="line">print(r.group())     <span class="comment"># 获取匹配到的所有结果</span></div><div class="line">print(r.groups())    <span class="comment"># 获取模型中匹配到的分组结果</span></div><div class="line">print(r.groupdict()) <span class="comment"># 获取模型中匹配到的分组中所有执行了key的组</span></div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+</ul>
+<p><strong>注意：</strong></p>
+<blockquote>
+<p>search方法与match方法极其类似，区别在于match()函数只检测是不是在string的开始位置匹配，search()会扫描整个string查找匹配<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">re.search(<span class="string">'world'</span>,<span class="string">'helloworld!'</span>)</div></pre></td></tr></table></figure></p>
+</blockquote>
+<ul>
+<li><p>re.findall 把所有匹配到的字符放到列表中，以列表中的元素返回</p>
+<blockquote>
+<p>findall(pattern, string, flags=0)</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">print(re.findall(<span class="string">'\d+'</span>,<span class="string">'one1two2three3four4'</span>))</div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>re.split 以匹配到的字符当做列表分隔符</p>
+<blockquote>
+<p>split(pattern, string, maxsplit=0, flags=0)<br>pattern： 正则模型<br>string ： 要匹配的字符串<br>maxsplit：指定分割个数<br>flags  ： 匹配模式</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 无分组</span></div><div class="line">origin = <span class="string">"hello alex bcd alex lge alex acd 19"</span></div><div class="line">r = re.split(<span class="string">"alex"</span>, origin, <span class="number">1</span>)</div><div class="line">print(r)</div><div class="line"></div><div class="line"><span class="comment"># 有分组</span></div><div class="line"></div><div class="line">origin = <span class="string">"hello alex bcd alex lge alex acd 19"</span></div><div class="line">r1 = re.split(<span class="string">"(alex)"</span>, origin, <span class="number">1</span>)</div><div class="line">print(r1)</div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>re.sub      匹配字符并替换</p>
+<blockquote>
+<p>sub(pattern, repl, string, count=0, flags=0)<br>pattern： 正则模型<br>repl   ： 要替换的字符串或可执行对象<br>string ： 要匹配的字符串<br>count  ： 指定匹配个数<br>flags  ： 匹配模式</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">origin = <span class="string">"hello alex bcd alex lge alex acd 19"</span></div><div class="line">r = re.sub(<span class="string">"a\w+"</span>, <span class="string">"999"</span>, origin, <span class="number">2</span>)</div><div class="line">print(r)</div></pre></td></tr></table></figure>
+<h5 id="3-贪婪模式和非贪婪模式"><a href="#3-贪婪模式和非贪婪模式" class="headerlink" title="3.贪婪模式和非贪婪模式"></a>3.贪婪模式和非贪婪模式</h5><blockquote>
+<p>Python里数量词默认是贪婪的，总是尝试匹配尽可能多的字符；<br>非贪婪则相反，总是尝试匹配尽可能少的字符<br>但有的时候，我们并不是想要贪婪模式，那怎么办？</p>
+<font color="red">非常简单，只需要在”*”,”?”,”+”,”{m,n}”后面加上？，使贪婪变成非贪婪</font>
 
-        <div class="article-info info-on-right">
-          
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>s=<span class="string">"This is a number 234-235-22-423"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r=re.match(<span class="string">".+(\d+-\d+-\d+-\d+)"</span>,s)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.group(<span class="number">1</span>)</div><div class="line"><span class="string">'4-235-22-423'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r=re.match(<span class="string">".+?(\d+-\d+-\d+-\d+)"</span>,s)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.group(<span class="number">1</span>)</div><div class="line"><span class="string">'234-235-22-423'</span></div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>正则表达式模式中使用到通配符，那它在从左到右的顺序匹配时，会尽量“抓取”满足匹配最长字符串，在我们上面的例子里面，“.+”会从字符 串的启始处抓取满足模式的最长字符，其中包括我们想得到的第一个整型字段的中的大部分，而“\d+”只需一位字符就可以匹配，所以导致它只匹配了数字“4”，而“.+”则匹配了从字符串起始到这个第一位数字4之前的所有字符</p>
+</blockquote>
+<p><strong><font color="red">解决方式：非贪婪操作符“？”，这个操作符可以用在”*”,”+”,”?”的后面，要求正则匹配的越少越好</font></strong></p>
+<p>再来感受一下，贪婪和非贪婪模式的风骚<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>re.match(<span class="string">r"aa(\d+)"</span>,<span class="string">"aa2343ddd"</span>).group(<span class="number">1</span>)</div><div class="line"><span class="string">'2343'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>re.match(<span class="string">r"aa(\d+?)"</span>,<span class="string">"aa2343ddd"</span>).group(<span class="number">1</span>)</div><div class="line"><span class="string">'2'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>re.match(<span class="string">r"aa(\d+)ddd"</span>,<span class="string">"aa2343ddd"</span>).group(<span class="number">1</span>) </div><div class="line"><span class="string">'2343'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>re.match(<span class="string">r"aa(\d+?)ddd"</span>,<span class="string">"aa2343ddd"</span>).group(<span class="number">1</span>)</div><div class="line"><span class="string">'2343'</span></div><div class="line">&gt;&gt;&gt;</div></pre></td></tr></table></figure></p>
+<h5 id="4-Python的多行匹配和点任意匹配"><a href="#4-Python的多行匹配和点任意匹配" class="headerlink" title="4.Python的多行匹配和点任意匹配"></a>4.Python的多行匹配和点任意匹配</h5><blockquote>
+<p>r=re.complile(pattern,re.M)<br>re.M(re.MULTILINE):多行模式，改变’^’和’<code>$</code>‘的行为,即^ $标志将会匹配每一行</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>re.findall(<span class="string">r"^a(\d+)b"</span>,<span class="string">"a213b\na2345b\na234b"</span>) </div><div class="line">[<span class="string">'213'</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>re.findall(<span class="string">r"^a(\d+)b"</span>,<span class="string">"a213b\na2345b\na234b"</span>,re.M)</div><div class="line">[<span class="string">'213'</span>, <span class="string">'2345'</span>, <span class="string">'234'</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>re.findall(<span class="string">r"a(\d+)b"</span>,<span class="string">"a213b\na2345b\na234b"</span>)  <span class="comment">#如果没有^标志,无需re.M</span></div><div class="line">[<span class="string">'213'</span>, <span class="string">'2345'</span>, <span class="string">'234'</span>]</div></pre></td></tr></table></figure>
+<p><strong>注意：”^”匹配字符串的开始，在MULTILINE模式下，也匹配换行符之后</strong></p>
+<blockquote>
+<p>re.S(re.DOTALL):点任意匹配模式</p>
+<p>元字符“.”在默认模式下，匹配除换行符外的所有字符。在DOTALL模式下，匹配所有字符，包括换行符<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>re.findall(<span class="string">r"."</span>,<span class="string">"\n"</span>,re.S)                         </div><div class="line">[<span class="string">'\n'</span>]</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h5 id="5-常见的正则表达式"><a href="#5-常见的正则表达式" class="headerlink" title="5.常见的正则表达式"></a>5.常见的正则表达式</h5><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">IP：</div><div class="line">^(25[0-5]|2[0-4]\d|[0-1]?\d?\d)(\.(25[0-5]|2[0-4]\d|[0-1]?\d?\d))&#123;3&#125;$</div><div class="line">手机号：</div><div class="line">^1[3|4|5|8][0-9]\d&#123;8&#125;$</div><div class="line">邮箱：</div><div class="line">[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+</div></pre></td></tr></table></figure>
+<h5 id="6-一个简单的抓取网页分析的案例"><a href="#6-一个简单的抓取网页分析的案例" class="headerlink" title="6.一个简单的抓取网页分析的案例"></a>6.一个简单的抓取网页分析的案例</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"><span class="keyword">import</span> re</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_page</span><span class="params">(url)</span>:</span></div><div class="line">    response = requests.get(url)</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        <span class="keyword">if</span> response.status_code == <span class="number">200</span>:</div><div class="line">            res = response.text</div><div class="line">            <span class="keyword">return</span> res</div><div class="line">        <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</div><div class="line">        print(e)</div><div class="line"></div><div class="line"><span class="string">'''</span></div><div class="line">&lt;div class="board-item-content"&gt;</div><div class="line">    &lt;div class="movie-item-info"&gt;</div><div class="line">        &lt;p class="name"&gt;&lt;a href="/films/1203" title="霸王别姬" data-act="boarditem-click" data-val="&#123;movieId:1203&#125;"&gt;霸王别姬&lt;/a&gt;&lt;/p&gt;</div><div class="line">        &lt;p class="star"&gt;</div><div class="line">            主演：张国荣,张丰毅,巩俐</div><div class="line">        &lt;/p&gt;</div><div class="line">        &lt;p class="releasetime"&gt;上映时间：1993-01-01(中国香港)&lt;/p&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class="movie-item-number score-num"&gt;</div><div class="line">        &lt;p class="score"&gt;&lt;i class="integer"&gt;9.&lt;/i&gt;&lt;i class="fraction"&gt;6&lt;/i&gt;&lt;/p&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">'''</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_movie</span><span class="params">(html)</span>:</span></div><div class="line">    partten = <span class="string">'&lt;p.*?&gt;&lt;a.*?&gt;(.*?)&lt;/a&gt;&lt;/p&gt;.*?&lt;p.*?&gt;(.*?)&lt;/p&gt;.*?&lt;p.*?&gt;(.*?)&lt;/p&gt;'</span></div><div class="line">    items = re.findall(partten, html, re.S)</div><div class="line">    <span class="comment">#print((items))</span></div><div class="line">    <span class="keyword">return</span> items</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">write_file</span><span class="params">(items)</span>:</span></div><div class="line">    fileMovie = open(<span class="string">'movie.txt'</span>, <span class="string">'w'</span>, encoding=<span class="string">'utf8'</span>)</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        <span class="keyword">for</span> movie <span class="keyword">in</span> items:</div><div class="line">            fileMovie.write(<span class="string">'电影排名：'</span> + movie[<span class="number">0</span>] + <span class="string">'\r\n'</span>)</div><div class="line">            fileMovie.write(<span class="string">'电影主演：'</span> + movie[<span class="number">1</span>].strip() + <span class="string">'\r\n'</span>)</div><div class="line">            fileMovie.write(<span class="string">'上映时间：'</span> + movie[<span class="number">2</span>] + <span class="string">'\r\n\r\n'</span>)</div><div class="line">        print(<span class="string">'文件写入成功...'</span>)</div><div class="line">    <span class="keyword">finally</span>:</div><div class="line">        fileMovie.close()</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(url)</span>:</span></div><div class="line">    html = get_page(url)</div><div class="line">    items = get_movie(html)</div><div class="line">    write_file(items)</div><div class="line">    </div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    url = <span class="string">"http://maoyan.com/board/4"</span></div><div class="line">    main(url)</div></pre></td></tr></table></figure>
+<p>最终的结果：<br><img src="https://ooo.0o0.ooo/2017/05/20/591fc32d011e6.png" alt="maoyan.png"></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -708,204 +351,110 @@
 	</div>
 
 
-          
+      
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/06/python模块之requests和re/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/05/MySQL初级部分/" class="archive-article-date">
-  	<time datetime="2017-05-05T12:56:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/05/MySQL初级部分/">MySQL基础学习目录</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/05/MySQL高级部分/" class="archive-article-date">
-  	<time datetime="2017-05-05T12:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/05/MySQL高级部分/">MySQL高级学习目录</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">高级</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/05/BeautifulSoup介绍/" class="archive-article-date">
-  	<time datetime="2017-05-05T01:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/05/BeautifulSoup介绍/">Beautiful Soup的用法</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/07/pandas的介绍/" class="archive-article-date">
-  	<time datetime="2017-04-07T13:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/07/pandas的介绍/">python爬虫之数据分析包pandas</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/04/07/链家数据/" class="archive-article-date">
-  	<time datetime="2017-04-07T12:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/04/07/链家数据/">爬链家二手房数据</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+    <a href="/2017/05/06/python常见的模块/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Python常用模块
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/05/05/MySQL初级部分/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MySQL基础学习目录</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: document.location.href, 
+    sourceId: "",
+    productKey: "123b873e038145ba94270feb5223d8d8",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
   
 
-    
+  
+
+  
 
 
 
@@ -936,8 +485,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
