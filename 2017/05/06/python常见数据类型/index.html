@@ -6,23 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>python常见数据类型 | Python</title>
+  <title>python常见数据类型操作方法 | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="字符串操作1. 去除空格 删除字符串两边的指定字符，括号的写入指定字符，默认为空格  12345str = &quot;hello world   &quot;str.strip()  # 去除左右两边的空格str.lstrip()  # 去除左边的空格str.rstrip()  # 去除右边的空格str.strip(’,’)  # 去除两边指定的字符">
-<meta name="keywords" content="基础">
+  <meta name="description" content="数字操作 字符串操作1. 去除空格 删除字符串两边的指定字符，括号的写入指定字符，默认为空格  12345str = &quot;hello world   &quot;str.strip()  # 去除左右两边的空格str.lstrip()  # 去除左边的空格str.rstrip()  # 去除右边的空格str.strip(’,’)  # 去除两边指定的字符">
+<meta name="keywords" content="基础,python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="python常见数据类型">
+<meta property="og:title" content="python常见数据类型操作方法">
 <meta property="og:url" content="http://yoursite.com/2017/05/06/python常见数据类型/index.html">
 <meta property="og:site_name" content="Python">
-<meta property="og:description" content="字符串操作1. 去除空格 删除字符串两边的指定字符，括号的写入指定字符，默认为空格  12345str = &quot;hello world   &quot;str.strip()  # 去除左右两边的空格str.lstrip()  # 去除左边的空格str.rstrip()  # 去除右边的空格str.strip(’,’)  # 去除两边指定的字符">
+<meta property="og:description" content="数字操作 字符串操作1. 去除空格 删除字符串两边的指定字符，括号的写入指定字符，默认为空格  12345str = &quot;hello world   &quot;str.strip()  # 去除左右两边的空格str.lstrip()  # 去除左边的空格str.rstrip()  # 去除右边的空格str.strip(’,’)  # 去除两边指定的字符">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/05/24/59257f26ed081.png">
 <meta property="og:image" content="https://ooo.0o0.ooo/2017/05/13/591683321109a.png">
 <meta property="og:image" content="https://ooo.0o0.ooo/2017/05/14/5917ba9e85cad.png">
 <meta property="og:image" content="https://ooo.0o0.ooo/2017/05/14/5917ba9e86ab2.png">
-<meta property="og:updated_time" content="2017-05-14T02:07:48.000Z">
+<meta property="og:updated_time" content="2017-05-24T12:40:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="python常见数据类型">
-<meta name="twitter:description" content="字符串操作1. 去除空格 删除字符串两边的指定字符，括号的写入指定字符，默认为空格  12345str = &quot;hello world   &quot;str.strip()  # 去除左右两边的空格str.lstrip()  # 去除左边的空格str.rstrip()  # 去除右边的空格str.strip(’,’)  # 去除两边指定的字符">
-<meta name="twitter:image" content="https://ooo.0o0.ooo/2017/05/13/591683321109a.png">
+<meta name="twitter:title" content="python常见数据类型操作方法">
+<meta name="twitter:description" content="数字操作 字符串操作1. 去除空格 删除字符串两边的指定字符，括号的写入指定字符，默认为空格  12345str = &quot;hello world   &quot;str.strip()  # 去除左右两边的空格str.lstrip()  # 去除左边的空格str.rstrip()  # 去除右边的空格str.strip(’,’)  # 去除两边指定的字符">
+<meta name="twitter:image" content="https://ooo.0o0.ooo/2017/05/24/59257f26ed081.png">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
@@ -153,7 +154,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      python常见数据类型
+      python常见数据类型操作方法
     </h1>
   
 
@@ -168,11 +169,12 @@
       
 	
         <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#字符串操作"><span class="toc-text">字符串操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-去除空格"><span class="toc-text">1. 去除空格</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-字符串的连接"><span class="toc-text">2. 字符串的连接</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-查找字符串"><span class="toc-text">3. 查找字符串</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-判断是否包含指定字符串"><span class="toc-text">4. 判断是否包含指定字符串</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-字符串大小写转换"><span class="toc-text">5. 字符串大小写转换</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-字符串长度"><span class="toc-text">6. 字符串长度</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-将字符串放入中心位置可指定长度以及位置两边字符"><span class="toc-text">7. 将字符串放入中心位置可指定长度以及位置两边字符</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-字符串统计"><span class="toc-text">8. 字符串统计</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#9-字符串的测试、判断函数"><span class="toc-text">9. 字符串的测试、判断函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-字符串的切片"><span class="toc-text">10. 字符串的切片</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#11-字符串的分割"><span class="toc-text">11. 字符串的分割</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#列表"><span class="toc-text">列表</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-定义列表和访问列表中的元素"><span class="toc-text">1. 定义列表和访问列表中的元素</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-列表的切片"><span class="toc-text">2. 列表的切片</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-列表的增删改查"><span class="toc-text">3. 列表的增删改查</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#元组"><span class="toc-text">元组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字典操作"><span class="toc-text">字典操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#集合操作"><span class="toc-text">集合操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#文件的操作"><span class="toc-text">文件的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-打开文件"><span class="toc-text">1. 打开文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-对文件的操作"><span class="toc-text">2. 对文件的操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-打开文件的另一种姿势"><span class="toc-text">3. 打开文件的另一种姿势</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#数字操作"><span class="toc-text">数字操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字符串操作"><span class="toc-text">字符串操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-去除空格"><span class="toc-text">1. 去除空格</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-字符串的连接"><span class="toc-text">2. 字符串的连接</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-查找字符串"><span class="toc-text">3. 查找字符串</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-判断是否包含指定字符串"><span class="toc-text">4. 判断是否包含指定字符串</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-字符串大小写转换"><span class="toc-text">5. 字符串大小写转换</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-字符串长度"><span class="toc-text">6. 字符串长度</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-将字符串放入中心位置可指定长度以及位置两边字符"><span class="toc-text">7. 将字符串放入中心位置可指定长度以及位置两边字符</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-字符串统计"><span class="toc-text">8. 字符串统计</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#9-字符串的测试、判断函数"><span class="toc-text">9. 字符串的测试、判断函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-字符串的切片"><span class="toc-text">10. 字符串的切片</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#11-字符串的分割"><span class="toc-text">11. 字符串的分割</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#列表"><span class="toc-text">列表</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-定义列表和访问列表中的元素"><span class="toc-text">1. 定义列表和访问列表中的元素</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-列表的切片"><span class="toc-text">2. 列表的切片</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-列表的增删改查"><span class="toc-text">3. 列表的增删改查</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#元组"><span class="toc-text">元组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字典操作"><span class="toc-text">字典操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#集合操作"><span class="toc-text">集合操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#文件的操作"><span class="toc-text">文件的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-打开文件"><span class="toc-text">1. 打开文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-对文件的操作"><span class="toc-text">2. 对文件的操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-打开文件的另一种姿势"><span class="toc-text">3. 打开文件的另一种姿势</span></a></li></ol></li></ol>
           <hr/>
         </div>
         
-        <h4 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a><div id="title">字符串操作</div></h4><h5 id="1-去除空格"><a href="#1-去除空格" class="headerlink" title="1. 去除空格"></a>1. 去除空格</h5><blockquote>
+        <h4 id="数字操作"><a href="#数字操作" class="headerlink" title="数字操作"></a><div id="title">数字操作</div></h4><p><img src="https://ooo.0o0.ooo/2017/05/24/59257f26ed081.png" alt="数字常见函数操作.png"></p>
+<h4 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a><div id="title">字符串操作</div></h4><h5 id="1-去除空格"><a href="#1-去除空格" class="headerlink" title="1. 去除空格"></a>1. 去除空格</h5><blockquote>
 <p><strong>删除字符串两边的指定字符，括号的写入指定字符，默认为空格</strong></p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">str = <span class="string">"hello world   "</span></div><div class="line">str.strip()  <span class="comment"># 去除左右两边的空格</span></div><div class="line">str.lstrip()  <span class="comment"># 去除左边的空格</span></div><div class="line">str.rstrip()  <span class="comment"># 去除右边的空格</span></div><div class="line">str.strip(’,’)  <span class="comment"># 去除两边指定的字符</span></div></pre></td></tr></table></figure>
@@ -413,6 +415,10 @@
 			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
         		</li>
       		
 		</ul>
