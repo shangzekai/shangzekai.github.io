@@ -65,6 +65,12 @@
 	        
 				<li><a href="/404.html">回家</a></li>
 	        
+				<li><a href="/archives">所有文章</a></li>
+	        
+				<li><a href="/categories">分类</a></li>
+	        
+				<li><a href="/tags">标签</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -115,6 +121,12 @@
 			
 				
 			
+				
+			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -124,12 +136,18 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/404.html">回家</a></li>
+					<li style="width: 20%"><a href="/404.html">回家</a></li>
+		        
+					<li style="width: 20%"><a href="/archives">所有文章</a></li>
+		        
+					<li style="width: 20%"><a href="/categories">分类</a></li>
+		        
+					<li style="width: 20%"><a href="/tags">标签</a></li>
 		        
 				</ul>
 			</nav>
@@ -163,6 +181,38 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
+      
+	
+		<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
+<font color="red" size="10px">侠之大者，为国接盘</font>
+
+</blockquote>
+<a id="more"></a>
+<h4 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a><div id="title">准备工作</div></h4><p><strong>首先你的环境中，应该会有如下的配置</strong></p>
+<ul>
+<li>urllib</li>
+<li>BeautifulSoup</li>
+<li>pandas</li>
+</ul>
+<p><strong>如果都没有的话，使用<code>pip3 install xxx</code>安装，不会的话google</strong><br><strong>最终引入如下的库</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> urllib.request</div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</div><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div></pre></td></tr></table></figure></p>
+<h4 id="接盘侠之路"><a href="#接盘侠之路" class="headerlink" title="接盘侠之路"></a><div id="title">接盘侠之路</div></h4><h5 id="1-设置请求固定页"><a href="#1-设置请求固定页" class="headerlink" title="1. 设置请求固定页"></a>1. 设置请求固定页</h5><p>设置列表页URL的固定部分，这次主要抓取链家二手房数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">url = <span class="string">'http://bj.lianjia.com/ershoufang/'</span></div></pre></td></tr></table></figure>
+<h5 id="2-抓取数据"><a href="#2-抓取数据" class="headerlink" title="2. 抓取数据"></a>2. 抓取数据</h5><p>开始抓取数据，总共应该会有100页，因此我们使用一个循环，一页一页的进行请求，我们请求使用的是python内置的urllib库，因此最终的代码应该如下，应该不用我解释了吧</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>,<span class="number">2</span>):</div><div class="line">    a = (url + <span class="string">'pg'</span> + str(i) + <span class="string">'/'</span>)</div><div class="line">    rsp = urllib.request.urlopen(url=a,data=<span class="keyword">None</span>,timeout=<span class="number">10</span>)</div><div class="line">    page = rsp.read()</div><div class="line"></div><div class="line">    <span class="comment">#每次间隔0.5秒</span></div><div class="line">    time.sleep(<span class="number">0.5</span>)</div></pre></td></tr></table></figure>
+<p><strong><font color="red">注意：啪啪的时候一定要注意休息一下，再继续，所以time.sleep(0.5)你懂得</font></strong></p>
+<h5 id="3-分析数据"><a href="#3-分析数据" class="headerlink" title="3. 分析数据"></a>3. 分析数据</h5><p>接下来，就已经有了数据了，我们开始分析数据，之前有介绍过bs4吧，因此此处我们使用这个库来进行爬取数据</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">lj = BeautifulSoup(page,<span class="string">'html.parser'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 分析出总价，放到一个列表中</span></div><div class="line">price = lj.find_all(<span class="string">'div'</span>,attrs=&#123;<span class="string">'class'</span>:<span class="string">'priceInfo'</span>&#125;)</div><div class="line">tp = []</div><div class="line"><span class="keyword">for</span> a <span class="keyword">in</span> price:</div><div class="line">    totalPrice = a.span.get_text()</div><div class="line">    tp.append(totalPrice)</div><div class="line">print(tp)</div><div class="line"></div><div class="line"><span class="comment"># 分析出房屋具体信息</span></div><div class="line">houseInfo = lj.find_all(<span class="string">'div'</span>, attrs=&#123;<span class="string">'class'</span>: <span class="string">'houseInfo'</span>&#125;)</div><div class="line">hi = []</div><div class="line"><span class="keyword">for</span> b <span class="keyword">in</span> houseInfo:</div><div class="line">    house = b.get_text()</div><div class="line">    hi.append(house)</div><div class="line">print(hi)</div><div class="line"></div><div class="line"><span class="comment"># 分析出房屋的关注量</span></div><div class="line">followInfo = lj.find_all(<span class="string">'div'</span>, attrs=&#123;<span class="string">'class'</span>: <span class="string">'followInfo'</span>&#125;)</div><div class="line">fi = []</div><div class="line"><span class="keyword">for</span> c <span class="keyword">in</span> followInfo:</div><div class="line">    follow = c.get_text()</div><div class="line">    fi.append(follow)</div><div class="line">print(fi)</div></pre></td></tr></table></figure>
+<h5 id="4-清洗数据-整合"><a href="#4-清洗数据-整合" class="headerlink" title="4. 清洗数据+整合"></a>4. 清洗数据+整合</h5><blockquote>
+<p>此处我们使用的是第三方库–pandas，来对数据进行进一步的清理，如果对词库不了解的同学，可以看之前<br>的文章</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 创建数据表</span></div><div class="line"><span class="comment"># house = pd.DataFrame(&#123; "houseinfo":hi, "followinfo":fi, "totalprice":tp&#125;)</span></div><div class="line">house = pd.DataFrame(&#123;<span class="string">"totalprice"</span>:tp&#125;)</div><div class="line"><span class="comment"># print(house)</span></div><div class="line"><span class="comment"># exit()</span></div><div class="line"><span class="comment"># 查看数据表内容</span></div><div class="line"><span class="comment"># house.head()</span></div><div class="line"></div><div class="line"><span class="comment"># 对房源信息进行分列</span></div><div class="line">houseinfo_split = pd.DataFrame((x.split(<span class="string">'|'</span>) <span class="keyword">for</span> x <span class="keyword">in</span> hi),columns=[<span class="string">'xiaoqu'</span>,<span class="string">'huxing'</span>,<span class="string">'mianji'</span>,<span class="string">'chaoxiang'</span>,<span class="string">'zhuangxiu'</span>,<span class="string">'dianti'</span>])</div><div class="line"><span class="comment"># print(houseinfo_split)</span></div><div class="line"><span class="comment"># houseinfo_split.head()</span></div><div class="line"></div><div class="line">house = pd.merge(house,houseinfo_split,right_index=<span class="keyword">True</span>, left_index=<span class="keyword">True</span>)</div><div class="line">print(house)</div><div class="line"><span class="comment"># house.head()</span></div><div class="line"></div><div class="line">huxing = house.groupby(<span class="string">'huxing'</span>)[<span class="string">'huxing'</span>].agg(len)</div><div class="line">print(huxing.head())</div></pre></td></tr></table></figure>
+<p><strong>最终爬出来的数据如下所示</strong></p>
+<p><img src="https://ooo.0o0.ooo/2017/05/13/591697e5659f1.png" alt="lianjia.png"></p>
+<p><strong>以上就是简单的数据分析，但是看了这么多，感觉怎样呢</strong><br><img src="https://ooo.0o0.ooo/2017/05/12/5915387e5b09d.jpg" alt="house.jpg"></p>
+
+	
+
+
       
 	
         <div id="toc" class="article-toc">
@@ -439,19 +489,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">闲谈</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">电影</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -463,11 +513,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -479,14 +525,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">BootStrap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
@@ -495,7 +533,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">基础　</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">BootStrap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -507,15 +557,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">web</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">框架</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">基础　</a>
               </li>
             
             <div class="clearfix"></div>

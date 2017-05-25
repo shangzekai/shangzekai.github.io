@@ -62,6 +62,12 @@
 	        
 				<li><a href="/404.html">回家</a></li>
 	        
+				<li><a href="/archives">所有文章</a></li>
+	        
+				<li><a href="/categories">分类</a></li>
+	        
+				<li><a href="/tags">标签</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -112,6 +118,12 @@
 			
 				
 			
+				
+			
+				
+			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -121,12 +133,18 @@
 			</nav>
 
 			<nav class="header-menu js-header-menu">
-				<ul style="width: 50%">
+				<ul style="width: 70%">
 				
 				
-					<li style="width: 50%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/404.html">回家</a></li>
+					<li style="width: 20%"><a href="/404.html">回家</a></li>
+		        
+					<li style="width: 20%"><a href="/archives">所有文章</a></li>
+		        
+					<li style="width: 20%"><a href="/categories">分类</a></li>
+		        
+					<li style="width: 20%"><a href="/tags">标签</a></li>
 		        
 				</ul>
 			</nav>
@@ -160,6 +178,271 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
+      
+	
+		<h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a><div id="title">背景</div></h4><p><strong>现在老板让你写一个监控程序，监控服务器的系统状况，当cpu＼memory＼disk等指标的使用量超过阀值时即发邮件报警，你掏空了所有的知识量，写出了以下代码</strong></p>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>：</div><div class="line">    <span class="keyword">if</span> cpu利用率 &gt; <span class="number">90</span>%:</div><div class="line">        <span class="comment">#发送邮件提醒</span></div><div class="line">        连接邮箱服务器</div><div class="line">        发送邮件</div><div class="line">        关闭连接</div><div class="line">     </div><div class="line">    <span class="keyword">if</span> 硬盘使用空间 &gt; <span class="number">90</span>%:</div><div class="line">        <span class="comment">#发送邮件提醒</span></div><div class="line">        连接邮箱服务器</div><div class="line">        发送邮件</div><div class="line">        关闭连接</div><div class="line">     </div><div class="line">    <span class="keyword">if</span> 内存占用 &gt; <span class="number">80</span>%:</div><div class="line">        <span class="comment">#发送邮件提醒</span></div><div class="line">        连接邮箱服务器</div><div class="line">        发送邮件</div><div class="line">        关闭连接</div></pre></td></tr></table></figure>
+<p><strong>此时我们看上述的代码，我们发现如果有100个维度需要监控的话，你难道要吭哧吭哧的写100次吗，等你写完自己都想离职了吧！因此，我们来分析上述的代码存在的问题</strong></p>
+<ul>
+<li>代码重复过多，一个劲的copy and paste不符合高端程序员的气质</li>
+<li>如果日后需要修改发邮件的这段代码，比如加入群发功能，那你就需要在所有用到这段代码的地方都要修改一遍</li>
+</ul>
+<p><strong>此时我们的重点就是要解决上述的两个问题，我们发现，上述的代码中相同的代码非常的多，那能不能把这些相同的代码提取出来，放在一个公共的地方，起个名字，以后谁想调用这段代码，只需要调用这个名字就好了，如下</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">def 发送邮件(内容)</div><div class="line">    #发送邮件提醒</div><div class="line">    连接邮箱服务器</div><div class="line">    发送邮件</div><div class="line">    关闭连接</div><div class="line">     </div><div class="line">while True：</div><div class="line">    if cpu利用率 &gt; 90%:</div><div class="line">        发送邮件('CPU报警')</div><div class="line">     </div><div class="line">    if 硬盘使用空间 &gt; 90%:</div><div class="line">        发送邮件('硬盘报警')</div><div class="line">     </div><div class="line">    if 内存占用 &gt; 80%:</div><div class="line">        发送邮件('内存报警')</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="函数基本语法"><a href="#函数基本语法" class="headerlink" title="函数基本语法"></a><div id="title">函数基本语法</div></h4><h5 id="1-定义"><a href="#1-定义" class="headerlink" title="1. 定义"></a>1. 定义</h5><blockquote>
+<p> 函数是指将一组语句的集合通过一个名字(函数名)封装起来，要想执行这个函数，只需调用其函数名即可</p>
+</blockquote>
+<h5 id="2-特性"><a href="#2-特性" class="headerlink" title="2. 特性"></a>2. 特性</h5><ul>
+<li>减少重复代码</li>
+<li>使程序变的可扩展</li>
+<li>使程序变得易维护</li>
+</ul>
+<h5 id="3-语法"><a href="#3-语法" class="headerlink" title="3. 语法"></a>3. 语法</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment"># 定义一个函数，名字叫sayHi()</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sayHi</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">"Hello World!"</span>)</div><div class="line"></div><div class="line"><span class="comment"># 调用此函数，函数名 + 括号</span></div><div class="line">sayHi()</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="函数的参数"><a href="#函数的参数" class="headerlink" title="函数的参数"></a><div id="title">函数的参数</div></h4><h5 id="1-形参和实参"><a href="#1-形参和实参" class="headerlink" title="1. 形参和实参"></a>1. 形参和实参</h5><blockquote>
+<p>形参变量只有在被调用时才分配内存单元，在调用结束时，即刻释放所分配的内存单元。因此，形参只在函数内部有效</p>
+<p>实参可以是常量、变量、表达式、函数等，无论实参是何种类型的量，在进行函数调用时，它们都必须有确定的值，以便把这些值传送给形参。因此应预先用赋值，输入等办法使参数获得确定值</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc</span><span class="params">(x, y)</span>:</span></div><div class="line">    print(x + y)</div><div class="line"></div><div class="line">calc(<span class="number">3</span>, <span class="number">5</span>)</div></pre></td></tr></table></figure>
+<p><strong><font color="red">注意：x和y表示的就是形参，3和5表示的就是实参</font></strong></p>
+<h5 id="2-位置参数，默认参数和关键字参数"><a href="#2-位置参数，默认参数和关键字参数" class="headerlink" title="2. 位置参数，默认参数和关键字参数"></a>2. 位置参数，默认参数和关键字参数</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">stu_register</span><span class="params">(name,age,country,course)</span>:</span></div><div class="line">    print(<span class="string">"----注册学生信息------"</span>)</div><div class="line">    print(<span class="string">"姓名:"</span>,name)</div><div class="line">    print(<span class="string">"age:"</span>,age)</div><div class="line">    print(<span class="string">"国籍:"</span>,country)</div><div class="line">    print(<span class="string">"课程:"</span>,course)</div><div class="line"></div><div class="line">stu_register(<span class="string">"zhangsan"</span>, <span class="number">23</span>, <span class="string">'cn'</span>, <span class="string">'js'</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li><p>位置参数</p>
+<blockquote>
+<p>根据函数定义的位置来进行传参</p>
+</blockquote>
+</li>
+<li><p>默认参数</p>
+<blockquote>
+<p>在调用函数的时候不需要对此参数进行传值</p>
+<p>在上述代码中, country 这个参数 基本都 是”CN”, 就像我们在网站上注册用户，像国籍这种信息，你不填写，默认就会是 中国， 这就是通过默认参数实现的:</p>
+<p><code>def stu_register(name,age,course,country=&quot;CN&quot;):</code></p>
+<p>这个参数在调用时不指定，那默认就是CN，指定了的话，就用你指定的值</p>
+<p><strong>注意：默认参数要放到位置参数之后</strong></p>
+<p>错误的写法：<br><code>def stu_register(name,age,country=&quot;CN&quot;,course):</code></p>
+</blockquote>
+</li>
+<li><p>关键字参数</p>
+<blockquote>
+<p>正常情况下，给函数传参数要按顺序，不想按顺序就可以用关键参数，只需指定参数名即可，但记住一个要求就是，关键参数必须放在位置参数之后</p>
+<p><code>stu_register(age=22,name=&#39;alex&#39;,course=&quot;python&quot;)</code></p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>非固定参数之*args</p>
+<blockquote>
+<p>若你的函数在定义时不确定用户想传入多少个参数，就可以使用非固定参数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">stu_register</span><span class="params">(name,age,*args)</span>:</span> <span class="comment"># *args会把多传入的参数变成一个元组形式</span></div><div class="line">    print(name,age,args)</div><div class="line"> </div><div class="line">stu_register(<span class="string">"Alex"</span>,<span class="number">22</span>)</div><div class="line"><span class="comment">#输出</span></div><div class="line"><span class="comment">#Alex 22 () #后面这个()就是args,只是因为没传值,所以为空</span></div><div class="line"> </div><div class="line">stu_register(<span class="string">"Jack"</span>,<span class="number">32</span>,<span class="string">"CN"</span>,<span class="string">"Python"</span>)</div><div class="line"><span class="comment">#输出</span></div><div class="line"><span class="comment"># Jack 32 ('CN', 'Python')</span></div></pre></td></tr></table></figure>
+</blockquote>
+</li>
+<li><p>非固定参数之**kwargs</p>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">stu_register</span><span class="params">(name,age,*args,**kwargs)</span>:</span> <span class="comment"># *kwargs会把多传入的参数变成一个dict形式</span></div><div class="line">    print(name,age,args,kwargs)</div><div class="line"> </div><div class="line">stu_register(<span class="string">"Alex"</span>,<span class="number">22</span>)</div><div class="line"><span class="comment">#输出</span></div><div class="line"><span class="comment">#Alex 22 () &#123;&#125;#后面这个&#123;&#125;就是kwargs,只是因为没传值,所以为空</span></div><div class="line"> </div><div class="line">stu_register(<span class="string">"Jack"</span>,<span class="number">32</span>,<span class="string">"CN"</span>,<span class="string">"Python"</span>,sex=<span class="string">"Male"</span>,province=<span class="string">"ShanDong"</span>)</div><div class="line"><span class="comment">#输出</span></div><div class="line"><span class="comment"># Jack 32 ('CN', 'Python') &#123;'province': 'ShanDong', 'sex': 'Male'&#125;</span></div></pre></td></tr></table></figure>
+<h4 id="函数的局部变量和全局变量"><a href="#函数的局部变量和全局变量" class="headerlink" title="函数的局部变量和全局变量"></a><div id="title">函数的局部变量和全局变量</div></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">info = <span class="string">"global"</span></div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">change</span><span class="params">(info)</span>:</span></div><div class="line">    print(<span class="string">"before change:"</span>, info)</div><div class="line">    info = <span class="string">"local"</span></div><div class="line">    print(<span class="string">"after change"</span>, info)</div><div class="line"></div><div class="line">change(info)</div><div class="line"> </div><div class="line">print(info)</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">info = <span class="string">"global"</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">change</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">global</span> info</div><div class="line">    print(<span class="string">"before change:"</span>, info)</div><div class="line">    info = <span class="string">"local"</span></div><div class="line">    print(<span class="string">"after change"</span>, info)</div><div class="line">    </div><div class="line">change()</div><div class="line"></div><div class="line">print(info)</div></pre></td></tr></table></figure>
+<p><strong>要善用global</strong></p>
+<blockquote>
+<p>在子程序中定义的变量称为局部变量，在程序的一开始定义的变量称为全局变量<br>全局变量作用域是整个程序，局部变量作用域是定义该变量的子程序<br>当全局变量与局部变量同名时：<br>在定义局部变量的子程序内，局部变量起作用；在其它地方全局变量起作用</p>
+</blockquote>
+<h4 id="函数的返回值"><a href="#函数的返回值" class="headerlink" title="函数的返回值"></a><div id="title">函数的返回值</div></h4><blockquote>
+<p>要想获取函数的执行结果，就可以用return语句把结果返回</p>
+</blockquote>
+<p>注意:</p>
+<ul>
+<li>函数在执行过程中只要遇到return语句，就会停止执行并返回结果，so 也可以理解为 return 语句代表着函数的结束</li>
+<li>如果未在函数中指定return,那这个函数的返回值为None </li>
+</ul>
+<h4 id="匿名函数"><a href="#匿名函数" class="headerlink" title="匿名函数"></a><div id="title">匿名函数</div></h4><blockquote>
+<p>匿名函数就是不需要显式的指定函数</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#这段代码</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc</span><span class="params">(n)</span>:</span></div><div class="line">    <span class="keyword">return</span> n**n</div><div class="line">print(calc(<span class="number">10</span>))</div><div class="line"> </div><div class="line"><span class="comment">#换成匿名函数</span></div><div class="line">calc = <span class="keyword">lambda</span> n:n**n</div><div class="line">print(calc(<span class="number">10</span>))</div></pre></td></tr></table></figure>
+<p>你也许会说，用上这个东西没感觉有毛方便呀， 。。。。呵呵，如果是这么用，确实没毛线改进，不过匿名函数要是和其它函数搭配使用的话，那就要上天了，如下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">res = map(<span class="keyword">lambda</span> x:x**<span class="number">2</span> , [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>])</div><div class="line"><span class="keyword">for</span> i <span class="keyword">in</span> res:</div><div class="line">    print(i)</div></pre></td></tr></table></figure>
+<h4 id="函数递归"><a href="#函数递归" class="headerlink" title="函数递归"></a><div id="title">函数递归</div></h4><blockquote>
+<p>在函数内部，可以调用其他函数。如果一个函数在内部调用自身本身，这个函数就是递归函数</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">calc</span><span class="params">(n)</span>:</span></div><div class="line">    print(n)</div><div class="line">    <span class="keyword">if</span> int(n/<span class="number">2</span>) == <span class="number">0</span>:</div><div class="line">        <span class="keyword">return</span> n</div><div class="line">    <span class="keyword">return</span> calc(int(n))</div><div class="line"> </div><div class="line">calc(<span class="number">10</span>)</div></pre></td></tr></table></figure>
+<p>递归特性:</p>
+<p>1.必须有一个明确的结束条件</p>
+<p>2.每次进入更深一层递归时，问题规模相比上次递归都应有所减少</p>
+<p>3.递归效率不高，递归层次过多会导致栈溢出（在计算机中，函数调用是通过栈（stack）这种数据结构实现的，每当进入一个函数调用，栈就会加一层栈帧，每当函数返回，栈就会减一层栈帧。由于栈的大小不是无限的，所以，递归调用的次数过多，会导致栈溢出)<br>4.堆栈扫盲<a href="http://www.cnblogs.com/lln7777/archive/2012/03/14/2396164.html" target="_blank" rel="external">http://www.cnblogs.com/lln7777/archive/2012/03/14/2396164.html</a> </p>
+<p><strong>常见案例：二分查找</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">data = [<span class="number">1</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">9</span>, <span class="number">12</span>, <span class="number">14</span>, <span class="number">16</span>, <span class="number">17</span>, <span class="number">18</span>, <span class="number">20</span>, <span class="number">21</span>, <span class="number">22</span>, <span class="number">23</span>, <span class="number">30</span>, <span class="number">32</span>, <span class="number">33</span>, <span class="number">35</span>]</div><div class="line"> </div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">binary_search</span><span class="params">(dataset,find_num)</span>:</span></div><div class="line">    print(dataset)</div><div class="line"> </div><div class="line">    <span class="keyword">if</span> len(dataset) &gt;<span class="number">1</span>:</div><div class="line">        mid = int(len(dataset)/<span class="number">2</span>)</div><div class="line">        <span class="keyword">if</span> dataset[mid] == find_num:  <span class="comment">#find it</span></div><div class="line">            print(<span class="string">"找到数字"</span>,dataset[mid])</div><div class="line">        <span class="keyword">elif</span> dataset[mid] &gt; find_num :<span class="comment"># 找的数在mid左面</span></div><div class="line">            print(<span class="string">"\033[31;1m找的数在mid[%s]左面\033[0m"</span>% dataset[mid])</div><div class="line">            <span class="keyword">return</span> binary_search(dataset[<span class="number">0</span>:mid], find_num)</div><div class="line">        <span class="keyword">else</span>:<span class="comment"># 找的数在mid右面</span></div><div class="line">            print(<span class="string">"\033[32;1m找的数在mid[%s]右面\033[0m"</span> % dataset[mid])</div><div class="line">            <span class="keyword">return</span> binary_search(dataset[mid+<span class="number">1</span>:],find_num)</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">if</span> dataset[<span class="number">0</span>] == find_num:  <span class="comment">#find it</span></div><div class="line">            print(<span class="string">"找到数字啦"</span>,dataset[<span class="number">0</span>])</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            print(<span class="string">"没的分了,要找的数字[%s]不在列表里"</span> % find_num)</div><div class="line"></div><div class="line">binary_search(data,<span class="number">66</span>)</div></pre></td></tr></table></figure>
+<h4 id="嵌套函数"><a href="#嵌套函数" class="headerlink" title="嵌套函数"></a><div id="title">嵌套函数</div></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">name = <span class="string">"Alex"</span></div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">change_name</span><span class="params">()</span>:</span></div><div class="line">    name = <span class="string">"Alex2"</span></div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">change_name2</span><span class="params">()</span>:</span></div><div class="line">        name = <span class="string">"Alex3"</span></div><div class="line">        print(<span class="string">"第3层打印"</span>,name)</div><div class="line"> </div><div class="line">    change_name2() <span class="comment">#调用内层函数</span></div><div class="line">    print(<span class="string">"第2层打印"</span>,name)</div><div class="line"> </div><div class="line"> </div><div class="line">change_name()</div><div class="line">print(<span class="string">"最外层打印"</span>,name)</div></pre></td></tr></table></figure>
+<p><strong>我现在想要在外层调用change_name2()怎么办？</strong></p>
+<h4 id="高阶函数"><a href="#高阶函数" class="headerlink" title="高阶函数"></a><div id="title">高阶函数</div></h4><blockquote>
+<p>变量可以指向函数，函数的参数能接收变量，那么一个函数就可以接收另一个函数作为参数，这种函数就称之为高阶函数。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(x,y,f)</span>:</span></div><div class="line">    <span class="keyword">return</span> f(x) + f(y)</div><div class="line"> </div><div class="line">res = add(<span class="number">3</span>,<span class="number">-6</span>,abs)</div><div class="line">print(res)</div></pre></td></tr></table></figure>
+<h4 id="内置常用函数"><a href="#内置常用函数" class="headerlink" title="内置常用函数"></a><div id="title">内置常用函数</div></h4><ul>
+<li>数学相关</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数名</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">abs(-2)</td>
+<td style="text-align:center">取绝对值</td>
+</tr>
+<tr>
+<td style="text-align:center">max()</td>
+<td style="text-align:center">取最大值</td>
+</tr>
+<tr>
+<td style="text-align:center">min()</td>
+<td style="text-align:center">取最小值</td>
+</tr>
+<tr>
+<td style="text-align:center">len()</td>
+<td style="text-align:center">取序列长度</td>
+</tr>
+<tr>
+<td style="text-align:center">divmod()</td>
+<td style="text-align:center">取模</td>
+</tr>
+<tr>
+<td style="text-align:center">pow()</td>
+<td style="text-align:center">乘方</td>
+</tr>
+<tr>
+<td style="text-align:center">round()</td>
+<td style="text-align:center">取整，四舍五入</td>
+</tr>
+<tr>
+<td style="text-align:center">divmod()</td>
+<td style="text-align:center">取模</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>功能相关</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数名</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">callable()</td>
+<td style="text-align:center">函数是否可调用</td>
+</tr>
+<tr>
+<td style="text-align:center">isinstance()</td>
+<td style="text-align:center">判断类型</td>
+</tr>
+<tr>
+<td style="text-align:center">cmp()</td>
+<td style="text-align:center">字符串比较</td>
+</tr>
+<tr>
+<td style="text-align:center">range()</td>
+<td style="text-align:center">生成列表</td>
+</tr>
+<tr>
+<td style="text-align:center">zip()</td>
+<td style="text-align:center">遍历生成列表</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>类型转换</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数名</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">int()</td>
+<td style="text-align:center">转换为整数</td>
+</tr>
+<tr>
+<td style="text-align:center">str()</td>
+<td style="text-align:center">转成字符串</td>
+</tr>
+<tr>
+<td style="text-align:center">list()</td>
+<td style="text-align:center">转成列表</td>
+</tr>
+<tr>
+<td style="text-align:center">tuple()</td>
+<td style="text-align:center">转成元组</td>
+</tr>
+<tr>
+<td style="text-align:center">hex()</td>
+<td style="text-align:center">返回16进制</td>
+</tr>
+<tr>
+<td style="text-align:center">oct()</td>
+<td style="text-align:center">返回8进制</td>
+</tr>
+<tr>
+<td style="text-align:center">chr()</td>
+<td style="text-align:center">返回ascii码</td>
+</tr>
+<tr>
+<td style="text-align:center">ord()</td>
+<td style="text-align:center">返回具体的数字</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>字符串处理</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">函数名</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">capitalize()</td>
+<td style="text-align:center">首字母大写</td>
+</tr>
+<tr>
+<td style="text-align:center">replace()</td>
+<td style="text-align:center">字符串替换</td>
+</tr>
+<tr>
+<td style="text-align:center">split()</td>
+<td style="text-align:center">字符串切割</td>
+</tr>
+</tbody>
+</table>
+<h4 id="函数式编程"><a href="#函数式编程" class="headerlink" title="函数式编程"></a><div id="title">函数式编程</div></h4><p>函数是Python内建支持的一种封装，我们通过把大段代码拆成函数，通过一层一层的函数调用，就可以把复杂任务分解成简单的任务，这种分解可以称之为面向过程的程序设计。函数就是面向过程的程序设计的基本单元。</p>
+<p>函数式编程中的函数这个术语不是指计算机中的函数（实际上是Subroutine），而是指数学中的函数，即自变量的映射。也就是说一个函数的值仅决定于函数参数的值，不依赖其他状态。比如sqrt(x)函数计算x的平方根，只要x不变，不论什么时候调用，调用几次，值都是不变的。</p>
+<p>Python对函数式编程提供部分支持。由于Python允许使用变量，因此，Python不是纯函数式编程语言。</p>
+<p>简单说，”函数式编程”是一种”编程范式”（programming paradigm），也就是如何编写程序的方法论。</p>
+<p>主要思想是把运算过程尽量写成一系列嵌套的函数调用。举例来说，现在有这样一个数学表达式：</p>
+<p><code>(1 + 2) * 3 - 4</code></p>
+<p>传统的过程式编程，可能这样写：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">var a = <span class="number">1</span> + <span class="number">2</span>;</div><div class="line">var b = a * <span class="number">3</span>;</div><div class="line">var c = b - <span class="number">4</span>;`</div></pre></td></tr></table></figure></p>
+<p>函数式编程要求使用函数，我们可以把运算过程定义为不同的函数，然后写成下面这样：</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">var result = subtract(multiply(add(<span class="number">1</span>,<span class="number">2</span>), <span class="number">3</span>), <span class="number">4</span>);</div></pre></td></tr></table></figure>
+<p>这段代码再演进以下，可以变成这样</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">add(<span class="number">1</span>,<span class="number">2</span>).multiply(<span class="number">3</span>).subtract(<span class="number">4</span>)</div></pre></td></tr></table></figure>
+<p>因此，函数式编程的代码更容易理解</p>
+<p>要想学好函数式编程，不要玩py,玩Erlang,Haskell</p>
+
+	
+
+
       
 	
         <div id="toc" class="article-toc">
@@ -669,19 +952,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">闲谈</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">电影</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -693,11 +976,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -709,14 +988,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">BootStrap</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
@@ -725,7 +996,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">基础　</a>
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">HTML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">BootStrap</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -737,15 +1020,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">web</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">框架</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">基础　</a>
               </li>
             
             <div class="clearfix"></div>
