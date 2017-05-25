@@ -62,11 +62,7 @@
 	        
 				<li><a href="/404.html">回家</a></li>
 	        
-				<li><a href="/archives">所有文章</a></li>
-	        
 				<li><a href="/categories">分类</a></li>
-	        
-				<li><a href="/tags">标签</a></li>
 	        
 			</ul>
 		</nav>
@@ -120,10 +116,6 @@
 			
 				
 			
-				
-			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -136,15 +128,11 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 20%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 20%"><a href="/404.html">回家</a></li>
+					<li style="width: 33.333333333333336%"><a href="/404.html">回家</a></li>
 		        
-					<li style="width: 20%"><a href="/archives">所有文章</a></li>
-		        
-					<li style="width: 20%"><a href="/categories">分类</a></li>
-		        
-					<li style="width: 20%"><a href="/tags">标签</a></li>
+					<li style="width: 33.333333333333336%"><a href="/categories">分类</a></li>
 		        
 				</ul>
 			</nav>
@@ -178,16 +166,16 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
-     
 
-      		
-		
-        		<div id="toc" class="article-toc">
-          		<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#减少HTTP请求"><span class="toc-text">减少HTTP请求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用精灵图"><span class="toc-text">使用精灵图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用字体图标"><span class="toc-text">使用字体图标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#合并JS和CSS"><span class="toc-text">合并JS和CSS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#合理使用域名"><span class="toc-text">合理使用域名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#压缩"><span class="toc-text"> 压缩</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#图片优化"><span class="toc-text"> 图片优化</span></a></li></ol>
-          		<hr/>
-        		</div>
-        	
-        		<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><p>这个问题无论是实际项目还是面试都是经常碰到的，所以非常有必要总结一下</p>
+
+      
+	
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#减少HTTP请求"><span class="toc-text">减少HTTP请求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用精灵图"><span class="toc-text">使用精灵图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用字体图标"><span class="toc-text">使用字体图标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#合并JS和CSS"><span class="toc-text">合并JS和CSS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#合理使用域名"><span class="toc-text">合理使用域名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#压缩"><span class="toc-text"> 压缩</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#图片优化"><span class="toc-text"> 图片优化</span></a></li></ol>
+          <hr/>
+        </div>
+        
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><p>这个问题无论是实际项目还是面试都是经常碰到的，所以非常有必要总结一下</p>
 <p>下面分别从几个大的方面去分析一下前端性能优化，有些优化其实效果并不一定非常明显，但还是有必要知道。</p>
 <a id="more"></a>
 <h4 id="减少HTTP请求"><a href="#减少HTTP请求" class="headerlink" title="减少HTTP请求"></a><div id="title">减少HTTP请求</div></h4><p>尽可能减少加载一个页面需要引用的资源个数，因为每一次HTTP请求都是客户端与服务端的一次重连，都是一笔不小的开销，可以采取的措施包括：</p>
@@ -231,8 +219,7 @@
 <li>图片质量的控制，web上的图片质量不需要太高，上线时注意检查项目中是否有体积过大的图片；</li>
 </ul>
 
-      		
-	
+      
 
       
         <div class="page-reward">

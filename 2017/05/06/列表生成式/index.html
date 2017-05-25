@@ -63,11 +63,7 @@
 	        
 				<li><a href="/404.html">回家</a></li>
 	        
-				<li><a href="/archives">所有文章</a></li>
-	        
 				<li><a href="/categories">分类</a></li>
-	        
-				<li><a href="/tags">标签</a></li>
 	        
 			</ul>
 		</nav>
@@ -121,10 +117,6 @@
 			
 				
 			
-				
-			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -137,15 +129,11 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 20%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 20%"><a href="/404.html">回家</a></li>
+					<li style="width: 33.333333333333336%"><a href="/404.html">回家</a></li>
 		        
-					<li style="width: 20%"><a href="/archives">所有文章</a></li>
-		        
-					<li style="width: 20%"><a href="/categories">分类</a></li>
-		        
-					<li style="width: 20%"><a href="/tags">标签</a></li>
+					<li style="width: 33.333333333333336%"><a href="/categories">分类</a></li>
 		        
 				</ul>
 			</nav>
@@ -179,16 +167,16 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
-     
 
-      		
-		
-        		<div id="toc" class="article-toc">
-          		<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#列表生成式"><span class="toc-text">列表生成式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#生成器"><span class="toc-text">生成器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-生成器的定义"><span class="toc-text">1. 生成器的定义</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-访问生成器元素"><span class="toc-text">2. 访问生成器元素</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-生成器的第二种定义方式"><span class="toc-text">3. 生成器的第二种定义方式</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#迭代器"><span class="toc-text">迭代器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-可迭代对象—–Iterable"><span class="toc-text">1. 可迭代对象—–Iterable</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-迭代器的定义—–Iterator"><span class="toc-text">2. 迭代器的定义—–Iterator</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-总结"><span class="toc-text">3. 总结</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#装饰器"><span class="toc-text">装饰器</span></a></li></ol>
-          		<hr/>
-        		</div>
-        	
-        		<h4 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a><div id="title">列表生成式</div></h4><blockquote>
+
+      
+	
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#列表生成式"><span class="toc-text">列表生成式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#生成器"><span class="toc-text">生成器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-生成器的定义"><span class="toc-text">1. 生成器的定义</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-访问生成器元素"><span class="toc-text">2. 访问生成器元素</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-生成器的第二种定义方式"><span class="toc-text">3. 生成器的第二种定义方式</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#迭代器"><span class="toc-text">迭代器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-可迭代对象—–Iterable"><span class="toc-text">1. 可迭代对象—–Iterable</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-迭代器的定义—–Iterator"><span class="toc-text">2. 迭代器的定义—–Iterator</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-总结"><span class="toc-text">3. 总结</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#装饰器"><span class="toc-text">装饰器</span></a></li></ol>
+          <hr/>
+        </div>
+        
+        <h4 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a><div id="title">列表生成式</div></h4><blockquote>
 <p>现在有个需求，看列表[0, 1, 2, 3, 4, 5, 6, 7, 8, 9],我要求你把列表里的每个值加1，你怎么实现？</p>
 </blockquote>
 <a id="more"></a>
@@ -346,8 +334,7 @@
 <p>所谓的装饰器，就好像冬天的长裤，我们知道内裤可以用来遮羞，但是到了冬天没法帮我们防风御寒，于是聪明的人们发明了长裤，它在不影响内裤作用的前提下，给我们的身子提供了保暖的功效</p>
 </blockquote>
 
-      		
-	
+      
 
       
         <div class="page-reward">

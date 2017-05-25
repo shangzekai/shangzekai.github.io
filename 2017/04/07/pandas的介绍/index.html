@@ -62,11 +62,7 @@
 	        
 				<li><a href="/404.html">回家</a></li>
 	        
-				<li><a href="/archives">所有文章</a></li>
-	        
 				<li><a href="/categories">分类</a></li>
-	        
-				<li><a href="/tags">标签</a></li>
 	        
 			</ul>
 		</nav>
@@ -120,10 +116,6 @@
 			
 				
 			
-				
-			
-				
-			
 			
 			
 			<nav class="header-nav">
@@ -136,15 +128,11 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 20%"><a href="/">主页</a></li>
+					<li style="width: 33.333333333333336%"><a href="/">主页</a></li>
 		        
-					<li style="width: 20%"><a href="/404.html">回家</a></li>
+					<li style="width: 33.333333333333336%"><a href="/404.html">回家</a></li>
 		        
-					<li style="width: 20%"><a href="/archives">所有文章</a></li>
-		        
-					<li style="width: 20%"><a href="/categories">分类</a></li>
-		        
-					<li style="width: 20%"><a href="/tags">标签</a></li>
+					<li style="width: 33.333333333333336%"><a href="/categories">分类</a></li>
 		        
 				</ul>
 			</nav>
@@ -178,16 +166,16 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
-     
 
-      		
-		
-        		<div id="toc" class="article-toc">
-          		<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#pandas的介绍"><span class="toc-text">pandas的介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-pandas的引入方式"><span class="toc-text">1.pandas的引入方式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-pandas的两大数据结构"><span class="toc-text">2.pandas的两大数据结构</span></a></li></ol></li></ol>
-          		<hr/>
-        		</div>
-        	
-        		<h4 id="pandas的介绍"><a href="#pandas的介绍" class="headerlink" title="pandas的介绍"></a><div id="title">pandas的介绍</div></h4><blockquote>
+
+      
+	
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#pandas的介绍"><span class="toc-text">pandas的介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-pandas的引入方式"><span class="toc-text">1.pandas的引入方式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-pandas的两大数据结构"><span class="toc-text">2.pandas的两大数据结构</span></a></li></ol></li></ol>
+          <hr/>
+        </div>
+        
+        <h4 id="pandas的介绍"><a href="#pandas的介绍" class="headerlink" title="pandas的介绍"></a><div id="title">pandas的介绍</div></h4><blockquote>
 <p>pandas 是基于 Numpy 构建的含有更高级数据结构和工具的数据分析包<br>类似于 Numpy 的核心是 ndarray，pandas 也是围绕着 Series 和 DataFrame &gt;两个核心数据结构</p>
 </blockquote>
 <a id="more"></a>
@@ -285,8 +273,7 @@
 <p><strong>DataFrame分组聚合数据</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">data_obj[<span class="string">'户型'</span>].groupby(data_obj[<span class="string">'户型'</span>])</div><div class="line"></div><div class="line">简单的写法：</div><div class="line"></div><div class="line">data_obj.groupby(<span class="string">'户型'</span>)[<span class="string">'户型'</span>]</div></pre></td></tr></table></figure></p>
 <p><strong>读取csv中的数据</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#首先输入csv文本地址,然后分割符选择</span></div><div class="line">read_csv(<span class="string">'D:\LQJ.csv'</span>,sep=<span class="string">';'</span>,nrows=<span class="number">2</span>)</div></pre></td></tr></table></figure></p>
 
-      		
-	
+      
 
       
         <div class="page-reward">
