@@ -179,9 +179,16 @@
       </header>
     
     <div class="article-entry" itemprop="articleBody">
-      
-	
-		<h4 id="前戏"><a href="#前戏" class="headerlink" title="前戏"></a><div id="title">前戏</div></h4><p><strong>亲爱的朋友：</strong></p>
+     
+
+      		
+		
+        		<div id="toc" class="article-toc">
+          		<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前戏"><span class="toc-text">前戏</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#啥是爬虫"><span class="toc-text">啥是爬虫</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#浏览网页的过程"><span class="toc-text">浏览网页的过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是URL"><span class="toc-text">什么是URL</span></a></li></ol>
+          		<hr/>
+        		</div>
+        	
+        		<h4 id="前戏"><a href="#前戏" class="headerlink" title="前戏"></a><div id="title">前戏</div></h4><p><strong>亲爱的朋友：</strong></p>
 <ul>
 <li>想不想在夜深人静的时候，看一些更睡不着的图片…</li>
 <li>想不想在杂乱的数据中，获取到你想要的东西…</li>
@@ -206,42 +213,8 @@
 <p>爬虫爬取数据时必须要有一个目标的URL才可以获取数据，因此，它是爬虫获取数据的基本依据，准确理解它的含义对爬虫学习有很大帮助</p>
 </blockquote>
 
+      		
 	
-
-
-      
-	
-        <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前戏"><span class="toc-text">前戏</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#啥是爬虫"><span class="toc-text">啥是爬虫</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#浏览网页的过程"><span class="toc-text">浏览网页的过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是URL"><span class="toc-text">什么是URL</span></a></li></ol>
-          <hr/>
-        </div>
-        
-        <h4 id="前戏"><a href="#前戏" class="headerlink" title="前戏"></a><div id="title">前戏</div></h4><p><strong>亲爱的朋友：</strong></p>
-<ul>
-<li>想不想在夜深人静的时候，看一些更睡不着的图片…</li>
-<li>想不想在杂乱的数据中，获取到你想要的东西…</li>
-<li>…</li>
-</ul>
-<a id="more"></a>
-<p><strong>是的，朋友，解决上面的问题非常的简单，只需要继续往下学习</strong></p>
-<h4 id="啥是爬虫"><a href="#啥是爬虫" class="headerlink" title="啥是爬虫"></a><div id="title">啥是爬虫</div></h4><blockquote>
-<p>爬虫，即网络爬虫，大家可以理解为在网络上爬行的一直蜘蛛，互联网就比作一张大网，而爬虫便是在这张网上爬来爬去的蜘蛛咯，如果它遇到资源，那么它就会抓取下来。想抓取什么？这个由你来控制它</p>
-<p>比如它在抓取一个网页，在这个网中他发现了一条道路，其实就是指向网页的超链接，那么它就可以爬到另一张网上来获取数据。这样，整个连在一起的大网对这之蜘蛛来说触手可及，分分钟爬下来不是事儿</p>
-<p>然后，再从扒下来的这些网站上面，利用我们接下来的所学，分析出我们想要的数据即可</p>
-</blockquote>
-<h4 id="浏览网页的过程"><a href="#浏览网页的过程" class="headerlink" title="浏览网页的过程"></a><div id="title">浏览网页的过程</div></h4><blockquote>
-<p>在用户浏览网页的过程中，我们可能会看到许多好看的图片，比如 <a href="http://image.baidu.com/" target="_blank" rel="external">http://image.baidu.com/</a> ，我们会看到几张的图片以及百度搜索框，这个过程其实就是用户输入网址之后，经过DNS服务器，找到服务器主机，向服务器发出一个请求，服务器经过解析之后，发送给用户的浏览器 HTML、JS、CSS 等文件，浏览器解析出来，用户便可以看到形形色色的图片了。</p>
-<p>因此，用户看到的网页实质是由 HTML 代码构成的，爬虫爬来的便是这些内容，通过分析和过滤这些 HTML 代码，实现对图片、文字等资源的获取</p>
-</blockquote>
-<h4 id="什么是URL"><a href="#什么是URL" class="headerlink" title="什么是URL"></a><div id="title">什么是URL</div></h4><blockquote>
-<p>URL，即统一资源定位符，也就是我们说的网址，统一资源定位符是对可以从互联网上得到的资源的位置和访问方法的一种简洁的表示，是互联网上标准资源的地址。互联网上的每个文件都有一个唯一的URL，它包含的信息指出文件的位置以及浏览器应该怎么处理它</p>
-</blockquote>
-<p>URL的格式由三部分组成：<br>①第一部分是协议(或称为服务方式)。<br>②第二部分是存有该资源的主机IP地址(有时也包括端口号)。<br>③第三部分是主机资源的具体地址，如目录和文件名等</p>
-<blockquote>
-<p>爬虫爬取数据时必须要有一个目标的URL才可以获取数据，因此，它是爬虫获取数据的基本依据，准确理解它的含义对爬虫学习有很大帮助</p>
-</blockquote>
-
-      
 
       
         <div class="page-reward">
@@ -498,19 +471,19 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">基础</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">闲谈</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">电影</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">基础</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -534,6 +507,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">MySQL</a>
               </li>
              
@@ -542,19 +519,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTML</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">BootStrap</a>
+                <a href="javascript:void(0)" class="js-tag color4">基础　</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color5">BootStrap</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -566,15 +539,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">web</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">框架</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">基础　</a>
               </li>
             
             <div class="clearfix"></div>
