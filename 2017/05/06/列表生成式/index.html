@@ -61,6 +61,8 @@
 			
 				<li><a href="/">主页</a></li>
 	        
+				<li><a href="/categories">分类</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -109,6 +111,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -121,7 +125,9 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 100%"><a href="/">主页</a></li>
+					<li style="width: 50%"><a href="/">主页</a></li>
+		        
+					<li style="width: 50%"><a href="/categories">分类</a></li>
 		        
 				</ul>
 			</nav>
@@ -136,193 +142,30 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-列表生成式" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="<%= post.layout %>-<%= post.slug %>" class="article article-type-<%= post.layout %> <%if(index){%> article-index<%}%>" itemscope itemprop="blogPost">
   <div class="article-inner">
-    
+    <% if (post.link || post.title){ %>
       <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      python的各种器
-    </h1>
-  
-
-        
-        <a href="/2017/05/06/列表生成式/" class="archive-article-date">
-  	<time datetime="2017-05-06T12:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        
+        <%- partial('post/title', {class_name: 'article-title'}) %>
+        <% if (!post.noDate){ %>
+        <%- partial('post/date', {class_name: 'archive-article-date', date_format: null}) %>
+        <% } %>
       </header>
-    
+    <% } %>
     <div class="article-entry" itemprop="articleBody">
-      
-	
+      <% if (post.excerpt && index){ %>
+        <%- post.excerpt %>
+      <% } else { %>
+	<% if (!index){ %>
         <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#列表生成式"><span class="toc-text">列表生成式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#生成器"><span class="toc-text">生成器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-生成器的定义"><span class="toc-text">1. 生成器的定义</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-访问生成器元素"><span class="toc-text">2. 访问生成器元素</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-生成器的第二种定义方式"><span class="toc-text">3. 生成器的第二种定义方式</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#迭代器"><span class="toc-text">迭代器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-可迭代对象—–Iterable"><span class="toc-text">1. 可迭代对象—–Iterable</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-迭代器的定义—–Iterator"><span class="toc-text">2. 迭代器的定义—–Iterator</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-总结"><span class="toc-text">3. 总结</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#装饰器"><span class="toc-text">装饰器</span></a></li></ol>
+          <%- toc(post.content,{list_number:false}) %>
           <hr/>
         </div>
-        
-        <h4 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a><div id="title">列表生成式</div></h4><blockquote>
-<p>现在有个需求，看列表[0, 1, 2, 3, 4, 5, 6, 7, 8, 9],我要求你把列表里的每个值加1，你怎么实现？</p>
-</blockquote>
-<a id="more"></a>
-<ul>
-<li>第一种实现方式</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a</div><div class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = []</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> a:</div><div class="line">        b.append(i+<span class="number">1</span>)</div></pre></td></tr></table></figure>
-<ul>
-<li>第二种实现方式</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>b</div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = b</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a</div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>]</div></pre></td></tr></table></figure>
-<ul>
-<li>第三种实现方式</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">a = [<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">6</span>,<span class="number">7</span>,<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>,<span class="number">11</span>]</div><div class="line"></div><div class="line"><span class="keyword">for</span> index,i <span class="keyword">in</span> enumerate(a):</div><div class="line">    a[index] +=<span class="number">1</span></div><div class="line">    </div><div class="line">print(a)</div></pre></td></tr></table></figure>
-<ul>
-<li>第四种实现方式</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a</div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = map(<span class="keyword">lambda</span> x:x+<span class="number">1</span>, a)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a</div><div class="line">&lt;map object at <span class="number">0x101d2c630</span>&gt;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> i <span class="keyword">in</span> a:</div><div class="line">        print(i)</div></pre></td></tr></table></figure>
-<p><strong>除了上述的几种方式之外，python还提供了一些非常装逼的方法</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = [i+<span class="number">1</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">10</span>)]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a</div><div class="line">[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>, <span class="number">7</span>, <span class="number">8</span>, <span class="number">9</span>, <span class="number">10</span>]</div></pre></td></tr></table></figure>
-<p><strong>上面的代码就是，列表生成式</strong></p>
-<hr>
-<h4 id="生成器"><a href="#生成器" class="headerlink" title="生成器"></a><div id="title">生成器</div></h4><blockquote>
-<p>通过列表生成式，我们可以直接创建一个列表。但是，受到内存限制，列表容量肯定是有限的。而且，创建一个包含100万个元素的列表，不仅占用很大的存储空间，而且如果我们仅仅需要访问前面几个元素，那后面绝大多数元素占用的空间都白白浪费了</p>
-</blockquote>
-<p><strong>因此我们想想怎么样去解决这个问题？</strong></p>
-<blockquote>
-<p>如果列表的元素不是一下子就生成出来的，而是能够根绝我们的意愿，按照某种算法不断的推算出后续的元素的话，那这样的话上面的问题是不是就能够圆满的解决呢</p>
-</blockquote>
-<p><strong>因此，python为了解决这个问题，搞了这样的一种机制，即就是生成器</strong></p>
-<h5 id="1-生成器的定义"><a href="#1-生成器的定义" class="headerlink" title="1. 生成器的定义"></a>1. 生成器的定义</h5><blockquote>
-<p>只要把一个列表生成式的 [] 改成 ()，就创建了一个generator</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>L = [x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>L</div><div class="line">[<span class="number">0</span>, <span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span>, <span class="number">25</span>, <span class="number">36</span>, <span class="number">49</span>, <span class="number">64</span>, <span class="number">81</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>g = (x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>))</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>g</div><div class="line">&lt;generator object &lt;genexpr&gt; at <span class="number">0x1022ef630</span>&gt;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>创建L和g的区别仅在于最外层的[]和()，L是一个list，而g是一个generator</p>
-</blockquote>
-<h5 id="2-访问生成器元素"><a href="#2-访问生成器元素" class="headerlink" title="2. 访问生成器元素"></a>2. 访问生成器元素</h5><blockquote>
-<p>我们可以直接打印出list的每一个元素，但我们怎么打印出generator的每一个元素呢？</p>
-</blockquote>
-<p><strong>如果要一个一个打印出来，可以通过next()函数获得generator的下一个返回值</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>next(g)</div><div class="line"><span class="number">0</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>next(g)</div><div class="line"><span class="number">1</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>next(g)</div><div class="line"><span class="number">4</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>next(g)</div><div class="line"><span class="number">9</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>next(g)</div><div class="line"><span class="number">16</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>next(g)</div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">StopIteration</div></pre></td></tr></table></figure>
-<p><strong>generator保存的是算法，每次调用next(g)，就计算出g的下一个元素的值，直到计算到最后一个元素，没有更多的元素时，抛出StopIteration的错误</strong></p>
-<p><strong>当然，上面这种不断调用next(g)实在是太变态了，正确的方法是使用for循环，因为generator也是可迭代对象</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>g = (x * x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>))</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> n <span class="keyword">in</span> g:</div><div class="line"><span class="meta">... </span>    print(n)</div><div class="line">...</div><div class="line"><span class="number">0</span></div><div class="line"><span class="number">1</span></div><div class="line"><span class="number">4</span></div><div class="line"><span class="number">9</span></div></pre></td></tr></table></figure>
-<p><strong>我们发现，在使用for循环迭代的时候，我们并不需要关心抛出的异常错误，因此，我们一般循环遍历生成器的时候，使用for来遍历</strong></p>
-<h5 id="3-生成器的第二种定义方式"><a href="#3-生成器的第二种定义方式" class="headerlink" title="3. 生成器的第二种定义方式"></a>3. 生成器的第二种定义方式</h5><blockquote>
-<p>实现一个斐波拉契数列（Fibonacci）的程序，除第一个和第二个数外，任意一个数都可由前两个数相加得到：<br>1, 1, 2, 3, 5, 8, 13, 21, 34, …</p>
-<p>斐波拉契数列用列表生成式写不出来，但是，用函数把它打印出来却很容易</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">(max)</span>:</span></div><div class="line">    n, a, b = <span class="number">0</span>, <span class="number">0</span>, <span class="number">1</span></div><div class="line">    <span class="keyword">while</span> n &lt; max:</div><div class="line">        print(b)</div><div class="line">        a, b = b, a + b</div><div class="line">        n = n + <span class="number">1</span></div><div class="line">    <span class="keyword">return</span> <span class="string">'done'</span></div><div class="line">    </div><div class="line">fib(<span class="number">10</span>)</div></pre></td></tr></table></figure>
-<p><strong><font color="red">仔细观察，我们发现，fib函数实际上是定义了斐波拉契数列的推算规则，可以从第一个元素开始，推算出后续任意的元素，这种逻辑其实非常类似generator</font></strong></p>
-<blockquote>
-<p>其实，上面的函数和generator仅一步之遥。要把fib函数变成generator，只需要把print(b)改为yield b就可以了</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">fib</span><span class="params">(max)</span>:</span></div><div class="line">    n,a,b = <span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span></div><div class="line">    <span class="keyword">while</span> n &lt; max:</div><div class="line">        <span class="comment">#print(b)</span></div><div class="line">        <span class="keyword">yield</span>  b</div><div class="line">        a,b = b,a+b</div><div class="line">        n += <span class="number">1</span></div><div class="line">    <span class="keyword">return</span> <span class="string">'done'</span></div></pre></td></tr></table></figure>
-<p><strong><font color="red">这就是定义generator的另一种方法。如果一个函数定义中包含yield关键字，那么这个函数就不再是一个普通函数，而是一个generator：</font></strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>f = fib(<span class="number">7</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>f</div><div class="line">&lt;generator object fib at <span class="number">0x104feaaa0</span>&gt;</div></pre></td></tr></table></figure>
-<p><strong><font color="red">注意：这里，最难理解的就是generator和函数的执行流程不一样</font></strong></p>
-<blockquote>
-<p><strong>函数是顺序执行，遇到return语句或者最后一行函数语句就返回。</strong></p>
-<p><strong>而变成generator的函数，在每次调用next()的时候执行，遇到yield语句返回，再次执行时从上次返回的yield语句处继续执行</strong></p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">data = fib(<span class="number">7</span>)</div><div class="line"></div><div class="line">print(next(data))</div><div class="line">print(next(data))</div><div class="line">print(<span class="string">"do sth..."</span>)</div><div class="line">print(next(data))</div><div class="line">print(next(data))</div><div class="line">print(next(data))</div></pre></td></tr></table></figure>
-<p><strong>同样的，把函数改成generator后，我们基本上从来不会用next()来获取下一个返回值，而是直接使用for循环来迭代</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">for</span> n <span class="keyword">in</span> fib(<span class="number">7</span>):</div><div class="line"><span class="meta">... </span>    print(n)</div><div class="line">...</div><div class="line"><span class="number">1</span></div><div class="line"><span class="number">1</span></div><div class="line"><span class="number">2</span></div><div class="line"><span class="number">3</span></div><div class="line"><span class="number">5</span></div><div class="line"><span class="number">8</span></div><div class="line"><span class="number">13</span></div></pre></td></tr></table></figure>
-<p><strong>但是用for循环调用generator时，发现拿不到generator的return语句的返回值。如果想要拿到返回值，必须捕获StopIteration错误，返回值包含在StopIteration的value中</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>g = fib(<span class="number">6</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line"><span class="meta">... </span>    <span class="keyword">try</span>:</div><div class="line"><span class="meta">... </span>        x = next(g)</div><div class="line"><span class="meta">... </span>        print(<span class="string">'g:'</span>, x)</div><div class="line"><span class="meta">... </span>    <span class="keyword">except</span> StopIteration <span class="keyword">as</span> e:</div><div class="line"><span class="meta">... </span>        print(<span class="string">'Generator return value:'</span>, e.value)</div><div class="line"><span class="meta">... </span>        <span class="keyword">break</span></div><div class="line">...</div><div class="line">g: <span class="number">1</span></div><div class="line">g: <span class="number">1</span></div><div class="line">g: <span class="number">2</span></div><div class="line">g: <span class="number">3</span></div><div class="line">g: <span class="number">5</span></div><div class="line">g: <span class="number">8</span></div><div class="line">Generator <span class="keyword">return</span> value: done</div></pre></td></tr></table></figure>
-<h4 id="迭代器"><a href="#迭代器" class="headerlink" title="迭代器"></a><div id="title">迭代器</div></h4><h5 id="1-可迭代对象—–Iterable"><a href="#1-可迭代对象—–Iterable" class="headerlink" title="1. 可迭代对象—–Iterable"></a>1. 可迭代对象—–Iterable</h5><blockquote>
-<p>我们已经知道，可以直接作用于for循环的数据类型有以下几种：</p>
-<ul>
-<li><p>一类是集合数据类型，如list、tuple、dict、set、str</p>
-</li>
-<li><p>一类是生成器</p>
-</li>
-</ul>
-<p>这些可以直接作用于for循环的对象统称为可迭代对象：Iterable</p>
-</blockquote>
-<p><strong>可以使用isinstance()判断一个对象是否是Iterable对象</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> Iterable</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance([], Iterable)</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(&#123;&#125;, Iterable)</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(<span class="string">'abc'</span>, Iterable)</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance((x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)), Iterable)</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(<span class="number">100</span>, Iterable)</div><div class="line"><span class="keyword">False</span></div></pre></td></tr></table></figure>
-<h5 id="2-迭代器的定义—–Iterator"><a href="#2-迭代器的定义—–Iterator" class="headerlink" title="2. 迭代器的定义—–Iterator"></a>2. 迭代器的定义—–Iterator</h5><blockquote>
-<p>可以被 next() 函数调用并不断返回下一个值的对象称为迭代器</p>
-</blockquote>
-<p><strong>所以根据上面的定义，我们知道<font color="red">只有生成器</font>能够被next()函数不断调用并返回下一个值，直到最后抛出StopIteration错误. 其余的常见数据类型只是能够进行for循环，但不能被next()函数调用。</strong></p>
-<blockquote>
-<p>所以生成器都是迭代器, 但list，str，dict虽然是可迭代对象，但却不是迭代器</p>
-</blockquote>
-<p><strong>同样,我们可以使用isinstance()判断一个对象是否是Iterator对象：</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">from</span> collections <span class="keyword">import</span> Iterator</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance((x <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">10</span>)), Iterator)</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance([], Iterator)</div><div class="line"><span class="keyword">False</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(&#123;&#125;, Iterator)</div><div class="line"><span class="keyword">False</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(<span class="string">'abc'</span>, Iterator)</div><div class="line"><span class="keyword">False</span></div></pre></td></tr></table></figure></p>
-<p><strong>那如果，我就是想把list、dict、str等变成迭代器，怎么办？</strong></p>
-<blockquote>
-<p>可以使用iter()函数</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(iter([]), Iterator)</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(iter(<span class="string">'abc'</span>), Iterator)</div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure>
-<p><strong>为什么list、dict、str等数据类型不是Iterator？</strong></p>
-<blockquote>
-<p>这是因为Python的Iterator对象表示的是一个数据流，Iterator对象可以被next()函数调用并不断返回下一个数据，直到没有数据时抛出StopIteration错误。我们可以把这个数据流看做是一个有序序列，但我们却不能提前知道序列的长度，只能不断通过next()函数实现按需计算下一个数据，所以Iterator的计算是惰性的，只有在需要返回下一个数据时它才会计算。</p>
-<p>Iterator甚至可以表示一个无限大的数据流，例如全体自然数。但使用list是永远不可能存储全体自然数的。</p>
-</blockquote>
-<h5 id="3-总结"><a href="#3-总结" class="headerlink" title="3. 总结"></a>3. 总结</h5><blockquote>
-<ul>
-<li><p>凡是可作用于for循环的对象都是Iterable类型；</p>
-</li>
-<li><p>凡是可作用于next()函数的对象都是Iterator类型，它们表示一个惰性计算的序列；</p>
-</li>
-<li><p>集合数据类型如list、dict、str等是Iterable但不是Iterator，不过可以通过iter()函数获得一个Iterator对</p>
-</li>
-</ul>
-</blockquote>
-<hr>
-<h4 id="装饰器"><a href="#装饰器" class="headerlink" title="装饰器"></a><div id="title">装饰器</div></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></div><div class="line">    print(<span class="string">'do sth...'</span>)</div><div class="line">   </div><div class="line">test()</div></pre></td></tr></table></figure>
-<blockquote>
-<p>现有如上函数，想加一个功能，算一下test函数执行的时间？<br>要求：不要改变原来的代码</p>
-</blockquote>
-<p><strong>针对上述需求，你可能会有如下思路</strong></p>
-<blockquote>
-<p>先有一个计算时间的函数,然后将test函数的调用放在开始时间和结束时间即可<br>如下代码</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">count_time</span><span class="params">()</span>:</span></div><div class="line">    start_time = time.time()</div><div class="line">    test()</div><div class="line">    end_time = time.time()</div><div class="line">    print(<span class="string">"the current func time is %s"</span> % (end_time - start_time))</div><div class="line"></div><div class="line">count_time()</div></pre></td></tr></table></figure>
-<p><strong>感觉这个需求非常的简单，寥寥几行就已经完成了，但如果这个时候有100多个函数呢，都需要计算，怎么办？<font color="red">难道写100遍？</font></strong></p>
-<blockquote>
-<p>为了解决上述的问题，我们想，我们之前不是学过参数吗？我能不能将这个函数名当做参数传入到count_time这个函数中去呢？</p>
-<p><em><font color="red">注意：函数是可以当做参数，传入到另一个函数中的</font></em></p>
-</blockquote>
-<p><strong>于是，天才的你写出了如下的代码</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">count_time</span><span class="params">(func)</span>:</span></div><div class="line">    start_time = time.time()</div><div class="line">    func()</div><div class="line">    end_time = time.time()</div><div class="line">    print(<span class="string">"the current func time is %s"</span> % (end_time - start_time))</div><div class="line"></div><div class="line">count_time(test) <span class="comment"># 此时，我们将test函数传入到count_time()函数中</span></div></pre></td></tr></table></figure></p>
-<p><strong>但是此时我们发现改变了函数的调用方式，之前是test()调用的，现在是count_time(test)，感觉还是不符合之前的要求，于是你又陷入了沉思…</strong></p>
-<p><strong>但是不要害怕，我们想，我们此时是不是只需要想办法将 test() == count_time(test) 是不是就可以了？</strong></p>
-<blockquote>
-<p>于是，为了实现调用test和调用count_time一样的效果，我们想能不能把计算时间的这个函数搞成一个嵌套函数，然后返回内层函数，最终赋给一个变量，恰好就叫test呢，此时这个test就是一个函数的内存地址</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">count_time</span><span class="params">(func)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">deco</span><span class="params">()</span>:</span></div><div class="line">        start_time = time.time()</div><div class="line">        func()</div><div class="line">        end_time = time.time()</div><div class="line">        print(<span class="string">"current func time is %s"</span> % (end_time - start_time))</div><div class="line">    <span class="keyword">return</span> deco</div><div class="line"></div><div class="line"><span class="comment"># 此时，调用test 就相当于调用了 count_time了</span></div><div class="line">test = count_time(test)</div><div class="line">test()</div></pre></td></tr></table></figure>
-<blockquote>
-<p><strong>其实，上面就实现了一个装饰器的功能，只不过在python中，装饰器是有自己特定语法的，所以最终装饰器的写法</strong></p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">count_time</span><span class="params">(func)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">warpper</span><span class="params">()</span>:</span></div><div class="line">        start_time = time.time()</div><div class="line">        func()</div><div class="line">        stop_time = time.time()</div><div class="line">        print(<span class="string">'the func run time is %s'</span> %(stop_time - start_time))</div><div class="line">    <span class="keyword">return</span> warpper</div><div class="line"></div><div class="line"><span class="comment"># 下面就是装饰器的语法，使用@来表示</span></div><div class="line"><span class="meta">@count_time</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">()</span>:</span></div><div class="line">    time.sleep(<span class="number">1</span>)</div><div class="line">    print(<span class="string">'in the test'</span>)</div><div class="line"></div><div class="line">test()</div></pre></td></tr></table></figure>
-<blockquote>
-<p>如果我想给test函数传入参数，那怎么办？</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">count_time</span><span class="params">(func)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">warpper</span><span class="params">(*args,**kwargs)</span>:</span></div><div class="line">        start_time = time.time()</div><div class="line">        func(*args,**kwargs)</div><div class="line">        stop_time = time.time()</div><div class="line">        print(<span class="string">'the func run time is %s'</span> %(stop_time - start_time))</div><div class="line">    <span class="keyword">return</span> warpper</div><div class="line"></div><div class="line"><span class="comment"># 下面就是装饰器的语法，使用@来表示</span></div><div class="line"><span class="meta">@count_time</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(name)</span>:</span></div><div class="line">    time.sleep(<span class="number">1</span>)</div><div class="line">    print(<span class="string">'in the test'</span>)</div><div class="line"></div><div class="line">test(<span class="string">'zhangsan'</span>)</div></pre></td></tr></table></figure>
-<p><strong>带参数的装饰器写法：</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">count_time</span><span class="params">(level)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">decorate</span><span class="params">(func)</span>:</span></div><div class="line">        <span class="function"><span class="keyword">def</span> <span class="title">warpper</span><span class="params">(*args,**kwargs)</span>:</span></div><div class="line">            print(<span class="string">'the level is'</span>, level)</div><div class="line">            start_time = time.time()</div><div class="line">            func(*args,**kwargs)</div><div class="line">            stop_time = time.time()</div><div class="line">            print(<span class="string">'the func run time is %s'</span> %(stop_time - start_time))</div><div class="line">        <span class="keyword">return</span> warpper</div><div class="line">    <span class="keyword">return</span> decorate</div><div class="line"></div><div class="line"><span class="comment"># 下面就是装饰器的语法，使用@来表示</span></div><div class="line"><span class="meta">@count_time(level='warn')</span></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">test</span><span class="params">(name)</span>:</span></div><div class="line">    time.sleep(<span class="number">1</span>)</div><div class="line">    print(<span class="string">'in the test'</span>)</div><div class="line"></div><div class="line">test(<span class="string">'zhangsan'</span>)</div></pre></td></tr></table></figure></p>
-<p><strong><font color="red">装饰器的定义</font></strong></p>
-<ol>
-<li>官方定义</li>
-</ol>
-<blockquote>
-<p>本质上其实就是一个函数，可以让其他的函数在不需要做任何代码变动的前提下增加额外的功能，装饰器的返回值也是一个函数。</p>
-<p>常见的场景：</p>
-<p>插入日志，性能测试，登录权限校验等</p>
-</blockquote>
-<p><strong>概括的讲，装饰器就是为已经存在的对象添加额外的功能</strong></p>
-<ol>
-<li>形象比喻</li>
-</ol>
-<blockquote>
-<p>所谓的装饰器，就好像冬天的长裤，我们知道内裤可以用来遮羞，但是到了冬天没法帮我们防风御寒，于是聪明的人们发明了长裤，它在不影响内裤作用的前提下，给我们的身子提供了保暖的功效</p>
-</blockquote>
+        <% } %>
+        <%- post.content %>
+      <% } %>
 
-      
-
-      
+      <% if ((theme.reward_type === 2 || (theme.reward_type === 1 && post.reward)) && !index){ %>
         <div class="page-reward">
           <a href="javascript:;" class="page-reward-btn tooltip-top">
             <div class="tooltip tooltip-east">
@@ -332,20 +175,20 @@
             <span class="tooltip-content">
               <span class="tooltip-text">
                 <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
+                  <p class="reward-p"><i class="icon icon-quo-left"></i><%= theme.reward_wording%><i class="icon icon-quo-right"></i></p>
                   <div class="reward-box">
-                    
+                    <% if(theme.alipay) {%>
                     <div class="reward-box-item">
-                      <img class="reward-img" src="/img/zhifubao.png">
+                      <img class="reward-img" src="<%= theme.alipay%>">
                       <span class="reward-type">支付宝</span>
                     </div>
-                    
-                    
+                    <% } %>
+                    <% if(theme.weixin) {%>
                     <div class="reward-box-item">
-                      <img class="reward-img" src="/img/weixin.png">
+                      <img class="reward-img" src="<%= theme.weixin%>">
                       <span class="reward-type">微信</span>
                     </div>
-                    
+                    <% } %>
                   </div>
                 </span>
               </span>
@@ -353,132 +196,74 @@
           </div>
           </a>
         </div>
-      
+      <% } %>
     </div>
     <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
+      <%if(post.top){%>
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
+      <% } %>
+      <%- partial('post/tag') %>
+      <%- partial('post/category') %>
+      <% if (index && theme.show_all_link){ %>
+        <p class="article-more-link">
+          <a class="article-more-a" href="<%- url_for(post.path) %>"><%= theme.show_all_link %> >></a>
+        </p>
+      <% } %>
 
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/06/列表生成式/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
+      <% if (!index && theme.share_jia){ %>
+        <%- partial('post/share') %>
+      <% } %>
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/05/06/python函数/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Python函数基础
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/05/06/python编码/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">python字符编码</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
+<% if (!index){ %>
+  <%- partial('post/nav') %>
+<% } %>
 
 
-
-
-
+<% if (!index && post.comments){ %>
+  <% if (theme.duoshuo){ %>
+  <%- partial('post/duoshuo', {
+      key: post.slug,
+      title: post.title,
+      url: config.url+url_for(post.path)
+    }) %>
+  <% } %>
   
-  
-  
-  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-<script>
-  var cloudTieConfig = {
-    url: document.location.href, 
-    sourceId: "",
-    productKey: "123b873e038145ba94270feb5223d8d8",
-    target: "cloud-tie-wrapper"
-  };
-</script>
-<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+  <% if (theme.wangyiyun){ %>
+  <%- partial('post/wangyiyun') %>
+  <% } %>
 
-  
+  <% if (theme.changyan_appid && theme.changyan_conf){ %>
+  <%- partial('post/changyan', {
+      key: post.slug,
+      title: post.title,
+      url: config.url+url_for(post.path)
+    }) %>
+  <% } %>
 
-  
+  <% if (theme.disqus || config.disqus_shortname){ %>
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = '<%= theme.disqus || config.disqus_shortname %>'; // required: replace example with your forum shortname
 
-  
-
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+  <% } %>
+<% } %>
 
 
           </div>

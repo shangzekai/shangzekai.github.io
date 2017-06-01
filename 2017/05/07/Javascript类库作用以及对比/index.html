@@ -61,6 +61,8 @@
 			
 				<li><a href="/">主页</a></li>
 	        
+				<li><a href="/categories">分类</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -109,6 +111,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -121,7 +125,9 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 100%"><a href="/">主页</a></li>
+					<li style="width: 50%"><a href="/">主页</a></li>
+		        
+					<li style="width: 50%"><a href="/categories">分类</a></li>
 		        
 				</ul>
 			</nav>
@@ -136,156 +142,30 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Javascript类库作用以及对比" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="<%= post.layout %>-<%= post.slug %>" class="article article-type-<%= post.layout %> <%if(index){%> article-index<%}%>" itemscope itemprop="blogPost">
   <div class="article-inner">
-    
+    <% if (post.link || post.title){ %>
       <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      JQuery学习目录
-    </h1>
-  
-
-        
-        <a href="/2017/05/07/Javascript类库作用以及对比/" class="archive-article-date">
-  	<time datetime="2017-05-07T01:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
-</a>
-        
+        <%- partial('post/title', {class_name: 'article-title'}) %>
+        <% if (!post.noDate){ %>
+        <%- partial('post/date', {class_name: 'archive-article-date', date_format: null}) %>
+        <% } %>
       </header>
-    
+    <% } %>
     <div class="article-entry" itemprop="articleBody">
-      
-	
+      <% if (post.excerpt && index){ %>
+        <%- post.excerpt %>
+      <% } else { %>
+	<% if (!index){ %>
         <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Javascript类库作用以及对比"><span class="toc-text">Javascript类库作用以及对比</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-Prototype"><span class="toc-text">1. Prototype</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-Dojo"><span class="toc-text">2. Dojo</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-YUI"><span class="toc-text">3. YUI</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-BootStrap"><span class="toc-text">4. BootStrap</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JQuery的介绍及其优势"><span class="toc-text">JQuery的介绍及其优势</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-JQuery的介绍"><span class="toc-text">1. JQuery的介绍</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-JQuery的优势"><span class="toc-text">2. JQuery的优势</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#选择器"><span class="toc-text">选择器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-id选择器"><span class="toc-text">1. id选择器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-class选择器"><span class="toc-text">2. class选择器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-标签选择器"><span class="toc-text">3. 标签选择器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-组合选择器"><span class="toc-text">4. 组合选择器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-层级选择器"><span class="toc-text">5. 层级选择器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-基本选择器"><span class="toc-text">6. 基本选择器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-属性选择器"><span class="toc-text">7. 属性选择器</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#筛选器"><span class="toc-text">筛选器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-下一个元素"><span class="toc-text">1. 下一个元素</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-上一个元素"><span class="toc-text">2. 上一个元素</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-父亲元素"><span class="toc-text">3. 父亲元素</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-儿子和兄弟元素"><span class="toc-text">4. 儿子和兄弟元素</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-查找元素"><span class="toc-text">5. 查找元素</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#样式操作"><span class="toc-text">样式操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-添加整块样式"><span class="toc-text">1. 添加整块样式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-删除整块样式"><span class="toc-text">2. 删除整块样式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-判断样式存不存在"><span class="toc-text">3. 判断样式存不存在</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-相当于开关，有这个样式则去掉，没有则添加"><span class="toc-text">4. 相当于开关，有这个样式则去掉，没有则添加</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#文本操作"><span class="toc-text">文本操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-对纯文本操作"><span class="toc-text">1. 对纯文本操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-对HTML操作"><span class="toc-text">2. 对HTML操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-对val操作（针对input系列）"><span class="toc-text">3. 对val操作（针对input系列）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#属性操作"><span class="toc-text">属性操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-用于自定义属性"><span class="toc-text">1. 用于自定义属性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-用于checkbox，radio"><span class="toc-text">2. 用于checkbox，radio</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#文档处理"><span class="toc-text">文档处理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-插入到指定元素”里面”的后面"><span class="toc-text">1. 插入到指定元素”里面”的后面</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-插入到指定元素”里面”的前面"><span class="toc-text">2. 插入到指定元素”里面”的前面</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-插入到指定元素”外面”的后面"><span class="toc-text">3. 插入到指定元素”外面”的后面</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-插入到指定元素”外面”的前面"><span class="toc-text">4. 插入到指定元素”外面”的前面</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-移除和清空元素"><span class="toc-text">5. 移除和清空元素</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-替换元素"><span class="toc-text">6. 替换元素</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#动画效果"><span class="toc-text">动画效果</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#事件"><span class="toc-text">事件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-常见的事件"><span class="toc-text">1. 常见的事件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-第二种绑定事件的方式"><span class="toc-text">2. 第二种绑定事件的方式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-阻止事件发生"><span class="toc-text">3. 阻止事件发生</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-页面加载完成之后，执行函数体中的内容"><span class="toc-text">4. 页面加载完成之后，执行函数体中的内容</span></a></li></ol></li></ol>
+          <%- toc(post.content,{list_number:false}) %>
           <hr/>
         </div>
-        
-        <h4 id="Javascript类库作用以及对比"><a href="#Javascript类库作用以及对比" class="headerlink" title="Javascript类库作用以及对比"></a><div id="title">Javascript类库作用以及对比</div></h4><h5 id="1-Prototype"><a href="#1-Prototype" class="headerlink" title="1. Prototype"></a>1. Prototype</h5><blockquote>
-<p>Prototype是之前应用最为广泛的Ajax开发框架，其的特点是功能实用而且尺寸较小，非常适合在中小型的Web应用中使用。开发Ajax应用需要编写大量的客户端JavaScript脚本，而Prototype框架可以大大地简化JavaScript代码的编写工作。更难得的是，Prototype具备兼容各个浏览器的优秀特性，使用该框架可以不必考虑浏览器兼容性的问题。但是由于Prototype成型年代早，从整体上对于面向对象的思想把握不是很到位，导致了结构比较的松散</p>
-</blockquote>
-<a id="more"></a>
-<h5 id="2-Dojo"><a href="#2-Dojo" class="headerlink" title="2. Dojo"></a>2. Dojo</h5><blockquote>
-<p>Dojo的强大之处在于提供了很多其他javascript库所没有提供的功能。例如：离线存储的API，生成图标的组件等等。并且在应用方面得到了IBM，SUN等大公司的支持。但是Dojo的缺点也很明显：学习曲线陡，文档不齐全，最严重的是API不稳定，每次升级都可能导致已有的程序失效。</p>
-</blockquote>
-<h5 id="3-YUI"><a href="#3-YUI" class="headerlink" title="3. YUI"></a>3. YUI</h5><blockquote>
-<p>作为开源前端框架的鼻祖，在框架上的功力非常之深。有着自己的解析 DOM的核心框架，并且在特效、动画、图表等方面都有丰富的扩展，并可以通过 YQL 直接访问 Yahoo！的数据。在用户经常使用的功能方面都有着不错的表现</p>
-</blockquote>
-<h5 id="4-BootStrap"><a href="#4-BootStrap" class="headerlink" title="4. BootStrap"></a>4. BootStrap</h5><blockquote>
-<p>目前桌面端最为流行的开发框架，一经 Twitter 推出，势不可挡。Bootstrap 主要针对桌面端市场，Bootstrap3 提出移动优先，不过目前桌面端依然还是 Bootstrap 的主要目标市场。</p>
-<p>Bootstrap 框架在布局、版式、控件、特效方面都非常让人满意，都预置了丰富的效果，极大方便了用户开发。在风格设置方面，还需要用户在下载时手动设置，可配置粒度非常细，相应也比较繁琐，不太直观，需要对 Bootstrap 非常熟悉配置起来才能得心应手</p>
-</blockquote>
-<hr>
-<h4 id="JQuery的介绍及其优势"><a href="#JQuery的介绍及其优势" class="headerlink" title="JQuery的介绍及其优势"></a><div id="title">JQuery的介绍及其优势</div></h4><h5 id="1-JQuery的介绍"><a href="#1-JQuery的介绍" class="headerlink" title="1. JQuery的介绍"></a>1. JQuery的介绍</h5><blockquote>
-<p>JQuery的宗旨是——WRITE LESS,DO MORE,写更少的代码,做更多的事情。它是轻量级的js库，这是其它的js库所不及的，它兼容CSS3，还兼容各种常用浏览器。</p>
-<p>JQuery是一个快速的，简洁的JavaScript库，使用户能更方便地处理HTML documents、events、实现动画效果，并且方便地为网站提供AJAX交互。</p>
-<p>JQuery还有一个比较大的优势是，它的文档说明很全，而且各种应用也说得很详细，同时还有许多成熟的插件可供选择。JQuery能够使用户的html页保持代码和html内容分离，也就是说，不用再在html里面插入一堆js来调用命令了，只需定义id即可</p>
-</blockquote>
-<h5 id="2-JQuery的优势"><a href="#2-JQuery的优势" class="headerlink" title="2. JQuery的优势"></a>2. JQuery的优势</h5><ul>
-<li>一款轻量级的js框架。JQuery核心js文件才几十kb，不会影响页面加载速度</li>
-<li>丰富的DOM选择器,JQuery的选择器用起来很方便，比如要找到某个dom对象的相邻元素，js可能要写好几行代码，而JQuery一行代码就搞定了，再比如要将一个表格的隔行变色，JQuery也是一行代码搞定</li>
-<li>链式表达式。JQuery的链式操作可以把多个操作写在一行代码里，更加简洁</li>
-<li>事件、样式、动画支持。JQuery还简化了js操作css的代码，并且代码的可读性也比js要强</li>
-<li>Ajax操作支持。JQuery简化了AJAX操作，后台只需返回一个JSON格式的字符串就能完成与前台的通信</li>
-<li>跨浏览器兼容。JQuery基本兼容了现在主流的浏览器，不用再为浏览器的兼容问题而伤透脑筋</li>
-<li>插件扩展开发。JQuery有着丰富的第三方的插件，例如：树形菜单、日期控件、图片切换插件、弹出窗口等等基本前台页面上的组件都有对应插件，并且用JQuery插件做出来的效果很炫，并且可以根据自己需要去改写和封装插件，简单实用</li>
-</ul>
-<h4 id="选择器"><a href="#选择器" class="headerlink" title="选择器"></a><div id="title">选择器</div></h4><h5 id="1-id选择器"><a href="#1-id选择器" class="headerlink" title="1. id选择器"></a>1. id选择器</h5><pre><code>$(&quot;#id&quot;)
-</code></pre><h5 id="2-class选择器"><a href="#2-class选择器" class="headerlink" title="2. class选择器"></a>2. class选择器</h5><pre><code>$(&quot;.classname&quot;)
-</code></pre><h5 id="3-标签选择器"><a href="#3-标签选择器" class="headerlink" title="3. 标签选择器"></a>3. 标签选择器</h5><pre><code>$(&quot;tagname&quot;)
-</code></pre><h5 id="4-组合选择器"><a href="#4-组合选择器" class="headerlink" title="4. 组合选择器"></a>4. 组合选择器</h5><pre><code>$(&quot;#id, .classname, tagname&quot;)
-</code></pre><h5 id="5-层级选择器"><a href="#5-层级选择器" class="headerlink" title="5. 层级选择器"></a>5. 层级选择器</h5><pre><code>$(&quot;#id a&quot;) ----&gt; 所有的后代a元素
-$(&quot;#id &gt; a&quot;)---&gt; 第一个儿子元素
-</code></pre><h5 id="6-基本选择器"><a href="#6-基本选择器" class="headerlink" title="6. 基本选择器"></a>6. 基本选择器</h5><pre><code>:first :eq() :last
-</code></pre><h5 id="7-属性选择器"><a href="#7-属性选择器" class="headerlink" title="7. 属性选择器"></a>7. 属性选择器</h5><pre><code>&lt;input type=&apos;text&apos;&gt;
-&lt;input type=&apos;checkbox&apos;&gt;
-&lt;input type=&apos;password&apos;&gt;
+        <% } %>
+        <%- post.content %>
+      <% } %>
 
-$(&quot;input[type=&apos;checkbox&apos;]&quot;)
-</code></pre><p><strong>实例：表格的全选和反选以及取消</strong>    </p>
-<h4 id="筛选器"><a href="#筛选器" class="headerlink" title="筛选器"></a><div id="title">筛选器</div></h4><h5 id="1-下一个元素"><a href="#1-下一个元素" class="headerlink" title="1. 下一个元素"></a>1. 下一个元素</h5><pre><code>$(&quot;#one&quot;).next()
-$(&quot;#one&quot;).nextAll()
-$(&quot;#one&quot;).nextUntil(&apos;#i2&apos;)
-</code></pre><h5 id="2-上一个元素"><a href="#2-上一个元素" class="headerlink" title="2. 上一个元素"></a>2. 上一个元素</h5><pre><code>$(&apos;#one&apos;).prev()
-$(&apos;#one&apos;).prevAll()
-$(&apos;#one&apos;).prevUntil(&apos;#ii1&apos;)
-</code></pre><h5 id="3-父亲元素"><a href="#3-父亲元素" class="headerlink" title="3. 父亲元素"></a>3. 父亲元素</h5><pre><code>$(&apos;#one&apos;).parent()
-$(&apos;#one&apos;).parents()
-$(&apos;#one&apos;).parentsUntil()
-</code></pre><h5 id="4-儿子和兄弟元素"><a href="#4-儿子和兄弟元素" class="headerlink" title="4. 儿子和兄弟元素"></a>4. 儿子和兄弟元素</h5><pre><code>$(&apos;#one&apos;).children()
-$(&apos;#one&apos;).siblings()
-</code></pre><h5 id="5-查找元素"><a href="#5-查找元素" class="headerlink" title="5. 查找元素"></a>5. 查找元素</h5><pre><code>$(&apos;#one&apos;).find() 
-</code></pre><p><strong>案例：左侧菜单</strong></p>
-<hr>
-<h4 id="样式操作"><a href="#样式操作" class="headerlink" title="样式操作"></a><div id="title">样式操作</div></h4><h5 id="1-添加整块样式"><a href="#1-添加整块样式" class="headerlink" title="1. 添加整块样式"></a>1. 添加整块样式</h5><pre><code>addClass()
-</code></pre><h5 id="2-删除整块样式"><a href="#2-删除整块样式" class="headerlink" title="2. 删除整块样式"></a>2. 删除整块样式</h5><pre><code>removeClass()
-</code></pre><h5 id="3-判断样式存不存在"><a href="#3-判断样式存不存在" class="headerlink" title="3. 判断样式存不存在"></a>3. 判断样式存不存在</h5><pre><code>hasClass()
-</code></pre><h5 id="4-相当于开关，有这个样式则去掉，没有则添加"><a href="#4-相当于开关，有这个样式则去掉，没有则添加" class="headerlink" title="4. 相当于开关，有这个样式则去掉，没有则添加"></a>4. 相当于开关，有这个样式则去掉，没有则添加</h5><pre><code>toggleClass()
-</code></pre><p><strong>案例：开关灯效果 以及 模态框、五星好评</strong></p>
-<hr>
-<h4 id="文本操作"><a href="#文本操作" class="headerlink" title="文本操作"></a><div id="title">文本操作</div></h4><h5 id="1-对纯文本操作"><a href="#1-对纯文本操作" class="headerlink" title="1. 对纯文本操作"></a>1. 对纯文本操作</h5><pre><code>$(&quot;#one&quot;).text(); --- 获取值
-$(&quot;#one&quot;).text(&apos;fuck&apos;); --- 设置值
-</code></pre><h5 id="2-对HTML操作"><a href="#2-对HTML操作" class="headerlink" title="2. 对HTML操作"></a>2. 对HTML操作</h5><pre><code>$(&quot;xxx&quot;).html()
-$(&quot;xxx&quot;).html(&apos;&lt;a href=&quot;&quot;&gt;&lt;/a&gt;&apos;)    
-</code></pre><h5 id="3-对val操作（针对input系列）"><a href="#3-对val操作（针对input系列）" class="headerlink" title="3. 对val操作（针对input系列）"></a>3. 对val操作（针对input系列）</h5><pre><code>$(&quot;xxx&quot;).val()
-$(&quot;xxx&quot;).val(&apos;123&apos;)
-</code></pre><p><strong>案例：模态弹出框含有文本</strong></p>
-<hr>
-<h4 id="属性操作"><a href="#属性操作" class="headerlink" title="属性操作"></a><div id="title">属性操作</div></h4><h5 id="1-用于自定义属性"><a href="#1-用于自定义属性" class="headerlink" title="1. 用于自定义属性"></a>1. 用于自定义属性</h5><pre><code>$(&apos;xxx&apos;).attr(&apos;n&apos;)
-$(&apos;xxx&apos;).attr(&apos;n&apos;,&apos;v&apos;)
-$(&apos;xxx&apos;).removeAttr(&apos;n&apos;)
-</code></pre><h5 id="2-用于checkbox，radio"><a href="#2-用于checkbox，radio" class="headerlink" title="2. 用于checkbox，radio"></a>2. 用于checkbox，radio</h5><pre><code>$(&apos;xxx&apos;).prop(&apos;checked&apos;)
-$(&apos;xxx&apos;).prop(&apos;checked&apos;, true)
-</code></pre><p><strong>注意：</strong></p>
-<blockquote>
-<p><code>&lt;input type=&#39;checkbox&#39; id=&#39;i1&#39; checked=checked /&gt;</code><br>            此处选中复选框的时候，我们可以直接使用attr来进行赋值操作，但是在1以及2版本的jquery中会出错，在3版本的jquery中没有任何问题</p>
-<p>因此，我们在处理checkbox，radio等标签的时候，我们尽量使用特定的prop，不要使用attr(“checked”,”checked”)</p>
-</blockquote>
-<hr>
-<h4 id="文档处理"><a href="#文档处理" class="headerlink" title="文档处理"></a><div id="title">文档处理</div></h4><h5 id="1-插入到指定元素”里面”的后面"><a href="#1-插入到指定元素”里面”的后面" class="headerlink" title="1. 插入到指定元素”里面”的后面"></a>1. 插入到指定元素”里面”的后面</h5><pre><code>$(&apos;xxx&apos;).append()
-$(&apos;xxx&apos;).appendTo()
-</code></pre><h5 id="2-插入到指定元素”里面”的前面"><a href="#2-插入到指定元素”里面”的前面" class="headerlink" title="2. 插入到指定元素”里面”的前面"></a>2. 插入到指定元素”里面”的前面</h5><pre><code>$(&apos;xxx&apos;).prepend()
-$(&apos;xxx&apos;).prependTo()
-</code></pre><h5 id="3-插入到指定元素”外面”的后面"><a href="#3-插入到指定元素”外面”的后面" class="headerlink" title="3. 插入到指定元素”外面”的后面"></a>3. 插入到指定元素”外面”的后面</h5><pre><code>$(&apos;xxx&apos;).after()
-</code></pre><h5 id="4-插入到指定元素”外面”的前面"><a href="#4-插入到指定元素”外面”的前面" class="headerlink" title="4. 插入到指定元素”外面”的前面"></a>4. 插入到指定元素”外面”的前面</h5><pre><code>$(&apos;xxx&apos;).before()
-</code></pre><h5 id="5-移除和清空元素"><a href="#5-移除和清空元素" class="headerlink" title="5. 移除和清空元素"></a>5. 移除和清空元素</h5><pre><code>$(&apos;xxx&apos;).remove()
-$(&apos;xxx&apos;).empty()
-</code></pre><h5 id="6-替换元素"><a href="#6-替换元素" class="headerlink" title="6. 替换元素"></a>6. 替换元素</h5><pre><code>$(&apos;xxx&apos;).replaceWith()
-$(&apos;xxx&apos;).replaceAll()
-</code></pre><p><strong>案例：两个框之间互相选择</strong></p>
-<h4 id="动画效果"><a href="#动画效果" class="headerlink" title="动画效果"></a><div id="title">动画效果</div></h4><pre><code>show()
-hide()
-toggle()
-
-fadeIn()
-fadeOut()
-fadeToggle()
-
-slideIn()
-slideOut()
-slideToggle()
-</code></pre><p><strong>案例：图片的淡入和淡出</strong></p>
-<h4 id="事件"><a href="#事件" class="headerlink" title="事件"></a><div id="title">事件</div></h4><h5 id="1-常见的事件"><a href="#1-常见的事件" class="headerlink" title="1. 常见的事件"></a>1. 常见的事件</h5><pre><code>$(&apos;xxx&apos;).click(function(){})
-$(&apos;xxx&apos;).mouseout(function(){})
-$(&apos;xxx&apos;).mouseover(function(){})
-$(&apos;xxx&apos;).hover(function(){})
-$(&apos;xxx&apos;).blur(function(){})          
-$(&apos;xxx&apos;).focus(function(){})
-</code></pre><h5 id="2-第二种绑定事件的方式"><a href="#2-第二种绑定事件的方式" class="headerlink" title="2. 第二种绑定事件的方式"></a>2. 第二种绑定事件的方式</h5><pre><code>$(&quot;xxx&quot;).bind(&quot;click&quot;,function(){})
-$(&quot;xxx&quot;).unbind(&quot;click&quot;,function(){})
-$(&quot;xxx&quot;).on(&quot;click&quot;,function(){})
-$(&quot;xxx&quot;).off(&quot;click&quot;,function(){})
-</code></pre><h5 id="3-阻止事件发生"><a href="#3-阻止事件发生" class="headerlink" title="3. 阻止事件发生"></a>3. 阻止事件发生</h5><pre><code>return false
-
-常见：阻止表单的提交
-</code></pre><h5 id="4-页面加载完成之后，执行函数体中的内容"><a href="#4-页面加载完成之后，执行函数体中的内容" class="headerlink" title="4. 页面加载完成之后，执行函数体中的内容"></a>4. 页面加载完成之后，执行函数体中的内容</h5><pre><code>$(function(){})
-$(document).ready(function(){})
-</code></pre><p><strong>案例：轮播图片大案例</strong></p>
-
-      
-
-      
+      <% if ((theme.reward_type === 2 || (theme.reward_type === 1 && post.reward)) && !index){ %>
         <div class="page-reward">
           <a href="javascript:;" class="page-reward-btn tooltip-top">
             <div class="tooltip tooltip-east">
@@ -295,20 +175,20 @@ $(document).ready(function(){})
             <span class="tooltip-content">
               <span class="tooltip-text">
                 <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
+                  <p class="reward-p"><i class="icon icon-quo-left"></i><%= theme.reward_wording%><i class="icon icon-quo-right"></i></p>
                   <div class="reward-box">
-                    
+                    <% if(theme.alipay) {%>
                     <div class="reward-box-item">
-                      <img class="reward-img" src="/img/zhifubao.png">
+                      <img class="reward-img" src="<%= theme.alipay%>">
                       <span class="reward-type">支付宝</span>
                     </div>
-                    
-                    
+                    <% } %>
+                    <% if(theme.weixin) {%>
                     <div class="reward-box-item">
-                      <img class="reward-img" src="/img/weixin.png">
+                      <img class="reward-img" src="<%= theme.weixin%>">
                       <span class="reward-type">微信</span>
                     </div>
-                    
+                    <% } %>
                   </div>
                 </span>
               </span>
@@ -316,132 +196,74 @@ $(document).ready(function(){})
           </div>
           </a>
         </div>
-      
+      <% } %>
     </div>
     <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Jquery</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
+      <%if(post.top){%>
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
+      <% } %>
+      <%- partial('post/tag') %>
+      <%- partial('post/category') %>
+      <% if (index && theme.show_all_link){ %>
+        <p class="article-more-link">
+          <a class="article-more-a" href="<%- url_for(post.path) %>"><%= theme.show_all_link %> >></a>
+        </p>
+      <% } %>
 
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/07/Javascript类库作用以及对比/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
+      <% if (!index && theme.share_jia){ %>
+        <%- partial('post/share') %>
+      <% } %>
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/05/07/DOM操作/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          DOM操作学习目录
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/05/07/前端优化的技巧/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">前端性能优化问题</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
+<% if (!index){ %>
+  <%- partial('post/nav') %>
+<% } %>
 
 
-
-
-
+<% if (!index && post.comments){ %>
+  <% if (theme.duoshuo){ %>
+  <%- partial('post/duoshuo', {
+      key: post.slug,
+      title: post.title,
+      url: config.url+url_for(post.path)
+    }) %>
+  <% } %>
   
-  
-  
-  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-<script>
-  var cloudTieConfig = {
-    url: document.location.href, 
-    sourceId: "",
-    productKey: "123b873e038145ba94270feb5223d8d8",
-    target: "cloud-tie-wrapper"
-  };
-</script>
-<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+  <% if (theme.wangyiyun){ %>
+  <%- partial('post/wangyiyun') %>
+  <% } %>
 
-  
+  <% if (theme.changyan_appid && theme.changyan_conf){ %>
+  <%- partial('post/changyan', {
+      key: post.slug,
+      title: post.title,
+      url: config.url+url_for(post.path)
+    }) %>
+  <% } %>
 
-  
+  <% if (theme.disqus || config.disqus_shortname){ %>
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = '<%= theme.disqus || config.disqus_shortname %>'; // required: replace example with your forum shortname
 
-  
-
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+  <% } %>
+<% } %>
 
 
           </div>

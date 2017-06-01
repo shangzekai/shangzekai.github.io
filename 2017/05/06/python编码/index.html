@@ -61,6 +61,8 @@
 			
 				<li><a href="/">主页</a></li>
 	        
+				<li><a href="/categories">分类</a></li>
+	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
@@ -109,6 +111,8 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
@@ -121,7 +125,9 @@
 				<ul style="width: 50%">
 				
 				
-					<li style="width: 100%"><a href="/">主页</a></li>
+					<li style="width: 50%"><a href="/">主页</a></li>
+		        
+					<li style="width: 50%"><a href="/categories">分类</a></li>
 		        
 				</ul>
 			</nav>
@@ -136,77 +142,30 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-python编码" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="<%= post.layout %>-<%= post.slug %>" class="article article-type-<%= post.layout %> <%if(index){%> article-index<%}%>" itemscope itemprop="blogPost">
   <div class="article-inner">
-    
+    <% if (post.link || post.title){ %>
       <header class="article-header">
-        
-  
-    <h1 class="article-title" itemprop="name">
-      python字符编码
-    </h1>
-  
-
-        
-        <a href="/2017/05/06/python编码/" class="archive-article-date">
-  	<time datetime="2017-05-06T11:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        
+        <%- partial('post/title', {class_name: 'article-title'}) %>
+        <% if (!post.noDate){ %>
+        <%- partial('post/date', {class_name: 'archive-article-date', date_format: null}) %>
+        <% } %>
       </header>
-    
+    <% } %>
     <div class="article-entry" itemprop="articleBody">
-      
-	
+      <% if (post.excerpt && index){ %>
+        <%- post.excerpt %>
+      <% } else { %>
+	<% if (!index){ %>
         <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#相关概念"><span class="toc-text">相关概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#coding-utf-8和sys-getdefaultencoding"><span class="toc-text">coding=utf-8和sys.getdefaultencoding()</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Python2-x的字符编码问题"><span class="toc-text">Python2.x的字符编码问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Python3-x的字符编码问题"><span class="toc-text">Python3.x的字符编码问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结建议"><span class="toc-text">总结建议</span></a></li></ol>
+          <%- toc(post.content,{list_number:false}) %>
           <hr/>
         </div>
-        
-        <p>如果你正在使用 Python2.x，那么你一定遇到了一些或者很多关于字符编码解码报错情况。是的，所以，如果你愿意，让我们一层一层一层的剥开它的心，你会发现你会讶异，真TM的简单。</p>
-<a id="more"></a>
-<h4 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a><strong><div id="title">相关概念</div></strong></h4><ul>
-<li>计算机中的一切均为bytes(字节)。硬盘中的文件为一系列的byte组成，网络中传输的只有byte。所有的信息，在你写的程序中进进出出的，均由byte组成</li>
-<li>字符：我们现在看到的英文字母、中文汉字就是经过计算机解码后对人类友好的抽象符号的表现</li>
-<li>encode() 编码： 将字符转换成二进制流</li>
-<li>decode() 解码： 将二进制流转换成字符</li>
-</ul>
-<hr>
-<h4 id="coding-utf-8和sys-getdefaultencoding"><a href="#coding-utf-8和sys-getdefaultencoding" class="headerlink" title="coding=utf-8和sys.getdefaultencoding()"></a><strong><div id="title">coding=utf-8和sys.getdefaultencoding()</div></strong></h4><p>如果我们的 py文件中包含中文，往往需要在第一行或者第二行添加：<br><code># coding=utf-8</code> 或者 <code># -*- coding: utf-8 -*-</code></p>
-<p>这表示声明该 py文件中定义的字符串变量使用的编码方式为 utf-8。<br>python2.x 中，</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>sys.getdefaultencoding()</div><div class="line"><span class="string">'ascii'</span></div></pre></td></tr></table></figure>
-<p>python3.x 中，</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>sys.getdefaultencoding()</div><div class="line"><span class="string">'utf-8'</span></div></pre></td></tr></table></figure>
-<p><strong>注意：</strong></p>
-<blockquote>
-<p>在使用 encode() 和 decode() 的时候，如果不传入任何参数，那么 python 解释器就会使用 sys.getdefaultencoding() 所指代的编码解码方式进行 encode() 和 decode()</p>
-</blockquote>
-<hr>
-<h4 id="Python2-x的字符编码问题"><a href="#Python2-x的字符编码问题" class="headerlink" title="Python2.x的字符编码问题"></a><strong><div id="title">Python2.x的字符编码问题</div></strong></h4><p>1.在python2.x中，str 等价于bytes，是由unicode经过编码(encode)后的字节组成的字节串。在 python2.x 中你不加任何修饰直接定义的字符串，其实是字节串，切记这一点</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>str == bytes</div><div class="line"><span class="keyword">True</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'我们'</span> == <span class="string">b'我们'</span></div><div class="line"><span class="keyword">True</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b'我们'</span> == str(<span class="string">'我们'</span>)</div><div class="line"><span class="keyword">True</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b'我们'</span></div><div class="line"><span class="string">'\xce\xd2\xc3\xc7'</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>len(<span class="string">'我们'</span>)</div><div class="line"><span class="number">4</span></div><div class="line"><span class="comment">#len('我们')在windows平台下长度为4（默认编码为GBK），Linux平台下长度为6（默认编码为UTF-8)</span></div></pre></td></tr></table></figure>
-<p>2.unicode 才是真正意义上的字符串，是由 str 解码(decode)后的字符组成的字符串。定义unicode 字符串，直接在 string 前面加前缀 u 即可</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>len(<span class="string">u'我们'</span>)</div><div class="line"><span class="number">2</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>unicode(<span class="string">'我们'</span>, <span class="string">'utf-8'</span>)</div><div class="line"><span class="string">u'\u6211\u4eec'</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'我们'</span>.decode(<span class="string">'utf-8'</span>)</div><div class="line"><span class="string">u'\u6211\u4eec'</span></div><div class="line"></div><div class="line"><span class="comment">#无论是在Windows下还是在Linux下 u'我们' 的字符串长度都为2，这正是我们所想要的结果。</span></div></pre></td></tr></table></figure>
-<p>3.相互转换<br>str –(decode)–&gt; unicode –(encode)–&gt; str</p>
-<hr>
-<h4 id="Python3-x的字符编码问题"><a href="#Python3-x的字符编码问题" class="headerlink" title="Python3.x的字符编码问题"></a><strong><div id="title">Python3.x的字符编码问题</div></strong></h4><p>在 python3.x 中，字符编码问题就变得不那么混乱了，具体看下面：</p>
-<p>1.bytes 为字节串，如果你想定义一个字节串，不像在 python2.x 中那样直接定义就行了。在 python3.x 中，一般使用下面两种方式定义一个字节串：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#第一种方法，加上 b 前缀</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">b'I am a byte'</span></div><div class="line"></div><div class="line"><span class="comment">#第二种方法：</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>bytes(something, encodeing=<span class="string">'xxx'</span>)</div></pre></td></tr></table></figure>
-<p>如果想要定义一个含有中文的字节串，必须使用第二种方法，并且将 encoding参数设置为你为该 py文件设置的字符编码方式，即你在 py文件的头部设置的类似于 # coding: utf-8 中的编码方式。</p>
-<p>2.str，采用 unicode 方式编码的字符串。无论是 ‘我们’ 还是 u’我们’，都是str对象</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(<span class="string">'我们'</span>,str)</div><div class="line"><span class="keyword">True</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>isinstance(<span class="string">u'我们'</span>,str)</div><div class="line"><span class="keyword">True</span></div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>len(<span class="string">'我们'</span>)</div><div class="line"><span class="number">2</span></div></pre></td></tr></table></figure>
-<p>3.相互转换<br>bytes –(decode)–&gt; str –(encode)–&gt; bytes</p>
-<h4 id="总结建议"><a href="#总结建议" class="headerlink" title="总结建议"></a><div id="title">总结建议</div></h4><blockquote>
-<p>1.在 python2.x 中，对两个字符串进行操作时，如果这两个字符串有一个是 unicode 编码，有一个是非 unicode 编码，python 会自动使用 sys.getdefaultencoding() 的解码方式将非 unicode 编码的字符串 decode 成 unicode 编码，再进行字符串操作，python2.x 悄悄掩盖掉了 byte 到 unicode 的转换，很容易出现问题。而在 python3.x 中，取消了 bytes 和 unicode 之间的自动隐性转换。</p>
-<p>2.在需要转换的时候，全部显式转换。从字节解码成文本，用 your_string.decode(encoding)，从文本编码成字节，用 your_string.encode(encoding)。</p>
-<p>3.任何可能包含中文的字符串，请全部加上 u 前缀，这能减少很多问题。</p>
-<p>4.从外部（网页、文件、数据库等）读取数据时，读取的是字节串，应该将其 decode 成 unicode进行使用；当需要向外部输出字符串时，用该外部媒介所能接收的编码形式 encode 字符串后再传递给它。</p>
-</blockquote>
-<!-- UY BEGIN -->
-<p><div id="uyan_frame"></div></p>
-<p><script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2133125"></script><br><!-- UY END --></p>
+        <% } %>
+        <%- post.content %>
+      <% } %>
 
-      
-
-      
+      <% if ((theme.reward_type === 2 || (theme.reward_type === 1 && post.reward)) && !index){ %>
         <div class="page-reward">
           <a href="javascript:;" class="page-reward-btn tooltip-top">
             <div class="tooltip tooltip-east">
@@ -216,20 +175,20 @@
             <span class="tooltip-content">
               <span class="tooltip-text">
                 <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
+                  <p class="reward-p"><i class="icon icon-quo-left"></i><%= theme.reward_wording%><i class="icon icon-quo-right"></i></p>
                   <div class="reward-box">
-                    
+                    <% if(theme.alipay) {%>
                     <div class="reward-box-item">
-                      <img class="reward-img" src="/img/zhifubao.png">
+                      <img class="reward-img" src="<%= theme.alipay%>">
                       <span class="reward-type">支付宝</span>
                     </div>
-                    
-                    
+                    <% } %>
+                    <% if(theme.weixin) {%>
                     <div class="reward-box-item">
-                      <img class="reward-img" src="/img/weixin.png">
+                      <img class="reward-img" src="<%= theme.weixin%>">
                       <span class="reward-type">微信</span>
                     </div>
-                    
+                    <% } %>
                   </div>
                 </span>
               </span>
@@ -237,132 +196,74 @@
           </div>
           </a>
         </div>
-      
+      <% } %>
     </div>
     <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">编码</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
+      <%if(post.top){%>
+        <div class="article-pop-out tagcloud">
+          <i class="icon-tuding"></i>
+          <a class="article-tag-list-link color3">置顶</a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
+      <% } %>
+      <%- partial('post/tag') %>
+      <%- partial('post/category') %>
+      <% if (index && theme.show_all_link){ %>
+        <p class="article-more-link">
+          <a class="article-more-a" href="<%- url_for(post.path) %>"><%= theme.show_all_link %> >></a>
+        </p>
+      <% } %>
 
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/06/python编码/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
+      <% if (!index && theme.share_jia){ %>
+        <%- partial('post/share') %>
+      <% } %>
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2017/05/06/列表生成式/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          python的各种器
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2017/05/06/python常见的模块/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Python常用模块</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
+<% if (!index){ %>
+  <%- partial('post/nav') %>
+<% } %>
 
 
-
-
-
+<% if (!index && post.comments){ %>
+  <% if (theme.duoshuo){ %>
+  <%- partial('post/duoshuo', {
+      key: post.slug,
+      title: post.title,
+      url: config.url+url_for(post.path)
+    }) %>
+  <% } %>
   
-  
-  
-  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-<script>
-  var cloudTieConfig = {
-    url: document.location.href, 
-    sourceId: "",
-    productKey: "123b873e038145ba94270feb5223d8d8",
-    target: "cloud-tie-wrapper"
-  };
-</script>
-<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+  <% if (theme.wangyiyun){ %>
+  <%- partial('post/wangyiyun') %>
+  <% } %>
 
-  
+  <% if (theme.changyan_appid && theme.changyan_conf){ %>
+  <%- partial('post/changyan', {
+      key: post.slug,
+      title: post.title,
+      url: config.url+url_for(post.path)
+    }) %>
+  <% } %>
 
-  
+  <% if (theme.disqus || config.disqus_shortname){ %>
+    <section id="comments">
+      <div id="disqus_thread"></div>
+        <script type="text/javascript">
+        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+        var disqus_shortname = '<%= theme.disqus || config.disqus_shortname %>'; // required: replace example with your forum shortname
 
-  
-
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+  <% } %>
+<% } %>
 
 
           </div>
