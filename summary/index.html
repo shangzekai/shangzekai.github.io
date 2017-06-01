@@ -159,128 +159,166 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="<%= post.layout %>-<%= post.slug %>" class="article article-type-<%= post.layout %> <%if(index){%> article-index<%}%>" itemscope itemprop="blogPost">
+            <article id="page-undefined" class="article article-type-page " itemscope itemprop="blogPost">
   <div class="article-inner">
-    <% if (post.link || post.title){ %>
+    
       <header class="article-header">
-        <%- partial('post/title', {class_name: 'article-title'}) %>
-        <% if (!post.noDate){ %>
-        <%- partial('post/date', {class_name: 'archive-article-date', date_format: null}) %>
-        <% } %>
-      </header>
-    <% } %>
-    <div class="article-entry" itemprop="articleBody">
-      <% if (post.excerpt && index){ %>
-        <%- post.excerpt %>
-      <% } else { %>
-	<% if (!index){ %>
-        <div id="toc" class="article-toc">
-          <%- toc(post.content,{list_number:false}) %>
-          <hr/>
-        </div>
-        <% } %>
-        <%- post.content %>
-      <% } %>
+        
+  
+    <h1 class="article-title" itemprop="name">
+      一些
+    </h1>
+  
 
-      <% if ((theme.reward_type === 2 || (theme.reward_type === 1 && post.reward)) && !index){ %>
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i><%= theme.reward_wording%><i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    <% if(theme.alipay) {%>
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="<%= theme.alipay%>">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    <% } %>
-                    <% if(theme.weixin) {%>
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="<%= theme.weixin%>">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    <% } %>
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      <% } %>
+        
+        <a href="/summary/index.html" class="archive-article-date">
+  	<time datetime="2017-05-11T04:43:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-11</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+
+	
+		<blockquote>
+<p>逼是一样的逼，装上见高低</p>
+</blockquote>
+<h4 id="已读"><a href="#已读" class="headerlink" title="已读"></a><div id="title">已读</div></h4><blockquote>
+<script src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script><div class="hexo-img-stream"><style type="text/css">.hexo-image-steam-lazy {display:block;}.hexo-img-stream{width:90%;max-width:1100px;margin:3% auto}div.hexo-img-stream figure{background:#fefefe;box-shadow:0 1px 2px rgba(34,25,25,0.4);margin:10px 10px;padding:3%;padding-bottom:10px;display:inline-block;max-width:25%}div.hexo-img-stream figure img{border-bottom:1px solid #ccc;padding-bottom:15px;margin-bottom:5px}div.hexo-img-stream figure figcaption{font-size:.9rem;color:#444;line-height:1.5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}div.hexo-img-stream small{font-size:1rem;float:right;text-transform:uppercase;color:#aaa}div.hexo-img-stream small a{color:#666;text-decoration:none;transition:.4s color}@media screen and (max-width:750px){.hexo-img-stream{column-gap:0}}</style>
+<figure><img class="hexo-image-steam-lazy" src="https://img3.doubanio.com/mpic/s6088056.jpg"><figcaption><a href="https://book.douban.com/subject/4113090/" target="_blank" rel="external">我们台湾这些年</a>
+</figcaption></figure>
+<figure><img class="hexo-image-steam-lazy" src="https://img3.doubanio.com/mpic/s27722803.jpg"><figcaption><a href="https://book.douban.com/subject/26215044/" target="_blank" rel="external">我们台湾这些年2</a>
+</figcaption></figure>
+<figure><img class="hexo-image-steam-lazy" src="https://img3.doubanio.com/mpic/s1074291.jpg"><figcaption><a href="https://book.douban.com/subject/1029791/" target="_blank" rel="external">许三观卖血记</a>
+</figcaption></figure>
+<figure><img class="hexo-image-steam-lazy" src="https://img3.doubanio.com/mpic/s23836852.jpg"><figcaption><a href="https://book.douban.com/subject/1082154/" target="_blank" rel="external">活着</a>
+</figcaption></figure>
+<figure><img class="hexo-image-steam-lazy" src="https://img1.doubanio.com/mpic/s1120877.jpg"><figcaption><a href="https://book.douban.com/subject/1084165/" target="_blank" rel="external">平凡的世界</a>
+</figcaption></figure>
+<figure><img class="hexo-image-steam-lazy" src="https://img3.doubanio.com/mpic/s3847911.jpg"><figcaption><a href="https://book.douban.com/subject/3803820/" target="_blank" rel="external">人生</a>
+</figcaption></figure>
+<figure><img class="hexo-image-steam-lazy" src="https://img3.doubanio.com/mpic/s28049685.jpg"><figcaption><a href="https://book.douban.com/subject/26340138/" target="_blank" rel="external">岛上书店</a>
+</figcaption></figure>
+<figure><img class="hexo-image-steam-lazy" src="https://img3.doubanio.com/mpic/s4635492.jpg"><figcaption><a href="https://book.douban.com/subject/5171244/" target="_blank" rel="external">把时间当朋友</a>
+</figcaption></figure>
+<figure><img class="hexo-image-steam-lazy" src="https://img3.doubanio.com/mpic/s3651235.jpg"><figcaption><a href="https://book.douban.com/subject/3590768/" target="_blank" rel="external">javascript语言精粹</a>
+</figcaption></figure>
+<figure><img class="hexo-image-steam-lazy" src="https://img3.doubanio.com/mpic/s29053401.jpg"><figcaption><a href="https://book.douban.com/subject/26830134/" target="_blank" rel="external">就喜欢你看不惯我又干不掉我的样子</a>
+</figcaption></figure>
+<figure><img class="hexo-image-steam-lazy" src="https://img3.doubanio.com/mpic/s28383445.jpg"><figcaption><a href="https://book.douban.com/subject/26708780/" target="_blank" rel="external">非洲三万里</a>
+</figcaption></figure>
+<figure><img class="hexo-image-steam-lazy" src="https://img1.doubanio.com/mpic/s2177769.jpg"><figcaption><a href="https://img1.doubanio.com/lpic/s2177769.jpg" target="_blank" rel="external">万历十五年</a>
+</figcaption></figure>
+<figure><img class="hexo-image-steam-lazy" src="https://img3.doubanio.com/mpic/s27264181.jpg"><figcaption><a href="https://book.douban.com/subject/25862578/" target="_blank" rel="external">解忧杂货店</a>
+</figcaption></figure>
+</div><script type="text/javascript">$('img.hexo-image-steam-lazy').lazyload({ effect:'fadeIn' });</script>
+</blockquote>
+<h4 id="在读"><a href="#在读" class="headerlink" title="在读"></a><div id="title">在读</div></h4><blockquote>
+<script src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script><div class="hexo-img-stream"><style type="text/css">.hexo-image-steam-lazy {display:block;}.hexo-img-stream{width:90%;max-width:1100px;margin:3% auto}div.hexo-img-stream figure{background:#fefefe;box-shadow:0 1px 2px rgba(34,25,25,0.4);margin:10px 10px;padding:3%;padding-bottom:10px;display:inline-block;max-width:25%}div.hexo-img-stream figure img{border-bottom:1px solid #ccc;padding-bottom:15px;margin-bottom:5px}div.hexo-img-stream figure figcaption{font-size:.9rem;color:#444;line-height:1.5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}div.hexo-img-stream small{font-size:1rem;float:right;text-transform:uppercase;color:#aaa}div.hexo-img-stream small a{color:#666;text-decoration:none;transition:.4s color}@media screen and (max-width:750px){.hexo-img-stream{column-gap:0}}</style><figure><img class="hexo-image-steam-lazy" src="https://img3.doubanio.com/mpic/s29105145.jpg"><figcaption><a href="https://book.douban.com/subject/26895993/" target="_blank" rel="external">刻意练习</a>
+</figcaption></figure>
+<figure><img class="hexo-image-steam-lazy" src="https://img3.doubanio.com/mpic/s28622163.jpg"><figcaption><a href="https://book.douban.com/subject/26770999/" target="_blank" rel="external">斯坦福大学创业成长课</a>
+</figcaption></figure>
+<figure><img class="hexo-image-steam-lazy" src="https://img3.doubanio.com/mpic/s28606305.jpg"><figcaption><a href="https://book.douban.com/subject/26657570/" target="_blank" rel="external">活着为了讲述</a>
+</figcaption></figure></div><script type="text/javascript">$('img.hexo-image-steam-lazy').lazyload({ effect:'fadeIn' });</script>
+</blockquote>
+<h4 id="想读"><a href="#想读" class="headerlink" title="想读"></a><div id="title">想读</div></h4><blockquote>
+<script src="//cdn.bootcss.com/jquery/2.1.0/jquery.min.js"></script><script src="//cdn.bootcss.com/jquery.lazyload/1.9.1/jquery.lazyload.min.js"></script><div class="hexo-img-stream"><style type="text/css">.hexo-image-steam-lazy {display:block;}.hexo-img-stream{width:90%;max-width:1100px;margin:3% auto}div.hexo-img-stream figure{background:#fefefe;box-shadow:0 1px 2px rgba(34,25,25,0.4);margin:10px 10px;padding:3%;padding-bottom:10px;display:inline-block;max-width:25%}div.hexo-img-stream figure img{border-bottom:1px solid #ccc;padding-bottom:15px;margin-bottom:5px}div.hexo-img-stream figure figcaption{font-size:.9rem;color:#444;line-height:1.5;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}div.hexo-img-stream small{font-size:1rem;float:right;text-transform:uppercase;color:#aaa}div.hexo-img-stream small a{color:#666;text-decoration:none;transition:.4s color}@media screen and (max-width:750px){.hexo-img-stream{column-gap:0}}</style><figure><img class="hexo-image-steam-lazy" src="https://img1.doubanio.com/mpic/s28946557.jpg"><figcaption><a href="https://book.douban.com/subject/26848740/" target="_blank" rel="external">认识电影</a>
+</figcaption></figure></div><script type="text/javascript">$('img.hexo-image-steam-lazy').lazyload({ effect:'fadeIn' });</script>
+</blockquote>
+
+	
+
     </div>
     <div class="article-info article-info-index">
-      <%if(post.top){%>
-        <div class="article-pop-out tagcloud">
-          <i class="icon-tuding"></i>
-          <a class="article-tag-list-link color3">置顶</a>
-        </div>
-      <% } %>
-      <%- partial('post/tag') %>
-      <%- partial('post/category') %>
-      <% if (index && theme.show_all_link){ %>
-        <p class="article-more-link">
-          <a class="article-more-a" href="<%- url_for(post.path) %>"><%= theme.show_all_link %> >></a>
-        </p>
-      <% } %>
+      
+      
 
-      <% if (!index && theme.share_jia){ %>
-        <%- partial('post/share') %>
-      <% } %>
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/summary/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
-<% if (!index){ %>
-  <%- partial('post/nav') %>
-<% } %>
 
-
-<% if (!index && post.comments){ %>
-  <% if (theme.duoshuo){ %>
-  <%- partial('post/duoshuo', {
-      key: post.slug,
-      title: post.title,
-      url: config.url+url_for(post.path)
-    }) %>
-  <% } %>
   
-  <% if (theme.wangyiyun){ %>
-  <%- partial('post/wangyiyun') %>
-  <% } %>
 
-  <% if (theme.changyan_appid && theme.changyan_conf){ %>
-  <%- partial('post/changyan', {
-      key: post.slug,
-      title: post.title,
-      url: config.url+url_for(post.path)
-    }) %>
-  <% } %>
 
-  <% if (theme.disqus || config.disqus_shortname){ %>
-    <section id="comments">
-      <div id="disqus_thread"></div>
-        <script type="text/javascript">
-        /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
-        var disqus_shortname = '<%= theme.disqus || config.disqus_shortname %>'; // required: replace example with your forum shortname
 
-        /* * * DON'T EDIT BELOW THIS LINE * * */
-        (function() {
-          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-      </script>
-      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-    </section>
-  <% } %>
-<% } %>
+
+  
+  
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: document.location.href, 
+    sourceId: "",
+    productKey: "123b873e038145ba94270feb5223d8d8",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
+  
+
+  
+
+  
+
 
           </div>
         </div>
