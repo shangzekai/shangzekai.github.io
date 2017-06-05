@@ -41,7 +41,7 @@
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
   
-    <link rel="icon" href="/img/favicon.ico">
+    <link rel="icon" href="/favicon.png">
   
   <link rel="stylesheet" type="text/css" href="/./main.b3331d.css">
   <style type="text/css">
@@ -65,7 +65,7 @@
 <div class="intrude-less">
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
-			<img src="/img/my.png" class="js-avatar">
+			<img src="null" class="js-avatar">
 		</a>
 		<hgroup>
 		  <h1 class="header-author"><a href="/">Shang</a></h1>
@@ -79,14 +79,14 @@
 			
 				<li><a href="/">主页</a></li>
 	        
-				<li><a href="/categories">分类</a></li>
+				<li><a href="/tags/随笔/">随笔</a></li>
 	        
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
     		
     			
-    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有</a>
+    			<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
     			
             
     			
@@ -94,13 +94,21 @@
     			
             
     			
-    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于</a>
+    			<a q-on="click: openSlider(e, 'aboutme')" href="javascript:void(0)">关于我</a>
     			
             
 		</nav>
 		<nav class="header-nav">
 			<div class="social">
 				
+					<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+		        
+					<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
+		        
+					<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
+		        
+					<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+		        
 			</div>
 		</nav>
 	</header>		
@@ -117,7 +125,7 @@
 	<div class="intrude-less">
 		<header id="header" class="inner">
 			<div class="profilepic">
-				<img src="/img/my.png" class="js-avatar">
+				<img src="null" class="js-avatar">
 			</div>
 			<hgroup>
 			  <h1 class="header-author js-header-author">Shang</h1>
@@ -136,6 +144,14 @@
 			<nav class="header-nav">
 				<div class="social">
 					
+						<a class="github" target="_blank" href="#" title="github"><i class="icon-github"></i></a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo"><i class="icon-weibo"></i></a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss"><i class="icon-rss"></i></a>
+			        
+						<a class="zhihu" target="_blank" href="#" title="zhihu"><i class="icon-zhihu"></i></a>
+			        
 				</div>
 			</nav>
 
@@ -145,7 +161,7 @@
 				
 					<li style="width: 50%"><a href="/">主页</a></li>
 		        
-					<li style="width: 50%"><a href="/categories">分类</a></li>
+					<li style="width: 50%"><a href="/tags/随笔/">随笔</a></li>
 		        
 				</ul>
 			</nav>
@@ -180,12 +196,6 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-	
-        <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#数据库相关概念"><span class="toc-text">数据库相关概念</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-啥是数据库？"><span class="toc-text">1. 啥是数据库？</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-数据库的分类"><span class="toc-text">2. 数据库的分类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-关系型数据库的特点"><span class="toc-text">3. 关系型数据库的特点</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-关系型数据库的常用术语"><span class="toc-text">4. 关系型数据库的常用术语</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#认识MySQL"><span class="toc-text">认识MySQL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据库的安装"><span class="toc-text">数据库的安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据库操作"><span class="toc-text">数据库操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-显示数据库"><span class="toc-text">1. 显示数据库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-创建数据库"><span class="toc-text">2. 创建数据库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-使用数据库"><span class="toc-text">3. 使用数据库</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-用户管理"><span class="toc-text">4. 用户管理</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-授权管理"><span class="toc-text">5. 授权管理</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MySQL数据类型"><span class="toc-text">MySQL数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-数值型"><span class="toc-text">1. 数值型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-字符串类型"><span class="toc-text">2. 字符串类型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-时间日期类型"><span class="toc-text">3. 时间日期类型</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-特殊的NULL类型"><span class="toc-text">4. 特殊的NULL类型</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据表操作"><span class="toc-text">数据表操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-创建表"><span class="toc-text">1. 创建表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-删除表"><span class="toc-text">2. 删除表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-清空表"><span class="toc-text">3. 清空表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-修改表"><span class="toc-text">4. 修改表</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#表的增删改查"><span class="toc-text">表的增删改查</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-增加"><span class="toc-text">1.增加</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-删除"><span class="toc-text">2.删除</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-修改"><span class="toc-text">3.修改</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-基本查询"><span class="toc-text">4.基本查询</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-高级查询"><span class="toc-text">5.高级查询</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-连接查询"><span class="toc-text">6. 连接查询</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#子查询"><span class="toc-text">子查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#存储引擎和字符集"><span class="toc-text">存储引擎和字符集</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-存储引擎"><span class="toc-text">1. 存储引擎</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-字符集"><span class="toc-text">2. 字符集</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#练习作业"><span class="toc-text">练习作业</span></a></li></ol>
-          <hr/>
-        </div>
-        
         <h4 id="数据库相关概念"><a href="#数据库相关概念" class="headerlink" title="数据库相关概念"></a><div id="title">数据库相关概念</div></h4><h5 id="1-啥是数据库？"><a href="#1-啥是数据库？" class="headerlink" title="1. 啥是数据库？"></a>1. 啥是数据库？</h5><ul>
 <li>简单理解<blockquote>
 <p>所谓的数据库，其实就是有点类似于excel表格，主要就是用来管理数据，对数据进行增删改查的。所以某种程度上来说，excel也可以看成一个简单的数库，只不过是在文件中对数据的读写速度相对较慢，所以现在我们使用数据库管理系统来管理和存储大量的数据</p>
@@ -542,19 +552,9 @@
             <span class="tooltip-content">
               <span class="tooltip-text">
                 <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
                   <div class="reward-box">
                     
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/zhifubao.png">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/weixin.png">
-                      <span class="reward-type">微信</span>
-                    </div>
                     
                   </div>
                 </span>
@@ -582,7 +582,6 @@
       		
 		</ul>
 	</div>
-
 
       
 	<div class="article-category tagcloud">
@@ -683,23 +682,10 @@
   
   
   
-  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
-<script>
-  var cloudTieConfig = {
-    url: document.location.href, 
-    sourceId: "",
-    productKey: "123b873e038145ba94270feb5223d8d8",
-    target: "cloud-tie-wrapper"
-  };
-</script>
-<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
 
   
 
   
-
-  
-
 
 
           </div>
@@ -711,19 +697,12 @@
     	<div class="footer-left">
     		&copy; 2017 Shang
     	</div>
-<span id="busuanzi_container_site_pv">
-    本站总访问量<span id="busuanzi_value_site_pv"></span>次
-</span>
       	<div class="footer-right">
       		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
       	</div>
     </div>
   </div>
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
-</script>
 </footer>
-
-
     </div>
     <script>
 	var yiliaConfig = {
@@ -736,7 +715,7 @@
 		open_in_new: false,
 		root: "/",
 		innerArchive: true,
-		showTags: true
+		showTags: false
 	}
 </script>
 
@@ -769,7 +748,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
     
     
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有</a></li>
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
       
         
       
@@ -777,7 +756,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
       
         
       
-      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于</a></li>
+      <li style="width: 33.333333333333336%" q-on="click: openSlider(e, 'aboutme')"><a href="javascript:void(0)" q-class="active:aboutme">关于我</a></li>
       
         
     </ul>
@@ -926,27 +905,27 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
         <ul class="search-ul">
           
             <li class="search-li">
-              <a href="http://www.cnblogs.com/alex3714/category/770733.html" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>金角大王</a>
+              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接1</a>
             </li>
           
             <li class="search-li">
-              <a href="http://www.cnblogs.com/wupeiqi/articles/4938499.html" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>银角大王</a>
+              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接2</a>
             </li>
           
             <li class="search-li">
-              <a href="http://www.liaoxuefeng.com/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>廖雪峰</a>
+              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接3</a>
             </li>
           
             <li class="search-li">
-              <a href="http://www.ruanyifeng.com/blog/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>阮一峰</a>
+              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接4</a>
             </li>
           
             <li class="search-li">
-              <a href="http://coolshell.cn/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>陈皓</a>
+              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接5</a>
             </li>
           
             <li class="search-li">
-              <a href="http://www.cnblogs.com/shangzekai/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>MINE</a>
+              <a href="http://localhost:4000/" target="_blank" class="search-title"><i class="icon-quo-left icon"></i>友情链接6</a>
             </li>
           
         </ul>
@@ -957,7 +936,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
     
     	<section class="tools-section tools-section-me" q-show="aboutme">
   	  	
-  	  		<div class="aboutme-wrap" id="js-aboutme">选择永远比努力更重要</div>
+  	  		<div class="aboutme-wrap" id="js-aboutme">很惭愧&lt;br&gt;&lt;br&gt;只做了一点微小的工作&lt;br&gt;谢谢大家</div>
   	  	
     	</section>
     
