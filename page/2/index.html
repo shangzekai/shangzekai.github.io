@@ -216,6 +216,124 @@
 
 
   
+    <article id="post-MySQL多实例安装" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/05/MySQL多实例安装/">MySQL多实例安装</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/05/MySQL多实例安装/" class="archive-article-date">
+  	<time datetime="2017-05-05T15:53:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
+<p>最近由于工作的需要，需要在同一台机器上搭建两个MySQL的实例，（注：已经存在了一个3306的MySQL的实例）</p>
+</blockquote>
+<h4 id="mysql的多实例概念"><a href="#mysql的多实例概念" class="headerlink" title="mysql的多实例概念"></a><div id="title">mysql的多实例概念</div></h4><blockquote>
+<p>简单的来说就是一台机器上安装了多个mysql的服务，通过不同的端口（如3307,3308）来向外界提供服务，这些进程通过不同的socket来监听不同的服务端口来提供各自的服务</p>
+<p>做个比喻：MySQL的多实例相当于房子的相当于多个卧室一样，每个实例可以看做是一个卧室，整个服务器就是一个房子，服务器的硬件资源(cpu,mem,disk)就是共享的资源，相当于房子的卫生间，厨房，客厅一样，是房子的公共资源，北漂蜗居在一起，肯定是要共用上述的资源的</p>
+</blockquote>
+<ul>
+<li><p>好处：</p>
+<blockquote>
+<p>当公司资金紧张，可以节约服务器的资源</p>
+</blockquote>
+</li>
+<li><p>坏处：</p>
+<blockquote>
+<p>当某个服务并发很高或者有慢查询的时候，整个实例会消耗整个服务器更多的内存，cpu和各种资源，导致服务器上的其他的实例提供的服务质量下降。这就相当于大家住在一个房子的不同卧室一样，早晨起来刷牙，洗脸等，这样卫生间就会长期占用，其他人需要等一样的道理</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="安装mysql多实例"><a href="#安装mysql多实例" class="headerlink" title="安装mysql多实例"></a><div id="title">安装mysql多实例</div></h4><h5 id="1-创建数据文件夹"><a href="#1-创建数据文件夹" class="headerlink" title="1. 创建数据文件夹"></a>1. 创建数据文件夹</h5><blockquote>
+<p>假设已经存在一个MySQL的实例，端口号为3306，现在需要重新添加一个端口号为3307端口的MySql的实例。</p>
+<p>假设MySQl安装的路径是/usr/local/mysql/下面，找一个数据磁盘比较的地方，比如/data1/目录下，在这个目录下面创建数据文件夹：</p>
+</blockquote>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">mkdir  -p /data1/mysql_3307/data</div><div class="line">chown  -R mysql<span class="type">::</span>mysql /data1/mysql_3307</div></pre></td></tr></table></figure>
+<h5 id="2-编辑配置文件"><a href="#2-编辑配置文件" class="headerlink" title="2. 编辑配置文件"></a>2. 编辑配置文件</h5><blockquote>
+<p>复制之前的MySQl的配置文件，到/data1/mysql_3307/目录下面，并且进行编辑，将端口号改成3307即可</p>
+</blockquote>
+<h5 id="3-初始化数据库"><a href="#3-初始化数据库" class="headerlink" title="3. 初始化数据库"></a>3. 初始化数据库</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/local/mysql/scripts/mysql_install_db --defaults-file=/data1/mysql_3307/my.cnf --datadir=/data1/mysql/ --basedir=/usr/lcoal/mysql</div></pre></td></tr></table></figure>
+<p>　　完成后，新的mysql3307数据库已经初始化好了，如果有报错，则看下报错的日志，一般是由于mysql的配置文件导致的，修改即可！</p>
+<h5 id="4-启动新实例"><a href="#4-启动新实例" class="headerlink" title="4. 启动新实例"></a>4. 启动新实例</h5><blockquote>
+<p>在上面的初始化配置确保无误的情况下，就可以开始启动MySQL的又一个实例了</p>
+</blockquote>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/usr/<span class="keyword">local</span>/mysql/bin/mysqld_safe --defaults-file=/data1/mysql_3307/my.cnf &amp;</div><div class="line">检查是否启动：</div><div class="line">    ps -aux | grep mysql</div><div class="line">    如有<span class="number">3307</span>的端口   则表示成功</div></pre></td></tr></table></figure>
+<h5 id="5-设置密码"><a href="#5-设置密码" class="headerlink" title="5. 设置密码"></a>5. 设置密码</h5><figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/usr/<span class="keyword">local</span>/mysl/bin/mysqladmin     -S /tmp/mysql_3308.sock -uroot passwd 'new-paswd';</div></pre></td></tr></table></figure>
+<blockquote>
+<p>如上面的步骤，即可完成一个机器上多个MySQL实例的安装与运行<br>当然了，可以将MySQL_server这个脚本放入到/rt/rc.local这个目录下面，随着服务器启动</p>
+</blockquote>
+<h5 id="6-登录"><a href="#6-登录" class="headerlink" title="6. 登录"></a>6. 登录</h5><blockquote>
+<p>如果想登陆的时候，需要指定MySQL的端口号，使用-P3307来指定登录到哪台数据库上即可</p>
+</blockquote>
+<h5 id="7-小结"><a href="#7-小结" class="headerlink" title="7. 小结"></a>7. 小结</h5><blockquote>
+<p>自己在安装这个数据库的时候，以为是需要再次下载一个新的数据库的源码包，但是其实是不用的，使用一个MySQL的源码包，是可以安装多个MySQL的实例的</p>
+</blockquote>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/MySQL/" class="article-tag-list-link color1">MySQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/05/MySQL多实例安装/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-MySQL初级部分" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
