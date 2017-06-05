@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/05/MySQL多实例安装/index.html">
 <meta property="og:site_name" content="Python">
 <meta property="og:description" content="前言 最近由于工作的需要，需要在同一台机器上搭建两个MySQL的实例，（注：已经存在了一个3306的MySQL的实例）">
-<meta property="og:updated_time" content="2017-06-05T11:16:00.000Z">
+<meta property="og:updated_time" content="2017-06-05T11:18:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL多实例安装">
 <meta name="twitter:description" content="前言 最近由于工作的需要，需要在同一台机器上搭建两个MySQL的实例，（注：已经存在了一个3306的MySQL的实例）">
@@ -169,8 +169,11 @@
         </div>
         
         <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
-<p>最近由于工作的需要，需要在同一台机器上搭建两个MySQL的实例，（注：已经存在了一个3306的MySQL的实例）<br><a id="more"></a></p>
-<h4 id="mysql的多实例概念"><a href="#mysql的多实例概念" class="headerlink" title="mysql的多实例概念"></a><div id="title">mysql的多实例概念</div></h4><p>简单的来说就是一台机器上安装了多个mysql的服务，通过不同的端口（如3307,3308）来向外界提供服务，这些进程通过不同的socket来监听不同的服务端口来提供各自的服务</p>
+<p>最近由于工作的需要，需要在同一台机器上搭建两个MySQL的实例，（注：已经存在了一个3306的MySQL的实例）</p>
+</blockquote>
+<a id="more"></a>
+<h4 id="mysql的多实例概念"><a href="#mysql的多实例概念" class="headerlink" title="mysql的多实例概念"></a><div id="title">mysql的多实例概念</div></h4><blockquote>
+<p>简单的来说就是一台机器上安装了多个mysql的服务，通过不同的端口（如3307,3308）来向外界提供服务，这些进程通过不同的socket来监听不同的服务端口来提供各自的服务</p>
 <p>做个比喻：MySQL的多实例相当于房子的相当于多个卧室一样，每个实例可以看做是一个卧室，整个服务器就是一个房子，服务器的硬件资源(cpu,mem,disk)就是共享的资源，相当于房子的卫生间，厨房，客厅一样，是房子的公共资源，北漂蜗居在一起，肯定是要共用上述的资源的</p>
 </blockquote>
 <ul>
