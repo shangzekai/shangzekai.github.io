@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>MySQL备份总结 | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="为啥会需要备份1）需要升级数据库或者是需要增加一个从库的时候 2）主库或者从库宕机，需要数据的备份 3）人为的DDl或者是DML的语句，导致主从库的数据消失 4）跨机房的灾备，需要备份数据到远端程序 MySQLDump备份数据库 一般使用的是mysqldump来进行备份，每次dump的数据是1000条，并且在这个过程中会进行锁表(这种方式是逻辑备份，即直接将数据库中的数据导成sql语句进行备份的过">
+  <meta name="description" content="为啥会需要备份1）需要升级数据库或者是需要增加一个从库的时候 2）主库或者从库宕机，需要数据的备份 3）人为的DDl或者是DML的语句，导致主从库的数据消失 4）跨机房的灾备，需要备份数据到远端程序">
 <meta name="keywords" content="基础,mysql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MySQL备份总结">
-<meta property="og:url" content="http://yoursite.com/2017/05/07/mysql数据备份/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/05/05/mysql数据备份/index.html">
 <meta property="og:site_name" content="Python">
-<meta property="og:description" content="为啥会需要备份1）需要升级数据库或者是需要增加一个从库的时候 2）主库或者从库宕机，需要数据的备份 3）人为的DDl或者是DML的语句，导致主从库的数据消失 4）跨机房的灾备，需要备份数据到远端程序 MySQLDump备份数据库 一般使用的是mysqldump来进行备份，每次dump的数据是1000条，并且在这个过程中会进行锁表(这种方式是逻辑备份，即直接将数据库中的数据导成sql语句进行备份的过">
-<meta property="og:updated_time" content="2017-06-05T10:40:32.000Z">
+<meta property="og:description" content="为啥会需要备份1）需要升级数据库或者是需要增加一个从库的时候 2）主库或者从库宕机，需要数据的备份 3）人为的DDl或者是DML的语句，导致主从库的数据消失 4）跨机房的灾备，需要备份数据到远端程序">
+<meta property="og:updated_time" content="2017-06-05T10:44:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL备份总结">
-<meta name="twitter:description" content="为啥会需要备份1）需要升级数据库或者是需要增加一个从库的时候 2）主库或者从库宕机，需要数据的备份 3）人为的DDl或者是DML的语句，导致主从库的数据消失 4）跨机房的灾备，需要备份数据到远端程序 MySQLDump备份数据库 一般使用的是mysqldump来进行备份，每次dump的数据是1000条，并且在这个过程中会进行锁表(这种方式是逻辑备份，即直接将数据库中的数据导成sql语句进行备份的过">
+<meta name="twitter:description" content="为啥会需要备份1）需要升级数据库或者是需要增加一个从库的时候 2）主库或者从库宕机，需要数据的备份 3）人为的DDl或者是DML的语句，导致主从库的数据消失 4）跨机房的灾备，需要备份数据到远端程序">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
@@ -154,8 +154,8 @@
   
 
         
-        <a href="/2017/05/07/mysql数据备份/" class="archive-article-date">
-  	<time datetime="2017-05-07T15:56:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
+        <a href="/2017/05/05/mysql数据备份/" class="archive-article-date">
+  	<time datetime="2017-05-05T15:56:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
 </a>
         
       </header>
@@ -172,6 +172,7 @@
 <p>2）主库或者从库宕机，需要数据的备份</p>
 <p>3）人为的DDl或者是DML的语句，导致主从库的数据消失</p>
 <p>4）跨机房的灾备，需要备份数据到远端程序</p>
+<a id="more"></a>
 <h4 id="MySQLDump备份数据库"><a href="#MySQLDump备份数据库" class="headerlink" title="MySQLDump备份数据库"></a><div id="title">MySQLDump备份数据库</div></h4><blockquote>
 <p>一般使用的是mysqldump来进行备份，每次dump的数据是1000条，并且在这个过程中会进行锁表(这种方式是逻辑备份，即直接将数据库中的数据导成sql语句进行备份的过程)</p>
 </blockquote>
@@ -335,7 +336,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/07/mysql数据备份/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/05/mysql数据备份/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -349,9 +350,18 @@
   
 <nav id="article-nav">
   
+    <a href="/2017/05/06/python模块之requests和re/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Python常用模块之requests，urllib和re
+        
+      </div>
+    </a>
   
-    <a href="/2017/05/07/html学习基础/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">HTML基础学习目录</div>
+  
+    <a href="/2017/05/05/MySQL初级部分/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MySQL基础学习目录</div>
       <i class="icon-circle-right"></i>
     </a>
   
