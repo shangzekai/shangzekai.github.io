@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Redis学习目录 | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="NoSQL出现的原因 随着近几年大数据的不断火爆，数据量已经不是之前的G级别，有的时候数据量一天就能达到T级别，甚至PT级别，因此此时我们再使用传统的数据库来进行存储数据的时候，显然已经不能满足我们的需要了，这个时候，基于内存存储的Key-Value数据库就呼之欲出了">
+  <meta name="description" content="Redis的官方定义 Redis is an open source, BSD licensed, advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.redis">
 <meta name="keywords" content="基础,NoSQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Redis学习目录">
 <meta property="og:url" content="http://yoursite.com/2017/05/05/Redis学习目录/index.html">
 <meta property="og:site_name" content="Python">
-<meta property="og:description" content="NoSQL出现的原因 随着近几年大数据的不断火爆，数据量已经不是之前的G级别，有的时候数据量一天就能达到T级别，甚至PT级别，因此此时我们再使用传统的数据库来进行存储数据的时候，显然已经不能满足我们的需要了，这个时候，基于内存存储的Key-Value数据库就呼之欲出了">
-<meta property="og:updated_time" content="2017-06-06T08:41:21.000Z">
+<meta property="og:description" content="Redis的官方定义 Redis is an open source, BSD licensed, advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.redis">
+<meta property="og:updated_time" content="2017-06-06T09:27:40.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis学习目录">
-<meta name="twitter:description" content="NoSQL出现的原因 随着近几年大数据的不断火爆，数据量已经不是之前的G级别，有的时候数据量一天就能达到T级别，甚至PT级别，因此此时我们再使用传统的数据库来进行存储数据的时候，显然已经不能满足我们的需要了，这个时候，基于内存存储的Key-Value数据库就呼之欲出了">
+<meta name="twitter:description" content="Redis的官方定义 Redis is an open source, BSD licensed, advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.redis">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
@@ -164,39 +164,14 @@
       
 	
         <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#NoSQL出现的原因"><span class="toc-text">NoSQL出现的原因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#常见的NoSQL数据库"><span class="toc-text">常见的NoSQL数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-Memcache"><span class="toc-text">1. Memcache</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-MongoDB"><span class="toc-text">2. MongoDB</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-Redis"><span class="toc-text">3. Redis</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis的官方定义"><span class="toc-text">Redis的官方定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis的安装和下载"><span class="toc-text">Redis的安装和下载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis的常见操作"><span class="toc-text">Redis的常见操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-对于key的所有操作"><span class="toc-text">1. 对于key的所有操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-字符串操作"><span class="toc-text">2. 字符串操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-链表操作"><span class="toc-text">3. 链表操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-集合set操作"><span class="toc-text">4. 集合set操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-有序集合order-set操作"><span class="toc-text">5. 有序集合order set操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-Hash数据结构操作"><span class="toc-text">6. Hash数据结构操作</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis的官方定义"><span class="toc-text">Redis的官方定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis的安装和下载"><span class="toc-text">Redis的安装和下载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis的常见操作"><span class="toc-text">Redis的常见操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-对于key的所有操作"><span class="toc-text">1. 对于key的所有操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-字符串操作"><span class="toc-text">2. 字符串操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-链表操作"><span class="toc-text">3. 链表操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-集合set操作"><span class="toc-text">4. 集合set操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-有序集合order-set操作"><span class="toc-text">5. 有序集合order set操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-Hash数据结构操作"><span class="toc-text">6. Hash数据结构操作</span></a></li></ol></li></ol>
           <hr/>
         </div>
         
-        <h4 id="NoSQL出现的原因"><a href="#NoSQL出现的原因" class="headerlink" title="NoSQL出现的原因"></a><div id="title">NoSQL出现的原因</div></h4><blockquote>
-<p>随着近几年大数据的不断火爆，数据量已经不是之前的G级别，有的时候数据量一天就能达到T级别，甚至PT级别，因此此时我们再使用传统的数据库来进行存储数据的时候，显然已经不能满足我们的需要了，这个时候，基于内存存储的Key-Value数据库就呼之欲出了</p>
-</blockquote>
-<a id="more"></a>
-<h4 id="常见的NoSQL数据库"><a href="#常见的NoSQL数据库" class="headerlink" title="常见的NoSQL数据库"></a><div id="title">常见的NoSQL数据库</div></h4><h5 id="1-Memcache"><a href="#1-Memcache" class="headerlink" title="1. Memcache"></a>1. Memcache</h5><ul>
-<li>挥发性(临时性)的键值存储</li>
-<li>一般作为关系型数据库的缓存来使用</li>
-<li>具有非常快的处理速度</li>
-<li>由于存在数据丢失的可能，所以一般用来处理不需要持久保存的数据</li>
-<li>用于需要使用expires时(需要定期清除数据)</li>
-<li>使用一致性散列(Consistent Hashing)算法来分散数据</li>
-</ul>
-<h5 id="2-MongoDB"><a href="#2-MongoDB" class="headerlink" title="2. MongoDB"></a>2. MongoDB</h5><ul>
-<li>具有非常快的处理速度</li>
-<li>通过BSON的形式可以保存和查询任何类型的数据</li>
-<li>无法进行JOIN处理，但是可以通过嵌入(embed)来实现同样的功能</li>
-<li>使用sharding(范围分割)算法来分散数据</li>
-</ul>
-<h5 id="3-Redis"><a href="#3-Redis" class="headerlink" title="3. Redis"></a>3. Redis</h5><ul>
-<li>兼具Memcached的键值存储</li>
-<li>擅长处理数组类型的数据</li>
-<li>具有非常快的处理速度</li>
-<li>可以高速处理时间序列的数据，易于处理集合运算</li>
-<li>拥有很多可以进行原子操作的方法</li>
-<li>使用一致性散列(Consistent Hashing)算法来分散数据</li>
-</ul>
-<h4 id="Redis的官方定义"><a href="#Redis的官方定义" class="headerlink" title="Redis的官方定义"></a><div id="title">Redis的官方定义</div></h4><blockquote>
+        <h4 id="Redis的官方定义"><a href="#Redis的官方定义" class="headerlink" title="Redis的官方定义"></a><div id="title">Redis的官方定义</div></h4><blockquote>
 <p>Redis is an open source, BSD licensed, advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.<br>redis是开源,BSD许可,高级的key-value存储系统.</p>
 </blockquote>
+<a id="more"></a>
 <p><strong>那Redis和MC相比，独特之处是啥：</strong></p>
 <blockquote>
 <ul>
@@ -591,11 +566,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/05/05/Redis的官方定义/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/05/05/MySQL索引类型和左前缀索引/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Redis学习目录
+          MySQL的索引类型和左前缀索引
         
       </div>
     </a>
