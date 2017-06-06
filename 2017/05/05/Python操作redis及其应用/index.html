@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/05/Python操作redis及其应用/index.html">
 <meta property="og:site_name" content="Python">
 <meta property="og:description" content="安装Redis模块1. pip安装1pip3 install redis">
-<meta property="og:updated_time" content="2017-06-06T11:19:26.000Z">
+<meta property="og:updated_time" content="2017-06-06T11:33:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Python操作Redis及其简单应用">
 <meta name="twitter:description" content="安装Redis模块1. pip安装1pip3 install redis">
@@ -212,6 +212,7 @@
 <h5 id="5-Pub-Sub构建实时消息系统"><a href="#5-Pub-Sub构建实时消息系统" class="headerlink" title="5. Pub/Sub构建实时消息系统"></a>5. Pub/Sub构建实时消息系统</h5><blockquote>
 <p>Redis的Pub/Sub系统可以构建实时的消息系统，比如很多用Pub/Sub构建的实时聊天系统的例子。</p>
 </blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">使用办法:</div><div class="line">订阅端: Subscribe 频道名称</div><div class="line">发布端: publish 频道名称 发布内容</div><div class="line"></div><div class="line">客户端例子:</div><div class="line">redis <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>&gt; subscribe news</div><div class="line">Reading messages... (press Ctrl-C to quit)</div><div class="line"><span class="number">1</span>) <span class="string">"subscribe"</span></div><div class="line"><span class="number">2</span>) <span class="string">"news"</span></div><div class="line"><span class="number">3</span>) (integer) <span class="number">1</span></div><div class="line"><span class="number">1</span>) <span class="string">"message"</span></div><div class="line"><span class="number">2</span>) <span class="string">"news"</span></div><div class="line"><span class="number">3</span>) <span class="string">"good good study"</span></div><div class="line"><span class="number">1</span>) <span class="string">"message"</span></div><div class="line"><span class="number">2</span>) <span class="string">"news"</span></div><div class="line"><span class="number">3</span>) <span class="string">"day day up"</span></div><div class="line"></div><div class="line">服务端例子:</div><div class="line">redis <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>&gt; publish news <span class="string">'good good study'</span></div><div class="line">(integer) <span class="number">1</span></div><div class="line">redis <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>&gt; publish news <span class="string">'day day up'</span></div><div class="line">(integer) <span class="number">1</span></div></pre></td></tr></table></figure>
 
       
 
