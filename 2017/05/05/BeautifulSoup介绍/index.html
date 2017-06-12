@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Python">
 <meta property="og:description" content="前言 之前我们学习了正则表达式，它的内容其实还是很多的，如果一个正则匹配稍有差池，那可能就不能获得到我们想要的内容，而且有的同学对写正则表达式的写法用得不熟练，但都没有关系，我们还有一个更强大的工具，叫Beautiful Soup，有了它我们可以很方便地提取出HTML或XML标签中的内容，实在是爬取数据之利器">
 <meta property="og:image" content="https://ooo.0o0.ooo/2017/05/18/591d1020e7220.png">
-<meta property="og:updated_time" content="2017-06-12T10:48:48.000Z">
+<meta property="og:updated_time" content="2017-06-12T10:49:56.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Beautiful Soup的用法">
 <meta name="twitter:description" content="前言 之前我们学习了正则表达式，它的内容其实还是很多的，如果一个正则匹配稍有差池，那可能就不能获得到我们想要的内容，而且有的同学对写正则表达式的写法用得不熟练，但都没有关系，我们还有一个更强大的工具，叫Beautiful Soup，有了它我们可以很方便地提取出HTML或XML标签中的内容，实在是爬取数据之利器">
@@ -217,24 +217,21 @@
 </blockquote>
 <ul>
 <li><p>attrs</p>
-<ol>
-<li><p>获取所有的属性</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(soup.p.attrs) <span class="comment">#&#123;'class': ['title'], 'name': 'dromouse'&#125;</span></div></pre></td></tr></table></figure>
-</li>
-</ol>
+<p>  1.获取所有的属性</p>
+  <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(soup.p.attrs) <span class="comment">#&#123;'class': ['title'], 'name': 'dromouse'&#125;</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
-<pre><code>2. 获取单独的某个属性
+<pre><code>2.获取单独的某个属性
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(soup.p[<span class="string">'class'</span>]) <span class="comment">#['title']</span></div><div class="line">print(soup.p.get(<span class="string">'class'</span>)) <span class="comment">#['title']</span></div></pre></td></tr></table></figure>
 
 
-3. 修改属性
+3.修改属性
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">soup.p[<span class="string">'class'</span>]=<span class="string">"newClass"</span></div><div class="line">print(soup.p) <span class="comment">#&lt;p class="newClass" name="dromouse"&gt;&lt;b&gt;The Dormouse's story&lt;/b&gt;&lt;/p&gt;</span></div></pre></td></tr></table></figure>
 
 
-4. 删除属性
+4.删除属性
 
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">del</span> soup.p[<span class="string">'class'</span>]</div><div class="line">print(soup.p)</div></pre></td></tr></table></figure>
 </code></pre><h5 id="2-NavigableString"><a href="#2-NavigableString" class="headerlink" title="2. NavigableString"></a>2. NavigableString</h5><blockquote>
