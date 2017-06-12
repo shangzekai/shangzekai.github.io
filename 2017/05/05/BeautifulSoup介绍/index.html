@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Python">
 <meta property="og:description" content="前言 之前我们学习了正则表达式，它的内容其实还是很多的，如果一个正则匹配稍有差池，那可能就不能获得到我们想要的内容，而且有的同学对写正则表达式的写法用得不熟练，但都没有关系，我们还有一个更强大的工具，叫Beautiful Soup，有了它我们可以很方便地提取出HTML或XML标签中的内容，实在是爬取数据之利器">
 <meta property="og:image" content="https://ooo.0o0.ooo/2017/05/18/591d1020e7220.png">
-<meta property="og:updated_time" content="2017-06-12T10:49:56.000Z">
+<meta property="og:updated_time" content="2017-06-12T10:54:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Beautiful Soup的用法">
 <meta name="twitter:description" content="前言 之前我们学习了正则表达式，它的内容其实还是很多的，如果一个正则匹配稍有差池，那可能就不能获得到我们想要的内容，而且有的同学对写正则表达式的写法用得不熟练，但都没有关系，我们还有一个更强大的工具，叫Beautiful Soup，有了它我们可以很方便地提取出HTML或XML标签中的内容，实在是爬取数据之利器">
@@ -216,25 +216,17 @@
 <p>soup 对象本身比较特殊，它的 name 即为 [document]，对于其他内部标签，输出的值便为标签本身的名称。</p>
 </blockquote>
 <ul>
-<li><p>attrs</p>
-<p>  1.获取所有的属性</p>
-  <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(soup.p.attrs) <span class="comment">#&#123;'class': ['title'], 'name': 'dromouse'&#125;</span></div></pre></td></tr></table></figure>
-</li>
+<li>attrs</li>
 </ul>
-<pre><code>2.获取单独的某个属性
-
+<p><em>获取所有的属性</em></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">print(soup.p.attrs) <span class="comment">#&#123;'class': ['title'], 'name': 'dromouse'&#125;</span></div></pre></td></tr></table></figure>
+<p><em>获取单独的某个属性</em></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">print(soup.p[<span class="string">'class'</span>]) <span class="comment">#['title']</span></div><div class="line">print(soup.p.get(<span class="string">'class'</span>)) <span class="comment">#['title']</span></div></pre></td></tr></table></figure>
-
-
-3.修改属性
-
+<p><em>修改属性</em></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">soup.p[<span class="string">'class'</span>]=<span class="string">"newClass"</span></div><div class="line">print(soup.p) <span class="comment">#&lt;p class="newClass" name="dromouse"&gt;&lt;b&gt;The Dormouse's story&lt;/b&gt;&lt;/p&gt;</span></div></pre></td></tr></table></figure>
-
-
-4.删除属性
-
+<p><em>删除属性</em></p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">del</span> soup.p[<span class="string">'class'</span>]</div><div class="line">print(soup.p)</div></pre></td></tr></table></figure>
-</code></pre><h5 id="2-NavigableString"><a href="#2-NavigableString" class="headerlink" title="2. NavigableString"></a>2. NavigableString</h5><blockquote>
+<h5 id="2-NavigableString"><a href="#2-NavigableString" class="headerlink" title="2. NavigableString"></a>2. NavigableString</h5><blockquote>
 <p>我们使用Tag对象获取了整个标签，那我们想要获取标签内部的内容怎么办？</p>
 </blockquote>
 <p><strong><font color="red">使用 .string 属性 或者 get_text() 函数即可</font></strong></p>
@@ -339,12 +331,13 @@
 <li><p>传列表</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">soup.find_all([<span class="string">"a"</span>, <span class="string">"b"</span>]) <span class="comment"># [&lt;b&gt;The Dormouse's story&lt;/b&gt;,&lt;a class="sister" href="http://example.com/elsie" id="link1"&gt;Elsie&lt;/a&gt;, &lt;a class="sister" href="http://example.com/lacie" id="link2"&gt;Lacie&lt;/a&gt;,&lt;a class="sister" href="http://example.com/tillie" id="link3"&gt;Tillie&lt;/a&gt;]</span></div></pre></td></tr></table></figure>
 </li>
+<li><p>传true</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#True 可以匹配任何值,下面代码查找到所有的tag,但是不会返回字符串节点</span></div><div class="line"><span class="keyword">for</span> tag <span class="keyword">in</span> soup.find_all(<span class="keyword">True</span>):</div><div class="line">    print(tag.name) <span class="comment"># html  head title body p b p a a</span></div></pre></td></tr></table></figure>
+</li>
 </ul>
 </li>
 </ul>
-<pre><code>- 传true
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#True 可以匹配任何值,下面代码查找到所有的tag,但是不会返回字符串节点</span></div><div class="line"><span class="keyword">for</span> tag <span class="keyword">in</span> soup.find_all(<span class="keyword">True</span>):</div><div class="line">    print(tag.name) <span class="comment"># html  head title body p b p a a</span></div></pre></td></tr></table></figure>
-</code></pre><ul>
+<ul>
 <li><p>关键字参数</p>
 <blockquote>
 <p>传入一个指定的关键字参数如下</p>
