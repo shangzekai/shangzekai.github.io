@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: HTML | Python</title>
+  <title>BootStrap常用的点总结 | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Python">
-<meta property="og:url" content="http://yoursite.com/tags/HTML/index.html">
+  <meta name="description" content="前言 由于经常在linux的服务器上进行操作，因此一些经常使用的命令老是忘记，现在再此做下记录  简单记录 经常忘记某个命令的使用方法，习惯使用的是 man，但是使用help 来查询这个命令的使用方法更加的直观。  history，使用此命令，清理一些非常敏感的信息（比如说密码，用户名等信息)    history -c  表示的是清理所有的历史记录history -d  num  指定清理那个历">
+<meta name="keywords" content="工具,零碎">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BootStrap常用的点总结">
+<meta property="og:url" content="http://yoursite.com/2017/05/04/一些零碎东西/index.html">
 <meta property="og:site_name" content="Python">
+<meta property="og:description" content="前言 由于经常在linux的服务器上进行操作，因此一些经常使用的命令老是忘记，现在再此做下记录  简单记录 经常忘记某个命令的使用方法，习惯使用的是 man，但是使用help 来查询这个命令的使用方法更加的直观。  history，使用此命令，清理一些非常敏感的信息（比如说密码，用户名等信息)    history -c  表示的是清理所有的历史记录history -d  num  指定清理那个历">
+<meta property="og:updated_time" content="2017-06-12T09:21:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python">
+<meta name="twitter:title" content="BootStrap常用的点总结">
+<meta name="twitter:description" content="前言 由于经常在linux的服务器上进行操作，因此一些经常使用的命令老是忘记，现在再此做下记录  简单记录 经常忘记某个命令的使用方法，习惯使用的是 man，但是使用help 来查询这个命令的使用方法更加的直观。  history，使用此命令，清理一些非常敏感的信息（比如说密码，用户名等信息)    history -c  表示的是清理所有的历史记录history -d  num  指定清理那个历">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
@@ -137,184 +142,239 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-一些零碎东西" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      BootStrap常用的点总结
+    </h1>
+  
+
+        
+        <a href="/2017/05/04/一些零碎东西/" class="archive-article-date">
+  	<time datetime="2017-05-04T15:54:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-04</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#简单记录"><span class="toc-text">简单记录</span></a></li></ol>
+          <hr/>
+        </div>
+        
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
+<p>由于经常在linux的服务器上进行操作，因此一些经常使用的命令老是忘记，现在再此做下记录</p>
+</blockquote>
+<h4 id="简单记录"><a href="#简单记录" class="headerlink" title="简单记录"></a><div id="title">简单记录</div></h4><ol>
+<li><p>经常忘记某个命令的使用方法，习惯使用的是 man，但是使用help 来查询这个命令的使用方法更加的直观。</p>
+</li>
+<li><p>history，使用此命令，清理一些非常敏感的信息（比如说密码，用户名等信息)</p>
+</li>
+</ol>
+<blockquote>
+<p>history -c  表示的是清理所有的历史记录<br>history -d  num  指定清理那个历史记录</p>
+<p><font color="red">在/root/.mysql_history的文件中，存在着很多之前执行的mysql的一些命令</font>,所以我们有必要清理一些敏感的信息</p>
+</blockquote>
+<ol>
+<li><p>tree 查看某个目录下的一些文件，这样查看更加的直观</p>
+</li>
+<li><p>mkdir /data2/{2,3}.log  在data2的目录下面连续创建2.log以及3.log</p>
+</li>
+<li><p>在mysql的命令行界面，使用prompt  \u@zekai \r:\m:\s–&gt;来改变mysql的命令行界面，这样可以很清晰的识别到底是在那台机器上，效果如下：</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql&gt; prompt \u@zekai \r:\m:\s--&gt;</div><div class="line">PROMPT set to &apos;\u@zekai \r:\m:\s--&gt;&apos;</div><div class="line">root@zekai 05:32:35--&gt;</div><div class="line">root@zekai 05:32:36--&gt;</div><div class="line">root@zekai 05:32:37--&gt;</div></pre></td></tr></table></figure>
+<ol>
+<li><p>在我们编译软件的时候，使用make或者make install的时候，往往出现出一大堆的信息，此时我们不知道是否成功，因此可以使用echo $?来判断上次的程序执行是否成功。</p>
+<p>这个小小的技巧也可以使用在其他的程序中，进行判断。</p>
+</li>
+<li><p>dstat -cdlmnpsy  最终可以将所有的信息显示：</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">[root@localhost python]# dstat -cdlmnpsy</div><div class="line">Terminal width too small, trimming output.</div><div class="line">----total-cpu-usage---- -dsk/total- ---load-avg--- ------memory-usage----- -net/total- ---procs--- ----swap---&gt;</div><div class="line">usr sys idl wai hiq siq| read  writ| 1m   5m  15m | used  buff  cach  free| recv  send|run blk new| used  free&gt;</div><div class="line">  0   0 100   0   0   0| 483B 6195B|0.01    0    0|1620M 1220M 1743M 3282M|   0     0 |0.0   0 0.5|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M| 852B 1656B|  0   0   0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M| 454B  502B|  0   0   0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M| 628B 6004B|  0   0   0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M| 231B  502B|  0   0   0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0    60k|0.01    0    0|1620M 1220M 1743M 3282M| 134B  502B|  0   0   0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M| 382B 2578B|  0   0 1.0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M| 366B  740B|  0   0   0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M| 134B  502B|  0   0   0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M| 357B 5934B|  0   0   0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M| 223B  502B|  0   0 1.0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M|1345B 1558B|  0   0   0|   0  8192M&gt;</div></pre></td></tr></table></figure>
+<ol>
+<li>在我们备份mysql中的数据的时候，首先我们希望不会有任何数据写入到数据库中，因此我们可以使用：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">flush table with read lock</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>上面的这句话就是为某张表进行了读锁。</p>
+<p>然后我们在另一个Session会话中进行导出数据，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqldump -uroot -p123 -A -B  --events &gt;&gt;/tmp/mysql.back</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/07/html学习基础/" class="archive-article-date">
-  	<time datetime="2017-05-07T12:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/07/html学习基础/">HTML基础学习目录</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTML</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">零碎</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/前端/" class="article-tag-list-link color3">前端</a>
+        			<a href="/categories/工具/" class="article-tag-list-link color3">工具</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/04/一些零碎东西/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/jquery插件学习/" class="archive-article-date">
-  	<time datetime="2017-05-06T15:54:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/jquery插件学习/">BootStrap，Jquery UI 和 Easy UI</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTML</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">BootStrap</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端/" class="article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/06/BootStrap常用点总结/" class="archive-article-date">
-  	<time datetime="2017-05-06T15:54:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/06/BootStrap常用点总结/">BootStrap常用的点总结</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTML</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">BootStrap</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端/" class="article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+    <a href="/2017/05/05/PyQuery的用法/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          PyQuery的用法
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/04/07/pandas的介绍/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">python爬虫之数据分析包pandas</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: document.location.href, 
+    sourceId: "",
+    productKey: "123b873e038145ba94270feb5223d8d8",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
   
 
-    
+  
+
+  
+
 
 
           </div>
@@ -344,9 +404,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
