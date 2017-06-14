@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>零碎点 | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言 由于经常在linux的服务器上进行操作，因此一些经常使用的命令老是忘记，现在再此做下记录  简单记录 经常忘记某个命令的使用方法，习惯使用的是 man，但是使用help 来查询这个命令的使用方法更加的直观。  history，使用此命令，清理一些非常敏感的信息（比如说密码，用户名等信息)    history -c  表示的是清理所有的历史记录history -d  num  指定清理那个历">
+  <meta name="description" content="前言 由于经常在linux的服务器上进行操作，因此一些经常使用的命令老是忘记，现在再此做下记录">
 <meta name="keywords" content="工具,零碎">
 <meta property="og:type" content="article">
 <meta property="og:title" content="零碎点">
 <meta property="og:url" content="http://yoursite.com/2017/05/04/一些零碎知识点/index.html">
 <meta property="og:site_name" content="Python">
-<meta property="og:description" content="前言 由于经常在linux的服务器上进行操作，因此一些经常使用的命令老是忘记，现在再此做下记录  简单记录 经常忘记某个命令的使用方法，习惯使用的是 man，但是使用help 来查询这个命令的使用方法更加的直观。  history，使用此命令，清理一些非常敏感的信息（比如说密码，用户名等信息)    history -c  表示的是清理所有的历史记录history -d  num  指定清理那个历">
-<meta property="og:updated_time" content="2017-06-12T09:22:43.000Z">
+<meta property="og:description" content="前言 由于经常在linux的服务器上进行操作，因此一些经常使用的命令老是忘记，现在再此做下记录">
+<meta property="og:updated_time" content="2017-06-14T07:32:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="零碎点">
-<meta name="twitter:description" content="前言 由于经常在linux的服务器上进行操作，因此一些经常使用的命令老是忘记，现在再此做下记录  简单记录 经常忘记某个命令的使用方法，习惯使用的是 man，但是使用help 来查询这个命令的使用方法更加的直观。  history，使用此命令，清理一些非常敏感的信息（比如说密码，用户名等信息)    history -c  表示的是清理所有的历史记录history -d  num  指定清理那个历">
+<meta name="twitter:description" content="前言 由于经常在linux的服务器上进行操作，因此一些经常使用的命令老是忘记，现在再此做下记录">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
@@ -171,37 +171,22 @@
         <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
 <p>由于经常在linux的服务器上进行操作，因此一些经常使用的命令老是忘记，现在再此做下记录</p>
 </blockquote>
-<h4 id="简单记录"><a href="#简单记录" class="headerlink" title="简单记录"></a><div id="title">简单记录</div></h4><ol>
-<li><p>经常忘记某个命令的使用方法，习惯使用的是 man，但是使用help 来查询这个命令的使用方法更加的直观。</p>
-</li>
-<li><p>history，使用此命令，清理一些非常敏感的信息（比如说密码，用户名等信息)</p>
-</li>
-</ol>
+<a id="more"></a>
+<h4 id="简单记录"><a href="#简单记录" class="headerlink" title="简单记录"></a><div id="title">简单记录</div></h4><p>1.经常忘记某个命令的使用方法，习惯使用的是 man，但是使用help 来查询这个命令的使用方法更加的直观。</p>
+<p>2.history，使用此命令，清理一些非常敏感的信息（比如说密码，用户名等信息)</p>
 <blockquote>
 <p>history -c  表示的是清理所有的历史记录<br>history -d  num  指定清理那个历史记录</p>
 <p><font color="red">在/root/.mysql_history的文件中，存在着很多之前执行的mysql的一些命令</font>,所以我们有必要清理一些敏感的信息</p>
 </blockquote>
-<ol>
-<li><p>tree 查看某个目录下的一些文件，这样查看更加的直观</p>
-</li>
-<li><p>mkdir /data2/{2,3}.log  在data2的目录下面连续创建2.log以及3.log</p>
-</li>
-<li><p>在mysql的命令行界面，使用prompt  \u@zekai \r:\m:\s–&gt;来改变mysql的命令行界面，这样可以很清晰的识别到底是在那台机器上，效果如下：</p>
-</li>
-</ol>
+<p>3.tree 查看某个目录下的一些文件，这样查看更加的直观</p>
+<p>4.mkdir /data2/{2,3}.log  在data2的目录下面连续创建2.log以及3.log</p>
+<p>5.在mysql的命令行界面，使用prompt  \u@zekai \r:\m:\s–&gt;来改变mysql的命令行界面，这样可以很清晰的识别到底是在那台机器上，效果如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql&gt; prompt \u@zekai \r:\m:\s--&gt;</div><div class="line">PROMPT set to &apos;\u@zekai \r:\m:\s--&gt;&apos;</div><div class="line">root@zekai 05:32:35--&gt;</div><div class="line">root@zekai 05:32:36--&gt;</div><div class="line">root@zekai 05:32:37--&gt;</div></pre></td></tr></table></figure>
-<ol>
-<li><p>在我们编译软件的时候，使用make或者make install的时候，往往出现出一大堆的信息，此时我们不知道是否成功，因此可以使用echo $?来判断上次的程序执行是否成功。</p>
-<p>这个小小的技巧也可以使用在其他的程序中，进行判断。</p>
-</li>
-<li><p>dstat -cdlmnpsy  最终可以将所有的信息显示：</p>
-</li>
-</ol>
+<p>6.在我们编译软件的时候，使用make或者make install的时候，往往出现出一大堆的信息，此时我们不知道是否成功，因此可以使用echo $?来判断上次的程序执行是否成功。</p>
+<p>  这个小小的技巧也可以使用在其他的程序中，进行判断。</p>
+<p>7.dstat -cdlmnpsy  最终可以将所有的信息显示：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">[root@localhost python]# dstat -cdlmnpsy</div><div class="line">Terminal width too small, trimming output.</div><div class="line">----total-cpu-usage---- -dsk/total- ---load-avg--- ------memory-usage----- -net/total- ---procs--- ----swap---&gt;</div><div class="line">usr sys idl wai hiq siq| read  writ| 1m   5m  15m | used  buff  cach  free| recv  send|run blk new| used  free&gt;</div><div class="line">  0   0 100   0   0   0| 483B 6195B|0.01    0    0|1620M 1220M 1743M 3282M|   0     0 |0.0   0 0.5|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M| 852B 1656B|  0   0   0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M| 454B  502B|  0   0   0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M| 628B 6004B|  0   0   0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M| 231B  502B|  0   0   0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0    60k|0.01    0    0|1620M 1220M 1743M 3282M| 134B  502B|  0   0   0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M| 382B 2578B|  0   0 1.0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M| 366B  740B|  0   0   0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M| 134B  502B|  0   0   0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M| 357B 5934B|  0   0   0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M| 223B  502B|  0   0 1.0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M|1345B 1558B|  0   0   0|   0  8192M&gt;</div></pre></td></tr></table></figure>
-<ol>
-<li>在我们备份mysql中的数据的时候，首先我们希望不会有任何数据写入到数据库中，因此我们可以使用：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">flush table with read lock</div></pre></td></tr></table></figure>
-</li>
-</ol>
+<p>8.在我们备份mysql中的数据的时候，首先我们希望不会有任何数据写入到数据库中，因此我们可以使用：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">flush table with read lock</div></pre></td></tr></table></figure></p>
 <p>上面的这句话就是为某张表进行了读锁。</p>
 <p>然后我们在另一个Session会话中进行导出数据，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqldump -uroot -p123 -A -B  --events &gt;&gt;/tmp/mysql.back</div></pre></td></tr></table></figure></p>
 
