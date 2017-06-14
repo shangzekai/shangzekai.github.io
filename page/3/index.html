@@ -212,7 +212,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/日志/" class="article-tag-list-link color3">日志</a>
+        			<a href="/categories/工具/" class="article-tag-list-link color3">工具</a>
         		</li>
       		
 		</ul>
@@ -222,6 +222,131 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/05/04/日志文件记录的重要性/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-vim树形菜单设置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/04/vim树形菜单设置/">vim树形菜单</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/04/vim树形菜单设置/" class="archive-article-date">
+  	<time datetime="2017-05-04T15:54:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <h4 id="前戏"><a href="#前戏" class="headerlink" title="前戏"></a><div id="title">前戏</div></h4><blockquote>
+<p>linux下的vim编辑器是一个好东西，但是如何将它打造成一款编辑的神奇，更加有效的帮助我们进行开发呢，下面来介绍两种方法，让你飞起来</p>
+</blockquote>
+<h4 id="安装NerdTree插件"><a href="#安装NerdTree插件" class="headerlink" title="安装NerdTree插件"></a><div id="title">安装NerdTree插件</div></h4><h5 id="1-下载"><a href="#1-下载" class="headerlink" title="1. 下载"></a>1. 下载</h5><figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">先下载，官网：http://www.vim.org/scripts/script.php?script_id=<span class="number">1658</span></div></pre></td></tr></table></figure>
+<h5 id="2-部署安装"><a href="#2-部署安装" class="headerlink" title="2. 部署安装"></a>2. 部署安装</h5><figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">解压缩之后，把 plugin/NERD_tree.vim 和doc/NERD_tree.txt分别拷贝到~/.vim/plugin 和 ~/.vim/doc 目录</div></pre></td></tr></table></figure>
+<h4 id="NerdTree使用"><a href="#NerdTree使用" class="headerlink" title="NerdTree使用"></a><div id="title">NerdTree使用</div></h4><p>1、在linux命令行界面，输入vim</p>
+<p>2、输入  :NERDTree ，回车</p>
+<p>3、进入当前目录的树形界面，通过小键盘上下键，能移动选中的目录或文件</p>
+<p>4、目录前面有+号，摁Enter会展开目录，文件前面是-号，摁Enter会在右侧窗口展现该文件的内容，并光标的焦点focus右侧。</p>
+<p>5、ctr+w+h  光标focus左侧树形目录，ctrl+w+l 光标focus右侧文件显示窗口。多次摁 ctrl+w，光标自动在左右侧窗口切换</p>
+<p>6、光标focus左侧树形窗口，摁? 弹出NERDTree的帮助，再次摁？关闭帮助显示</p>
+<p>7、输入:q回车，关闭光标所在窗口</p>
+<p><strong>vim的设置.vimrc的设置：</strong></p>
+<pre><code>set number
+&quot; 设置tab的宽度和使用空格替代tab
+set shiftwidth=4
+set tabstop=4
+set expandtab
+set softtabstop=4
+map &lt;F2&gt; :retab &lt;CR&gt; :wq! &lt;CR&gt;
+&quot; 设置编码和文件编码
+set enc=utf-8
+set fenc=utf-8
+&quot;  搜索结果高亮
+set hlsearch
+&quot; 语法高亮
+syntax on
+&quot; 设置文件浏览器的当前目录
+set bsdir=buffer
+set autoindent
+set cindent
+set nopaste
+set wrap
+if $TERM !=&quot;linux&quot;
+  set mouse=a 
+endif
+&quot; 把F8 映射到NERDTree插件
+map &lt;F8&gt; :NERDTree&lt;CR&gt;
+</code></pre><blockquote>
+<p>大概的一个效果图<br><img src="https://ooo.0o0.ooo/2017/06/14/5940a99e71f3b.png" alt="vimNerdTree.png"></p>
+</blockquote>
+<h4 id="第二种方式"><a href="#第二种方式" class="headerlink" title="第二种方式"></a><div id="title">第二种方式</div></h4><p><strong>除了使用上面的NerdTree插件来打造vim外，我们还可以使用另一种方式</strong></p>
+<blockquote>
+<p>直接下载这个脚本然后执行</p>
+</blockquote>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -qO- https://raw.github.com/ma6174/vim/master/setup.sh | sh -x</div></pre></td></tr></table></figure>
+<blockquote>
+<p>下载完成之后，我们再次打开vim，会发现不一样了，简单的效果如下</p>
+</blockquote>
+<p><img src="https://ooo.0o0.ooo/2017/06/14/5940aa711b7eb.png" alt="vim插件.png"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">零碎</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">日志</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/工具/" class="article-tag-list-link color3">工具</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/04/vim树形菜单设置/">展开全文 >></a>
         </p>
       
 
