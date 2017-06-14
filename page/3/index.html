@@ -139,6 +139,117 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-一些零碎知识点" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/04/一些零碎知识点/">零碎点</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/04/一些零碎知识点/" class="archive-article-date">
+  	<time datetime="2017-05-04T15:54:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-04</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
+<p>由于经常在linux的服务器上进行操作，因此一些经常使用的命令老是忘记，现在再此做下记录</p>
+</blockquote>
+<h4 id="简单记录"><a href="#简单记录" class="headerlink" title="简单记录"></a><div id="title">简单记录</div></h4><ol>
+<li><p>经常忘记某个命令的使用方法，习惯使用的是 man，但是使用help 来查询这个命令的使用方法更加的直观。</p>
+</li>
+<li><p>history，使用此命令，清理一些非常敏感的信息（比如说密码，用户名等信息)</p>
+</li>
+</ol>
+<blockquote>
+<p>history -c  表示的是清理所有的历史记录<br>history -d  num  指定清理那个历史记录</p>
+<p><font color="red">在/root/.mysql_history的文件中，存在着很多之前执行的mysql的一些命令</font>,所以我们有必要清理一些敏感的信息</p>
+</blockquote>
+<ol>
+<li><p>tree 查看某个目录下的一些文件，这样查看更加的直观</p>
+</li>
+<li><p>mkdir /data2/{2,3}.log  在data2的目录下面连续创建2.log以及3.log</p>
+</li>
+<li><p>在mysql的命令行界面，使用prompt  \u@zekai \r:\m:\s–&gt;来改变mysql的命令行界面，这样可以很清晰的识别到底是在那台机器上，效果如下：</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">mysql&gt; prompt \u@zekai \r:\m:\s--&gt;</div><div class="line">PROMPT set to &apos;\u@zekai \r:\m:\s--&gt;&apos;</div><div class="line">root@zekai 05:32:35--&gt;</div><div class="line">root@zekai 05:32:36--&gt;</div><div class="line">root@zekai 05:32:37--&gt;</div></pre></td></tr></table></figure>
+<ol>
+<li><p>在我们编译软件的时候，使用make或者make install的时候，往往出现出一大堆的信息，此时我们不知道是否成功，因此可以使用echo $?来判断上次的程序执行是否成功。</p>
+<p>这个小小的技巧也可以使用在其他的程序中，进行判断。</p>
+</li>
+<li><p>dstat -cdlmnpsy  最终可以将所有的信息显示：</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">[root@localhost python]# dstat -cdlmnpsy</div><div class="line">Terminal width too small, trimming output.</div><div class="line">----total-cpu-usage---- -dsk/total- ---load-avg--- ------memory-usage----- -net/total- ---procs--- ----swap---&gt;</div><div class="line">usr sys idl wai hiq siq| read  writ| 1m   5m  15m | used  buff  cach  free| recv  send|run blk new| used  free&gt;</div><div class="line">  0   0 100   0   0   0| 483B 6195B|0.01    0    0|1620M 1220M 1743M 3282M|   0     0 |0.0   0 0.5|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M| 852B 1656B|  0   0   0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M| 454B  502B|  0   0   0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M| 628B 6004B|  0   0   0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M| 231B  502B|  0   0   0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0    60k|0.01    0    0|1620M 1220M 1743M 3282M| 134B  502B|  0   0   0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M| 382B 2578B|  0   0 1.0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M| 366B  740B|  0   0   0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M| 134B  502B|  0   0   0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M| 357B 5934B|  0   0   0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M| 223B  502B|  0   0 1.0|   0  8192M&gt;</div><div class="line">  0   0 100   0   0   0|   0     0 |0.01    0    0|1620M 1220M 1743M 3282M|1345B 1558B|  0   0   0|   0  8192M&gt;</div></pre></td></tr></table></figure>
+<ol>
+<li>在我们备份mysql中的数据的时候，首先我们希望不会有任何数据写入到数据库中，因此我们可以使用：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">flush table with read lock</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>上面的这句话就是为某张表进行了读锁。</p>
+<p>然后我们在另一个Session会话中进行导出数据，如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqldump -uroot -p123 -A -B  --events &gt;&gt;/tmp/mysql.back</div></pre></td></tr></table></figure></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">零碎</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/工具/" class="article-tag-list-link color3">工具</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/04/一些零碎知识点/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-日志文件记录的重要性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -159,30 +270,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-	
         <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
 <p>我们一般在开发或者维护网站的过程中，会遇到一些不可预知的错误，为了能够更好的查询和定位到这些错误，我们需要将程序可能出现错误的地方记录日志，这样的话能够方便我们排查问题，进而解决问题</p>
 </blockquote>
-<h4 id="日志的分类"><a href="#日志的分类" class="headerlink" title="日志的分类"></a><div id="title">日志的分类</div></h4><h5 id="1-系统日志"><a href="#1-系统日志" class="headerlink" title="1. 系统日志"></a>1. 系统日志</h5><blockquote>
-<p>记录系统中硬件、软件和系统问题的信息，同时还可以监视系统中发生的事件。系统日志包括系统日志、应用程序日志和安全日志。<br><img src="https://ooo.0o0.ooo/2017/06/14/5940a4df9bbd2.png" alt="609858-20160901100130793-1332161646.png"></p>
-</blockquote>
-<h5 id="2-网站日志"><a href="#2-网站日志" class="headerlink" title="2. 网站日志"></a>2. 网站日志</h5><blockquote>
-<p>记录web服务器接收处理请求以及运行时错误等各种原始信息以.log结尾的文件。我们通过对日志进行统计、分析、综合，就能有效地掌握网站运行状况，发现和排除错误原因，了解客户访问分布等，更好的加强系统的维护和管理。</p>
-<p>日志也是了解搜索引擎工作原理和搜索引擎对网页抓取频率的最佳途径。通过这个文件，可以了解搜索引擎什么时间、抓取了哪些页面，以及可以知道是主搜索蜘蛛还是从搜索蜘蛛抓取了您的网站等的信息。</p>
-</blockquote>
-<h4 id="网站日志数据分析"><a href="#网站日志数据分析" class="headerlink" title="网站日志数据分析"></a><div id="title">网站日志数据分析</div></h4><h5 id="1-目录抓取统计"><a href="#1-目录抓取统计" class="headerlink" title="1. 目录抓取统计"></a>1. 目录抓取统计</h5><blockquote>
-<p>通过日志分析我们可以看到网站哪些目录受蜘蛛喜欢、抓取目录深度、重要页面目录抓取状况、无效页面目录抓取状况等。对于重要目录，我们需要通过内外调整增加权重及爬取；对于无效页面，在robots.txt中进行屏蔽。</p>
-</blockquote>
-<h5 id="2-访问状态码"><a href="#2-访问状态码" class="headerlink" title="2. 访问状态码"></a>2. 访问状态码</h5><blockquote>
-<p>蜘蛛经常出现的状态码如301、404等，出现这些状态码要及时处理，以避免对网站造成坏的影响。</p>
-</blockquote>
-<h5 id="3-蜘蛛爬取路径"><a href="#3-蜘蛛爬取路径" class="headerlink" title="3. 蜘蛛爬取路径"></a>3. 蜘蛛爬取路径</h5><blockquote>
-<p>在网站日志中我们可以跟踪到特定IP的访问路径，则能发现对于本网站结构下蜘蛛的爬取路径偏好。由此，我们可以适当的引导蜘蛛的爬取路径，让蜘蛛更多的爬取重要、有价值、新更新页面。其中爬取路径中我们可以分析页面物理结构路径偏好以及url逻辑结构爬取偏好。</p>
-</blockquote>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a><div id="title">总结</div></h4><blockquote>
-<p>总之，在开发或者调试程序的过程中，如果感觉哪块程序可能会出现一些错误，我们就要及时的在这块加上日志记录，方便以后我们进行问题排查和解决</p>
-</blockquote>
-
       
 
       
@@ -256,58 +346,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-	
         <h4 id="前戏"><a href="#前戏" class="headerlink" title="前戏"></a><div id="title">前戏</div></h4><blockquote>
 <p>linux下的vim编辑器是一个好东西，但是如何将它打造成一款编辑的神奇，更加有效的帮助我们进行开发呢，下面来介绍两种方法，让你飞起来</p>
 </blockquote>
-<h4 id="安装NerdTree插件"><a href="#安装NerdTree插件" class="headerlink" title="安装NerdTree插件"></a><div id="title">安装NerdTree插件</div></h4><h5 id="1-下载"><a href="#1-下载" class="headerlink" title="1. 下载"></a>1. 下载</h5><figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">先下载，官网：http://www.vim.org/scripts/script.php?script_id=<span class="number">1658</span></div></pre></td></tr></table></figure>
-<h5 id="2-部署安装"><a href="#2-部署安装" class="headerlink" title="2. 部署安装"></a>2. 部署安装</h5><figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">解压缩之后，把 plugin/NERD_tree.vim 和doc/NERD_tree.txt分别拷贝到~/.vim/plugin 和 ~/.vim/doc 目录</div></pre></td></tr></table></figure>
-<h4 id="NerdTree使用"><a href="#NerdTree使用" class="headerlink" title="NerdTree使用"></a><div id="title">NerdTree使用</div></h4><p>1、在linux命令行界面，输入vim</p>
-<p>2、输入  :NERDTree ，回车</p>
-<p>3、进入当前目录的树形界面，通过小键盘上下键，能移动选中的目录或文件</p>
-<p>4、目录前面有+号，摁Enter会展开目录，文件前面是-号，摁Enter会在右侧窗口展现该文件的内容，并光标的焦点focus右侧。</p>
-<p>5、ctr+w+h  光标focus左侧树形目录，ctrl+w+l 光标focus右侧文件显示窗口。多次摁 ctrl+w，光标自动在左右侧窗口切换</p>
-<p>6、光标focus左侧树形窗口，摁? 弹出NERDTree的帮助，再次摁？关闭帮助显示</p>
-<p>7、输入:q回车，关闭光标所在窗口</p>
-<p><strong>vim的设置.vimrc的设置：</strong></p>
-<pre><code>set number
-&quot; 设置tab的宽度和使用空格替代tab
-set shiftwidth=4
-set tabstop=4
-set expandtab
-set softtabstop=4
-map &lt;F2&gt; :retab &lt;CR&gt; :wq! &lt;CR&gt;
-&quot; 设置编码和文件编码
-set enc=utf-8
-set fenc=utf-8
-&quot;  搜索结果高亮
-set hlsearch
-&quot; 语法高亮
-syntax on
-&quot; 设置文件浏览器的当前目录
-set bsdir=buffer
-set autoindent
-set cindent
-set nopaste
-set wrap
-if $TERM !=&quot;linux&quot;
-  set mouse=a 
-endif
-&quot; 把F8 映射到NERDTree插件
-map &lt;F8&gt; :NERDTree&lt;CR&gt;
-</code></pre><blockquote>
-<p>大概的一个效果图<br><img src="https://ooo.0o0.ooo/2017/06/14/5940a99e71f3b.png" alt="vimNerdTree.png"></p>
-</blockquote>
-<h4 id="第二种方式"><a href="#第二种方式" class="headerlink" title="第二种方式"></a><div id="title">第二种方式</div></h4><p><strong>除了使用上面的NerdTree插件来打造vim外，我们还可以使用另一种方式</strong></p>
-<blockquote>
-<p>直接下载这个脚本然后执行</p>
-</blockquote>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">wget -qO- https://raw.github.com/ma6174/vim/master/setup.sh | sh -x</div></pre></td></tr></table></figure>
-<blockquote>
-<p>下载完成之后，我们再次打开vim，会发现不一样了，简单的效果如下</p>
-</blockquote>
-<p><img src="https://ooo.0o0.ooo/2017/06/14/5940aa711b7eb.png" alt="vim插件.png"></p>
-
       
 
       
