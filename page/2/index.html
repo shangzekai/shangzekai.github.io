@@ -445,6 +445,83 @@
 
 
   
+    <article id="post-循序渐进大型网站架构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/05/循序渐进大型网站架构/">循序渐进大型网站架构</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/05/循序渐进大型网站架构/" class="archive-article-date">
+  	<time datetime="2017-05-05T15:52:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>转载：陶邦仁</p>
+<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
+<p>随着互联网的不断发展，以及网站负载的不断增高，一个成熟网站的架构需要满足下面的几点，才能为用户提供稳定可用的服务</p>
+</blockquote>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网站</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">发展</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/网站/" class="article-tag-list-link color3">网站</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/05/循序渐进大型网站架构/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-Redis学习目录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -654,19 +731,19 @@
 
 
   
-    <article id="post-循序渐进大型网站架构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-MemCache分布式算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/05/循序渐进大型网站架构/">循序渐进大型网站架构</a>
+      <a class="article-title" href="/2017/05/05/MemCache分布式算法/">MemCache分布式算法总结</a>
     </h1>
   
 
         
-        <a href="/2017/05/05/循序渐进大型网站架构/" class="archive-article-date">
+        <a href="/2017/05/05/MemCache分布式算法/" class="archive-article-date">
   	<time datetime="2017-05-05T15:52:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
 </a>
         
@@ -674,10 +751,42 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>转载：陶邦仁</p>
-<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
-<p>随着互联网的不断发展，以及网站负载的不断增高，一个成熟网站的架构需要满足下面的几点，才能为用户提供稳定可用的服务</p>
+	
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
+<p>memcached虽然称为“分布式”缓存服务器，但服务器端并没有“分布式”功能。服务器端仅包括内存存储功能，其实现非常简单。至于memcached的分布式，则是完全由客户端程序实现的。这种分布式是memcached的最大特点</p>
 </blockquote>
+<h4 id="分布式的两种算法"><a href="#分布式的两种算法" class="headerlink" title="分布式的两种算法"></a><div id="title">分布式的两种算法</div></h4><h5 id="1-取模算法"><a href="#1-取模算法" class="headerlink" title="1. 取模算法"></a>1. 取模算法</h5><blockquote>
+<p>这种算法非常的简单，就是“根据服务器台数的余数进行分散”。 求得键的整数哈希值，再除以服务器台数，根据其余数来选择服务器,<br>将server的hash值与server的总台数进行求余,即hash%N</p>
+<p>在php客户端中，默认采用该算法，也可以在ini中设置：Memcached::OPT_DISTRIBUTION=Memcached::DISTRIBUTION_MODULA</p>
+</blockquote>
+<p><img src="https://ooo.0o0.ooo/2017/06/15/5941e204edfb4.png" alt="取余算法.png"></p>
+<blockquote>
+<p>但我们来看一下这种算法对缓存命中率的影响：<br>我们假设有8台服务器，运行中突然down一台，则求余的底数变成7<br>我们来推算一下产生的后果：</p>
+</blockquote>
+<p><img src="https://ooo.0o0.ooo/2017/06/15/5941e2d4bd4ed.png" alt="取余算法后果.png"></p>
+<blockquote>
+<p>一般地,我们从数学上归纳之:<br>有N台服务器，变成了N-1台服务器，<br>所以 命中率在服务器down的短期内，急遽下降至1/(N-1)<br>所以 服务器越多，则down机的后果越严重！</p>
+</blockquote>
+<h5 id="2-一致性hash算法"><a href="#2-一致性hash算法" class="headerlink" title="2. 一致性hash算法"></a>2. 一致性hash算法</h5><blockquote>
+<p>为了解决上述取模算法遇到的问题，我们可以使用另一种分布式算法，即一致性hash算法，所谓的一致性hash算法，就是把服务器的各个节点放在钟表的各个时刻上，同时，我们也将要存储的key也映射到钟表的某个时刻上，该key延钟表顺时针走，碰到第一个比他小的节点之后，则key就落在这台服务器上</p>
+</blockquote>
+<p><img src="https://ooo.0o0.ooo/2017/06/15/5941e430c7f9b.png" alt="一致性hash算法.png"></p>
+<blockquote>
+<p>疑问1:时钟上的指针最大才11点,如果我有上百个memcached节点怎么办?<br>答: 时钟只是为了便于理解做的比喻,在实际应用中,我们可以在圆环上分布[0,2^32-1]的数字,<br>这样,全世界的服务器都可以装下了.</p>
+<p>疑问2:我该如何把”节点名”,”键名”转化成整数?<br>答: 你可以用现在的函数,如crc32().<br>也可以自己去设计转化规则,但注意转化后的碰撞率要低.<br>即不同的节点名,转换为相同的整数的概率要低.</p>
+</blockquote>
+<p><strong>好了，那我们再考虑一下当某个节点Down了之后，后产生什么样的影响？</strong></p>
+<p><strong>当某个节点down后,只影响该节点顺时针之后的1个节点,而其他节点不受影响.因此，Consistent Hashing最大限度地抑制了键的重新分布</strong></p>
+<p><img src="https://ooo.0o0.ooo/2017/06/15/5941e4d6ea696.png" alt="hash.png"><br>我们通过上图看到，6号节点down后，所有的压力都转移到7号节点上，造成了7号节点服务器的压力特别的大，那我们考虑是否能够将6号节点的压力注意到其余的节点上呢？</p>
+<p>所以我们引入了虚拟节点的概念：</p>
+<p>虚拟节点即—-N个真实节点,把每个真实节点映射成M个虚拟节点, 再把M*N个虚拟节点,</p>
+<p>散列在圆环上. 各真实节点对应的虚拟节点相互交错分布</p>
+<p>这样,某真实节点down后,则把其影响平均分担到其他所有节点上</p>
+<p><img src="https://ooo.0o0.ooo/2017/06/15/5941e4d76bdac.png" alt="hash2.png"></p>
+<p>好了，上面就是一致性hash的理论知识点，接下来我们来考虑一下怎样实现？</p>
+<p>下面是用php来实现的代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Consistent</span> </span>&#123;</div><div class="line">    <span class="keyword">protected</span> $_nodes = <span class="keyword">array</span>();</div><div class="line"></div><div class="line">    <span class="comment">//生成一个数值  </span></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">_hash</span><span class="params">($str)</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> sprintf(<span class="string">"%u"</span>,crc32($str));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">find</span><span class="params">($key)</span></span>&#123;</div><div class="line">        $point = <span class="keyword">$this</span>-&gt;_hash($key);</div><div class="line">        $pos  = current(<span class="keyword">$this</span>-&gt;_nodes);</div><div class="line"></div><div class="line">        <span class="keyword">foreach</span>(<span class="keyword">$this</span>-&gt;_nodes <span class="keyword">as</span> $k=&gt;$v)&#123;</div><div class="line">                <span class="keyword">if</span>($point &lt;= $k)&#123;</div><div class="line">                        $pos = $v;</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> $pos;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">addServer</span><span class="params">($server)</span></span>&#123;</div><div class="line">        <span class="keyword">for</span>($i=<span class="number">1</span>;$i&lt;=<span class="number">32</span>;$i++)&#123;</div><div class="line">                $pos = <span class="keyword">$this</span>-&gt;_hash($server.<span class="string">"-"</span>.$i);</div><div class="line">                <span class="keyword">$this</span>-&gt;_nodes[$pos] = $server;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        ksort(<span class="keyword">$this</span>-&gt;_nodes,SORT_REGULAR);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">printNodes</span><span class="params">()</span></span>&#123;</div><div class="line">        print_r(<span class="keyword">$this</span>-&gt;_nodes);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$cons = <span class="keyword">new</span> Consistent();</div><div class="line"></div><div class="line">$cons-&gt;addServer(<span class="string">'a'</span>);</div><div class="line">$cons-&gt;addServer(<span class="string">'b'</span>);</div><div class="line">$cons-&gt;addServer(<span class="string">'c'</span>);</div><div class="line"></div><div class="line"><span class="keyword">echo</span> $cons-&gt;_hash(<span class="string">'name'</span>).<span class="string">"&lt;br/&gt;"</span>;</div><div class="line"><span class="keyword">echo</span> <span class="string">'应该落在'</span>.$cons-&gt;find(<span class="string">'name'</span>).<span class="string">"&lt;br/&gt;"</span>;</div><div class="line"></div><div class="line">$cons-&gt;printNodes();</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+
       
 
       
@@ -690,11 +799,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网站</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">发展</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NoSQL</a>
         		</li>
       		
 		</ul>
@@ -707,7 +816,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/网站/" class="article-tag-list-link color3">网站</a>
+        			<a href="/categories/NoSQL/" class="article-tag-list-link color1">NoSQL</a>
         		</li>
       		
 		</ul>
@@ -716,7 +825,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/05/循序渐进大型网站架构/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/05/05/MemCache分布式算法/">展开全文 >></a>
         </p>
       
 
@@ -1260,82 +1369,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/05/05/web框架的本质/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-BeautifulSoup介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/05/BeautifulSoup介绍/">Beautiful Soup的用法</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/05/BeautifulSoup介绍/" class="archive-article-date">
-  	<time datetime="2017-05-05T01:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
-<p>之前我们学习了正则表达式，它的内容其实还是很多的，如果一个正则匹配稍有差池，那可能就不能获得到我们想要的内容，而且有的同学对写正则表达式的写法用得不熟练，但都没有关系，我们还有一个更强大的工具，叫Beautiful Soup，有了它我们可以很方便地提取出HTML或XML标签中的内容，实在是爬取数据之利器</p>
-</blockquote>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/爬虫/" class="article-tag-list-link color3">爬虫</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/05/BeautifulSoup介绍/">展开全文 >></a>
         </p>
       
 

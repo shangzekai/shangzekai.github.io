@@ -6,14 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Tag: 基础 | Python</title>
+  <title>MemCache分布式算法总结 | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Python">
-<meta property="og:url" content="http://yoursite.com/tags/基础/page/2/index.html">
+  <meta name="description" content="前言 memcached虽然称为“分布式”缓存服务器，但服务器端并没有“分布式”功能。服务器端仅包括内存存储功能，其实现非常简单。至于memcached的分布式，则是完全由客户端程序实现的。这种分布式是memcached的最大特点  分布式的两种算法1. 取模算法 这种算法非常的简单，就是“根据服务器台数的余数进行分散”。 求得键的整数哈希值，再除以服务器台数，根据其余数来选择服务器,将serve">
+<meta name="keywords" content="基础,NoSQL">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MemCache分布式算法总结">
+<meta property="og:url" content="http://yoursite.com/2017/05/05/MemCache分布式算法/index.html">
 <meta property="og:site_name" content="Python">
+<meta property="og:description" content="前言 memcached虽然称为“分布式”缓存服务器，但服务器端并没有“分布式”功能。服务器端仅包括内存存储功能，其实现非常简单。至于memcached的分布式，则是完全由客户端程序实现的。这种分布式是memcached的最大特点  分布式的两种算法1. 取模算法 这种算法非常的简单，就是“根据服务器台数的余数进行分散”。 求得键的整数哈希值，再除以服务器台数，根据其余数来选择服务器,将serve">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/06/15/5941e204edfb4.png">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/06/15/5941e2d4bd4ed.png">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/06/15/5941e430c7f9b.png">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/06/15/5941e4d6ea696.png">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/06/15/5941e4d76bdac.png">
+<meta property="og:updated_time" content="2017-06-16T06:35:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python">
+<meta name="twitter:title" content="MemCache分布式算法总结">
+<meta name="twitter:description" content="前言 memcached虽然称为“分布式”缓存服务器，但服务器端并没有“分布式”功能。服务器端仅包括内存存储功能，其实现非常简单。至于memcached的分布式，则是完全由客户端程序实现的。这种分布式是memcached的最大特点  分布式的两种算法1. 取模算法 这种算法非常的简单，就是“根据服务器台数的余数进行分散”。 求得键的整数哈希值，再除以服务器台数，根据其余数来选择服务器,将serve">
+<meta name="twitter:image" content="https://ooo.0o0.ooo/2017/06/15/5941e204edfb4.png">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
@@ -137,36 +148,105 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-MemCache分布式算法" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MemCache分布式算法总结
+    </h1>
+  
+
+        
+        <a href="/2017/05/05/MemCache分布式算法/" class="archive-article-date">
+  	<time datetime="2017-05-05T15:52:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分布式的两种算法"><span class="toc-text">分布式的两种算法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-取模算法"><span class="toc-text">1. 取模算法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-一致性hash算法"><span class="toc-text">2. 一致性hash算法</span></a></li></ol></li></ol>
+          <hr/>
+        </div>
+        
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
+<p>memcached虽然称为“分布式”缓存服务器，但服务器端并没有“分布式”功能。服务器端仅包括内存存储功能，其实现非常简单。至于memcached的分布式，则是完全由客户端程序实现的。这种分布式是memcached的最大特点</p>
+</blockquote>
+<h4 id="分布式的两种算法"><a href="#分布式的两种算法" class="headerlink" title="分布式的两种算法"></a><div id="title">分布式的两种算法</div></h4><h5 id="1-取模算法"><a href="#1-取模算法" class="headerlink" title="1. 取模算法"></a>1. 取模算法</h5><blockquote>
+<p>这种算法非常的简单，就是“根据服务器台数的余数进行分散”。 求得键的整数哈希值，再除以服务器台数，根据其余数来选择服务器,<br>将server的hash值与server的总台数进行求余,即hash%N</p>
+<p>在php客户端中，默认采用该算法，也可以在ini中设置：Memcached::OPT_DISTRIBUTION=Memcached::DISTRIBUTION_MODULA</p>
+</blockquote>
+<p><img src="https://ooo.0o0.ooo/2017/06/15/5941e204edfb4.png" alt="取余算法.png"></p>
+<blockquote>
+<p>但我们来看一下这种算法对缓存命中率的影响：<br>我们假设有8台服务器，运行中突然down一台，则求余的底数变成7<br>我们来推算一下产生的后果：</p>
+</blockquote>
+<p><img src="https://ooo.0o0.ooo/2017/06/15/5941e2d4bd4ed.png" alt="取余算法后果.png"></p>
+<blockquote>
+<p>一般地,我们从数学上归纳之:<br>有N台服务器，变成了N-1台服务器，<br>所以 命中率在服务器down的短期内，急遽下降至1/(N-1)<br>所以 服务器越多，则down机的后果越严重！</p>
+</blockquote>
+<h5 id="2-一致性hash算法"><a href="#2-一致性hash算法" class="headerlink" title="2. 一致性hash算法"></a>2. 一致性hash算法</h5><blockquote>
+<p>为了解决上述取模算法遇到的问题，我们可以使用另一种分布式算法，即一致性hash算法，所谓的一致性hash算法，就是把服务器的各个节点放在钟表的各个时刻上，同时，我们也将要存储的key也映射到钟表的某个时刻上，该key延钟表顺时针走，碰到第一个比他小的节点之后，则key就落在这台服务器上</p>
+</blockquote>
+<p><img src="https://ooo.0o0.ooo/2017/06/15/5941e430c7f9b.png" alt="一致性hash算法.png"></p>
+<blockquote>
+<p>疑问1:时钟上的指针最大才11点,如果我有上百个memcached节点怎么办?<br>答: 时钟只是为了便于理解做的比喻,在实际应用中,我们可以在圆环上分布[0,2^32-1]的数字,<br>这样,全世界的服务器都可以装下了.</p>
+<p>疑问2:我该如何把”节点名”,”键名”转化成整数?<br>答: 你可以用现在的函数,如crc32().<br>也可以自己去设计转化规则,但注意转化后的碰撞率要低.<br>即不同的节点名,转换为相同的整数的概率要低.</p>
+</blockquote>
+<p><strong>好了，那我们再考虑一下当某个节点Down了之后，后产生什么样的影响？</strong></p>
+<p><strong>当某个节点down后,只影响该节点顺时针之后的1个节点,而其他节点不受影响.因此，Consistent Hashing最大限度地抑制了键的重新分布</strong></p>
+<p><img src="https://ooo.0o0.ooo/2017/06/15/5941e4d6ea696.png" alt="hash.png"><br>我们通过上图看到，6号节点down后，所有的压力都转移到7号节点上，造成了7号节点服务器的压力特别的大，那我们考虑是否能够将6号节点的压力注意到其余的节点上呢？</p>
+<p>所以我们引入了虚拟节点的概念：</p>
+<p>虚拟节点即—-N个真实节点,把每个真实节点映射成M个虚拟节点, 再把M*N个虚拟节点,</p>
+<p>散列在圆环上. 各真实节点对应的虚拟节点相互交错分布</p>
+<p>这样,某真实节点down后,则把其影响平均分担到其他所有节点上</p>
+<p><img src="https://ooo.0o0.ooo/2017/06/15/5941e4d76bdac.png" alt="hash2.png"></p>
+<p>好了，上面就是一致性hash的理论知识点，接下来我们来考虑一下怎样实现？</p>
+<p>下面是用php来实现的代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Consistent</span> </span>&#123;</div><div class="line">    <span class="keyword">protected</span> $_nodes = <span class="keyword">array</span>();</div><div class="line"></div><div class="line">    <span class="comment">//生成一个数值  </span></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">_hash</span><span class="params">($str)</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> sprintf(<span class="string">"%u"</span>,crc32($str));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">find</span><span class="params">($key)</span></span>&#123;</div><div class="line">        $point = <span class="keyword">$this</span>-&gt;_hash($key);</div><div class="line">        $pos  = current(<span class="keyword">$this</span>-&gt;_nodes);</div><div class="line"></div><div class="line">        <span class="keyword">foreach</span>(<span class="keyword">$this</span>-&gt;_nodes <span class="keyword">as</span> $k=&gt;$v)&#123;</div><div class="line">                <span class="keyword">if</span>($point &lt;= $k)&#123;</div><div class="line">                        $pos = $v;</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> $pos;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">addServer</span><span class="params">($server)</span></span>&#123;</div><div class="line">        <span class="keyword">for</span>($i=<span class="number">1</span>;$i&lt;=<span class="number">32</span>;$i++)&#123;</div><div class="line">                $pos = <span class="keyword">$this</span>-&gt;_hash($server.<span class="string">"-"</span>.$i);</div><div class="line">                <span class="keyword">$this</span>-&gt;_nodes[$pos] = $server;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        ksort(<span class="keyword">$this</span>-&gt;_nodes,SORT_REGULAR);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">printNodes</span><span class="params">()</span></span>&#123;</div><div class="line">        print_r(<span class="keyword">$this</span>-&gt;_nodes);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$cons = <span class="keyword">new</span> Consistent();</div><div class="line"></div><div class="line">$cons-&gt;addServer(<span class="string">'a'</span>);</div><div class="line">$cons-&gt;addServer(<span class="string">'b'</span>);</div><div class="line">$cons-&gt;addServer(<span class="string">'c'</span>);</div><div class="line"></div><div class="line"><span class="keyword">echo</span> $cons-&gt;_hash(<span class="string">'name'</span>).<span class="string">"&lt;br/&gt;"</span>;</div><div class="line"><span class="keyword">echo</span> <span class="string">'应该落在'</span>.$cons-&gt;find(<span class="string">'name'</span>).<span class="string">"&lt;br/&gt;"</span>;</div><div class="line"></div><div class="line">$cons-&gt;printNodes();</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/05/MySQL初级部分/" class="archive-article-date">
-  	<time datetime="2017-05-05T12:56:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/05/MySQL初级部分/">MySQL基础学习目录</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -176,153 +256,129 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NoSQL</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/MySQL/" class="article-tag-list-link color1">MySQL</a>
+        			<a href="/categories/NoSQL/" class="article-tag-list-link color1">NoSQL</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/05/MemCache分布式算法/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/05/Python操作MySQL的方式/" class="archive-article-date">
-  	<time datetime="2017-05-05T12:54:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
-</a>
-        </div>
-    	 
+<nav id="article-nav">
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/05/Python操作MySQL的方式/">Python操作MySQL的方式</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Python/" class="article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/05/05/web框架的本质/" class="archive-article-date">
-  	<time datetime="2017-05-05T10:50:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/05/05/web框架的本质/">web框架初识</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">框架</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Python/" class="article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
+    <a href="/2017/05/05/MySQL大数据分页/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          MySQL大数据分页
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/05/05/MemCache介绍/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MemCache介绍和基本命令</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
+  <div id="cloud-tie-wrapper" class="cloud-tie-wrapper"></div>
+<script>
+  var cloudTieConfig = {
+    url: document.location.href, 
+    sourceId: "",
+    productKey: "123b873e038145ba94270feb5223d8d8",
+    target: "cloud-tie-wrapper"
+  };
+</script>
+<script src="https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js"></script>
+
   
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/tags/基础/">&laquo; Prev</a><a class="page-number" href="/tags/基础/">1</a><span class="page-number current">2</span>
-    </nav>
   
+
+  
+
 
 
           </div>
@@ -352,9 +408,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
