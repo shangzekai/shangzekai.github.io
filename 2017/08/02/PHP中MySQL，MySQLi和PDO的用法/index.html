@@ -12,10 +12,10 @@
 <meta name="keywords" content="PHP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PHP中MySQL、MySQLi和PDO的用法和区别">
-<meta property="og:url" content="http://yoursite.com/2017/08/02/PHP中MySQL，MySQLi和PDO的用法区别/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/08/02/PHP中MySQL，MySQLi和PDO的用法/index.html">
 <meta property="og:site_name" content="Python">
 <meta property="og:description" content="前戏介绍 MySQL模块是PHP操作MySQL数据库最原始的Extension。而MySQLi的i则代表了improvement，提供了相对进阶的功能，就extension而言，本身也增加了安全性。而PDO则是提供了一个Abstraction Layer来操作数据库，光从理论上看不出啥区别来，因此我们来举一些代码来看：">
-<meta property="og:updated_time" content="2017-09-27T02:30:35.000Z">
+<meta property="og:updated_time" content="2017-09-27T06:10:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP中MySQL、MySQLi和PDO的用法和区别">
 <meta name="twitter:description" content="前戏介绍 MySQL模块是PHP操作MySQL数据库最原始的Extension。而MySQLi的i则代表了improvement，提供了相对进阶的功能，就extension而言，本身也增加了安全性。而PDO则是提供了一个Abstraction Layer来操作数据库，光从理论上看不出啥区别来，因此我们来举一些代码来看：">
@@ -149,7 +149,7 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-PHP中MySQL，MySQLi和PDO的用法区别" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-PHP中MySQL，MySQLi和PDO的用法" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -161,7 +161,7 @@
   
 
         
-        <a href="/2017/08/02/PHP中MySQL，MySQLi和PDO的用法区别/" class="archive-article-date">
+        <a href="/2017/08/02/PHP中MySQL，MySQLi和PDO的用法/" class="archive-article-date">
   	<time datetime="2017-08-02T15:52:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-02</time>
 </a>
         
@@ -171,7 +171,7 @@
       
 	
         <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前戏介绍"><span class="toc-text">前戏介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP使用MySQL模块操作MySQL"><span class="toc-text">PHP使用MySQL模块操作MySQL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP使用MySQLI的模块来操作MySQL"><span class="toc-text">PHP使用MySQLI的模块来操作MySQL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP使用PDO来操作MySQL"><span class="toc-text">PHP使用PDO来操作MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#使用pdo的注意事项"><span class="toc-text">使用pdo的注意事项</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前戏介绍"><span class="toc-text">前戏介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP使用MySQL模块操作MySQL"><span class="toc-text">PHP使用MySQL模块操作MySQL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP使用MySQLI的模块来操作MySQL"><span class="toc-text">PHP使用MySQLI的模块来操作MySQL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP使用PDO来操作MySQL"><span class="toc-text">PHP使用PDO来操作MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#使用pdo的注意事项"><span class="toc-text">使用pdo的注意事项</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用PDO来处理异常和事务"><span class="toc-text">使用PDO来处理异常和事务</span></a></li></ol>
           <hr/>
         </div>
         
@@ -202,6 +202,12 @@
 <li><p>如果使用了PHP 5.3.6及以前版本, 因Yii框架默认并未设置ATTR_EMULATE_PREPARES的值，请在数据库配置文件中指定emulatePrepare的值为false。</p>
 </li>
 </ol>
+<h4 id="使用PDO来处理异常和事务"><a href="#使用PDO来处理异常和事务" class="headerlink" title="使用PDO来处理异常和事务"></a><div id="title">使用PDO来处理异常和事务</div></h4><blockquote>
+<p>关于事务的概念，此处就不多啰嗦了，主要看一下PDO提供的一些事务方法：<br>beginTransaction() : 开启一个任务<br>commit() : 提交一个事务<br>rollBack() : 回滚一个事务</p>
+</blockquote>
+<p><strong>配合PDO的异常处理，我们来通过代码看一下事务和异常处理的写法</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 数据库连接的字符串，当更改数据库的时候，可以随时进行切换</span></div><div class="line">$dsn = <span class="string">"mysql:host=$db_host;dbname=$db_name"</span>;  </div><div class="line">$pdo = <span class="keyword">new</span> PDO($dsn, $db_user, $db_password);  </div><div class="line"></div><div class="line"><span class="comment">//开启一个事务</span></div><div class="line">$pdo-&gt;beginTransaction();</div><div class="line"></div><div class="line"><span class="keyword">try</span>&#123;</div><div class="line">    <span class="comment">// 一次删除操作</span></div><div class="line">    $sql = <span class="string">"delete from user where id = ?"</span>;</div><div class="line">    $smt = $pdo-&gt;prepare($sql);</div><div class="line">    $smt-&gt;execute(<span class="keyword">array</span>(<span class="number">1</span>));</div><div class="line">    </div><div class="line">    <span class="comment">//另一次删除操作</span></div><div class="line">    $sql = <span class="string">"delete from user where id = ?"</span>;</div><div class="line">    $smt = $pdo-&gt;prepare($sql);</div><div class="line">    $smt-&gt;execute(<span class="keyword">array</span>(<span class="number">2</span>));</div><div class="line">    </div><div class="line">    <span class="comment">// 如果上述代码都执行成功，则提交成功</span></div><div class="line">    $pdo-&gt;commit();</div><div class="line">&#125;<span class="keyword">catch</span>(PDOException $e)&#123;</div><div class="line">    <span class="comment">// 打出程序出错的信息</span></div><div class="line">    <span class="keyword">echo</span> $e-&gt;getMessage();</div><div class="line">    <span class="comment">// 否则捕获异常之后，回滚整个事务</span></div><div class="line">    $pdo-&gt;rollBack();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>总结，我们还是推荐使用PDO的方式来对mysql进行处理，非常的安全，并且支持事务和异常的操作</strong></p>
 
       
 
@@ -314,7 +320,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/08/02/PHP中MySQL，MySQLi和PDO的用法区别/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/08/02/PHP中MySQL，MySQLi和PDO的用法/" alt="微信分享二维码">
     </div>
 </div>
 
