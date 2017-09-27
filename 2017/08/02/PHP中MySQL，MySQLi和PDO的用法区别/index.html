@@ -6,18 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>前端性能优化问题 | Python</title>
+  <title>PHP中MySQL、MySQLi和PDO的用法和区别 | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言这个问题无论是实际项目还是面试都是经常碰到的，所以非常有必要总结一下 下面分别从几个大的方面去分析一下前端性能优化，有些优化其实效果并不一定非常明显，但还是有必要知道。">
+  <meta name="description" content="前戏介绍 MySQL模块是PHP操作MySQL数据库最原始的Extension。而MySQLi的i则代表了improvement，提供了相对进阶的功能，就extension而言，本身也增加了安全性。而PDO则是提供了一个Abstraction Layer来操作数据库，光从理论上看不出啥区别来，因此我们来举一些代码来看：">
+<meta name="keywords" content="PHP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="前端性能优化问题">
-<meta property="og:url" content="http://yoursite.com/2017/05/07/前端优化的技巧/index.html">
+<meta property="og:title" content="PHP中MySQL、MySQLi和PDO的用法和区别">
+<meta property="og:url" content="http://yoursite.com/2017/08/02/PHP中MySQL，MySQLi和PDO的用法区别/index.html">
 <meta property="og:site_name" content="Python">
-<meta property="og:description" content="前言这个问题无论是实际项目还是面试都是经常碰到的，所以非常有必要总结一下 下面分别从几个大的方面去分析一下前端性能优化，有些优化其实效果并不一定非常明显，但还是有必要知道。">
-<meta property="og:updated_time" content="2017-06-01T10:44:03.000Z">
+<meta property="og:description" content="前戏介绍 MySQL模块是PHP操作MySQL数据库最原始的Extension。而MySQLi的i则代表了improvement，提供了相对进阶的功能，就extension而言，本身也增加了安全性。而PDO则是提供了一个Abstraction Layer来操作数据库，光从理论上看不出啥区别来，因此我们来举一些代码来看：">
+<meta property="og:updated_time" content="2017-09-27T02:30:35.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="前端性能优化问题">
-<meta name="twitter:description" content="前言这个问题无论是实际项目还是面试都是经常碰到的，所以非常有必要总结一下 下面分别从几个大的方面去分析一下前端性能优化，有些优化其实效果并不一定非常明显，但还是有必要知道。">
+<meta name="twitter:title" content="PHP中MySQL、MySQLi和PDO的用法和区别">
+<meta name="twitter:description" content="前戏介绍 MySQL模块是PHP操作MySQL数据库最原始的Extension。而MySQLi的i则代表了improvement，提供了相对进阶的功能，就extension而言，本身也增加了安全性。而PDO则是提供了一个Abstraction Layer来操作数据库，光从理论上看不出啥区别来，因此我们来举一些代码来看：">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
@@ -148,20 +149,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-前端优化的技巧" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-PHP中MySQL，MySQLi和PDO的用法区别" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      前端性能优化问题
+      PHP中MySQL、MySQLi和PDO的用法和区别
     </h1>
   
 
         
-        <a href="/2017/05/07/前端优化的技巧/" class="archive-article-date">
-  	<time datetime="2017-05-07T01:47:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
+        <a href="/2017/08/02/PHP中MySQL，MySQLi和PDO的用法区别/" class="archive-article-date">
+  	<time datetime="2017-08-02T15:52:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-02</time>
 </a>
         
       </header>
@@ -170,53 +171,37 @@
       
 	
         <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#减少HTTP请求"><span class="toc-text">减少HTTP请求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用精灵图"><span class="toc-text">使用精灵图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用字体图标"><span class="toc-text">使用字体图标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#合并JS和CSS"><span class="toc-text">合并JS和CSS</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#合理使用域名"><span class="toc-text">合理使用域名</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#压缩"><span class="toc-text"> 压缩</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#图片优化"><span class="toc-text"> 图片优化</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前戏介绍"><span class="toc-text">前戏介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP使用MySQL模块操作MySQL"><span class="toc-text">PHP使用MySQL模块操作MySQL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP使用MySQLI的模块来操作MySQL"><span class="toc-text">PHP使用MySQLI的模块来操作MySQL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP使用PDO来操作MySQL"><span class="toc-text">PHP使用PDO来操作MySQL</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#使用pdo的注意事项"><span class="toc-text">使用pdo的注意事项</span></a></li></ol></li></ol>
           <hr/>
         </div>
         
-        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><p>这个问题无论是实际项目还是面试都是经常碰到的，所以非常有必要总结一下</p>
-<p>下面分别从几个大的方面去分析一下前端性能优化，有些优化其实效果并不一定非常明显，但还是有必要知道。</p>
-<a id="more"></a>
-<h4 id="减少HTTP请求"><a href="#减少HTTP请求" class="headerlink" title="减少HTTP请求"></a><div id="title">减少HTTP请求</div></h4><p>尽可能减少加载一个页面需要引用的资源个数，因为每一次HTTP请求都是客户端与服务端的一次重连，都是一笔不小的开销，可以采取的措施包括：</p>
-<h4 id="使用精灵图"><a href="#使用精灵图" class="headerlink" title="使用精灵图"></a><div id="title">使用精灵图</div></h4><p><code>CSS Sprites</code>，又叫雪碧图，将页面中多个小图合并一张大图，然后采用background-position来定位不同的图片。</p>
-<h4 id="使用字体图标"><a href="#使用字体图标" class="headerlink" title="使用字体图标"></a><div id="title">使用字体图标</div></h4><p>对于一些简单的图标都可以采用字体图标来实现，一个几十kb的字体文件可以包含很多个图标，且可以随意设置颜色，无损放大。</p>
-<p>如果你需要的只是少数几个图标，而字体文件比较大，还可以采用一些工具提取你所需要的那几个图标，然后重新导出一个更小的字体文件。</p>
-<h4 id="合并JS和CSS"><a href="#合并JS和CSS" class="headerlink" title="合并JS和CSS"></a><div id="title">合并JS和CSS</div></h4><p>开发时可能引入了很多个单独的css和js文件，上线后可以利用前端构建工具将其合并成一个文件，这样能大大减少请求次数。</p>
-<h4 id="合理使用域名"><a href="#合理使用域名" class="headerlink" title="合理使用域名"></a><div id="title">合理使用域名</div></h4><p>由于浏览器对于单个域名下的并发有最大连接限制（据说一般浏览器是6个），所以将静态资源分别放到不同的子域名下可以突破浏览器的并发限制，最大限度的利用带宽和资源。</p>
-<p>但是，同一个网站使用的子域名也不是越多越好。域名既是个好东西，也是个坏东西。说它是个坏东西，是指当你没有恰当的使用它的时候。</p>
-<p>当你在浏览器地址栏输入一个域名之后，浏览器首先需要将其解析成IP，然后再向服务器发起访问请求，这个解析的过程一般叫DNS解析。DNS解析是非常耗时的，特别是当你使用的是一些公共DNS解析服务的时候，有时候解析一个域名需要2-3s时间，甚至偶尔解析错误，导致你的网站根本访问不了！当你辛辛苦苦在其它方面优化提高了0.1s的访问速度时，一个DNS解析就让你的速度降低了数秒！</p>
-<p>DNS解析拖慢网站访问速度主要体验在第一次访问的时候，当你第二次访问就很快了，因为浏览器会对DNS缓存。</p>
-<p>综上，优化域名可以从以下几个方面出发：</p>
-<ul>
-<li>减少域名个数，同一个网页不要使用太多的子域名，一般建议不超过3个，每增加一个子域名都会大大拖慢你网站的初次访问速度；</li>
-<li>更换更好的DNS服务商，免费的不好用就用收费的，舍不得孩子套不着狼；</li>
-<li>如果网站域名映射已经稳定了，不会经常改动了，将TTL值设置为最大，它可以让你的DNS缓存更久；</li>
-<li>如果网站不需要暴露网址给用户（比如内嵌APP形式），可以干脆不用域名，直接使用IP，当然这个要看个人喜好，用域名还是有一些好处的；</li>
-</ul>
-<h4 id="压缩"><a href="#压缩" class="headerlink" title=" 压缩"></a><div id="title"> 压缩</div></h4><p><strong>1.对大文件启用gzip</strong><br><strong>2.压缩JS和CSS</strong></p>
-<blockquote>
-<p>JS在开发时可能有大量的注释以及空格缩进等，压缩可以很好的减小文件体积，如果可以的话还可以混淆。</p>
-<p>JS和CSS尽量写在单独的文件中，这样可以增加被缓存的机会，如果写在HTML中的话，只要地址不同浏览器就会认为是不同的网址，所以每次都需要重新加载这些JS和CSS。</p>
+        <h4 id="前戏介绍"><a href="#前戏介绍" class="headerlink" title="前戏介绍"></a><div id="title">前戏介绍</div></h4><blockquote>
+<p>MySQL模块是PHP操作MySQL数据库最原始的Extension。而MySQLi的i则代表了improvement，提供了相对进阶的功能，就extension而言，本身也增加了安全性。而PDO则是提供了一个Abstraction Layer来操作数据库，光从理论上看不出啥区别来，因此我们来举一些代码来看：</p>
 </blockquote>
-<p><strong>3.JS的优化</strong></p>
-<ul>
-<li>减少DOM操作次数；</li>
-<li>JS文件放置在文件底部；</li>
-<li>上线后屏蔽一切日志代码，console.log对性能的影响还是比较大的</li>
-</ul>
-<p><strong>4.CSS的优化</strong></p>
-<ul>
-<li>减少内联样式的使用（style）；</li>
-<li>css文件放在head中；</li>
-<li>尽可能多的合并类似样式，比如如果2个class里面分别定义了10个CSS属性，其中只有1个不一样，那么就可以把这9个一样的拿出来写一个样式；</li>
-<li>合并一些分开写的样式，比如border-width、border-style、border-color合并成border；</li>
-<li>根据实际环境删除一些不必要的兼容性代码，比如如果你的项目只运行在移动端，那么诸如IE系列所有适配代码、-moz、-o等等这些玩意儿就不需要写了</li>
-</ul>
-<h4 id="图片优化"><a href="#图片优化" class="headerlink" title=" 图片优化"></a><div id="title"> 图片优化</div></h4><ul>
-<li>减少图片的使用，能用CSS实现的效果优先使用CSS实现；</li>
-<li>图片格式的选择，一般建议使用jpg，有透明需求再用png；</li>
-<li>图片质量的控制，web上的图片质量不需要太高，上线时注意检查项目中是否有体积过大的图片；</li>
-</ul>
+<a id="more"></a>
+<h4 id="PHP使用MySQL模块操作MySQL"><a href="#PHP使用MySQL模块操作MySQL" class="headerlink" title="PHP使用MySQL模块操作MySQL"></a><div id="title">PHP使用MySQL模块操作MySQL</div></h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span>  </div><div class="line">mysql_connect($db_host, $db_user, $db_password);  </div><div class="line">mysql_select_db($dn_name);  </div><div class="line">$result = mysql_query(<span class="string">"SELECT `name` FROM `users` WHERE `location` = '$location'"</span>);  </div><div class="line"><span class="keyword">while</span> ($row = mysql_fetch_array($result, MYSQL_ASSOC))  </div><div class="line">&#123;  </div><div class="line">    <span class="keyword">echo</span> $row[<span class="string">'name'</span>];  </div><div class="line">&#125;  </div><div class="line">mysql_free_result($result);  </div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>通过上述代码我们可以看到，当我们使用传统的MySQL模块操作MySQL的时候，$Location的地方很容易被SQL注入。于是后来我们为了解决这个问题，使用函数MySQL_escape_string()(备注：5.3.0之后弃用)以及mysql_real_escape_string() 来解决这个问题，不过这么一搞，整体的代码看起来不是那么的美观，而且当我们要传递的参数如果过多的时候，整个代码会变的巨丑无比，如下面所示：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span>  </div><div class="line">$query = sprintf(<span class="string">"SELECT * FROM users WHERE user='%s' AND password='%s'"</span>,  </div><div class="line">mysql_real_escape_string($user),  </div><div class="line">mysql_real_escape_string($password));  </div><div class="line">mysql_query($query);  </div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="PHP使用MySQLI的模块来操作MySQL"><a href="#PHP使用MySQLI的模块来操作MySQL" class="headerlink" title="PHP使用MySQLI的模块来操作MySQL"></a><div id="title">PHP使用MySQLI的模块来操作MySQL</div></h4><blockquote>
+<p>在 MySQLi 中有了不少进步，除了通过 Bind Column 来解决上述问题，我们可以对比一下 Object oriented style（下面这段 MySQLi 范例的写法）和 Procedural style（上面 MySQL 范例的写法）两种写法的差别。</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span>  </div><div class="line">$mysqli = <span class="keyword">new</span> mysqli($db_host, $db_user, $db_password, $db_name);  </div><div class="line">$sql = <span class="string">"INSERT INTO `users` (id, name, gender, location) VALUES (?, ?, ?, ?)"</span>;  </div><div class="line">$stmt = $mysqli-&gt;prepare($sql);  </div><div class="line">$stmt-&gt;bind_param(<span class="string">'dsss'</span>, $source_id, $source_name, $source_gender, $source_location);  </div><div class="line">$stmt-&gt;execute();  </div><div class="line">$stmt-&gt;bind_result($id, $name, $gender, $location);  </div><div class="line"><span class="keyword">while</span> ($stmt-&gt;fetch())  </div><div class="line">&#123;  </div><div class="line">    <span class="keyword">echo</span> $id . $name . $gender . $location;  </div><div class="line">&#125;  </div><div class="line">$stmt-&gt;close();  </div><div class="line">$mysqli-&gt;close();  </div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>在上述代码中，存在的优点和缺点：</strong><br><strong>优点：我们使用了MYSQLI的预处理，来对sql语句进行处理，php将SQL模板和变量分两次发送给mysql的服务器，由mysql完成变量的转义处理，既然变量和SQL模板是分两次发送的，因此就减少了sql注入的风险。</strong></p>
+<p><strong>缺点：上述代码中的bind_result()函数感觉有点多余，这是其一，其二，我们发现，当我们后端的mysql数据库变成oracle数据库的时候，我们发现此时更改后端的数据层代码，是非常麻烦的。</strong></p>
+<p><strong>于是，综上的所述，我们需要将后端的DB层给抽象出来，当我们变换后端的数据库时，只需要更改一下连接的方式即可</strong></p>
+<p><strong>因此，PDO就出现了！</strong></p>
+<h4 id="PHP使用PDO来操作MySQL"><a href="#PHP使用PDO来操作MySQL" class="headerlink" title="PHP使用PDO来操作MySQL"></a><div id="title">PHP使用PDO来操作MySQL</div></h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="comment">// 数据库连接的字符串，当更改数据库的时候，可以随时进行切换</span></div><div class="line">$dsn = <span class="string">"mysql:host=$db_host;dbname=$db_name"</span>;  </div><div class="line">$dbh = <span class="keyword">new</span> PDO($dsn, $db_user, $db_password);  </div><div class="line">$sql = <span class="string">"SELECT `name`, `location` FROM `users` WHERE `location` = ? , `name` = ?"</span>;  </div><div class="line">$sth = $dbh-&gt;prepare($sql);  </div><div class="line">$sth-&gt;execute(<span class="keyword">array</span>($location, $name));  </div><div class="line">$result = $sth-&gt;fetch(PDO::FETCH_OBJ);  </div><div class="line"><span class="keyword">echo</span> $result-&gt;name . $result-&gt;location;  </div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>通过上述的代码我们发现，PDO操作mysql和MySQLi操作mysql都是一样的套路，都是将SQL模板和变量分两次传递给mysql服务器，减少了sql注入的风险，并且同时解决了更改数据库的时候，数据库底层没法进行替换的尴尬</strong></p>
+<h5 id="使用pdo的注意事项"><a href="#使用pdo的注意事项" class="headerlink" title="使用pdo的注意事项"></a>使用pdo的注意事项</h5><ol>
+<li><p>php升级到5.3.6+，生产环境强烈建议升级到php 5.3.9+ php 5.4+，php 5.3.8存在致命的hash碰撞漏洞。</p>
+</li>
+<li><p>若使用php 5.3.6+, 请在在PDO的DSN中指定charset属性</p>
+</li>
+<li><p>如果使用了PHP 5.3.6及以前版本，设置PDO::ATTR_EMULATE_PREPARES参数为false（即由MySQL进行变量处理），php 5.3.6以上版本已经处理了这个问题，无论是使用本地模拟prepare还是调用mysql server的prepare均可。在DSN中指定charset是无效的，同时set names <charset>的执行是必不可少的。</charset></p>
+</li>
+<li><p>如果使用了PHP 5.3.6及以前版本, 因Yii框架默认并未设置ATTR_EMULATE_PREPARES的值，请在数据库配置文件中指定emulatePrepare的值为false。</p>
+</li>
+</ol>
 
       
 
@@ -256,6 +241,17 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 	<div class="article-category tagcloud">
@@ -263,7 +259,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/前端/" class="article-tag-list-link color3">前端</a>
+        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
         		</li>
       		
 		</ul>
@@ -318,7 +314,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/07/前端优化的技巧/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/08/02/PHP中MySQL，MySQLi和PDO的用法区别/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -332,18 +328,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/05/07/Javascript类库作用以及对比/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          JQuery学习目录
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/05/06/jquery插件学习/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">BootStrap，Jquery UI 和 Easy UI</div>
+    <a href="/2017/05/07/html学习基础/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">HTML基础学习目录</div>
       <i class="icon-circle-right"></i>
     </a>
   
