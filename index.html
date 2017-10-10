@@ -218,6 +218,123 @@
 
 
   
+    <article id="post-php安全性防范" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/08/02/php安全性防范/">PHP安全开发问题总结</a>
+    </h1>
+  
+
+        
+        <a href="/2017/08/02/php安全性防范/" class="archive-article-date">
+  	<time datetime="2017-08-02T14:52:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-08-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
+<p>当开发一个互联网服务的时候，必须时刻牢记安全观念，并在开发中时刻体现。PHP脚本语言对安全问题并不关心，特别是对大多数没有经验的开发者来说。每当你将任何涉及到钱财事务等交易问题时，需要特别注意安全问题的考虑，例如开发一个论坛或者一个购物车等。为了避免安全问题的出现，因此总结一下常见的安全漏洞。</p>
+</blockquote>
+<h4 id="不要相信表单"><a href="#不要相信表单" class="headerlink" title="不要相信表单"></a><div id="title">不要相信表单</div></h4><blockquote>
+<p>对于一般的JavaScript前台验证，由于无法得知用户的具体行为，例如关闭了浏览器的javaScript引擎，这样就可以通过post的方式传递一些恶意的数据到服务器，从而服务器受到攻击，因此我们需要在服务器端进行验证，即对用户传过来的数据进行逐一验证，防止XSS的攻击和SQL注入。</p>
+</blockquote>
+<h4 id="不相信用户"><a href="#不相信用户" class="headerlink" title="不相信用户"></a><div id="title">不相信用户</div></h4><blockquote>
+<p>要假设你的网站接受的每一条数据都是存在恶意代码的，存在隐藏的威胁，要对每一条数据进行清理。</p>
+</blockquote>
+<h4 id="关闭全局变量"><a href="#关闭全局变量" class="headerlink" title="关闭全局变量"></a><div id="title">关闭全局变量</div></h4><p>在php.ini文件中进行以下配置：</p>
+<blockquote>
+<p>register_globals = Off</p>
+</blockquote>
+<p>如果这个配置选项打开之后，会出现很大的安全隐患。例如有一个process.php的脚本文件，会将接收到的数据插入到数据库，接收用户输入数据的表单可能如下:</p>
+<blockquote>
+<figure class="highlight plain"><figcaption><span>name="username" type="text" size="15" maxlength="64">```</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">这样，当提交数据到process.php之后，php会注册一个$username变量，将这个变量数据提交到process.php，同时对于任何POST或GET请求参数，都会设置这样的变量。如果不是显示进行初始化那么就会出现下面的问题：</div><div class="line"></div><div class="line">```php</div><div class="line">&lt;?php</div><div class="line">// Define $authorized = true only if user is authenticated</div><div class="line">if (authenticated_user()) &#123;</div><div class="line">$authorized = true;</div><div class="line">&#125;</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>此处，假设authenticated_user函数就是判断<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">所有的这些提交数据都应该通过PHP预定义内置的全局数组来获取，包括```$_POST、$_GET、$_FILES、$_SERVER、$_REQUEST```等，其中```$_REQUEST```是一个```$_GET/$_POST/$_COOKIE```三个数组的联合变量，默认的顺序是```$_COOKIE、$_POST、$_GET```。</div><div class="line"></div><div class="line">#### &lt;div id=&apos;title&apos;&gt;推荐的安全配置选项&lt;/div&gt;</div><div class="line"></div><div class="line">error_reporting设置为Off：不要暴露错误信息给用户，开发的时候可以设置为ON</div><div class="line">safe_mode设置为Off</div><div class="line">register_globals设置为Off</div><div class="line">将以下函数禁用：system、exec、passthru、shell_exec、proc_open、popen</div><div class="line">open_basedir设置为 /tmp ，这样可以让session信息有存储权限，同时设置单独的网站根目录</div><div class="line">expose_php设置为Off</div><div class="line">allow_url_fopen设置为Off</div><div class="line">allow_url_include设置为Off</div><div class="line"></div><div class="line">#### &lt;div id=&apos;title&apos;&gt;SQL注入攻击&lt;/div&gt;</div><div class="line"></div><div class="line">对于操作数据库的SQL语句，需要特别注意安全性，因为用户可能输入特定语句使得原有的SQL语句改变了功能。类似下面的例子：</div><div class="line">&gt; ```$sql = &quot;select * from pinfo where product = &apos;$product&apos;&quot;;</div></pre></td></tr></table></figure></p>
+<p>此时如果用户输入的$product参数为：</p>
+<blockquote>
+<p>39’; DROP pinfo; SELECT ‘FOO</p>
+</blockquote>
+<p>那么最终SQL语句就变成了如下的样子：</p>
+<blockquote>
+<p>select product from pinfo where product = ‘39’; DROP pinfo; SELECT ‘FOO’</p>
+</blockquote>
+<p>这样就会变成三条SQL语句，会造成pinfo表被删除，这样会造成严重的后果。<br>这个问题可以简单的使用PHP的内置函数解决：</p>
+<blockquote>
+<figure class="highlight plain"><figcaption><span>= 'Select * from pinfo where product = '"'</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql_real_escape_string($product) . &apos;&quot;&apos;;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>防止SQL注入攻击需要做好两件事：</p>
+<ol>
+<li>对输入的参数总是进行类型验证</li>
+<li>对单引号、双引号、反引号等特殊字符总是使用mysql_real_escape_string函数进行转义</li>
+<li>但是，这里根据开发经验，不要开启php的Magic Quotes，这个特性在php6中已经废除，总是自己在需要的时候进行转义</li>
+<li>还是建议使用PDO来进行数据库的连接</li>
+</ol>
+<h4 id="防止基本的XSS攻击"><a href="#防止基本的XSS攻击" class="headerlink" title="防止基本的XSS攻击"></a><div id="title">防止基本的XSS攻击</div></h4><p>XSS攻击不像其他攻击，这种攻击在客户端进行，最基本的XSS攻击就是放置一段javascript脚本在用户待提交的表单页面，然后将用户提交的数据和cookie偷取过来。</p>
+<p>XSS工具比SQL注入更加难以防护，各大公司网站都被XSS攻击过，虽然这种攻击与php语言无关，但可以使用php来筛选用户数据达到保护用户数据的目的，这里主要使用的是对用户的数据进行过滤，一般过滤掉HTML标签，特别是a标签。下面是一个普通的过滤方法：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">transform_HTML</span><span class="params">($string, $length = null)</span> </span>&#123;</div><div class="line"></div><div class="line">    $string = trim($string);</div><div class="line">    <span class="comment">// Prevent potential Unicode codec problems.</span></div><div class="line">    $string = utf8_decode($string);</div><div class="line">    <span class="comment">// HTMLize HTML-specific characters.</span></div><div class="line">    $string = htmlentities($string, ENT_NOQUOTES);</div><div class="line">    $string = str_replace(<span class="string">"#"</span>, <span class="string">"#"</span>, $string);</div><div class="line">    $string = str_replace(<span class="string">"%"</span>, <span class="string">"%"</span>, $string);</div><div class="line">    $length = intval($length);</div><div class="line">    <span class="keyword">if</span> ($length &gt; <span class="number">0</span>) &#123;</div><div class="line">        $string = substr($string, <span class="number">0</span>, $length);</div><div class="line">    &#125;</div><div class="line">        <span class="keyword">return</span> $string;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个函数将HTML的特殊字符转换为了HTML实体，浏览器在渲染这段文本的时候以纯文本形式显示。如<strong>bold</strong>会被显示为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">上述函数的核心就是htmlentities函数，这个函数将html特殊标签转换为html实体字符，这样可以过滤大部分的XSS攻击。</div><div class="line"></div><div class="line">但是对于有经验的XSS攻击者，有更加巧妙的办法进行攻击：将他们的恶意代码使用十六进制或者utf-8编码，而不是普通的ASCII文本，例如可以使用下面的方式进行：</div><div class="line"></div><div class="line">&gt; ```&lt;a href=&quot;http://host/a.php?variable=%22%3e %3c%53%43%52%49%50%54%3e%44%6f%73%6f%6d%65%74%68%69%6e%67%6d%61%6c%69%63%69%6f%75%73%3c%2f%53%43%52%49%50%54%3e&quot;&gt;</div></pre></td></tr></table></figure></p>
+<p>这样浏览器渲染的结果其实是：</p>
+<blockquote>
+<p><code>&lt;a href=&quot;http://host/a.php?variable=&quot;&gt; &lt;SCRIPT&gt;Dosomethingmalicious&lt;/SCRIPT&gt;</code></p>
+</blockquote>
+<p>这样就达到了攻击的目的。为了防止这种情况，需要在transform_HTML函数的基础上再将#和%转换为他们对应的实体符号，同时加上了$length参数来限制提交的数据的最大长度</p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/08/02/php安全性防范/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-html学习基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1161,80 +1278,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/05/06/列表生成式/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-python编码" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/06/python编码/">python字符编码</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/06/python编码/" class="archive-article-date">
-  	<time datetime="2017-05-06T11:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>如果你正在使用 Python2.x，那么你一定遇到了一些或者很多关于字符编码解码报错情况。是的，所以，如果你愿意，让我们一层一层一层的剥开它的心，你会发现你会讶异，真TM的简单。</p>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">编码</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Python/" class="article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/06/python编码/">展开全文 >></a>
         </p>
       
 
