@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Python">
 <meta property="og:description" content="前言 学习完了requests和BeautifulSoup的用法后，我们来看一下怎么样通过这两个工具来登录一些我们经常上的网站。接下来，我们以登录github来讲解一下python爬虫的自动登录">
 <meta property="og:image" content="https://i.loli.net/2017/10/18/59e6c77a0301b.png">
-<meta property="og:updated_time" content="2017-10-18T03:29:57.000Z">
+<meta property="og:updated_time" content="2017-10-19T07:39:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python爬虫自动登录GitHub">
 <meta name="twitter:description" content="前言 学习完了requests和BeautifulSoup的用法后，我们来看一下怎么样通过这两个工具来登录一些我们经常上的网站。接下来，我们以登录github来讲解一下python爬虫的自动登录">
@@ -201,6 +201,7 @@
 <p>注意，在我们第二次登陆成功之后，服务器会给我们返回一串cookies，接下来，我们如果想要获取到其他相关信息的话，需要带着这个cookie（其实就是一个身份的验证），来进行访问其他的页面，比如说，我们想要获取登录人的个人信息，只需要：</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">r3 = requests.get(<span class="string">'https://github.com/settings/emails'</span>,cookies = all_cookie)</div><div class="line"></div><div class="line">print(r3.text)</div></pre></td></tr></table></figure>
+
       
 
       
@@ -256,6 +257,17 @@
 
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/爬虫/" class="article-tag-list-link color3">爬虫</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
