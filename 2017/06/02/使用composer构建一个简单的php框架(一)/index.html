@@ -8,23 +8,23 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>使用composer构建一个简单的php框架（一） | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言 php有许多丰富的框架，帮助我们提高了我们的开发效率。这个教程，我们将学习如何构建我们自己的一个小型的框架，并且使用的是现在比较流行的工具—-composer  什么是composer Composer 是 PHP5.3以上的一个依赖管理工具。它允许你声明项目所依赖的代码库，它会在你的项目中为你安装他们。Composer 可以理解成一个包管理器，是一个类似于360软件管家的一个东西。世界各地">
+  <meta name="description" content="前言 php有许多丰富的框架，帮助我们提高了我们的开发效率。这个教程，我们将学习如何构建我们自己的一个小型的框架，并且使用的是现在比较流行的工具—-composer">
 <meta name="keywords" content="PHP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用composer构建一个简单的php框架（一）">
 <meta property="og:url" content="http://yoursite.com/2017/06/02/使用composer构建一个简单的php框架(一)/index.html">
 <meta property="og:site_name" content="Python">
-<meta property="og:description" content="前言 php有许多丰富的框架，帮助我们提高了我们的开发效率。这个教程，我们将学习如何构建我们自己的一个小型的框架，并且使用的是现在比较流行的工具—-composer  什么是composer Composer 是 PHP5.3以上的一个依赖管理工具。它允许你声明项目所依赖的代码库，它会在你的项目中为你安装他们。Composer 可以理解成一个包管理器，是一个类似于360软件管家的一个东西。世界各地">
+<meta property="og:description" content="前言 php有许多丰富的框架，帮助我们提高了我们的开发效率。这个教程，我们将学习如何构建我们自己的一个小型的框架，并且使用的是现在比较流行的工具—-composer">
 <meta property="og:image" content="https://i.loli.net/2017/10/26/59f148e9c9436.png">
 <meta property="og:image" content="https://i.loli.net/2017/10/26/59f14b0aab8c0.png">
 <meta property="og:image" content="https://i.loli.net/2017/10/26/59f14bd95b8a8.png">
 <meta property="og:image" content="https://i.loli.net/2017/10/26/59f14ccd2444e.png">
 <meta property="og:image" content="https://i.loli.net/2017/10/26/59f14d392adfc.png">
 <meta property="og:image" content="https://i.loli.net/2017/10/26/59f14dd1a245a.png">
-<meta property="og:updated_time" content="2017-10-26T02:57:02.000Z">
+<meta property="og:updated_time" content="2017-10-26T02:59:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用composer构建一个简单的php框架（一）">
-<meta name="twitter:description" content="前言 php有许多丰富的框架，帮助我们提高了我们的开发效率。这个教程，我们将学习如何构建我们自己的一个小型的框架，并且使用的是现在比较流行的工具—-composer  什么是composer Composer 是 PHP5.3以上的一个依赖管理工具。它允许你声明项目所依赖的代码库，它会在你的项目中为你安装他们。Composer 可以理解成一个包管理器，是一个类似于360软件管家的一个东西。世界各地">
+<meta name="twitter:description" content="前言 php有许多丰富的框架，帮助我们提高了我们的开发效率。这个教程，我们将学习如何构建我们自己的一个小型的框架，并且使用的是现在比较流行的工具—-composer">
 <meta name="twitter:image" content="https://i.loli.net/2017/10/26/59f148e9c9436.png">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
@@ -185,6 +185,7 @@
         <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
 <p>php有许多丰富的框架，帮助我们提高了我们的开发效率。这个教程，我们将学习如何构建我们自己的一个小型的框架，并且使用的是现在比较流行的工具—-composer</p>
 </blockquote>
+<a id="more"></a>
 <h4 id="什么是composer"><a href="#什么是composer" class="headerlink" title="什么是composer"></a><div id="title">什么是composer</div></h4><blockquote>
 <p>Composer 是 PHP5.3以上的一个依赖管理工具。它允许你声明项目所依赖的代码库，它会在你的项目中为你安装他们。Composer 可以理解成一个包管理器，是一个类似于360软件管家的一个东西。世界各地的程序员将自己写好的东西放到github上，此时如果我们想使用别人已经开发好的包，我们只需要在composer上进行搜索，然后安装即可，这就实现了代码的共享和利用。大概的一个原理图如下：</p>
 </blockquote>
