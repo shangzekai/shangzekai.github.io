@@ -290,6 +290,123 @@
 
 
   
+    <article id="post-使用composer构建一个简单的php框架(一)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/02/使用composer构建一个简单的php框架(一)/">使用composer构建一个简单的php框架（一）</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/02/使用composer构建一个简单的php框架(一)/" class="archive-article-date">
+  	<time datetime="2017-06-02T12:52:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
+<p>php有许多丰富的框架，帮助我们提高了我们的开发效率。这个教程，我们将学习如何构建我们自己的一个小型的框架，并且使用的是现在比较流行的工具—-composer</p>
+</blockquote>
+<h4 id="什么是composer"><a href="#什么是composer" class="headerlink" title="什么是composer"></a><div id="title">什么是composer</div></h4><blockquote>
+<p>Composer 是 PHP5.3以上的一个依赖管理工具。它允许你声明项目所依赖的代码库，它会在你的项目中为你安装他们。Composer 可以理解成一个包管理器，是一个类似于360软件管家的一个东西。世界各地的程序员将自己写好的东西放到github上，此时如果我们想使用别人已经开发好的包，我们只需要在composer上进行搜索，然后安装即可，这就实现了代码的共享和利用。大概的一个原理图如下：</p>
+</blockquote>
+<p><img src="https://i.loli.net/2017/10/26/59f148e9c9436.png" alt="composer的原理.png"></p>
+<p>Composer Hub 地址：<a href="https://packagist.org/。Composer" target="_blank" rel="external">https://packagist.org/。Composer</a> 中文网站：<a href="http://www.phpcomposer.com/。" target="_blank" rel="external">http://www.phpcomposer.com/。</a></p>
+<h4 id="composer的安装"><a href="#composer的安装" class="headerlink" title="composer的安装"></a><div id="title">composer的安装</div></h4><p><b>composer的安装非常的简单，我们只需要参考这个安装手册即可：</b></p>
+<blockquote>
+<p><a href="http://docs.phpcomposer.com/00-intro.html#Installation-*nix" target="_blank" rel="external">http://docs.phpcomposer.com/00-intro.html#Installation-*nix</a></p>
+</blockquote>
+<p>里面有非常详尽的安装方法，我们按照操作就可以完成。</p>
+<h4 id="composer的初始化"><a href="#composer的初始化" class="headerlink" title="composer的初始化"></a><div id="title">composer的初始化</div></h4><p><strong>composer的初始化包含两种方式：</strong></p>
+<ol>
+<li>直接使用命令进行初始化：<blockquote>
+<p>composer init</p>
+</blockquote>
+</li>
+</ol>
+<p>接下来会有各种各样的提示，我们只需要按照操作即可：<br><img src="https://i.loli.net/2017/10/26/59f14b0aab8c0.png" alt="composer init初始化.png"><br>最终会生成一个composer.json的文件</p>
+<ol>
+<li>直接新建一个composer.json的文件，写入如下内容即可：<figure class="highlight leaf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  "require": &#123;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ol>
+<p>然后直接使用命令，<code>composer update</code>即可</p>
+<blockquote>
+<p>不管你使用的是上述哪个方法，我们最终会看到如下的文件结构，则表示成功：</p>
+</blockquote>
+<p><img src="https://i.loli.net/2017/10/26/59f14bd95b8a8.png" alt="tree.png"></p>
+<h4 id="composer安装代码包"><a href="#composer安装代码包" class="headerlink" title="composer安装代码包"></a><div id="title">composer安装代码包</div></h4><p><strong>初始化之后，我们就可以使用composer来进行安装我们想要的代码包了，方法也非常的简单，我们只需要登录到composer的packagelist的网站  <a href="https://packagist.org" target="_blank" rel="external">https://packagist.org</a> 搜索我们想要的代码包即可，如下图所示：</strong></p>
+<p><img src="https://i.loli.net/2017/10/26/59f14ccd2444e.png" alt="搜索包.png"></p>
+<p>再上图中，我们想要搜索一个关于验证码的包，因此我们只需要输入captcha即可出现关于验证码的各种包</p>
+<p><img src="https://i.loli.net/2017/10/26/59f14d392adfc.png" alt="captcha验证码.png"></p>
+<p>点击进去之后，我们会看到关于这个包的一些简单的介绍。</p>
+<p>那我们如何下载这个包呢？非常的简单，使用：</p>
+<blockquote>
+<p>composer require gregwar/captcha</p>
+</blockquote>
+<p>即可</p>
+<p>当下载成功之后，我们的代码结构如下：</p>
+<p><img src="https://i.loli.net/2017/10/26/59f14dd1a245a.png" alt="captcha下载成功.png"></p>
+<h4 id="简单的测试"><a href="#简单的测试" class="headerlink" title="简单的测试"></a><div id="title">简单的测试</div></h4><p><strong>在composer.json的当前目录下面，创建test.php,输入如下的代码：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">include</span> <span class="string">"vendor/autoload.php"</span>;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">Gregwar</span>\<span class="title">Captcha</span>\<span class="title">CaptchaBuilder</span>;</div><div class="line"></div><div class="line">$builder = <span class="keyword">new</span> CaptchaBuilder;</div><div class="line">$builder-&gt;build();</div><div class="line"></div><div class="line">$builder-&gt;save(<span class="string">'/Users/shangzekai/Desktop/out.jpg'</span>);</div></pre></td></tr></table></figure>
+<p><strong>此时我们运行这段脚本，我们会发现一个简单的验证码就生成了，无需自己再去动手</strong></p>
+<p><strong>这就是我们composer的一个简单的用法，我们接下来看一下如何构建一个简答的mvc框架。。。</strong></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/02/使用composer构建一个简单的php框架(一)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-html学习基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1157,82 +1274,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/05/06/python函数/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-列表生成式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/06/列表生成式/">python的各种器</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/06/列表生成式/" class="archive-article-date">
-  	<time datetime="2017-05-06T12:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="列表生成式"><a href="#列表生成式" class="headerlink" title="列表生成式"></a><div id="title">列表生成式</div></h4><blockquote>
-<p>现在有个需求，看列表[0, 1, 2, 3, 4, 5, 6, 7, 8, 9],我要求你把列表里的每个值加1，你怎么实现？</p>
-</blockquote>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Python/" class="article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/06/列表生成式/">展开全文 >></a>
         </p>
       
 
