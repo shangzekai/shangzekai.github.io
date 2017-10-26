@@ -21,7 +21,7 @@
 <meta property="og:image" content="https://i.loli.net/2017/10/26/59f14ccd2444e.png">
 <meta property="og:image" content="https://i.loli.net/2017/10/26/59f14d392adfc.png">
 <meta property="og:image" content="https://i.loli.net/2017/10/26/59f14dd1a245a.png">
-<meta property="og:updated_time" content="2017-10-26T03:10:01.000Z">
+<meta property="og:updated_time" content="2017-10-26T05:56:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用composer构建一个简单的php框架之初识composer（一）">
 <meta name="twitter:description" content="前言 php有许多丰富的框架，帮助我们提高了我们的开发效率。这个教程，我们将学习如何构建我们自己的一个小型的框架，并且使用的是现在比较流行的工具—-composer">
@@ -178,7 +178,7 @@
       
 	
         <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是composer"><span class="toc-text">什么是composer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#composer的安装"><span class="toc-text">composer的安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#composer的初始化"><span class="toc-text">composer的初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#composer安装代码包"><span class="toc-text">composer安装代码包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#简单的测试"><span class="toc-text">简单的测试</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是composer"><span class="toc-text">什么是composer</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#composer的安装"><span class="toc-text">composer的安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#composer的初始化"><span class="toc-text">composer的初始化</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#composer安装代码包"><span class="toc-text">composer安装代码包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#简单的测试"><span class="toc-text">简单的测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#中国镜像加速"><span class="toc-text">中国镜像加速</span></a></li></ol>
           <hr/>
         </div>
         
@@ -229,6 +229,9 @@
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">include</span> <span class="string">"vendor/autoload.php"</span>;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">Gregwar</span>\<span class="title">Captcha</span>\<span class="title">CaptchaBuilder</span>;</div><div class="line"></div><div class="line">$builder = <span class="keyword">new</span> CaptchaBuilder;</div><div class="line">$builder-&gt;build();</div><div class="line"></div><div class="line">$builder-&gt;save(<span class="string">'/Users/shangzekai/Desktop/out.jpg'</span>);</div></pre></td></tr></table></figure>
 <p><strong>此时我们运行这段脚本，我们会发现一个简单的验证码就生成了，无需自己再去动手</strong></p>
 <p><strong>这就是我们composer的一个简单的用法，我们接下来看一下如何构建一个简答的mvc框架。。。</strong></p>
+<h4 id="中国镜像加速"><a href="#中国镜像加速" class="headerlink" title="中国镜像加速"></a><div id="title">中国镜像加速</div></h4><blockquote>
+<p>我们在进行上述的操作时，包括update，install等操作时候，发现会需要很长的时间。因此，为了解决这个问题，我们采用镜像来进行加速。具体的我们可以参考：<a href="https://pkg.phpcomposer.com/" target="_blank" rel="external">https://pkg.phpcomposer.com/</a></p>
+</blockquote>
 
       
 
