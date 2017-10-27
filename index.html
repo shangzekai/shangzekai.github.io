@@ -362,6 +362,78 @@
 
 
   
+    <article id="post-使用composer构建一个简单的php框架之搭建路由(二)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/06/02/使用composer构建一个简单的php框架之搭建路由(二)/">使用composer构建一个简单的php框架之搭建路由（二）</a>
+    </h1>
+  
+
+        
+        <a href="/2017/06/02/使用composer构建一个简单的php框架之搭建路由(二)/" class="archive-article-date">
+  	<time datetime="2017-06-02T12:50:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
+<p>上一篇中我们已经建立了一个空的 Composer 项目，本篇将讲述如何构建路由。推荐 <a href="https://github.com/NoahBuscher/Macaw，对应的" target="_blank" rel="external">https://github.com/NoahBuscher/Macaw，对应的</a> Composer 包为 noahbuscher/macaw </p>
+</blockquote>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/06/02/使用composer构建一个简单的php框架之搭建路由(二)/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-使用composer构建一个简单的php框架之搭建MVC（三）" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -434,29 +506,55 @@
 
 
   
-    <article id="post-使用composer构建一个简单的php框架之搭建路由(二)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-使用composer构建一个简单的PHP框架之ORM(四)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/02/使用composer构建一个简单的php框架之搭建路由(二)/">使用composer构建一个简单的php框架之搭建路由（二）</a>
+      <a class="article-title" href="/2017/06/02/使用composer构建一个简单的PHP框架之ORM(四)/">使用composer构建一个简单的php框架之ORM（四）</a>
     </h1>
   
 
         
-        <a href="/2017/06/02/使用composer构建一个简单的php框架之搭建路由(二)/" class="archive-article-date">
-  	<time datetime="2017-06-02T12:50:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
+        <a href="/2017/06/02/使用composer构建一个简单的PHP框架之ORM(四)/" class="archive-article-date">
+  	<time datetime="2017-06-02T12:35:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
+	
         <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
-<p>上一篇中我们已经建立了一个空的 Composer 项目，本篇将讲述如何构建路由。推荐 <a href="https://github.com/NoahBuscher/Macaw，对应的" target="_blank" rel="external">https://github.com/NoahBuscher/Macaw，对应的</a> Composer 包为 noahbuscher/macaw </p>
+<p>经过前三篇文章 基础准备 、 构建路由 和 设计 MVC ，我们已经得到了一个结构比较完整的 MVC 架构的 PHP 微框架，但是距离一个真正能够上手使用的框架还差一样东西： 数据库封装 ，本篇就将讲述如何集成一个 ORM Composer 包</p>
 </blockquote>
+<h4 id="安装Eloquent"><a href="#安装Eloquent" class="headerlink" title="安装Eloquent"></a><div id="title">安装Eloquent</div></h4><blockquote>
+<p>我们选择 Laravel 的 illuminate/database 作为我们的 ORM 包。我试用了几个著名的 ORM，发现还是 Laravel 的 Eloquent 好用！</p>
+</blockquote>
+<p><strong>安装 illuminate/database</strong></p>
+<p>给 composer.json 增加一个 require 项：</p>
+<blockquote>
+<p>“illuminate/database”: “*”</p>
+</blockquote>
+<p>运行 <code>composer update</code> ，等待安装完成。</p>
+<h4 id="使用Eloquent"><a href="#使用Eloquent" class="headerlink" title="使用Eloquent"></a><div id="title">使用Eloquent</div></h4><p>修改public/index.php为：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Capsule</span>\<span class="title">Manager</span> <span class="title">as</span> <span class="title">Capsule</span>;</div><div class="line"></div><div class="line"><span class="comment">// Autoload 自动载入</span></div><div class="line"><span class="keyword">require</span> <span class="string">'../vendor/autoload.php'</span>;</div><div class="line"></div><div class="line"><span class="comment">// Eloquent ORM</span></div><div class="line"></div><div class="line">$capsule = <span class="keyword">new</span> Capsule;</div><div class="line">$capsule-&gt;addConnection(<span class="keyword">require</span> <span class="string">'../config/database.php'</span>);</div><div class="line">$capsule-&gt;bootEloquent();</div><div class="line"></div><div class="line"><span class="comment">// 路由配置</span></div><div class="line"><span class="keyword">require</span> <span class="string">'../config/routes.php'</span>;</div></pre></td></tr></table></figure>
+<p>新增 config/database.php （注意替换数据库密码）：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">return</span> [</div><div class="line">  <span class="string">'driver'</span>    =&gt; <span class="string">'mysql'</span>,</div><div class="line">  <span class="string">'host'</span>      =&gt; <span class="string">'localhost'</span>,</div><div class="line">  <span class="string">'database'</span>  =&gt; <span class="string">'test'</span>,</div><div class="line">  <span class="string">'username'</span>  =&gt; <span class="string">'root'</span>,</div><div class="line">  <span class="string">'password'</span>  =&gt; <span class="string">'password'</span>,</div><div class="line">  <span class="string">'charset'</span>   =&gt; <span class="string">'utf8'</span>,</div><div class="line">  <span class="string">'collation'</span> =&gt; <span class="string">'utf8_general_ci'</span>,</div><div class="line">  <span class="string">'prefix'</span>    =&gt; <span class="string">''</span></div><div class="line">  ];</div></pre></td></tr></table></figure>
+<p><strong>注意上面的这种数组写法，是在php的新版中才会使用到的</strong></p>
+<p>修改 models/Article.php ：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="comment">/**</span></div><div class="line">* Article Model</div><div class="line">*/</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Article</span> <span class="keyword">extends</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Eloquent</span>\<span class="title">Model</span></span>&#123;</div><div class="line">  <span class="keyword">public</span> $timestamps = <span class="keyword">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>controllers/HomeController.php 无需改动。<br>刷新，页面依旧.</p>
+<h4 id="关于Eloquent"><a href="#关于Eloquent" class="headerlink" title="关于Eloquent"></a><div id="title">关于Eloquent</div></h4><blockquote>
+<p>Eloquent 异常强大 ，可以说是 Laravel 中 最特别 、 最有价值 的部分。</p>
+</blockquote>
+<p>像 HomeController 中调用的 Article::first() ，之前用了十几行代码，现在什么都不用干，继承一个类就行了。</p>
+<p>Eloquent 更多用法参见：<a href="http://d.laravel-china.org/docs/5.5/eloquent" target="_blank" rel="external">Eloquent ORM 中文文档</a></p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a><div id="title">小结</div></h4><blockquote>
+<p>目前建造一个丰满的可以上手使用的 PHP 框架的工作就算是基本完成了，接下来我会继续完善这个框架，比如添加邮件发送功能，表单验证功能等，让她更加丰富、好用！</p>
+</blockquote>
+
       
 
       
@@ -491,7 +589,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/02/使用composer构建一个简单的php框架之搭建路由(二)/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/06/02/使用composer构建一个简单的PHP框架之ORM(四)/">展开全文 >></a>
         </p>
       
 
@@ -1160,82 +1258,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/05/06/BootStrap常用点总结/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-Python简介" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/06/Python简介/">初识Python</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/06/Python简介/" class="archive-article-date">
-  	<time datetime="2017-05-06T14:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Python简介"><a href="#Python简介" class="headerlink" title="Python简介"></a><div id="title">Python简介</div></h4><h5 id="1-Python的前世今生"><a href="#1-Python的前世今生" class="headerlink" title="1. Python的前世今生"></a>1. Python的前世今生</h5><blockquote>
-<p>python的创始人为吉多·范罗苏姆（Guido van Rossum）。1989年的圣诞节期间，吉多·范罗苏姆为了在阿姆斯特丹打发时间，决心开发一个新的脚本解释程序，作为ABC语言的一种继承</p>
-</blockquote>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Python/" class="article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/06/Python简介/">展开全文 >></a>
         </p>
       
 

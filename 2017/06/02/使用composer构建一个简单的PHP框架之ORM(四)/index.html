@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>随便说说 | Python</title>
+  <title>使用composer构建一个简单的php框架之ORM（四） | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="恋爱要趁早，学习要搞好。  在不了解之前，先别着急说不感兴趣。  别为自己是个凡人而负疚。  坚持不是没有中断，而是现在还没有做。  别为太久以后的事情发愁。  自己的事情，自己去做决定。  没有选择的时候，就只能前行。  早睡。  多学几种运动。  人生没有成功，只有顿挫和偶胜。  牙痛的时候，含两粒花椒，可以消肿止痛。  没有过去和将来，只有现在。  同一天，过的高兴，就赚了，过的郁闷，就亏">
-<meta name="keywords" content="闲谈">
+  <meta name="description" content="前言 经过前三篇文章 基础准备 、 构建路由 和 设计 MVC ，我们已经得到了一个结构比较完整的 MVC 架构的 PHP 微框架，但是距离一个真正能够上手使用的框架还差一样东西： 数据库封装 ，本篇就将讲述如何集成一个 ORM Composer 包  安装Eloquent 我们选择 Laravel 的 illuminate/database 作为我们的 ORM 包。我试用了几个著名的 ORM，发">
+<meta name="keywords" content="PHP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="随便说说">
-<meta property="og:url" content="http://yoursite.com/2017/04/07/随便聊聊/index.html">
+<meta property="og:title" content="使用composer构建一个简单的php框架之ORM（四）">
+<meta property="og:url" content="http://yoursite.com/2017/06/02/使用composer构建一个简单的PHP框架之ORM(四)/index.html">
 <meta property="og:site_name" content="Python">
-<meta property="og:description" content="恋爱要趁早，学习要搞好。  在不了解之前，先别着急说不感兴趣。  别为自己是个凡人而负疚。  坚持不是没有中断，而是现在还没有做。  别为太久以后的事情发愁。  自己的事情，自己去做决定。  没有选择的时候，就只能前行。  早睡。  多学几种运动。  人生没有成功，只有顿挫和偶胜。  牙痛的时候，含两粒花椒，可以消肿止痛。  没有过去和将来，只有现在。  同一天，过的高兴，就赚了，过的郁闷，就亏">
-<meta property="og:updated_time" content="2017-09-18T07:20:18.000Z">
+<meta property="og:description" content="前言 经过前三篇文章 基础准备 、 构建路由 和 设计 MVC ，我们已经得到了一个结构比较完整的 MVC 架构的 PHP 微框架，但是距离一个真正能够上手使用的框架还差一样东西： 数据库封装 ，本篇就将讲述如何集成一个 ORM Composer 包  安装Eloquent 我们选择 Laravel 的 illuminate/database 作为我们的 ORM 包。我试用了几个著名的 ORM，发">
+<meta property="og:updated_time" content="2017-10-27T01:42:20.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="随便说说">
-<meta name="twitter:description" content="恋爱要趁早，学习要搞好。  在不了解之前，先别着急说不感兴趣。  别为自己是个凡人而负疚。  坚持不是没有中断，而是现在还没有做。  别为太久以后的事情发愁。  自己的事情，自己去做决定。  没有选择的时候，就只能前行。  早睡。  多学几种运动。  人生没有成功，只有顿挫和偶胜。  牙痛的时候，含两粒花椒，可以消肿止痛。  没有过去和将来，只有现在。  同一天，过的高兴，就赚了，过的郁闷，就亏">
+<meta name="twitter:title" content="使用composer构建一个简单的php框架之ORM（四）">
+<meta name="twitter:description" content="前言 经过前三篇文章 基础准备 、 构建路由 和 设计 MVC ，我们已经得到了一个结构比较完整的 MVC 架构的 PHP 微框架，但是距离一个真正能够上手使用的框架还差一样东西： 数据库封装 ，本篇就将讲述如何集成一个 ORM Composer 包  安装Eloquent 我们选择 Laravel 的 illuminate/database 作为我们的 ORM 包。我试用了几个著名的 ORM，发">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
@@ -149,20 +149,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-随便聊聊" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-使用composer构建一个简单的PHP框架之ORM(四)" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      随便说说
+      使用composer构建一个简单的php框架之ORM（四）
     </h1>
   
 
         
-        <a href="/2017/04/07/随便聊聊/" class="archive-article-date">
-  	<time datetime="2017-04-07T15:54:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-07</time>
+        <a href="/2017/06/02/使用composer构建一个简单的PHP框架之ORM(四)/" class="archive-article-date">
+  	<time datetime="2017-06-02T12:35:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
 </a>
         
       </header>
@@ -171,12 +171,36 @@
       
 	
         <div id="toc" class="article-toc">
-          
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装Eloquent"><span class="toc-text">安装Eloquent</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用Eloquent"><span class="toc-text">使用Eloquent</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#关于Eloquent"><span class="toc-text">关于Eloquent</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#小结"><span class="toc-text">小结</span></a></li></ol>
           <hr/>
         </div>
         
-        <blockquote>
-<p>恋爱要趁早，学习要搞好。<br>  在不了解之前，先别着急说不感兴趣。<br>  别为自己是个凡人而负疚。<br>  坚持不是没有中断，而是现在还没有做。<br>  <font color="red">别为太久以后的事情发愁。</font><br>  自己的事情，自己去做决定。<br>  没有选择的时候，就只能前行。<br>  <font color="red">早睡。<br>  多学几种运动。<br>  人生没有成功，只有顿挫和偶胜。</font><br>  牙痛的时候，含两粒花椒，可以消肿止痛。<br>  没有过去和将来，只有现在。<br>  同一天，过的高兴，就赚了，过的郁闷，就亏了。<br>  在为浪费时间而后悔和自责的时候，你依然在浪费时间。<br>  只试不买，心情不好，边逛边吃，才是王道。<br>  学会做饭。<br>  晚上少吃点，心情会很好。<br>  学个新东西，心情会很好。<br>  去跑步两圈，心情会很好。<br>  免费的东西，不一定便宜。<br>  对于没有用的东西，最好的收纳方法，就是扔。<br>  不试，就不会有结果。<br>  一辈子，大概是三万天。</p>
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
+<p>经过前三篇文章 基础准备 、 构建路由 和 设计 MVC ，我们已经得到了一个结构比较完整的 MVC 架构的 PHP 微框架，但是距离一个真正能够上手使用的框架还差一样东西： 数据库封装 ，本篇就将讲述如何集成一个 ORM Composer 包</p>
+</blockquote>
+<h4 id="安装Eloquent"><a href="#安装Eloquent" class="headerlink" title="安装Eloquent"></a><div id="title">安装Eloquent</div></h4><blockquote>
+<p>我们选择 Laravel 的 illuminate/database 作为我们的 ORM 包。我试用了几个著名的 ORM，发现还是 Laravel 的 Eloquent 好用！</p>
+</blockquote>
+<p><strong>安装 illuminate/database</strong></p>
+<p>给 composer.json 增加一个 require 项：</p>
+<blockquote>
+<p>“illuminate/database”: “*”</p>
+</blockquote>
+<p>运行 <code>composer update</code> ，等待安装完成。</p>
+<h4 id="使用Eloquent"><a href="#使用Eloquent" class="headerlink" title="使用Eloquent"></a><div id="title">使用Eloquent</div></h4><p>修改public/index.php为：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Capsule</span>\<span class="title">Manager</span> <span class="title">as</span> <span class="title">Capsule</span>;</div><div class="line"></div><div class="line"><span class="comment">// Autoload 自动载入</span></div><div class="line"><span class="keyword">require</span> <span class="string">'../vendor/autoload.php'</span>;</div><div class="line"></div><div class="line"><span class="comment">// Eloquent ORM</span></div><div class="line"></div><div class="line">$capsule = <span class="keyword">new</span> Capsule;</div><div class="line">$capsule-&gt;addConnection(<span class="keyword">require</span> <span class="string">'../config/database.php'</span>);</div><div class="line">$capsule-&gt;bootEloquent();</div><div class="line"></div><div class="line"><span class="comment">// 路由配置</span></div><div class="line"><span class="keyword">require</span> <span class="string">'../config/routes.php'</span>;</div></pre></td></tr></table></figure>
+<p>新增 config/database.php （注意替换数据库密码）：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">return</span> [</div><div class="line">  <span class="string">'driver'</span>    =&gt; <span class="string">'mysql'</span>,</div><div class="line">  <span class="string">'host'</span>      =&gt; <span class="string">'localhost'</span>,</div><div class="line">  <span class="string">'database'</span>  =&gt; <span class="string">'test'</span>,</div><div class="line">  <span class="string">'username'</span>  =&gt; <span class="string">'root'</span>,</div><div class="line">  <span class="string">'password'</span>  =&gt; <span class="string">'password'</span>,</div><div class="line">  <span class="string">'charset'</span>   =&gt; <span class="string">'utf8'</span>,</div><div class="line">  <span class="string">'collation'</span> =&gt; <span class="string">'utf8_general_ci'</span>,</div><div class="line">  <span class="string">'prefix'</span>    =&gt; <span class="string">''</span></div><div class="line">  ];</div></pre></td></tr></table></figure>
+<p><strong>注意上面的这种数组写法，是在php的新版中才会使用到的</strong></p>
+<p>修改 models/Article.php ：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="comment">/**</span></div><div class="line">* Article Model</div><div class="line">*/</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Article</span> <span class="keyword">extends</span> <span class="title">Illuminate</span>\<span class="title">Database</span>\<span class="title">Eloquent</span>\<span class="title">Model</span></span>&#123;</div><div class="line">  <span class="keyword">public</span> $timestamps = <span class="keyword">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>controllers/HomeController.php 无需改动。<br>刷新，页面依旧.</p>
+<h4 id="关于Eloquent"><a href="#关于Eloquent" class="headerlink" title="关于Eloquent"></a><div id="title">关于Eloquent</div></h4><blockquote>
+<p>Eloquent 异常强大 ，可以说是 Laravel 中 最特别 、 最有价值 的部分。</p>
+</blockquote>
+<p>像 HomeController 中调用的 Article::first() ，之前用了十几行代码，现在什么都不用干，继承一个类就行了。</p>
+<p>Eloquent 更多用法参见：<a href="http://d.laravel-china.org/docs/5.5/eloquent" target="_blank" rel="external">Eloquent ORM 中文文档</a></p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a><div id="title">小结</div></h4><blockquote>
+<p>目前建造一个丰满的可以上手使用的 PHP 框架的工作就算是基本完成了，接下来我会继续完善这个框架，比如添加邮件发送功能，表单验证功能等，让她更加丰富、好用！</p>
 </blockquote>
 
       
@@ -222,7 +246,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">闲谈</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
         		</li>
       		
 		</ul>
@@ -235,7 +259,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/闲谈/" class="article-tag-list-link color3">闲谈</a>
+        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
         		</li>
       		
 		</ul>
@@ -290,7 +314,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/04/07/随便聊聊/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/06/02/使用composer构建一个简单的PHP框架之ORM(四)/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -304,18 +328,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/05/04/vim树形菜单设置/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/06/02/使用composer构建一个简单的php框架之搭建MVC（三）/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          vim树形菜单
+          使用composer构建一个简单的php框架之搭建路由（二）
         
       </div>
     </a>
   
   
-    <a href="/2017/04/07/git代码冲突的常见解决方法/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">git代码冲突常见的解决方法</div>
+    <a href="/2017/05/07/html学习基础/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">HTML基础学习目录</div>
       <i class="icon-circle-right"></i>
     </a>
   
