@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>使用composer构建一个简单的php框架之ORM（四） | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言 经过前三篇文章 基础准备 、 构建路由 和 设计 MVC ，我们已经得到了一个结构比较完整的 MVC 架构的 PHP 微框架，但是距离一个真正能够上手使用的框架还差一样东西： 数据库封装 ，本篇就将讲述如何集成一个 ORM Composer 包  安装Eloquent 我们选择 Laravel 的 illuminate/database 作为我们的 ORM 包。我试用了几个著名的 ORM，发">
+  <meta name="description" content="前言 经过前三篇文章 基础准备 、 构建路由 和 设计 MVC ，我们已经得到了一个结构比较完整的 MVC 架构的 PHP 微框架，但是距离一个真正能够上手使用的框架还差一样东西： 数据库封装 ，本篇就将讲述如何集成一个 ORM Composer 包">
 <meta name="keywords" content="PHP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用composer构建一个简单的php框架之ORM（四）">
 <meta property="og:url" content="http://yoursite.com/2017/06/02/使用composer构建一个简单的PHP框架之ORM(四)/index.html">
 <meta property="og:site_name" content="Python">
-<meta property="og:description" content="前言 经过前三篇文章 基础准备 、 构建路由 和 设计 MVC ，我们已经得到了一个结构比较完整的 MVC 架构的 PHP 微框架，但是距离一个真正能够上手使用的框架还差一样东西： 数据库封装 ，本篇就将讲述如何集成一个 ORM Composer 包  安装Eloquent 我们选择 Laravel 的 illuminate/database 作为我们的 ORM 包。我试用了几个著名的 ORM，发">
-<meta property="og:updated_time" content="2017-10-27T01:42:20.000Z">
+<meta property="og:description" content="前言 经过前三篇文章 基础准备 、 构建路由 和 设计 MVC ，我们已经得到了一个结构比较完整的 MVC 架构的 PHP 微框架，但是距离一个真正能够上手使用的框架还差一样东西： 数据库封装 ，本篇就将讲述如何集成一个 ORM Composer 包">
+<meta property="og:updated_time" content="2017-10-27T01:44:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用composer构建一个简单的php框架之ORM（四）">
-<meta name="twitter:description" content="前言 经过前三篇文章 基础准备 、 构建路由 和 设计 MVC ，我们已经得到了一个结构比较完整的 MVC 架构的 PHP 微框架，但是距离一个真正能够上手使用的框架还差一样东西： 数据库封装 ，本篇就将讲述如何集成一个 ORM Composer 包  安装Eloquent 我们选择 Laravel 的 illuminate/database 作为我们的 ORM 包。我试用了几个著名的 ORM，发">
+<meta name="twitter:description" content="前言 经过前三篇文章 基础准备 、 构建路由 和 设计 MVC ，我们已经得到了一个结构比较完整的 MVC 架构的 PHP 微框架，但是距离一个真正能够上手使用的框架还差一样东西： 数据库封装 ，本篇就将讲述如何集成一个 ORM Composer 包">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
@@ -178,6 +178,7 @@
         <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
 <p>经过前三篇文章 基础准备 、 构建路由 和 设计 MVC ，我们已经得到了一个结构比较完整的 MVC 架构的 PHP 微框架，但是距离一个真正能够上手使用的框架还差一样东西： 数据库封装 ，本篇就将讲述如何集成一个 ORM Composer 包</p>
 </blockquote>
+<a id="more"></a>
 <h4 id="安装Eloquent"><a href="#安装Eloquent" class="headerlink" title="安装Eloquent"></a><div id="title">安装Eloquent</div></h4><blockquote>
 <p>我们选择 Laravel 的 illuminate/database 作为我们的 ORM 包。我试用了几个著名的 ORM，发现还是 Laravel 的 Eloquent 好用！</p>
 </blockquote>
