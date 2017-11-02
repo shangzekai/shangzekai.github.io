@@ -15,10 +15,12 @@
 <meta property="og:url" content="http://yoursite.com/2017/08/02/php安全性防范/index.html">
 <meta property="og:site_name" content="Python">
 <meta property="og:description" content="前言 当开发一个互联网服务的时候，必须时刻牢记安全观念，并在开发中时刻体现。PHP脚本语言对安全问题并不关心，特别是对大多数没有经验的开发者来说。每当你将任何涉及到钱财事务等交易问题时，需要特别注意安全问题的考虑，例如开发一个论坛或者一个购物车等。为了避免安全问题的出现，因此总结一下常见的安全漏洞。">
-<meta property="og:updated_time" content="2017-10-31T08:21:29.000Z">
+<meta property="og:image" content="https://ooo.0o0.ooo/2017/11/02/59fad2831e5eb.png">
+<meta property="og:updated_time" content="2017-11-02T08:10:19.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP安全开发问题总结">
 <meta name="twitter:description" content="前言 当开发一个互联网服务的时候，必须时刻牢记安全观念，并在开发中时刻体现。PHP脚本语言对安全问题并不关心，特别是对大多数没有经验的开发者来说。每当你将任何涉及到钱财事务等交易问题时，需要特别注意安全问题的考虑，例如开发一个论坛或者一个购物车等。为了避免安全问题的出现，因此总结一下常见的安全漏洞。">
+<meta name="twitter:image" content="https://ooo.0o0.ooo/2017/11/02/59fad2831e5eb.png">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
@@ -198,7 +200,9 @@
 <p>此处，假设authenticated_user函数就是判断<code>$authorized</code>变量的值，如果开启了register_globals配置，那么任何用户都可以发送一个请求，来设置$authorized变量的值为任意值从而就能绕过这个验证。</p>
 <p>所有的这些提交数据都应该通过PHP预定义内置的全局数组来获取，包括<code>$_POST、$_GET、$_FILES、$_SERVER、$_REQUEST</code>等，其中<code>$_REQUEST</code>是一个<code>$_GET/$_POST/$_COOKIE</code>三个数组的联合变量，默认的顺序是<code>$_COOKIE、$_POST、$_GET</code>。</p>
 <h4 id="推荐的安全配置选项"><a href="#推荐的安全配置选项" class="headerlink" title="推荐的安全配置选项"></a><div id="title">推荐的安全配置选项</div></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">error_reporting设置为Off：不要暴露错误信息给用户，开发的时候可以设置为ON</div><div class="line">safe_mode设置为Off</div><div class="line">register_globals设置为Off</div><div class="line">将以下函数禁用：system、exec、passthru、shell_exec、proc_open、popen</div><div class="line">open_basedir设置为 /tmp ，这样可以让session信息有存储权限，同时设置单独的网站根目录</div><div class="line">expose_php设置为Off</div><div class="line">allow_url_fopen设置为Off</div><div class="line">allow_url_include设置为Off</div></pre></td></tr></table></figure>
-<h4 id="SQL注入攻击"><a href="#SQL注入攻击" class="headerlink" title="SQL注入攻击"></a><div id="title">SQL注入攻击</div></h4><p>对于操作数据库的SQL语句，需要特别注意安全性，因为用户可能输入特定语句使得原有的SQL语句改变了功能。类似下面的例子：</p>
+<h4 id="SQL注入攻击"><a href="#SQL注入攻击" class="headerlink" title="SQL注入攻击"></a><div id="title">SQL注入攻击</div></h4><p><strong>SQL注入的基本原理</strong></p>
+<p><img src="https://ooo.0o0.ooo/2017/11/02/59fad2831e5eb.png" alt="SQL注入图解.png"></p>
+<p>对于操作数据库的SQL语句，需要特别注意安全性，因为用户可能输入特定语句使得原有的SQL语句改变了功能。类似下面的例子：</p>
 <blockquote>
 <p><code>$sql = &quot;select * from pinfo where product = &#39;$product&#39;&quot;;</code></p>
 </blockquote>
