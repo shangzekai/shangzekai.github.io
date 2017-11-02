@@ -146,6 +146,80 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-jquery插件学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/06/jquery插件学习/">BootStrap，Jquery UI 和 Easy UI</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/06/jquery插件学习/" class="archive-article-date">
+  	<time datetime="2017-05-06T15:54:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="BootStrap简介"><a href="#BootStrap简介" class="headerlink" title="BootStrap简介"></a><div id="title">BootStrap简介</div></h4><h5 id="1-什么是BootStrap？"><a href="#1-什么是BootStrap？" class="headerlink" title="1. 什么是BootStrap？"></a>1. 什么是BootStrap？</h5>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTML</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">BootStrap</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/前端/" class="article-tag-list-link color3">前端</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/06/jquery插件学习/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-BootStrap常用点总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1046,19 +1120,19 @@
 
 
   
-    <article id="post-MySQL大数据分页" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Redis学习目录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/05/MySQL大数据分页/">MySQL大数据分页</a>
+      <a class="article-title" href="/2017/05/05/Redis学习目录/">Redis学习目录</a>
     </h1>
   
 
         
-        <a href="/2017/05/05/MySQL大数据分页/" class="archive-article-date">
+        <a href="/2017/05/05/Redis学习目录/" class="archive-article-date">
   	<time datetime="2017-05-05T15:52:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
 </a>
         
@@ -1066,175 +1140,9 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-	
-        <h4 id="前戏"><a href="#前戏" class="headerlink" title="前戏"></a><div id="title">前戏</div></h4><blockquote>
-<p>之前公司部门分享，如何在MySQL的数据量达到1KW条，并且在不分表不使用程序并发的方式尽可能提升大数据量分页的应用场景。</p>
+        <h4 id="Redis的官方定义"><a href="#Redis的官方定义" class="headerlink" title="Redis的官方定义"></a><div id="title">Redis的官方定义</div></h4><blockquote>
+<p>Redis is an open source, BSD licensed, advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.<br>redis是开源,BSD许可,高级的key-value存储系统.</p>
 </blockquote>
-<p><strong>思考一个问题？</strong></p>
-<blockquote>
-<p>首先我们知道，limit offset,N的时候，MySQL的查询效率特别的低，注意是在测试的表的数据量是1KW条，limit 5000000，N的时候，速度变的非常的慢，当然了offset特别小的时候，查询的速度没有什么差别。那我们来想一下什么原因造成的？</p>
-</blockquote>
-<p><strong>回答：</strong></p>
-<blockquote>
-<p>原因就是MySQL并不是跳过offset行，然后单取N行，而是取offset+N行，然后放弃前offset行，返回N行，所以这样的话，查询的效率就特别的低，尤其是当offset特别大的时候，效率就非常的低下</p>
-</blockquote>
-<h4 id="优化的方法"><a href="#优化的方法" class="headerlink" title="优化的方法"></a><div id="title">优化的方法</div></h4><h5 id="1-业务逻辑解决"><a href="#1-业务逻辑解决" class="headerlink" title="1. 业务逻辑解决"></a>1. 业务逻辑解决</h5><blockquote>
-<p>其实一般情况下，我们遇到这种大数据分页的时候，并不会真的将这些数据进行分页，因为从用户的角度来看，即便是分了好几百页，用户也只是点击最多前三页，我们想象，是不是这样的，比如：百度的分页才有79页，所以我们可以从业务逻辑的角度来控制这个分页</p>
-</blockquote>
-<h5 id="2-不使用offset"><a href="#2-不使用offset" class="headerlink" title="2. 不使用offset"></a>2. 不使用offset</h5><blockquote>
-<p>如果真的有那么一个变态的产品经理说，我们就是要将这1KW的数据进行分页，那怎么办？我们必须在保证查询效率的前提下来完成这个分页的需求</p>
-</blockquote>
-<p><strong>使用offset来进行分页</strong></p>
-<blockquote>
-<p>一般正常的情况下，我们最先想到的分页语句如下：</p>
-</blockquote>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select id, name from logs limit <span class="number">5000000</span>,<span class="number">10</span>;</div><div class="line">+---------+--------------------------------------------+</div><div class="line">| id      | name                                       |</div><div class="line">+---------+--------------------------------------------+</div><div class="line">| <span class="number">5554609</span> | 新闻          |</div><div class="line">..................    </div><div class="line">| <span class="number">5554618</span> | 股票信息                |</div><div class="line">+---------+--------------------------------------------+</div><div class="line"><span class="number">10</span> rows <span class="keyword">in</span> set (<span class="number">5.33</span> sec)</div></pre></td></tr></table></figure>
-<p><strong>不使用offset方法</strong></p>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">mysql&gt; select id, name from logs where id&gt;=(SELECT id FROM logs LIMIT <span class="number">5000000</span>, <span class="number">1</span>) limit <span class="number">10</span>;</div><div class="line">+---------+--------------------------------------------------------+</div><div class="line">| id      | name                                                   |</div><div class="line">+---------+--------------------------------------------------------+</div><div class="line">| <span class="number">5000001</span> | 互联网金融               |</div><div class="line">.................</div><div class="line">| <span class="number">5000002</span> | P2P理财                |</div><div class="line">+---------+--------------------------------------------------------+</div><div class="line"><span class="number">10</span> rows <span class="keyword">in</span> set (<span class="number">0.00</span> sec)</div></pre></td></tr></table></figure>
-<blockquote>
-<p>我们明显的观察到两者的时间差了整整的5倍多。</p>
-<p>但我们同时也发现，2次查询的结果是不一样的，那这是因为我们的数据中间有被物理删除过，数据出现了空洞。</p>
-</blockquote>
-<p><strong>解决的方法</strong></p>
-<ul>
-<li><p>数据我们一般不进行物理删除，我们可以进行逻辑删除，最终在页面上显示数据的时候，逻辑删除的条目不显示即可。（一般来说，大网站的数据都是不物理删除的，只做逻辑删除）</p>
-</li>
-<li><p>我们可以直接找出要查询的id，然后使用in，进行子查询</p>
-  <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">先通过</div><div class="line">select id from logs  limit 500000, 10;</div><div class="line"></div><div class="line">检索出所有符合条件的 id，然后将id组装成 in 模式，二次查询</div><div class="line"></div><div class="line">select * from logs where id in(5000001, 5000002, 5000003, 5000004, .....5000010);</div></pre></td></tr></table></figure>
-<p>  这种方式比较容易在业务层实现，方便控制和筛选</p>
-</li>
-</ul>
-<h4 id="代码实现三种方式"><a href="#代码实现三种方式" class="headerlink" title="代码实现三种方式"></a><div id="title">代码实现三种方式</div></h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="comment">/**</span></div><div class="line"> * mysql 大数据量分页优化</div><div class="line"> * <span class="doctag">@author</span> sallency<span class="doctag">@osc</span> 2016-5-11 16:48:44</div><div class="line"> */</div><div class="line">$conn = <span class="keyword">new</span> mysqli(<span class="string">'localhost'</span>, <span class="string">'root'</span>, <span class="string">'123456'</span>, <span class="string">'sys'</span>);</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> *  400w数据分页优化</div><div class="line"> */</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 自己在业务层做写的</div><div class="line"> * 先通过 order by 索引的特性将符合条件的 id 检索出来</div><div class="line"> * 再次拼接成 in 条件进行检索 链接没断掉 虽然二次查询但不消耗再次建立链接的资源</div><div class="line"> * 但遗憾的是你不能把它写成一条语句去执行 mysql 无法优化成我们想要的执行逻辑</div><div class="line"> */</div><div class="line">$sql = <span class="string">"select sql_no_cache id from logs order by id limit 3000020, 10"</span>;</div><div class="line">$start = microtime(<span class="keyword">true</span>);</div><div class="line">$result = $conn-&gt;query($sql);</div><div class="line">$id_arr = array_column($result-&gt;fetch_all(), <span class="number">0</span>);</div><div class="line">$id_set_str = implode(<span class="string">','</span>, $id_arr);</div><div class="line">$sql = <span class="string">"select * from sys_data where id in($id_set_str)"</span>;</div><div class="line">$result = $conn-&gt;query($sql);</div><div class="line">$data_1 = $result-&gt;fetch_all();</div><div class="line">$end = microtime(<span class="keyword">true</span>);</div><div class="line"><span class="keyword">echo</span> <span class="string">"example_1:"</span>;</div><div class="line"><span class="keyword">echo</span> number_format($end - $start, <span class="number">3</span>) . <span class="string">' secs'</span> . PHP_EOL;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 业界流传的经典方法</div><div class="line"> * 通过子查询查处符合条件的 id，取偏移量获得记录</div><div class="line"> */</div><div class="line">$sql = <span class="string">"select sql_no_cache * from logs where id &gt; (select id from sys_data order by id limit 3000020, 1) limit 10"</span>;</div><div class="line">$start = microtime(<span class="keyword">true</span>);</div><div class="line">$result = $conn-&gt;query($sql);</div><div class="line">$data_2 = $result-&gt;fetch_all();</div><div class="line">$end = microtime(<span class="keyword">true</span>);</div><div class="line"><span class="keyword">echo</span> <span class="string">"example_2:"</span>;</div><div class="line"><span class="keyword">echo</span> number_format($end - $start, <span class="number">3</span>) . <span class="string">' secs'</span> . PHP_EOL;</div><div class="line"></div><div class="line"><span class="comment">/**</span></div><div class="line"> * 普通方法</div><div class="line"> * 此类方法针对对数据量比较小的时候还可以应对</div><div class="line"> * 数据量十万时可能order by 就无法启用索引了 具体我也没测</div><div class="line"> */</div><div class="line">$sql = <span class="string">"select sql_no_cache * from logs order by id limit 3000020, 10"</span>;</div><div class="line">$start = microtime(<span class="keyword">true</span>);</div><div class="line">$result = $conn-&gt;query($sql);</div><div class="line">$data_3 = $result-&gt;fetch_all();</div><div class="line">$end = microtime(<span class="keyword">true</span>);</div><div class="line"><span class="keyword">echo</span> <span class="string">"example_3:"</span>;</div><div class="line"><span class="keyword">echo</span> number_format($end - $start, <span class="number">3</span>) . <span class="string">' secs'</span> . PHP_EOL;</div></pre></td></tr></table></figure>
-<p><strong>接下来看一下，在各个数据量级下，查询的时间对比</strong></p>
-<ul>
-<li>limit 500, 10 在数据量比较小的时候最基本的方法效率反而更高一些</li>
-</ul>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">example_1:<span class="number">0.006</span> secs</div><div class="line">example_2:<span class="number">0.015</span> secs</div><div class="line">example_3:<span class="number">0.003</span> secs</div></pre></td></tr></table></figure>
-<ul>
-<li>limit 5000, 10 </li>
-</ul>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">example_1:<span class="number">0.004</span> secs</div><div class="line">example_2:<span class="number">0.008</span> secs</div><div class="line">example_3:<span class="number">0.013</span> secs</div></pre></td></tr></table></figure>
-<ul>
-<li>limit 50000,10  5W</li>
-</ul>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">example_1:<span class="number">0.029</span> secs</div><div class="line">example_2:<span class="number">0.042</span> secs</div><div class="line">example_3:<span class="number">0.109</span> secs</div></pre></td></tr></table></figure>
-<ul>
-<li>limit 500000,10 50W</li>
-</ul>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">example_1:<span class="number">0.286</span> secs</div><div class="line">example_2:<span class="number">0.346</span> secs</div><div class="line">example_3:<span class="number">4.563</span> secs</div></pre></td></tr></table></figure>
-<ul>
-<li>limit 3000000, 10 300w<figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="number">300</span>w 第一次</div><div class="line">example_1:<span class="number">1.356</span> secs</div><div class="line">example_2:<span class="number">1.936</span> secs</div><div class="line">example_3:<span class="number">6.097</span> secs</div><div class="line"></div><div class="line"><span class="number">300</span>w 第二次</div><div class="line">example_1:<span class="number">1.013</span> secs</div><div class="line">example_2:<span class="number">1.534</span> secs</div><div class="line">example_3:<span class="number">6.306</span> secs</div><div class="line"></div><div class="line"><span class="number">300</span>w 第三次</div><div class="line">example_1:<span class="number">1.248</span> secs</div><div class="line">example_2:<span class="number">1.924</span> secs</div><div class="line">example_3:<span class="number">5.769</span> secs</div><div class="line"></div><div class="line"><span class="number">300</span>w 第四次</div><div class="line">example_1:<span class="number">0.782</span> secs</div><div class="line">example_2:<span class="number">1.582</span> secs</div><div class="line">example_3:<span class="number">5.324</span> secs</div></pre></td></tr></table></figure></li>
-</ul>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/MySQL/" class="article-tag-list-link color1">MySQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/05/MySQL大数据分页/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-MemCache分布式算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/05/MemCache分布式算法/">MemCache分布式算法总结</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/05/MemCache分布式算法/" class="archive-article-date">
-  	<time datetime="2017-05-05T15:52:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-	
-        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
-<p>memcached虽然称为“分布式”缓存服务器，但服务器端并没有“分布式”功能。服务器端仅包括内存存储功能，其实现非常简单。至于memcached的分布式，则是完全由客户端程序实现的。这种分布式是memcached的最大特点</p>
-</blockquote>
-<h4 id="分布式的两种算法"><a href="#分布式的两种算法" class="headerlink" title="分布式的两种算法"></a><div id="title">分布式的两种算法</div></h4><h5 id="1-取模算法"><a href="#1-取模算法" class="headerlink" title="1. 取模算法"></a>1. 取模算法</h5><blockquote>
-<p>这种算法非常的简单，就是“根据服务器台数的余数进行分散”。 求得键的整数哈希值，再除以服务器台数，根据其余数来选择服务器,<br>将server的hash值与server的总台数进行求余,即hash%N</p>
-<p>在php客户端中，默认采用该算法，也可以在ini中设置：Memcached::OPT_DISTRIBUTION=Memcached::DISTRIBUTION_MODULA</p>
-</blockquote>
-<p><img src="https://ooo.0o0.ooo/2017/06/15/5941e204edfb4.png" alt="取余算法.png"></p>
-<blockquote>
-<p>但我们来看一下这种算法对缓存命中率的影响：<br>我们假设有8台服务器，运行中突然down一台，则求余的底数变成7<br>我们来推算一下产生的后果：</p>
-</blockquote>
-<p><img src="https://ooo.0o0.ooo/2017/06/15/5941e2d4bd4ed.png" alt="取余算法后果.png"></p>
-<blockquote>
-<p>一般地,我们从数学上归纳之:<br>有N台服务器，变成了N-1台服务器，<br>所以 命中率在服务器down的短期内，急遽下降至1/(N-1)<br>所以 服务器越多，则down机的后果越严重！</p>
-</blockquote>
-<h5 id="2-一致性hash算法"><a href="#2-一致性hash算法" class="headerlink" title="2. 一致性hash算法"></a>2. 一致性hash算法</h5><blockquote>
-<p>为了解决上述取模算法遇到的问题，我们可以使用另一种分布式算法，即一致性hash算法，所谓的一致性hash算法，就是把服务器的各个节点放在钟表的各个时刻上，同时，我们也将要存储的key也映射到钟表的某个时刻上，该key延钟表顺时针走，碰到第一个比他小的节点之后，则key就落在这台服务器上</p>
-</blockquote>
-<p><img src="https://ooo.0o0.ooo/2017/06/15/5941e430c7f9b.png" alt="一致性hash算法.png"></p>
-<blockquote>
-<p>疑问1:时钟上的指针最大才11点,如果我有上百个memcached节点怎么办?<br>答: 时钟只是为了便于理解做的比喻,在实际应用中,我们可以在圆环上分布[0,2^32-1]的数字,<br>这样,全世界的服务器都可以装下了.</p>
-<p>疑问2:我该如何把”节点名”,”键名”转化成整数?<br>答: 你可以用现在的函数,如crc32().<br>也可以自己去设计转化规则,但注意转化后的碰撞率要低.<br>即不同的节点名,转换为相同的整数的概率要低.</p>
-</blockquote>
-<p><strong>好了，那我们再考虑一下当某个节点Down了之后，后产生什么样的影响？</strong></p>
-<p><strong>当某个节点down后,只影响该节点顺时针之后的1个节点,而其他节点不受影响.因此，Consistent Hashing最大限度地抑制了键的重新分布</strong></p>
-<p><img src="https://ooo.0o0.ooo/2017/06/15/5941e4d6ea696.png" alt="hash.png"><br>我们通过上图看到，6号节点down后，所有的压力都转移到7号节点上，造成了7号节点服务器的压力特别的大，那我们考虑是否能够将6号节点的压力注意到其余的节点上呢？</p>
-<p>所以我们引入了虚拟节点的概念：</p>
-<p>虚拟节点即—-N个真实节点,把每个真实节点映射成M个虚拟节点, 再把M*N个虚拟节点,</p>
-<p>散列在圆环上. 各真实节点对应的虚拟节点相互交错分布</p>
-<p>这样,某真实节点down后,则把其影响平均分担到其他所有节点上</p>
-<p><img src="https://ooo.0o0.ooo/2017/06/15/5941e4d76bdac.png" alt="hash2.png"></p>
-<p>好了，上面就是一致性hash的理论知识点，接下来我们来考虑一下怎样实现？</p>
-<p>下面是用php来实现的代码：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Consistent</span> </span>&#123;</div><div class="line">    <span class="keyword">protected</span> $_nodes = <span class="keyword">array</span>();</div><div class="line"></div><div class="line">    <span class="comment">//生成一个数值  </span></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">_hash</span><span class="params">($str)</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> sprintf(<span class="string">"%u"</span>,crc32($str));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">find</span><span class="params">($key)</span></span>&#123;</div><div class="line">        $point = <span class="keyword">$this</span>-&gt;_hash($key);</div><div class="line">        $pos  = current(<span class="keyword">$this</span>-&gt;_nodes);</div><div class="line"></div><div class="line">        <span class="keyword">foreach</span>(<span class="keyword">$this</span>-&gt;_nodes <span class="keyword">as</span> $k=&gt;$v)&#123;</div><div class="line">                <span class="keyword">if</span>($point &lt;= $k)&#123;</div><div class="line">                        $pos = $v;</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> $pos;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">addServer</span><span class="params">($server)</span></span>&#123;</div><div class="line">        <span class="keyword">for</span>($i=<span class="number">1</span>;$i&lt;=<span class="number">32</span>;$i++)&#123;</div><div class="line">                $pos = <span class="keyword">$this</span>-&gt;_hash($server.<span class="string">"-"</span>.$i);</div><div class="line">                <span class="keyword">$this</span>-&gt;_nodes[$pos] = $server;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        ksort(<span class="keyword">$this</span>-&gt;_nodes,SORT_REGULAR);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">printNodes</span><span class="params">()</span></span>&#123;</div><div class="line">        print_r(<span class="keyword">$this</span>-&gt;_nodes);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$cons = <span class="keyword">new</span> Consistent();</div><div class="line"></div><div class="line">$cons-&gt;addServer(<span class="string">'a'</span>);</div><div class="line">$cons-&gt;addServer(<span class="string">'b'</span>);</div><div class="line">$cons-&gt;addServer(<span class="string">'c'</span>);</div><div class="line"></div><div class="line"><span class="keyword">echo</span> $cons-&gt;_hash(<span class="string">'name'</span>).<span class="string">"&lt;br/&gt;"</span>;</div><div class="line"><span class="keyword">echo</span> <span class="string">'应该落在'</span>.$cons-&gt;find(<span class="string">'name'</span>).<span class="string">"&lt;br/&gt;"</span>;</div><div class="line"></div><div class="line">$cons-&gt;printNodes();</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
-
       
 
       
@@ -1273,7 +1181,7 @@
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/05/MemCache分布式算法/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/05/05/Redis学习目录/">展开全文 >></a>
         </p>
       
 
