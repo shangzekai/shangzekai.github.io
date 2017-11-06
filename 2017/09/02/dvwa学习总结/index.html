@@ -8,13 +8,13 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>DVWA-1.9总结学习 | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言 目前在一家国内做安全的互联网公司工作，之前自己安全的意识不是特别的重要，现在写了几次项目之后，发现写的一些项目还是存在一些漏洞的，因此有必要再次复盘总结学习关于安全方面的知识。  使用DVWA来学习关于web开发中出现的一些漏洞，从而提高自己开发过程中对安全的意识和重视 DVWA的介绍 DVWA（Damn Vulnerable Web Application）是一个用来进行安全脆弱性鉴定的P">
+  <meta name="description" content="前言 目前在一家国内做安全的互联网公司工作，之前自己安全的意识不是特别的重要，现在写了几次项目之后，发现写的一些项目还是存在一些漏洞的，因此有必要再次复盘总结学习关于安全方面的知识。  使用DVWA来学习关于web开发中出现的一些漏洞，从而提高自己开发过程中对安全的意识和重视">
 <meta name="keywords" content="PHP,MySql">
 <meta property="og:type" content="article">
 <meta property="og:title" content="DVWA-1.9总结学习">
 <meta property="og:url" content="http://yoursite.com/2017/09/02/dvwa学习总结/index.html">
 <meta property="og:site_name" content="Python">
-<meta property="og:description" content="前言 目前在一家国内做安全的互联网公司工作，之前自己安全的意识不是特别的重要，现在写了几次项目之后，发现写的一些项目还是存在一些漏洞的，因此有必要再次复盘总结学习关于安全方面的知识。  使用DVWA来学习关于web开发中出现的一些漏洞，从而提高自己开发过程中对安全的意识和重视 DVWA的介绍 DVWA（Damn Vulnerable Web Application）是一个用来进行安全脆弱性鉴定的P">
+<meta property="og:description" content="前言 目前在一家国内做安全的互联网公司工作，之前自己安全的意识不是特别的重要，现在写了几次项目之后，发现写的一些项目还是存在一些漏洞的，因此有必要再次复盘总结学习关于安全方面的知识。  使用DVWA来学习关于web开发中出现的一些漏洞，从而提高自己开发过程中对安全的意识和重视">
 <meta property="og:image" content="https://i.loli.net/2017/11/06/5a001a146d26a.png">
 <meta property="og:image" content="https://i.loli.net/2017/11/06/5a001a71460ab.png">
 <meta property="og:image" content="https://i.loli.net/2017/11/06/5a001b656cf46.png">
@@ -22,10 +22,10 @@
 <meta property="og:image" content="https://i.loli.net/2017/11/06/5a001dd6279cc.png">
 <meta property="og:image" content="https://i.loli.net/2017/11/06/5a001ea6b63be.png">
 <meta property="og:image" content="https://i.loli.net/2017/11/06/5a001ed03f4f4.png">
-<meta property="og:updated_time" content="2017-11-06T08:56:46.000Z">
+<meta property="og:updated_time" content="2017-11-06T09:30:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DVWA-1.9总结学习">
-<meta name="twitter:description" content="前言 目前在一家国内做安全的互联网公司工作，之前自己安全的意识不是特别的重要，现在写了几次项目之后，发现写的一些项目还是存在一些漏洞的，因此有必要再次复盘总结学习关于安全方面的知识。  使用DVWA来学习关于web开发中出现的一些漏洞，从而提高自己开发过程中对安全的意识和重视 DVWA的介绍 DVWA（Damn Vulnerable Web Application）是一个用来进行安全脆弱性鉴定的P">
+<meta name="twitter:description" content="前言 目前在一家国内做安全的互联网公司工作，之前自己安全的意识不是特别的重要，现在写了几次项目之后，发现写的一些项目还是存在一些漏洞的，因此有必要再次复盘总结学习关于安全方面的知识。  使用DVWA来学习关于web开发中出现的一些漏洞，从而提高自己开发过程中对安全的意识和重视">
 <meta name="twitter:image" content="https://i.loli.net/2017/11/06/5a001a146d26a.png">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
@@ -187,6 +187,7 @@
 <p>目前在一家国内做安全的互联网公司工作，之前自己安全的意识不是特别的重要，现在写了几次项目之后，发现写的一些项目还是存在一些漏洞的，因此有必要再次复盘总结学习关于安全方面的知识。</p>
 </blockquote>
 <p><strong>使用DVWA来学习关于web开发中出现的一些漏洞，从而提高自己开发过程中对安全的意识和重视</strong></p>
+<a id="more"></a>
 <h4 id="DVWA的介绍"><a href="#DVWA的介绍" class="headerlink" title="DVWA的介绍"></a><div id="title">DVWA的介绍</div></h4><blockquote>
 <p>DVWA（Damn Vulnerable Web Application）是一个用来进行安全脆弱性鉴定的PHP/MySQL Web应用，旨在为安全专业人员测试自己的专业技能和工具提供合法的环境，帮助web开发者更好的理解web应用安全防范的过程。</p>
 <p>DVWA共有十个模块，分别是Brute Force（暴力（破解））、Command Injection（命令行注入）、CSRF（跨站请求伪造）、File Inclusion（文件包含）、File Upload（文件上传）、Insecure CAPTCHA（不安全的验证码）、SQL Injection（SQL注入）、SQL Injection（Blind）（SQL盲注）、XSS（Reflected）（反射型跨站脚本）、XSS（Stored）（存储型跨站脚本）。</p>
