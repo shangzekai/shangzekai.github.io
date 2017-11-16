@@ -6,19 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Redis学习目录 | Python</title>
+  <title>使用Requests和正则表达式抓取电影排行榜Top100 | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Redis的官方定义 Redis is an open source, BSD licensed, advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.redis">
-<meta name="keywords" content="基础,NoSQL">
+  <meta name="description" content="前言 requests模块主要用来爬取网页，将整个网页的源代码爬取下来。正则表达式主要用来分析我们想要的有用的数据前面两个模块的用法我们在前面已经认真的分析过，接下来我们来进行实战  爬取的流程图 使用requests模块抓取信息12345678910111213141516171819202122232425262728import requests# 为了防止网站反爬虫，因此我们需要伪造成浏览">
+<meta name="keywords" content="Python,模块">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Redis学习目录">
-<meta property="og:url" content="http://yoursite.com/2017/05/05/Redis学习目录/index.html">
+<meta property="og:title" content="使用Requests和正则表达式抓取电影排行榜Top100">
+<meta property="og:url" content="http://yoursite.com/2017/04/07/使用Requests和正则表达式抓取电影排行榜Top100/index.html">
 <meta property="og:site_name" content="Python">
-<meta property="og:description" content="Redis的官方定义 Redis is an open source, BSD licensed, advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.redis">
-<meta property="og:updated_time" content="2017-06-06T09:27:40.000Z">
+<meta property="og:description" content="前言 requests模块主要用来爬取网页，将整个网页的源代码爬取下来。正则表达式主要用来分析我们想要的有用的数据前面两个模块的用法我们在前面已经认真的分析过，接下来我们来进行实战  爬取的流程图 使用requests模块抓取信息12345678910111213141516171819202122232425262728import requests# 为了防止网站反爬虫，因此我们需要伪造成浏览">
+<meta property="og:image" content="https://i.loli.net/2017/11/16/5a0cf80b8cfc8.png">
+<meta property="og:updated_time" content="2017-11-16T02:48:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Redis学习目录">
-<meta name="twitter:description" content="Redis的官方定义 Redis is an open source, BSD licensed, advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.redis">
+<meta name="twitter:title" content="使用Requests和正则表达式抓取电影排行榜Top100">
+<meta name="twitter:description" content="前言 requests模块主要用来爬取网页，将整个网页的源代码爬取下来。正则表达式主要用来分析我们想要的有用的数据前面两个模块的用法我们在前面已经认真的分析过，接下来我们来进行实战  爬取的流程图 使用requests模块抓取信息12345678910111213141516171819202122232425262728import requests# 为了防止网站反爬虫，因此我们需要伪造成浏览">
+<meta name="twitter:image" content="https://i.loli.net/2017/11/16/5a0cf80b8cfc8.png">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
@@ -149,20 +151,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Redis学习目录" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-使用Requests和正则表达式抓取电影排行榜Top100" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Redis学习目录
+      使用Requests和正则表达式抓取电影排行榜Top100
     </h1>
   
 
         
-        <a href="/2017/05/05/Redis学习目录/" class="archive-article-date">
-  	<time datetime="2017-05-05T15:52:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
+        <a href="/2017/04/07/使用Requests和正则表达式抓取电影排行榜Top100/" class="archive-article-date">
+  	<time datetime="2017-04-07T02:56:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-07</time>
 </a>
         
       </header>
@@ -171,279 +173,24 @@
       
 	
         <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis的官方定义"><span class="toc-text">Redis的官方定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis的安装和下载"><span class="toc-text">Redis的安装和下载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis的常见操作"><span class="toc-text">Redis的常见操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-对于key的所有操作"><span class="toc-text">1. 对于key的所有操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-字符串操作"><span class="toc-text">2. 字符串操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-链表操作"><span class="toc-text">3. 链表操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-集合set操作"><span class="toc-text">4. 集合set操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-有序集合order-set操作"><span class="toc-text">5. 有序集合order set操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-Hash数据结构操作"><span class="toc-text">6. Hash数据结构操作</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#爬取的流程图"><span class="toc-text">爬取的流程图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用requests模块抓取信息"><span class="toc-text">使用requests模块抓取信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用正则表达式分析"><span class="toc-text">使用正则表达式分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#将信息写入到文件"><span class="toc-text">将信息写入到文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#批量抓取"><span class="toc-text">批量抓取</span></a></li></ol>
           <hr/>
         </div>
         
-        <h4 id="Redis的官方定义"><a href="#Redis的官方定义" class="headerlink" title="Redis的官方定义"></a><div id="title">Redis的官方定义</div></h4><blockquote>
-<p>Redis is an open source, BSD licensed, advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.<br>redis是开源,BSD许可,高级的key-value存储系统.</p>
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
+<p>requests模块主要用来爬取网页，将整个网页的源代码爬取下来。<br>正则表达式主要用来分析我们想要的有用的数据<br>前面两个模块的用法我们在前面已经认真的分析过，接下来我们来进行实战</p>
 </blockquote>
-<a id="more"></a>
-<p><strong>那Redis和MC相比，独特之处是啥：</strong></p>
-<blockquote>
-<ul>
-<li>redis可以用来做存储(storge), 而memcached只能用来做缓存(cache), 这个特点主要因为其有”持久化”的功能.</li>
-<li>对于memcached来说,存储的数据,只有1种类型–”字符串”,而redis则可以存储字符串,链表,哈希结构,集合,有序集合</li>
-</ul>
-</blockquote>
-<h4 id="Redis的安装和下载"><a href="#Redis的安装和下载" class="headerlink" title="Redis的安装和下载"></a><div id="title">Redis的安装和下载</div></h4><p>1:官方站点: redis.io 下载最新版或者最新stable版</p>
-<p>2:解压源码并进入目录</p>
-<p>3:不用configure</p>
-<p>4:直接make </p>
-<p>5:可选步骤: make test  测试编译情况<br>(可能出现: need tcl  &gt;8.4这种情况, yum install tcl)</p>
-<p>6:安装到指定的目录,比如 /usr/local/redis<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">make  PREFIX=/usr/local/redis install</div><div class="line">注: PREFIX要大写</div></pre></td></tr></table></figure></p>
-<p>7:make install之后, 得到如下几个文件</p>
-<ul>
-<li>redis-benchmark  性能测试工具</li>
-<li>redis-check-aof  日志文件检测工(比如断电造成日志损坏,可以检测并修复)</li>
-<li>redis-check-dump  快照文件检测工具,效果类上</li>
-<li>redis-cli  客户端</li>
-<li>redis-server 服务端</li>
-</ul>
-<p>8: 复制配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Cp /path/redis.conf /usr/local/redis</div></pre></td></tr></table></figure></p>
-<p>9: 启动与连接</p>
-<ul>
-<li><p>启动</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">path/to/redis/bin/redis-server  ./path/to/conf-file</div><div class="line"></div><div class="line">例:[root@localhost redis]# ./bin/redis-server ./redis.conf</div></pre></td></tr></table></figure>
-</li>
-<li><p>连接</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#/path/to/redis/bin/redis-cli [-h localhost -p 6379 ]</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>10:让redis以后台进程的形式运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">编辑conf配置文件,修改如下内容;</div><div class="line">daemonize yes</div></pre></td></tr></table></figure></p>
-<hr>
-<p><strong>易碰到的问题：时间错误.</strong></p>
-<blockquote>
-<p>原因: 源码是官方configure过的,但官方configure时,生成的文件有时间戳信息,所以如果你的虚拟机的时间不对,比如说是2022年，就可能会出错</p>
-<p>解决: date -s ‘yyyy-mm-dd hh:mm:ss’   重写时间<br>再 clock -w  写入cmos</p>
-</blockquote>
-<h4 id="Redis的常见操作"><a href="#Redis的常见操作" class="headerlink" title="Redis的常见操作"></a><div id="title">Redis的常见操作</div></h4><h5 id="1-对于key的所有操作"><a href="#1-对于key的所有操作" class="headerlink" title="1. 对于key的所有操作"></a>1. 对于key的所有操作</h5><ul>
-<li><p>del key1 key2 … keyn</p>
-<blockquote>
-<p>作用：删除1个或者多个键<br>返回值：不存在的key忽略掉，返回真正删除的key的数量</p>
-</blockquote>
-</li>
-<li><p>rename key newkey</p>
-<blockquote>
-<p>作用：给key附一个新的key名<br>注：如果说newkey的值已经存在，则newkey的原值被覆盖</p>
-</blockquote>
-</li>
-<li><p>renamenx key  newkey</p>
-<blockquote>
-<p>作用：把key改名为newkey<br>返回：发生修改返回1,未发生修改返回0</p>
-</blockquote>
-</li>
-<li><p>move key db</p>
-<blockquote>
-<p>redis 127.0.0.1:6379[1]&gt; select 2<br>OK<br>redis 127.0.0.1:6379[2]&gt; keys <em><br>(empty list or set)<br>redis 127.0.0.1:6379[2]&gt; select 0<br>OK<br>redis 127.0.0.1:6379&gt; keys </em><br>1) “name”<br>2) “cc”<br>3) “a”<br>4) “b”<br>redis 127.0.0.1:6379&gt; move cc 2<br>(integer) 1<br>redis 127.0.0.1:6379&gt; select 2<br>OK<br>redis 127.0.0.1:6379[2]&gt; keys *<br>1) “cc”<br>redis 127.0.0.1:6379[2]&gt; get cc<br>“3”<br>(注意: 一个redis进程,可以打开不止一个数据库, 默认打开16个数据库,从0到15编号,如果想打开更多数据库,可以从配置文件修改)</p>
-</blockquote>
-</li>
-</ul>
-<ul>
-<li><p>keys pattern  </p>
-<blockquote>
-<p>pattern可选择如下：<br><em>: 通配任意多个字符<br>?: 通配单个字符<br>[]: 通配括号内的某1个字符<br>redis 127.0.0.1:6379&gt; flushdb<br>OK<br>redis 127.0.0.1:6379&gt; keys </em><br>(empty list or set)<br>redis 127.0.0.1:6379&gt; mset one 1 two 2 three 3 four 4<br>OK<br>redis 127.0.0.1:6379&gt; keys o<em><br>1) “one”<br>redis 127.0.0.1:6379&gt; key </em>o<br>(error) ERR unknown command ‘key’<br>redis 127.0.0.1:6379&gt; keys *o<br>1) “two”<br>redis 127.0.0.1:6379&gt; keys ???<br>1) “one”<br>2) “two”<br>redis 127.0.0.1:6379&gt; keys on?<br>1) “one”<br>redis 127.0.0.1:6379&gt; set ons yes<br>OK<br>redis 127.0.0.1:6379&gt; keys on[eaw]<br>1)”one”</p>
-</blockquote>
-</li>
-<li><p>randomkey 返回随机key</p>
-</li>
-<li><p>exists key  判断key是否存在 返回1/0</p>
-</li>
-<li><p>type key  返回key存储的值的类型  有string link set order set hash</p>
-</li>
-<li><p>ttl key  查询key的生命周期</p>
-</li>
-<li><p>expire key 整型值  设置key的生命周期</p>
-</li>
-<li>pexpire key 毫秒数, 设置生命周期</li>
-<li><p>pttl  key, 以毫秒返回生命周期</p>
-</li>
-<li><p>persist key 把指定key设置为永久有效</p>
-</li>
-</ul>
-<p><em>注:对于不存在的key或已过期的key/不过期的key,都返回-1</em><br><em>Redis2.8中,对于不存在的key,返回-2</em></p>
-<h5 id="2-字符串操作"><a href="#2-字符串操作" class="headerlink" title="2. 字符串操作"></a>2. 字符串操作</h5><ul>
-<li><p>set key value [ex 秒数] / [px 毫秒数]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">set a 1 ex 10 , 10秒有效</div><div class="line">Set a 1 px 9000  , 9秒有效</div><div class="line">注: 如果ex,px同时写,以后面的有效期为准</div><div class="line"></div><div class="line">如 set a 1 ex 100 px 9000, 实际有效期是9000毫秒</div></pre></td></tr></table></figure>
-</li>
-<li><p>mset  multi set </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">一次性设置多个键值</div><div class="line">mset key1 v1 key2 v2 ....</div></pre></td></tr></table></figure>
-</li>
-<li><p>get key</p>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">获取key的值</div></pre></td></tr></table></figure>
-</li>
-<li><p>mget key1 key2 ..keyn</p>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">获取多个key的值</div></pre></td></tr></table></figure>
-</li>
-<li><p>getset key newvalue</p>
-<figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">获取并返回旧值,设置新值</div><div class="line"></div><div class="line">redis <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>&gt; set cnt <span class="number">0</span></div><div class="line">OK</div><div class="line">redis <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>&gt; getset cnt <span class="number">1</span></div><div class="line"><span class="string">"0"</span></div><div class="line">redis <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>&gt; getset cnt <span class="number">2</span></div><div class="line"><span class="string">"1"</span></div></pre></td></tr></table></figure>
-</li>
-<li><p>incr key</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 指定的key的值加1,并返回加1后的值</div></pre></td></tr></table></figure>
-</li>
-<li><p>incrby key number</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">redis 127.0.0.1:6379&gt; incrby age  90</div><div class="line">(integer) 92</div></pre></td></tr></table></figure>
-</li>
-<li><p>incrbyfloat key floatnumber</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">redis 127.0.0.1:6379&gt; incrbyfloat age 3.5</div><div class="line">&quot;95.5&quot;</div></pre></td></tr></table></figure>
-</li>
-<li><p>decr key</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">redis 127.0.0.1:6379&gt; set age 20</div><div class="line">OK</div><div class="line">redis 127.0.0.1:6379&gt; decr age</div><div class="line">(integer) 19</div></pre></td></tr></table></figure>
-</li>
-<li><p>decrby key number</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">redis 127.0.0.1:6379&gt; decrby age 3</div><div class="line">(integer) 16</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p><strong>应用场景</strong></p>
-<blockquote>
-<p>在登录的时候，可以控制频控</p>
-</blockquote>
-<h5 id="3-链表操作"><a href="#3-链表操作" class="headerlink" title="3. 链表操作"></a>3. 链表操作</h5><ul>
-<li><p>lpush key value </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 把值插入到链表头部</div></pre></td></tr></table></figure>
-</li>
-<li><p>rpop key</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 返回并删除链表尾元素</div></pre></td></tr></table></figure>
-</li>
-<li><p>rpush,lpop: 不解释</p>
-</li>
-<li><p>lrange key start  stop</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">作用: 返回链表中[start ,stop]中的元素</div><div class="line">规律: 左数从0开始,右数从-1开始</div></pre></td></tr></table></figure>
-</li>
-<li><p>lrem key count value</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">作用: 从key链表中删除 value值</div><div class="line">注: 删除count的绝对值个value后结束</div><div class="line">Count&gt;0 从表头删除</div><div class="line">Count&lt;0 从表尾删除</div></pre></td></tr></table></figure>
-</li>
-<li><p>ltrim key start stop</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 剪切key对应的链接,切[start,stop]一段,并把该段重新赋给key</div></pre></td></tr></table></figure>
-</li>
-<li><p>lindex key index</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">作用: 返回index索引上的值,</div><div class="line">如  lindex key 2</div></pre></td></tr></table></figure>
-</li>
-<li><p>llen key</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">作用:计算链接表的元素个数</div><div class="line">redis 127.0.0.1:6379&gt; llen task</div><div class="line">(integer) 3</div><div class="line">redis 127.0.0.1:6379&gt;</div></pre></td></tr></table></figure>
-</li>
-<li><p>linsert  key after|before search value</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">作用: 在key链表中寻找’search’,并在search值之前|之后,.插入value</div><div class="line">注: 一旦找到一个search后,命令就结束了,因此不会插入多个value</div></pre></td></tr></table></figure>
-</li>
-<li><p>rpoplpush source dest</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">作用: 把source的尾部拿出,放在dest的头部,</div><div class="line">并返回 该单元值</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<blockquote>
-<p>业务逻辑:<br>1:rpoplpush task bak<br>2:接收返回值,并做业务处理<br>3:如果成功,rpop bak 清除任务. 如不成功,下次从bak表里取任务</p>
-<p>场景: 长轮询Ajax,在线聊天时,能够用到</p>
-</blockquote>
-<h5 id="4-集合set操作"><a href="#4-集合set操作" class="headerlink" title="4. 集合set操作"></a>4. 集合set操作</h5><ul>
-<li><p>sadd setname value1 value2</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 往集合setname中增加元素</div></pre></td></tr></table></figure>
-</li>
-<li><p>srem value1 value2</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">作用: 删除集合中集为 value1 value2的元素</div><div class="line">返回值: 忽略不存在的元素后,真正删除掉的元素的个数</div></pre></td></tr></table></figure>
-</li>
-<li><p>spop key</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 返回并删除集合中key中1个随机元素</div></pre></td></tr></table></figure>
-</li>
-<li><p>srandmember key</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 返回集合key中,随机的1个元素.</div></pre></td></tr></table></figure>
-</li>
-<li><p>sismember key  value</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">作用: 判断value是否在key集合中</div><div class="line">是返回1,否返回0</div></pre></td></tr></table></figure>
-</li>
-<li><p>smembers key</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 返回集中中所有的元素</div></pre></td></tr></table></figure>
-</li>
-<li><p>scard key</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 返回集合中元素的个数</div></pre></td></tr></table></figure>
-</li>
-<li><p>smove source dest value</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用:把source中的value删除,并添加到dest集合中</div></pre></td></tr></table></figure>
-</li>
-<li><p>sinter  s1 s2 s3</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">作用: 求出s1 s2 s3 三个集合中的交集,并返回</div><div class="line">redis 127.0.0.1:6379&gt; sadd s1 0 2 4 6</div><div class="line">(integer) 4</div><div class="line">redis 127.0.0.1:6379&gt; sadd s2 1 2 3 4</div><div class="line">(integer) 4</div><div class="line">redis 127.0.0.1:6379&gt; sadd s3 4 8 9 12</div><div class="line">(integer) 4</div><div class="line">redis 127.0.0.1:6379&gt; sinter s1 s2 s3</div><div class="line">1) &quot;4&quot;</div><div class="line">redis 127.0.0.1:6379&gt; sinter s3 s1 s2</div><div class="line">1)&quot;4&quot;</div></pre></td></tr></table></figure>
-</li>
-<li><p>sinterstore dest s1 s2 s3</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 求出s1 s2 s3 三个集合中的交集,并赋给dest</div></pre></td></tr></table></figure>
-</li>
-<li><p>suion s1 s2 s3.. sn</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 求出s1 s2 s3.. sn的并集,并返回</div></pre></td></tr></table></figure>
-</li>
-<li><p>sdiff s1 s2 s3 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">作用: 求出s1与s2 s3的差集</div><div class="line">即s1-s2-s3</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h5 id="5-有序集合order-set操作"><a href="#5-有序集合order-set操作" class="headerlink" title="5. 有序集合order set操作"></a>5. 有序集合order set操作</h5><ul>
-<li><p>zadd s1 score1 value1 score2 value2 ..</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">redis 127.0.0.1:6379&gt; zadd stu 18 lily 19 hmm 20 lilei 21 lilei</div><div class="line">(integer) 3</div></pre></td></tr></table></figure>
-</li>
-<li><p>zrem s1 value1 value2 ..</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 删除集合中的元素</div></pre></td></tr></table></figure>
-</li>
-<li><p>zremrangebyscore sname min max</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">作用: 按照socre来删除元素,删除score在[min,max]之间的</div><div class="line">redis 127.0.0.1:6379&gt; zremrangebyscore stu 4 10</div><div class="line">(integer) 2</div><div class="line">redis 127.0.0.1:6379&gt; zrange stu 0 -1</div><div class="line">1) &quot;f&quot;</div></pre></td></tr></table></figure>
-</li>
-<li><p>zremrangebyrank sname start end</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">作用: 按排名删除元素,删除名次在[start,end]之间的</div><div class="line">redis 127.0.0.1:6379&gt; zremrangebyrank stu 0 1</div><div class="line">(integer) 2</div><div class="line">redis 127.0.0.1:6379&gt; zrange stu 0 -1</div><div class="line">1) &quot;c&quot;</div><div class="line">2) &quot;e&quot;</div><div class="line">3) &quot;f&quot;</div><div class="line">4) &quot;g&quot;</div></pre></td></tr></table></figure>
-</li>
-<li><p>zrank key member</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">查询member的排名(升序 0名开始)</div></pre></td></tr></table></figure>
-</li>
-<li><p>zrevrank key memeber</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">查询 member的排名(降序 0名开始)</div></pre></td></tr></table></figure>
-</li>
-<li><p>ZRANGE key start stop [WITHSCORES]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">把集合排序后,返回名次[start,stop]的元素</div><div class="line">默认是升续排列 </div><div class="line">Withscores 是把score也打印出来</div></pre></td></tr></table></figure>
-</li>
-<li><p>zrevrange key start stop</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用:把集合降序排列,取名字[start,stop]之间的元素</div></pre></td></tr></table></figure>
-</li>
-<li><p>zrangebyscore  key min max [withscores] limit offset N</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">作用: 集合(升续)排序后,取score在[min,max]内的元素,</div><div class="line">并跳过 offset个, 取出N个</div><div class="line">redis 127.0.0.1:6379&gt; zadd stu 1 a 3 b 4 c 9 e 12 f 15 g</div><div class="line">(integer) 6</div><div class="line">redis 127.0.0.1:6379&gt; zrangebyscore stu 3 12 limit 1 2 withscores</div><div class="line">1) &quot;c&quot;</div><div class="line">2) &quot;4&quot;</div><div class="line">3) &quot;e&quot;</div><div class="line">4) &quot;9&quot;</div></pre></td></tr></table></figure>
-</li>
-<li><p>zcard key</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">返回元素个数</div></pre></td></tr></table></figure>
-</li>
-<li><p>zcount key min max</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">返回[min,max] 区间内元素的数量</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<h5 id="6-Hash数据结构操作"><a href="#6-Hash数据结构操作" class="headerlink" title="6. Hash数据结构操作"></a>6. Hash数据结构操作</h5><ul>
-<li><p>hset key field value</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">作用: 把hash表中 filed域的值设为value</div><div class="line">注:如果没有field域,直接添加,如果有,则覆盖原field域的值</div></pre></td></tr></table></figure>
-</li>
-<li><p>hmset key field1 value1 [field2 value2 field3 value3 ……fieldn valuen]</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">作用: 设置field1-&gt;N 个域, 对应的值是value1-&gt;N</div><div class="line">(对应PHP理解为  $key = array(file1=&gt;value1, field2=&gt;value2 ....fieldN=&gt;valueN))</div></pre></td></tr></table></figure>
-</li>
-<li><p>hget key field</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 返回key中field域的值</div></pre></td></tr></table></figure>
-</li>
-<li><p>hmget key field1 field2 fieldN</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 返回key中field1 field2 fieldN域的值</div></pre></td></tr></table></figure>
-</li>
-<li><p>hgetall key</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用:返回key中,所有域与其值</div></pre></td></tr></table></figure>
-</li>
-<li><p>hdel key field</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 删除key中 field域</div></pre></td></tr></table></figure>
-</li>
-<li><p>hlen key</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 返回key中元素的数量</div></pre></td></tr></table></figure>
-</li>
-<li><p>hexists key field</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 判断key中有没有field域</div></pre></td></tr></table></figure>
-</li>
-<li><p>hincrby key field value</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 是把key中的field域的值增长整型值value</div></pre></td></tr></table></figure>
-</li>
-<li><p>hincrby float  key field value</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 是把key中的field域的值增长浮点值value</div></pre></td></tr></table></figure>
-</li>
-<li><p>hkeys key</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 返回key中所有的field</div></pre></td></tr></table></figure>
-</li>
-<li><p>hvals key</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 返回key中所有的value</div></pre></td></tr></table></figure></li>
-</ul>
-
+<h4 id="爬取的流程图"><a href="#爬取的流程图" class="headerlink" title="爬取的流程图"></a><div id="title">爬取的流程图</div></h4><p><img src="https://i.loli.net/2017/11/16/5a0cf80b8cfc8.png" alt="爬取流程框架.png"></p>
+<h4 id="使用requests模块抓取信息"><a href="#使用requests模块抓取信息" class="headerlink" title="使用requests模块抓取信息"></a><div id="title">使用requests模块抓取信息</div></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"></div><div class="line"><span class="comment"># 为了防止网站反爬虫，因此我们需要伪造成浏览器访问</span></div><div class="line">hds=[&#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6'</span>&#125;,</div><div class="line">    &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Windows NT 6.2) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.12 Safari/535.11'</span>&#125;,</div><div class="line">    &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)'</span>&#125;,</div><div class="line">    &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:34.0) Gecko/20100101 Firefox/34.0'</span>&#125;,</div><div class="line">    &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/44.0.2403.89 Chrome/44.0.2403.89 Safari/537.36'</span>&#125;,</div><div class="line">    &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50'</span>&#125;,</div><div class="line">    &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50'</span>&#125;,</div><div class="line">    &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0'</span>&#125;,</div><div class="line">    &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:2.0.1) Gecko/20100101 Firefox/4.0.1'</span>&#125;,</div><div class="line">    &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1'</span>&#125;,</div><div class="line">    &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_0) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11'</span>&#125;,</div><div class="line">    &#123;<span class="string">'User-Agent'</span>:<span class="string">'Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; en) Presto/2.8.131 Version/11.11'</span>&#125;,</div><div class="line">    &#123;<span class="string">'User-Agent'</span>:<span class="string">'Opera/9.80 (Windows NT 6.1; U; en) Presto/2.8.131 Version/11.11'</span>&#125;]</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_page</span><span class="params">(url)</span>:</span></div><div class="line">    headers = hds[random.randint(<span class="number">0</span>,len(hds)<span class="number">-1</span>)]</div><div class="line">    <span class="comment"># 使用requests的get方法进行伪造</span></div><div class="line">    response = requests.get(url, headers = headers)</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        <span class="keyword">if</span> response.status_code == <span class="number">200</span>:</div><div class="line">            res = response.text</div><div class="line">            <span class="keyword">return</span> res</div><div class="line">        <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</div><div class="line">        print(e)</div></pre></td></tr></table></figure>
+<h4 id="使用正则表达式分析"><a href="#使用正则表达式分析" class="headerlink" title="使用正则表达式分析"></a><div id="title">使用正则表达式分析</div></h4><p><strong>首先，我们要抓取的目标信息的html代码如下：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;board-item-content&quot;&gt;</div><div class="line">    &lt;div class=&quot;movie-item-info&quot;&gt;</div><div class="line">        &lt;p class=&quot;name&quot;&gt;&lt;a href=&quot;/films/1203&quot; title=&quot;霸王别姬&quot; data-act=&quot;boarditem-click&quot; data-val=&quot;&#123;movieId:1203&#125;&quot;&gt;霸王别姬&lt;/a&gt;&lt;/p&gt;</div><div class="line">        &lt;p class=&quot;star&quot;&gt;</div><div class="line">            主演：张国荣,张丰毅,巩俐</div><div class="line">        &lt;/p&gt;</div><div class="line">        &lt;p class=&quot;releasetime&quot;&gt;上映时间：1993-01-01(中国香港)&lt;/p&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class=&quot;movie-item-number score-num&quot;&gt;</div><div class="line">        &lt;p class=&quot;score&quot;&gt;&lt;i class=&quot;integer&quot;&gt;9.&lt;/i&gt;&lt;i class=&quot;fraction&quot;&gt;6&lt;/i&gt;&lt;/p&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>接下来，主要是正则表达式的编写</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_movie</span><span class="params">(html)</span>:</span></div><div class="line">    <span class="comment"># 此处正则表达式的书写非常关键，采用非贪婪模式的 (.*?)</span></div><div class="line">    partten = <span class="string">'&lt;div.*?&lt;p.*?&gt;&lt;a.*?&gt;(.*?)&lt;/a&gt;&lt;/p&gt;.*?&lt;p.*?&gt;(.*?)&lt;/p&gt;.*?&lt;p.*?&gt;(.*?)&lt;/p&gt;.*?&lt;/div&gt;'</span></div><div class="line">    items = re.findall(partten, html, re.S)</div><div class="line"></div><div class="line">    item_list = []</div><div class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> items:</div><div class="line">        item_list.append([item[<span class="number">0</span>],item[<span class="number">1</span>],item[<span class="number">2</span>]])</div><div class="line"></div><div class="line">    <span class="keyword">return</span> item_list</div></pre></td></tr></table></figure></p>
+<h4 id="将信息写入到文件"><a href="#将信息写入到文件" class="headerlink" title="将信息写入到文件"></a><div id="title">将信息写入到文件</div></h4><p><strong>这步非常的简单，我们只需要打开文件，写入信息即可</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">write_file</span><span class="params">(items)</span>:</span></div><div class="line">    fileMovie = open(<span class="string">'movie.txt'</span>, <span class="string">'a'</span>, encoding=<span class="string">'utf8'</span>)</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        <span class="keyword">for</span> movie <span class="keyword">in</span> items:</div><div class="line">            fileMovie.write(<span class="string">'电影排名：'</span> + movie[<span class="number">0</span>] + <span class="string">'\r\n'</span>)</div><div class="line">            fileMovie.write(<span class="string">'电影主演：'</span> + movie[<span class="number">1</span>].strip()[<span class="number">3</span>:] + <span class="string">'\r\n'</span>)</div><div class="line">            fileMovie.write(<span class="string">'上映时间：'</span> + movie[<span class="number">2</span>].strip()[<span class="number">5</span>:] + <span class="string">'\r\n\r\n'</span>)</div><div class="line">        print(<span class="string">'文件写入成功...'</span>)</div><div class="line">    <span class="keyword">finally</span>:</div><div class="line">        fileMovie.close()</div></pre></td></tr></table></figure></p>
+<h4 id="批量抓取"><a href="#批量抓取" class="headerlink" title="批量抓取"></a><div id="title">批量抓取</div></h4><p><strong>入口函数main方法的书写</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(offset)</span>:</span></div><div class="line">    url = <span class="string">"http://maoyan.com/board/4?offset="</span> + str(offset)</div><div class="line">    html = get_page(url)</div><div class="line">    items_list = get_movie(html)</div><div class="line">    write_file(items_list)</div></pre></td></tr></table></figure></p>
+<p><strong>1. 串行的方式抓取</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    <span class="keyword">import</span> time</div><div class="line">    start_time = time.time()</div><div class="line">    </div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</div><div class="line">        offset = i*<span class="number">10</span></div><div class="line">        main(offset)</div><div class="line">        </div><div class="line">    end_time = time.time()</div><div class="line">    print(<span class="string">"cost time is:"</span> + str(end_time - start_time)) <span class="comment"># cost time is:12.5023369789123535</span></div></pre></td></tr></table></figure></p>
+<p><strong>此种方式，当抓取的数量非常的多的时候，耗费的时间比较长</strong></p>
+<p><strong>2. 多进程的方式抓取</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    <span class="comment"># 使用多进程的方式抓取数据</span></div><div class="line">    <span class="keyword">import</span> time</div><div class="line">    start_time = time.time()</div><div class="line">    </div><div class="line">    pool = Pool()</div><div class="line">    pool.map(main, [i*<span class="number">10</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>)])</div><div class="line">    </div><div class="line">    end_time = time.time()</div><div class="line">    print(<span class="string">"cost time is:"</span> + str(end_time - start_time)) <span class="comment"># cost time is:1.5023369789123535</span></div></pre></td></tr></table></figure></p>
+<p><strong>3. 多线程的方式抓取</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    <span class="keyword">import</span> time</div><div class="line">    start_time = time.time()</div><div class="line">    </div><div class="line">    <span class="comment"># 使用多线程的方式抓取数据</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</div><div class="line">        t = Thread(target=main, args=(i*<span class="number">10</span>,))</div><div class="line">        t.start()</div><div class="line"></div><div class="line">    end_time = time.time()</div><div class="line">    print(<span class="string">"cost time is:"</span> + str(end_time - start_time)) <span class="comment"># cost time is:0.2023369789123535</span></div></pre></td></tr></table></figure>
       
 
       
@@ -487,11 +234,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NoSQL</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">模块</a>
         		</li>
       		
 		</ul>
@@ -504,7 +251,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/NoSQL/" class="article-tag-list-link color1">NoSQL</a>
+        			<a href="/categories/爬虫/" class="article-tag-list-link color3">爬虫</a>
         		</li>
       		
 		</ul>
@@ -559,7 +306,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/05/Redis学习目录/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/04/07/使用Requests和正则表达式抓取电影排行榜Top100/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -573,18 +320,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/05/05/循序渐进大型网站架构/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/04/07/链家数据/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          循序渐进大型网站架构
+          爬链家二手房数据
         
       </div>
     </a>
   
   
-    <a href="/2017/05/05/NoSQL入门学习/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">NoSQL入门学习</div>
+    <a href="/2017/04/07/1994年电影奇迹/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">1994年电影奇迹</div>
       <i class="icon-circle-right"></i>
     </a>
   
