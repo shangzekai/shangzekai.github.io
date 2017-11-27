@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>BootStrap常用的点总结 | Python</title>
+  <title>for和foreach在PHP中的区别 | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="前言 Bootstrap 作为一款非常好的前端框架，为我们开发省去了大量的时间，使我们能够将大量的时间放在业务逻辑的编写上，真的是前端工程师开发之必备良药，下面稍微总结一下，BootStrap中我们最常用的一些点，如果想要获得更多关于BootStrap的应用，直接上官网查看即可">
-<meta name="keywords" content="HTML,BootStrap">
+  <meta name="description" content="遍历一个数组是编程中最常见不过的了，这里跟大家讨论下for和foreach两种方法。用这两种方法执行遍历的场景太多太多了，这里我们只针对以下两个数组作为例子来讨论。所谓管中窥豹，多少能理清一点两者的区别.">
+<meta name="keywords" content="PHP,MySql">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BootStrap常用的点总结">
-<meta property="og:url" content="http://yoursite.com/2017/05/06/BootStrap常用点总结/index.html">
+<meta property="og:title" content="for和foreach在PHP中的区别">
+<meta property="og:url" content="http://yoursite.com/2017/07/02/for和foreach在php中的区别/index.html">
 <meta property="og:site_name" content="Python">
-<meta property="og:description" content="前言 Bootstrap 作为一款非常好的前端框架，为我们开发省去了大量的时间，使我们能够将大量的时间放在业务逻辑的编写上，真的是前端工程师开发之必备良药，下面稍微总结一下，BootStrap中我们最常用的一些点，如果想要获得更多关于BootStrap的应用，直接上官网查看即可">
-<meta property="og:updated_time" content="2017-06-07T02:14:48.000Z">
+<meta property="og:description" content="遍历一个数组是编程中最常见不过的了，这里跟大家讨论下for和foreach两种方法。用这两种方法执行遍历的场景太多太多了，这里我们只针对以下两个数组作为例子来讨论。所谓管中窥豹，多少能理清一点两者的区别.">
+<meta property="og:updated_time" content="2017-11-27T07:23:42.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="BootStrap常用的点总结">
-<meta name="twitter:description" content="前言 Bootstrap 作为一款非常好的前端框架，为我们开发省去了大量的时间，使我们能够将大量的时间放在业务逻辑的编写上，真的是前端工程师开发之必备良药，下面稍微总结一下，BootStrap中我们最常用的一些点，如果想要获得更多关于BootStrap的应用，直接上官网查看即可">
+<meta name="twitter:title" content="for和foreach在PHP中的区别">
+<meta name="twitter:description" content="遍历一个数组是编程中最常见不过的了，这里跟大家讨论下for和foreach两种方法。用这两种方法执行遍历的场景太多太多了，这里我们只针对以下两个数组作为例子来讨论。所谓管中窥豹，多少能理清一点两者的区别.">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
@@ -149,20 +149,20 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-BootStrap常用点总结" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-for和foreach在php中的区别" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      BootStrap常用的点总结
+      for和foreach在PHP中的区别
     </h1>
   
 
         
-        <a href="/2017/05/06/BootStrap常用点总结/" class="archive-article-date">
-  	<time datetime="2017-05-06T15:54:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
+        <a href="/2017/07/02/for和foreach在php中的区别/" class="archive-article-date">
+  	<time datetime="2017-07-02T12:51:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-02</time>
 </a>
         
       </header>
@@ -171,27 +171,33 @@
       
 	
         <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#文本设置"><span class="toc-text">文本设置</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-强调相关类"><span class="toc-text">1. 强调相关类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-对齐相关的类"><span class="toc-text">2. 对齐相关的类</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#列表"><span class="toc-text">列表</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-无符号列表"><span class="toc-text">1. 无符号列表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-无标号横向列表"><span class="toc-text">2. 无标号横向列表</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#代码段"><span class="toc-text">代码段</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-单行内联代码"><span class="toc-text">1. 单行内联代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-多行代码"><span class="toc-text">2. 多行代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-用户输入代码"><span class="toc-text">3. 用户输入代码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-滚动代码"><span class="toc-text">4. 滚动代码</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#表格设置"><span class="toc-text">表格设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#常用表单样式"><span class="toc-text">常用表单样式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-纵向表单"><span class="toc-text">1. 纵向表单</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-水平表单"><span class="toc-text">2. 水平表单</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#下拉条和文本域"><span class="toc-text">下拉条和文本域</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#单选框和复选框"><span class="toc-text">单选框和复选框</span></a></li></ol>
+          
           <hr/>
         </div>
         
-        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
-<p>Bootstrap 作为一款非常好的前端框架，为我们开发省去了大量的时间，使我们能够将大量的时间放在业务逻辑的编写上，真的是前端工程师开发之必备良药，下面稍微总结一下，BootStrap中我们最常用的一些点，如果想要获得更多关于BootStrap的应用，直接上官网查看即可</p>
+        <blockquote>
+<p>遍历一个数组是编程中最常见不过的了，这里跟大家讨论下for和foreach两种方法。用这两种方法执行遍历的场景太多太多了，这里我们只针对以下两个数组作为例子来讨论。所谓管中窥豹，多少能理清一点两者的区别.</p>
 </blockquote>
 <a id="more"></a>
-<h4 id="文本设置"><a href="#文本设置" class="headerlink" title="文本设置"></a><div id="title">文本设置</div></h4><h5 id="1-强调相关类"><a href="#1-强调相关类" class="headerlink" title="1. 强调相关类"></a>1. 强调相关类</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.text-muted</span>：提示，使用浅灰色（<span class="selector-id">#999</span>）</div><div class="line"><span class="selector-class">.text-primary</span>：主要，使用蓝色（<span class="selector-id">#428bca</span>）</div><div class="line"><span class="selector-class">.text-success</span>：成功，使用浅绿色(<span class="selector-id">#3c763d</span>)</div><div class="line"><span class="selector-class">.text-info</span>：通知信息，使用浅蓝色（<span class="selector-id">#31708f</span>）</div><div class="line"><span class="selector-class">.text-warning</span>：警告，使用黄色（<span class="selector-id">#8a6d3b</span>）</div><div class="line"><span class="selector-class">.text-danger</span>：危险，使用褐色（#<span class="selector-id">#a94442</span>）</div></pre></td></tr></table></figure>
-<h5 id="2-对齐相关的类"><a href="#2-对齐相关的类" class="headerlink" title="2. 对齐相关的类"></a>2. 对齐相关的类</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.text-left</span> &#123;</div><div class="line"><span class="attribute">text-align</span>: left;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.text-right</span> &#123;</div><div class="line"><span class="attribute">text-align</span>: right;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.text-center</span> &#123;</div><div class="line"><span class="attribute">text-align</span>: center;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.text-justify</span> &#123;</div><div class="line"><span class="attribute">text-align</span>: justify;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a><div id="title">列表</div></h4><h5 id="1-无符号列表"><a href="#1-无符号列表" class="headerlink" title="1. 无符号列表"></a>1. 无符号列表</h5><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;ul class = "list-unstyled"&gt;&lt;/ul&gt;</div></pre></td></tr></table></figure>
-<h5 id="2-无标号横向列表"><a href="#2-无标号横向列表" class="headerlink" title="2. 无标号横向列表"></a>2. 无标号横向列表</h5><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;ul class="list-inline"&gt;&lt;/ul&gt;</div></pre></td></tr></table></figure>
-<h4 id="代码段"><a href="#代码段" class="headerlink" title="代码段"></a><div id="title">代码段</div></h4><h5 id="1-单行内联代码"><a href="#1-单行内联代码" class="headerlink" title="1. 单行内联代码"></a>1. 单行内联代码</h5><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;code&gt;单行内联代码&lt;/code&gt;</div></pre></td></tr></table></figure>
-<h5 id="2-多行代码"><a href="#2-多行代码" class="headerlink" title="2. 多行代码"></a>2. 多行代码</h5><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;pre&gt;多行代码&lt;/pre&gt;</div></pre></td></tr></table></figure>
-<h5 id="3-用户输入代码"><a href="#3-用户输入代码" class="headerlink" title="3. 用户输入代码"></a>3. 用户输入代码</h5><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;kbd&gt;用户输入代码&lt;/kbd&gt;</div></pre></td></tr></table></figure>
-<h5 id="4-滚动代码"><a href="#4-滚动代码" class="headerlink" title="4. 滚动代码"></a>4. 滚动代码</h5><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">class = "&lt;b&gt;.pre-scrollable&lt;/b&gt;"</div></pre></td></tr></table></figure>
-<h4 id="表格设置"><a href="#表格设置" class="headerlink" title="表格设置"></a><div id="title">表格设置</div></h4><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.table</span>：基础表格</div><div class="line"><span class="selector-class">.table-striped</span>：斑马线表格</div><div class="line"><span class="selector-class">.table-bordered</span>：带边框的表格</div><div class="line"><span class="selector-class">.table-hover</span>：鼠标悬停高亮的表格</div><div class="line"><span class="selector-class">.table-condensed</span>：紧凑型表格</div><div class="line"><span class="selector-class">.table-responsive</span>：响应式表格</div></pre></td></tr></table></figure>
-<h4 id="常用表单样式"><a href="#常用表单样式" class="headerlink" title="常用表单样式"></a><div id="title">常用表单样式</div></h4><h5 id="1-纵向表单"><a href="#1-纵向表单" class="headerlink" title="1. 纵向表单"></a>1. 纵向表单</h5><figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;form role="form"&gt;</div><div class="line">    &lt;div class="form-group"&gt;</div><div class="line">        &lt;label for="exampleInputEmail1"&gt;邮箱：&lt;/label&gt;</div><div class="line">        &lt;input type="email" class="form-control" id="exampleInputEmail1" placeholder="请输入邮箱"&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class="form-group"&gt;</div><div class="line">        &lt;label for="exampleInputPassword1"&gt;密码&lt;/label&gt;</div><div class="line">        &lt;input type="password" class="form-control" id="exampleInputPassword1" placeholder="请输入密码"&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class="checkbox"&gt;</div><div class="line">        &lt;label&gt;&lt;input type="checkbox"&gt; 记住密码&lt;/label&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;button type="submit" class="btn btn-default"&gt;进入邮箱&lt;/button&gt;</div><div class="line">&lt;/form&gt;</div></pre></td></tr></table></figure>
-<h5 id="2-水平表单"><a href="#2-水平表单" class="headerlink" title="2. 水平表单"></a>2. 水平表单</h5><figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;form class="form-horizontal" role="form"&gt;</div><div class="line">    &lt;div class="form-group"&gt;</div><div class="line">        &lt;label for="inputEmail3" class="col-sm-2 control-label"&gt;邮箱&lt;/label&gt;</div><div class="line">        &lt;div class="col-sm-10"&gt;</div><div class="line">            &lt;input type="email" class="form-control" id="inputEmail3" placeholder="请输入邮箱"&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class="form-group"&gt;</div><div class="line">        &lt;label for="inputPassword3" class="col-sm-2 control-label"&gt;密码&lt;/label&gt;</div><div class="line">        &lt;div class="col-sm-10"&gt;</div><div class="line">            &lt;input type="password" class="form-control" id="inputPassword3" placeholder="请输入密码"&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line"> &lt;div class="form-group"&gt;</div><div class="line">    &lt;div class="col-sm-offset-2 col-sm-10"&gt;</div><div class="line">        &lt;div class="checkbox"&gt;</div><div class="line">            &lt;label&gt;&lt;input type="checkbox"&gt; 记住密码&lt;/label&gt;</div><div class="line">        &lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line"> &lt;/div&gt;</div><div class="line"> &lt;div class="form-group"&gt;</div><div class="line">    &lt;div class="col-sm-offset-2 col-sm-10"&gt;</div><div class="line">        &lt;button type="submit" class="btn btn-default"&gt;进入邮箱&lt;/button&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line"> &lt;/div&gt;</div><div class="line">&lt;/form&gt;</div></pre></td></tr></table></figure>
-<h4 id="下拉条和文本域"><a href="#下拉条和文本域" class="headerlink" title="下拉条和文本域"></a><div id="title">下拉条和文本域</div></h4><figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">&lt;form role="form"&gt;</div><div class="line"> &lt;!--下拉条--&gt;</div><div class="line"> &lt;div class="form-group"&gt;</div><div class="line">    &lt;select class="form-control"&gt; </div><div class="line">        &lt;option&gt;1&lt;/option&gt; </div><div class="line">        &lt;option&gt;2&lt;/option&gt; </div><div class="line">        &lt;option&gt;3&lt;/option&gt; </div><div class="line">        &lt;option&gt;4&lt;/option&gt; </div><div class="line">        &lt;option&gt;5&lt;/option&gt; </div><div class="line">    &lt;/select&gt;</div><div class="line"> &lt;/div&gt;</div><div class="line"> &lt;div class="form-group"&gt;</div><div class="line">    &lt;!--文本域--&gt;</div><div class="line">    &lt;textarea class="form-control" rows="3"&gt;&lt;/textarea&gt;</div><div class="line"> &lt;/div&gt;</div><div class="line">&lt;/form&gt;</div></pre></td></tr></table></figure>
-<h4 id="单选框和复选框"><a href="#单选框和复选框" class="headerlink" title="单选框和复选框"></a><div id="title">单选框和复选框</div></h4><figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;form role="form"&gt;</div><div class="line">     &lt;h3&gt;案例1&lt;/h3&gt;</div><div class="line">     &lt;div class="checkbox"&gt;</div><div class="line">        &lt;label&gt;&lt;input type="checkbox" value=""&gt;记住密码&lt;/label&gt;</div><div class="line">     &lt;/div&gt;</div><div class="line">     &lt;div class="radio"&gt;</div><div class="line">        &lt;label&gt;&lt;input type="radio" name="optionsRadios" id="optionsRadios1" value="love" checked&gt;喜欢&lt;/label&gt;</div><div class="line">     &lt;/div&gt;</div><div class="line">     &lt;div class="radio"&gt;</div><div class="line">        &lt;label&gt;&lt;input type="radio" name="optionsRadios" id="optionsRadios2" value="hate"&gt;不喜欢&lt;/label&gt;</div><div class="line">     &lt;/div&gt;</div><div class="line">&lt;/form&gt;</div></pre></td></tr></table></figure>
+<p><strong>首先，我们先准备两个用于遍历的数组：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$arr1=<span class="keyword">array</span>(<span class="number">1</span>=&gt;<span class="string">'a'</span>, <span class="number">3</span>=&gt;<span class="number">22</span>, <span class="number">5</span>=&gt;<span class="string">'b'</span>, <span class="number">4</span>=&gt;<span class="string">'c'</span>, <span class="number">8</span>=&gt;<span class="string">'d'</span>);</div><div class="line"></div><div class="line">$arr2=<span class="keyword">array</span>(<span class="string">'a'</span>=&gt;<span class="string">'aaa'</span>, <span class="string">'b'</span>=&gt;<span class="string">'bbb'</span>, <span class="string">'c'</span>=&gt;<span class="string">'ccc'</span>, <span class="string">'d'</span>=&gt;<span class="string">'ddd'</span>, <span class="string">'e'</span>=&gt;<span class="string">'eee'</span>);</div></pre></td></tr></table></figure>
+<p>一. for循环结构</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">循环<span class="number">1</span>：</div><div class="line"><span class="keyword">for</span>($i=<span class="number">0</span>,$num=count($arr1);$i&lt;$num;$i++)&#123;</div><div class="line">    <span class="keyword">echo</span> $arr1[$i].<span class="string">' '</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">输出结果：a <span class="number">22</span> c</div><div class="line"></div><div class="line">循环<span class="number">2</span>：</div><div class="line"><span class="keyword">for</span>($i=<span class="number">0</span>,$num=count($arr2);$i&lt;$num;$i++)&#123;</div><div class="line">    <span class="keyword">echo</span> $arr2[$i].<span class="string">' '</span>;</div><div class="line">&#125;</div><div class="line">此段语句没有输出</div></pre></td></tr></table></figure>
+<p><strong>分析：</strong></p>
+<blockquote>
+<p>循环1只打印出了数组<code>$arr1</code>的前两个单元，而循环2中的<code>$arr2</code>则什么都没打印出来。</p>
+<p>原因在于for循环的时候是按照数字递增的，因此for只能访问键为数字的数组，例如循环1按照<code>$i=0</code>到<code>$i=4</code>去递增访问<code>$arr1</code>数组中键为0到4的单元，但该数组中的键依次为：1,3,5,4,8。而键值超过4的数组单元（5=&gt;’b’,8=&gt;’d’）不会被访问到，因为<code>count($arr1)=5</code>，故<code>$i&lt;5</code>; 因此最后输出结果只有：a 22 c ；对于$arr2中所有的键都是字符，并非数字，所以循环2中没有输出</p>
+</blockquote>
+<p>二：foreach循环结构</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">循环<span class="number">3</span>：</div><div class="line"><span class="keyword">foreach</span>($arr1 <span class="keyword">as</span> $key=&gt;$value)&#123;</div><div class="line">    <span class="keyword">echo</span> $key.<span class="string">'=&gt;'</span>.$value.<span class="string">' '</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line">输出结果：<span class="number">1</span>=&gt;a <span class="number">3</span>=&gt;<span class="number">22</span> <span class="number">5</span>=&gt;b <span class="number">4</span>=&gt;c <span class="number">8</span>=&gt;d</div><div class="line"></div><div class="line">循环<span class="number">4</span>：</div><div class="line"><span class="keyword">foreach</span>($arr2 <span class="keyword">as</span> $key=&gt;$value)&#123;</div><div class="line">    <span class="keyword">echo</span> $key.<span class="string">'=&gt;'</span>.$value.<span class="string">' '</span>;</div><div class="line">&#125;</div><div class="line">输出结果：a=&gt;aaa b=&gt;bbb c=&gt;ccc d=&gt;ddd e=&gt;eee</div></pre></td></tr></table></figure>
+<p>分析：</p>
+<blockquote>
+<p>foreach循环结构是按照数组内部的指针去循环的，当 foreach 开始执行时，数组内部的指针会自动指向第一个单元。因此下一次循环中将会得到下一个单元，不需要按照数组的键来遍历整个数组。这也是foreach与for的不同之处。当然，foreach只能用于数组和对象，并且由于 foreach 依赖内部数组指针，在循环中修改其值将可能导致意外的行为。</p>
+</blockquote>
+<p><strong>总体来说，如果数据库过几十万了，才能看出来快一点还是慢一点，如果低于10万的循环，就不用测试了。php推荐用foreach。</strong></p>
+<p>循环数字数组时,for需要事先count(<code>$arr</code>)计算数组长度,需要引入自增变量<code>$i</code>,每次循环都要进行条件判断<code>$i&lt;$c</code>,然后自增<code>$i++</code>,输出数组元素时,<code>$arr[$i]</code>需要进行哈希操作.</p>
+<p>而foreach循环数组时,指针会自动指向下一个元素,不需要计算数组长度,没有条件判断和自增变量,调用元素时也没有哈希操作,所以性能肯定要比for和while高.另外,for和while对存在键值映射的关联数组无能为力.所以,遍历数组,首选foreach.</p>
+<p>foreach也是我PHP里最喜欢的关键字,因为它确实强大.<code>array_map/array_filter/array_walk</code>遍历数组的方式和foreach一样,但需要执行回调函数,所以也比foreach慢.</p>
 
       
 
@@ -236,11 +242,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTML</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">BootStrap</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
         		</li>
       		
 		</ul>
@@ -253,7 +259,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/前端/" class="article-tag-list-link color3">前端</a>
+        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
         		</li>
       		
 		</ul>
@@ -308,7 +314,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/06/BootStrap常用点总结/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/02/for和foreach在php中的区别/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -322,18 +328,18 @@
   
 <nav id="article-nav">
   
-    <a href="/2017/05/06/python模块之requests和re/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/07/12/简单聊聊学习方法/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Python常用模块之requests，urllib和re
+          简单聊聊学习方法
         
       </div>
     </a>
   
   
-    <a href="/2017/05/06/Python简介/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">初识Python</div>
+    <a href="/2017/07/02/SqlMap的介绍/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">SqlMap的使用方法总结</div>
       <i class="icon-circle-right"></i>
     </a>
   
