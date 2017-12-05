@@ -146,6 +146,83 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-PyQuery的用法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/05/PyQuery的用法/">PyQuery的用法</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/05/PyQuery的用法/" class="archive-article-date">
+  	<time datetime="2017-05-05T01:55:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="前戏"><a href="#前戏" class="headerlink" title="前戏"></a><div id="title">前戏</div></h4><blockquote>
+<p>之前的文章中，我们学习了正则表达式，晦涩难懂，但是可以满足我们的需求，接下来，我们继续学习了Beautiful Soup的用法，感觉双手可以解放了，但是我们还是不满足，思考着能不能一步就高潮</p>
+<p>嗯，那么这次学习的内容就会能直接让大家高潮，因为PyQuery 来了，乍听名字，你一定联想到了 jQuery，如果你对 jQuery 熟悉，那么 PyQuery 来解析文档就是不二之选</p>
+</blockquote>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/爬虫/" class="article-tag-list-link color3">爬虫</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/05/PyQuery的用法/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-vim编辑器实现python tab补全" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -448,83 +525,6 @@
 
 
   
-    <article id="post-git代码冲突的常见解决方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/07/git代码冲突的常见解决方法/">git代码冲突常见的解决方法</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/07/git代码冲突的常见解决方法/" class="archive-article-date">
-  	<time datetime="2017-04-07T15:54:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-	
-        <p>如果系统中有一些配置文件在服务器上做了配置修改,然后后续开发又新添加一些配置项的时候,<br>在发布这个配置文件的时候,会发生代码冲突:<br>error: Your local changes to the following files would be overwritten by merge:<br>        protected/config/main.php<br>Please, commit your changes or stash them before you can merge.<br>如果希望保留生产服务器上所做的改动,仅仅并入新配置项, 处理方法如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git stash</div><div class="line">git pull</div><div class="line">git stash pop</div></pre></td></tr></table></figure>
-<p>然后可以使用git diff -w +文件名 来确认代码自动合并的情况.</p>
-<p>反过来,如果希望用代码库中的文件完全覆盖本地工作版本. 方法如下:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git reset --hard</div><div class="line">git pull</div></pre></td></tr></table></figure>
-<p>其中git reset是针对版本,如果想针对文件回退本地修改,使用</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout HEAD file/to/restore</div></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/工具/" class="article-tag-list-link color3">工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/07/git代码冲突的常见解决方法/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
     <article id="post-各种鸡汤" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -600,6 +600,83 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/04/07/各种鸡汤/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-git代码冲突的常见解决方法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/07/git代码冲突的常见解决方法/">git代码冲突常见的解决方法</a>
+    </h1>
+  
+
+        
+        <a href="/2017/04/07/git代码冲突的常见解决方法/" class="archive-article-date">
+  	<time datetime="2017-04-07T15:54:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <p>如果系统中有一些配置文件在服务器上做了配置修改,然后后续开发又新添加一些配置项的时候,<br>在发布这个配置文件的时候,会发生代码冲突:<br>error: Your local changes to the following files would be overwritten by merge:<br>        protected/config/main.php<br>Please, commit your changes or stash them before you can merge.<br>如果希望保留生产服务器上所做的改动,仅仅并入新配置项, 处理方法如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git stash</div><div class="line">git pull</div><div class="line">git stash pop</div></pre></td></tr></table></figure>
+<p>然后可以使用git diff -w +文件名 来确认代码自动合并的情况.</p>
+<p>反过来,如果希望用代码库中的文件完全覆盖本地工作版本. 方法如下:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git reset --hard</div><div class="line">git pull</div></pre></td></tr></table></figure>
+<p>其中git reset是针对版本,如果想针对文件回退本地修改,使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git checkout HEAD file/to/restore</div></pre></td></tr></table></figure>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">工具</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/工具/" class="article-tag-list-link color3">工具</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/04/07/git代码冲突的常见解决方法/">展开全文 >></a>
         </p>
       
 
