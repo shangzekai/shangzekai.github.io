@@ -19,7 +19,7 @@
 <meta property="og:image" content="https://i.loli.net/2017/12/05/5a264d994e1c1.png">
 <meta property="og:image" content="https://i.loli.net/2017/12/05/5a264d995438d.png">
 <meta property="og:image" content="https://i.loli.net/2017/12/05/5a264d9972a60.png">
-<meta property="og:updated_time" content="2017-12-05T07:45:48.000Z">
+<meta property="og:updated_time" content="2017-12-05T07:46:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="为啥选择python">
 <meta name="twitter:description" content="为什么是Python先来聊聊为什么做数据分析一定要用 Python或 R语言。编程语言这么多种， Java, PHP都很成熟，但是为什么在最近热火的数据分析领域，很多人选择用 Python语言？ 数据分析只是一个需求，理论上来讲，任何语言都可以满足任何需求，只是麻烦与简易之别。 Python这门语言诞生也相当之早，它的第一个版本是 26年前发表的，曾经（或者说当前）也被用于web开发，但是就流行程">
@@ -182,6 +182,7 @@
         
         <h4 id="为什么是Python"><a href="#为什么是Python" class="headerlink" title="为什么是Python"></a><div id="title">为什么是Python</div></h4><p>先来聊聊为什么做数据分析一定要用 Python或 R语言。编程语言这么多种， Java, PHP都很成熟，但是为什么在最近热火的数据分析领域，很多人选择用 Python语言？</p>
 <p>数据分析只是一个需求，理论上来讲，任何语言都可以满足任何需求，只是麻烦与简易之别。 Python这门语言诞生也相当之早，它的第一个版本是 26年前发表的，曾经（或者说当前）也被用于web开发，但是就流行程度来说，远远干不过 Java和 PHP。东方不亮西方亮，在与 Java干仗失败的这20几年时光里， Python练就了一身独门武艺，是 Java和 PHP远远不及的（当然以后是不是能追得上来，目前还不好说）。你要说做个博客网站， Python的特长不在这里， PHP和 Java也是分分钟的事情。你要说做个 BBS网站，做个电商网站， PHP手到擒来。 Python在这些方面和 Java或者 PHP竞争，基本就是作死的节奏，虽然也有 django这样的框架，但流行程度远远不及其他语言。但在这些年默默的失败背后，有一帮研究人员用 Python干出了一些惊天地泣鬼神的神器，使 Python在数据研究领域做到了除了 R语言以外基本无人能及的地步。</p>
+<a id="more"></a>
 <h4 id="Jupyter"><a href="#Jupyter" class="headerlink" title="Jupyter"></a><div id="title">Jupyter</div></h4><p>首先，第一神器是 Jupyter。如果你是第一次使用，可能搞不清楚它的开发者做这么个鬼东西出来干什么，说它是博客系统也不像，说它是web服务器也不像，但它就是有用。因为我们传统的web开发首先想的就是面向公众，你做一个服务器就是要服务成千上万浏览器的，当然 Jupyter也可以服务众多浏览器，但它更多的还是方便研究人员，对研究人员来说简直是太方便了，你把代码像写文章一样直接写在输入框里，然后在本页面直接就看到了这个代码的结果，随时修改，随时展现，文码混排，是 Markdown的一个增强版，毕竟 Markdown还只能显示文字，最多再加上一些图片，而 Jupyter是可以直接运行 Python代码的。当然，也有些人试图在 Jupyter里运行 PHP或 Java代码，但显然成不了气候。因为 Python这个语言天生就是脚本语言，可能将来唯一有希望往里移植的就是 Javascript，这货也是一个脚本语言。</p>
 <p>脚本语言的好处就是不用编译，一行一个结果。纵观计算机语言发展历史，就是一个从繁到简的过程，C语言需要编译+链接才能运行， Java只要 javac一下，把编译和链接合二为一， PHP更简单，直接运行就行了，连编译都省了。但是还不够直接，因为还要编写一个 .php文件存盘，然后才能运行，到了 Python以及其它脚本语言这里，可以直接在壳里运行，但最大的问题是运行可以运行，无法保存，要保存就又要跟传统方式一样，找个编辑器来，或者 vi，存成文件以后才可以运行。</p>
 <p>Jupyter最大的优点就是：它本身还是一个外壳环境，可以运行脚本，但同时也帮你自动把这些脚本代码保存了下来，不但保存脚本代码，并且你插在脚本代码当中的所有注释不是普通注释，而是各种格式化的 Markdown都一并帮你保存下来，并且可以随时修改。所以它兼具了脚本外壳和文件管理系统的优点，从此你开发 Python代码再也不用先在IDE里写好代码，然后再到终端里去运行，而直接在一个 web页面上就全部搞定了。 Java有这样的工具吗？ PHP有这样的工具吗？没有，所以我们必须选择 Python。</p>
