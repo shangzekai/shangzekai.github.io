@@ -479,10 +479,22 @@
   
 
   
-  <!-- UY BEGIN -->
-<div id="uyan_frame"></div>
-<script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid=2133125"></script>
-<!-- UY END -->
+
+  
+  <div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+    owner: 'shangzekai',
+    repo: 'shangzekai.github.io',
+    oauth: {
+        client_id: '0584b82d10b22c56733f',
+        client_secret: '494079773e1b0bfe541152ac975b2fd9b2f5ceb3',
+    },
+});
+gitment.render('gitmentContainer');
+</script>
 
   
 
