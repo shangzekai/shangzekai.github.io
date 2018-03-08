@@ -17,7 +17,7 @@
 <meta property="og:description" content="Yaf介绍 Yaf是”Yet Another Framework”的简写，翻译成汉语即”另一个框架”。Yaf的作者，也就是大名鼎鼎的鸟哥。它是使用C语言开发的PHP框架，相比那些使用PHP编写的PHP框架来说，几乎不会带来额外的性能开销。而且所有的框架类，无需编译，在PHP启动的时候加载，并且常驻内存。即它有着更快的执行速度，更少的内存占用，这一点在性能测试上确实会比较明显。需要指出的是，Yaf是">
 <meta property="og:image" content="https://i.loli.net/2018/03/08/5aa0b6cf246e9.png">
 <meta property="og:image" content="https://i.loli.net/2018/03/08/5aa0b74d0621a.png">
-<meta property="og:updated_time" content="2018-03-08T08:46:58.000Z">
+<meta property="og:updated_time" content="2018-03-08T09:22:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Yaf之介绍和安装">
 <meta name="twitter:description" content="Yaf介绍 Yaf是”Yet Another Framework”的简写，翻译成汉语即”另一个框架”。Yaf的作者，也就是大名鼎鼎的鸟哥。它是使用C语言开发的PHP框架，相比那些使用PHP编写的PHP框架来说，几乎不会带来额外的性能开销。而且所有的框架类，无需编译，在PHP启动的时候加载，并且常驻内存。即它有着更快的执行速度，更少的内存占用，这一点在性能测试上确实会比较明显。需要指出的是，Yaf是">
@@ -179,7 +179,7 @@ onmouseup="document.selection.empty()">-->
       
 	
         <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Yaf介绍"><span class="toc-text">Yaf介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Yaf的安装"><span class="toc-text">Yaf的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Linux的安装"><span class="toc-text">Linux的安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Windows的安装"><span class="toc-text">Windows的安装</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Yaf介绍"><span class="toc-text">Yaf介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是MVC"><span class="toc-text">什么是MVC</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Yaf的安装"><span class="toc-text">Yaf的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Linux的安装"><span class="toc-text">Linux的安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Windows的安装"><span class="toc-text">Windows的安装</span></a></li></ol></li></ol>
           <hr/>
         </div>
         
@@ -200,6 +200,27 @@ onmouseup="document.selection.empty()">-->
 <blockquote>
 <p><a href="http://www.laruence.com/manual/" target="_blank" rel="external">yaf手册地址</a>  <a href="http://www.laruence.com/" target="_blank" rel="external">鸟哥个人博客</a></p>
 </blockquote>
+<h4 id="什么是MVC"><a href="#什么是MVC" class="headerlink" title="什么是MVC"></a><div id="title">什么是MVC</div></h4><blockquote>
+<p>MVC模式（Model-View-Controller）是软件工程中的一种软件架构模式。<br>MVC把软件系统分为三个基本部分：模型（Model）、视图（View）和控制器（Controller）。</p>
+</blockquote>
+<p>PHP中MVC模式也称Web MVC，从上世纪70年代进化而来。</p>
+<p>MVC的目的是实现一种动态的程序设计，便于后续对程序的修改和扩展简化，并且使程序某一部分的重复利用成为可能。</p>
+<p>除此之外，此模式通过对复杂度的简化，使程序结构更加直观。</p>
+<p>MVC各部分的职能：</p>
+<ul>
+<li>模型Model – 管理大部分的业务逻辑和所有的数据库逻辑。模型提供了连接和操作数据库的抽象层。</li>
+<li>控制器Controller - 负责响应用户请求、准备数据，以及决定如何展示数据。</li>
+<li>视图View – 负责渲染数据，通过HTML方式呈现给用户。</li>
+</ul>
+<iframe height="300" width="510" src="https://i.loli.net/2018/03/08/5aa0fb9b757f9.gif">
+
+<p>一个典型的Web MVC流程：</p>
+<ul>
+<li>Controller截获用户发出的请求；</li>
+<li>Controller调用Model完成状态的读写操作；</li>
+<li>Controller把数据传递给View；</li>
+<li>View渲染最终结果并呈献给用户。</li>
+</ul>
 <h4 id="Yaf的安装"><a href="#Yaf的安装" class="headerlink" title="Yaf的安装"></a><div id="title">Yaf的安装</div></h4><blockquote>
 <p>由于它是通过一个扩展的方式来实现的，我们可以去pecl.php.net去搜索Yaf这个扩展，我们也可以直接到”<a href="http://pecl.php.net/package/yaf&quot;这里进行访问，界面如下" target="_blank" rel="external">http://pecl.php.net/package/yaf&quot;这里进行访问，界面如下</a>:</p>
 </blockquote>
@@ -215,7 +236,7 @@ onmouseup="document.selection.empty()">-->
 <p>下载成功后，我们把<code>php_yaf.dll</code>放到PHP的扩展目录中即可，那么PHP的扩展目录在哪呢？一般来说是PHP安装目录中的ext目录，然后我们还需要在php.ini中在扩展那里追加<code>extension=php_yaf.dll</code></p>
 <p>那么如何来检测我们的Yaf是否安装成功了呢?我们可以在phpinfo()中找一下，如果朋友们看到如下类似的内容，那么说明安装成功了:</p>
 <p><img src="https://i.loli.net/2018/03/08/5aa0b74d0621a.png" alt="yaf6.png"></p>
-
+</iframe>
       
 
       
