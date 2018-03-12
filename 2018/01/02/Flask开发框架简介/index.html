@@ -17,7 +17,7 @@
 <meta property="og:description" content="常用Python Web开发框架简介">
 <meta property="og:image" content="https://i.loli.net/2018/03/01/5a9766fc15c91.jpg">
 <meta property="og:image" content="https://i.loli.net/2018/03/02/5a98e1f604b9e.jpg">
-<meta property="og:updated_time" content="2018-03-08T09:24:08.000Z">
+<meta property="og:updated_time" content="2018-03-12T09:24:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Flask讲解">
 <meta name="twitter:description" content="常用Python Web开发框架简介">
@@ -261,8 +261,10 @@ onmouseup="document.selection.empty()">-->
 <p><strong>变量</strong></p>
 <blockquote>
 <p>在模板中使用的结构表示一个变量，它是一种特殊的占位符，告诉模板引擎这个位置的值从渲染模板时使用的数据中获取。</p>
-<p>Jinja2能识别所有类型的变量，甚至是一些复杂的类型，例如列表、字典和对象。在模板中使用变量的一些示例如下：</p>
+</blockquote>
+<p><strong>Jinja2能识别所有类型的变量，甚至是一些复杂的类型，例如列表、字典和对象。在模板中使用变量的一些示例如下：</strong></p>
 <figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;p&gt;A value from a dictionary:&#123;&#123; mydict['key'] &#125;&#125;.&lt;/p&gt;</div><div class="line">&lt;p&gt;A value from a list:&#123;&#123; mylist[3] &#125;&#125;.&lt;/p&gt;</div><div class="line">&lt;p&gt;A value from an object's method:&#123;&#123; myobj.somemethod() &#125;&#125;.&lt;/p&gt;</div></pre></td></tr></table></figure>
+<blockquote>
 <p>可以使用过滤器修改变量，过滤器名添加在变量名之后，中间使用竖线（|）分割。例如，下述模板以首字母大写形式显示变量name的值：</p>
 </blockquote>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Hello,&#123;&#123; name|capitalize &#125;&#125;</div></pre></td></tr></table></figure>
