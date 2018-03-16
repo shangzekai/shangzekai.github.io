@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Python">
 <meta property="og:description" content="控制器介绍">
 <meta property="og:image" content="https://i.loli.net/2018/03/15/5aaa151044d10.png">
-<meta property="og:updated_time" content="2018-03-15T06:43:28.000Z">
+<meta property="og:updated_time" content="2018-03-16T02:27:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Yaf之控制器">
 <meta name="twitter:description" content="控制器介绍">
@@ -216,25 +216,15 @@ onmouseup="document.selection.empty()">-->
 <h5 id="Yaf模块"><a href="#Yaf模块" class="headerlink" title="Yaf模块"></a><div id="title">Yaf模块</div></h5><p>问：假如我们需要Yaf支持多模块，该怎么办呢？</p>
 <p>答：把模块放在 <code>application/modules</code>目录下，模块目录下放置该模块的控制器和视图。同时在<code>conf/application.ini</code>中添加该模块的名字，模块直接以逗号隔开，记得一定添加个<code>index</code>的模块，防止路径只有两段时出错，此时index模块对应的控制器是application/controllers目录下的。</p>
 <p><strong>假如我们需要一个api的模块，例子中有一个控制器为Goods。</strong></p>
-<ol>
-<li>首先，创建如下目录结构和文件</li>
-</ol>
+<p>1.首先，创建如下目录结构和文件</p>
 <p><img src="https://i.loli.net/2018/03/15/5aaa151044d10.png" alt="moudles.png"></p>
-<ol>
-<li>编写Goods.php</li>
-</ol>
+<p>2.编写Goods.php</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">GoodsController</span> <span class="keyword">extends</span> <span class="title">Yaf</span>\<span class="title">Controller_Abstract</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">indexAction</span><span class="params">()</span></span></div><div class="line">    &#123;</div><div class="line">        <span class="keyword">$this</span>-&gt;getView()-&gt;assign(<span class="string">'content'</span>, <span class="string">"In app Module"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ol>
-<li>编写goods/index.phtml</li>
-</ol>
+<p>3.编写goods/index.phtml</p>
 <figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;title&gt;Yaf mutil module example&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;h1&gt;&lt;?php echo $content;?&gt;&lt;/h1&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<ol>
-<li>在conf/application.ini 中加入app和index模块</li>
-</ol>
+<p>4.在conf/application.ini 中加入app和index模块</p>
 <figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[product]</div><div class="line"></div><div class="line">application.modules="api,index"</div></pre></td></tr></table></figure>
-<ol>
-<li>测试<br>浏览器中输入： <code>http://youhost/api/goods/index</code></li>
-</ol>
+<p>5.测试<br>浏览器中输入： <code>http://youhost/api/goods/index</code></p>
 <blockquote>
 <p>当uri有3段时（/module/controller/action），第一段被认为是模块名，第二段被认为是控制器名，第三段则是动作名。</p>
 <p>当uri有2段时（/controller/action），第一段是控制器名，第二段是动作名</p>
