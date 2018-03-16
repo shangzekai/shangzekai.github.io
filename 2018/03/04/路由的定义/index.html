@@ -6,14 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Python</title>
+  <title>Yaf之路由 | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Python">
-<meta property="og:url" content="http://yoursite.com/page/2/index.html">
+  <meta name="description" content="路由的定义 路由器主要负责解析一个请求的URI并且决定什么module、controller、action被请求；它同时也定义了一种方法来实现用户自定义路由，这也使得它成为最重要的一个MVC组组件.  在Yaf中，我们可以使用默认的简单路由协议，也可以自己去定义协议">
+<meta name="keywords" content="Yaf">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Yaf之路由">
+<meta property="og:url" content="http://yoursite.com/2018/03/04/路由的定义/index.html">
 <meta property="og:site_name" content="Python">
+<meta property="og:description" content="路由的定义 路由器主要负责解析一个请求的URI并且决定什么module、controller、action被请求；它同时也定义了一种方法来实现用户自定义路由，这也使得它成为最重要的一个MVC组组件.  在Yaf中，我们可以使用默认的简单路由协议，也可以自己去定义协议">
+<meta property="og:updated_time" content="2018-03-16T06:07:57.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python">
+<meta name="twitter:title" content="Yaf之路由">
+<meta name="twitter:description" content="路由的定义 路由器主要负责解析一个请求的URI并且决定什么module、controller、action被请求；它同时也定义了一种方法来实现用户自定义路由，这也使得它成为最重要的一个MVC组组件.  在Yaf中，我们可以使用默认的简单路由协议，也可以自己去定义协议">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
@@ -149,1062 +154,119 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-    <article id="post-SqlMap的介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-路由的定义" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/02/SqlMap的介绍/">SqlMap的使用方法总结</a>
+    <h1 class="article-title" itemprop="name">
+      Yaf之路由
     </h1>
   
 
         
-        <a href="/2017/07/02/SqlMap的介绍/" class="archive-article-date">
-  	<time datetime="2017-07-02T12:50:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-02</time>
+        <a href="/2018/03/04/路由的定义/" class="archive-article-date">
+  	<time datetime="2018-03-04T03:18:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-04</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="SqlMap的介绍"><a href="#SqlMap的介绍" class="headerlink" title="SqlMap的介绍"></a><div id="title">SqlMap的介绍</div></h4><blockquote>
-<p>SQLmap是一款用来检测与利用SQL注入漏洞的免费开源工具,其实在注入工具方面，一个sqlmap就足够用了，只要你用的熟，秒杀各种工具，只是一个便捷性问题</p>
+	
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#路由的定义"><span class="toc-text">路由的定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#路由器的工作原理"><span class="toc-text">路由器的工作原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#添加路由"><span class="toc-text">添加路由</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#通过程序添加"><span class="toc-text">通过程序添加</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#通过配置文件添加"><span class="toc-text">通过配置文件添加</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#路由协议讲解"><span class="toc-text">路由协议讲解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+          <hr/>
+        </div>
+        
+        <h4 id="路由的定义"><a href="#路由的定义" class="headerlink" title="路由的定义"></a><div id="title">路由的定义</div></h4><blockquote>
+<p>路由器主要负责解析一个请求的URI并且决定什么module、controller、action被请求；它同时也定义了一种方法来实现用户自定义路由，这也使得它成为最重要的一个MVC组组件.</p>
 </blockquote>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/02/SqlMap的介绍/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-php错误和异常" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/07/02/php错误和异常/">PHP的错误与异常</a>
-    </h1>
-  
-
-        
-        <a href="/2017/07/02/php错误和异常/" class="archive-article-date">
-  	<time datetime="2017-07-02T12:35:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="错误"><a href="#错误" class="headerlink" title="错误"></a><div id="title">错误</div></h4><blockquote>
-<p>在许多「重异常」(exception-heavy) 的编程语言中，一旦发生错误，就会抛出异常。这确实是一个可行的方式。不过 PHP 却是一个 「轻异常」(exception-light) 的语言。当然它确实有异常机制，在处理对象时，核心也开始采用这个机制来处理，只是 PHP 会尽可能的执行而无视发生的事情，除非是一个严重错误。</p>
+<p><strong>在Yaf中，我们可以使用默认的简单路由协议，也可以自己去定义协议</strong></p>
+<a id="more"></a>
+<hr>
+<h4 id="路由器的工作原理"><a href="#路由器的工作原理" class="headerlink" title="路由器的工作原理"></a><div id="title">路由器的工作原理</div></h4><blockquote>
+<p>路由过程在何控制器动作(<code>Controller, Action</code>)被派遣之前被执行,一旦路由成功,路由器将会把解析出得到的信息传递给请求对象(<code>Yaf_Request_Abstract object</code>), 这些信息包括<code>moduel、controller、action、用户params</code>等. 然后派遣器(<code>Yaf_Dispatcher</code>)就会按照这些信息派遣正确的控制器动作. 路由器也有插件钩子,就是<code>routerStartup</code>和<code>routerShutdown</code>,他们在路由解析前后分别被调用.</p>
 </blockquote>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/07/02/php错误和异常/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-使用composer构建一个简单的php框架(一)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/02/使用composer构建一个简单的php框架(一)/">使用composer构建一个简单的php框架之初识composer（一）</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/02/使用composer构建一个简单的php框架(一)/" class="archive-article-date">
-  	<time datetime="2017-06-02T12:52:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
-<p>php有许多丰富的框架，帮助我们提高了我们的开发效率。这个教程，我们将学习如何构建我们自己的一个小型的框架，并且使用的是现在比较流行的工具—-composer</p>
+<hr>
+<h4 id="添加路由"><a href="#添加路由" class="headerlink" title="添加路由"></a><div id="title">添加路由</div></h4><blockquote>
+<p>添加路由有两种方式：</p>
+<ol>
+<li>通过php程序构造路由协议对象添加</li>
+<li>通过配置文件添加</li>
+</ol>
 </blockquote>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/02/使用composer构建一个简单的php框架(一)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-使用composer构建一个简单的php框架之搭建路由(二)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/02/使用composer构建一个简单的php框架之搭建路由(二)/">使用composer构建一个简单的php框架之搭建路由（二）</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/02/使用composer构建一个简单的php框架之搭建路由(二)/" class="archive-article-date">
-  	<time datetime="2017-06-02T12:50:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
-<p>上一篇中我们已经建立了一个空的 Composer 项目，本篇将讲述如何构建路由。推荐 <a href="https://github.com/NoahBuscher/Macaw，对应的" target="_blank" rel="external">https://github.com/NoahBuscher/Macaw，对应的</a> Composer 包为 noahbuscher/macaw </p>
-</blockquote>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/02/使用composer构建一个简单的php框架之搭建路由(二)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-使用composer构建一个简单的php框架之搭建MVC(三)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/02/使用composer构建一个简单的php框架之搭建MVC(三)/">使用composer构建一个简单的php框架之搭建MVC（三）</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/02/使用composer构建一个简单的php框架之搭建MVC(三)/" class="archive-article-date">
-  	<time datetime="2017-06-02T12:45:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
-<p>在上一篇教程中，我们使用 codingbean/macaw 这个 Composer 包构建了两条简单路由，第一条是响应 GET ‘/fuck’ 的，另一条会 hold 住所有请求。其实对 PHP 框架来说，有了路由就有了一切。所以接下来我们要做的事情就是让 MFFC 框架更加规范，更加丰满。</p>
-<p>这就牵扯到了 PHP 框架另外的价值：确立开发规范以便于多人协作，使用 ORM、模板引擎 等工具以提高开发效率。</p>
-</blockquote>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/02/使用composer构建一个简单的php框架之搭建MVC(三)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-使用composer构建一个简单的PHP框架之ORM(四)" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/06/02/使用composer构建一个简单的PHP框架之ORM(四)/">使用composer构建一个简单的php框架之ORM（四）</a>
-    </h1>
-  
-
-        
-        <a href="/2017/06/02/使用composer构建一个简单的PHP框架之ORM(四)/" class="archive-article-date">
-  	<time datetime="2017-06-02T12:35:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
-<p>经过前三篇文章 基础准备 、 构建路由 和 设计 MVC ，我们已经得到了一个结构比较完整的 MVC 架构的 PHP 微框架，但是距离一个真正能够上手使用的框架还差一样东西： 数据库封装 ，本篇就将讲述如何集成一个 ORM Composer 包</p>
-</blockquote>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/06/02/使用composer构建一个简单的PHP框架之ORM(四)/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-html学习基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/07/html学习基础/">HTML基础学习目录</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/07/html学习基础/" class="archive-article-date">
-  	<time datetime="2017-05-07T12:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="html相关概念"><a href="#html相关概念" class="headerlink" title="html相关概念"></a><div id="title">html相关概念</div></h3><p><strong>1.html是什么</strong></p>
+<h5 id="通过程序添加"><a href="#通过程序添加" class="headerlink" title="通过程序添加"></a><div id="title">通过程序添加</div></h5><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">## 获取路由</span></div><div class="line"></div><div class="line"><span class="comment">#方法1，通过Yaf_Application对象：</span></div><div class="line">$router = Yaf_Application::app()-&gt;getDispacher()-&gt;getRouter();</div><div class="line"></div><div class="line"><span class="comment">#方法2，直接通过Yaf_Dispatcher对象：</span></div><div class="line">$router = Yaf_Dispatcher::getInstance()-&gt;getRouter();</div></pre></td></tr></table></figure>
+<p>然后在执行<code>Yaf_Application</code>的<code>run()</code>方法前，即<code>Bootstrap</code>中添加路由：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$simpleRoute = <span class="keyword">new</span> Yaf_Route_Simple(<span class="string">'m'</span>, <span class="string">'c'</span>, <span class="string">'a'</span>);</div><div class="line">$router-&gt;addRoute(<span class="string">'simple_route'</span>, $simpleRoute);</div></pre></td></tr></table></figure>
+<p><strong>上面的代码添加了一个<code>Yaf_Route_Simple</code>路由</strong></p>
+<h5 id="通过配置文件添加"><a href="#通过配置文件添加" class="headerlink" title="通过配置文件添加"></a><div id="title">通过配置文件添加</div></h5><figure class="highlight leaf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">[common]</div><div class="line">;自定义路由</div><div class="line">;顺序很重要</div><div class="line">routes.regex.type="regex"</div><div class="line">routes.regex.match="#^/list/([^/]*)/([^/]*)#"</div><div class="line">routes.regex.route.controller=Index</div><div class="line">routes.regex.route.action=action</div><div class="line">routes.regex.map.1=name</div><div class="line">routes.regex.map.2=value</div><div class="line"></div><div class="line">;添加一个名为simple的路由协议</div><div class="line">routes.simple.type="simple"</div><div class="line">routes.simple.controller=c</div><div class="line">routes.simple.module=m</div><div class="line">routes.simple.action=a</div></pre></td></tr></table></figure>
+<p><strong>然后在Bootstrap中通过调用Yaf_Router::addConfig添加定义在配置中的路由协议</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bootstrap</span> <span class="keyword">extends</span> <span class="title">Yaf_Bootstrap_Abstract</span></span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">_initRoute</span><span class="params">(Yaf_Dispatcher $dispatcher)</span> </span>&#123;</div><div class="line">        $router = Yaf_Dispatcher::getInstance()-&gt;getRouter();</div><div class="line">        <span class="comment">/**</span></div><div class="line">         * 添加配置中的路由</div><div class="line">         */</div><div class="line">        $router-&gt;addConfig(Yaf_Registry::get(<span class="string">"config"</span>)-&gt;routes);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h4 id="路由协议讲解"><a href="#路由协议讲解" class="headerlink" title="路由协议讲解"></a><div id="title">路由协议讲解</div></h4><p>#####<div id="title">默认路由协议</div></p>
 <blockquote>
-<p>1.超文本标记语言（Hypertext Markup Language，HTML）通过标记符号来标记要显示的网页中的内容。</p>
-<p>2.<font color="red">其实就是一套规则，浏览器认识的规则。 </font>  </p>
-<p>3.<font color="red">浏览器按顺序渲染网页文件，然后根据标记符解释和显示内容。</font></p>
-<p>4.对于不同的浏览器，对同一标签可能会有不完全相同的解释（兼容性）。</p>
+<p>默认的路由协议<code>Yaf_Route_Static</code>, 就是分析请求中的<code>request_uri</code>, 在去除掉<code>base_uri</code>以后, 获取到真正的负载路由信息的<code>request_uri</code>片段, 具体的策略是, 根据”/“对<code>request_uri</code>分段, 依次得到<code>Module,Controller,Action</code>, 在得到<code>Module</code>以后, 还需要根据<code>Yaf_Application::$modules</code>来判断Module是否是合法<code>的Module</code>, 如果不是, 则认为<code>Module</code>并没有体现在<code>request_uri</code>中, 而把原<code>Module</code>当做<code>Controller</code>, 原<code>Controller</code>当做<code>Action</code>:</p>
 </blockquote>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTML</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端/" class="article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/07/html学习基础/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-CSS基础学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/07/CSS基础学习/">CSS基础学习目录</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/07/CSS基础学习/" class="archive-article-date">
-  	<time datetime="2017-05-07T11:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="网页布局的三个阶段和CSS的基本概念"><a href="#网页布局的三个阶段和CSS的基本概念" class="headerlink" title="网页布局的三个阶段和CSS的基本概念"></a><div id="title">网页布局的三个阶段和CSS的基本概念</div></h4><h5 id="1-网页布局的三个阶段"><a href="#1-网页布局的三个阶段" class="headerlink" title="1. 网页布局的三个阶段"></a>1. <strong>网页布局的三个阶段</strong></h5><ul>
-<li>table网页设计        内容和样式(外观和布局)混合</li>
-<li>table+css网页设计     table布局,css指定外观</li>
-<li>div+css网页设计    div放内容,css指定样式(外观和布局),                内容和样式彻底分离</li>
-</ul>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">CSS</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端/" class="article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/07/CSS基础学习/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-javascript基础学习目录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/07/javascript基础学习目录/">JavaScript基础学习目录</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/07/javascript基础学习目录/" class="archive-article-date">
-  	<time datetime="2017-05-07T11:50:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一、JS如何引入及基本语法规范"><a href="#一、JS如何引入及基本语法规范" class="headerlink" title="一、JS如何引入及基本语法规范"></a><div id="title">一、JS如何引入及基本语法规范</div></h2><p><strong>1.页面内的script代码书写格式</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line">	code.....</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure></p>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">基础　</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端/" class="article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/07/javascript基础学习目录/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-DOM操作" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/07/DOM操作/">DOM操作学习目录</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/07/DOM操作/" class="archive-article-date">
-  	<time datetime="2017-05-07T10:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="一、前戏"><a href="#一、前戏" class="headerlink" title="一、前戏"></a><div id="title">一、前戏</div></h3><p><strong>截止到目前为止，我们已经学习了javascript的一些简单的语法，但是使用这些简单的语法，并不能做出一些我们经常看到的一些效果，比如说表格的全选和反选等，因此为了能够操作网页上的元素，我们需要继续学习DOM相关的知识。</strong><br>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">js</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">DOM</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端/" class="article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/07/DOM操作/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-Javascript类库作用以及对比" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/07/Javascript类库作用以及对比/">JQuery学习目录</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/07/Javascript类库作用以及对比/" class="archive-article-date">
-  	<time datetime="2017-05-07T01:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Javascript类库作用以及对比"><a href="#Javascript类库作用以及对比" class="headerlink" title="Javascript类库作用以及对比"></a><div id="title">Javascript类库作用以及对比</div></h4><h5 id="1-Prototype"><a href="#1-Prototype" class="headerlink" title="1. Prototype"></a>1. Prototype</h5><blockquote>
-<p>Prototype是之前应用最为广泛的Ajax开发框架，其的特点是功能实用而且尺寸较小，非常适合在中小型的Web应用中使用。开发Ajax应用需要编写大量的客户端JavaScript脚本，而Prototype框架可以大大地简化JavaScript代码的编写工作。更难得的是，Prototype具备兼容各个浏览器的优秀特性，使用该框架可以不必考虑浏览器兼容性的问题。但是由于Prototype成型年代早，从整体上对于面向对象的思想把握不是很到位，导致了结构比较的松散</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"> <span class="comment">/**</span></div><div class="line">  * 对于请求request_uri为"/ap/foo/bar/dummy/1"</div><div class="line">  * base_uri为"/ap"</div><div class="line">  * 则最后参加路由的request_uri为"/foo/bar/dummy/1"</div><div class="line">  * 然后, 通过对URL分段, 得到如下分节</div><div class="line">  * foo, bar, dummy, 1</div><div class="line">  * 然后判断foo是不是一个合法的Module, 如果不是, 则认为结果如下:</div><div class="line">  */</div><div class="line">  <span class="keyword">array</span>(</div><div class="line">    <span class="string">'module'</span>     =&gt; <span class="string">'默认模块'</span>,</div><div class="line">    <span class="string">'controller'</span> =&gt; <span class="string">'foo'</span>,</div><div class="line">    <span class="string">'action'</span>     =&gt; <span class="string">'bar'</span>,</div><div class="line">    <span class="string">'params'</span>     =&gt; <span class="keyword">array</span>(</div><div class="line">         <span class="string">'dummy'</span> =&gt; <span class="number">1</span>,</div><div class="line">    )</div><div class="line"> )</div><div class="line"></div><div class="line"> <span class="comment">/**</span></div><div class="line">  * 而如果在配置文件中定义了ap.modules="Index,Foo",</div><div class="line">  * 则此处就会认为foo是一个合法模块, 则结果如下</div><div class="line">  */</div><div class="line">  <span class="keyword">array</span>(</div><div class="line">    <span class="string">'module'</span>     =&gt; <span class="string">'foo'</span>,</div><div class="line">    <span class="string">'controller'</span> =&gt; <span class="string">'bar'</span>,</div><div class="line">    <span class="string">'action'</span>     =&gt; <span class="string">'dummy'</span>,</div><div class="line">    <span class="string">'params'</span>     =&gt; <span class="keyword">array</span>(</div><div class="line">         <span class="number">1</span> =&gt; <span class="keyword">NULL</span>,</div><div class="line">    )</div><div class="line"> )</div></pre></td></tr></table></figure>
+<p>#####<div id="title">简单路由协议</div></p>
+<blockquote>
+<p><code>Yaf_Route_Simple</code>是基于请求中的query string来做路由的, 在初始化一个<code>Yaf_Route_Simple</code>路由协议的时候, 我们需要给出3个参数, 这3个参数分别代表在<code>query string</code>中<code>Module, Controller, Action</code>的变量名:</p>
 </blockquote>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Jquery</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端/" class="article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/07/Javascript类库作用以及对比/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-前端优化的技巧" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/07/前端优化的技巧/">前端性能优化问题</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/07/前端优化的技巧/" class="archive-article-date">
-  	<time datetime="2017-05-07T01:47:15.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><p>这个问题无论是实际项目还是面试都是经常碰到的，所以非常有必要总结一下</p>
-<p>下面分别从几个大的方面去分析一下前端性能优化，有些优化其实效果并不一定非常明显，但还是有必要知道。</p>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端/" class="article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/07/前端优化的技巧/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-jquery插件学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/06/jquery插件学习/">BootStrap，Jquery UI 和 Easy UI</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/06/jquery插件学习/" class="archive-article-date">
-  	<time datetime="2017-05-06T15:54:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="BootStrap简介"><a href="#BootStrap简介" class="headerlink" title="BootStrap简介"></a><div id="title">BootStrap简介</div></h4><h5 id="1-什么是BootStrap？"><a href="#1-什么是BootStrap？" class="headerlink" title="1. 什么是BootStrap？"></a>1. 什么是BootStrap？</h5>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTML</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">BootStrap</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端/" class="article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/06/jquery插件学习/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-python模块之requests和re" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/06/python模块之requests和re/">Python常用模块之requests，urllib和re</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/06/python模块之requests和re/" class="archive-article-date">
-  	<time datetime="2017-05-06T15:54:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
-<p>上一节我们介绍完爬虫是啥之后，现在我们就需要来学习一下怎么样优雅快速的去爬一个网站，从而获得我们想要的信息</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="comment">/**</span></div><div class="line">* 指定3个变量名</div><div class="line">*/</div><div class="line">$route = <span class="keyword">new</span> Yaf_Route_Simple(<span class="string">"m"</span>, <span class="string">"c"</span>, <span class="string">"a"</span>);</div><div class="line">$router-&gt;addRoute(<span class="string">"name"</span>, $route);</div><div class="line"><span class="comment">/**</span></div><div class="line">* 对于如下请求: "http://domain.com/index.php?c=index&amp;a=test</div><div class="line">* 能得到如下路由结果</div><div class="line">*/</div><div class="line"><span class="keyword">array</span>(</div><div class="line">    <span class="string">'module'</span>     =&gt; <span class="string">'默认模块'</span>,</div><div class="line">    <span class="string">'controller'</span> =&gt; <span class="string">'index'</span>,</div><div class="line">    <span class="string">'action'</span>     =&gt; <span class="string">'test'</span>,</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>#####<div id="title">Yaf_Route_Supervar</div></p>
+<blockquote>
+<p><code>Yaf_Route_Supervar</code> 是从一个<code>query_string</code>参数变量中解析<code>module、controller、action和params</code>参数，解析规则同<code>Yaf_Route_Static</code>。 </p>
 </blockquote>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">模块</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/爬虫/" class="article-tag-list-link color3">爬虫</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/06/python模块之requests和re/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-BootStrap常用点总结" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/06/BootStrap常用点总结/">BootStrap常用的点总结</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/06/BootStrap常用点总结/" class="archive-article-date">
-  	<time datetime="2017-05-06T15:54:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
-<p>Bootstrap 作为一款非常好的前端框架，为我们开发省去了大量的时间，使我们能够将大量的时间放在业务逻辑的编写上，真的是前端工程师开发之必备良药，下面稍微总结一下，BootStrap中我们最常用的一些点，如果想要获得更多关于BootStrap的应用，直接上官网查看即可</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$supervarRoute = <span class="keyword">new</span> Yaf_Route_Supervar(<span class="string">'r'</span>);</div><div class="line">$router-&gt;addRoute(<span class="string">'supervar_route'</span>, $supervarRoute);</div></pre></td></tr></table></figure>
+<p>上面的例子，在入口文件index.php中添加以上代码。该代码表示表示从”r” 参数中解析<code>module、controller、action和params</code>参数.</p>
+<p>访问<code>http://youhost/?r=/app/goods/index/c/1/d/2</code>测试</p>
+<p>#####<div id="title">正则表达式路由</div></p>
+<blockquote>
+<p>我们之前的路由协议都很好的完成了基本的路由操作,我们常用的也是他们,然而它们会有一些限制,这就是我们为什么要引进正则路由(Yaf_Route_Regex)的原因. 正则路由给予我们preg正则的全部力量,但同时也使得我们的路由协议变得更加复杂了一些.即使是他们有点复杂,我还是希望你能好好掌握它,因为它比其他路由协议要灵活一点点</p>
 </blockquote>
+<p><strong>我们首先在一个配置文件中进行配置正则路由协议</strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">routes.user.type = "regex"</div><div class="line">routes.user.match = "#^/([0-9]+)\/?#"</div><div class="line">routes.user.route.module = "Index"</div><div class="line">routes.user.route.controller = "Index"</div><div class="line">routes.user.route.action = "test"</div><div class="line">routes.user.map.1 = userid</div></pre></td></tr></table></figure></p>
+<p><strong>在php文件<code>Bootstrap.php</code>中进行添加</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$router = $dispatcher-&gt;getRouter();</div><div class="line">$router-&gt;addConfig(Yaf_Registry::get(<span class="string">"config"</span>)-&gt;routes);</div></pre></td></tr></table></figure>
+<p>然后进行测试访问</p>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a><div id="title">总结</div></h4><blockquote>
+<p>关于Yaf的路由，先就学这么多，其实默认路由就很够用了。个人认为路由要简单，不要搞得太复杂，以至于几个月之后自己都看不懂了，还是要专心于业务逻辑上</p>
+</blockquote>
+
       
 
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
       
     </div>
     <div class="article-info article-info-index">
@@ -1215,11 +277,7 @@ onmouseup="document.selection.empty()">-->
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTML</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">BootStrap</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Yaf</a>
         		</li>
       		
 		</ul>
@@ -1232,7 +290,11 @@ onmouseup="document.selection.empty()">-->
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/前端/" class="article-tag-list-link color3">前端</a>
+        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/YAF/" class="article-tag-list-link color4">YAF</a>
         		</li>
       		
 		</ul>
@@ -1240,27 +302,117 @@ onmouseup="document.selection.empty()">-->
 
 
       
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/06/BootStrap常用点总结/">展开全文 >></a>
-        </p>
-      
 
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/03/04/路由的定义/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
       
       <div class="clearfix"></div>
     </div>
   </div>
 </article>
 
+  
+<nav id="article-nav">
+  
+    <a href="/2018/03/05/php常见的一些概念/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          PHP中常见的一些概念
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/03/控制器介绍/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Yaf之控制器</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 
 
 
   
   
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
-    </nav>
   
+
+  
+
+  
+  <div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+    id: 'Sun Mar 04 2018 11:18:08 GMT+0800',
+    owner: 'shangzekai',
+    repo: 'shangzekai.github.io',
+    oauth: {
+        client_id: '0584b82d10b22c56733f',
+        client_secret: '494079773e1b0bfe541152ac975b2fd9b2f5ceb3',
+    },
+});
+gitment.render('gitmentContainer');
+</script>
+
+  
+
+  
+
+  
+
 
 
           </div>
@@ -1289,8 +441,8 @@ onmouseup="document.selection.empty()">-->
     <script>
 	var yiliaConfig = {
 		mathjax: false,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
