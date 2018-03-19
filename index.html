@@ -171,35 +171,11 @@ onmouseup="document.selection.empty()">-->
     
     <div class="article-entry" itemprop="articleBody">
       
-	
         <h4 id="Yaf插件介绍"><a href="#Yaf插件介绍" class="headerlink" title="Yaf插件介绍"></a><div id="title">Yaf插件介绍</div></h4><blockquote>
 <p>Yaf支持用户定义插件来扩展Yaf的功能, 这些插件都是一些类. 它们都必须继承自<code>Yaf_Plugin_Abstract</code>. </p>
 <p>插件主要是Yaf框架中支持的Hook（钩子），Yaf中定义了7个Hook。</p>
 </blockquote>
 <hr>
-<h4 id="Hook的工作流程"><a href="#Hook的工作流程" class="headerlink" title="Hook的工作流程"></a><div id="title">Hook的工作流程</div></h4><p><img src="https://i.loli.net/2018/03/08/5aa0d789ac8d7.png" alt="yaf_sequence.png"></p>
-<ul>
-<li><code>routerStartup</code>：这个会在路由之前出发，也就是路由之前会调用这个Hook ，这个是7个事件中, 最早的一个. 但是一些全局自定义的工作, 还是应该放在Bootstrap中去完成</li>
-<li><code>routerShutdown</code>：这个在路由结束之后触发，需要注意的是，只有路由正确完成之后才会触发这个Hook</li>
-<li><code>dispatchLoopStartup</code>：分发循环开始之前被触发</li>
-<li><code>preDispatch</code>：分发之前触发，如果在一个请求处理过程中, 发生了forward, 则这个事件会被触发多次</li>
-<li><code>postDispatch</code>：分发结束之后触发，此时动作已经执行结束, 视图也已经渲染完成. 和preDispatch类似, 此事件也可能触发多次</li>
-<li><code>dispatchLoopShutdown</code>：分发循环结束之后触发 此时表示所有的业务逻辑都已经运行完成, 但是响应还没有发送</li>
-<li><code>preResponse</code>：响应之前触发</li>
-</ul>
-<h4 id="插件目录"><a href="#插件目录" class="headerlink" title="插件目录"></a><div id="title">插件目录</div></h4><p>一般的, 插件应该放置在<code>APPLICATION_PATH</code>下的<code>plugins</code>目录。</p>
-<p>这样在自动加载的时候, 加载器通过类名, 发现这是个插件类, 就会在这个目录下查找.</p>
-<p>当然, 插件也可以放在任何你想防止的地方,只要你能把这个类加载进来就可以</p>
-<h4 id="编写插件"><a href="#编写插件" class="headerlink" title="编写插件"></a><div id="title">编写插件</div></h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserPlugin</span> <span class="keyword">extends</span> <span class="title">Yaf_Plugin_Abstract</span></span>&#123;</div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">routerStartup</span><span class="params">(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)</span></span></div><div class="line">    &#123;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">routerShutdown</span><span class="params">(Yaf_Request_Abstract $request, Yaf_Response_Abstract $response)</span></span></div><div class="line">    &#123;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<h4 id="注册插件"><a href="#注册插件" class="headerlink" title="注册插件"></a><div id="title">注册插件</div></h4><blockquote>
-<p>插件要生效, 还需要向<code>Yaf_Dispatcher</code>注册, 那么一般的插件的注册都会放在<code>Bootstrap</code>中进行.</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Bootstrap</span> <span class="keyword">extends</span> <span class="title">Yaf_Bootstrap_Abstract</span></span>&#123;</div><div class="line"> <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">_initPlugin</span><span class="params">(Yaf_Dispatcher $dispatcher)</span> </span>&#123;</div><div class="line">    $user = <span class="keyword">new</span> UserPlugin();</div><div class="line">    $dispatcher-&gt;registerPlugin($user);</div><div class="line"> &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>插件就会在我们的项目运行过程中自动调用相关的Hook，我们可以在这些Hook中部署自己的业务逻辑。</p>
-<p>比如用户是否需要登录，权限判断等</p>
-</blockquote>
-
       
 
       

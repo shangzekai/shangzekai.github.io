@@ -8,18 +8,18 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Yaf之插件 | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Yaf插件介绍 Yaf支持用户定义插件来扩展Yaf的功能, 这些插件都是一些类. 它们都必须继承自Yaf_Plugin_Abstract.  插件主要是Yaf框架中支持的Hook（钩子），Yaf中定义了7个Hook。   Hook的工作流程  routerStartup：这个会在路由之前出发，也就是路由之前会调用这个Hook ，这个是7个事件中, 最早的一个. 但是一些全局自定义的工作, 还是应该">
+  <meta name="description" content="Yaf插件介绍 Yaf支持用户定义插件来扩展Yaf的功能, 这些插件都是一些类. 它们都必须继承自Yaf_Plugin_Abstract.  插件主要是Yaf框架中支持的Hook（钩子），Yaf中定义了7个Hook。">
 <meta name="keywords" content="Yaf">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Yaf之插件">
 <meta property="og:url" content="http://yoursite.com/2018/03/05/Yaf插件介绍/index.html">
 <meta property="og:site_name" content="Python">
-<meta property="og:description" content="Yaf插件介绍 Yaf支持用户定义插件来扩展Yaf的功能, 这些插件都是一些类. 它们都必须继承自Yaf_Plugin_Abstract.  插件主要是Yaf框架中支持的Hook（钩子），Yaf中定义了7个Hook。   Hook的工作流程  routerStartup：这个会在路由之前出发，也就是路由之前会调用这个Hook ，这个是7个事件中, 最早的一个. 但是一些全局自定义的工作, 还是应该">
+<meta property="og:description" content="Yaf插件介绍 Yaf支持用户定义插件来扩展Yaf的功能, 这些插件都是一些类. 它们都必须继承自Yaf_Plugin_Abstract.  插件主要是Yaf框架中支持的Hook（钩子），Yaf中定义了7个Hook。">
 <meta property="og:image" content="https://i.loli.net/2018/03/08/5aa0d789ac8d7.png">
-<meta property="og:updated_time" content="2018-03-19T08:12:22.000Z">
+<meta property="og:updated_time" content="2018-03-19T08:13:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Yaf之插件">
-<meta name="twitter:description" content="Yaf插件介绍 Yaf支持用户定义插件来扩展Yaf的功能, 这些插件都是一些类. 它们都必须继承自Yaf_Plugin_Abstract.  插件主要是Yaf框架中支持的Hook（钩子），Yaf中定义了7个Hook。   Hook的工作流程  routerStartup：这个会在路由之前出发，也就是路由之前会调用这个Hook ，这个是7个事件中, 最早的一个. 但是一些全局自定义的工作, 还是应该">
+<meta name="twitter:description" content="Yaf插件介绍 Yaf支持用户定义插件来扩展Yaf的功能, 这些插件都是一些类. 它们都必须继承自Yaf_Plugin_Abstract.  插件主要是Yaf框架中支持的Hook（钩子），Yaf中定义了7个Hook。">
 <meta name="twitter:image" content="https://i.loli.net/2018/03/08/5aa0d789ac8d7.png">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
@@ -187,6 +187,7 @@ onmouseup="document.selection.empty()">-->
 <p>插件主要是Yaf框架中支持的Hook（钩子），Yaf中定义了7个Hook。</p>
 </blockquote>
 <hr>
+<a id="more"></a>
 <h4 id="Hook的工作流程"><a href="#Hook的工作流程" class="headerlink" title="Hook的工作流程"></a><div id="title">Hook的工作流程</div></h4><p><img src="https://i.loli.net/2018/03/08/5aa0d789ac8d7.png" alt="yaf_sequence.png"></p>
 <ul>
 <li><code>routerStartup</code>：这个会在路由之前出发，也就是路由之前会调用这个Hook ，这个是7个事件中, 最早的一个. 但是一些全局自定义的工作, 还是应该放在Bootstrap中去完成</li>
