@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Yaf之配置和类加载方式 | Python</title>
+  <title>Yaf之视图 | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="配置说明 我们必须在Yaf_Application初始化的时候给出配置文件中的配置，其中Yaf的必不可少的配置项只有一个，那就是application.directory，它表示当前应用程序的绝对路径。 其实这个配置项也可以没有，至少从框架层面上做到了”零配置”，但是鸟哥认为，如果一个配置项都没有，就显得太寒酸了，于是就加了这么一个配置项。">
+  <meta name="description" content="视图介绍 所谓视图，就是用来展示给用户的界面部分。我们可以用控制器的getView()方法返回一个视图的实例，然后我们调用其assign()方法来给视图中的每个变量进行赋值。而且需要注意的是，Yaf会自动渲染视图，而且默认的文件后缀名为phtml。">
 <meta name="keywords" content="Yaf">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Yaf之配置和类加载方式">
-<meta property="og:url" content="http://yoursite.com/2018/03/02/yaf配置说明/index.html">
+<meta property="og:title" content="Yaf之视图">
+<meta property="og:url" content="http://yoursite.com/2018/03/06/视图介绍/index.html">
 <meta property="og:site_name" content="Python">
-<meta property="og:description" content="配置说明 我们必须在Yaf_Application初始化的时候给出配置文件中的配置，其中Yaf的必不可少的配置项只有一个，那就是application.directory，它表示当前应用程序的绝对路径。 其实这个配置项也可以没有，至少从框架层面上做到了”零配置”，但是鸟哥认为，如果一个配置项都没有，就显得太寒酸了，于是就加了这么一个配置项。">
-<meta property="og:updated_time" content="2018-03-08T08:47:34.000Z">
+<meta property="og:description" content="视图介绍 所谓视图，就是用来展示给用户的界面部分。我们可以用控制器的getView()方法返回一个视图的实例，然后我们调用其assign()方法来给视图中的每个变量进行赋值。而且需要注意的是，Yaf会自动渲染视图，而且默认的文件后缀名为phtml。">
+<meta property="og:updated_time" content="2018-03-21T02:36:08.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yaf之配置和类加载方式">
-<meta name="twitter:description" content="配置说明 我们必须在Yaf_Application初始化的时候给出配置文件中的配置，其中Yaf的必不可少的配置项只有一个，那就是application.directory，它表示当前应用程序的绝对路径。 其实这个配置项也可以没有，至少从框架层面上做到了”零配置”，但是鸟哥认为，如果一个配置项都没有，就显得太寒酸了，于是就加了这么一个配置项。">
+<meta name="twitter:title" content="Yaf之视图">
+<meta name="twitter:description" content="视图介绍 所谓视图，就是用来展示给用户的界面部分。我们可以用控制器的getView()方法返回一个视图的实例，然后我们调用其assign()方法来给视图中的每个变量进行赋值。而且需要注意的是，Yaf会自动渲染视图，而且默认的文件后缀名为phtml。">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
@@ -154,20 +154,20 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-yaf配置说明" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-视图介绍" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Yaf之配置和类加载方式
+      Yaf之视图
     </h1>
   
 
         
-        <a href="/2018/03/02/yaf配置说明/" class="archive-article-date">
-  	<time datetime="2018-03-02T03:18:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-02</time>
+        <a href="/2018/03/06/视图介绍/" class="archive-article-date">
+  	<time datetime="2018-03-06T03:18:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-06</time>
 </a>
         
       </header>
@@ -176,201 +176,34 @@ onmouseup="document.selection.empty()">-->
       
 	
         <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置说明"><span class="toc-text">配置说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#全局配置"><span class="toc-text">全局配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#本地可选配置"><span class="toc-text">本地可选配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#application配置"><span class="toc-text">application配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#类库加载方式"><span class="toc-text">类库加载方式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#自动加载"><span class="toc-text">自动加载</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#全局类和本地类"><span class="toc-text">全局类和本地类</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#视图介绍"><span class="toc-text">视图介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#render-和display-函数"><span class="toc-text">render()和display()函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设置和获取模板目录"><span class="toc-text">设置和获取模板目录</span></a></li></ol>
           <hr/>
         </div>
         
-        <h4 id="配置说明"><a href="#配置说明" class="headerlink" title="配置说明"></a><div id="title">配置说明</div></h4><blockquote>
-<p>我们必须在Yaf_Application初始化的时候给出配置文件中的配置，其中Yaf的必不可少的配置项只有一个，那就是application.directory，它表示当前应用程序的绝对路径。</p>
-<p>其实这个配置项也可以没有，至少从框架层面上做到了”零配置”，但是鸟哥认为，如果一个配置项都没有，就显得太寒酸了，于是就加了这么一个配置项。</p>
+        <h4 id="视图介绍"><a href="#视图介绍" class="headerlink" title="视图介绍"></a><div id="title">视图介绍</div></h4><blockquote>
+<p>所谓视图，就是用来展示给用户的界面部分。我们可以用控制器的<code>getView()</code>方法返回一个视图的实例，然后我们调用其<code>assign()</code>方法来给视图中的每个变量进行赋值。而且需要注意的是，Yaf会自动渲染视图，而且默认的文件后缀名为<code>phtml</code>。</p>
 </blockquote>
 <a id="more"></a>
-<p><strong>一般的，yaf配置又分为全局配置和项目配置</strong></p>
-<h4 id="全局配置"><a href="#全局配置" class="headerlink" title="全局配置"></a><div id="title">全局配置</div></h4><table>
-<thead>
-<tr>
-<th style="text-align:center">选项名称</th>
-<th style="text-align:center">默认值</th>
-<th style="text-align:center">可修改范围</th>
-<th style="text-align:center">更新记录</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">yaf.environ</td>
-<td style="text-align:center">product</td>
-<td style="text-align:center">PHP_INI_ALL</td>
-<td style="text-align:center">环境名称, 当用INI作为Yaf的配置文件时, 这个指明了Yaf将要在INI配置中读取的节的名字</td>
-</tr>
-<tr>
-<td style="text-align:center">yaf.library</td>
-<td style="text-align:center">NULL</td>
-<td style="text-align:center">PHP_INI_ALL</td>
-<td style="text-align:center">全局类库的目录路径</td>
-</tr>
-<tr>
-<td style="text-align:center">yaf.cache_config</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">PHP_INI_SYSTEM</td>
-<td style="text-align:center">是否缓存配置文件(只针对INI配置文件生效), 打开此选项可在复杂配置的情况下提高性能</td>
-</tr>
-<tr>
-<td style="text-align:center">yaf.name_suffix</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">PHP_INI_ALL</td>
-<td style="text-align:center">在处理Controller, Action, Plugin, Model的时候, 类名中关键信息是否是后缀式, 比如UserModel, 而在前缀模式下则是ModelUser</td>
-</tr>
-<tr>
-<td style="text-align:center">yaf.name_separator</td>
-<td style="text-align:center">“”</td>
-<td style="text-align:center">PHP_INI_ALL</td>
-<td style="text-align:center">在处理Controller, Action, Plugin, Model的时候, 前缀和名字之间的分隔符, 默认为空, 也就是UserPlugin, 加入设置为”_”, 则判断的依据就会变成:”User_Plugin”, 这个主要是为了兼容ST已有的命名规范</td>
-</tr>
-<tr>
-<td style="text-align:center">yaf.forward_limit</td>
-<td style="text-align:center">5</td>
-<td style="text-align:center">PHP_INI_ALL</td>
-<td style="text-align:center">forward最大嵌套深度</td>
-</tr>
-<tr>
-<td style="text-align:center">yaf.use_namespace</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">PHP_INI_ALL</td>
-<td style="text-align:center">开启的情况下, Yaf将会使用命名空间方式注册自己的类, 比如Yaf_Application将会变成Yaf\Application</td>
-</tr>
-<tr>
-<td style="text-align:center">yaf.use_spl_autoload</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">PHP_INI_ALL</td>
-<td style="text-align:center">开启的情况下, Yaf在加载不成功的情况下, 会继续让PHP的自动加载函数加载, 从性能考虑, 除非特殊情况, 否则保持这个选项关闭</td>
-</tr>
-</tbody>
-</table>
-<p><strong>注意：</strong></p>
-<p><strong>在开启yaf.cache_config的情况下, Yaf会使用INI文件路径作为Key, 这就有一个陷阱, 就是如果在一台服务器上同时运行俩个应用, 那么它们必须不能使用同一个路径名下的INI配置文件, 否则就会出现Application Path混乱的问题. 所以, 尽量不要使用相对路径.</strong></p>
-<h4 id="本地可选配置"><a href="#本地可选配置" class="headerlink" title="本地可选配置"></a><div id="title">本地可选配置</div></h4><table>
-<thead>
-<tr>
-<th style="text-align:center">选项名称</th>
-<th style="text-align:center">值类型</th>
-<th style="text-align:center">默认值</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">application.ext</td>
-<td style="text-align:center">String</td>
-<td style="text-align:center">php</td>
-<td style="text-align:center">PHP脚本的扩展名</td>
-</tr>
-<tr>
-<td style="text-align:center">application.bootstrap</td>
-<td style="text-align:center">String</td>
-<td style="text-align:center">Bootstrapplication.php</td>
-<td style="text-align:center">Bootstrap路径(绝对路径)</td>
-</tr>
-<tr>
-<td style="text-align:center">application.library</td>
-<td style="text-align:center">String</td>
-<td style="text-align:center">application.directory + “/library”</td>
-<td style="text-align:center">本地(自身)类库的绝对目录地址</td>
-</tr>
-<tr>
-<td style="text-align:center">application.baseUri</td>
-<td style="text-align:center">String</td>
-<td style="text-align:center">null</td>
-<td style="text-align:center">在路由中, 需要忽略的路径前缀, 一般不需要设置, Yaf会自动判断.</td>
-</tr>
-<tr>
-<td style="text-align:center">application.dispatcher.defaultModule</td>
-<td style="text-align:center">String</td>
-<td style="text-align:center">index</td>
-<td style="text-align:center">默认的模块</td>
-</tr>
-<tr>
-<td style="text-align:center">application.dispatcher.throwException</td>
-<td style="text-align:center">Bool</td>
-<td style="text-align:center">True</td>
-<td style="text-align:center">在出错的时候, 是否抛出异常</td>
-</tr>
-<tr>
-<td style="text-align:center">application.dispatcher.catchException</td>
-<td style="text-align:center">Bool</td>
-<td style="text-align:center">False</td>
-<td style="text-align:center">是否使用默认的异常捕获Controller, 如果开启, 在有未捕获的异常的时候, 控制权会交给ErrorController的errorAction方法, 可以通过$request-&gt;getException()获得此异常对象</td>
-</tr>
-<tr>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">application.dispatcher.defaultController</td>
-<td style="text-align:center">String</td>
-<td style="text-align:center">index</td>
-<td style="text-align:center">默认的控制器</td>
-</tr>
-<tr>
-<td style="text-align:center">application.dispatcher.defaultAction</td>
-<td style="text-align:center">String</td>
-<td style="text-align:center">index</td>
-<td style="text-align:center">默认的动作</td>
-</tr>
-<tr>
-<td style="text-align:center">application.view.ext</td>
-<td style="text-align:center">String</td>
-<td style="text-align:center">phtml</td>
-<td style="text-align:center">视图模板扩展名</td>
-</tr>
-<tr>
-<td style="text-align:center">application.modules</td>
-<td style="text-align:center">String</td>
-<td style="text-align:center">Index</td>
-<td style="text-align:center">声明存在的模块名, 请注意, 如果你要定义这个值, 一定要定义Index Module</td>
-</tr>
-<tr>
-<td style="text-align:center">application.system.*</td>
-<td style="text-align:center">String</td>
-<td style="text-align:center">*</td>
-<td style="text-align:center">通过这个属性, 可以修改yaf的runtime configure, 比如application.system.lowcase_path, 但是请注意只有PHP_INI_ALL的配置项才可以在这里被修改, 此选项从2.2.0开始引入</td>
-</tr>
-</tbody>
-</table>
-<h4 id="application配置"><a href="#application配置" class="headerlink" title="application配置"></a><div id="title">application配置</div></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">[common]</div><div class="line">application.directory = APPLICATION_PATH  &quot;/application&quot;</div><div class="line">application.dispatcher.catchException = TRUE</div><div class="line">application.test = &apos;123&apos;</div><div class="line"></div><div class="line">[redis]</div><div class="line">cache.redis.host = &apos;&apos;</div><div class="line">cache.redis.port = &apos;&apos;</div><div class="line">cache.redis.user = &apos;&apos;</div><div class="line">cache.redis.password = &apos;&apos;</div><div class="line"></div><div class="line">[product : common]</div><div class="line">[develop : common : redis]</div></pre></td></tr></table></figure>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="comment"># 获取配置</span></div><div class="line">$res = Yaf\Application::app()-&gt;getConfig();</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
-<h4 id="类库加载方式"><a href="#类库加载方式" class="headerlink" title="类库加载方式"></a><div id="title">类库加载方式</div></h4><h5 id="自动加载"><a href="#自动加载" class="headerlink" title="自动加载"></a>自动加载</h5><blockquote>
-<p>Yaf在启动的时候，出于性能的考虑, 对于框架相关的MVC类, Yaf会自动加载一次</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">类型</th>
-<th style="text-align:center">后缀</th>
-<th style="text-align:center">映射路径</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">控制器</td>
-<td style="text-align:center">Controller</td>
-<td style="text-align:center">默认模块下为{项目路径}/controllers/, 否则为{项目路径}/modules/{模块名}/controllers/</td>
-</tr>
-<tr>
-<td style="text-align:center">数据模型</td>
-<td style="text-align:center">Model</td>
-<td style="text-align:center">{项目路径}/models/</td>
-</tr>
-<tr>
-<td style="text-align:center">插件</td>
-<td style="text-align:center">Plugin</td>
-<td style="text-align:center">{项目路径}/plugins/</td>
-</tr>
-</tbody>
-</table>
-<p><strong>而对于非框架MVC相关的类, Yaf支持全局类和自身类的两种加载方式, 并且Yaf支持大小写敏感和不敏感两种方式来处理文件路径.</strong></p>
-<h5 id="全局类和本地类"><a href="#全局类和本地类" class="headerlink" title="全局类和本地类"></a>全局类和本地类</h5><p>全局类是指, 所有产品之间共享的类, 这些类库的路径是通过application.library在php.ini配置</p>
-<p>本地类是指, 产品自身的类库, 这些类库的路径是通过在产品的配置文件中, 通过application.library配置的.</p>
-<p><strong>手动导入类</strong></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="comment">//绝对路径</span></div><div class="line">Yaf\Loader::import(<span class="string">"/usr/local/foo.php);</span></div><div class="line"></div><div class="line">//相对路径, 会在APPLICATION_PATH."/library<span class="string">"下加载</span></div><div class="line">Yaf\loader::import("plugins/User.php<span class="string">");</span></div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestController</span> <span class="keyword">extends</span> <span class="title">Yaf_Controller_Abstract</span></span></div><div class="line">&#123;</div><div class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span>  <span class="title">indexAction</span><span class="params">()</span></span></div><div class="line">	&#123;</div><div class="line">		<span class="comment">//定义数据</span></div><div class="line">		$msg = <span class="keyword">array</span>(<span class="string">"name"</span>=&gt;<span class="string">"zhangsan"</span>,<span class="string">"age"</span>=&gt;<span class="number">23</span>);</div><div class="line">		</div><div class="line">		<span class="comment">## 第一种方式</span></div><div class="line">		<span class="comment">//获取视图</span></div><div class="line">		$view = <span class="keyword">$this</span>-&gt;getView();</div><div class="line">		<span class="comment">//赋值一个标量</span></div><div class="line">		$view-&gt;assign(<span class="string">"name"</span>,<span class="string">"lisi"</span>);</div><div class="line">		<span class="comment">//赋值一个数组</span></div><div class="line">		$view-&gt;assign(<span class="string">"msg"</span>,$msg);</div><div class="line">		</div><div class="line">		<span class="comment">## 第二种方式</span></div><div class="line">		<span class="keyword">$this</span>-&gt;getView()-&gt;name = <span class="string">"value"</span>;</div><div class="line">		或者</div><div class="line">		<span class="keyword">$this</span>-&gt;_view-&gt;name = <span class="string">"value"</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后我们在views目录下新建一个test目录，然后在里面创建一个index.phtml文件，然后我们写入如下内容:</p>
+<figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">	&lt;body&gt;</div><div class="line">		&lt;p&gt;您的姓名是:&lt;?php echo $name; ?&gt;&lt;/p&gt;</div><div class="line">		&lt;p&gt;姓名:&lt;?php echo $msg["name"]; ?&gt;&lt;/p&gt;</div><div class="line">		&lt;p&gt;年龄:&lt;?php echo $msg["age"]; ?&gt;&lt;/p&gt;</div><div class="line">	&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>然后，我们直接进行访问即可看到输出结果。</p>
+<h4 id="render-和display-函数"><a href="#render-和display-函数" class="headerlink" title="render()和display()函数"></a><div id="title"><code>render()</code>和<code>display()</code>函数</div></h4><ul>
+<li>render() : 渲染一个试图模板，并得到一个结果</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">IndexController</span> <span class="keyword">extends</span> <span class="title">Yaf_Controller_Abstract</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> funciton indexAction() &#123;</div><div class="line">      <span class="keyword">echo</span> <span class="keyword">$this</span>-&gt;getView()-&gt;render(<span class="keyword">$this</span>-&gt;_script_path . <span class="string">"/test.phtml"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>display() : 渲染一个视图模板, 并直接输出给请求端</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">IndexController</span> <span class="keyword">extends</span> <span class="title">Yaf_Controller_Abstract</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> funciton indexAction() &#123;</div><div class="line">      <span class="keyword">$this</span>-&gt;getView()-&gt;display(<span class="keyword">$this</span>-&gt;_script_path . <span class="string">"/test.phtml"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="设置和获取模板目录"><a href="#设置和获取模板目录" class="headerlink" title="设置和获取模板目录"></a><div id="title">设置和获取模板目录</div></h4><ul>
+<li>setScriptPath : 设置模板的基目录, 默认的<code>Yaf_Dispatcher</code>会设置此目录为<code>APPLICATION_PATH . &quot;/views&quot;</code>.</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"> <span class="class"><span class="keyword">class</span> <span class="title">IndexController</span> <span class="keyword">extends</span> <span class="title">Yaf_Controller_Abstract</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> funciton indexAction() &#123;</div><div class="line">     <span class="keyword">$this</span>-&gt;getView()-&gt;setScriptPath(<span class="string">"/tmp/views/"</span>);</div><div class="line">    &#125;</div><div class="line"> &#125;</div><div class="line"> <span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>getScriptPath : 获取当前的模板目录</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"> <span class="class"><span class="keyword">class</span> <span class="title">IndexController</span> <span class="keyword">extends</span> <span class="title">Yaf_Controller_Abstract</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> funciton indexAction() &#123;</div><div class="line">     <span class="keyword">echo</span>  <span class="keyword">$this</span>-&gt;getView()-&gt;getScriptPath();</div><div class="line">    &#125;</div><div class="line"> &#125;</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
 
       
 
@@ -487,7 +320,7 @@ onmouseup="document.selection.empty()">-->
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/03/02/yaf配置说明/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/03/06/视图介绍/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -501,18 +334,9 @@ onmouseup="document.selection.empty()">-->
   
 <nav id="article-nav">
   
-    <a href="/2018/03/02/YAF的流程图/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Yaf之流程图
-        
-      </div>
-    </a>
   
-  
-    <a href="/2018/03/02/Yaf介绍/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Yaf之介绍和安装</div>
+    <a href="/2018/03/05/Yaf插件介绍/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Yaf之插件</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -534,7 +358,7 @@ onmouseup="document.selection.empty()">-->
 <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Fri Mar 02 2018 11:18:08 GMT+0800',
+    id: 'Tue Mar 06 2018 11:18:08 GMT+0800',
     owner: 'shangzekai',
     repo: 'shangzekai.github.io',
     oauth: {
