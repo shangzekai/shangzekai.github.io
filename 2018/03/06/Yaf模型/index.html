@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2018/03/06/Yaf模型/index.html">
 <meta property="og:site_name" content="Python">
 <meta property="og:description" content="Yaf模型 Eloquent ORM 是 Laravel 的内置ORM, 功能非常强大, 而且已经独立成组建, 任何项目都可以选择使用它.">
-<meta property="og:updated_time" content="2018-03-22T08:15:42.000Z">
+<meta property="og:updated_time" content="2018-03-26T02:25:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Yaf之模型">
 <meta name="twitter:description" content="Yaf模型 Eloquent ORM 是 Laravel 的内置ORM, 功能非常强大, 而且已经独立成组建, 任何项目都可以选择使用它.">
@@ -176,7 +176,7 @@ onmouseup="document.selection.empty()">-->
       
 	
         <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Yaf模型"><span class="toc-text">Yaf模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Composer安装Eloquent"><span class="toc-text">Composer安装Eloquent</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#初始化Eloquent-ORM"><span class="toc-text">初始化Eloquent ORM</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建model"><span class="toc-text">创建model</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#测试"><span class="toc-text">测试</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Yaf模型"><span class="toc-text">Yaf模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Composer安装Eloquent"><span class="toc-text">Composer安装Eloquent</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#初始化Eloquent-ORM"><span class="toc-text">初始化Eloquent ORM</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建model"><span class="toc-text">创建model</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#测试"><span class="toc-text">测试</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#其他"><span class="toc-text">其他</span></a></li></ol>
           <hr/>
         </div>
         
@@ -201,6 +201,8 @@ onmouseup="document.selection.empty()">-->
 <p>然后当我们创建业务模型的时候，直接继承即可，比如说<code>User.php</code></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserModel</span> <span class="keyword">extends</span> <span class="title">EloquentModel</span> </span>&#123;</div><div class="line">    <span class="comment">// 表名</span></div><div class="line">    <span class="keyword">public</span> $table = <span class="string">'user'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <h4 id="测试"><a href="#测试" class="headerlink" title="测试"></a><div id="title">测试</div></h4><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">testAction</span><span class="params">()</span> </span>&#123;</div><div class="line">    <span class="comment">// 获取</span></div><div class="line">    $user = UserModel::find(<span class="number">1</span>);</div><div class="line">    $user = UserModel::all();</div><div class="line">    dd($user-&gt;toArray()); <span class="comment">// dd 放到</span></div><div class="line">    print_r($user-&gt;toJson(<span class="number">1</span>));</div><div class="line">    <span class="keyword">return</span> <span class="keyword">False</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="其他"><a href="#其他" class="headerlink" title="其他"></a><div id="title">其他</div></h4><p><strong>我们还可以使用Medoo来作为我们的ORM框架</strong><br><a href="https://medoo.lvtao.net" target="_blank" rel="external">Medoo</a></p>
+
       
 
       
