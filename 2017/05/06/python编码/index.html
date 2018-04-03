@@ -469,6 +469,22 @@ const cache = [];
 function escapeContent(str) {
   return '<!--' + placeholder + (cache.push(str) - 1) + '-->';
 }
+
+    /* global hexo */
+// Usage: {% fold ???? %} Something {% endfold %}
+function fold (args, content) {
+    var text = args[0];
+    if(!text) text = "点击显/隐";
+    return '<div><div class="fold_hider"><div class="close hider_title">' + text + '</div></div><div class="fold">\n' + hexo.render.renderSync({text: content, engine: 'markdown'}) + '\n</div></div>';
+}
+
+        $(document).ready(function(){
+            $(document).on('click', '.fold_hider', function(){
+                $('>.fold', this.parentNode).slideToggle();
+                $('>:first', this).toggleClass('open');
+            });
+            //默认情况下折叠
+            $("div.fold").css("display","none");
 hexo.extend.filter.register('before_post_render', function(data) {
   data.content = data.content.replace(rEscapeContent, function(match, content) {
     return escapeContent(content);
@@ -481,23 +497,7 @@ hexo.extend.filter.register('after_post_render', function(data) {
   });
   return data;
 });
-
-    /* global hexo */
-// Usage: {% fold ???? %} Something {% endfold %}
-function fold (args, content) {
-    var text = args[0];
-    if(!text) text = "点击显/隐";
-    return '<div><div class="fold_hider"><div class="close hider_title">' + text + '</div></div><div class="fold">\n' + hexo.render.renderSync({text: content, engine: 'markdown'}) + '\n</div></div>';
-}
 hexo.extend.tag.register('fold', fold, {ends: true});
-
-        $(document).ready(function(){
-            $(document).on('click', '.fold_hider', function(){
-                $('>.fold', this.parentNode).slideToggle();
-                $('>:first', this).toggleClass('open');
-            });
-            //默认情况下折叠
-            $("div.fold").css("display","none");
          });
 </script>
 
