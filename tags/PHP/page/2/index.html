@@ -6,27 +6,14 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Python操作MySQL数据库 | Python</title>
+  <title>Tag: PHP | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Python操作MySQL数据库 Python DB API是Python官方提供的一套访问数据库的统一接口规范">
-<meta name="keywords" content="Python">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Python操作MySQL数据库">
-<meta property="og:url" content="http://yoursite.com/2018/02/02/Python操作MySQL数据库/index.html">
+  <meta property="og:type" content="website">
+<meta property="og:title" content="Python">
+<meta property="og:url" content="http://yoursite.com/tags/PHP/page/2/index.html">
 <meta property="og:site_name" content="Python">
-<meta property="og:description" content="Python操作MySQL数据库 Python DB API是Python官方提供的一套访问数据库的统一接口规范">
-<meta property="og:image" content="https://i.loli.net/2018/03/05/5a9cacd313d84.png">
-<meta property="og:image" content="https://i.loli.net/2018/03/05/5a9cacd333740.png">
-<meta property="og:image" content="https://i.loli.net/2018/03/05/5a9cad40b4b6b.png">
-<meta property="og:image" content="https://i.loli.net/2018/03/05/5a9cad4018a37.png">
-<meta property="og:image" content="https://i.loli.net/2018/03/05/5a9cb011a953c.png">
-<meta property="og:image" content="https://i.loli.net/2018/03/05/5a9cb0abc27aa.png">
-<meta property="og:image" content="https://i.loli.net/2018/03/05/5a9cb0ab85cf5.png">
-<meta property="og:updated_time" content="2018-03-08T04:24:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python操作MySQL数据库">
-<meta name="twitter:description" content="Python操作MySQL数据库 Python DB API是Python官方提供的一套访问数据库的统一接口规范">
-<meta name="twitter:image" content="https://i.loli.net/2018/03/05/5a9cacd313d84.png">
+<meta name="twitter:title" content="Python">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
@@ -172,345 +159,76 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Python操作MySQL数据库" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      Python操作MySQL数据库
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2017" class="archive-year">2017</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2017/03/10/JWT介绍/" class="archive-article-date">
+  	<time datetime="2017-03-10T03:18:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2017/03/10/JWT介绍/">JWT --- JSON WEB TOKEN</a>
     </h1>
   
 
-        
-        <a href="/2018/02/02/Python操作MySQL数据库/" class="archive-article-date">
-  	<time datetime="2018-02-02T03:18:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-02-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-	
-        <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Python操作MySQL数据库"><span class="toc-text">Python操作MySQL数据库</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Python开发MySQL环境的配置"><span class="toc-text">Python开发MySQL环境的配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#数据库连接对象Connection"><span class="toc-text">数据库连接对象Connection</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#游标对象Cursor"><span class="toc-text">游标对象Cursor</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#事务"><span class="toc-text">事务</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#银行转账实例——账户A给账户B转账100元"><span class="toc-text">银行转账实例——账户A给账户B转账100元</span></a></li></ol>
-          <hr/>
-        </div>
-        
-        <h4 id="Python操作MySQL数据库"><a href="#Python操作MySQL数据库" class="headerlink" title="Python操作MySQL数据库"></a><div id="title">Python操作MySQL数据库</div></h4><blockquote>
-<p>Python DB API是Python官方提供的一套访问数据库的统一接口规范</p>
-</blockquote>
-<a id="more"></a>
-<p><img src="https://i.loli.net/2018/03/05/5a9cacd313d84.png" alt="Python操作MySQL数据库_2.png"></p>
-<p>在没有Python DB API之前，Python访问数据库的接口程序混乱，当要对业务使用的数据库进行切换时，需要对Python应用程序进行大量的更改，迁移成本相当的高，因此Python官方提供了一套访问数据库的统一接口规范，实现了Python应用程序对多种数据库访问方式的统一。</p>
-<p><img src="https://i.loli.net/2018/03/05/5a9cacd333740.png" alt="Python操作MySQL数据库_1.png"></p>
-<p>Python DB API包含的内容</p>
-<p><img src="https://i.loli.net/2018/03/05/5a9cad40b4b6b.png" alt="Python操作MySQL数据库_3.png"></p>
-<p>使用Python DB API访问数据库的流程</p>
-<p><img src="https://i.loli.net/2018/03/05/5a9cad4018a37.png" alt="Python操作MySQL数据库_4.png"></p>
-<h4 id="Python开发MySQL环境的配置"><a href="#Python开发MySQL环境的配置" class="headerlink" title="Python开发MySQL环境的配置"></a><div id="title">Python开发MySQL环境的配置</div></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">pip install PyMySQL</div><div class="line">pip isntall PyMySQL3</div></pre></td></tr></table></figure>
-<h4 id="数据库连接对象Connection"><a href="#数据库连接对象Connection" class="headerlink" title="数据库连接对象Connection"></a><div id="title">数据库连接对象Connection</div></h4><ul>
-<li>连接对象：建立Python客户端与数据库的网络连接</li>
-<li>创建方法：MySQLdb.Connect(参数)/pymysql.connect(参数)</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">参数名</th>
-<th style="text-align:right">类型</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">host</td>
-<td style="text-align:right">字符串</td>
-<td style="text-align:center">MySQL服务器地址</td>
-</tr>
-<tr>
-<td style="text-align:left">port</td>
-<td style="text-align:right">数字</td>
-<td style="text-align:center">MySQL服务端口号</td>
-</tr>
-<tr>
-<td style="text-align:left">user</td>
-<td style="text-align:right">字符串</td>
-<td style="text-align:center">用户名</td>
-</tr>
-<tr>
-<td style="text-align:left">passwd</td>
-<td style="text-align:right">字符串</td>
-<td style="text-align:center">密码</td>
-</tr>
-<tr>
-<td style="text-align:left">db</td>
-<td style="text-align:right">字符串</td>
-<td style="text-align:center">数据库名称</td>
-</tr>
-<tr>
-<td style="text-align:left">charset</td>
-<td style="text-align:right">字符串</td>
-<td style="text-align:center">连接编码</td>
-</tr>
-</tbody>
-</table>
-<ul>
-<li>connection对象支持的方法</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">参数名</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">cursor()</td>
-<td style="text-align:center">使用该连接创建并返回游标</td>
-</tr>
-<tr>
-<td style="text-align:left">commit()</td>
-<td style="text-align:center">提交当前事务</td>
-</tr>
-<tr>
-<td style="text-align:left">rollback()</td>
-<td style="text-align:center">回滚当前事务</td>
-</tr>
-<tr>
-<td style="text-align:left">close()</td>
-<td style="text-align:center">关闭连接</td>
-</tr>
-</tbody>
-</table>
-<p>示例代码</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pymysql</div><div class="line"></div><div class="line">conn = pymysql.connect(</div><div class="line">    host=<span class="string">'127.0.0.1'</span>,</div><div class="line">    port = <span class="number">3306</span>,</div><div class="line">    user=<span class="string">'root'</span>,</div><div class="line">    passwd=<span class="string">'westos'</span>,</div><div class="line">    charset=<span class="string">'utf8'</span>,</div><div class="line">    db=<span class="string">'test'</span></div><div class="line">)</div><div class="line"></div><div class="line">print(conn)</div></pre></td></tr></table></figure>
-<h4 id="游标对象Cursor"><a href="#游标对象Cursor" class="headerlink" title="游标对象Cursor"></a><div id="title">游标对象Cursor</div></h4><ul>
-<li>游标对象：用于执行查询和获取结果</li>
-<li>Cursor对象支持的方法：</li>
-</ul>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">参数名</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">execute(op[,args])</td>
-<td style="text-align:center">执行一个数据库查询或命令</td>
-</tr>
-<tr>
-<td style="text-align:left">fetchone()</td>
-<td style="text-align:center">取的结果集的下一行</td>
-</tr>
-<tr>
-<td style="text-align:left">fetchmany(size)</td>
-<td style="text-align:center">获取结果集的下几行</td>
-</tr>
-<tr>
-<td style="text-align:left">fetchall()</td>
-<td style="text-align:center">获取结果集中剩下的所有行</td>
-</tr>
-<tr>
-<td style="text-align:left">rowcount</td>
-<td style="text-align:center">最近一次execute返回数据的行数或影响行数</td>
-</tr>
-<tr>
-<td style="text-align:left">close()</td>
-<td style="text-align:center">关闭游标对象</td>
-</tr>
-</tbody>
-</table>
-<p><strong>演示select数据</strong></p>
-<p><img src="https://i.loli.net/2018/03/05/5a9cb011a953c.png" alt="Python操作MySQL数据库_5.png"></p>
-<p><strong>代码实例</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">use</span> <span class="keyword">test</span></div><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">user</span> (</div><div class="line">	userid <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span> auto_increment,</div><div class="line">	username <span class="built_in">varchar</span>(<span class="number">100</span>),</div><div class="line">	primary <span class="keyword">key</span>(userid)</div><div class="line">)<span class="keyword">engine</span>=<span class="keyword">innodb</span> auto_increment=<span class="number">1</span> <span class="keyword">default</span> <span class="keyword">charset</span>=<span class="string">'utf8'</span>;</div><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">user</span>(userid,username) <span class="keyword">values</span>(<span class="number">1</span>,<span class="string">'NAME1'</span>);</div><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">user</span>(userid,username) <span class="keyword">values</span>(<span class="number">2</span>,<span class="string">'NAME2'</span>);</div><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">user</span>(userid,username) <span class="keyword">values</span>(<span class="number">3</span>,<span class="string">'NAME3'</span>);</div><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">user</span>(userid,username) <span class="keyword">values</span>(<span class="number">4</span>,<span class="string">'NAME4'</span>);</div><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">user</span>(userid,username) <span class="keyword">values</span>(<span class="number">5</span>,<span class="string">'NAME5'</span>);</div><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">user</span>(userid,username) <span class="keyword">values</span>(<span class="number">6</span>,<span class="string">'NAME6'</span>);</div><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">user</span>(userid,username) <span class="keyword">values</span>(<span class="number">7</span>,<span class="string">'NAME7'</span>);</div><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">user</span>(userid,username) <span class="keyword">values</span>(<span class="number">8</span>,<span class="string">'NAME8'</span>);</div><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">user</span>(userid,username) <span class="keyword">values</span>(<span class="number">9</span>,<span class="string">'NAME9'</span>);</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pymysql</div><div class="line"></div><div class="line">conn = pymysql.connect(</div><div class="line">    host=<span class="string">'127.0.0.1'</span>,</div><div class="line">    port = <span class="number">3306</span>,</div><div class="line">    user=<span class="string">'root'</span>,</div><div class="line">    passwd=<span class="string">'westos'</span>,</div><div class="line">    charset=<span class="string">'utf8'</span>,</div><div class="line">    db=<span class="string">'test'</span></div><div class="line">)</div><div class="line"></div><div class="line">cur = conn.cursor()</div><div class="line"></div><div class="line">sql = <span class="string">"select * from user"</span></div><div class="line">cur.execute(sql)</div><div class="line"></div><div class="line">rs = cur.fetchall()</div><div class="line"><span class="keyword">for</span> row <span class="keyword">in</span> rs:</div><div class="line">    print(<span class="string">"userid=%s,username=%s"</span> %row)</div><div class="line"></div><div class="line">cur.close()</div><div class="line">conn.close()</div></pre></td></tr></table></figure>
-<h4 id="事务"><a href="#事务" class="headerlink" title="事务"></a><div id="title">事务</div></h4><p>事务:访问和更新数据库的一个程序执行单元</p>
-<ul>
-<li>原子性：事务中包括的诸操作要么都做，要么都不做</li>
-<li>一致性：事务必须使数据库从一致性状态变到另一个一致性状态</li>
-<li>隔离性：一个事务的执行不能被其他事务干扰</li>
-<li>持久性：事务一旦提交，它对数据库的改变就是永久的<br><strong>注意：开发过程中一般关闭自动提交事务功能，设置conn.autocommit(False)</strong></li>
-</ul>
-<p><strong>演示insert/update/delete数据</strong></p>
-<p><img src="https://i.loli.net/2018/03/05/5a9cb0abc27aa.png" alt="Python操作MySQL数据库_6.png"></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">use</span> <span class="keyword">test</span></div><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">user</span> (</div><div class="line">	userid <span class="built_in">int</span> <span class="keyword">not</span> <span class="literal">null</span> auto_increment,</div><div class="line">	username <span class="built_in">varchar</span>(<span class="number">100</span>),</div><div class="line">	primary <span class="keyword">key</span>(userid)</div><div class="line">)<span class="keyword">engine</span>=<span class="keyword">innodb</span> auto_increment=<span class="number">1</span> <span class="keyword">default</span> <span class="keyword">charset</span>=<span class="string">'utf8'</span>;</div><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">user</span>(userid,username) <span class="keyword">values</span>(<span class="number">1</span>,<span class="string">'NAME1'</span>);</div><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">user</span>(userid,username) <span class="keyword">values</span>(<span class="number">2</span>,<span class="string">'NAME2'</span>);</div><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">user</span>(userid,username) <span class="keyword">values</span>(<span class="number">3</span>,<span class="string">'NAME3'</span>);</div><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">user</span>(userid,username) <span class="keyword">values</span>(<span class="number">4</span>,<span class="string">'NAME4'</span>);</div><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">user</span>(userid,username) <span class="keyword">values</span>(<span class="number">5</span>,<span class="string">'NAME5'</span>);</div><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">user</span>(userid,username) <span class="keyword">values</span>(<span class="number">6</span>,<span class="string">'NAME6'</span>);</div><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">user</span>(userid,username) <span class="keyword">values</span>(<span class="number">7</span>,<span class="string">'NAME7'</span>);</div><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">user</span>(userid,username) <span class="keyword">values</span>(<span class="number">8</span>,<span class="string">'NAME8'</span>);</div><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">user</span>(userid,username) <span class="keyword">values</span>(<span class="number">9</span>,<span class="string">'NAME9'</span>);</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pymysql</div><div class="line"></div><div class="line">conn = pymysql.connect(</div><div class="line">    host=<span class="string">'127.0.0.1'</span>,</div><div class="line">    port = <span class="number">3306</span>,</div><div class="line">    user=<span class="string">'root'</span>,</div><div class="line">    passwd=<span class="string">'westos'</span>,</div><div class="line">    charset=<span class="string">'utf8'</span>,</div><div class="line">    db=<span class="string">'test'</span></div><div class="line">)</div><div class="line"></div><div class="line">cur = conn.cursor()</div><div class="line"></div><div class="line">sql_insert = <span class="string">"insert into user(userid,username) values(10,'name10')"</span></div><div class="line">sql_update = <span class="string">"update user set username='name91' where userid=9"</span></div><div class="line">sql_delete = <span class="string">"delete from user where userid&lt;3"</span></div><div class="line"></div><div class="line"><span class="keyword">try</span>:</div><div class="line">    cur.execute(sql_insert)</div><div class="line">    print(cur.rowcount)</div><div class="line">    cur.execute(sql_update)</div><div class="line">    print(cur.rowcount)</div><div class="line">    cur.execute(sql_delete)</div><div class="line">    print(cur.rowcount)</div><div class="line">    conn.commit()</div><div class="line"><span class="keyword">except</span> Exception <span class="keyword">as</span> e:</div><div class="line">    print(e)</div><div class="line">    conn.rollback()</div><div class="line"></div><div class="line">cur.close()</div><div class="line">conn.close()</div></pre></td></tr></table></figure>
-<h4 id="银行转账实例——账户A给账户B转账100元"><a href="#银行转账实例——账户A给账户B转账100元" class="headerlink" title="银行转账实例——账户A给账户B转账100元"></a><div id="title">银行转账实例——账户A给账户B转账100元</div></h4><p><img src="https://i.loli.net/2018/03/05/5a9cb0ab85cf5.png" alt="Python操作MySQL数据库_7.png"></p>
-<p><strong>代码</strong></p>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">create</span> <span class="keyword">table</span> <span class="keyword">account</span> (</div><div class="line">	accountid <span class="built_in">int</span>,</div><div class="line">	money <span class="built_in">int</span>,</div><div class="line">	primary <span class="keyword">key</span>(accountid)</div><div class="line">)<span class="keyword">engine</span>=<span class="keyword">innodb</span> <span class="keyword">default</span> <span class="keyword">charset</span>=<span class="string">'utf8'</span>;</div><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">account</span>(accountid,money) <span class="keyword">values</span>(<span class="number">11</span>,<span class="number">110</span>);</div><div class="line"><span class="keyword">insert</span> <span class="keyword">into</span> <span class="keyword">account</span>(accountid,money) <span class="keyword">values</span>(<span class="number">12</span>,<span class="number">10</span>);</div></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pymysql</div><div class="line"><span class="keyword">import</span> sys</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TransferMoney</span><span class="params">(object)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self,conn)</span>:</span></div><div class="line">        self.conn = conn</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">check_acct_available</span><span class="params">(self,accountid)</span>:</span></div><div class="line">        cur = self.conn.cursor()</div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            sql = <span class="string">"select * from account where accountid=%s"</span> %accountid</div><div class="line">            cur.execute(sql)</div><div class="line">            print(<span class="string">"check_acct_available:"</span>+sql)</div><div class="line">            rs = cur.fetchall()</div><div class="line">            <span class="keyword">if</span> len(rs) != <span class="number">1</span>:</div><div class="line">                <span class="keyword">raise</span> Exception(<span class="string">"账号%s不存在"</span> %accountid)</div><div class="line">        <span class="keyword">finally</span>:</div><div class="line">            cur.close()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">has_enough_money</span><span class="params">(self,source_accountid,money)</span>:</span></div><div class="line">        cur = self.conn.cursor()</div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            sql = <span class="string">"select * from account where accountid=%s and money&gt;=%s"</span> % (source_accountid,money)</div><div class="line">            cur.execute(sql)</div><div class="line">            print(<span class="string">"have_enought_money:"</span>+sql)</div><div class="line">            rs = cur.fetchall()</div><div class="line">            <span class="keyword">if</span> len(rs) != <span class="number">1</span>:</div><div class="line">                <span class="keyword">raise</span> Exception(<span class="string">"账号%s没有足够的钱"</span> % source_accountid)</div><div class="line">        <span class="keyword">finally</span>:</div><div class="line">            cur.close()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">reduce_money</span><span class="params">(self,source_accountid,money)</span>:</span></div><div class="line">        cur = self.conn.cursor()</div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            sql = <span class="string">"update account set money=money-%s where accountid=%s"</span> % (money,source_accountid)</div><div class="line">            cur.execute(sql)</div><div class="line">            print(<span class="string">"reduce_money:"</span>+sql)</div><div class="line">            <span class="keyword">if</span> cur.rowcount != <span class="number">1</span>:</div><div class="line">                <span class="keyword">raise</span> Exception(<span class="string">"账号%s减款失败"</span> % source_accountid)</div><div class="line">        <span class="keyword">finally</span>:</div><div class="line">            cur.close()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">add_money</span><span class="params">(self,target_account,money)</span>:</span></div><div class="line">        cur = self.conn.cursor()</div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            sql = <span class="string">"update account set money=money+%s where accountid=%s"</span> % (money, target_account)</div><div class="line">            cur.execute(sql)</div><div class="line">            print(<span class="string">"add_money:"</span> + sql)</div><div class="line">            <span class="keyword">if</span> cur.rowcount != <span class="number">1</span>:</div><div class="line">                <span class="keyword">raise</span> Exception(<span class="string">"账号%s加法失败"</span> % target_account)</div><div class="line">        <span class="keyword">finally</span>:</div><div class="line">            cur.close()</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">transfer</span><span class="params">(self,source_accountid,target_account,money)</span>:</span></div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            self.check_acct_available(source_accountid)</div><div class="line">            <span class="comment">#self.check_acct_available(target_account)</span></div><div class="line">            self.has_enough_money(source_accountid,money)</div><div class="line">            self.reduce_money(source_accountid,money)</div><div class="line">            self.add_money(target_account,money)</div><div class="line">            self.conn.commit()</div><div class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</div><div class="line">            self.conn.rollback()</div><div class="line">            <span class="keyword">raise</span> e</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    source_accountid = sys.argv[<span class="number">1</span>]</div><div class="line">    target_accountid = sys.argv[<span class="number">2</span>]</div><div class="line">    money = sys.argv[<span class="number">3</span>]</div><div class="line"></div><div class="line">    conn = pymysql.connect(</div><div class="line">        host=<span class="string">'127.0.0.1'</span>,</div><div class="line">        port = <span class="number">3306</span>,</div><div class="line">        user=<span class="string">'root'</span>,</div><div class="line">        passwd=<span class="string">'westos'</span>,</div><div class="line">        charset=<span class="string">'utf8'</span>,</div><div class="line">        database=<span class="string">'test'</span></div><div class="line">    )</div><div class="line"></div><div class="line">    tr_money = TransferMoney(conn)</div><div class="line"></div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        tr_money.transfer(source_accountid,target_accountid,money)</div><div class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</div><div class="line">        print(<span class="string">"出现问题："</span>+str(e))</div><div class="line">    <span class="keyword">finally</span>:</div><div class="line">        conn.close()</div></pre></td></tr></table></figure>
-<p><strong>执行结果</strong></p>
-<figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">G:\PythonProject\python-mysql&gt;python connmysql.py 11 12 100</div><div class="line">check_acct_available:select * from account where accountid=11</div><div class="line">have_enought_money:select * from account where accountid=11 and money&gt;=100</div><div class="line">reduce_money:update account set money=money-100 where accountid=11</div><div class="line">add_money:update account set money=money+100 where accountid=12</div></pre></td></tr></table></figure>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/zhifubao.png">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/weixin.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-      
+          
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
 
-      
 
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/02/02/Python操作MySQL数据库/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2018/03/02/生成一个YAF程序/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Yaf之第一个程序HelloWorld
-        
-      </div>
-    </a>
   
   
-    <a href="/2018/01/02/Flask开发框架简介/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Flask讲解</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-
-
-
-  
-  
+    </div></section>
   
 
+    
+    <nav id="page-nav">
+      <a class="extend prev" rel="prev" href="/tags/PHP/">&laquo; Prev</a><a class="page-number" href="/tags/PHP/">1</a><span class="page-number current">2</span>
+    </nav>
   
-
-  
-  <div id="gitmentContainer"></div>
-<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
-<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
-<script>
-var gitment = new Gitment({
-    id: 'Fri Feb 02 2018 11:18:08 GMT+0800',
-    owner: 'shangzekai',
-    repo: 'shangzekai.github.io',
-    oauth: {
-        client_id: '0584b82d10b22c56733f',
-        client_secret: '494079773e1b0bfe541152ac975b2fd9b2f5ceb3',
-    },
-});
-gitment.render('gitmentContainer');
-</script>
-
-  
-
-  
-
-  
-
 
 
           </div>
@@ -540,9 +258,9 @@ gitment.render('gitmentContainer');
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
-		isTag: false,
+		isTag: true,
 		isCategory: false,
 		open_in_new: false,
 		root: "/",
