@@ -6,14 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2017/3 | Python</title>
+  <title>PHP7新特性讲解 | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Python">
-<meta property="og:url" content="http://yoursite.com/archives/2017/03/index.html">
+  <meta name="description" content="前言 PHP7是PHP编程语言全新的一个版本，主要在性能方面获得了极大的提升。官方的文档显示，PHP7可以达到PHP5.x版本两倍的性能。同时还对PHP的语法做了梳理，提供了很多其他语言流行的语法格式。难能可贵的是，做了如此大的改动，PHP7的兼容性还是非常好的。对于绝大多数的应用来讲，可以不用做修改即可迁移到PHP7版本。">
+<meta name="keywords" content="PHP">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PHP7新特性讲解">
+<meta property="og:url" content="http://yoursite.com/2017/10/05/php7新特性/index.html">
 <meta property="og:site_name" content="Python">
+<meta property="og:description" content="前言 PHP7是PHP编程语言全新的一个版本，主要在性能方面获得了极大的提升。官方的文档显示，PHP7可以达到PHP5.x版本两倍的性能。同时还对PHP的语法做了梳理，提供了很多其他语言流行的语法格式。难能可贵的是，做了如此大的改动，PHP7的兼容性还是非常好的。对于绝大多数的应用来讲，可以不用做修改即可迁移到PHP7版本。">
+<meta property="og:image" content="https://i.loli.net/2018/04/07/5ac825a26f94e.png">
+<meta property="og:image" content="https://i.loli.net/2018/04/08/5ac97ef79c528.png">
+<meta property="og:updated_time" content="2018-04-08T02:56:12.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Python">
+<meta name="twitter:title" content="PHP7新特性讲解">
+<meta name="twitter:description" content="前言 PHP7是PHP编程语言全新的一个版本，主要在性能方面获得了极大的提升。官方的文档显示，PHP7可以达到PHP5.x版本两倍的性能。同时还对PHP的语法做了梳理，提供了很多其他语言流行的语法格式。难能可贵的是，做了如此大的改动，PHP7的兼容性还是非常好的。对于绝大多数的应用来讲，可以不用做修改即可迁移到PHP7版本。">
+<meta name="twitter:image" content="https://i.loli.net/2018/04/07/5ac825a26f94e.png">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
@@ -159,36 +167,139 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-php7新特性" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2017" class="archive-year">2017</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2017/03/10/JWT介绍/" class="archive-article-date">
-  	<time datetime="2017-03-10T03:18:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2017/03/10/JWT介绍/">JWT --- JSON WEB TOKEN</a>
+    <h1 class="article-title" itemprop="name">
+      PHP7新特性讲解
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
+        
+        <a href="/2017/10/05/php7新特性/" class="archive-article-date">
+  	<time datetime="2017-10-05T04:18:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#简单的测试"><span class="toc-text">简单的测试</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#php6版本去哪里了？"><span class="toc-text">php6版本去哪里了？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么不延续PHP6的序列？"><span class="toc-text">为什么不延续PHP6的序列？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP7的改变"><span class="toc-text">PHP7的改变</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#PHP7标量类型声明"><span class="toc-text">PHP7标量类型声明</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#空合并运算符"><span class="toc-text">空合并运算符</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#飞船操作符"><span class="toc-text">飞船操作符</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#PHP常量数组"><span class="toc-text">PHP常量数组</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#PHP7匿名类"><span class="toc-text">PHP7匿名类</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#PHP7-use语句"><span class="toc-text">PHP7 use语句</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#PHP7-一次捕捉多种类型的异常-错误"><span class="toc-text">PHP7 一次捕捉多种类型的异常 / 错误</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#PHP7整数除法"><span class="toc-text">PHP7整数除法</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP7废弃的功能"><span class="toc-text">PHP7废弃的功能</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#PHP4风格的构造函数"><span class="toc-text">PHP4风格的构造函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#静态调用非静态方法"><span class="toc-text">静态调用非静态方法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#password-hash-salt-选项"><span class="toc-text">password_hash() - salt 选项</span></a></li></ol></li></ol>
+          <hr/>
+        </div>
+        
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
+<p><code>PHP7</code>是<code>PHP</code>编程语言全新的一个版本，主要在性能方面获得了极大的提升。官方的文档显示，<code>PHP7</code>可以达到<code>PHP5.x</code>版本两倍的性能。同时还对<code>PHP</code>的语法做了梳理，提供了很多其他语言流行的语法格式。难能可贵的是，做了如此大的改动，<code>PHP7</code>的兼容性还是非常好的。对于绝大多数的应用来讲，可以不用做修改即可迁移到<code>PHP7</code>版本。</p>
+</blockquote>
+<a id="more"></a>
+<p><img src="https://i.loli.net/2018/04/07/5ac825a26f94e.png" alt="php7.png"></p>
+<h5 id="简单的测试"><a href="#简单的测试" class="headerlink" title="简单的测试"></a><div id="title">简单的测试</div></h5><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$a = <span class="keyword">array</span>();</div><div class="line"><span class="keyword">for</span>($i=<span class="number">0</span>;$i&lt;=<span class="number">10000</span>;$i++)&#123;</div><div class="line">    $a[$i] = $i;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">foreach</span>($a <span class="keyword">as</span> $i)&#123;</div><div class="line">    array_search($i,$a);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2018/04/08/5ac97ef79c528.png" alt="php版本测试.png"></p>
+<p><a href="http://www.laruence.com/2014/12/18/2976.html" target="_blank" rel="external">鸟哥性能测试</a><br><a href="http://blog.jobbole.com/93527/" target="_blank" rel="external">php之父谈PHP7</a></p>
+<h4 id="php6版本去哪里了？"><a href="#php6版本去哪里了？" class="headerlink" title="php6版本去哪里了？"></a><div id="title">php6版本去哪里了？</div></h4><blockquote>
+<p>谈到PHP7，大家肯定会问，<code>PHP6</code>版本去哪儿来呢？这个说来话长。早在2005年的时候，PHP社区发起了PHP6的项目，这个项目旨在为PHP提供完全内置的unicode的支持。但由于种种困难，该项目最终于2010年取消。虽然PHP6这个项目取消了，但大量的功能已经在PHP5.x版本中得以实现。这里面最重要的就是OOP方面的提升。这也帮助PHP实现了从面向过程到面向对象编程的跨越。市面上也随之出现了一大堆的PHP OOP编程框架。</p>
+</blockquote>
+<h4 id="为什么不延续PHP6的序列？"><a href="#为什么不延续PHP6的序列？" class="headerlink" title="为什么不延续PHP6的序列？"></a><div id="title">为什么不延续PHP6的序列？</div></h4><blockquote>
+<p>关于这个问题，PHP官方给出了详细的解释，大家可以参考：<a href="https://wiki.php.net/rfc/php6" target="_blank" rel="external">https://wiki.php.net/rfc/php6</a> </p>
+</blockquote>
+<ul>
+<li>PHP6版本事实上已经存在了</li>
+<li>PHP6已经在很多的公开会议，场合讨论过</li>
+<li>PHP6还被周边的很多社区所周知。（有很多PHP6的书籍）</li>
+<li>版本跳跃在开源软件和商业软件里面也经常见。比如MariaDB跳到10.0,Symantec跳过了13版本</li>
+<li>版本6在动态语言届里面通常和失败相关联。PHP6失败了，Perl6失败了。跳出动态语言届，MySQL6早已存在但一直没有发布</li>
+<li>7在东方和西方文化里面都认为是一个吉祥数字</li>
+</ul>
+<p><strong>于是就有了牛x的一塌糊涂的PHP7版本</strong></p>
+<h4 id="PHP7的改变"><a href="#PHP7的改变" class="headerlink" title="PHP7的改变"></a><div id="title">PHP7的改变</div></h4><h5 id="PHP7标量类型声明"><a href="#PHP7标量类型声明" class="headerlink" title="PHP7标量类型声明"></a><div id="title">PHP7标量类型声明</div></h5><p>在PHP7，一个新的功能，标量类型声明已被引入。标量类型声明有两种选择方式 </p>
+<ul>
+<li>强制方式- 强制性是默认模式，不需要指定</li>
+<li>严格方式 - 严格模式有明确的暗示</li>
+</ul>
+<p><strong>示例 - 强制模式</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Coercive mode</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span><span class="params">(int ...$ints)</span> </span>&#123;</div><div class="line">  <span class="keyword">return</span> array_sum($ints);</div><div class="line">&#125;</div><div class="line"><span class="keyword">print</span>(sum(<span class="number">2</span>, <span class="string">'3'</span>, <span class="number">4.1</span>));</div></pre></td></tr></table></figure>
+<p><strong>示例 - 严格模式</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Strict mode</span></div><div class="line"><span class="keyword">declare</span>(strict_types=<span class="number">1</span>);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span><span class="params">(int ...$ints)</span> </span>&#123;</div><div class="line">  <span class="keyword">return</span> array_sum($ints);</div><div class="line">&#125;</div><div class="line"><span class="keyword">print</span>(sum(<span class="number">2</span>, <span class="string">'3'</span>, <span class="number">4.1</span>));</div></pre></td></tr></table></figure>
+<h5 id="空合并运算符"><a href="#空合并运算符" class="headerlink" title="空合并运算符"></a><div id="title">空合并运算符</div></h5><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$name = $name ?? <span class="string">"NoName"</span>;  <span class="comment">// 如果$name有值就取其值，否则设$name成"NoName"</span></div></pre></td></tr></table></figure>
+<h5 id="飞船操作符"><a href="#飞船操作符" class="headerlink" title="飞船操作符"></a><div id="title">飞船操作符</div></h5><blockquote>
+<p>它是用于比较两个表达式。当第一个表达式比第二个表达式分别小于，等于或大于时，它分别返回-1，0或1</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">print</span>( <span class="number">1</span> &lt;=&gt; <span class="number">1</span>);<span class="keyword">print</span>(<span class="string">"&lt;br/&gt;"</span>); <span class="comment">// 0</span></div><div class="line"><span class="keyword">print</span>( <span class="number">1</span> &lt;=&gt; <span class="number">2</span>);<span class="keyword">print</span>(<span class="string">"&lt;br/&gt;"</span>); <span class="comment">// -1</span></div><div class="line"><span class="keyword">print</span>( <span class="number">2</span> &lt;=&gt; <span class="number">1</span>);<span class="keyword">print</span>(<span class="string">"&lt;br/&gt;"</span>); <span class="comment">// 1</span></div><div class="line"><span class="keyword">print</span>(<span class="string">"&lt;br/&gt;"</span>);</div><div class="line"></div><div class="line"><span class="comment">//float comparison</span></div><div class="line"><span class="keyword">print</span>( <span class="number">1.5</span> &lt;=&gt; <span class="number">1.5</span>);<span class="keyword">print</span>(<span class="string">"&lt;br/&gt;"</span>);</div><div class="line"><span class="keyword">print</span>( <span class="number">1.5</span> &lt;=&gt; <span class="number">2.5</span>);<span class="keyword">print</span>(<span class="string">"&lt;br/&gt;"</span>);</div><div class="line"><span class="keyword">print</span>( <span class="number">2.5</span> &lt;=&gt; <span class="number">1.5</span>);<span class="keyword">print</span>(<span class="string">"&lt;br/&gt;"</span>);</div><div class="line"><span class="keyword">print</span>(<span class="string">"&lt;br/&gt;"</span>);</div><div class="line"></div><div class="line"><span class="comment">//string comparison</span></div><div class="line"><span class="keyword">print</span>( <span class="string">"a"</span> &lt;=&gt; <span class="string">"a"</span>);<span class="keyword">print</span>(<span class="string">"&lt;br/&gt;"</span>);</div><div class="line"><span class="keyword">print</span>( <span class="string">"a"</span> &lt;=&gt; <span class="string">"b"</span>);<span class="keyword">print</span>(<span class="string">"&lt;br/&gt;"</span>);</div><div class="line"><span class="keyword">print</span>( <span class="string">"b"</span> &lt;=&gt; <span class="string">"a"</span>);<span class="keyword">print</span>(<span class="string">"&lt;br/&gt;"</span>);</div></pre></td></tr></table></figure>
+<h5 id="PHP常量数组"><a href="#PHP常量数组" class="headerlink" title="PHP常量数组"></a><div id="title">PHP常量数组</div></h5><blockquote>
+<p>数组常量现在可以使用 define() 函数定义。 在PHP5.6，它们只能使用 const 关键字定义。</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//define a array using define function</span></div><div class="line">define(<span class="string">'animals'</span>, [</div><div class="line">  <span class="string">'dog'</span>,</div><div class="line">  <span class="string">'cat'</span>,</div><div class="line">  <span class="string">'bird'</span></div><div class="line">]);</div><div class="line"><span class="keyword">print</span>(animals[<span class="number">1</span>]);</div></pre></td></tr></table></figure>
+<h5 id="PHP7匿名类"><a href="#PHP7匿名类" class="headerlink" title="PHP7匿名类"></a><div id="title">PHP7匿名类</div></h5><blockquote>
+<p>在php7中，匿名类现在可以使用 new class 来定义。匿名类可以使用来代替完整的类定义。</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Logger</span> </span>&#123;</div><div class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">log</span><span class="params">(string $msg)</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Application</span> </span>&#123;</div><div class="line">  <span class="keyword">private</span> $logger;</div><div class="line"></div><div class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">getLogger</span><span class="params">()</span>: <span class="title">Logger</span> </span>&#123;</div><div class="line">     <span class="keyword">return</span> <span class="keyword">$this</span>-&gt;logger;</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">setLogger</span><span class="params">(Logger $logger)</span> </span>&#123;</div><div class="line">     <span class="keyword">$this</span>-&gt;logger = $logger;</div><div class="line">  &#125;  </div><div class="line">&#125;</div><div class="line"></div><div class="line">$app = <span class="keyword">new</span> Application;</div><div class="line">$app-&gt;setLogger(<span class="keyword">new</span> <span class="class"><span class="keyword">class</span> <span class="keyword">implements</span> <span class="title">Logger</span> </span>&#123;</div><div class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">log</span><span class="params">(string $msg)</span> </span>&#123;</div><div class="line">     <span class="keyword">print</span>($msg);</div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">$app-&gt;getLogger()-&gt;log(<span class="string">"My first Log Message"</span>);</div></pre></td></tr></table></figure>
+<h5 id="PHP7-use语句"><a href="#PHP7-use语句" class="headerlink" title="PHP7 use语句"></a><div id="title">PHP7 use语句</div></h5><blockquote>
+<p>从PHP7起，单次使用 use 语句可以用来从同一个命名空间导入类，函数和常量(而不用多次使用 use 语句)。</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Before PHP 7</span></div><div class="line"><span class="keyword">use</span> <span class="title">com</span>\<span class="title">yiibai</span>\<span class="title">ClassA</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">com</span>\<span class="title">yiibai</span>\<span class="title">ClassB</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">com</span>\<span class="title">yiibai</span>\<span class="title">ClassC</span> <span class="title">as</span> <span class="title">C</span>;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">function</span> <span class="title">com</span>\<span class="title">yiibai</span>\<span class="title">fn_a</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">function</span> <span class="title">com</span>\<span class="title">yiibai</span>\<span class="title">fn_b</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">function</span> <span class="title">com</span>\<span class="title">yiibai</span>\<span class="title">fn_c</span>;</div><div class="line"></div><div class="line"><span class="keyword">use</span> <span class="title">const</span> <span class="title">com</span>\<span class="title">yiibai</span>\<span class="title">ConstA</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">const</span> <span class="title">com</span>\<span class="title">yiibai</span>\<span class="title">ConstB</span>;</div><div class="line"><span class="keyword">use</span> <span class="title">const</span> <span class="title">com</span>\<span class="title">yiibai</span>\<span class="title">ConstC</span>;</div><div class="line"></div><div class="line"><span class="comment">// PHP 7+ code</span></div><div class="line"><span class="keyword">use</span> <span class="title">com</span>\<span class="title">yiibai</span>\&#123;<span class="title">ClassA</span>, <span class="title">ClassB</span>, <span class="title">ClassC</span> <span class="title">as</span> <span class="title">C</span>&#125;;</div><div class="line"><span class="keyword">use</span> <span class="title">function</span> <span class="title">com</span>\<span class="title">yiibai</span>\&#123;<span class="title">fn_a</span>, <span class="title">fn_b</span>, <span class="title">fn_c</span>&#125;;</div><div class="line"><span class="keyword">use</span> <span class="title">const</span> <span class="title">com</span>\<span class="title">yiibai</span>\&#123;<span class="title">ConstA</span>, <span class="title">ConstB</span>, <span class="title">ConstC</span>&#125;;</div></pre></td></tr></table></figure>
+<h5 id="PHP7-一次捕捉多种类型的异常-错误"><a href="#PHP7-一次捕捉多种类型的异常-错误" class="headerlink" title="PHP7 一次捕捉多种类型的异常 / 错误"></a><div id="title">PHP7 一次捕捉多种类型的异常 / 错误</div></h5><blockquote>
+<p>PHP 7.1 新添加了捕获多种异常/错误类型的语法——通过竖杠“|”来实现。</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">try</span> &#123;</div><div class="line">      <span class="keyword">throw</span> <span class="keyword">new</span> LengthException(<span class="string">"LengthException"</span>);</div><div class="line">    <span class="comment">//   throw new DivisionByZeroError("DivisionByZeroError");</span></div><div class="line">    <span class="comment">//   throw new Exception("Exception");</span></div><div class="line">&#125; <span class="keyword">catch</span> (\DivisionByZeroError | \LengthException $e) &#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"出错消息 --- "</span>, $e-&gt;getMessage(), PHP_EOL;</div><div class="line">&#125; <span class="keyword">catch</span> (\<span class="keyword">Exception</span> $e) &#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"出错消息 --- "</span>, $e-&gt;getMessage(), PHP_EOL;</div><div class="line">&#125; <span class="keyword">finally</span> &#123;</div><div class="line">    <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="PHP7整数除法"><a href="#PHP7整数除法" class="headerlink" title="PHP7整数除法"></a><div id="title">PHP7整数除法</div></h5><blockquote>
+<p>PHP7引入了intdiv()的新函数，它执行操作数的整数除法并返回结果为 int 类型。</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$value = intdiv(<span class="number">10</span>,<span class="number">3</span>);</div><div class="line">var_dump($value);</div><div class="line"><span class="keyword">print</span>($value);</div></pre></td></tr></table></figure>
+<h4 id="PHP7废弃的功能"><a href="#PHP7废弃的功能" class="headerlink" title="PHP7废弃的功能"></a><div id="title">PHP7废弃的功能</div></h4><h5 id="PHP4风格的构造函数"><a href="#PHP4风格的构造函数" class="headerlink" title="PHP4风格的构造函数"></a><div id="title">PHP4风格的构造函数</div></h5><blockquote>
+<p>PHP4式构造函数，它与类的名称相同，现在已过时，并且将在未来被移除。PHP7将发出<code>E_DEPRECATED</code>。类实现构造函数 <code>__construct()</code>方法不受影响。</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</div><div class="line">   <span class="function"><span class="keyword">function</span> <span class="title">A</span><span class="params">()</span> </span>&#123;</div><div class="line">      <span class="keyword">print</span>(<span class="string">'Style Constructor'</span>);</div><div class="line">   &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h5 id="静态调用非静态方法"><a href="#静态调用非静态方法" class="headerlink" title="静态调用非静态方法"></a><div id="title">静态调用非静态方法</div></h5><blockquote>
+<p>非静态方法静态调用已被弃用，并且可能在将来被移除。</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</div><div class="line">   <span class="function"><span class="keyword">function</span> <span class="title">b</span><span class="params">()</span> </span>&#123;</div><div class="line">      <span class="keyword">print</span>(<span class="string">'Non-static call'</span>);</div><div class="line">   &#125;</div><div class="line">&#125;</div><div class="line">A::b();</div></pre></td></tr></table></figure>
+<h5 id="password-hash-salt-选项"><a href="#password-hash-salt-选项" class="headerlink" title="password_hash() - salt 选项"></a><div id="title">password_hash() - salt 选项</div></h5><blockquote>
+<p><code>password_hash()</code>函数的<code>salt</code>选项已被弃用，使开发人员不会产生他们自己的(通常是不安全的)<code>salt</code>。函数本身生成一个加密的安全<code>salt</code>，在开发者没有提供<code>salt</code>值时 - 因此，定制 <code>salt</code> 生成不再需要了。</p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -201,7 +312,7 @@ onmouseup="document.selection.empty()">-->
 	</div>
 
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -214,17 +325,117 @@ onmouseup="document.selection.empty()">-->
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/10/05/php7新特性/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/10/05/session和cookie/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Session 和 cookie
+        
+      </div>
+    </a>
   
   
-    </div></section>
+    <a href="/2017/10/05/session共享问题/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Session共享问题</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
   
 
-    
+  
+
+  
+  <div id="gitmentContainer"></div>
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+    id: 'Thu Oct 05 2017 12:18:08 GMT+0800',
+    owner: 'shangzekai',
+    repo: 'shangzekai.github.io',
+    oauth: {
+        client_id: '0584b82d10b22c56733f',
+        client_secret: '494079773e1b0bfe541152ac975b2fd9b2f5ceb3',
+    },
+});
+gitment.render('gitmentContainer');
+</script>
+
+  
+
+  
+
+  
 
 
 
@@ -255,8 +466,8 @@ onmouseup="document.selection.empty()">-->
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

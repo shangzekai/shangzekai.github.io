@@ -6,22 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>JWT --- JSON WEB TOKEN | Python</title>
+  <title>Session 和 cookie | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="JWT介绍 Json web token (JWT), 是为了在网络应用环境间传递声明而执行的一种基于JSON的开放标准（(RFC 7519).该token被设计为紧凑且安全的，特别适用于分布式站点的单点登录（SSO）场景。JWT的声明一般被用来在身份提供者和服务提供者间传递被认证的用户身份信息，以便于从资源服务器获取资源，也可以增加一些额外的其它业务逻辑所必须的声明信息，该token也可直接被用">
+  <meta name="description" content="前言 之前，我们对session的理解只是停留在使用session_start()上，然后获取其中保存的值。但如果不知道里面的机制，在开发中遇到了新的问题，还是比较麻烦的">
 <meta name="keywords" content="PHP">
 <meta property="og:type" content="article">
-<meta property="og:title" content="JWT --- JSON WEB TOKEN">
-<meta property="og:url" content="http://yoursite.com/2017/03/10/JWT介绍/index.html">
+<meta property="og:title" content="Session 和 cookie">
+<meta property="og:url" content="http://yoursite.com/2017/10/05/session和cookie/index.html">
 <meta property="og:site_name" content="Python">
-<meta property="og:description" content="JWT介绍 Json web token (JWT), 是为了在网络应用环境间传递声明而执行的一种基于JSON的开放标准（(RFC 7519).该token被设计为紧凑且安全的，特别适用于分布式站点的单点登录（SSO）场景。JWT的声明一般被用来在身份提供者和服务提供者间传递被认证的用户身份信息，以便于从资源服务器获取资源，也可以增加一些额外的其它业务逻辑所必须的声明信息，该token也可直接被用">
-<meta property="og:image" content="https://i.loli.net/2018/03/28/5abb46cf34e0d.png">
-<meta property="og:image" content="https://i.loli.net/2018/03/28/5abb4767afaae.png">
-<meta property="og:updated_time" content="2018-03-28T07:44:04.000Z">
+<meta property="og:description" content="前言 之前，我们对session的理解只是停留在使用session_start()上，然后获取其中保存的值。但如果不知道里面的机制，在开发中遇到了新的问题，还是比较麻烦的">
+<meta property="og:image" content="https://i.loli.net/2018/04/05/5ac5df0e5a15d.png">
+<meta property="og:updated_time" content="2018-04-05T14:30:48.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="JWT --- JSON WEB TOKEN">
-<meta name="twitter:description" content="JWT介绍 Json web token (JWT), 是为了在网络应用环境间传递声明而执行的一种基于JSON的开放标准（(RFC 7519).该token被设计为紧凑且安全的，特别适用于分布式站点的单点登录（SSO）场景。JWT的声明一般被用来在身份提供者和服务提供者间传递被认证的用户身份信息，以便于从资源服务器获取资源，也可以增加一些额外的其它业务逻辑所必须的声明信息，该token也可直接被用">
-<meta name="twitter:image" content="https://i.loli.net/2018/03/28/5abb46cf34e0d.png">
+<meta name="twitter:title" content="Session 和 cookie">
+<meta name="twitter:description" content="前言 之前，我们对session的理解只是停留在使用session_start()上，然后获取其中保存的值。但如果不知道里面的机制，在开发中遇到了新的问题，还是比较麻烦的">
+<meta name="twitter:image" content="https://i.loli.net/2018/04/05/5ac5df0e5a15d.png">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
@@ -167,20 +166,20 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-JWT介绍" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-session和cookie" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      JWT --- JSON WEB TOKEN
+      Session 和 cookie
     </h1>
   
 
         
-        <a href="/2017/03/10/JWT介绍/" class="archive-article-date">
-  	<time datetime="2017-03-10T03:18:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-03-10</time>
+        <a href="/2017/10/05/session和cookie/" class="archive-article-date">
+  	<time datetime="2017-10-05T04:18:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-05</time>
 </a>
         
       </header>
@@ -189,86 +188,83 @@ onmouseup="document.selection.empty()">-->
       
 	
         <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#JWT介绍"><span class="toc-text">JWT介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#为什么会有JWT"><span class="toc-text">为什么会有JWT</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#传统的Session认证"><span class="toc-text">传统的Session认证</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JWT的组成"><span class="toc-text">JWT的组成</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JWT的使用流程"><span class="toc-text">JWT的使用流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JWT服务端验证过程"><span class="toc-text">JWT服务端验证过程</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#session和cookie的存储"><span class="toc-text">session和cookie的存储</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cookie的工作原理"><span class="toc-text">cookie的工作原理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#session的调用机制"><span class="toc-text">session的调用机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#session文件具体内容"><span class="toc-text">session文件具体内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#session-start干了啥"><span class="toc-text">session_start干了啥</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#问题"><span class="toc-text">问题</span></a></li></ol>
           <hr/>
         </div>
         
-        <h4 id="JWT介绍"><a href="#JWT介绍" class="headerlink" title="JWT介绍"></a><div id="title">JWT介绍</div></h4><blockquote>
-<p>Json web token (JWT), 是为了在网络应用环境间传递声明而执行的一种基于JSON的开放标准（(RFC 7519).该token被设计为紧凑且安全的，特别适用于分布式站点的单点登录（SSO）场景。JWT的声明一般被用来在身份提供者和服务提供者间传递被认证的用户身份信息，以便于从资源服务器获取资源，也可以增加一些额外的其它业务逻辑所必须的声明信息，该token也可直接被用于认证，也可被加密。</p>
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
+<p>之前，我们对<code>session</code>的理解只是停留在使用<code>session_start()</code>上，然后获取其中保存的值。但如果不知道里面的机制，在开发中遇到了新的问题，还是比较麻烦的</p>
 </blockquote>
 <a id="more"></a>
-<h4 id="为什么会有JWT"><a href="#为什么会有JWT" class="headerlink" title="为什么会有JWT"></a><div id="title">为什么会有JWT</div></h4><blockquote>
-<p>应该来谈一谈基于token的认证和传统的session认证的区别.</p>
+<h4 id="session和cookie的存储"><a href="#session和cookie的存储" class="headerlink" title="session和cookie的存储"></a><div id="title">session和cookie的存储</div></h4><blockquote>
+<p><code>session</code> 一般保存在服务端文件中，<code>php.ini</code>中有个配置项<code>--session.save_path= &quot;&quot;</code>;这个里面填写的路径，将会使<code>session</code>文件保存在该路径下。<code>session</code>文件的命名格式是：”<code>sess_[PHPSESSID的值]</code>“。每一个文件，里面保存了一个会话的数据. <code>cookie</code>保存在客户端浏览器中</p>
 </blockquote>
-<h5 id="传统的Session认证"><a href="#传统的Session认证" class="headerlink" title="传统的Session认证"></a><div id="title">传统的Session认证</div></h5><blockquote>
-<p>我们知道，http协议本身是一种无状态的协议，而这就意味着如果用户向我们的应用提供了用户名和密码来进行用户认证，那么下一次请求时，用户还要再一次进行用户认证才行，因为根据http协议，我们并不能知道是哪个用户发出的请求，所以为了让我们的应用能识别是哪个用户发出的请求，我们只能在服务器存储一份用户登录的信息，这份登录信息会在响应时传递给浏览器，告诉其保存为cookie,以便下次请求时发送给我们的应用，这样我们的应用就能识别请求来自哪个用户了,这就是传统的基于session认证。</p>
-</blockquote>
-<p><strong>带来的问题？</strong></p>
+<h4 id="cookie的工作原理"><a href="#cookie的工作原理" class="headerlink" title="cookie的工作原理"></a><div id="title">cookie的工作原理</div></h4><p><strong>以用户登录来举例：</strong></p>
+<p><img src="https://i.loli.net/2018/04/05/5ac5df0e5a15d.png" alt="cookie原理.png"></p>
 <ul>
-<li><p>Session: 每个用户经过我们的应用认证之后，我们的应用都要在服务端做一次记录，以方便用户下次请求的鉴别，通常而言session都是保存在内存中，而随着认证用户的增多，服务端的开销会明显增大。</p>
-</li>
-<li><p>扩展性: 用户认证之后，服务端做认证记录，如果认证的记录被保存在内存中的话，这意味着用户下次请求还必须要请求在这台服务器上,这样才能拿到授权的资源，这样在分布式的应用上，相应的限制了负载均衡器的能力。这也意味着限制了应用的扩展能力。</p>
-</li>
-<li><p>CSRF: 因为是基于cookie来进行用户识别的, cookie如果被截获，用户就会很容易受到跨站请求伪造的攻击。</p>
-</li>
+<li>小明访问某一网站 <code>example.com</code> 的登录页面, 此时通过浏览器发了一个<code>http request</code>请求,此时<code>http header</code>头域的<code>cookie</code>值可以是空的</li>
+<li>xx.com服务器收到这个请求,并接受了小明提交过来的登录数据,判断用户名和密码都正确,这个时候服务器会”种下一个cookie”–一般是将小明的用户名发给客户端,通常是”<code>Set-Cookie: session-id=12345;</code>“这个字符串通过<code>http response</code>返回给客户端(浏览器)</li>
+<li>浏览器收到<code>http response</code>返回来的信息发现<code>cookie</code>了,然后将该信息写入到浏览器的某个存储文件中去</li>
+<li>小明再访问<code>xx.com</code>的其他页面的时候,请求的<code>http header</code>中会带着这个<code>cookie</code>，<br>服务器端程序会找<code>cookie</code>,并根据<code>cookie</code>取出客户端想要的信息并返回给客户端</li>
+</ul>
+<h4 id="session的调用机制"><a href="#session的调用机制" class="headerlink" title="session的调用机制"></a><div id="title">session的调用机制</div></h4><ul>
+<li>用户请求服务端程序<code>login.php</code>填写数据后提交</li>
+<li>服务器收到提交的数据取得用户信息,将用户信息存入<code>session</code>,并将<code>session_id</code>通过<code>cookie</code>的形式发给客户端</li>
+<li>客户端将<code>session_id</code>存入浏览器<code>cookie</code>文件</li>
+<li>用户再次访问其他页面时,将有<code>session_id</code>的<code>cookie</code>通过<code>header</code>头发给服务端</li>
+<li>服务端拿到<code>session_id</code>从<code>session</code>中取到用户信息并返回</li>
+</ul>
+<h4 id="session文件具体内容"><a href="#session文件具体内容" class="headerlink" title="session文件具体内容"></a><div id="title">session文件具体内容</div></h4><blockquote>
+<p>保存的是一些被序列化后的值</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cityID|i:0;cityName|s:3:&quot;all&quot;;fanwe_lang|s:5:&quot;zh-cn&quot;;fanwe_currency|a:4:&#123;s:2:&quot;id&quot;;s:1:&quot;1&quot;;s:6:&quot;name_1&quot;;s:9:&quot;人民币&quot;;s:4:&quot;unit&quot;;s:3:&quot;￥&quot;;s:5:&quot;radio&quot;;s:6:&quot;1.0000&quot;;&#125;_fanwe_hash__|s:32:&quot;77c18770c6cb5d89444c407aaa3e8477&quot;;</div></pre></td></tr></table></figure>
+<p>1、每一个session的值是以分号”;”分开的。比如 <code>cityID|i:0;cityName|s:3:&quot;all&quot;</code>;”就是一个完整的session值结束</p>
+<p>2、里面的读取规则：符号“|”前面表示<code>session</code>名称。符号后面是该session的具体信息。包括：数据类型，字符长度，如这一段：<code>fanwe_lang|s:5:&quot;zh-cn&quot;</code>;  <code>fanwe_lang</code>是变量的名称，变量值是<code>zh-cn</code>,长度刚好是<code>5</code></p>
+<h4 id="session-start干了啥"><a href="#session-start干了啥" class="headerlink" title="session_start干了啥"></a><div id="title">session_start干了啥</div></h4><blockquote>
+<p><code>session_start()</code>已经封装了发送<code>cookie</code>的操作(发送一个名称为<code>PHPSESSID</code>的<code>cookie</code>到浏览器)。那这样的话就涉及到http的一个原理:头部信息必须在内容之前发送才行。所以，使用此函数之前，不能有输出内容。</p>
+</blockquote>
+<h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a><div id="title">问题</div></h4><ul>
+<li>怎么删除cookie?</li>
 </ul>
 <blockquote>
-<p>基于token的鉴权机制类似于http协议也是无状态的，它不需要在服务端去保留用户的认证信息或者会话信息。这就意味着基于token认证机制的应用不需要去考虑用户在哪一台服务器登录了，这就为应用的扩展提供了便利。</p>
-</blockquote>
-<h4 id="JWT的组成"><a href="#JWT的组成" class="headerlink" title="JWT的组成"></a><div id="title">JWT的组成</div></h4><blockquote>
-<p>JWT就是一个字符串，经过加密处理与校验处理的字符串，由三个部分组成。基于token的身份验证可以替代传统的cookie+session身份验证方法。三个部分分别如下：</p>
-</blockquote>
-<figure class="highlight leaf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">header.payload.signature</div></pre></td></tr></table></figure>
-<p><strong>header部分组成:</strong></p>
-<figure class="highlight leaf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">"typ":"JWT",</div><div class="line">"alg":"HS256"</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<blockquote>
-<p>这就是一个json串，两个字段都是必须的,alg字段指定了生成signature的算法，默认值为 HS256,可以自己指定其他的加密算法，如RSA.经过base64encode就可以得到 header.</p>
-</blockquote>
-<p><strong>payload 部分组成</strong></p>
-<blockquote>
-<p>简单的写法：</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$payload=[</div><div class="line">    <span class="string">'iss'</span> =&gt; $issuer, <span class="comment">//签发者</span></div><div class="line">    <span class="string">'iat'</span> =&gt; $_SERVER[<span class="string">'REQUEST_TIME'</span>], <span class="comment">//什么时候签发的</span></div><div class="line">    <span class="string">'exp'</span> =&gt; $_SERVER[<span class="string">'REQUEST_TIME'</span>] + <span class="number">7200</span> <span class="comment">//过期时间</span></div><div class="line">    <span class="string">'uid'</span>=&gt;<span class="number">1111</span></div><div class="line">];</div></pre></td></tr></table></figure>
-<blockquote>
-<p>复杂点：官方说法,三个部分组成(Reserved claims，Public claims,Private claims)</p>
-</blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">$payload   = [</div><div class="line">    <span class="comment">#非必须。issuer 请求实体，可以是发起请求的用户的信息，也可是jwt的签发者。</span></div><div class="line">    <span class="string">"iss"</span>       =&gt; <span class="string">"http://example.org"</span>,</div><div class="line">    <span class="comment">#非必须。issued at。 token创建时间，unix时间戳格式</span></div><div class="line">    <span class="string">"iat"</span>       =&gt; $_SERVER[<span class="string">'REQUEST_TIME'</span>],</div><div class="line">    <span class="comment">#非必须。expire 指定token的生命周期。unix时间戳格式</span></div><div class="line">    <span class="string">"exp"</span>       =&gt; $_SERVER[<span class="string">'REQUEST_TIME'</span>] + <span class="number">7200</span>,</div><div class="line">    <span class="comment">#非必须。接收该JWT的一方。</span></div><div class="line">    <span class="string">"aud"</span>       =&gt; <span class="string">"http://example.com"</span>,</div><div class="line">    <span class="comment">#非必须。该JWT所面向的用户</span></div><div class="line">    <span class="string">"sub"</span>       =&gt; <span class="string">"jrocket@example.com"</span>,</div><div class="line">    <span class="comment"># 非必须。not before。如果当前时间在nbf里的时间之前，则Token不被接受；一般都会留一些余地，比如几分钟。</span></div><div class="line">    <span class="string">"nbf"</span>       =&gt; <span class="number">1357000000</span>,</div><div class="line">    <span class="comment"># 非必须。JWT ID。针对当前token的唯一标识</span></div><div class="line">    <span class="string">"jti"</span>       =&gt; <span class="string">'222we'</span>,</div><div class="line">    <span class="comment"># 自定义字段</span></div><div class="line">    <span class="string">"GivenName"</span> =&gt; <span class="string">"Jonny"</span>,</div><div class="line">    <span class="comment"># 自定义字段</span></div><div class="line">    <span class="string">"name"</span>   =&gt; <span class="string">"Rocket"</span>,</div><div class="line">    <span class="comment"># 自定义字段</span></div><div class="line">    <span class="string">"Email"</span>     =&gt; <span class="string">"jrocket@example.com"</span>,</div><div class="line"> </div><div class="line">];</div></pre></td></tr></table></figure>
-<blockquote>
-<p>payload 也是一个json数据，是表明用户身份的数据，可以自己自定义字段，很灵活。你也可以简单的使用，比如简单的方式。经过<code>json_encode</code>和<code>base64_encode</code>就可得到<code>payload</code></p>
-</blockquote>
-<p><strong>signature组成部分</strong></p>
-<blockquote>
-<p>将 header和 payload使用header中指定的加密算法加密，当然加密过程还需要自定秘钥，自己选一个字符串就可以了。</p>
-</blockquote>
-<p><strong>官网的例子：</strong></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">HMACSHA256(</div><div class="line">  base64UrlEncode(header) + &quot;.&quot; +</div><div class="line">  base64UrlEncode(payload),</div><div class="line">  secret)</div></pre></td></tr></table></figure>
-<p><strong>我们可以自己写一个</strong></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">encode</span><span class="params">(array $payload, string $key, string $alg = <span class="string">'SHA256'</span>)</span></span>&#123;</div><div class="line">        $key = md5($key);</div><div class="line">        $jwt = <span class="keyword">self</span>::urlsafeB64Encode(json_encode([<span class="string">'typ'</span> =&gt; <span class="string">'JWT'</span>, <span class="string">'alg'</span> =&gt; $alg])) . <span class="string">'.'</span> . <span class="keyword">self</span>::urlsafeB64Encode(json_encode($payload));</div><div class="line">        <span class="keyword">return</span> $jwt . <span class="string">'.'</span> . <span class="keyword">self</span>::signature($jwt, $key, $alg);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">signature</span><span class="params">(string $input, string $key, string $alg)</span></div><div class="line">    </span>&#123;</div><div class="line">        <span class="keyword">return</span> hash_hmac($alg, $input, $key);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
-<p><strong>这三个部分使用<code>.</code>连接起来就是高大上的JWT,然后就可以使用了</strong></p>
-<h4 id="JWT的使用流程"><a href="#JWT的使用流程" class="headerlink" title="JWT的使用流程"></a><div id="title">JWT的使用流程</div></h4><p><img src="https://i.loli.net/2018/03/28/5abb46cf34e0d.png" alt="JWT.png"></p>
-<blockquote>
-<p>解释一下：</p>
+<p>浏览器删除</p>
 </blockquote>
 <ul>
-<li><p>初次登录：用户初次登录，输入用户名密码</p>
-</li>
-<li><p>密码验证：服务器从数据库取出用户名和密码进行验证</p>
-</li>
-<li><p>生成JWT：服务器端验证通过，根据从数据库返回的信息，以及预设规则，生成JWT</p>
-</li>
-<li><p>返还JWT：服务器的<code>HTTP RESPONSE</code>中将<code>JWT</code>返还</p>
-</li>
-<li><p>带JWT的请求：以后客户端发起请求，<code>HTTP REQUEST HEADER</code>中的<code>Authorization</code>字段都要有值，为<code>JWT</code></p>
-</li>
+<li>a.xx.com 和 b.xx.com 他们可以互相使用对方的cookie吗?</li>
 </ul>
-<h4 id="JWT服务端验证过程"><a href="#JWT服务端验证过程" class="headerlink" title="JWT服务端验证过程"></a><div id="title">JWT服务端验证过程</div></h4><blockquote>
-<p>客户端在请求头中带有JWT信息，后端获取<code>$_SERVER[HTTP_AUTHORIZATION]</code>:</p>
+<blockquote>
+<p>只要两个服务使用的是同一台服务器即可</p>
 </blockquote>
-<p><img src="https://i.loli.net/2018/03/28/5abb4767afaae.png" alt="验证.png"></p>
-<p><strong>不过注意一点，我这个Authorization没有加Bearer,官方使用中就使用了Bearer,你也可以自己使用：</strong></p>
-<figure class="highlight leaf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Authorization: Bearer &lt;token&gt;</div></pre></td></tr></table></figure>
-<p><strong>验证代码：</strong></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">decode</span><span class="params">(string $jwt, string $key)</span></div><div class="line">    </span>&#123;</div><div class="line">        $tokens = explode(<span class="string">'.'</span>, $jwt);</div><div class="line">        $key    = md5($key);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (count($tokens) != <span class="number">3</span>)</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">        <span class="keyword">list</span>($header64, $payload64, $sign) = $tokens;</div><div class="line"></div><div class="line">        $header = json_decode(<span class="keyword">self</span>::urlsafeB64Decode($header64), JSON_OBJECT_AS_ARRAY);</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">empty</span>($header[<span class="string">'alg'</span>]))</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (<span class="keyword">self</span>::signature($header64 . <span class="string">'.'</span> . $payload64, $key, $header[<span class="string">'alg'</span>]) !== $sign)</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">        $payload = json_decode(<span class="keyword">self</span>::urlsafeB64Decode($payload64), JSON_OBJECT_AS_ARRAY);</div><div class="line"></div><div class="line">        $time = $_SERVER[<span class="string">'REQUEST_TIME'</span>];</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">isset</span>($payload[<span class="string">'iat'</span>]) &amp;&amp; $payload[<span class="string">'iat'</span>] &gt; $time)</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (<span class="keyword">isset</span>($payload[<span class="string">'exp'</span>]) &amp;&amp; $payload[<span class="string">'exp'</span>] &lt; $time)</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> $payload;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>cookie存储的内容是安全的吗?</li>
+</ul>
+<blockquote>
+<p>不安全</p>
+</blockquote>
+<ul>
+<li>session的有效期?</li>
+</ul>
+<blockquote>
+<p>由<code>php.ini</code>中的<code>session</code>配置决定( <code>session.cookie_lifetime = 0, session.gc_maxlifetime = 600</code> )</p>
+</blockquote>
+<ul>
+<li>关闭客户端可以删除session或者使session失效吗?</li>
+</ul>
+<blockquote>
+<p>不能删除<code>session</code>,但有可能使<code>session</code>失效 .使其失效的原因是如果配置的<code>session</code>有效期是<code>cookie</code>随着浏览器关闭而失效.</p>
+</blockquote>
+<ul>
+<li>如果浏览器不支持cookie,session能正常使用吗?</li>
+</ul>
+<blockquote>
+<p>可以,将session通过url传递</p>
+</blockquote>
+<ul>
+<li>如果服务端有多台服务器,session如何共享?</li>
+</ul>
+<blockquote>
+<p>下节讨论</p>
+</blockquote>
 
       
 
@@ -381,7 +377,7 @@ onmouseup="document.selection.empty()">-->
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/03/10/JWT介绍/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/10/05/session和cookie/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -395,15 +391,20 @@ onmouseup="document.selection.empty()">-->
   
 <nav id="article-nav">
   
-    <a href="/2017/04/02/PHP代码优化24条真经/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/10/06/Http协议/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          PHP代码优化24条真经
+          Http协议总结
         
       </div>
     </a>
   
+  
+    <a href="/2017/10/05/php7新特性/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">PHP7新特性讲解</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -423,7 +424,7 @@ onmouseup="document.selection.empty()">-->
 <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
 <script>
 var gitment = new Gitment({
-    id: 'Fri Mar 10 2017 11:18:08 GMT+0800',
+    id: 'Thu Oct 05 2017 12:18:08 GMT+0800',
     owner: 'shangzekai',
     repo: 'shangzekai.github.io',
     oauth: {
