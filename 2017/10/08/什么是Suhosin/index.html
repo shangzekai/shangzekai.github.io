@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/10/08/什么是Suhosin/index.html">
 <meta property="og:site_name" content="Python">
 <meta property="og:description" content="什么是Suhosin？ Suhosin是一个PHP程序的保护系统。它的设计初衷是为了保护服务器和用户抵御PHP程序和PHP核心中，已知或者未知的缺陷。Suhosin有两个独立的部分，使用时可以分开使用或者联合使用。第一部分是一个用于PHP核心的补丁，它能抵御缓冲区溢出或者格式化串的弱点；第二部分是一个强大的PHP扩展，包含其他所有的保护措施。">
-<meta property="og:updated_time" content="2018-04-26T10:16:17.000Z">
+<meta property="og:updated_time" content="2018-04-27T05:08:52.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用Suhosin保护PHP应用系统">
 <meta name="twitter:description" content="什么是Suhosin？ Suhosin是一个PHP程序的保护系统。它的设计初衷是为了保护服务器和用户抵御PHP程序和PHP核心中，已知或者未知的缺陷。Suhosin有两个独立的部分，使用时可以分开使用或者联合使用。第一部分是一个用于PHP核心的补丁，它能抵御缓冲区溢出或者格式化串的弱点；第二部分是一个强大的PHP扩展，包含其他所有的保护措施。">
@@ -227,7 +227,7 @@ onmouseup="document.selection.empty()">-->
 <li>防止恶意的session id</li>
 </ul>
 <h4 id="下载安装"><a href="#下载安装" class="headerlink" title="下载安装"></a><div id="title">下载安装</div></h4><blockquote>
-<p><a href="http://www.hardened-php.net/suhosin/download.html" target="_blank" rel="external">http://www.hardened-php.net/suhosin/download.html</a></p>
+<p><a href="https://suhosin.org/stories/index.html" target="_blank" rel="external">https://suhosin.org/stories/index.html</a></p>
 </blockquote>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># tar zxvf suhosin-<span class="number">0.9</span>.<span class="number">31</span>.tgz</div><div class="line"># <span class="keyword">cd</span> subosin-<span class="number">0.9</span>.<span class="number">31</span></div><div class="line"># phpize</div><div class="line"># ./configure –with-php-config=/usr/local/php/bin/php-config（这个路径根据自己实际情况设置）</div><div class="line"># <span class="keyword">make</span></div><div class="line"># <span class="keyword">make</span> install</div><div class="line"></div><div class="line">然后编辑php.ini 加入extension=suhosin.<span class="keyword">so</span></div></pre></td></tr></table></figure>
 <h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a><div id="title">使用方法</div></h4><p>suhosin有三个选项控制eval</p>
@@ -239,7 +239,7 @@ onmouseup="document.selection.empty()">-->
 <li><p>suhosin.executor.disable_eval        禁用eval</p>
 </li>
 </ul>
-<p>很多程序需要eval，所以我们不能禁用，使用黑名单禁止一些危险的函数</p>
+<p>使用黑名单禁止一些危险的函数</p>
 <p>编辑php.ini</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">[Suhosin]</div><div class="line"></div><div class="line">suhosin.executor.<span class="keyword">eval</span>.blacklist=phpinfo,fputs,fopen,fwrite</div></pre></td></tr></table></figure>
 <p>根据实际情况自行设定</p>
