@@ -17,7 +17,7 @@
 <meta property="og:description" content="前言 PHP7是PHP编程语言全新的一个版本，主要在性能方面获得了极大的提升。官方的文档显示，PHP7可以达到PHP5.x版本两倍的性能。同时还对PHP的语法做了梳理，提供了很多其他语言流行的语法格式。难能可贵的是，做了如此大的改动，PHP7的兼容性还是非常好的。对于绝大多数的应用来讲，可以不用做修改即可迁移到PHP7版本。">
 <meta property="og:image" content="https://i.loli.net/2018/04/07/5ac825a26f94e.png">
 <meta property="og:image" content="https://i.loli.net/2018/04/08/5ac97ef79c528.png">
-<meta property="og:updated_time" content="2018-04-08T02:56:12.000Z">
+<meta property="og:updated_time" content="2018-04-29T13:46:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP7新特性讲解">
 <meta name="twitter:description" content="前言 PHP7是PHP编程语言全新的一个版本，主要在性能方面获得了极大的提升。官方的文档显示，PHP7可以达到PHP5.x版本两倍的性能。同时还对PHP的语法做了梳理，提供了很多其他语言流行的语法格式。难能可贵的是，做了如此大的改动，PHP7的兼容性还是非常好的。对于绝大多数的应用来讲，可以不用做修改即可迁移到PHP7版本。">
@@ -218,11 +218,11 @@ onmouseup="document.selection.empty()">-->
 <p><strong>于是就有了牛x的一塌糊涂的PHP7版本</strong></p>
 <h4 id="PHP7的改变"><a href="#PHP7的改变" class="headerlink" title="PHP7的改变"></a><div id="title">PHP7的改变</div></h4><h5 id="PHP7标量类型声明"><a href="#PHP7标量类型声明" class="headerlink" title="PHP7标量类型声明"></a><div id="title">PHP7标量类型声明</div></h5><p>在PHP7，一个新的功能，标量类型声明已被引入。标量类型声明有两种选择方式 </p>
 <ul>
-<li>强制方式- 强制性是默认模式，不需要指定</li>
+<li>一般方式- 默认模式</li>
 <li>严格方式 - 严格模式有明确的暗示</li>
 </ul>
-<p><strong>示例 - 强制模式</strong></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Coercive mode</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span><span class="params">(int ...$ints)</span> </span>&#123;</div><div class="line">  <span class="keyword">return</span> array_sum($ints);</div><div class="line">&#125;</div><div class="line"><span class="keyword">print</span>(sum(<span class="number">2</span>, <span class="string">'3'</span>, <span class="number">4.1</span>));</div></pre></td></tr></table></figure>
+<p><strong>示例 - 一般模式</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span><span class="params">(int ...$ints)</span> </span>&#123;</div><div class="line">  <span class="keyword">return</span> array_sum($ints);</div><div class="line">&#125;</div><div class="line"><span class="keyword">print</span>(sum(<span class="number">2</span>, <span class="string">'3'</span>, <span class="number">4.1</span>));</div></pre></td></tr></table></figure>
 <p><strong>示例 - 严格模式</strong></p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Strict mode</span></div><div class="line"><span class="keyword">declare</span>(strict_types=<span class="number">1</span>);</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span><span class="params">(int ...$ints)</span> </span>&#123;</div><div class="line">  <span class="keyword">return</span> array_sum($ints);</div><div class="line">&#125;</div><div class="line"><span class="keyword">print</span>(sum(<span class="number">2</span>, <span class="string">'3'</span>, <span class="number">4.1</span>));</div></pre></td></tr></table></figure>
 <h5 id="空合并运算符"><a href="#空合并运算符" class="headerlink" title="空合并运算符"></a><div id="title">空合并运算符</div></h5><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$name = $name ?? <span class="string">"NoName"</span>;  <span class="comment">// 如果$name有值就取其值，否则设$name成"NoName"</span></div></pre></td></tr></table></figure>
