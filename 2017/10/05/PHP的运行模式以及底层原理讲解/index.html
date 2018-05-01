@@ -8,16 +8,15 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>PHP的运行模式以及底层原理讲解 | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="PHP的运行模式 php一共分为五大运行模式：   ==cgi (通用网关接口Common Gateway Interface)== ==fast-cgi (fast-cgi 是cgi的升级版本)== ==cli (Command Line Interface)== isapi (Internet Server Application Program Interface，是微软提供的一套面向Int">
+  <meta name="description" content="PHP的运行模式 php一共分为五大运行模式：   cgi (通用网关接口Common Gateway Interface) fast-cgi (fast-cgi 是cgi的升级版本) cli (Command Line Interface) isapi (Internet Server Application Program Interface，是微软提供的一套面向Internet服务的API接">
 <meta name="keywords" content="PHP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PHP的运行模式以及底层原理讲解">
 <meta property="og:url" content="http://yoursite.com/2017/10/05/PHP的运行模式以及底层原理讲解/index.html">
 <meta property="og:site_name" content="Python">
-<meta property="og:description" content="PHP的运行模式 php一共分为五大运行模式：   ==cgi (通用网关接口Common Gateway Interface)== ==fast-cgi (fast-cgi 是cgi的升级版本)== ==cli (Command Line Interface)== isapi (Internet Server Application Program Interface，是微软提供的一套面向Int">
+<meta property="og:description" content="PHP的运行模式 php一共分为五大运行模式：   cgi (通用网关接口Common Gateway Interface) fast-cgi (fast-cgi 是cgi的升级版本) cli (Command Line Interface) isapi (Internet Server Application Program Interface，是微软提供的一套面向Internet服务的API接">
 <meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9b7468b035.jpg">
 <meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9b6f6a3942.jpg">
-<meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9b6f02e152.jpg">
 <meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9b897811a3.jpg">
 <meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9be201106a.jpg">
 <meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9beb87e89e.jpg">
@@ -28,10 +27,10 @@
 <meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9dcb8f21f7.jpg">
 <meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9dd3d26ee2.jpg">
 <meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9ea3400a26.jpg">
-<meta property="og:updated_time" content="2018-04-08T10:30:36.000Z">
+<meta property="og:updated_time" content="2018-05-01T11:42:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP的运行模式以及底层原理讲解">
-<meta name="twitter:description" content="PHP的运行模式 php一共分为五大运行模式：   ==cgi (通用网关接口Common Gateway Interface)== ==fast-cgi (fast-cgi 是cgi的升级版本)== ==cli (Command Line Interface)== isapi (Internet Server Application Program Interface，是微软提供的一套面向Int">
+<meta name="twitter:description" content="PHP的运行模式 php一共分为五大运行模式：   cgi (通用网关接口Common Gateway Interface) fast-cgi (fast-cgi 是cgi的升级版本) cli (Command Line Interface) isapi (Internet Server Application Program Interface，是微软提供的一套面向Internet服务的API接">
 <meta name="twitter:image" content="https://i.loli.net/2018/04/08/5ac9b7468b035.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
@@ -208,11 +207,11 @@ onmouseup="document.selection.empty()">-->
 <p>php一共分为五大运行模式：</p>
 </blockquote>
 <ul>
-<li>==cgi (通用网关接口Common Gateway Interface)==</li>
-<li>==fast-cgi (fast-cgi 是cgi的升级版本)==</li>
-<li>==cli (Command Line Interface)==</li>
+<li>cgi (通用网关接口Common Gateway Interface)</li>
+<li>fast-cgi (fast-cgi 是cgi的升级版本)</li>
+<li>cli (Command Line Interface)</li>
 <li>isapi (Internet Server Application Program Interface，是微软提供的一套面向Internet服务的API接口)</li>
-<li>==apache2handler (将php作为apache的模块, nginx类似)==</li>
+<li>apache2handler (将php作为apache的模块, nginx类似)</li>
 <li>其他(continuity, embed, litespeed, milter等)</li>
 </ul>
 <a id="more"></a>
@@ -302,7 +301,6 @@ onmouseup="document.selection.empty()">-->
 <h5 id="两个网络模型的区别"><a href="#两个网络模型的区别" class="headerlink" title="两个网络模型的区别"></a><div id="title">两个网络模型的区别</div></h5><p><img src="https://i.loli.net/2018/04/08/5ac9b7468b035.jpg" alt="网络模型3.jpg"></p>
 <hr>
 <p><img src="https://i.loli.net/2018/04/08/5ac9b6f6a3942.jpg" alt="网路模型1.jpg"></p>
-<p><img src="https://i.loli.net/2018/04/08/5ac9b6f02e152.jpg" alt="网络模型2.jpg"></p>
 <h5 id="如何选择"><a href="#如何选择" class="headerlink" title="如何选择"></a><div id="title">如何选择</div></h5><ul>
 <li>一般访问量网站优先选择Apache，它稳定可靠</li>
 <li>Apache模块非常丰富，为了用它的模块得选它</li>
