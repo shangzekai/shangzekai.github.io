@@ -419,7 +419,8 @@ onmouseup="document.selection.empty()">-->
    var verify = 'false' == true ? true : false;
     window.onload = function() {
         new Valine({
-            el: '.comment',
+            av: AV,
+            el: '#vcomment',
             notify: notify,
             verify: verify,
             app_id: "mjstUtcUPaEVJpt5xt5zWykf-gzGzoHsz",

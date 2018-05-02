@@ -415,7 +415,8 @@ map &lt;F8&gt; :NERDTree&lt;CR&gt;
    var verify = 'false' == true ? true : false;
     window.onload = function() {
         new Valine({
-            el: '.comment',
+            av: AV,
+            el: '#vcomment',
             notify: notify,
             verify: verify,
             app_id: "mjstUtcUPaEVJpt5xt5zWykf-gzGzoHsz",
