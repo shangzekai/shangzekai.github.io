@@ -8,15 +8,14 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>PHP的运行模式以及底层原理讲解 | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="PHP的运行模式 php一共分为五大运行模式：   cgi (通用网关接口Common Gateway Interface) fast-cgi (fast-cgi 是cgi的升级版本) cli (Command Line Interface) isapi (Internet Server Application Program Interface，是微软提供的一套面向Internet服务的API接">
+  <meta name="description" content="PHP的运行模式 SAPI:Server Application Programming Interface 服务器端应用编程端口。它就是PHP与其它应用交互的接口，PHP脚本要执行有很多种方式，通过Web服务器，或者直接在命令行下，也可以嵌入在其他程序中 SAPI提供了一个和外部通信的接口, 常见的有五大运行模式：   cgi (通用网关接口Common Gateway Interface) f">
 <meta name="keywords" content="PHP">
 <meta property="og:type" content="article">
 <meta property="og:title" content="PHP的运行模式以及底层原理讲解">
-<meta property="og:url" content="http://yoursite.com/2017/10/05/PHP的运行模式以及底层原理讲解/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/10/05/PHP的运行模式/index.html">
 <meta property="og:site_name" content="Python">
-<meta property="og:description" content="PHP的运行模式 php一共分为五大运行模式：   cgi (通用网关接口Common Gateway Interface) fast-cgi (fast-cgi 是cgi的升级版本) cli (Command Line Interface) isapi (Internet Server Application Program Interface，是微软提供的一套面向Internet服务的API接">
+<meta property="og:description" content="PHP的运行模式 SAPI:Server Application Programming Interface 服务器端应用编程端口。它就是PHP与其它应用交互的接口，PHP脚本要执行有很多种方式，通过Web服务器，或者直接在命令行下，也可以嵌入在其他程序中 SAPI提供了一个和外部通信的接口, 常见的有五大运行模式：   cgi (通用网关接口Common Gateway Interface) f">
 <meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9b7468b035.jpg">
-<meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9b6f6a3942.jpg">
 <meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9b897811a3.jpg">
 <meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9be201106a.jpg">
 <meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9beb87e89e.jpg">
@@ -27,10 +26,10 @@
 <meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9dcb8f21f7.jpg">
 <meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9dd3d26ee2.jpg">
 <meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9ea3400a26.jpg">
-<meta property="og:updated_time" content="2018-05-01T11:42:08.000Z">
+<meta property="og:updated_time" content="2018-05-02T05:44:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP的运行模式以及底层原理讲解">
-<meta name="twitter:description" content="PHP的运行模式 php一共分为五大运行模式：   cgi (通用网关接口Common Gateway Interface) fast-cgi (fast-cgi 是cgi的升级版本) cli (Command Line Interface) isapi (Internet Server Application Program Interface，是微软提供的一套面向Internet服务的API接">
+<meta name="twitter:description" content="PHP的运行模式 SAPI:Server Application Programming Interface 服务器端应用编程端口。它就是PHP与其它应用交互的接口，PHP脚本要执行有很多种方式，通过Web服务器，或者直接在命令行下，也可以嵌入在其他程序中 SAPI提供了一个和外部通信的接口, 常见的有五大运行模式：   cgi (通用网关接口Common Gateway Interface) f">
 <meta name="twitter:image" content="https://i.loli.net/2018/04/08/5ac9b7468b035.jpg">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
@@ -177,7 +176,7 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-PHP的运行模式以及底层原理讲解" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-PHP的运行模式" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -189,7 +188,7 @@ onmouseup="document.selection.empty()">-->
   
 
         
-        <a href="/2017/10/05/PHP的运行模式以及底层原理讲解/" class="archive-article-date">
+        <a href="/2017/10/05/PHP的运行模式/" class="archive-article-date">
   	<time datetime="2017-10-05T04:18:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-05</time>
 </a>
         
@@ -199,12 +198,13 @@ onmouseup="document.selection.empty()">-->
       
 	
         <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP的运行模式"><span class="toc-text">PHP的运行模式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#CLI运行模式"><span class="toc-text">CLI运行模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#CGI运行模式"><span class="toc-text">CGI运行模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#FASTCGI运行模式"><span class="toc-text">FASTCGI运行模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#模块运行模式"><span class="toc-text">模块运行模式</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#服务器网络模型"><span class="toc-text">服务器网络模型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#两个网络模型的区别"><span class="toc-text">两个网络模型的区别</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#如何选择"><span class="toc-text">如何选择</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP运行机制与原理"><span class="toc-text">PHP运行机制与原理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#提高PHP代码运行效率"><span class="toc-text">提高PHP代码运行效率</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP底层源码分析"><span class="toc-text">PHP底层源码分析</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#字符串"><span class="toc-text">字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#变量存储"><span class="toc-text">变量存储</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#变量类型"><span class="toc-text">变量类型</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#传值赋值和传引用赋值"><span class="toc-text">传值赋值和传引用赋值</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#内存回收机制"><span class="toc-text">内存回收机制</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#数组"><span class="toc-text">数组</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#数组Key和Value的限制条件"><span class="toc-text">数组Key和Value的限制条件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#数组元素的访问"><span class="toc-text">数组元素的访问</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#unset删除数组元素"><span class="toc-text">unset删除数组元素</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#数组遍历"><span class="toc-text">数组遍历</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#数组和常见的数据结构"><span class="toc-text">数组和常见的数据结构</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#数组内部实现"><span class="toc-text">数组内部实现</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#数组函数分类"><span class="toc-text">数组函数分类</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP的运行模式"><span class="toc-text">PHP的运行模式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#CLI运行模式"><span class="toc-text">CLI运行模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#CGI运行模式"><span class="toc-text">CGI运行模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#FASTCGI运行模式"><span class="toc-text">FASTCGI运行模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#模块运行模式"><span class="toc-text">模块运行模式</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#服务器网络I-O模型"><span class="toc-text">服务器网络I/O模型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#两个网络模型的区别"><span class="toc-text">两个网络模型的区别</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#如何选择"><span class="toc-text">如何选择</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP运行机制与原理"><span class="toc-text">PHP运行机制与原理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#提高PHP代码运行效率"><span class="toc-text">提高PHP代码运行效率</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP底层源码分析"><span class="toc-text">PHP底层源码分析</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#字符串"><span class="toc-text">字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#变量存储"><span class="toc-text">变量存储</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#变量类型"><span class="toc-text">变量类型</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#传值赋值和传引用赋值"><span class="toc-text">传值赋值和传引用赋值</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#内存回收机制"><span class="toc-text">内存回收机制</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#数组"><span class="toc-text">数组</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#数组Key和Value的限制条件"><span class="toc-text">数组Key和Value的限制条件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#数组元素的访问"><span class="toc-text">数组元素的访问</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#unset删除数组元素"><span class="toc-text">unset删除数组元素</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#数组遍历"><span class="toc-text">数组遍历</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#数组和常见的数据结构"><span class="toc-text">数组和常见的数据结构</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#数组内部实现"><span class="toc-text">数组内部实现</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#数组函数分类"><span class="toc-text">数组函数分类</span></a></li></ol></li></ol></li></ol>
           <hr/>
         </div>
         
         <h4 id="PHP的运行模式"><a href="#PHP的运行模式" class="headerlink" title="PHP的运行模式"></a><div id="title">PHP的运行模式</div></h4><blockquote>
-<p>php一共分为五大运行模式：</p>
+<p><code>SAPI:Server Application Programming Interface</code> 服务器端应用编程端口。它就是PHP与其它应用交互的接口，PHP脚本要执行有很多种方式，通过Web服务器，或者直接在命令行下，也可以嵌入在其他程序中</p>
+<p><code>SAPI</code>提供了一个和外部通信的接口, 常见的有五大运行模式：</p>
 </blockquote>
 <ul>
 <li>cgi (通用网关接口Common Gateway Interface)</li>
@@ -287,7 +287,7 @@ onmouseup="document.selection.empty()">-->
 <li>支持多线程，占用资源少</li>
 <li>支持大并发</li>
 </ul>
-<h4 id="服务器网络模型"><a href="#服务器网络模型" class="headerlink" title="服务器网络模型"></a><div id="title">服务器网络模型</div></h4><p><strong>大访问量下Apache和Nginx谁性能高？</strong></p>
+<h4 id="服务器网络I-O模型"><a href="#服务器网络I-O模型" class="headerlink" title="服务器网络I/O模型"></a><div id="title">服务器网络I/O模型</div></h4><p><strong>大访问量下Apache和Nginx谁性能高？</strong></p>
 <p><strong>为什么大访问量下Nginx性能更高？</strong></p>
 <blockquote>
 <p>两者采用的服务器的模式不一样</p>
@@ -300,8 +300,37 @@ onmouseup="document.selection.empty()">-->
 </ul>
 <h5 id="两个网络模型的区别"><a href="#两个网络模型的区别" class="headerlink" title="两个网络模型的区别"></a><div id="title">两个网络模型的区别</div></h5><p><img src="https://i.loli.net/2018/04/08/5ac9b7468b035.jpg" alt="网络模型3.jpg"></p>
 <hr>
-<p><img src="https://i.loli.net/2018/04/08/5ac9b6f6a3942.jpg" alt="网路模型1.jpg"></p>
-<h5 id="如何选择"><a href="#如何选择" class="headerlink" title="如何选择"></a><div id="title">如何选择</div></h5><ul>
+<p><strong>select的优点：</strong></p>
+<blockquote>
+<p><code>select</code>目前几乎在所有的平台上支持，其良好跨平台支持也是它的一个优点。</p>
+</blockquote>
+<p><strong>select的缺点：</strong></p>
+<ol>
+<li><p><code>select</code>的一个缺点在于单个进程能够监视的文件描述符的数量存在最大限制，在Linux上一般为1024，可以通过修改宏定义甚至重新编译内核的方式提升这一限制，但是这样也会造成效率的降低。</p>
+</li>
+<li><p>对socket进行扫描时是线性扫描，即采用轮询的方法，效率较低。当套接字比较多的时候，每次select()都要通过遍历FD_SETSIZE个Socket来完成调度，不管哪个Socket是活跃的，都遍历一遍。这会浪费很多CPU时间。如果能给套接字注册某个回调函数，当他们活跃时，自动完成相关操作，那就避免了轮询，这正是epoll与kqueue做的。</p>
+</li>
+<li><p>需要维护一个用来存放大量fd的数据结构，这样会使得用户空间和内核空间在传递该结构时复制开销大。</p>
+</li>
+</ol>
+<p><strong>epoll介绍</strong></p>
+<blockquote>
+<p>epoll是在2.6内核中提出的，是之前的select和poll的增强版本。相对于select和poll来说，epoll更加灵活，没有描述符限制。epoll使用一个文件描述符管理多个描述符，将用户关系的文件描述符的事件存放到内核的一个事件表中，这样在用户空间和内核空间的copy只需一次。</p>
+</blockquote>
+<p><strong>epoll的优点</strong></p>
+<ol>
+<li><p>没有最大并发连接的限制，能打开的FD的上限远大于1024（1G的内存上能监听约10万个端口）</p>
+</li>
+<li><p>效率提升，不是轮询的方式，不会随着FD数目的增加效率下降。只有活跃可用的FD才会调用<code>callback</code>函数；即Epoll最大的优点就在于它只管你“活跃”的连接，而跟连接总数无关，因此在实际的网络环境中，Epoll的效率就会远远高于select和poll。</p>
+</li>
+<li><p>内存拷贝，利用<code>mmap()</code>文件映射内存加速与内核空间的消息传递；即epoll使用mmap减少复制开销。</p>
+</li>
+</ol>
+<hr>
+<h5 id="如何选择"><a href="#如何选择" class="headerlink" title="如何选择"></a><div id="title">如何选择</div></h5><p>综上，在选择select，epoll时要根据具体的使用场合以及这两种方式的自身特点：</p>
+<ul>
+<li>表面上看epoll的性能最好，但是在连接数少并且连接都十分活跃的情况下，select性能可能比epoll好，毕竟epoll的通知机制需要很多函数回调</li>
+<li>select低效是因为每次它都需要轮询。但低效也是相对的，视情况而定，也可通过良好的设计改善</li>
 <li>一般访问量网站优先选择Apache，它稳定可靠</li>
 <li>Apache模块非常丰富，为了用它的模块得选它</li>
 <li>Apache的rewrite非常强大，rewrite多就选择它</li>
@@ -553,7 +582,7 @@ onmouseup="document.selection.empty()">-->
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/10/05/PHP的运行模式以及底层原理讲解/" alt="微信分享二维码">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/10/05/PHP的运行模式/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -567,18 +596,18 @@ onmouseup="document.selection.empty()">-->
   
 <nav id="article-nav">
   
-    <a href="/2017/10/05/session和cookie/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/10/06/常见的Http认证机制/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Session 和 cookie
+          常见的Http认证机制
         
       </div>
     </a>
   
   
-    <a href="/2017/09/02/dvwa学习总结/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">DVWA-1.9总结学习</div>
+    <a href="/2017/10/05/session和cookie/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Session 和 cookie</div>
       <i class="icon-circle-right"></i>
     </a>
   
