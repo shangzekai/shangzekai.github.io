@@ -166,7 +166,366 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-MySQL高级部分" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MySQL高级学习目录
+    </h1>
+  
+
+        
+        <a href="/2017/05/05/MySQL高级部分/" class="archive-article-date">
+  	<time datetime="2017-05-05T12:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#视图"><span class="toc-text">视图</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-创建视图"><span class="toc-text">1. 创建视图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-使用视图"><span class="toc-text">2. 使用视图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-删除视图"><span class="toc-text">3. 删除视图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-修改视图"><span class="toc-text">4. 修改视图</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#函数"><span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-常见内置函数"><span class="toc-text">1. 常见内置函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-自定义函数"><span class="toc-text">2. 自定义函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-删除函数"><span class="toc-text">3. 删除函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-执行函数"><span class="toc-text">4. 执行函数</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#触发器"><span class="toc-text">触发器</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-触发器的定义"><span class="toc-text">1. 触发器的定义</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-触发器的应用场合"><span class="toc-text">2. 触发器的应用场合</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-触发器创建语法"><span class="toc-text">3. 触发器创建语法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-删除触发器"><span class="toc-text">4. 删除触发器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-使用触发器"><span class="toc-text">5. 使用触发器</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#存储过程"><span class="toc-text">存储过程</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-创建存储过程"><span class="toc-text">1. 创建存储过程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-删除存储过程"><span class="toc-text">2. 删除存储过程</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-执行存储过程"><span class="toc-text">3. 执行存储过程</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#事务"><span class="toc-text">事务</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-事务的ACID特性"><span class="toc-text">1. 事务的ACID特性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-事务的用法"><span class="toc-text">2. 事务的用法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-事务常见的执行流程"><span class="toc-text">3. 事务常见的执行流程</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#索引"><span class="toc-text">索引</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-索引的概念"><span class="toc-text">1. 索引的概念</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-常见的索引类型"><span class="toc-text">2. 常见的索引类型</span></a></li></ol></li></ol>
+          <hr/>
+        </div>
+        
+        <h4 id="视图"><a href="#视图" class="headerlink" title="视图"></a><div id="title">视图</div></h4><blockquote>
+<p>视图是一个虚拟表（非真实存在），其本质是【根据SQL语句获取动态的数据集，并为其命名】，用户使用时只需使用【名称】即可获取结果集，并可以将其当作表来使用</p>
+</blockquote>
+<a id="more"></a>
+<h5 id="1-创建视图"><a href="#1-创建视图" class="headerlink" title="1. 创建视图"></a>1. 创建视图</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">--格式：CREATE VIEW 视图名称 AS  SQL语句</div><div class="line">CREATE VIEW v1 AS </div><div class="line">SELET nid, name from A where nid &gt; 4</div></pre></td></tr></table></figure>
+<h5 id="2-使用视图"><a href="#2-使用视图" class="headerlink" title="2. 使用视图"></a>2. 使用视图</h5><blockquote>
+<p>使用视图时，将其当作表进行操作即可，由于视图是虚拟表，所以无法使用其对真实表进行创建、更新和删除操作，仅能做查询用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">select * from v1</div></pre></td></tr></table></figure></p>
+</blockquote>
+<h5 id="3-删除视图"><a href="#3-删除视图" class="headerlink" title="3. 删除视图"></a>3. 删除视图</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">--格式：DROP VIEW 视图名称</div><div class="line">DROP VIEW v1</div></pre></td></tr></table></figure>
+<h5 id="4-修改视图"><a href="#4-修改视图" class="headerlink" title="4. 修改视图"></a>4. 修改视图</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">-- 格式：ALTER VIEW 视图名称 AS SQL语句</div><div class="line"></div><div class="line">ALTER VIEW v1 AS</div><div class="line">SELET A.nid, B. NAME FROM A</div><div class="line">LEFT JOIN B ON A.id = B.nid</div><div class="line">LEFT JOIN C ON A.id = C.nid</div><div class="line">WHERE</div><div class="line">    A.id &gt; 2</div><div class="line">AND C.nid &lt; 5</div></pre></td></tr></table></figure>
+<h4 id="函数"><a href="#函数" class="headerlink" title="函数"></a><div id="title">函数</div></h4><h5 id="1-常见内置函数"><a href="#1-常见内置函数" class="headerlink" title="1. 常见内置函数"></a>1. 常见内置函数</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div></pre></td><td class="code"><pre><div class="line">CHAR_LENGTH(str)</div><div class="line">        返回值为字符串str 的长度，长度的单位为字符。一个多字节字符算作一个单字符。</div><div class="line">        对于一个包含五个二字节字符集, LENGTH()返回值为 10, 而CHAR_LENGTH()的返回值为5。</div><div class="line"></div><div class="line">    CONCAT(str1,str2,...)</div><div class="line">        字符串拼接</div><div class="line">        如有任何一个参数为NULL ，则返回值为 NULL。</div><div class="line">    CONCAT_WS(separator,str1,str2,...)</div><div class="line">        字符串拼接（自定义连接符）</div><div class="line">        CONCAT_WS()不会忽略任何空字符串。 (然而会忽略所有的 NULL）。</div><div class="line"></div><div class="line">    CONV(N,from_base,to_base)</div><div class="line">        进制转换</div><div class="line">        例如：</div><div class="line">            SELECT CONV(&apos;a&apos;,16,2); 表示将 a 由16进制转换为2进制字符串表示</div><div class="line"></div><div class="line">    FORMAT(X,D)</div><div class="line">        将数字X 的格式写为&apos;#,###,###.##&apos;,以四舍五入的方式保留小数点后 D 位， 并将结果以字符串的形式返回。若  D 为 0, 则返回结果不带有小数点，或不含小数部分。</div><div class="line">        例如：</div><div class="line">            SELECT FORMAT(12332.1,4); 结果为： &apos;12,332.1000&apos;</div><div class="line">    INSERT(str,pos,len,newstr)</div><div class="line">        在str的指定位置插入字符串</div><div class="line">            pos：要替换位置其实位置</div><div class="line">            len：替换的长度</div><div class="line">            newstr：新字符串</div><div class="line">        特别的：</div><div class="line">            如果pos超过原字符串长度，则返回原字符串</div><div class="line">            如果len超过原字符串长度，则由新字符串完全替换</div><div class="line">    INSTR(str,substr)</div><div class="line">        返回字符串 str 中子字符串的第一个出现位置。</div><div class="line"></div><div class="line">    LEFT(str,len)</div><div class="line">        返回字符串str 从开始的len位置的子序列字符。</div><div class="line"></div><div class="line">    LOWER(str)</div><div class="line">        变小写</div><div class="line"></div><div class="line">    UPPER(str)</div><div class="line">        变大写</div><div class="line"></div><div class="line">    LTRIM(str)</div><div class="line">        返回字符串 str ，其引导空格字符被删除。</div><div class="line">    RTRIM(str)</div><div class="line">        返回字符串 str ，结尾空格字符被删去。</div><div class="line">    SUBSTRING(str,pos,len)</div><div class="line">        获取字符串子序列</div><div class="line"></div><div class="line">    LOCATE(substr,str,pos)</div><div class="line">        获取子序列索引位置</div><div class="line"></div><div class="line">    REPEAT(str,count)</div><div class="line">        返回一个由重复的字符串str 组成的字符串，字符串str的数目等于count 。</div><div class="line">        若 count &lt;= 0,则返回一个空字符串。</div><div class="line">        若str 或 count 为 NULL，则返回 NULL 。</div><div class="line">    REPLACE(str,from_str,to_str)</div><div class="line">        返回字符串str 以及所有被字符串to_str替代的字符串from_str 。</div><div class="line">    REVERSE(str)</div><div class="line">        返回字符串 str ，顺序和字符顺序相反。</div><div class="line">    RIGHT(str,len)</div><div class="line">        从字符串str 开始，返回从后边开始len个字符组成的子序列</div><div class="line"></div><div class="line">    SPACE(N)</div><div class="line">        返回一个由N空格组成的字符串。</div><div class="line"></div><div class="line">    SUBSTRING(str,pos) , SUBSTRING(str FROM pos) SUBSTRING(str,pos,len) , SUBSTRING(str FROM pos FOR len)</div><div class="line">        不带有len 参数的格式从字符串str返回一个子字符串，起始于位置 pos。带有len参数的格式从字符串str返回一个长度同len字符相同的子字符串，起始于位置 pos。 使用 FROM的格式为标准 SQL 语法。也可能对pos使用一个负值。假若这样，则子字符串的位置起始于字符串结尾的pos 字符，而不是字符串的开头位置。在以下格式的函数中可以对pos 使用一个负值。</div><div class="line"></div><div class="line">        mysql&gt; SELECT SUBSTRING(&apos;Quadratically&apos;,5);</div><div class="line">            -&gt; &apos;ratically&apos;</div><div class="line"></div><div class="line">        mysql&gt; SELECT SUBSTRING(&apos;foobarbar&apos; FROM 4);</div><div class="line">            -&gt; &apos;barbar&apos;</div><div class="line"></div><div class="line">        mysql&gt; SELECT SUBSTRING(&apos;Quadratically&apos;,5,6);</div><div class="line">            -&gt; &apos;ratica&apos;</div><div class="line"></div><div class="line">        mysql&gt; SELECT SUBSTRING(&apos;Sakila&apos;, -3);</div><div class="line">            -&gt; &apos;ila&apos;</div><div class="line"></div><div class="line">        mysql&gt; SELECT SUBSTRING(&apos;Sakila&apos;, -5, 3);</div><div class="line">            -&gt; &apos;aki&apos;</div><div class="line"></div><div class="line">        mysql&gt; SELECT SUBSTRING(&apos;Sakila&apos; FROM -4 FOR 2);</div><div class="line">            -&gt; &apos;ki&apos;</div><div class="line"></div><div class="line">    TRIM([&#123;BOTH | LEADING | TRAILING&#125; [remstr] FROM] str) TRIM(remstr FROM] str)</div><div class="line">        返回字符串 str ， 其中所有remstr 前缀和/或后缀都已被删除。若分类符BOTH、LEADIN或TRAILING中没有一个是给定的,则假设为BOTH 。 remstr 为可选项，在未指定情况下，可删除空格。</div><div class="line"></div><div class="line">        mysql&gt; SELECT TRIM(&apos;  bar   &apos;);</div><div class="line">                -&gt; &apos;bar&apos;</div><div class="line"></div><div class="line">        mysql&gt; SELECT TRIM(LEADING &apos;x&apos; FROM &apos;xxxbarxxx&apos;);</div><div class="line">                -&gt; &apos;barxxx&apos;</div><div class="line"></div><div class="line">        mysql&gt; SELECT TRIM(BOTH &apos;x&apos; FROM &apos;xxxbarxxx&apos;);</div><div class="line">                -&gt; &apos;bar&apos;</div><div class="line"></div><div class="line">        mysql&gt; SELECT TRIM(TRAILING &apos;xyz&apos; FROM &apos;barxxyz&apos;);</div><div class="line">                -&gt; &apos;barx&apos;</div></pre></td></tr></table></figure>
+<p><em>更多：<a href="http://doc.mysql.cn/mysql5/refman-5.1-zh.html-chapter/functions.html#encryption-functions" target="_blank" rel="external">http://doc.mysql.cn/mysql5/refman-5.1-zh.html-chapter/functions.html#encryption-functions</a></em></p>
+<h5 id="2-自定义函数"><a href="#2-自定义函数" class="headerlink" title="2. 自定义函数"></a>2. 自定义函数</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">delimiter \\</div><div class="line">create function f1(</div><div class="line">    i1 int,</div><div class="line">    i2 int)</div><div class="line">returns int</div><div class="line">BEGIN</div><div class="line">    declare num int;</div><div class="line">    set num = i1 + i2;</div><div class="line">    return(num);</div><div class="line">END \\</div><div class="line">delimiter ;</div></pre></td></tr></table></figure>
+<h5 id="3-删除函数"><a href="#3-删除函数" class="headerlink" title="3. 删除函数"></a>3. 删除函数</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">drop function func_name;</div></pre></td></tr></table></figure>
+<h5 id="4-执行函数"><a href="#4-执行函数" class="headerlink" title="4. 执行函数"></a>4. 执行函数</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"># 获取返回值</div><div class="line">declare @i VARCHAR(32);</div><div class="line">select UPPER(&apos;alex&apos;) into @i;</div><div class="line">SELECT @i;</div><div class="line"></div><div class="line"></div><div class="line"># 在查询中使用</div><div class="line">select f1(11,nid) ,name from tb2;</div></pre></td></tr></table></figure>
+<h4 id="触发器"><a href="#触发器" class="headerlink" title="触发器"></a><div id="title">触发器</div></h4><h5 id="1-触发器的定义"><a href="#1-触发器的定义" class="headerlink" title="1. 触发器的定义"></a>1. 触发器的定义</h5><blockquote>
+<p>进行数据库应用软件的开发时，我们有时会碰到表中的某些数据改变，希望同时引起其他相关数据改变的需求<br>利用触发器就能满足这样的需求,它能在表中的某些特定数据变化时自动完成相关的操作</p>
+</blockquote>
+<h5 id="2-触发器的应用场合"><a href="#2-触发器的应用场合" class="headerlink" title="2. 触发器的应用场合"></a>2. 触发器的应用场合</h5><ul>
+<li><p>当向一张表中添加或删除记录时，需要在相关表中进行同步操作</p>
+<blockquote>
+<p>比如，当一个订单产生时,订单所购的商品的库存量相应减少</p>
+</blockquote>
+</li>
+<li><p>当表上某列数据的值与其他表中的数据有联系时</p>
+<blockquote>
+<p>比如，当某客户进行欠款消费，可以在生成订单时通过设计触发器判断该客户的累计欠款是否超出了最大限度</p>
+</blockquote>
+</li>
+<li><p>当需要对某张表进行跟踪时</p>
+<blockquote>
+<p>比如，当有新订单产生时，需要及时通知相关人员进行处理，此时可以在订单表上设计添加触发器加以实现</p>
+</blockquote>
+</li>
+</ul>
+<h5 id="3-触发器创建语法"><a href="#3-触发器创建语法" class="headerlink" title="3. 触发器创建语法"></a>3. 触发器创建语法</h5><p><img src="https://ooo.0o0.ooo/2017/05/17/591bee1454e9f.png" alt="chufaqi.png"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"># 插入前</div><div class="line">CREATE TRIGGER tri_before_insert_tb1 BEFORE INSERT ON tb1 FOR EACH ROW</div><div class="line">BEGIN</div><div class="line">    ...</div><div class="line">END</div><div class="line"></div><div class="line"># 插入后</div><div class="line">CREATE TRIGGER tri_after_insert_tb1 AFTER INSERT ON tb1 FOR EACH ROW</div><div class="line">BEGIN</div><div class="line">    ...</div><div class="line">END</div><div class="line"></div><div class="line"># 删除前</div><div class="line">CREATE TRIGGER tri_before_delete_tb1 BEFORE DELETE ON tb1 FOR EACH ROW</div><div class="line">BEGIN</div><div class="line">    ...</div><div class="line">END</div><div class="line"></div><div class="line"># 删除后</div><div class="line">CREATE TRIGGER tri_after_delete_tb1 AFTER DELETE ON tb1 FOR EACH ROW</div><div class="line">BEGIN</div><div class="line">    ...</div><div class="line">END</div><div class="line"></div><div class="line"># 更新前</div><div class="line">CREATE TRIGGER tri_before_update_tb1 BEFORE UPDATE ON tb1 FOR EACH ROW</div><div class="line">BEGIN</div><div class="line">    ...</div><div class="line">END</div><div class="line"></div><div class="line"># 更新后</div><div class="line">CREATE TRIGGER tri_after_update_tb1 AFTER UPDATE ON tb1 FOR EACH ROW</div><div class="line">BEGIN</div><div class="line">    ...</div><div class="line">END</div></pre></td></tr></table></figure>
+<p><strong>触发器案例</strong></p>
+<ul>
+<li><p>插入前触发器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">delimiter //</div><div class="line">CREATE TRIGGER tri_before_insert_tb1 BEFORE INSERT ON tb1 FOR EACH ROW</div><div class="line">BEGIN</div><div class="line"></div><div class="line">IF NEW. NAME == &apos;alex&apos; THEN</div><div class="line">    INSERT INTO tb2 (NAME)</div><div class="line">VALUES</div><div class="line">    (&apos;aa&apos;)</div><div class="line">END</div><div class="line">END//</div><div class="line">delimiter ;</div></pre></td></tr></table></figure>
+</li>
+<li><p>插入后触发器</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">delimiter //</div><div class="line">CREATE TRIGGER tri_after_insert_tb1 AFTER INSERT ON tb1 FOR EACH ROW</div><div class="line">BEGIN</div><div class="line">    IF NEW. num = 666 THEN</div><div class="line">        INSERT INTO tb2 (NAME)</div><div class="line">        VALUES</div><div class="line">            (&apos;666&apos;),</div><div class="line">            (&apos;666&apos;) ;</div><div class="line">    ELSEIF NEW. num = 555 THEN</div><div class="line">        INSERT INTO tb2 (NAME)</div><div class="line">        VALUES</div><div class="line">            (&apos;555&apos;),</div><div class="line">            (&apos;555&apos;) ;</div><div class="line">    END IF;</div><div class="line">END//</div><div class="line">delimiter ;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>注意：NEW表示即将插入的数据行，OLD表示即将删除的数据行</strong></p>
+<h5 id="4-删除触发器"><a href="#4-删除触发器" class="headerlink" title="4. 删除触发器"></a>4. 删除触发器</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">DROP TRIGGER tri_after_insert_tb1;</div></pre></td></tr></table></figure>
+<h5 id="5-使用触发器"><a href="#5-使用触发器" class="headerlink" title="5. 使用触发器"></a>5. 使用触发器</h5><blockquote>
+<p>触发器无法由用户直接调用，而知由于对表的【增/删/改】操作被动引发的</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">insert into tb1(num) values(666)</div></pre></td></tr></table></figure>
+<h4 id="存储过程"><a href="#存储过程" class="headerlink" title="存储过程"></a><div id="title">存储过程</div></h4><blockquote>
+<p>存储过程是一个SQL语句集合，当主动去调用存储过程时，其中内部的SQL语句会按照逻辑执行</p>
+</blockquote>
+<h5 id="1-创建存储过程"><a href="#1-创建存储过程" class="headerlink" title="1. 创建存储过程"></a>1. 创建存储过程</h5><ul>
+<li><p>无参数的存储过程</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"># 创建存储过程</div><div class="line"></div><div class="line">delimiter //</div><div class="line">create procedure p1()</div><div class="line">BEGIN</div><div class="line">    select * from t1;</div><div class="line">END//</div><div class="line">delimiter ;</div><div class="line"></div><div class="line"># 执行存储过程</div><div class="line"></div><div class="line">call p1()</div></pre></td></tr></table></figure>
+</li>
+<li><p>有参数的存储过程</p>
+</li>
+</ul>
+<p>对于存储过程，可以接收参数，其参数有三类：</p>
+<ul>
+<li>in          仅用于传入参数用</li>
+<li>out        仅用于返回值用</li>
+<li>inout     既可以传入又可以当作返回值</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">-- 创建存储过程</div><div class="line">delimiter \\</div><div class="line">create procedure p1(</div><div class="line">    in i1 int,</div><div class="line">    in i2 int,</div><div class="line">    inout i3 int,</div><div class="line">    out r1 int</div><div class="line">)</div><div class="line">BEGIN</div><div class="line">    DECLARE temp1 int;</div><div class="line">    DECLARE temp2 int default 0;</div><div class="line">    </div><div class="line">    set temp1 = 1;</div><div class="line"></div><div class="line">    set r1 = i1 + i2 + temp1 + temp2;</div><div class="line">    </div><div class="line">    set i3 = i3 + 100;</div><div class="line"></div><div class="line">end\\</div><div class="line">delimiter ;</div><div class="line"></div><div class="line">-- 执行存储过程</div><div class="line">set @t1 =4;</div><div class="line">set @t2 = 0;</div><div class="line">CALL p1 (1, 2 ,@t1, @t2);</div><div class="line">SELECT @t1,@t2;</div></pre></td></tr></table></figure>
+<h5 id="2-删除存储过程"><a href="#2-删除存储过程" class="headerlink" title="2. 删除存储过程"></a>2. 删除存储过程</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">drop procedure proc_name;</div></pre></td></tr></table></figure>
+<h5 id="3-执行存储过程"><a href="#3-执行存储过程" class="headerlink" title="3. 执行存储过程"></a>3. 执行存储过程</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">-- 无参数</div><div class="line">call proc_name()</div><div class="line"></div><div class="line">-- 有参数，全in</div><div class="line">call proc_name(1,2)</div><div class="line"></div><div class="line">-- 有参数，有in，out，inout</div><div class="line">set @t1=0;</div><div class="line">set @t2=3;</div><div class="line">call proc_name(1,2,@t1,@t2)</div></pre></td></tr></table></figure>
+<h4 id="事务"><a href="#事务" class="headerlink" title="事务"></a><div id="title">事务</div></h4><blockquote>
+<p>思考:<br>我去银行给朋友汇款,<br>我卡上有1000元,<br>朋友卡上500元,<br>我给朋友转账50元(无手续费),<br>如果,我的钱刚扣,而朋友的钱又没加时,<br>网线断了,怎么办?</p>
+</blockquote>
+<h5 id="1-事务的ACID特性"><a href="#1-事务的ACID特性" class="headerlink" title="1. 事务的ACID特性"></a>1. 事务的ACID特性</h5><blockquote>
+<p>原子性(Atomicity)：原子意为最小的粒子，或者说不能再分的事物。<br>数据库事务的不可再分的原则即为原子性。<br>组成事务的所有查询必须：</p>
+<ul>
+<li>要么全部执行，要么全部取消（就像上面的银行例子）<ul>
+<li>一致性(Consistency)：指数据的规则,在事务前/后应保持一致</li>
+<li>隔离性(Isolation)：简单点说，某个事务的操作对其他事务不可见的.</li>
+<li>持久性(Durability)：当事务完成后，其影响应该保留下来，不能撤消</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h5 id="2-事务的用法"><a href="#2-事务的用法" class="headerlink" title="2. 事务的用法"></a>2. 事务的用法</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">开启事务(start transaction)</div><div class="line">执行sql操作(普通sql操作)</div><div class="line">提交/回滚(commit/rollback)</div></pre></td></tr></table></figure>
+<p><strong>注意：建表的时候, 选择 innodb 引擎</strong></p>
+<h5 id="3-事务常见的执行流程"><a href="#3-事务常见的执行流程" class="headerlink" title="3. 事务常见的执行流程"></a>3. 事务常见的执行流程</h5><p>购物流程中的订单付款操作含有以下3步子操作：</p>
+<ul>
+<li>从用户的余额中扣除订单价格</li>
+<li>在用户的账户变动记录里记下流水</li>
+<li>修改订单状态为已付款</li>
+</ul>
+<p>这三步需保证原子性,请用事务来控制此过程</p>
+<h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a><div id="title">索引</div></h4><h5 id="1-索引的概念"><a href="#1-索引的概念" class="headerlink" title="1. 索引的概念"></a>1. 索引的概念</h5><blockquote>
+<p>类似于字典中的目录，如何快速找到某个字?<br>可以给字典加目录</p>
+<p>对数据库来说,索引的作用即是给 “数据” 加目录</p>
+<p>所以所谓的索引，是数据库中专门用于帮助用户快速查询数据的一种数据结构</p>
+</blockquote>
+<h5 id="2-常见的索引类型"><a href="#2-常见的索引类型" class="headerlink" title="2. 常见的索引类型"></a>2. 常见的索引类型</h5><ul>
+<li>普通索引</li>
+</ul>
+<blockquote>
+<p>普通索引仅有一个功能：加速查询</p>
+</blockquote>
+<p><strong>索引的创建</strong></p>
+<p>1) 创建表 + 索引</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">create table in1(</div><div class="line">    nid int not null auto_increment primary key,</div><div class="line">    name varchar(32) not null,</div><div class="line">    email varchar(64) not null,</div><div class="line">    extra text,</div><div class="line">    index ix_name (name)</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>2) 创建索引</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">create index index_name on table_name(column_name)</div></pre></td></tr></table></figure>
+<p>3) 删除索引</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">drop index_name on table_name;</div></pre></td></tr></table></figure>
+<p>4) 查看索引</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">show index from table_name;</div></pre></td></tr></table></figure>
+<ul>
+<li>唯一索引</li>
+</ul>
+<blockquote>
+<p>唯一索引有两个功能：加速查询 和 唯一约束（可含null）</p>
+</blockquote>
+<p><strong>索引的创建</strong></p>
+<p>1) 创建表 + 索引</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">create table in1(</div><div class="line">    nid int not null auto_increment primary key,</div><div class="line">    name varchar(32) not null,</div><div class="line">    email varchar(64) not null,</div><div class="line">    extra text,</div><div class="line">    unique ix_name (name)</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>2) 创建索引</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">create unique index 索引名 on 表名(列名)</div></pre></td></tr></table></figure>
+<p>3) 删除索引</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">drop unique index 索引名 on 表名</div></pre></td></tr></table></figure>
+<ul>
+<li>联合索引</li>
+</ul>
+<blockquote>
+<p>组合索引是将n个列组合成一个索引</p>
+<p>其应用场景为：频繁的同时使用n列来进行查询，如：where n1 = ‘alex’ and n2 = 666</p>
+</blockquote>
+<p><strong>索引的创建</strong></p>
+<p>1) 创建表 + 索引</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">create table in3(</div><div class="line">    nid int not null auto_increment primary key,</div><div class="line">    name varchar(32) not null,</div><div class="line">    email varchar(64) not null,</div><div class="line">    extra text</div><div class="line">)</div></pre></td></tr></table></figure>
+<p>2) 创建索引</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">create index ix_name_email on in3(name,email);</div></pre></td></tr></table></figure>
+<p>如上创建组合索引之后，查询：</p>
+<ul>
+<li>name and email    – 使用索引</li>
+<li>name              – 使用索引</li>
+<li>email             – 不使用索引</li>
+</ul>
+<p><strong>注意：对于同时搜索n个条件时，组合索引的性能好于多个单一索引合并</strong></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySQL</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">高级</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/MySQL/" class="article-tag-list-link color1">MySQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/05/MySQL高级部分/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/05/05/MySQL初级部分/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          MySQL基础学习目录
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/05/Python操作MySQL的方式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Python操作MySQL的方式</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <section id="comments" style="margin:10px;padding:10px;background:#fff;">
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "mjstUtcUPaEVJpt5xt5zWykf-gzGzoHsz",
+            app_key: "4CY7cYn38n302Lor7lqqLoJO",
+            placeholder: "来呀!快活呀!",
+            avatar:"mm"
+        });
+    }
+</script>
+
+    </section>
+ 
+
+  
+
+
 
           </div>
         </div>

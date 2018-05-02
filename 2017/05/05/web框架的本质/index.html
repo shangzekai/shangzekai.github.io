@@ -167,7 +167,311 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-web框架的本质" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      web框架初识
+    </h1>
+  
+
+        
+        <a href="/2017/05/05/web框架的本质/" class="archive-article-date">
+  	<time datetime="2017-05-05T10:50:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#web框架的本质"><span class="toc-text">web框架的本质</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#wsgiref"><span class="toc-text">wsgiref</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#自定义web框架"><span class="toc-text">自定义web框架</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#项目的演进"><span class="toc-text">项目的演进</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#常见的框架模式-MVC-和-MTV"><span class="toc-text">常见的框架模式 MVC 和 MTV </span></a></li></ol>
+          <hr/>
+        </div>
+        
+        <h4 id="web框架的本质"><a href="#web框架的本质" class="headerlink" title="web框架的本质"></a><div id="title">web框架的本质</div></h4><blockquote>
+<p>所有的web框架应用，本质上其实就是一个socket</p>
+</blockquote>
+<a id="more"></a>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> socket</div><div class="line">  </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">handle_request</span><span class="params">(conn)</span>:</span></div><div class="line">    buf = conn.recv(<span class="number">1024</span>)</div><div class="line">    conn.send(<span class="string">"HTTP/1.1 200 OK\r\n\r\n"</span>.encode(<span class="string">'utf-8'</span>))</div><div class="line">    conn.send(<span class="string">"Hello, World！"</span>.encode(<span class="string">'utf-8'</span>))</div><div class="line">  </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)</div><div class="line">    sock.bind((<span class="string">'localhost'</span>,<span class="number">8000</span>))</div><div class="line">    sock.listen(<span class="number">5</span>)</div><div class="line">  </div><div class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</div><div class="line">        conn, address = sock.accept()</div><div class="line">        handle_request(conn)</div><div class="line">        conn.close()</div><div class="line">  </div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>从上述简单的代码，我们也知道了web框架的工作流程：</p>
+<ul>
+<li>客户端发送http请求到服务端</li>
+<li>服务端获得请求，交给相应的程序进行处理</li>
+<li>处理完成后，服务器返回给客户端http响应</li>
+</ul>
+</blockquote>
+<h4 id="wsgiref"><a href="#wsgiref" class="headerlink" title="wsgiref"></a><div id="title">wsgiref</div></h4><blockquote>
+<p>Python提供了一种方式，可以将服务端的socket程序进行封装，便于调用</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> wsgiref.simple_server <span class="keyword">import</span> make_server</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">application</span><span class="params">(environ, start_response)</span>:</span></div><div class="line">    start_response(<span class="string">'200 OK'</span>, [(<span class="string">'Content-Type'</span>, <span class="string">'text/html'</span>)])</div><div class="line">    <span class="keyword">return</span> [<span class="string">'&lt;h1&gt;Hello, web!&lt;/h1&gt;'</span>.encode(<span class="string">'utf-8'</span>)]</div><div class="line">    </div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    httpd = make_server(<span class="string">''</span>, <span class="number">9999</span>, application)</div><div class="line">    print(<span class="string">"Serving HTTP on port 9999..."</span>)</div><div class="line">    httpd.serve_forever()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>这个示例程序很简单，创建一个httpd服务器，并监听9999端口，当有客户端请求时，在浏览器显示Hello, web字符串,上例中的参数说明：</p>
+<ul>
+<li>environ : 为一个字典，保存系统变量以及请求相关属性，例如请求路径，请求参数，请求方法等等</li>
+<li>start_response: 为一个函数，设置response的状态码和header，上述例子程序，设置response状态码为200，表示请求成功，在headers添加返回数据类型为text/html</li>
+</ul>
+</blockquote>
+<h4 id="自定义web框架"><a href="#自定义web框架" class="headerlink" title="自定义web框架"></a><div id="title">自定义web框架</div></h4><blockquote>
+<p>在上述的两个例子中，我们使用两个简单的例子，明白了web框架的本质和执行流程，但是我们发现，最终服务端返回的总是一些字符串，这在实际的生产环境中并不是这样的简单。<font color="red">那如何通过输入不同的url，服务端返回不同的响应？</font></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> wsgiref.simple_server <span class="keyword">import</span> make_server</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">return</span> [<span class="string">'this is index'</span>.encode(<span class="string">'utf8'</span>)]</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">return</span> [<span class="string">'this is login'</span>.encode(<span class="string">'utf8'</span>)]</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">routers</span><span class="params">()</span>:</span></div><div class="line">     </div><div class="line">    urlpatterns = [</div><div class="line">        (<span class="string">'/index/'</span>,index),</div><div class="line">        (<span class="string">'/login/'</span>,login),</div><div class="line">    ]</div><div class="line">     </div><div class="line">    <span class="keyword">return</span> urlpatterns</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">RunServer</span><span class="params">(environ, start_response)</span>:</span></div><div class="line">    start_response(<span class="string">'200 OK'</span>, [(<span class="string">'Content-Type'</span>, <span class="string">'text/html'</span>)])</div><div class="line">    url = environ[<span class="string">'PATH_INFO'</span>]</div><div class="line">    urlpatterns = routers()</div><div class="line">    func = <span class="keyword">None</span></div><div class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> urlpatterns:</div><div class="line">        <span class="keyword">if</span> item[<span class="number">0</span>] == url:</div><div class="line">            func = item[<span class="number">1</span>]</div><div class="line">            <span class="keyword">break</span></div><div class="line">    <span class="keyword">if</span> func:</div><div class="line">        <span class="keyword">return</span> func()</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">return</span> <span class="string">'404 not found'</span></div><div class="line">     </div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    httpd = make_server(<span class="string">''</span>, <span class="number">8000</span>, RunServer)</div><div class="line">    <span class="keyword">print</span> <span class="string">"Serving HTTP on port 8000..."</span></div><div class="line">    httpd.serve_forever()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>通过上述的代码，我们实现了简单的逻辑处理请求，根据客户端的请求不同，服务端做出不同的响应。</p>
+</blockquote>
+<h4 id="项目的演进"><a href="#项目的演进" class="headerlink" title="项目的演进"></a><div id="title">项目的演进</div></h4><blockquote>
+<p>随着项目的逐渐增大，代码逐渐增多，这个时候将所有的代码写到一个页面上，显然已经不能符合我们的要求了，因此我们需要将代码进行抽离</p>
+<p>在面的例子中，对于所有的login、index均返回给用户浏览器一个简单的字符串，在现实的Web请求中一般会返回一个复杂的符合HTML规则的字符串，所以我们一般将要返回给用户的HTML写在指定文件中，然后再返回。如：</p>
+</blockquote>
+<p>index.html:<br><figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Index<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>此时，为了方便管理多个html页面，我们可以将这些页面归类放到一个文件夹View下面即可</p>
+</blockquote>
+<p>此时代码如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> wsgiref.simple_server <span class="keyword">import</span> make_server</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></div><div class="line">    f = open(<span class="string">'index.html'</span>, <span class="string">'wb'</span>)</div><div class="line">    data = f.read()</div><div class="line">    <span class="keyword">return</span> data</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">()</span>:</span></div><div class="line">    f = open(<span class="string">'login.html'</span>)</div><div class="line">    data = f.read()</div><div class="line">    <span class="keyword">return</span> data</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">routers</span><span class="params">()</span>:</span></div><div class="line"> </div><div class="line">    urlpatterns = (</div><div class="line">        (<span class="string">'/index/'</span>, index),</div><div class="line">        (<span class="string">'/login/'</span>, login),</div><div class="line">    )</div><div class="line">    <span class="keyword">return</span> urlpatterns</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">run_server</span><span class="params">(environ, start_response)</span>:</span></div><div class="line">    start_response(<span class="string">'200 OK'</span>, [(<span class="string">'Content-Type'</span>, <span class="string">'text/html'</span>)])</div><div class="line">    url = environ[<span class="string">'PATH_INFO'</span>]</div><div class="line">    urlpatterns = routers()</div><div class="line">    func = <span class="keyword">None</span></div><div class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> urlpatterns:</div><div class="line">        <span class="keyword">if</span> item[<span class="number">0</span>] == url:</div><div class="line">            func = item[<span class="number">1</span>]</div><div class="line">            <span class="keyword">break</span></div><div class="line">    <span class="keyword">if</span> func:</div><div class="line">        <span class="keyword">return</span> func()</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">return</span> <span class="string">'404 not found'</span></div><div class="line"> </div><div class="line"> </div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    httpd = make_server(<span class="string">''</span>, <span class="number">8000</span>, run_server)</div><div class="line">    <span class="keyword">print</span> <span class="string">"Serving HTTP on port 8000..."</span></div><div class="line">    httpd.serve_forever()</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>同样，随着应用处理函数也会逐渐增多，因此，我们也可以将类似index() ,login()这样的处理函数进行拆分，放到统一的文件夹Controller下面,使用的时候引入即可</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> wsgiref.simple_server <span class="keyword">import</span> make_server</div><div class="line"><span class="keyword">from</span> Controller <span class="keyword">import</span> account</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">routers</span><span class="params">()</span>:</span></div><div class="line"> </div><div class="line">    urlpatterns = (</div><div class="line">        (<span class="string">'/index/'</span>, account.index),</div><div class="line">        (<span class="string">'/login/'</span>, account.login),</div><div class="line">    )</div><div class="line">    <span class="keyword">return</span> urlpatterns</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">run_server</span><span class="params">(environ, start_response)</span>:</span></div><div class="line">    start_response(<span class="string">'200 OK'</span>, [(<span class="string">'Content-Type'</span>, <span class="string">'text/html'</span>)])</div><div class="line">    url = environ[<span class="string">'PATH_INFO'</span>]</div><div class="line">    urlpatterns = routers()</div><div class="line">    func = <span class="keyword">None</span></div><div class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> urlpatterns:</div><div class="line">        <span class="keyword">if</span> item[<span class="number">0</span>] == url:</div><div class="line">            func = item[<span class="number">1</span>]</div><div class="line">            <span class="keyword">break</span></div><div class="line">    <span class="keyword">if</span> func:</div><div class="line">        <span class="keyword">return</span> func()</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        <span class="keyword">return</span> <span class="string">'404 not found'</span></div><div class="line"> </div><div class="line"> </div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    httpd = make_server(<span class="string">''</span>, <span class="number">8000</span>, run_server)</div><div class="line">    <span class="keyword">print</span> <span class="string">"Serving HTTP on port 8000..."</span></div><div class="line">    httpd.serve_forever()</div></pre></td></tr></table></figure>
+<blockquote>
+<p>代码抽离到这步的时候，此时服务端返回的还是一些静态的文本，现实程序中，我们希望返回的数据是不一样的，比如说我们从数据库中获取数据后，希望能够动态的显示给我们<br>同样，我们也是将关于对数据库的操作代码放到一个统一的文件夹Model中，然后在Controller层引入调用即可</p>
+<p>那我们如何进行动态的显示我们从数据库中获取的数据呢?</p>
+</blockquote>
+<p><strong>我们可以再html代码中，搞一个占位符的东西，如下：</strong><br><figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">h1</span>&gt;</span>Index, @haha <span class="tag">&lt;/<span class="name">h1</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
+<p>如下是在controller层的处理：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">()</span>:</span></div><div class="line">    f = open(<span class="string">'View/index.html'</span>, <span class="string">'rb'</span>)</div><div class="line">    data = f.read()</div><div class="line">    <span class="comment"># 可以使用replace函数对html中的占位符进行替换</span></div><div class="line">    data = data.replace(<span class="string">"@haha"</span>.encode(<span class="string">'utf8'</span>), <span class="string">"你好"</span>.encode(<span class="string">'utf8'</span>))</div><div class="line">    <span class="keyword">return</span> [data]</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>通过上述的两块代码，我们可以非常容易的将从数据库中获取的数据替换到我们的显示页面上，后续会跟大家介绍会有专门的模板来完成数据的替换</p>
+</blockquote>
+<h4 id="常见的框架模式-MVC-和-MTV"><a href="#常见的框架模式-MVC-和-MTV" class="headerlink" title="常见的框架模式 MVC 和 MTV "></a><div id="title">常见的框架模式 MVC 和 MTV </div></h4><p><strong>此时我们再看，整个项目的目录结构，如下</strong></p>
+<p><img src="https://ooo.0o0.ooo/2017/05/24/5925643743601.png" alt="MVC.png"></p>
+<p>这个就是所谓的MVC模式，这个模式认为，程序不论简单或复杂，从结构上看，都可以分成三层。</p>
+<blockquote>
+<p>1）最上面的一层，是直接面向最终用户的”视图层”（View）。它是提供给用户的操作界面，是程序的外壳。<br>2）最底下的一层，是核心的”数据层”（Model），也就是程序需要操作的数据或信息<br>3）中间的一层，就是”控制层”（Controller），它负责根据用户从”视图层”输入的指令，选取”数据层”中的数据，然后对其进行相应的操作，产生最终结果</p>
+</blockquote>
+<p>这三层是紧密联系在一起的，但又是互相独立的，每一层内部的变化不影响其他层。每一层都对外提供接口（Interface），供上面一层调用。这样一来，软件就可以实现模块化，修改外观或者变更数据都不用修改其他层，大大方便了维护和升级</p>
+<p>好处：</p>
+<ul>
+<li><p>各司其职，互不干涉 </p>
+<blockquote>
+<p>在MVC模式中，三个层各司其职，所以如果一旦哪一层的需求发生了变化，就只需要更改相应的层中的代码而不会影响到其它层中的代码</p>
+</blockquote>
+</li>
+<li><p>有利于开发中的分工 </p>
+<blockquote>
+<p>在MVC模式中，由于按层把系统开，那么就能更好的实现开发中的分工。网页设计人员可以进行开发视图层，对业务熟悉的开发人员可开发业务层</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>其实，我们可以想象一下，这种模式在我们生活中也是存在的</strong></p>
+<blockquote>
+<p>比如，你去一家餐馆吃饭，首先你会点餐(view层)，然后将点好的菜交给服务员(Controller层)，然后服务员拿到你的需求后，交给厨师(Model层)处理，当菜做好的时候，又一层一层的返回，最终你吃到了你点的菜</p>
+</blockquote>
+<p><img src="https://ooo.0o0.ooo/2017/05/24/592569f23eb29.png" alt="服务员MVC.png"></p>
+<p>理解了MVC是啥之后，那MTV我们就很容易理解了：</p>
+<blockquote>
+<ul>
+<li>M: model, 相当于model层，和mvc中的m一样</li>
+<li>T: Template, 相当于view层</li>
+<li>V: view, 相当于controller层</li>
+</ul>
+</blockquote>
+<p>感觉有点怪，但Django中就是使用的就是这种模式</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">web</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">框架</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Python/" class="article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/05/web框架的本质/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/05/05/Python操作MySQL的方式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Python操作MySQL的方式
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/05/Python爬虫自动登录GitHub/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Python爬虫自动登录GitHub</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <section id="comments" style="margin:10px;padding:10px;background:#fff;">
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "mjstUtcUPaEVJpt5xt5zWykf-gzGzoHsz",
+            app_key: "4CY7cYn38n302Lor7lqqLoJO",
+            placeholder: "来呀!快活呀!",
+            avatar:"mm"
+        });
+    }
+</script>
+
+    </section>
+ 
+
+  
+
+
 
           </div>
         </div>

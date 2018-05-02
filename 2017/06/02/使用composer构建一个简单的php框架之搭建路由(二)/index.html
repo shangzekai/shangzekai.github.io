@@ -166,7 +166,246 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-使用composer构建一个简单的php框架之搭建路由(二)" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      使用composer构建一个简单的php框架之搭建路由（二）
+    </h1>
+  
+
+        
+        <a href="/2017/06/02/使用composer构建一个简单的php框架之搭建路由(二)/" class="archive-article-date">
+  	<time datetime="2017-06-02T12:50:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#安装macaw"><span class="toc-text">安装macaw</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用macaw"><span class="toc-text">使用macaw</span></a></li></ol>
+          <hr/>
+        </div>
+        
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
+<p>上一篇中我们已经建立了一个空的 Composer 项目，本篇将讲述如何构建路由。推荐 <a href="https://github.com/NoahBuscher/Macaw，对应的" target="_blank" rel="external">https://github.com/NoahBuscher/Macaw，对应的</a> Composer 包为 noahbuscher/macaw </p>
+</blockquote>
+<a id="more"></a>
+<h4 id="安装macaw"><a href="#安装macaw" class="headerlink" title="安装macaw"></a><div id="title">安装macaw</div></h4><p><strong>我们可以直接编辑composer.json文件，添加即可：</strong><br><figure class="highlight leaf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  "require": &#123;</div><div class="line">    "noahbuscher/macaw": "dev-master"</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>然后执行<code>composer update</code>即可</strong></p>
+<p><strong>或者我们也可以直接使用命令：</strong></p>
+<blockquote>
+<p>composer  require noahbuscher/macaw</p>
+</blockquote>
+<p><strong>然后我们查看vendor文件夹下面是否有这个文件即可</strong></p>
+<h4 id="使用macaw"><a href="#使用macaw" class="headerlink" title="使用macaw"></a><div id="title">使用macaw</div></h4><p>新建 public 文件夹，这个文件夹将是用户唯一可见的部分。在文件夹下新建 index.php 文件：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="comment">// Autoload 自动载入</span></div><div class="line"><span class="keyword">require</span> <span class="string">'../vendor/autoload.php'</span>;</div><div class="line"></div><div class="line"><span class="comment">// 路由配置</span></div><div class="line"><span class="keyword">require</span> <span class="string">'../config/routes.php'</span>;</div></pre></td></tr></table></figure></p>
+<p>上面一行表示引入 Composer 的自动载入功能，下面一行表示载入路由配置文件。新建 config 文件夹，在里面新建 routs.php 文件，内容如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">use</span> <span class="title">NoahBuscher</span>\<span class="title">Macaw</span>\<span class="title">Macaw</span>;</div><div class="line"></div><div class="line">Macaw::get(<span class="string">'fuck'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</div><div class="line">  <span class="keyword">echo</span> <span class="string">"成功！"</span>;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">Macaw::get(<span class="string">'(:all)'</span>, <span class="function"><span class="keyword">function</span><span class="params">($fu)</span> </span>&#123;</div><div class="line">  <span class="keyword">echo</span> <span class="string">'未匹配到路由&lt;br&gt;'</span>.$fu;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">Macaw::dispatch();</div></pre></td></tr></table></figure>
+<p>Macaw 的文档位于 <a href="https://github.com/NoahBuscher/Macaw，请按照你的" target="_blank" rel="external">https://github.com/NoahBuscher/Macaw，请按照你的</a> HTTP 服务软件类型自行设置伪静态，其实跟绝大多数框架一样：“将所有非静态文件全部指向 index.php”。</p>
+<p>然后，将某一个端口用 Apache 或 Nginx 分配给 MFFC/public 目录，这一步十分建议用 Apache 或者 Nginx 做。</p>
+<p>如果使用 PHP 内置 HTTP 服务器：</p>
+<blockquote>
+<p>cd public &amp;&amp; php -S 127.0.0.1:3000</p>
+</blockquote>
+<p>将导致路由的 Macaw::get(‘fuck’ 必须写成 Macaw::get(‘/fuck’ 才能响应。</p>
+<p>目前的代码使用 Apache + mod_php 和 Nginx + php-fpm 方式均没有问题。</p>
+<p><strong>配置成功之后，返回如下：</strong><br><img src="https://i.loli.net/2017/10/26/59f153cc9ef36.png" alt="成功.png"></p>
+<p>如果页面乱码，请调整编码为 UTF-8。如果你成功看到以上页面，那么恭喜你，路由配置成功！</p>
+<p>Macaw 只有一个文件，去除空行总共也就一百行多一点，通过代码我们能直接看明白它是怎么工作的。下面我简略分析一下：</p>
+<p>1.Composer 的自动加载在每次 URL 驱动 public/index.php 之后会在内存中维护一个全量命名空间类名到文件名的数组，这样当我们在代码中使用某个类的时候，将自动载入该类所在的文件。</p>
+<p>2.我们在路由文件中载入了 Macaw 类：“use NoahBuscher\Macaw\Macaw;”，接着调用了两次静态方法 ::get()，这个方法是不存在的，将由 vendor/codingbean/macaw/Macaw.php 中的 __callstatic() 接管。</p>
+<p>3.这个函数接受两个参数，<code>$method</code> 和 <code>$params</code>，前者是具体的 function 名称，在这里就是 get，后者是这次调用传递的参数，即 Macaw::get(‘fuck’,function(){…}) 中的两个参数。第一个参数是我们想要监听的 URL 值，第二个参数是一个 PHP 闭包，作为回调，代表 URL 匹配成功后我们想要做的事情。</p>
+<p>4.__callstatic() 做的事情也很简单，分别将目标URL（即 /fuck）、HTTP方法（即 GET）和回调代码压入 <code>$routes</code>、<code>$methods</code> 和 <code>$callbacks</code> 三个 Macaw 类的静态成员变量（数组）中。</p>
+<p>5.路由文件最后一行的 Macaw::dispatch(); 方法才是真正处理当前 URL 的地方。能直接匹配到的会直接调用回调，不能直接匹配到的将利用正则进行匹配。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/06/02/使用composer构建一个简单的php框架之搭建路由(二)/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/06/02/使用composer构建一个简单的php框架(一)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          使用composer构建一个简单的php框架之初识composer（一）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/06/02/使用composer构建一个简单的php框架之搭建MVC(三)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">使用composer构建一个简单的php框架之搭建MVC（三）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <section id="comments" style="margin:10px;padding:10px;background:#fff;">
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "mjstUtcUPaEVJpt5xt5zWykf-gzGzoHsz",
+            app_key: "4CY7cYn38n302Lor7lqqLoJO",
+            placeholder: "来呀!快活呀!",
+            avatar:"mm"
+        });
+    }
+</script>
+
+    </section>
+ 
+
+  
+
+
 
           </div>
         </div>

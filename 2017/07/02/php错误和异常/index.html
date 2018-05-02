@@ -164,7 +164,246 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-php错误和异常" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PHP的错误与异常
+    </h1>
+  
+
+        
+        <a href="/2017/07/02/php错误和异常/" class="archive-article-date">
+  	<time datetime="2017-07-02T12:35:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-07-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#错误"><span class="toc-text">错误</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#错误严重性"><span class="toc-text">错误严重性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#更改错误的报告行为"><span class="toc-text">更改错误的报告行为</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#异常"><span class="toc-text">异常</span></a></li></ol>
+          <hr/>
+        </div>
+        
+        <h4 id="错误"><a href="#错误" class="headerlink" title="错误"></a><div id="title">错误</div></h4><blockquote>
+<p>在许多「重异常」(exception-heavy) 的编程语言中，一旦发生错误，就会抛出异常。这确实是一个可行的方式。不过 PHP 却是一个 「轻异常」(exception-light) 的语言。当然它确实有异常机制，在处理对象时，核心也开始采用这个机制来处理，只是 PHP 会尽可能的执行而无视发生的事情，除非是一个严重错误。</p>
+</blockquote>
+<a id="more"></a>
+<p><strong>举个例子</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ php -a</div><div class="line">php &gt; <span class="keyword">echo</span> $foo;</div><div class="line">Notice: Undefined variable: foo in php shell code on line <span class="number">1</span></div></pre></td></tr></table></figure>
+<p>这里只是一个 notice 级别的错误，PHP 仍然会愉快的继续执行。这对有「重异常」编程经验的人来说会带来困惑，例如在 Python 中，引用一个不存在的变量会抛出异常：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ python</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">print</span> foo</div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">NameError: name <span class="string">'foo'</span> <span class="keyword">is</span> <span class="keyword">not</span> defined</div></pre></td></tr></table></figure>
+<p>本质上的差异在于 Python 会对任何小错误进行抛错，因此开发人员可以确信任何潜在的问题或者边缘的案例都可以被捕捉到，而 PHP 仍然会保持执行，除非极端的问题发生才会抛出异常。</p>
+<h4 id="错误严重性"><a href="#错误严重性" class="headerlink" title="错误严重性"></a><div id="title">错误严重性</div></h4><blockquote>
+<p>PHP 有几个错误严重性等级。三个最常见的的信息类型是错误（error）、通知（notice）和警告（warning）。它们有不同的严重性: E_ERROR 、E_NOTICE和 E_WARNING。错误是运行期间的严重问题，通常是因为代码出错而造成，必须要修正它，否则会使 PHP 停止执行。通知是建议性质的信息，是因为程序代码在执行期有可能造成问题，但程序不会停止。 警告是非致命错误，程序执行也不会因此而中止。</p>
+<p>另一个在编译期间会报错的信息类型是 E_STRICT。这个信息用來建议修改程序代码以维持最佳的互通性并能与今后的 PHP 版本兼容。</p>
+</blockquote>
+<h4 id="更改错误的报告行为"><a href="#更改错误的报告行为" class="headerlink" title="更改错误的报告行为"></a><div id="title">更改错误的报告行为</div></h4><blockquote>
+<p>错误报告可以由 PHP 配置及函数调用改变。使用 PHP 内置的函数 error_reporting()，可以设定程序执行期间的错误等级，方法是传入预定义的错误等级常量，意味着如果你只想看到警告和错误（而非通知），你可以这样设定：</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">error_reporting(E_ERROR | E_WARNING);</div></pre></td></tr></table></figure>
+<blockquote>
+<p>你也可以控制错误是否在屏幕上显示 （开发时比较有用）或隐藏后记录日志 （适用于正式环境）</p>
+</blockquote>
+<p><strong>你可以让 PHP 利用错误控制操作符 @ 来抑制特定的错误。将这个操作符放置在表达式之前，其后的任何错误都不会出现。</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">echo</span> @$foo[<span class="string">'bar'</span>];</div></pre></td></tr></table></figure>
+<p>如果 <code>$foo[&#39;bar&#39;]</code> 存在，程序会将结果输出，如果变量 <code>$foo</code> 或是 <code>&#39;bar&#39;</code> 键值不存在，则会返回 null 并且不输出任何东西。如果不使用错误控制操作符，这个表达式会产生一个错误信息 <code>PHP Notice: Undefined variable: foo 或 PHP Notice: Undefined index: bar 。</code></p>
+<p>这看起来像是个好主意，不过也有一些讨厌的代价。PHP 处理使用 <code>@</code> 的表达式比起不用时效率会低一些。过早的性能优化在所有程序语言中也许都是争论点，不过如果性能在你的应用程序 / 类库中占有重要地位，那么了解错误控制操作符的性能影响就比较重要。</p>
+<p>其次，错误控制操作符会 完全 吃掉错误。不但没有显示，而且也不会记录在错误日志中。此外，在正式环境中 PHP 也没有办法关闭错误控制操作符。也许你认为那些错误时无害的，不过那些较具伤害性的错误同时也会被隐藏。</p>
+<p>如果有方法可以避免错误抑制符，你应该考虑使用，举例来说，上面的程序代码可以这样重写：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">echo</span> <span class="keyword">isset</span>($foo[<span class="string">'bar'</span>]) ? $foo[<span class="string">'bar'</span>] : <span class="string">''</span>;</div></pre></td></tr></table></figure></p>
+<h4 id="异常"><a href="#异常" class="headerlink" title="异常"></a><div id="title">异常</div></h4><p>异常是许多流行编程语言的标配，但它们往往被 PHP 开发人员所忽视。像 Ruby 就是一个极度重视异常的语言，无论有什么错误发生，像是 HTTP 请求失败，或者数据库查询有问题，甚至找不到一个图片资源，Ruby （或是所使用的 gems），将会抛出异常，你可以通过屏幕立刻知道所发生的问题。</p>
+<p>PHP 处理这个问题则比较随意，调用 <code>file_get_contents()</code> 函数通常只会给出 FALSE 值和警告。许多较早的 PHP 框架比如 CodeIgniter 只是返回 false，将信息写入专有的日志，或者让你使用类似 <code>$this-&gt;upload-&gt;get_error()</code> 的方法来查看错误原因。这里的问题在于你必须找出错误所在，并且通过翻阅文档来查看这个类使用了什么样的错误的方法，而不是明确的暴露错误。</p>
+<p>另一个问题发生在当类自动抛出错误到屏幕时会结束程序。这样做会阻挡其他开发者动态处理错误的机会。应该抛出异常让开发人员意识到错误的存在，让他们可以选择处理的方式，例如：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$email = <span class="keyword">new</span> Fuel\Email;</div><div class="line">$email-&gt;subject(<span class="string">'My Subject'</span>);</div><div class="line">$email-&gt;body(<span class="string">'How the heck are you?'</span>);</div><div class="line">$email-&gt;to(<span class="string">'guy@example.com'</span>, <span class="string">'Some Guy'</span>);</div><div class="line"></div><div class="line"><span class="keyword">try</span></div><div class="line">&#123;</div><div class="line">    $email-&gt;send();</div><div class="line">&#125;</div><div class="line"><span class="keyword">catch</span>(Fuel\Email\ValidationFailedException $e)</div><div class="line">&#123;</div><div class="line">    <span class="comment">// 验证失败</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">catch</span>(Fuel\Email\SendingFailedException $e)</div><div class="line">&#123;</div><div class="line">    <span class="comment">// 这个驱动无法发送 email</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">finally</span></div><div class="line">&#123;</div><div class="line">    <span class="comment">// 无论抛出什么样的异常都会执行，并且在正常程序继续之前执行</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/07/02/php错误和异常/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/07/02/SqlMap的介绍/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          SqlMap的使用方法总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/06/02/使用composer构建一个简单的php框架(一)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">使用composer构建一个简单的php框架之初识composer（一）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <section id="comments" style="margin:10px;padding:10px;background:#fff;">
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "mjstUtcUPaEVJpt5xt5zWykf-gzGzoHsz",
+            app_key: "4CY7cYn38n302Lor7lqqLoJO",
+            placeholder: "来呀!快活呀!",
+            avatar:"mm"
+        });
+    }
+</script>
+
+    </section>
+ 
+
+  
+
+
 
           </div>
         </div>

@@ -164,7 +164,272 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-mysql数据备份" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      MySQL备份总结
+    </h1>
+  
+
+        
+        <a href="/2017/05/05/mysql数据备份/" class="archive-article-date">
+  	<time datetime="2017-05-05T15:56:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#为啥会需要备份"><span class="toc-text">为啥会需要备份</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MySQLDump备份数据库"><span class="toc-text">MySQLDump备份数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-不带参数的进行备份"><span class="toc-text">1. 不带参数的进行备份</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-使用-B参数进行备份：（在SQL文件中自动创建原有的数据库名和连接数据库）"><span class="toc-text">2. 使用-B参数进行备份：（在SQL文件中自动创建原有的数据库名和连接数据库）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-使用-B参数进行多个数据库的备份"><span class="toc-text">3. 使用-B参数进行多个数据库的备份</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-使用gzip进行压缩数据文件进行备份：-使用管道符将数据传给gzip然后进行压缩数据成gz的包"><span class="toc-text">4. 使用gzip进行压缩数据文件进行备份：(使用管道符将数据传给gzip然后进行压缩数据成gz的包)</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-使用shell进行分库备份"><span class="toc-text">5. 使用shell进行分库备份</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-备份mysql数据库的表结构（不包含数据）"><span class="toc-text">6. 备份mysql数据库的表结构（不包含数据）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-备份mysql的数据库中的数据（不包含表结构）"><span class="toc-text">7. 备份mysql的数据库中的数据（不包含表结构）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-备份的时候切割binlog日志：（进行增量备份的时候可以用到）"><span class="toc-text">8. 备份的时候切割binlog日志：（进行增量备份的时候可以用到）</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#9-备份的时候会记录指定文件的位置以及mysqlbinglog的文件名称"><span class="toc-text">9. 备份的时候会记录指定文件的位置以及mysqlbinglog的文件名称</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-小结"><span class="toc-text">10. 小结</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#增量恢复的时机"><span class="toc-text">增量恢复的时机</span></a></li></ol>
+          <hr/>
+        </div>
+        
+        <h4 id="为啥会需要备份"><a href="#为啥会需要备份" class="headerlink" title="为啥会需要备份"></a><div id="title">为啥会需要备份</div></h4><p>1）需要升级数据库或者是需要增加一个从库的时候</p>
+<p>2）主库或者从库宕机，需要数据的备份</p>
+<p>3）人为的DDl或者是DML的语句，导致主从库的数据消失</p>
+<p>4）跨机房的灾备，需要备份数据到远端程序</p>
+<a id="more"></a>
+<h4 id="MySQLDump备份数据库"><a href="#MySQLDump备份数据库" class="headerlink" title="MySQLDump备份数据库"></a><div id="title">MySQLDump备份数据库</div></h4><blockquote>
+<p>一般使用的是mysqldump来进行备份，每次dump的数据是1000条，并且在这个过程中会进行锁表(这种方式是逻辑备份，即直接将数据库中的数据导成sql语句进行备份的过程)</p>
+</blockquote>
+<p><strong>主要的使用方法：</strong></p>
+<h5 id="1-不带参数的进行备份"><a href="#1-不带参数的进行备份" class="headerlink" title="1. 不带参数的进行备份"></a>1. 不带参数的进行备份</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">备份test数据库中的所有表数据和表结构</div><div class="line">mysqldump -uroot -ppassword  test &gt;/tmp/test.sql</div><div class="line"> </div><div class="line">备份test数据库中的某个表数据和表结构</div><div class="line">mysqldump -uroot -ppassword  test student &gt;/tmp/test_student.sql</div></pre></td></tr></table></figure>
+<h5 id="2-使用-B参数进行备份：（在SQL文件中自动创建原有的数据库名和连接数据库）"><a href="#2-使用-B参数进行备份：（在SQL文件中自动创建原有的数据库名和连接数据库）" class="headerlink" title="2. 使用-B参数进行备份：（在SQL文件中自动创建原有的数据库名和连接数据库）"></a>2. 使用-B参数进行备份：（在SQL文件中自动创建原有的数据库名和连接数据库）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">备份test数据库中的所有表数据和表结构</div><div class="line">使用-B会自动的创建数据库并且使用数据库</div><div class="line"></div><div class="line">mysqldump -uroot -ppassword  -B test &gt;/tmp/test.sql</div></pre></td></tr></table></figure>
+<h5 id="3-使用-B参数进行多个数据库的备份"><a href="#3-使用-B参数进行多个数据库的备份" class="headerlink" title="3. 使用-B参数进行多个数据库的备份"></a>3. 使用-B参数进行多个数据库的备份</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqldump --user root --password=myrootpassword -B db_test db_second db_third &gt; db_test.sql</div></pre></td></tr></table></figure>
+<h5 id="4-使用gzip进行压缩数据文件进行备份：-使用管道符将数据传给gzip然后进行压缩数据成gz的包"><a href="#4-使用gzip进行压缩数据文件进行备份：-使用管道符将数据传给gzip然后进行压缩数据成gz的包" class="headerlink" title="4. 使用gzip进行压缩数据文件进行备份：(使用管道符将数据传给gzip然后进行压缩数据成gz的包)"></a>4. 使用gzip进行压缩数据文件进行备份：(使用管道符将数据传给gzip然后进行压缩数据成gz的包)</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqldump --user root --password=myrootpassword -B db_test db_second db_third |gzip &gt; db_test.sql.gz</div></pre></td></tr></table></figure>
+<h5 id="5-使用shell进行分库备份"><a href="#5-使用shell进行分库备份" class="headerlink" title="5. 使用shell进行分库备份"></a>5. 使用shell进行分库备份</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysql -uroot -ppasswd  -e &quot;show databases;&quot; |grep -Eiv &quot;database|information|performance&quot;|sed -r &apos;s#^([a-zA-Z_0-9]*$)#mysql -uroot -ppasswd --events -B \1 |gzip&gt; /opt/\1.sql.gz#g&apos;|bash</div></pre></td></tr></table></figure>
+<blockquote>
+<p>上面的命令是将mysql中需要的库进行了分库的备份，这种是在遇到比较多的库的时候，我们可以进行分库的备份。</p>
+</blockquote>
+<p><strong>分库的意义何在：</strong> </p>
+<blockquote>
+<p>有时一个企业的数据库中会有多个库，例如（bbs，www，blog），但是出问题的时候很可能往往是一个库，那如果我们将所有库的数据保存到一个文件中去，那么将来恢复数据的时候，可能会带来很大的麻烦，所以我们一般将库进行分库备份</p>
+</blockquote>
+<h5 id="6-备份mysql数据库的表结构（不包含数据）"><a href="#6-备份mysql数据库的表结构（不包含数据）" class="headerlink" title="6. 备份mysql数据库的表结构（不包含数据）"></a>6. 备份mysql数据库的表结构（不包含数据）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">参数 -d 的作用就是备份数据库的表结构</div><div class="line"></div><div class="line">mysqldump -uroot -ppassword  -d  test</div></pre></td></tr></table></figure>
+<h5 id="7-备份mysql的数据库中的数据（不包含表结构）"><a href="#7-备份mysql的数据库中的数据（不包含表结构）" class="headerlink" title="7. 备份mysql的数据库中的数据（不包含表结构）"></a>7. 备份mysql的数据库中的数据（不包含表结构）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">参数 -t 的作用就是备份数据库的表数据（不包含表结构）</div><div class="line"></div><div class="line">mysqldump -uroot -ppassword  -t  test</div></pre></td></tr></table></figure>
+<h5 id="8-备份的时候切割binlog日志：（进行增量备份的时候可以用到）"><a href="#8-备份的时候切割binlog日志：（进行增量备份的时候可以用到）" class="headerlink" title="8. 备份的时候切割binlog日志：（进行增量备份的时候可以用到）"></a>8. 备份的时候切割binlog日志：（进行增量备份的时候可以用到）</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">参数 -F 的作用就是备份数据库的时候，将binlog日志进行重新刷新。</div><div class="line">mysqldump -uroot -ppassword  -t  -B -F test</div></pre></td></tr></table></figure>
+<h5 id="9-备份的时候会记录指定文件的位置以及mysqlbinglog的文件名称"><a href="#9-备份的时候会记录指定文件的位置以及mysqlbinglog的文件名称" class="headerlink" title="9. 备份的时候会记录指定文件的位置以及mysqlbinglog的文件名称"></a>9. 备份的时候会记录指定文件的位置以及mysqlbinglog的文件名称</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">参数 --master-data=1 的作用就是备份数据库的时候，将binlog日志进行重新刷新</div><div class="line">mysqldump -uroot -ppassword  -t  -B -F --master-data test</div></pre></td></tr></table></figure>
+<p>mysqldump的一些关键参数总结：</p>
+<p>1、-B：表示的是指定多个库，增加了建库语句和use数据库的语句。</p>
+<p>2、–compact：去掉注释，适合调试输出，不适合在生产环境使用。</p>
+<p>3、-A： 表示的是本分所有的库。</p>
+<p>4、-F：刷新binlog日志，方便进行增量的恢复。</p>
+<p>5、–master-data：增加binlog日志文件名及其对应的位置点。</p>
+<p>6、-x，–lock-all-tables ：在备份的时候进行锁表，保持数据的一致性。</p>
+<p>7、-d：只备份表的结构。</p>
+<p>8、–single-transaction  适合innodb数据库的备份。</p>
+<h5 id="10-小结"><a href="#10-小结" class="headerlink" title="10. 小结"></a>10. 小结</h5><p><strong>对于不同的引擎，表的备份数据：</strong></p>
+<p>MyISAM：<br><figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqldump -uroot -ppassword --flush-privileges -A -B --master-data=<span class="number">2</span> -x --flush-logs --triggers --routines --events --hex-blob |gzip &gt; /opt/all.sql.gz</div></pre></td></tr></table></figure></p>
+<p>InnoDB:<br><figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">mysqldump -uroot -ppassword --flush-privileges -A -B --master-data=<span class="number">2</span> --single-transaction --flush-logs --triggers --routines --events --hex-blob |gzip &gt; /opt/all.sql.gz</div></pre></td></tr></table></figure></p>
+<p><strong>推荐使用InnoDB的备份方式，备份数据。(–triggers 表示的是触发器)</strong></p>
+<h4 id="增量恢复的时机"><a href="#增量恢复的时机" class="headerlink" title="增量恢复的时机"></a><div id="title">增量恢复的时机</div></h4><p>1）主或者从库宕机（硬件损坏）是否需要增量恢复？</p>
+<blockquote>
+<p>答：不需要增量恢复，主库宕机，只需要把其中的一个同步最快的从库提升为主库即可。<br>主库宕机，只要选择更新最快的从库，提升为主库即可<br>从库宕机，直接不用就好了（一般都会陪LVS负载均衡），或者就正常修复即可</p>
+</blockquote>
+<p>2）人为操作数据库SQL语句破坏主库是否需要增量恢复？</p>
+<blockquote>
+<p>答：在数据库主库内部命令行进行误操作，会导致所有的数据库（包括主从库）的数据丢失，例如：在主库执行了drop database test这样的删除语句，这时候所有的从库也会执行这个drop语句，从而导致所有的数据库上的数据库的数据丢失，这样的场景下面需要进行增量恢复的。</p>
+</blockquote>
+<p>3）只有一个主库是否需要增量恢复呢？</p>
+<blockquote>
+<p>答: 如果公司只有一个主库的情况下，首先应该做定时的全量备份（每天一次）以及增量备份（每隔1-10分钟对binlog日志做切割然后被分到其他的服务器上，或者本地其他硬盘中）或者写到网络文件系统中。</p>
+</blockquote>
+<p>使用binlog进行增量备份以及查看文件数据的方法：<br><figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">/data1/mysql/bin/mysqlbinlog -uroot -psina.com mysql-bin<span class="number">.000068</span> &gt; bin.sql</div><div class="line"> </div><div class="line">我们也可以同时进行拆库的分析，使用-d参数即可指定数据库进行拆分</div><div class="line">/data1/mysql/bin/mysqlbinlog -uroot -psina.com -d test mysql-bin<span class="number">.000068</span> &gt; bin.sql</div></pre></td></tr></table></figure></p>
+<p>是可以导成SQL语句进行查看的</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/MySQL/" class="article-tag-list-link color1">MySQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/05/mysql数据备份/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/05/06/知乎上赞数最高的若干回答/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          知乎上赞数最高的若干个回答
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/05/MySQL多实例安装/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MySQL多实例安装</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <section id="comments" style="margin:10px;padding:10px;background:#fff;">
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "mjstUtcUPaEVJpt5xt5zWykf-gzGzoHsz",
+            app_key: "4CY7cYn38n302Lor7lqqLoJO",
+            placeholder: "来呀!快活呀!",
+            avatar:"mm"
+        });
+    }
+</script>
+
+    </section>
+ 
+
+  
+
+
 
           </div>
         </div>

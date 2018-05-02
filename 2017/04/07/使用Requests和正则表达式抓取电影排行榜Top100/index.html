@@ -166,7 +166,233 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-使用Requests和正则表达式抓取电影排行榜Top100" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      使用Requests和正则表达式抓取电影排行榜Top100
+    </h1>
+  
+
+        
+        <a href="/2017/04/07/使用Requests和正则表达式抓取电影排行榜Top100/" class="archive-article-date">
+  	<time datetime="2017-04-07T02:56:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#爬取的流程图"><span class="toc-text">爬取的流程图</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用requests模块抓取信息"><span class="toc-text">使用requests模块抓取信息</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用正则表达式分析"><span class="toc-text">使用正则表达式分析</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#将信息写入到文件"><span class="toc-text">将信息写入到文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#批量抓取"><span class="toc-text">批量抓取</span></a></li></ol>
+          <hr/>
+        </div>
+        
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
+<p>requests模块主要用来爬取网页，将整个网页的源代码爬取下来。<br>正则表达式主要用来分析我们想要的有用的数据<br>前面两个模块的用法我们在前面已经认真的分析过，接下来我们来进行实战</p>
+</blockquote>
+<h4 id="爬取的流程图"><a href="#爬取的流程图" class="headerlink" title="爬取的流程图"></a><div id="title">爬取的流程图</div></h4><p><img src="https://i.loli.net/2017/11/16/5a0cf80b8cfc8.png" alt="爬取流程框架.png"></p>
+<h4 id="使用requests模块抓取信息"><a href="#使用requests模块抓取信息" class="headerlink" title="使用requests模块抓取信息"></a><div id="title">使用requests模块抓取信息</div></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"></div><div class="line"><span class="comment"># 为了防止网站反爬虫，因此我们需要伪造成浏览器访问</span></div><div class="line">hds=[&#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.6) Gecko/20091201 Firefox/3.5.6'</span>&#125;,</div><div class="line">    &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Windows NT 6.2) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.12 Safari/535.11'</span>&#125;,</div><div class="line">    &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.2; Trident/6.0)'</span>&#125;,</div><div class="line">    &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:34.0) Gecko/20100101 Firefox/34.0'</span>&#125;,</div><div class="line">    &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/44.0.2403.89 Chrome/44.0.2403.89 Safari/537.36'</span>&#125;,</div><div class="line">    &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Macintosh; U; Intel Mac OS X 10_6_8; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50'</span>&#125;,</div><div class="line">    &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Windows; U; Windows NT 6.1; en-us) AppleWebKit/534.50 (KHTML, like Gecko) Version/5.1 Safari/534.50'</span>&#125;,</div><div class="line">    &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (compatible; MSIE 9.0; Windows NT 6.1; Trident/5.0'</span>&#125;,</div><div class="line">    &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.6; rv:2.0.1) Gecko/20100101 Firefox/4.0.1'</span>&#125;,</div><div class="line">    &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Windows NT 6.1; rv:2.0.1) Gecko/20100101 Firefox/4.0.1'</span>&#125;,</div><div class="line">    &#123;<span class="string">'User-Agent'</span>:<span class="string">'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_7_0) AppleWebKit/535.11 (KHTML, like Gecko) Chrome/17.0.963.56 Safari/535.11'</span>&#125;,</div><div class="line">    &#123;<span class="string">'User-Agent'</span>:<span class="string">'Opera/9.80 (Macintosh; Intel Mac OS X 10.6.8; U; en) Presto/2.8.131 Version/11.11'</span>&#125;,</div><div class="line">    &#123;<span class="string">'User-Agent'</span>:<span class="string">'Opera/9.80 (Windows NT 6.1; U; en) Presto/2.8.131 Version/11.11'</span>&#125;]</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_page</span><span class="params">(url)</span>:</span></div><div class="line">    headers = hds[random.randint(<span class="number">0</span>,len(hds)<span class="number">-1</span>)]</div><div class="line">    <span class="comment"># 使用requests的get方法进行伪造</span></div><div class="line">    response = requests.get(url, headers = headers)</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        <span class="keyword">if</span> response.status_code == <span class="number">200</span>:</div><div class="line">            res = response.text</div><div class="line">            <span class="keyword">return</span> res</div><div class="line">        <span class="keyword">return</span> <span class="keyword">None</span></div><div class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</div><div class="line">        print(e)</div></pre></td></tr></table></figure>
+<h4 id="使用正则表达式分析"><a href="#使用正则表达式分析" class="headerlink" title="使用正则表达式分析"></a><div id="title">使用正则表达式分析</div></h4><p><strong>首先，我们要抓取的目标信息的html代码如下：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;div class=&quot;board-item-content&quot;&gt;</div><div class="line">    &lt;div class=&quot;movie-item-info&quot;&gt;</div><div class="line">        &lt;p class=&quot;name&quot;&gt;&lt;a href=&quot;/films/1203&quot; title=&quot;霸王别姬&quot; data-act=&quot;boarditem-click&quot; data-val=&quot;&#123;movieId:1203&#125;&quot;&gt;霸王别姬&lt;/a&gt;&lt;/p&gt;</div><div class="line">        &lt;p class=&quot;star&quot;&gt;</div><div class="line">            主演：张国荣,张丰毅,巩俐</div><div class="line">        &lt;/p&gt;</div><div class="line">        &lt;p class=&quot;releasetime&quot;&gt;上映时间：1993-01-01(中国香港)&lt;/p&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class=&quot;movie-item-number score-num&quot;&gt;</div><div class="line">        &lt;p class=&quot;score&quot;&gt;&lt;i class=&quot;integer&quot;&gt;9.&lt;/i&gt;&lt;i class=&quot;fraction&quot;&gt;6&lt;/i&gt;&lt;/p&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>接下来，主要是正则表达式的编写</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_movie</span><span class="params">(html)</span>:</span></div><div class="line">    <span class="comment"># 此处正则表达式的书写非常关键，采用非贪婪模式的 (.*?)</span></div><div class="line">    partten = <span class="string">'&lt;div.*?&lt;p.*?&gt;&lt;a.*?&gt;(.*?)&lt;/a&gt;&lt;/p&gt;.*?&lt;p.*?&gt;(.*?)&lt;/p&gt;.*?&lt;p.*?&gt;(.*?)&lt;/p&gt;.*?&lt;/div&gt;'</span></div><div class="line">    items = re.findall(partten, html, re.S)</div><div class="line"></div><div class="line">    item_list = []</div><div class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> items:</div><div class="line">        item_list.append([item[<span class="number">0</span>],item[<span class="number">1</span>],item[<span class="number">2</span>]])</div><div class="line"></div><div class="line">    <span class="keyword">return</span> item_list</div></pre></td></tr></table></figure></p>
+<h4 id="将信息写入到文件"><a href="#将信息写入到文件" class="headerlink" title="将信息写入到文件"></a><div id="title">将信息写入到文件</div></h4><p><strong>这步非常的简单，我们只需要打开文件，写入信息即可</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">write_file</span><span class="params">(items)</span>:</span></div><div class="line">    fileMovie = open(<span class="string">'movie.txt'</span>, <span class="string">'a'</span>, encoding=<span class="string">'utf8'</span>)</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        <span class="keyword">for</span> movie <span class="keyword">in</span> items:</div><div class="line">            fileMovie.write(<span class="string">'电影排名：'</span> + movie[<span class="number">0</span>] + <span class="string">'\r\n'</span>)</div><div class="line">            fileMovie.write(<span class="string">'电影主演：'</span> + movie[<span class="number">1</span>].strip()[<span class="number">3</span>:] + <span class="string">'\r\n'</span>)</div><div class="line">            fileMovie.write(<span class="string">'上映时间：'</span> + movie[<span class="number">2</span>].strip()[<span class="number">5</span>:] + <span class="string">'\r\n\r\n'</span>)</div><div class="line">        print(<span class="string">'文件写入成功...'</span>)</div><div class="line">    <span class="keyword">finally</span>:</div><div class="line">        fileMovie.close()</div></pre></td></tr></table></figure></p>
+<h4 id="批量抓取"><a href="#批量抓取" class="headerlink" title="批量抓取"></a><div id="title">批量抓取</div></h4><p><strong>入口函数main方法的书写</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(offset)</span>:</span></div><div class="line">    url = <span class="string">"http://maoyan.com/board/4?offset="</span> + str(offset)</div><div class="line">    html = get_page(url)</div><div class="line">    items_list = get_movie(html)</div><div class="line">    write_file(items_list)</div></pre></td></tr></table></figure></p>
+<p><strong>1. 串行的方式抓取</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    <span class="keyword">import</span> time</div><div class="line">    start_time = time.time()</div><div class="line">    </div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</div><div class="line">        offset = i*<span class="number">10</span></div><div class="line">        main(offset)</div><div class="line">        </div><div class="line">    end_time = time.time()</div><div class="line">    print(<span class="string">"cost time is:"</span> + str(end_time - start_time)) <span class="comment"># cost time is:12.5023369789123535</span></div></pre></td></tr></table></figure></p>
+<p><strong>此种方式，当抓取的数量非常的多的时候，耗费的时间比较长</strong></p>
+<p><strong>2. 多进程的方式抓取</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    <span class="comment"># 使用多进程的方式抓取数据</span></div><div class="line">    <span class="keyword">import</span> time</div><div class="line">    start_time = time.time()</div><div class="line">    </div><div class="line">    pool = Pool()</div><div class="line">    pool.map(main, [i*<span class="number">10</span> <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>)])</div><div class="line">    </div><div class="line">    end_time = time.time()</div><div class="line">    print(<span class="string">"cost time is:"</span> + str(end_time - start_time)) <span class="comment"># cost time is:1.5023369789123535</span></div></pre></td></tr></table></figure></p>
+<p><strong>3. 多线程的方式抓取</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    <span class="keyword">import</span> time</div><div class="line">    start_time = time.time()</div><div class="line">    </div><div class="line">    <span class="comment"># 使用多线程的方式抓取数据</span></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">100</span>):</div><div class="line">        t = Thread(target=main, args=(i*<span class="number">10</span>,))</div><div class="line">        t.start()</div><div class="line"></div><div class="line">    end_time = time.time()</div><div class="line">    print(<span class="string">"cost time is:"</span> + str(end_time - start_time)) <span class="comment"># cost time is:0.2023369789123535</span></div></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">模块</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/爬虫/" class="article-tag-list-link color3">爬虫</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/04/07/使用Requests和正则表达式抓取电影排行榜Top100/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/04/07/链家数据/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          爬链家二手房数据
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/04/07/抓取今日头条图片/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">抓取今日头条图片</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <section id="comments" style="margin:10px;padding:10px;background:#fff;">
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "mjstUtcUPaEVJpt5xt5zWykf-gzGzoHsz",
+            app_key: "4CY7cYn38n302Lor7lqqLoJO",
+            placeholder: "来呀!快活呀!",
+            avatar:"mm"
+        });
+    }
+</script>
+
+    </section>
+ 
+
+  
+
+
 
           </div>
         </div>

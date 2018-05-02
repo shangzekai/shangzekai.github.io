@@ -166,7 +166,244 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Python爬虫自动登录GitHub" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Python爬虫自动登录GitHub
+    </h1>
+  
+
+        
+        <a href="/2017/05/05/Python爬虫自动登录GitHub/" class="archive-article-date">
+  	<time datetime="2017-05-05T01:58:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第一次请求"><span class="toc-text">第一次请求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第二次请求"><span class="toc-text">第二次请求</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第三次请求获取相关信息"><span class="toc-text">第三次请求获取相关信息</span></a></li></ol>
+          <hr/>
+        </div>
+        
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
+<p>学习完了requests和BeautifulSoup的用法后，我们来看一下怎么样通过这两个工具来登录一些我们经常上的网站。接下来，我们以登录github来讲解一下python爬虫的自动登录</p>
+</blockquote>
+<a id="more"></a>
+<h4 id="第一次请求"><a href="#第一次请求" class="headerlink" title="第一次请求"></a><div id="title">第一次请求</div></h4><blockquote>
+<p>首先，我们想要模拟浏览器登录github这个网站的话，先要看一下，浏览器在登录这些网站的时候，<b>是向哪个URL发送请求，并且发送什么样的参数</b>,我们可以调出控制台，查看网络请求，如下图所示：</p>
+</blockquote>
+<p><img src="https://i.loli.net/2017/10/18/59e6c77a0301b.png" alt="控制台.png"></p>
+<blockquote>
+<p>我们可以看到，登录的URL是：<a href="http://github.com/session,并且POST的数据为form" target="_blank" rel="external">http://github.com/session,并且POST的数据为form</a> Data中包含的数据，所以我们只需要使用requests的post方法，将这些Form Data的数据发送给特定的URL即可。</p>
+</blockquote>
+<p><strong>但是我们发现了一个问题，就是要发送的authenticity_token不知道是从哪来的，所以我们首先要拿到这个数据</strong></p>
+<blockquote>
+<p>为了拿到authenticity_token这个数据，我们需要向<a href="http://github.com/login发送一个请求，我们发现authenticity_token就在这个页面中，此时我们只需要用bs4进行分析获得即可，所示代码如下：" target="_blank" rel="external">http://github.com/login发送一个请求，我们发现authenticity_token就在这个页面中，此时我们只需要用bs4进行分析获得即可，所示代码如下：</a></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> requests</div><div class="line"></div><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</div><div class="line"></div><div class="line"><span class="comment"># 第一次请求  获取授权token</span></div><div class="line">r1 = requests.get(<span class="string">'https://github.com/login'</span>)</div><div class="line"><span class="comment"># print(r1.text)</span></div><div class="line"></div><div class="line">b1 = BeautifulSoup(r1.text, <span class="string">'html.parser'</span>)</div><div class="line"></div><div class="line">authenticity_token = b1.find(name=<span class="string">'input'</span>, attrs=&#123;<span class="string">'name'</span>:<span class="string">'authenticity_token'</span>&#125;).get(<span class="string">'value'</span>)</div><div class="line"></div><div class="line"><span class="comment"># 获取第一次请求的cookies</span></div><div class="line">r1_cookie = r1.cookies.get_dict()</div></pre></td></tr></table></figure>
+<h4 id="第二次请求"><a href="#第二次请求" class="headerlink" title="第二次请求"></a><div id="title">第二次请求</div></h4><blockquote>
+<p>在第一次请求中，我们已经获取到了相应的authenticity_token，所以我们现在就可以直接进行登陆了</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 第二次请求  向github服务器post登录数据</span></div><div class="line">r2 = requests.post(<span class="string">'https://github.com/session'</span>,</div><div class="line">                   data=&#123;</div><div class="line">                        <span class="string">'commit'</span> : <span class="string">'Sign in'</span>,</div><div class="line">                        <span class="string">'utf8'</span> : <span class="string">'✓'</span>,</div><div class="line">                        <span class="string">'authenticity_token'</span> : authenticity_token,</div><div class="line">                        <span class="string">'login'</span>:<span class="string">'you name'</span>,</div><div class="line">                        <span class="string">'password'</span>:<span class="string">'you password'</span></div><div class="line">                   &#125;, cookies = r1_cookie)</div><div class="line"><span class="comment"># print(r2.text)</span></div><div class="line">r2_cookie = r2.cookies.get_dict()</div></pre></td></tr></table></figure>
+<h4 id="第三次请求获取相关信息"><a href="#第三次请求获取相关信息" class="headerlink" title="第三次请求获取相关信息"></a><div id="title">第三次请求获取相关信息</div></h4><blockquote>
+<p>注意，在我们第二次登陆成功之后，服务器会给我们返回一串cookies，接下来，我们如果想要获取到其他相关信息的话，需要带着这个cookie（其实就是一个身份的验证），来进行访问其他的页面，比如说，我们想要获取登录人的个人信息，只需要：</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">r3 = requests.get(<span class="string">'https://github.com/settings/emails'</span>,cookies = all_cookie)</div><div class="line"></div><div class="line">print(r3.text)</div></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/爬虫/" class="article-tag-list-link color3">爬虫</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/05/Python爬虫自动登录GitHub/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/05/05/web框架的本质/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          web框架初识
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/05/BeautifulSoup介绍/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Beautiful Soup的用法</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <section id="comments" style="margin:10px;padding:10px;background:#fff;">
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "mjstUtcUPaEVJpt5xt5zWykf-gzGzoHsz",
+            app_key: "4CY7cYn38n302Lor7lqqLoJO",
+            placeholder: "来呀!快活呀!",
+            avatar:"mm"
+        });
+    }
+</script>
+
+    </section>
+ 
+
+  
+
+
 
           </div>
         </div>

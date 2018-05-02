@@ -164,7 +164,297 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-awk编程" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      awk编程
+    </h1>
+  
+
+        
+        <a href="/2017/10/08/awk编程/" class="archive-article-date">
+  	<time datetime="2017-10-08T04:18:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言介绍"><span class="toc-text">前言介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#素材准备"><span class="toc-text">素材准备</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基本的实例"><span class="toc-text">基本的实例</span></a></li></ol>
+          <hr/>
+        </div>
+        
+        <h4 id="前言介绍"><a href="#前言介绍" class="headerlink" title="前言介绍"></a><div id="title">前言介绍</div></h4><blockquote>
+<p><code>AWK</code>是贝尔实验室1977年搞出来的文本出现神器.之所以叫<code>AWK</code>是因为其取了三位创始人<code>Alfred Aho</code>，<code>Peter Weinberger</code>, 和<code>Brian Kernighan</code>的<code>Family Name</code>的首字符。要学<code>AWK</code>，就得提一提<code>AWK</code>的一本相当经典的书<code>《The AWK Programming Language》</code>，它在豆瓣上的评分是<code>9.4</code>分！==在亚马逊上居然卖1022.30元。==</p>
+</blockquote>
+<a id="more"></a>
+<h4 id="素材准备"><a href="#素材准备" class="headerlink" title="素材准备"></a><div id="title">素材准备</div></h4><p><strong>我从netstat命令中提取了如下信息作为用例：</strong></p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">cat</span> netstat.txt</div><div class="line">Proto Recv-Q Send-Q  Local-Address Foreign-Address  State</div><div class="line">tcp        <span class="number">0</span>      <span class="number">0</span>  <span class="number">0.0</span>.<span class="number">0.0</span>:<span class="number">3306</span>      <span class="number">0.0</span>.<span class="number">0.0</span>:*    LISTEN</div><div class="line">tcp        <span class="number">0</span>      <span class="number">0</span>  <span class="number">0.0</span>.<span class="number">0.0</span>:<span class="number">80</span>        <span class="number">0.0</span>.<span class="number">0.0</span>:*    LISTEN</div><div class="line">tcp        <span class="number">0</span>      <span class="number">0</span>  <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">9000</span>    <span class="number">0.0</span>.<span class="number">0.0</span>:*     LISTEN</div><div class="line">tcp        <span class="number">0</span>      <span class="number">0</span>  coolshell.<span class="keyword">cn</span>:<span class="number">80</span> <span class="number">124.205</span>.<span class="number">5.146</span>:<span class="number">18245</span> TIME_WAIT</div><div class="line">tcp        <span class="number">0</span>      <span class="number">0</span>  coolshell.<span class="keyword">cn</span>:<span class="number">80</span>  <span class="number">61.140</span>.<span class="number">101.185</span>:<span class="number">37538</span> FIN_WAIT2</div><div class="line">tcp        <span class="number">0</span>      <span class="number">0</span>  coolshell.<span class="keyword">cn</span>:<span class="number">80</span> <span class="number">11.194</span>.<span class="number">134.189</span>:<span class="number">1032</span> ESTABLISHED</div><div class="line">tcp        <span class="number">0</span>      <span class="number">0</span> coolshell.<span class="keyword">cn</span>:<span class="number">80</span> <span class="number">123.169</span>.<span class="number">124.11</span>:<span class="number">49809</span> ESTABLISHED</div><div class="line">tcp        <span class="number">0</span>      <span class="number">0</span> coolshell.<span class="keyword">cn</span>:<span class="number">80</span>   <span class="number">116.234</span>.<span class="number">127.77</span>:<span class="number">11502</span> FIN_WAIT2</div><div class="line">tcp        <span class="number">0</span>      <span class="number">0</span> coolshell.<span class="keyword">cn</span>:<span class="number">80</span> <span class="number">12.16</span>.<span class="number">124.111</span>:<span class="number">49829</span>  ESTABLISHED</div><div class="line">tcp        <span class="number">0</span>      <span class="number">0</span> coolshell.<span class="keyword">cn</span>:<span class="number">80</span>   <span class="number">183.60</span>.<span class="number">215.36</span>:<span class="number">36970</span>  TIME_WAIT</div><div class="line">tcp        <span class="number">0</span>   <span class="number">4166</span> coolshell.<span class="keyword">cn</span>:<span class="number">80</span>   <span class="number">61.148</span>.<span class="number">24.38</span>:<span class="number">30901</span> ESTABLISHED</div><div class="line">tcp        <span class="number">0</span>      <span class="number">1</span> coolshell.<span class="keyword">cn</span>:<span class="number">80</span> <span class="number">12.152</span>.<span class="number">181.209</span>:<span class="number">26825</span>   FIN_WAIT1</div><div class="line">tcp        <span class="number">0</span>      <span class="number">0</span> coolshell.<span class="keyword">cn</span>:<span class="number">80</span>   <span class="number">110.194</span>.<span class="number">134.189</span>:<span class="number">47</span> ESTABLISHED</div></pre></td></tr></table></figure>
+<h4 id="基本的实例"><a href="#基本的实例" class="headerlink" title="基本的实例"></a><div id="title">基本的实例</div></h4><ol>
+<li>输出第1列和第4例</li>
+</ol>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">$ awk <span class="string">'&#123;print $1, $4&#125;'</span> netstat.txt</div><div class="line">Proto Local-Address</div><div class="line">tcp <span class="number">0.0</span>.<span class="number">0.0</span>:<span class="number">3306</span></div><div class="line">tcp <span class="number">0.0</span>.<span class="number">0.0</span>:<span class="number">80</span></div><div class="line">tcp <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">9000</span></div><div class="line">tcp coolshell.<span class="keyword">cn</span>:<span class="number">80</span></div><div class="line">tcp coolshell.<span class="keyword">cn</span>:<span class="number">80</span></div><div class="line">tcp coolshell.<span class="keyword">cn</span>:<span class="number">80</span></div><div class="line">tcp coolshell.<span class="keyword">cn</span>:<span class="number">80</span></div><div class="line">tcp coolshell.<span class="keyword">cn</span>:<span class="number">80</span></div><div class="line">tcp coolshell.<span class="keyword">cn</span>:<span class="number">80</span></div><div class="line">tcp coolshell.<span class="keyword">cn</span>:<span class="number">80</span></div><div class="line">tcp coolshell.<span class="keyword">cn</span>:<span class="number">80</span></div><div class="line">tcp coolshell.<span class="keyword">cn</span>:<span class="number">80</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>其中单引号中的被大括号括着的就是<code>awk</code>的语句，注意，其只能被单引号包含<br>其中的<code>$1..$n</code>表示第几例。注：<code>$0</code>表示整个行</p>
+</blockquote>
+<ol>
+<li>过滤记录</li>
+</ol>
+<blockquote>
+<p>过滤第三列的值为<code>0</code> &amp;&amp; 第6列的值为<code>LISTEN</code></p>
+</blockquote>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ awk <span class="string">'$3==0 &amp;&amp; $6=="LISTEN" '</span> netstat.txt</div></pre></td></tr></table></figure>
+<p>其中的<code>==</code>为比较运算符。其他比较运算符：<code>!=</code>, <code>&lt;</code>, <code>&lt;</code> <code>&gt;=</code></p>
+<p>我们来看看各种过滤记录的方式：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ awk <span class="string">'$3&gt;0 &#123;print $0&#125;'</span> netstat.txt</div></pre></td></tr></table></figure>
+<ol>
+<li>指定分隔符</li>
+</ol>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ awk -F: <span class="string">'&#123;print $1,$3,$6&#125;'</span> /etc/passwd</div></pre></td></tr></table></figure>
+<p><strong><code>-F</code>的意思就是指定分隔符</strong></p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">注：如果你要指定多个分隔符，你可以这样来：</div><div class="line">awk -F <span class="string">'[;:]'</span></div></pre></td></tr></table></figure>
+<p>再来看一个以<code>\t</code>作为分隔符输出的例子（下面使用了<code>/etc/passwd</code>文件，这个文件是以<code>:</code>分隔的）</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ awk -F: <span class="string">'&#123;print $1,$3,$6&#125;'</span> OFS=<span class="string">"\t"</span> /etc/passwd</div></pre></td></tr></table></figure>
+<p><strong><code>OFS</code>表示的是分隔符</strong></p>
+<ol>
+<li>内建变量</li>
+</ol>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ awk <span class="string">'&#123;print NR,"-&gt;",NF&#125;'</span> netstat.txt</div></pre></td></tr></table></figure>
+<blockquote>
+<p><code>NR(Number of Record)</code> 表示的是已经处理过的总记录数目，或者说行号(不一定是一个文件，可能是多个)。<code>NR</code>表示行号，在END部分，<code>NR</code>就是文件中的所有记录数目</p>
+<p><code>NF(Number for Field)</code>表示的是，一条记录的字段的数目.</p>
+</blockquote>
+<ol>
+<li>字符串匹配</li>
+</ol>
+<p>我们再来看几个字符串匹配的示例：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ awk <span class="string">'$6 ~ /FIN/ &#123;print NR,$4,$5,$6&#125;'</span> OFS=<span class="string">"\t"</span> netstat.txt</div><div class="line"><span class="number">1</span>       Local-Address   Foreign-Address State</div><div class="line"><span class="number">6</span>       coolshell.<span class="keyword">cn</span>:<span class="number">80</span> <span class="number">61.140</span>.<span class="number">101.185</span>:<span class="number">37538</span>    FIN_WAIT2</div><div class="line"><span class="number">9</span>       coolshell.<span class="keyword">cn</span>:<span class="number">80</span> <span class="number">116.234</span>.<span class="number">127.77</span>:<span class="number">11502</span>    FIN_WAIT2</div><div class="line"><span class="number">13</span>      coolshell.<span class="keyword">cn</span>:<span class="number">80</span> <span class="number">124.152</span>.<span class="number">181.209</span>:<span class="number">26825</span>   FIN_WAIT1</div><div class="line"><span class="number">18</span>      coolshell.<span class="keyword">cn</span>:<span class="number">80</span> <span class="number">117.136</span>.<span class="number">20.85</span>:<span class="number">50025</span>     FIN_WAIT2</div></pre></td></tr></table></figure>
+<p>上面的第一个示例匹配FIN状态。其实<code>~</code> 表示模式开始。<code>/ /</code>中是模式。这就是一个正则表达式的匹配。</p>
+<p><strong>其实<code>awk</code>可以像<code>grep</code>一样的去匹配第一行，就像这样：</strong></p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ awk <span class="string">'/LISTEN/'</span> netstat.txt</div><div class="line">tcp        <span class="number">0</span>      <span class="number">0</span> <span class="number">0.0</span>.<span class="number">0.0</span>:<span class="number">3306</span>            <span class="number">0.0</span>.<span class="number">0.0</span>:*               LISTEN</div><div class="line">tcp        <span class="number">0</span>      <span class="number">0</span> <span class="number">0.0</span>.<span class="number">0.0</span>:<span class="number">80</span>              <span class="number">0.0</span>.<span class="number">0.0</span>:*               LISTEN</div><div class="line">tcp        <span class="number">0</span>      <span class="number">0</span> <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">9000</span>          <span class="number">0.0</span>.<span class="number">0.0</span>:*               LISTEN</div><div class="line">tcp        <span class="number">0</span>      <span class="number">0</span> :::<span class="number">22</span>                   :::*                    LISTEN</div></pre></td></tr></table></figure>
+<p>我们可以使用 <code>/FIN|TIME/</code> 来匹配 <code>FIN</code> 或者 <code>TIME</code> :</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ awk <span class="string">'$6 ~ /FIN|TIME/ &#123;print NR,$4,$5,$6&#125;'</span> OFS=<span class="string">"\t"</span> netstat.txt</div><div class="line"><span class="number">1</span>       Local-Address   Foreign-Address State</div><div class="line"><span class="number">5</span>       coolshell.<span class="keyword">cn</span>:<span class="number">80</span> <span class="number">124.205</span>.<span class="number">5.146</span>:<span class="number">18245</span>     TIME_WAIT</div><div class="line"><span class="number">6</span>       coolshell.<span class="keyword">cn</span>:<span class="number">80</span> <span class="number">61.140</span>.<span class="number">101.185</span>:<span class="number">37538</span>    FIN_WAIT2</div><div class="line"><span class="number">9</span>       coolshell.<span class="keyword">cn</span>:<span class="number">80</span> <span class="number">116.234</span>.<span class="number">127.77</span>:<span class="number">11502</span>    FIN_WAIT2</div><div class="line"><span class="number">11</span>      coolshell.<span class="keyword">cn</span>:<span class="number">80</span> <span class="number">183.60</span>.<span class="number">215.36</span>:<span class="number">36970</span>     TIME_WAIT</div><div class="line"><span class="number">13</span>      coolshell.<span class="keyword">cn</span>:<span class="number">80</span> <span class="number">124.152</span>.<span class="number">181.209</span>:<span class="number">26825</span>   FIN_WAIT1</div><div class="line"><span class="number">15</span>      coolshell.<span class="keyword">cn</span>:<span class="number">80</span> <span class="number">183.60</span>.<span class="number">212.163</span>:<span class="number">51082</span>    TIME_WAIT</div><div class="line"><span class="number">18</span>      coolshell.<span class="keyword">cn</span>:<span class="number">80</span> <span class="number">117.136</span>.<span class="number">20.85</span>:<span class="number">50025</span>     FIN_WAIT2</div></pre></td></tr></table></figure>
+<p>再来看看模式取反的例子：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">$ awk<span class="string">'$6 !~ /WAIT/ &#123;print NR,$4,$5,$6&#125;'</span> OFS=<span class="string">"\t"</span> netstat.txt</div><div class="line"><span class="number">1</span>       Local-Address   Foreign-Address State</div><div class="line"><span class="number">2</span>       <span class="number">0.0</span>.<span class="number">0.0</span>:<span class="number">3306</span>    <span class="number">0.0</span>.<span class="number">0.0</span>:*       LISTEN</div><div class="line"><span class="number">3</span>       <span class="number">0.0</span>.<span class="number">0.0</span>:<span class="number">80</span>      <span class="number">0.0</span>.<span class="number">0.0</span>:*       LISTEN</div><div class="line"><span class="number">4</span>       <span class="number">127.0</span>.<span class="number">0.1</span>:<span class="number">9000</span>  <span class="number">0.0</span>.<span class="number">0.0</span>:*       LISTEN</div><div class="line"><span class="number">7</span>       coolshell.<span class="keyword">cn</span>:<span class="number">80</span> <span class="number">110.194</span>.<span class="number">134.189</span>:<span class="number">1032</span>    ESTABLISHED</div><div class="line"><span class="number">8</span>       coolshell.<span class="keyword">cn</span>:<span class="number">80</span> <span class="number">123.169</span>.<span class="number">124.111</span>:<span class="number">49809</span>   ESTABLISHED</div><div class="line"><span class="number">10</span>      coolshell.<span class="keyword">cn</span>:<span class="number">80</span> <span class="number">123.169</span>.<span class="number">124.111</span>:<span class="number">49829</span>   ESTABLISHED</div><div class="line"><span class="number">12</span>      coolshell.<span class="keyword">cn</span>:<span class="number">80</span> <span class="number">61.148</span>.<span class="number">242.38</span>:<span class="number">30901</span>     ESTABLISHED</div><div class="line"><span class="number">14</span>      coolshell.<span class="keyword">cn</span>:<span class="number">80</span> <span class="number">110.194</span>.<span class="number">134.189</span>:<span class="number">4796</span>    ESTABLISHED</div><div class="line"><span class="number">16</span>      coolshell.<span class="keyword">cn</span>:<span class="number">80</span> <span class="number">208.115</span>.<span class="number">113.92</span>:<span class="number">50601</span>    LAST_ACK</div><div class="line"><span class="number">17</span>      coolshell.<span class="keyword">cn</span>:<span class="number">80</span> <span class="number">123.169</span>.<span class="number">124.111</span>:<span class="number">49840</span>   ESTABLISHED</div><div class="line"><span class="number">19</span>      :::<span class="number">22</span>   :::*    LISTEN</div><div class="line">或是：</div><div class="line">Awk <span class="string">'!/WAIT/'</span> netstat.txt</div></pre></td></tr></table></figure>
+<ol>
+<li>折分文件</li>
+</ol>
+<blockquote>
+<p><code>awk</code>拆分文件很简单，使用重定向就好了。下面这个例子，是按第6例分隔文件，相当的简单（其中的<code>NR!=1</code>表示不处理表头）。</p>
+</blockquote>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ awk <span class="string">'NR!=1&#123;print  $6&#125;'</span> netstat.txt</div></pre></td></tr></table></figure>
+<p>你也可以把指定的列输出到文件：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">awk <span class="string">'NR!=1&#123;print $4,$5,$6&#125;'</span>netstat.txt</div></pre></td></tr></table></figure>
+<ol>
+<li>统计</li>
+</ol>
+<p><strong>下面的命令计算所有的C文件，CPP文件和H文件的文件大小总和</strong></p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">ls</span>-<span class="keyword">l</span>  *.cpp *.<span class="keyword">c</span> *.h | awk <span class="string">'&#123;sum+=$5&#125; END &#123;print sum&#125;'</span></div></pre></td></tr></table></figure>
+<p>我们再来看一个统计各个<code>connection</code>状态的用法：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ awk <span class="string">'NR!=1&#123;a[$6]++;&#125; END &#123;for (i in a) print i ", " a[i];&#125;'</span> netstat.txt</div><div class="line">TIME_WAIT, <span class="number">3</span></div><div class="line">FIN_WAIT1, <span class="number">1</span></div><div class="line">ESTABLISHED, <span class="number">6</span></div><div class="line">FIN_WAIT2, <span class="number">3</span></div><div class="line">LAST_ACK, <span class="number">1</span></div><div class="line">LISTEN, <span class="number">4</span></div></pre></td></tr></table></figure>
+<p>再来看看统计每个用户的进程的占了多少内存</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">ps</span> aux | awk <span class="string">'NR!=1&#123;a[$1]+=$6;&#125; END &#123; for(i in a) print i ", " a[i]"KB";&#125;'</span></div><div class="line">dbus, <span class="number">540</span>KB</div><div class="line">mysql, <span class="number">99928</span>KB</div><div class="line">www, <span class="number">3264924</span>KB</div><div class="line">root, <span class="number">63644</span>KB</div><div class="line">hchen, <span class="number">6020</span>KB</div></pre></td></tr></table></figure>
+<p>在上面我们可以看到一个END关键字。END的意思是“处理完所有的行的标识”，说到了<code>END</code>就有必要介绍一下BEGIN，这两个关键字意味着执行前和执行后的意思，语法如下：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">BEGIN&#123; 这里面放的是执行前的语句 &#125;</div><div class="line">END &#123;这里面放的是处理完所有的行后要执行的语句 &#125;</div><div class="line">&#123;这里面放的是处理每一行时要执行的语句&#125;</div></pre></td></tr></table></figure>
+<p>我们来看看下面的示例：<br>假设有这么一个文件（学生成绩表）：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ catscore.txt</div><div class="line">Marry   <span class="number">2143</span> <span class="number">78</span> <span class="number">84</span> <span class="number">77</span></div><div class="line">Jack    <span class="number">2321</span> <span class="number">66</span> <span class="number">78</span> <span class="number">45</span></div><div class="line">Tom     <span class="number">2122</span> <span class="number">48</span> <span class="number">77</span> <span class="number">71</span></div><div class="line">Mike    <span class="number">2537</span> <span class="number">87</span> <span class="number">97</span> <span class="number">95</span></div><div class="line">Bob     <span class="number">2415</span> <span class="number">40</span> <span class="number">57</span> <span class="number">62</span></div></pre></td></tr></table></figure>
+<p>我们的awk脚本如下</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">cat</span> <span class="keyword">cal</span>.awk</div><div class="line">#!/bin/awk -<span class="keyword">f</span></div><div class="line">#运行前</div><div class="line">BEGIN &#123;</div><div class="line">    math = <span class="number">0</span></div><div class="line">    english = <span class="number">0</span></div><div class="line">    computer = <span class="number">0</span></div><div class="line">    <span class="built_in">printf</span><span class="string">"NAME    NO.   MATH  ENGLISH  COMPUTER   TOTAL\n"</span></div><div class="line">    <span class="built_in">printf</span><span class="string">"---------------------------------------------\n"</span></div><div class="line">&#125;</div><div class="line">#运行中</div><div class="line">&#123;</div><div class="line">    math+=$<span class="number">3</span></div><div class="line">    english+=$<span class="number">4</span></div><div class="line">    computer+=$<span class="number">5</span></div><div class="line">    <span class="built_in">printf</span><span class="string">"%-6s %-6s %4d %8d %8d %8d\n"</span>, $<span class="number">1</span>, $<span class="number">2</span>, $<span class="number">3</span>,$<span class="number">4</span>,$<span class="number">5</span>, $<span class="number">3</span>+$<span class="number">4</span>+$<span class="number">5</span></div><div class="line">&#125;</div><div class="line">#运行后</div><div class="line">END &#123;</div><div class="line">    <span class="built_in">printf</span><span class="string">"---------------------------------------------\n"</span></div><div class="line">    <span class="built_in">printf</span><span class="string">"  TOTAL:%10d %8d %8d \n"</span>, math, english, computer</div><div class="line">    <span class="built_in">printf</span><span class="string">"AVERAGE:%10.2f %8.2f %8.2f\n"</span>, math/NR, english/NR, computer/NR</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们来看一下执行结果：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">$ awk -<span class="keyword">f</span> <span class="keyword">cal</span>.awk score.txt</div><div class="line">NAME    NO.   MATH  ENGLISH  COMPUTER   TOTAL</div><div class="line">---------------------------------------------</div><div class="line">Marry  <span class="number">2143</span>     <span class="number">78</span>       <span class="number">84</span>       <span class="number">77</span>      <span class="number">239</span></div><div class="line">Jack   <span class="number">2321</span>     <span class="number">66</span>       <span class="number">78</span>       <span class="number">45</span>      <span class="number">189</span></div><div class="line">Tom    <span class="number">2122</span>     <span class="number">48</span>       <span class="number">77</span>       <span class="number">71</span>      <span class="number">196</span></div><div class="line">Mike   <span class="number">2537</span>     <span class="number">87</span>       <span class="number">97</span>       <span class="number">95</span>      <span class="number">279</span></div><div class="line">Bob    <span class="number">2415</span>     <span class="number">40</span>       <span class="number">57</span>       <span class="number">62</span>      <span class="number">159</span></div><div class="line">---------------------------------------------</div><div class="line">TOTAL:       <span class="number">319</span>      <span class="number">393</span>      <span class="number">350</span></div><div class="line">AVERAGE:     <span class="number">63.80</span>    <span class="number">78.60</span>    <span class="number">70.00</span></div></pre></td></tr></table></figure>
+<p>最后，我们再来看个小例子：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">#按连接数查看客户端IP</div><div class="line">netstat -natup| awk <span class="string">'NR!=1&amp;&amp;NR!=2&#123;print $5&#125;'</span> | awk -F: <span class="string">'&#123;print $1&#125;'</span> | <span class="keyword">sort</span> -n | uniq -<span class="keyword">c</span></div></pre></td></tr></table></figure>
+<p>关于其中的一些知识点可以参看gawk的手册：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">内建变量，参看：http://www.gnu.org/software/gawk/manual/gawk.html#Built_002din-Variables</div><div class="line">流控方面，参看：http://www.gnu.org/software/gawk/manual/gawk.html#Statements</div><div class="line">内建函数，参看：http://www.gnu.org/software/gawk/manual/gawk.html#Built_002din</div><div class="line">正则表达式，参看：http://www.gnu.org/software/gawk/manual/gawk.html#Regexp</div></pre></td></tr></table></figure>
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Linux/" class="article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/10/08/awk编程/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/10/08/什么是Suhosin/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          使用Suhosin保护PHP应用系统
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/10/08/php中的curl库/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">PHP 中的 cURL 库</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <section id="comments" style="margin:10px;padding:10px;background:#fff;">
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "mjstUtcUPaEVJpt5xt5zWykf-gzGzoHsz",
+            app_key: "4CY7cYn38n302Lor7lqqLoJO",
+            placeholder: "来呀!快活呀!",
+            avatar:"mm"
+        });
+    }
+</script>
+
+    </section>
+ 
+
+  
+
+
 
           </div>
         </div>

@@ -164,7 +164,488 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Redis学习目录" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Redis学习目录
+    </h1>
+  
+
+        
+        <a href="/2017/05/05/Redis学习目录/" class="archive-article-date">
+  	<time datetime="2017-05-05T15:52:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis的官方定义"><span class="toc-text">Redis的官方定义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis的安装和下载"><span class="toc-text">Redis的安装和下载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Redis的常见操作"><span class="toc-text">Redis的常见操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-对于key的所有操作"><span class="toc-text">1. 对于key的所有操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-字符串操作"><span class="toc-text">2. 字符串操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-链表操作"><span class="toc-text">3. 链表操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-集合set操作"><span class="toc-text">4. 集合set操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-有序集合order-set操作"><span class="toc-text">5. 有序集合order set操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-Hash数据结构操作"><span class="toc-text">6. Hash数据结构操作</span></a></li></ol></li></ol>
+          <hr/>
+        </div>
+        
+        <h4 id="Redis的官方定义"><a href="#Redis的官方定义" class="headerlink" title="Redis的官方定义"></a><div id="title">Redis的官方定义</div></h4><blockquote>
+<p>Redis is an open source, BSD licensed, advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.<br>redis是开源,BSD许可,高级的key-value存储系统.</p>
+</blockquote>
+<a id="more"></a>
+<p><strong>那Redis和MC相比，独特之处是啥：</strong></p>
+<blockquote>
+<ul>
+<li>redis可以用来做存储(storge), 而memcached只能用来做缓存(cache), 这个特点主要因为其有”持久化”的功能.</li>
+<li>对于memcached来说,存储的数据,只有1种类型–”字符串”,而redis则可以存储字符串,链表,哈希结构,集合,有序集合</li>
+</ul>
+</blockquote>
+<h4 id="Redis的安装和下载"><a href="#Redis的安装和下载" class="headerlink" title="Redis的安装和下载"></a><div id="title">Redis的安装和下载</div></h4><p>1:官方站点: redis.io 下载最新版或者最新stable版</p>
+<p>2:解压源码并进入目录</p>
+<p>3:不用configure</p>
+<p>4:直接make </p>
+<p>5:可选步骤: make test  测试编译情况<br>(可能出现: need tcl  &gt;8.4这种情况, yum install tcl)</p>
+<p>6:安装到指定的目录,比如 /usr/local/redis<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">make  PREFIX=/usr/local/redis install</div><div class="line">注: PREFIX要大写</div></pre></td></tr></table></figure></p>
+<p>7:make install之后, 得到如下几个文件</p>
+<ul>
+<li>redis-benchmark  性能测试工具</li>
+<li>redis-check-aof  日志文件检测工(比如断电造成日志损坏,可以检测并修复)</li>
+<li>redis-check-dump  快照文件检测工具,效果类上</li>
+<li>redis-cli  客户端</li>
+<li>redis-server 服务端</li>
+</ul>
+<p>8: 复制配置文件<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Cp /path/redis.conf /usr/local/redis</div></pre></td></tr></table></figure></p>
+<p>9: 启动与连接</p>
+<ul>
+<li><p>启动</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">path/to/redis/bin/redis-server  ./path/to/conf-file</div><div class="line"></div><div class="line">例:[root@localhost redis]# ./bin/redis-server ./redis.conf</div></pre></td></tr></table></figure>
+</li>
+<li><p>连接</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">#/path/to/redis/bin/redis-cli [-h localhost -p 6379 ]</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>10:让redis以后台进程的形式运行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">编辑conf配置文件,修改如下内容;</div><div class="line">daemonize yes</div></pre></td></tr></table></figure></p>
+<hr>
+<p><strong>易碰到的问题：时间错误.</strong></p>
+<blockquote>
+<p>原因: 源码是官方configure过的,但官方configure时,生成的文件有时间戳信息,所以如果你的虚拟机的时间不对,比如说是2022年，就可能会出错</p>
+<p>解决: date -s ‘yyyy-mm-dd hh:mm:ss’   重写时间<br>再 clock -w  写入cmos</p>
+</blockquote>
+<h4 id="Redis的常见操作"><a href="#Redis的常见操作" class="headerlink" title="Redis的常见操作"></a><div id="title">Redis的常见操作</div></h4><h5 id="1-对于key的所有操作"><a href="#1-对于key的所有操作" class="headerlink" title="1. 对于key的所有操作"></a>1. 对于key的所有操作</h5><ul>
+<li><p>del key1 key2 … keyn</p>
+<blockquote>
+<p>作用：删除1个或者多个键<br>返回值：不存在的key忽略掉，返回真正删除的key的数量</p>
+</blockquote>
+</li>
+<li><p>rename key newkey</p>
+<blockquote>
+<p>作用：给key附一个新的key名<br>注：如果说newkey的值已经存在，则newkey的原值被覆盖</p>
+</blockquote>
+</li>
+<li><p>renamenx key  newkey</p>
+<blockquote>
+<p>作用：把key改名为newkey<br>返回：发生修改返回1,未发生修改返回0</p>
+</blockquote>
+</li>
+<li><p>move key db</p>
+<blockquote>
+<p>redis 127.0.0.1:6379[1]&gt; select 2<br>OK<br>redis 127.0.0.1:6379[2]&gt; keys <em><br>(empty list or set)<br>redis 127.0.0.1:6379[2]&gt; select 0<br>OK<br>redis 127.0.0.1:6379&gt; keys </em><br>1) “name”<br>2) “cc”<br>3) “a”<br>4) “b”<br>redis 127.0.0.1:6379&gt; move cc 2<br>(integer) 1<br>redis 127.0.0.1:6379&gt; select 2<br>OK<br>redis 127.0.0.1:6379[2]&gt; keys *<br>1) “cc”<br>redis 127.0.0.1:6379[2]&gt; get cc<br>“3”<br>(注意: 一个redis进程,可以打开不止一个数据库, 默认打开16个数据库,从0到15编号,如果想打开更多数据库,可以从配置文件修改)</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li><p>keys pattern  </p>
+<blockquote>
+<p>pattern可选择如下：<br><em>: 通配任意多个字符<br>?: 通配单个字符<br>[]: 通配括号内的某1个字符<br>redis 127.0.0.1:6379&gt; flushdb<br>OK<br>redis 127.0.0.1:6379&gt; keys </em><br>(empty list or set)<br>redis 127.0.0.1:6379&gt; mset one 1 two 2 three 3 four 4<br>OK<br>redis 127.0.0.1:6379&gt; keys o<em><br>1) “one”<br>redis 127.0.0.1:6379&gt; key </em>o<br>(error) ERR unknown command ‘key’<br>redis 127.0.0.1:6379&gt; keys *o<br>1) “two”<br>redis 127.0.0.1:6379&gt; keys ???<br>1) “one”<br>2) “two”<br>redis 127.0.0.1:6379&gt; keys on?<br>1) “one”<br>redis 127.0.0.1:6379&gt; set ons yes<br>OK<br>redis 127.0.0.1:6379&gt; keys on[eaw]<br>1)”one”</p>
+</blockquote>
+</li>
+<li><p>randomkey 返回随机key</p>
+</li>
+<li><p>exists key  判断key是否存在 返回1/0</p>
+</li>
+<li><p>type key  返回key存储的值的类型  有string link set order set hash</p>
+</li>
+<li><p>ttl key  查询key的生命周期</p>
+</li>
+<li><p>expire key 整型值  设置key的生命周期</p>
+</li>
+<li>pexpire key 毫秒数, 设置生命周期</li>
+<li><p>pttl  key, 以毫秒返回生命周期</p>
+</li>
+<li><p>persist key 把指定key设置为永久有效</p>
+</li>
+</ul>
+<p><em>注:对于不存在的key或已过期的key/不过期的key,都返回-1</em><br><em>Redis2.8中,对于不存在的key,返回-2</em></p>
+<h5 id="2-字符串操作"><a href="#2-字符串操作" class="headerlink" title="2. 字符串操作"></a>2. 字符串操作</h5><ul>
+<li><p>set key value [ex 秒数] / [px 毫秒数]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">set a 1 ex 10 , 10秒有效</div><div class="line">Set a 1 px 9000  , 9秒有效</div><div class="line">注: 如果ex,px同时写,以后面的有效期为准</div><div class="line"></div><div class="line">如 set a 1 ex 100 px 9000, 实际有效期是9000毫秒</div></pre></td></tr></table></figure>
+</li>
+<li><p>mset  multi set </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">一次性设置多个键值</div><div class="line">mset key1 v1 key2 v2 ....</div></pre></td></tr></table></figure>
+</li>
+<li><p>get key</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">获取key的值</div></pre></td></tr></table></figure>
+</li>
+<li><p>mget key1 key2 ..keyn</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">获取多个key的值</div></pre></td></tr></table></figure>
+</li>
+<li><p>getset key newvalue</p>
+<figure class="highlight julia"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">获取并返回旧值,设置新值</div><div class="line"></div><div class="line">redis <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>&gt; set cnt <span class="number">0</span></div><div class="line">OK</div><div class="line">redis <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>&gt; getset cnt <span class="number">1</span></div><div class="line"><span class="string">"0"</span></div><div class="line">redis <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>&gt; getset cnt <span class="number">2</span></div><div class="line"><span class="string">"1"</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>incr key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 指定的key的值加1,并返回加1后的值</div></pre></td></tr></table></figure>
+</li>
+<li><p>incrby key number</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">redis 127.0.0.1:6379&gt; incrby age  90</div><div class="line">(integer) 92</div></pre></td></tr></table></figure>
+</li>
+<li><p>incrbyfloat key floatnumber</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">redis 127.0.0.1:6379&gt; incrbyfloat age 3.5</div><div class="line">&quot;95.5&quot;</div></pre></td></tr></table></figure>
+</li>
+<li><p>decr key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">redis 127.0.0.1:6379&gt; set age 20</div><div class="line">OK</div><div class="line">redis 127.0.0.1:6379&gt; decr age</div><div class="line">(integer) 19</div></pre></td></tr></table></figure>
+</li>
+<li><p>decrby key number</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">redis 127.0.0.1:6379&gt; decrby age 3</div><div class="line">(integer) 16</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p><strong>应用场景</strong></p>
+<blockquote>
+<p>在登录的时候，可以控制频控</p>
+</blockquote>
+<h5 id="3-链表操作"><a href="#3-链表操作" class="headerlink" title="3. 链表操作"></a>3. 链表操作</h5><ul>
+<li><p>lpush key value </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 把值插入到链表头部</div></pre></td></tr></table></figure>
+</li>
+<li><p>rpop key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 返回并删除链表尾元素</div></pre></td></tr></table></figure>
+</li>
+<li><p>rpush,lpop: 不解释</p>
+</li>
+<li><p>lrange key start  stop</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">作用: 返回链表中[start ,stop]中的元素</div><div class="line">规律: 左数从0开始,右数从-1开始</div></pre></td></tr></table></figure>
+</li>
+<li><p>lrem key count value</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">作用: 从key链表中删除 value值</div><div class="line">注: 删除count的绝对值个value后结束</div><div class="line">Count&gt;0 从表头删除</div><div class="line">Count&lt;0 从表尾删除</div></pre></td></tr></table></figure>
+</li>
+<li><p>ltrim key start stop</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 剪切key对应的链接,切[start,stop]一段,并把该段重新赋给key</div></pre></td></tr></table></figure>
+</li>
+<li><p>lindex key index</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">作用: 返回index索引上的值,</div><div class="line">如  lindex key 2</div></pre></td></tr></table></figure>
+</li>
+<li><p>llen key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">作用:计算链接表的元素个数</div><div class="line">redis 127.0.0.1:6379&gt; llen task</div><div class="line">(integer) 3</div><div class="line">redis 127.0.0.1:6379&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>linsert  key after|before search value</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">作用: 在key链表中寻找’search’,并在search值之前|之后,.插入value</div><div class="line">注: 一旦找到一个search后,命令就结束了,因此不会插入多个value</div></pre></td></tr></table></figure>
+</li>
+<li><p>rpoplpush source dest</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">作用: 把source的尾部拿出,放在dest的头部,</div><div class="line">并返回 该单元值</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>业务逻辑:<br>1:rpoplpush task bak<br>2:接收返回值,并做业务处理<br>3:如果成功,rpop bak 清除任务. 如不成功,下次从bak表里取任务</p>
+<p>场景: 长轮询Ajax,在线聊天时,能够用到</p>
+</blockquote>
+<h5 id="4-集合set操作"><a href="#4-集合set操作" class="headerlink" title="4. 集合set操作"></a>4. 集合set操作</h5><ul>
+<li><p>sadd setname value1 value2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 往集合setname中增加元素</div></pre></td></tr></table></figure>
+</li>
+<li><p>srem value1 value2</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">作用: 删除集合中集为 value1 value2的元素</div><div class="line">返回值: 忽略不存在的元素后,真正删除掉的元素的个数</div></pre></td></tr></table></figure>
+</li>
+<li><p>spop key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 返回并删除集合中key中1个随机元素</div></pre></td></tr></table></figure>
+</li>
+<li><p>srandmember key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 返回集合key中,随机的1个元素.</div></pre></td></tr></table></figure>
+</li>
+<li><p>sismember key  value</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">作用: 判断value是否在key集合中</div><div class="line">是返回1,否返回0</div></pre></td></tr></table></figure>
+</li>
+<li><p>smembers key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 返回集中中所有的元素</div></pre></td></tr></table></figure>
+</li>
+<li><p>scard key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 返回集合中元素的个数</div></pre></td></tr></table></figure>
+</li>
+<li><p>smove source dest value</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用:把source中的value删除,并添加到dest集合中</div></pre></td></tr></table></figure>
+</li>
+<li><p>sinter  s1 s2 s3</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">作用: 求出s1 s2 s3 三个集合中的交集,并返回</div><div class="line">redis 127.0.0.1:6379&gt; sadd s1 0 2 4 6</div><div class="line">(integer) 4</div><div class="line">redis 127.0.0.1:6379&gt; sadd s2 1 2 3 4</div><div class="line">(integer) 4</div><div class="line">redis 127.0.0.1:6379&gt; sadd s3 4 8 9 12</div><div class="line">(integer) 4</div><div class="line">redis 127.0.0.1:6379&gt; sinter s1 s2 s3</div><div class="line">1) &quot;4&quot;</div><div class="line">redis 127.0.0.1:6379&gt; sinter s3 s1 s2</div><div class="line">1)&quot;4&quot;</div></pre></td></tr></table></figure>
+</li>
+<li><p>sinterstore dest s1 s2 s3</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 求出s1 s2 s3 三个集合中的交集,并赋给dest</div></pre></td></tr></table></figure>
+</li>
+<li><p>suion s1 s2 s3.. sn</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 求出s1 s2 s3.. sn的并集,并返回</div></pre></td></tr></table></figure>
+</li>
+<li><p>sdiff s1 s2 s3 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">作用: 求出s1与s2 s3的差集</div><div class="line">即s1-s2-s3</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="5-有序集合order-set操作"><a href="#5-有序集合order-set操作" class="headerlink" title="5. 有序集合order set操作"></a>5. 有序集合order set操作</h5><ul>
+<li><p>zadd s1 score1 value1 score2 value2 ..</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">redis 127.0.0.1:6379&gt; zadd stu 18 lily 19 hmm 20 lilei 21 lilei</div><div class="line">(integer) 3</div></pre></td></tr></table></figure>
+</li>
+<li><p>zrem s1 value1 value2 ..</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 删除集合中的元素</div></pre></td></tr></table></figure>
+</li>
+<li><p>zremrangebyscore sname min max</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">作用: 按照socre来删除元素,删除score在[min,max]之间的</div><div class="line">redis 127.0.0.1:6379&gt; zremrangebyscore stu 4 10</div><div class="line">(integer) 2</div><div class="line">redis 127.0.0.1:6379&gt; zrange stu 0 -1</div><div class="line">1) &quot;f&quot;</div></pre></td></tr></table></figure>
+</li>
+<li><p>zremrangebyrank sname start end</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">作用: 按排名删除元素,删除名次在[start,end]之间的</div><div class="line">redis 127.0.0.1:6379&gt; zremrangebyrank stu 0 1</div><div class="line">(integer) 2</div><div class="line">redis 127.0.0.1:6379&gt; zrange stu 0 -1</div><div class="line">1) &quot;c&quot;</div><div class="line">2) &quot;e&quot;</div><div class="line">3) &quot;f&quot;</div><div class="line">4) &quot;g&quot;</div></pre></td></tr></table></figure>
+</li>
+<li><p>zrank key member</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">查询member的排名(升序 0名开始)</div></pre></td></tr></table></figure>
+</li>
+<li><p>zrevrank key memeber</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">查询 member的排名(降序 0名开始)</div></pre></td></tr></table></figure>
+</li>
+<li><p>ZRANGE key start stop [WITHSCORES]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">把集合排序后,返回名次[start,stop]的元素</div><div class="line">默认是升续排列 </div><div class="line">Withscores 是把score也打印出来</div></pre></td></tr></table></figure>
+</li>
+<li><p>zrevrange key start stop</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用:把集合降序排列,取名字[start,stop]之间的元素</div></pre></td></tr></table></figure>
+</li>
+<li><p>zrangebyscore  key min max [withscores] limit offset N</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">作用: 集合(升续)排序后,取score在[min,max]内的元素,</div><div class="line">并跳过 offset个, 取出N个</div><div class="line">redis 127.0.0.1:6379&gt; zadd stu 1 a 3 b 4 c 9 e 12 f 15 g</div><div class="line">(integer) 6</div><div class="line">redis 127.0.0.1:6379&gt; zrangebyscore stu 3 12 limit 1 2 withscores</div><div class="line">1) &quot;c&quot;</div><div class="line">2) &quot;4&quot;</div><div class="line">3) &quot;e&quot;</div><div class="line">4) &quot;9&quot;</div></pre></td></tr></table></figure>
+</li>
+<li><p>zcard key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">返回元素个数</div></pre></td></tr></table></figure>
+</li>
+<li><p>zcount key min max</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">返回[min,max] 区间内元素的数量</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h5 id="6-Hash数据结构操作"><a href="#6-Hash数据结构操作" class="headerlink" title="6. Hash数据结构操作"></a>6. Hash数据结构操作</h5><ul>
+<li><p>hset key field value</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">作用: 把hash表中 filed域的值设为value</div><div class="line">注:如果没有field域,直接添加,如果有,则覆盖原field域的值</div></pre></td></tr></table></figure>
+</li>
+<li><p>hmset key field1 value1 [field2 value2 field3 value3 ……fieldn valuen]</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">作用: 设置field1-&gt;N 个域, 对应的值是value1-&gt;N</div><div class="line">(对应PHP理解为  $key = array(file1=&gt;value1, field2=&gt;value2 ....fieldN=&gt;valueN))</div></pre></td></tr></table></figure>
+</li>
+<li><p>hget key field</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 返回key中field域的值</div></pre></td></tr></table></figure>
+</li>
+<li><p>hmget key field1 field2 fieldN</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 返回key中field1 field2 fieldN域的值</div></pre></td></tr></table></figure>
+</li>
+<li><p>hgetall key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用:返回key中,所有域与其值</div></pre></td></tr></table></figure>
+</li>
+<li><p>hdel key field</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 删除key中 field域</div></pre></td></tr></table></figure>
+</li>
+<li><p>hlen key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 返回key中元素的数量</div></pre></td></tr></table></figure>
+</li>
+<li><p>hexists key field</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 判断key中有没有field域</div></pre></td></tr></table></figure>
+</li>
+<li><p>hincrby key field value</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 是把key中的field域的值增长整型值value</div></pre></td></tr></table></figure>
+</li>
+<li><p>hincrby float  key field value</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 是把key中的field域的值增长浮点值value</div></pre></td></tr></table></figure>
+</li>
+<li><p>hkeys key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 返回key中所有的field</div></pre></td></tr></table></figure>
+</li>
+<li><p>hvals key</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">作用: 返回key中所有的value</div></pre></td></tr></table></figure></li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NoSQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/NoSQL/" class="article-tag-list-link color1">NoSQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/05/Redis学习目录/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/05/05/MySQL大数据分页/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          MySQL大数据分页
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/05/循序渐进大型网站架构/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">循序渐进大型网站架构</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <section id="comments" style="margin:10px;padding:10px;background:#fff;">
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "mjstUtcUPaEVJpt5xt5zWykf-gzGzoHsz",
+            app_key: "4CY7cYn38n302Lor7lqqLoJO",
+            placeholder: "来呀!快活呀!",
+            avatar:"mm"
+        });
+    }
+</script>
+
+    </section>
+ 
+
+  
+
+
 
           </div>
         </div>

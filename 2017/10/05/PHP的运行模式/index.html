@@ -176,7 +176,495 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-PHP的运行模式" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      PHP的运行模式以及底层原理讲解
+    </h1>
+  
+
+        
+        <a href="/2017/10/05/PHP的运行模式/" class="archive-article-date">
+  	<time datetime="2017-10-05T04:18:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP的运行模式"><span class="toc-text">PHP的运行模式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#CLI运行模式"><span class="toc-text">CLI运行模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#CGI运行模式"><span class="toc-text">CGI运行模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#FASTCGI运行模式"><span class="toc-text">FASTCGI运行模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#模块运行模式"><span class="toc-text">模块运行模式</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#服务器网络I-O模型"><span class="toc-text">服务器网络I/O模型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#I-O多路复用"><span class="toc-text">I/O多路复用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#两个网络模型的区别"><span class="toc-text">两个网络模型的区别</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#如何选择"><span class="toc-text">如何选择</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP运行机制与原理"><span class="toc-text">PHP运行机制与原理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#提高PHP代码运行效率"><span class="toc-text">提高PHP代码运行效率</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP底层源码分析"><span class="toc-text">PHP底层源码分析</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#字符串"><span class="toc-text">字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#变量存储"><span class="toc-text">变量存储</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#变量类型"><span class="toc-text">变量类型</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#传值赋值和传引用赋值"><span class="toc-text">传值赋值和传引用赋值</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#内存回收机制"><span class="toc-text">内存回收机制</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#数组"><span class="toc-text">数组</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#数组Key和Value的限制条件"><span class="toc-text">数组Key和Value的限制条件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#数组元素的访问"><span class="toc-text">数组元素的访问</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#unset删除数组元素"><span class="toc-text">unset删除数组元素</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#数组遍历"><span class="toc-text">数组遍历</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#数组和常见的数据结构"><span class="toc-text">数组和常见的数据结构</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#数组内部实现"><span class="toc-text">数组内部实现</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#数组函数分类"><span class="toc-text">数组函数分类</span></a></li></ol></li></ol></li></ol>
+          <hr/>
+        </div>
+        
+        <h4 id="PHP的运行模式"><a href="#PHP的运行模式" class="headerlink" title="PHP的运行模式"></a><div id="title">PHP的运行模式</div></h4><blockquote>
+<p><code>SAPI:Server Application Programming Interface</code> 服务器端应用编程端口。它就是PHP与其它应用交互的接口，PHP脚本要执行有很多种方式，通过Web服务器，或者直接在命令行下，也可以嵌入在其他程序中</p>
+<p><code>SAPI</code>提供了一个和外部通信的接口, 常见的有五大运行模式：</p>
+</blockquote>
+<ul>
+<li>cgi (通用网关接口Common Gateway Interface)</li>
+<li>fast-cgi (fast-cgi 是cgi的升级版本)</li>
+<li>cli (Command Line Interface)</li>
+<li>isapi (Internet Server Application Program Interface，是微软提供的一套面向Internet服务的API接口)</li>
+<li>apache2handler (将php作为apache的模块, nginx类似)</li>
+<li>其他(continuity, embed, litespeed, milter等)</li>
+</ul>
+<a id="more"></a>
+<h5 id="CLI运行模式"><a href="#CLI运行模式" class="headerlink" title="CLI运行模式"></a><div id="title">CLI运行模式</div></h5><blockquote>
+<p>Command Line Interface的简称，即PHP命令行接口，在windows和linux下都支持PHP-CLI模式,它可以直接在命令行下运行,那就意味着完全可以不要任何http容器. 例如 php test.php </p>
+</blockquote>
+<p><strong>应用场景</strong></p>
+<ul>
+<li>定时任务</li>
+<li>开发桌面应用就是使用PHP-CLI和GTK包</li>
+<li>开发shell脚本</li>
+</ul>
+<p><strong>优点和缺点</strong></p>
+<ul>
+<li><p>利用crontab去跑php，可以给服务器减压，当然在这里有一个条件，就是实时性要求不高。比如：sns中的好友动态，这个实时要求不高，但是数据量比较大，这个时候定时跑的话，会给web服务器，数据库服务器分担不小的压力。</p>
+</li>
+<li><p>就是我们要定时去完成某一事情，比如：我要删除一个月前，用户留言，这个时候，写的php脚本在crontab去执行，一天跑一次就行了。而不是手动去执行php程序。</p>
+</li>
+<li>无法为普通用户提供http服务</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span>  </div><div class="line">print_r($argv);  </div><div class="line"><span class="keyword">echo</span> <span class="string">"\n"</span>;  </div><div class="line"><span class="keyword">echo</span> $argc;  </div><div class="line"><span class="keyword">echo</span> <span class="string">"\n"</span>;  </div><div class="line"></div><div class="line">root@ubuntu:~$ php test.php aaa ccc  bbbb  </div><div class="line"><span class="keyword">Array</span>  </div><div class="line">(  </div><div class="line"> [<span class="number">0</span>] =&gt; test.php    <span class="comment">//参数0，文件本身  </span></div><div class="line"> [<span class="number">1</span>] =&gt; aaa         <span class="comment">//参数1  </span></div><div class="line"> [<span class="number">2</span>] =&gt; ccc         <span class="comment">//参数2  </span></div><div class="line"> [<span class="number">3</span>] =&gt; bbbb        <span class="comment">//参数3  </span></div><div class="line">)  </div><div class="line">  </div><div class="line"><span class="number">4</span>      <span class="comment">//$argc的值，参数的总数</span></div></pre></td></tr></table></figure>
+<h5 id="CGI运行模式"><a href="#CGI运行模式" class="headerlink" title="CGI运行模式"></a><div id="title">CGI运行模式</div></h5><blockquote>
+<p>CGI即通用网关接口(<code>Common Gateway Interface</code>)，它是一段程序, 通俗的讲CGI就象是一座桥，把网页和WEB服务器中的执行程序连接起来，它把http服务器接收的指令传递给执行程序，再把执行程序的结果返还给http服务器。CGI 的跨平台性能极佳，几乎可以在任何操作系统上实现。</p>
+</blockquote>
+<p><strong>执行过程</strong> </p>
+<ul>
+<li>http服务器接受到用户请求后, 例如 index.php,会通过它配置的CGI服务来执行</li>
+<li>生成一个php-cgi.exe的进程,并执行php程序    </li>
+<li>执行的返回结果交给http服务器    </li>
+</ul>
+<p><strong>应用场景</strong></p>
+<ul>
+<li>提供http服务</li>
+</ul>
+<p><strong>优点和缺点</strong></p>
+<ul>
+<li>跨平台,几乎可以在任何操作系统上实现.</li>
+<li>web和server是独立的,结构清晰,可控性强</li>
+<li>性能比较差,来一个请求,fork一个进程,100个请求就会fork100进程,消耗资源较多(fork-and-execute 模式)</li>
+<li>最近几年已经很少见到使用这种模式了</li>
+</ul>
+<h5 id="FASTCGI运行模式"><a href="#FASTCGI运行模式" class="headerlink" title="FASTCGI运行模式"></a><div id="title">FASTCGI运行模式</div></h5><blockquote>
+<p>快速通用网关接口（<code>Fast Common Gateway Interface／FastCGI</code>）是一种让交互程序与Web服务器通信的协议。FastCGI是早期通用网关接口（CGI）的增强版本。FastCGI致力于减少Web服务器与CGI程序之间互动的开销，从而使服务器可以同时处理更多的网页请求。。</p>
+</blockquote>
+<p><strong>执行过程</strong></p>
+<ul>
+<li>web服务器启动时 ,载入FastCGI进程管理器</li>
+<li>FastCGI进程管理器会启动多个CGI进程等待web服务器的链接.</li>
+<li>当客户端请求到达Web Server时，FastCGI进程管理器选择并连接到一个CGI解释器。Web server将环境变量和标准输入发送到FastCGI子进程php-cgi</li>
+<li>FastCGI子进程完成处理后将标准输出和错误信息从同一连接返回Web Server。当FastCGI子进程关闭连接时，请求便告处理完成。FastCGI子进程接着等待并处理来自FastCGI进程管理器(运行在Web Server中)的下一个连接。 在CGI模式中，php-cgi在此便退出了。</li>
+</ul>
+<p><strong>应用场景</strong></p>
+<ul>
+<li>提供http服务</li>
+</ul>
+<p><strong>优点和缺点</strong></p>
+<ul>
+<li>跨平台,几乎可以在任何操作系统上实现.</li>
+<li>web和server是独立的,结构清晰,可控性强,并不需要web升级而变化</li>
+<li>支持大并发</li>
+<li>多进程,消耗较多内存</li>
+</ul>
+<h5 id="模块运行模式"><a href="#模块运行模式" class="headerlink" title="模块运行模式"></a><div id="title">模块运行模式</div></h5><blockquote>
+<p>模块模式指将php作为web服务器的一个模块运行</p>
+</blockquote>
+<p><strong>应用场景</strong></p>
+<ul>
+<li>提供http服务</li>
+</ul>
+<p><strong>优点和缺点</strong></p>
+<ul>
+<li>安装配置方便，不需要安装代码解析程序</li>
+<li>支持多线程，占用资源少</li>
+<li>支持大并发</li>
+</ul>
+<h4 id="服务器网络I-O模型"><a href="#服务器网络I-O模型" class="headerlink" title="服务器网络I/O模型"></a><div id="title">服务器网络I/O模型</div></h4><p><strong>大访问量下Apache和Nginx谁性能高？</strong></p>
+<p><strong>为什么大访问量下Nginx性能更高？</strong></p>
+<blockquote>
+<p>两者采用的服务器的模式不一样</p>
+</blockquote>
+<ul>
+<li><p>Apache所采用的select网络I/O模型非常低效</p>
+</li>
+<li><p>Nginx使用了最新的epoll（Linux 2.6内核）和kqueue（freebsd）网络I/O模型</p>
+</li>
+</ul>
+<h5 id="I-O多路复用"><a href="#I-O多路复用" class="headerlink" title="I/O多路复用"></a><div id="title">I/O多路复用</div></h5><blockquote>
+<p>IO多路复用是指内核一旦发现进程指定的一个或者多个IO条件准备读取，它就通知该进程</p>
+</blockquote>
+<p>IO多路复用适用如下场合：</p>
+<p>1）当客户处理多个描述字时（一般是交互式输入和网络套接口），必须使用I/O复用</p>
+<p>2）如果一个TCP服务器既要处理监听套接口，又要处理已连接套接口，一般也要用到I/O复用。</p>
+<p>3）如果一个服务器即要处理TCP，又要处理UDP，一般要使用I/O复用。</p>
+<p>4）如果一个服务器要处理多个服务或多个协议，一般要使用I/O复用。</p>
+<blockquote>
+<p>与多进程和多线程技术相比，I/O多路复用技术的最大优势是系统开销小，系统不必创建进程/线程，也不必维护这些进程/线程，从而大大减小了系统的开销</p>
+</blockquote>
+<h5 id="两个网络模型的区别"><a href="#两个网络模型的区别" class="headerlink" title="两个网络模型的区别"></a><div id="title">两个网络模型的区别</div></h5><p><img src="https://i.loli.net/2018/04/08/5ac9b7468b035.jpg" alt="网络模型3.jpg"></p>
+<hr>
+<p><strong>select的优点：</strong></p>
+<blockquote>
+<p><code>select</code>目前几乎在所有的平台上支持，其良好跨平台支持也是它的一个优点。</p>
+</blockquote>
+<p><strong>select的缺点：</strong></p>
+<ol>
+<li><p><code>select</code>的一个缺点在于单个进程能够监视的文件描述符的数量存在最大限制，在Linux上一般为1024，可以通过修改宏定义甚至重新编译内核的方式提升这一限制，但是这样也会造成效率的降低。</p>
+</li>
+<li><p>对socket进行扫描时是线性扫描，即采用轮询的方法，效率较低。当套接字比较多的时候，每次select()都要通过遍历FD_SETSIZE个Socket来完成调度，不管哪个Socket是活跃的，都遍历一遍。这会浪费很多CPU时间。如果能给套接字注册某个回调函数，当他们活跃时，自动完成相关操作，那就避免了轮询，这正是epoll与kqueue做的。</p>
+</li>
+<li><p>需要维护一个用来存放大量fd的数据结构，这样会使得用户空间和内核空间在传递该结构时复制开销大。</p>
+</li>
+</ol>
+<p><strong>epoll介绍</strong></p>
+<blockquote>
+<p>epoll是在2.6内核中提出的，是之前的select和poll的增强版本。相对于select和poll来说，epoll更加灵活，没有描述符限制。epoll使用一个文件描述符管理多个描述符，将用户关系的文件描述符的事件存放到内核的一个事件表中，这样在用户空间和内核空间的copy只需一次。</p>
+</blockquote>
+<p><strong>epoll的优点</strong></p>
+<ol>
+<li><p>没有最大并发连接的限制，能打开的FD的上限远大于1024（1G的内存上能监听约10万个端口）</p>
+</li>
+<li><p>效率提升，不是轮询的方式，不会随着FD数目的增加效率下降。只有活跃可用的FD才会调用<code>callback</code>函数；即Epoll最大的优点就在于它只管你“活跃”的连接，而跟连接总数无关，因此在实际的网络环境中，Epoll的效率就会远远高于select和poll。</p>
+</li>
+<li><p>内存拷贝，利用<code>mmap()</code>文件映射内存加速与内核空间的消息传递；即epoll使用mmap减少复制开销。</p>
+</li>
+</ol>
+<hr>
+<h5 id="如何选择"><a href="#如何选择" class="headerlink" title="如何选择"></a><div id="title">如何选择</div></h5><p>综上，在选择select，epoll时要根据具体的使用场合以及这两种方式的自身特点：</p>
+<ul>
+<li>表面上看epoll的性能最好，但是在连接数少并且连接都十分活跃的情况下，select性能可能比epoll好，毕竟epoll的通知机制需要很多函数回调</li>
+<li>select低效是因为每次它都需要轮询。但低效也是相对的，视情况而定，也可通过良好的设计改善</li>
+<li>一般访问量网站优先选择Apache，它稳定可靠</li>
+<li>Apache模块非常丰富，为了用它的模块得选它</li>
+<li>Apache的rewrite非常强大，rewrite多就选择它</li>
+<li>大访问量优先选择Nginx，它支持更多的并发连接</li>
+<li>处理的都是静态内容（html，图片），首选Nginx</li>
+<li>Nginx本质上是反向代理服务器，需要反向代理就选它</li>
+</ul>
+<h4 id="PHP运行机制与原理"><a href="#PHP运行机制与原理" class="headerlink" title="PHP运行机制与原理"></a><div id="title">PHP运行机制与原理</div></h4><p><img src="https://i.loli.net/2018/04/08/5ac9b897811a3.jpg" alt="运行原理.jpg"></p>
+<ol>
+<li><p>扫描(scanning) ,先进行语法分析和此法分析，然后将<code>index.php</code>内容变成一个个语言片段(<code>token</code>)</p>
+</li>
+<li><p>解析(parsing) , 词法分析后, 就需要根据一个个<code>token</code>去组成有意义的表达式</p>
+</li>
+</ol>
+<blockquote>
+<p>Parsing首先会丢弃<code>Tokens Array</code>中的多余的空格，然后将剩余的<code>Tokens</code>转换成一个一个的简单的表达式将一个个语言片段变成有意义的表达式</p>
+</blockquote>
+<ol>
+<li>编译(complication),将表达式编译成中间码(<code>opcode</code>)</li>
+<li>执行(execution),将中间码一条一条的执行</li>
+<li>输出(output buffer),将要输出的内容输出到缓冲区</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$code = <span class="string">&lt;&lt;&lt;'PHP_CODE'</div><div class="line">&lt;?php</div><div class="line">echo 'hello world';</div><div class="line"><span class="subst">$data</span> = 1+1;</div><div class="line">echo <span class="subst">$data</span>;</div><div class="line">PHP_CODE;</span></div><div class="line"></div><div class="line">print_r(token_get_all($code));</div></pre></td></tr></table></figure>
+<p>分析这个返回结果我们可以发现，源码中的字符串，字符，空格，都会原样返回。每个源代码中的字符，都会出现在相应的顺序处。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Array</span>(</div><div class="line">    [<span class="number">0</span>] =&gt; <span class="number">316</span> 				<span class="comment">//tokenid,也就是"词"id </span></div><div class="line">    [<span class="number">1</span>] =&gt; <span class="string">"Hello, world\n"</span>		<span class="comment">//"词"具体的内容</span></div><div class="line">    [<span class="number">2</span>] =&gt; <span class="number">3</span>				<span class="comment">//所在的位置,行数</span></div><div class="line">)</div></pre></td></tr></table></figure>
+<p><code>Token ID</code> (在<code>Zend</code>内部该<code>Token</code>的对应码)<br>具体的定义可以在<code>zend_language_parser.h</code>中找到</p>
+<h5 id="提高PHP代码运行效率"><a href="#提高PHP代码运行效率" class="headerlink" title="提高PHP代码运行效率"></a><div id="title">提高PHP代码运行效率</div></h5><ul>
+<li>压缩代码，去除无用的注释或空白</li>
+<li>尽量使用<code>PHP</code>内置函数或扩展函数</li>
+<li>用<code>apc/xcache/opcache</code>等缓存<code>PHP</code>的<code>opcode</code></li>
+<li>缓存复杂和耗时运算的结果</li>
+<li>能异步处理的任务不要马上处理，如发邮件</li>
+</ul>
+<h4 id="PHP底层源码分析"><a href="#PHP底层源码分析" class="headerlink" title="PHP底层源码分析"></a><div id="title">PHP底层源码分析</div></h4><h5 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a><div id="title">字符串</div></h5><h6 id="变量存储"><a href="#变量存储" class="headerlink" title="变量存储"></a><div id="title">变量存储</div></h6><blockquote>
+<p>php 的变量是用一个结构体-zval来保存的， 在Zend/zend.h中我们可以看到zval的定义.</p>
+</blockquote>
+<p><img src="https://i.loli.net/2018/04/08/5ac9be201106a.jpg" alt="zval1.jpg"></p>
+<h6 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a><div id="title">变量类型</div></h6><p>变量的值使用<code>zvalue_value value</code>存储，此联合体内包括：</p>
+<ol>
+<li>整型/浮点/长整型/bool值 </li>
+<li>字符串</li>
+<li>数组/关联数组</li>
+<li>对象</li>
+<li>资源</li>
+</ol>
+<p><img src="https://i.loli.net/2018/04/08/5ac9beb87e89e.jpg" alt="zval2.jpg"></p>
+<h6 id="传值赋值和传引用赋值"><a href="#传值赋值和传引用赋值" class="headerlink" title="传值赋值和传引用赋值"></a><div id="title">传值赋值和传引用赋值</div></h6><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$a = <span class="number">3</span>;</div><div class="line">$b = $a;</div></pre></td></tr></table></figure>
+<p><strong>是否产生了两个结构体？</strong></p>
+<p><img src="https://i.loli.net/2018/04/08/5ac9c172e0620.png" alt="变量的引用1.png"></p>
+<p><strong>cow 写时复制</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$a = <span class="number">3</span>;</div><div class="line">$b = $a;</div><div class="line"></div><div class="line">$b = <span class="number">5</span>;</div><div class="line"></div><div class="line"><span class="keyword">echo</span> $a, $b;</div></pre></td></tr></table></figure>
+<p><strong>既然<code>$a, $b</code>都指向同一个结构体，那当改变<code>$b</code>的值得时候，<code>$a</code>的值为啥不会改变？</strong></p>
+<blockquote>
+<p>因为两者，有一方修改值得时候，才会进行分裂。这种结构体一开始共用，到某一方修改值得时候，才分裂，就叫做写时复制 <code>copy on write</code></p>
+</blockquote>
+<p><img src="https://i.loli.net/2018/04/08/5ac9c45298d58.png" alt="cow.png"></p>
+<p><strong>继续看：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$a = <span class="number">3</span>;</div><div class="line">$b = &amp;$a;</div><div class="line"></div><div class="line">$b = <span class="number">5</span>;</div><div class="line"></div><div class="line"><span class="keyword">echo</span> $a, $b;</div></pre></td></tr></table></figure>
+<p><img src="https://i.loli.net/2018/04/08/5ac9c570c2774.png" alt="引用传值.png"></p>
+<p><strong>我们可以把引用看作是把这个变量的内存地址给复制了过来</strong></p>
+<h6 id="内存回收机制"><a href="#内存回收机制" class="headerlink" title="内存回收机制"></a><div id="title">内存回收机制</div></h6><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">zend_uint refcount_gc; <span class="comment">//这个用来标记有多少个变量</span></div><div class="line">zend_uchar is_ref_gc; <span class="comment">//这个用来标记用引用的方式</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>看看是不是垃圾就看 refcount_gc 是不是为0 </p>
+</blockquote>
+<h5 id="数组"><a href="#数组" class="headerlink" title="数组"></a><div id="title">数组</div></h5><h6 id="数组Key和Value的限制条件"><a href="#数组Key和Value的限制条件" class="headerlink" title="数组Key和Value的限制条件"></a><div id="title">数组Key和Value的限制条件</div></h6><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">$arr = <span class="keyword">array</span>(</div><div class="line">        <span class="number">1</span> =&gt; <span class="string">'a'</span>,</div><div class="line">        <span class="string">"1"</span> =&gt; <span class="string">"b"</span>,</div><div class="line">        <span class="number">1.5</span> =&gt; <span class="string">"c"</span>,</div><div class="line">        <span class="keyword">true</span> =&gt; <span class="string">"d"</span></div><div class="line">    );</div><div class="line">var_dump($arr);</div><div class="line"></div><div class="line">$arr = <span class="keyword">array</span>(</div><div class="line">        <span class="string">"foo"</span> =&gt; <span class="string">'bar'</span>,</div><div class="line">        <span class="string">"bar"</span> =&gt; <span class="string">"foo"</span>,</div><div class="line">        <span class="number">100</span> =&gt; <span class="number">-100</span>,</div><div class="line">        <span class="number">-100</span> =&gt; <span class="number">100</span></div><div class="line">    );</div><div class="line">var_dump($arr);</div></pre></td></tr></table></figure>
+<ul>
+<li>key 可以是 integer 或者 string。</li>
+<li>value 可以是任意类型。</li>
+</ul>
+<p><strong>key 会有如下的强制转换:</strong></p>
+<ul>
+<li>包含有合法整型值的字符串会被转换为整型</li>
+<li>浮点数和布尔值也会被转换为整型</li>
+<li>键名 null 实际会被储存为 “”</li>
+<li>数组和对象不能被用为键名</li>
+<li>相同键名，之前会被覆盖</li>
+</ul>
+<h6 id="数组元素的访问"><a href="#数组元素的访问" class="headerlink" title="数组元素的访问"></a><div id="title">数组元素的访问</div></h6><blockquote>
+<p>获取数组元素的值有哪些方法？</p>
+</blockquote>
+<ul>
+<li>方括号，数组单元可以通过 array[key] 语法来访问。</li>
+<li>花括号也可以，例如 <code>$array[42] 和 $array{42}</code> 效果相同。</li>
+<li>方括号可以包括“表达式”，例如：<code>$arr[somefunc($bar)]</code>;</li>
+<li>自 PHP 5.4 起可以用数组间接引用函数或方法调用的结果。</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getArr</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">array</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>);</div><div class="line">&#125;</div><div class="line">$element = getArr()[<span class="number">1</span>];</div><div class="line">var_dump($element);</div></pre></td></tr></table></figure>
+<h6 id="unset删除数组元素"><a href="#unset删除数组元素" class="headerlink" title="unset删除数组元素"></a><div id="title">unset删除数组元素</div></h6><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$arr = <span class="keyword">array</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>);</div><div class="line"></div><div class="line"><span class="keyword">foreach</span>($arr <span class="keyword">as</span> $k=&gt;$v)&#123;</div><div class="line">    <span class="keyword">unset</span>($arr[$k]);</div><div class="line">&#125;</div><div class="line">$arr[] = <span class="number">6</span>;</div><div class="line"></div><div class="line">print_r($arr);</div></pre></td></tr></table></figure>
+<p><strong>unset删除之后，并不会重置数组的索引</strong></p>
+<h6 id="数组遍历"><a href="#数组遍历" class="headerlink" title="数组遍历"></a><div id="title">数组遍历</div></h6><ul>
+<li><code>for</code> ：语句循环遍历 </li>
+<li><code>foreach</code> ：循环遍历 </li>
+<li><code>array_walk、array_map</code> ：回调遍历</li>
+<li><code>current和next</code> ：内部指针遍历</li>
+</ul>
+<p><strong>一般php推荐使用foreach来遍历数组。</strong></p>
+<h6 id="数组和常见的数据结构"><a href="#数组和常见的数据结构" class="headerlink" title="数组和常见的数据结构"></a><div id="title">数组和常见的数据结构</div></h6><p><strong>链表</strong></p>
+<blockquote>
+<p>链表能存储多个数据元素，他就像一条线一样，把所有存储的数据元素连在一起，所以也称作是线性的数据结构。</p>
+</blockquote>
+<p><img src="https://i.loli.net/2018/04/08/5ac9eec1bdf26.png" alt="链表.png"></p>
+<p><strong>散列表</strong></p>
+<blockquote>
+<p>散列表（Hash table，也叫哈希表），是根据关键字（Key value）而直接访问在内存存储位置的一种数据结构。</p>
+</blockquote>
+<p><strong>栈</strong></p>
+<blockquote>
+<p>栈作为一种数据结构，是一种只能在一端进行插入和删除操作的特殊线性表。它按照后进先出的原则存储数据（LIFO, Last In First Out）。</p>
+</blockquote>
+<p><strong>队列</strong></p>
+<blockquote>
+<p>队列就是是先进先出（FIFO, First-In-First-Out）的线性表。队列只允许在后端（称为rear）进行插入操作，在前端（称为front）进行删除操作。</p>
+</blockquote>
+<h6 id="数组内部实现"><a href="#数组内部实现" class="headerlink" title="数组内部实现"></a><div id="title">数组内部实现</div></h6><ul>
+<li>实现数组使用了两个数据结构，一个是<code>HashTable</code>,另一个是<code>bucket</code>。</li>
+<li><code>HashTable</code>结构体用于保存整个数组需要的基本信息。</li>
+<li><code>Bucket</code>结构体用于保存具体的数据内容。</li>
+</ul>
+<p><img src="https://i.loli.net/2018/04/08/5ac9dcb8f21f7.jpg" alt="hashtable1.jpg"></p>
+<p><strong>HashTable是什么？</strong></p>
+<blockquote>
+<p>哈希表，是根据关键字（<code>Key value</code>）而直接访问在内存存储位置的数据结构。也就是说，它通过把键值通过一个函数的计算，映射到表中一个位置来访问记录，这加快了查找速度。使得普通的查找和插入、删除操作都可以在<code>O(1)</code> 的时间内完成。这个映射函数称做<code>哈希函数</code>，存放记录的数组称做哈希表。</p>
+</blockquote>
+<p><img src="https://i.loli.net/2018/04/08/5ac9dd3d26ee2.jpg" alt="hashtable2.jpg"></p>
+<p><strong>HashTable结构体的表示：</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">hashtable</span> &#123;</span></div><div class="line">    uint nTableSize;        <span class="comment">// hash Bucket的大小，最小为8，以2x增长。</span></div><div class="line">    uint nTableMask;        <span class="comment">// nTableSize-1 ， 索引取值的优化，193491849 &amp; 127</span></div><div class="line">    uint nNumOfElements;    <span class="comment">// hash Bucket中当前存在的元素个数，count()函数会直接返回此值。</span></div><div class="line">    ulong nNextFreeElement; <span class="comment">// 下一个数字索引的位置</span></div><div class="line">    Bucket *pInternalPointer;   <span class="comment">// 当前遍历的指针foreach比for快的原因之一,reset, current遍历函数使用</span></div><div class="line">    Bucket *pListHead;          <span class="comment">// 存储数组头元素指针</span></div><div class="line">    Bucket *pListTail;          <span class="comment">// 存储数组尾元素指针</span></div><div class="line">    Bucket **arBuckets;         <span class="comment">// 存储hash数组,实际的存储容器</span></div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> nApplyCount; <span class="comment">// 标记当前hash Bucket被递归访问的次数（防止多次递归）</span></div><div class="line">&#125; HashTable;</div></pre></td></tr></table></figure>
+<p><strong>Bucket结构体：</strong></p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">bucket</span> &#123;</span></div><div class="line">    ulong h;            <span class="comment">// 对char *key进行hash后的值，或者是用户指定的数字索引值</span></div><div class="line">    uint nKeyLength;    <span class="comment">// hash关键字的长度，如果数组索引为数字，此值为0</span></div><div class="line">    <span class="keyword">void</span> *pData;        <span class="comment">// 指向value，一般是用户数据的副本，如果是指针数据，则指向pDataPtr</span></div><div class="line">    <span class="keyword">void</span> *pDataPtr;     <span class="comment">//如果是指针数据，此值会指向真正的value，同时上面pData会指向此值</span></div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">bucket</span> *<span class="title">pListNext</span>;</span>   <span class="comment">// 整个hash表的下一元素</span></div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">bucket</span> *<span class="title">pListLast</span>;</span>   <span class="comment">// 整个hash表该元素的上一个元素</span></div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">bucket</span> *<span class="title">pNext</span>;</span>       <span class="comment">// 存放在同一个hash Bucket内的下一个元素</span></div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">bucket</span> *<span class="title">pLast</span>;</span>       <span class="comment">// 同一个hash bucket的上一个元素</span></div><div class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *arKey;          <span class="comment">// 保存当前key所对应的字符串值</span></div><div class="line">&#125; Bucket;</div></pre></td></tr></table></figure>
+<p><strong>总结成一张图，如下：</strong></p>
+<p><img src="https://i.loli.net/2018/04/08/5ac9ea3400a26.jpg" alt="hashtable数组.jpg"></p>
+<h6 id="数组函数分类"><a href="#数组函数分类" class="headerlink" title="数组函数分类"></a><div id="title">数组函数分类</div></h6><ul>
+<li>数组遍历相关函数：如<code>prev, next, current, end,reset, each</code>等</li>
+<li>数组排序相关：如<code>sort, rsort, asort, arsort, ksort, krsort, uasort, uksort</code></li>
+<li>数组查找相关: 如<code>in_array, array_search, array_key_exists</code>等</li>
+<li>数组分割、合并相关：<code>array_slice, array_splice, implode, array_chunk, array_combine</code>等</li>
+<li>数组交并差：如<code>array_merge, array_diff, array_diff_*, array_intersect, array_intersect_*</code></li>
+<li>作为stack/queue容器的数组：如<code>array_push, array_pop, array_shift</code></li>
+<li>其他的数组操作：<code>array_fill, array_flip, array_sum, array_reverse</code>等</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/10/05/PHP的运行模式/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/10/06/常见的Http认证机制/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          常见的Http认证机制
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/10/05/session和cookie/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Session 和 cookie</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <section id="comments" style="margin:10px;padding:10px;background:#fff;">
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "mjstUtcUPaEVJpt5xt5zWykf-gzGzoHsz",
+            app_key: "4CY7cYn38n302Lor7lqqLoJO",
+            placeholder: "来呀!快活呀!",
+            avatar:"mm"
+        });
+    }
+</script>
+
+    </section>
+ 
+
+  
+
+
 
           </div>
         </div>

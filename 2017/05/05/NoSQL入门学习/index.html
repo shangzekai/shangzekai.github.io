@@ -170,7 +170,277 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-NoSQL入门学习" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      NoSQL入门学习
+    </h1>
+  
+
+        
+        <a href="/2017/05/05/NoSQL入门学习/" class="archive-article-date">
+  	<time datetime="2017-05-05T15:52:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#NoSQL出现的原因"><span class="toc-text">NoSQL出现的原因</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是NoSQL"><span class="toc-text">什么是NoSQL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NoSQL的优点-缺点"><span class="toc-text">NoSQL的优点/缺点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#NoSQL数据库分类"><span class="toc-text">NoSQL数据库分类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#常见的NoSQL数据库"><span class="toc-text">常见的NoSQL数据库</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-Memcache"><span class="toc-text">1. Memcache</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-MongoDB"><span class="toc-text">2. MongoDB</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-Redis"><span class="toc-text">3. Redis</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#谁在使用NoSQL"><span class="toc-text">谁在使用NoSQL</span></a></li></ol>
+          <hr/>
+        </div>
+        
+        <h4 id="NoSQL出现的原因"><a href="#NoSQL出现的原因" class="headerlink" title="NoSQL出现的原因"></a><div id="title">NoSQL出现的原因</div></h4><blockquote>
+<p>随着近几年大数据的不断火爆，数据量已经不是之前的G级别，有的时候数据量一天就能达到T级别，甚至PT级别，因此此时我们再使用传统的数据库来进行存储数据的时候，显然已经不能满足我们的需要了</p>
+<p>并且现在用户的个人信息，社交网络，地理位置，用户生成的数据和用户操作日志已经成倍的增加。我们如果要对这些用户数据进行挖掘，那SQL数据库已经不适合这些应用了, NoSQL数据库的发展却能很好的处理这些大的数据。这个时候，基于内存存储的Key-Value数据库就呼之欲出了</p>
+</blockquote>
+<a id="more"></a>
+<p><img src="https://ooo.0o0.ooo/2017/06/06/5936720b1df58.png" alt="nosql.png"></p>
+<h4 id="什么是NoSQL"><a href="#什么是NoSQL" class="headerlink" title="什么是NoSQL"></a><div id="title">什么是NoSQL</div></h4><blockquote>
+<p>NoSQL，指的是非关系型的数据库。NoSQL有时也称作Not Only SQL的缩写，是对不同于传统的关系型数据库的数据库管理系统的统称<br>NoSQL用于超大规模数据的存储。（例如谷歌或Facebook每天为他们的用户收集万亿比特的数据）。这些类型的数据存储不需要固定的模式，无需多余操作就可以横向扩展</p>
+</blockquote>
+<h4 id="NoSQL的优点-缺点"><a href="#NoSQL的优点-缺点" class="headerlink" title="NoSQL的优点/缺点"></a><div id="title">NoSQL的优点/缺点</div></h4><p>优点:</p>
+<ul>
+<li>高可扩展性</li>
+<li>分布式计算</li>
+<li>低成本</li>
+<li>架构的灵活性，半结构化数据</li>
+<li>没有复杂的关系</li>
+</ul>
+<p>缺点:</p>
+<ul>
+<li>没有标准化</li>
+<li>有限的查询功能（到目前为止）</li>
+</ul>
+<h4 id="NoSQL数据库分类"><a href="#NoSQL数据库分类" class="headerlink" title="NoSQL数据库分类"></a><div id="title">NoSQL数据库分类</div></h4><p><img src="https://ooo.0o0.ooo/2017/06/06/5936732eb8438.png" alt="nosqlfenlei.png"></p>
+<h4 id="常见的NoSQL数据库"><a href="#常见的NoSQL数据库" class="headerlink" title="常见的NoSQL数据库"></a><div id="title">常见的NoSQL数据库</div></h4><h5 id="1-Memcache"><a href="#1-Memcache" class="headerlink" title="1. Memcache"></a>1. Memcache</h5><ul>
+<li>挥发性(临时性)的键值存储</li>
+<li>一般作为关系型数据库的缓存来使用</li>
+<li>具有非常快的处理速度</li>
+<li>由于存在数据丢失的可能，所以一般用来处理不需要持久保存的数据</li>
+<li>用于需要使用expires时(需要定期清除数据)</li>
+<li>使用一致性散列(Consistent Hashing)算法来分散数据<br><img src="https://ooo.0o0.ooo/2017/06/06/59367046b6b1e.jpeg" alt="memcache.jpeg"></li>
+</ul>
+<h5 id="2-MongoDB"><a href="#2-MongoDB" class="headerlink" title="2. MongoDB"></a>2. MongoDB</h5><ul>
+<li>具有非常快的处理速度</li>
+<li>通过BSON的形式可以保存和查询任何类型的数据</li>
+<li>无法进行JOIN处理，但是可以通过嵌入(embed)来实现同样的功能</li>
+<li>使用sharding(范围分割)算法来分散数据<br><img src="https://ooo.0o0.ooo/2017/06/06/59367046cdc52.png" alt="mongodb.png"></li>
+</ul>
+<h5 id="3-Redis"><a href="#3-Redis" class="headerlink" title="3. Redis"></a>3. Redis</h5><ul>
+<li>兼具Memcached的键值存储</li>
+<li>擅长处理数组类型的数据</li>
+<li>具有非常快的处理速度</li>
+<li>可以高速处理时间序列的数据，易于处理集合运算</li>
+<li>拥有很多可以进行原子操作的方法</li>
+<li>使用一致性散列(Consistent Hashing)算法来分散数据</li>
+</ul>
+<p><img src="https://ooo.0o0.ooo/2017/06/06/59367046b7e6c.png" alt="redis.png"></p>
+<h4 id="谁在使用NoSQL"><a href="#谁在使用NoSQL" class="headerlink" title="谁在使用NoSQL"></a><div id="title">谁在使用NoSQL</div></h4><ul>
+<li>Google</li>
+<li>Facebook</li>
+<li>Mozilla</li>
+<li>Adobe</li>
+<li>Foursquare</li>
+<li>LinkedIn</li>
+<li>Digg</li>
+<li>McGraw-Hill Education</li>
+<li>Vermont Public Radio</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NoSQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/NoSQL/" class="article-tag-list-link color1">NoSQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/05/NoSQL入门学习/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/05/05/MemCache介绍/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          MemCache介绍和基本命令
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/05/Python操作redis及其应用/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">使用Python操作Redis及其简单应用</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <section id="comments" style="margin:10px;padding:10px;background:#fff;">
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "mjstUtcUPaEVJpt5xt5zWykf-gzGzoHsz",
+            app_key: "4CY7cYn38n302Lor7lqqLoJO",
+            placeholder: "来呀!快活呀!",
+            avatar:"mm"
+        });
+    }
+</script>
+
+    </section>
+ 
+
+  
+
+
 
           </div>
         </div>

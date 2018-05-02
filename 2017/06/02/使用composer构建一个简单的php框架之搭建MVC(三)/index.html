@@ -164,7 +164,253 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-使用composer构建一个简单的php框架之搭建MVC(三)" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      使用composer构建一个简单的php框架之搭建MVC（三）
+    </h1>
+  
+
+        
+        <a href="/2017/06/02/使用composer构建一个简单的php框架之搭建MVC(三)/" class="archive-article-date">
+  	<time datetime="2017-06-02T12:45:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-06-02</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建Controllers"><span class="toc-text">创建Controllers</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建Models"><span class="toc-text">创建Models</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建Views"><span class="toc-text">创建Views</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#小结"><span class="toc-text">小结</span></a></li></ol>
+          <hr/>
+        </div>
+        
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
+<p>在上一篇教程中，我们使用 codingbean/macaw 这个 Composer 包构建了两条简单路由，第一条是响应 GET ‘/fuck’ 的，另一条会 hold 住所有请求。其实对 PHP 框架来说，有了路由就有了一切。所以接下来我们要做的事情就是让 MFFC 框架更加规范，更加丰满。</p>
+<p>这就牵扯到了 PHP 框架另外的价值：确立开发规范以便于多人协作，使用 ORM、模板引擎 等工具以提高开发效率。</p>
+</blockquote>
+<a id="more"></a>
+<h4 id="创建Controllers"><a href="#创建Controllers" class="headerlink" title="创建Controllers"></a><div id="title">创建Controllers</div></h4><p><strong>规划文件夹</strong></p>
+<blockquote>
+<p>新建 app 文件夹，在 app 中创建 controllers、models、views 三个文件夹，开始正式开始踏上 MVC 的征程。</p>
+</blockquote>
+<p><strong>使用命名空间</strong></p>
+<p>新建 controllers/BaseController.php 文件：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="comment">/**</div><div class="line">* BaseController</div><div class="line">*/</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BaseController</span></div><div class="line"></span>&#123;</div><div class="line">  </div><div class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">__construct</span><span class="params">()</span></div><div class="line">  </span>&#123;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>新建 controllers/HomeController.php 文件：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="comment">/**</div><div class="line">* \HomeController</div><div class="line">*/</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HomeController</span> <span class="keyword">extends</span> <span class="title">BaseController</span></div><div class="line"></span>&#123;</div><div class="line">  </div><div class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">home</span><span class="params">()</span></div><div class="line">  </span>&#123;</div><div class="line">    <span class="keyword">echo</span> <span class="string">"&lt;h1&gt;控制器成功！&lt;/h1&gt;"</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>此时，我们只需要增加一条路由即可：Macaw::get(‘’, ‘HomeController@home’);，打开浏览器直接访问 <a href="http://127.0.0.1:3000/，出现以下提示：" target="_blank" rel="external">http://127.0.0.1:3000/，出现以下提示：</a></strong></p>
+<blockquote>
+<p>Fatal error: Class ‘HomeController’ not found in /Library/WebServer/Documents/wwwroot/MFFC/vendor/codingbean/macaw/Macaw.php on line 93</p>
+</blockquote>
+<p><strong>为什么没找到 HomeController 类？因为我们没有让他自动加载，修改 composer.json 为：</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;require&quot;: &#123;</div><div class="line">    &quot;codingbean/macaw&quot;: &quot;dev-master&quot;</div><div class="line">  &#125;,</div><div class="line">  &quot;autoload&quot;: &#123;</div><div class="line">    &quot;classmap&quot;: [</div><div class="line">      &quot;app/controllers&quot;,</div><div class="line">      &quot;app/models&quot;</div><div class="line">    ]</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>运行 composer dump-autoload，稍等片刻，刷新，你将看到内容</strong></p>
+<h4 id="创建Models"><a href="#创建Models" class="headerlink" title="创建Models"></a><div id="title">创建Models</div></h4><p>新建 models/Article.php 文件，内容为（数据库密码请自行更改）：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="comment">/**</div><div class="line">* Article Model</div><div class="line">*/</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Article</span></div><div class="line"></span>&#123;</div><div class="line">  <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">first</span><span class="params">()</span></div><div class="line">  </span>&#123;</div><div class="line">    $connection = mysql_connect(<span class="string">"localhost"</span>,<span class="string">"root"</span>,<span class="string">"password"</span>);</div><div class="line">    <span class="keyword">if</span> (!$connection) &#123;</div><div class="line">      <span class="keyword">die</span>(<span class="string">'Could not connect: '</span> . mysql_error());</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    mysql_set_charset(<span class="string">"UTF8"</span>, $connection);</div><div class="line"></div><div class="line">    mysql_select_db(<span class="string">"mffc"</span>, $connection);</div><div class="line"></div><div class="line">    $result = mysql_query(<span class="string">"SELECT * FROM articles limit 0,1"</span>);</div><div class="line"></div><div class="line">    <span class="keyword">if</span> ($row = mysql_fetch_array($result)) &#123;</div><div class="line">        <span class="keyword">return</span> $row;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    mysql_close($connection);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>修改 controllers/HomeController.php 文件：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="comment">/**</div><div class="line">* \HomeController</div><div class="line">*/</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HomeController</span> <span class="keyword">extends</span> <span class="title">BaseController</span></div><div class="line"></span>&#123;</div><div class="line">  </div><div class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">home</span><span class="params">()</span></div><div class="line">  </span>&#123;</div><div class="line">        $res = Article::first();</div><div class="line">        print_r($res);</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>刷新，这时候会得到 Article 类未找到的信息，因为我们没有更新自动加载配置：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">composer dump-autoload</div></pre></td></tr></table></figure>
+<p><strong>在等待的时间里，我们去建立数据库 test，在里面建立表 articles，设计两个字段 title、content 用于记录信息，并填充进至少一条数据。你也可以在建立完成 test 数据库以后运行以下 SQL 语句：</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> <span class="keyword">IF</span> <span class="keyword">EXISTS</span> <span class="string">`articles`</span>;</div><div class="line"></div><div class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="string">`articles`</span> (</div><div class="line">  <span class="string">`id`</span> <span class="built_in">int</span>(<span class="number">11</span>) <span class="keyword">unsigned</span> <span class="keyword">NOT</span> <span class="literal">NULL</span> AUTO_INCREMENT,</div><div class="line">  <span class="string">`title`</span> <span class="built_in">varchar</span>(<span class="number">255</span>) <span class="keyword">DEFAULT</span> <span class="literal">NULL</span>,</div><div class="line">  <span class="string">`content`</span> longtext,</div><div class="line">  PRIMARY <span class="keyword">KEY</span> (<span class="string">`id`</span>)</div><div class="line">) <span class="keyword">ENGINE</span>=<span class="keyword">InnoDB</span> <span class="keyword">DEFAULT</span> <span class="keyword">CHARSET</span>=utf8;</div><div class="line"></div><div class="line"><span class="keyword">LOCK</span> <span class="keyword">TABLES</span> <span class="string">`articles`</span> WRITE;</div><div class="line"><span class="comment">/*!40000 ALTER TABLE `articles` DISABLE KEYS */</span>;</div><div class="line"></div><div class="line"><span class="keyword">INSERT</span> <span class="keyword">INTO</span> <span class="string">`articles`</span> (<span class="string">`id`</span>, <span class="string">`title`</span>, <span class="string">`content`</span>)</div><div class="line"><span class="keyword">VALUES</span></div><div class="line">	(<span class="number">1</span>,<span class="string">'我是标题'</span>,<span class="string">'我是内容1'</span>),</div><div class="line">	(<span class="number">2</span>,<span class="string">'我是标题'</span>,<span class="string">'我是内容2'</span>);</div><div class="line"></div><div class="line"><span class="comment">/*!40000 ALTER TABLE `articles` ENABLE KEYS */</span>;</div><div class="line"><span class="keyword">UNLOCK</span> <span class="keyword">TABLES</span>;</div></pre></td></tr></table></figure>
+<p>然后，刷新！你就会看到相关的内容。</p>
+<h4 id="创建Views"><a href="#创建Views" class="headerlink" title="创建Views"></a><div id="title">创建Views</div></h4><p><strong>首先先修改 controllers/HomeController.php 文件：</strong><br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="comment">/**</div><div class="line">* \HomeController</div><div class="line">*/</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">HomeController</span> <span class="keyword">extends</span> <span class="title">BaseController</span></div><div class="line"></span>&#123;</div><div class="line">  </div><div class="line">  <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">home</span><span class="params">()</span></div><div class="line">  </span>&#123;</div><div class="line">        $res = Article::first();</div><div class="line">        <span class="keyword">require</span> dirname(<span class="keyword">__FILE__</span>).<span class="string">'/../views/Home.html'</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><strong>创建Views/Home.html文件：</strong><br><figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span><span class="php"><span class="meta">&lt;?php</span><span class="meta">?&gt;</span></span><span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="php"><span class="meta">&lt;?php</span> </div><div class="line">        <span class="keyword">foreach</span>($res <span class="keyword">as</span> $v)&#123;</div><div class="line">           <span class="keyword">echo</span> <span class="string">"&lt;h1&gt;"</span>.$v[<span class="string">'content'</span>].<span class="string">"&lt;/h1&gt;&lt;br/&gt;"</span>;  </div><div class="line">        &#125;   </div><div class="line">    <span class="meta">?&gt;</span></span>   </div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
+<p><strong>保存，刷新，你将得到跟上面一模一样的页面，视图调用成功！</strong></p>
+<h4 id="小结"><a href="#小结" class="headerlink" title="小结"></a><div id="title">小结</div></h4><p><strong>至此，一个非常简单的MVC框架就出来了，我们接下来只需要在这个框架上不断的完善我们需要的一些功能，包括邮件发送，图片上传等，通过这个框架的设计，我们知道了：</strong></p>
+<p>1.PHP 框架再牛逼，他也是 PHP，也要遵循 PHP 的运行原理和基本哲学。抓住这一点我们就能很容易地理解很多事情。</p>
+<p>2.PHP 做的网站从逻辑上说，跟 php test.php 没有任何区别，都只是一段字符串作为参数传递给 PHP 解释器而已。无非就是复杂的网站会根据 URL 来调用需要运行的文件和代码，然后返回相应的结果。</p>
+<p>3.无论我们看到的是 CodeIgniter 这样 180 个文件组成的“小框架”，还是 Laravel 这样加上 vendor 一共 3700 多个文件的 “大框架”，他们都会在每一个 URL 的驱动下，组装一段可以运行的字符串，传给 PHP 解释器，再把从 PHP 解释器返回的字符串传给访客的浏览器。</p>
+<p>4.MVC 是一种逻辑架构，本质上是为了让人脑这样的超低 RAM 的计算机能够制造出远超人脑 RAM 的大型软件，其实 MVC 架构在 GUI 软件出现以前就已经成形，命令行输出也是视图嘛。</p>
+<p>5.在 这个框架 里，一个 URL 驱动框架做的事情基本是这样的：入口文件 require 控制器，控制器 require 模型，模型和数据库交互得到数据返回给控制器，控制器再 require 视图，把数据填充进视图，返回给访客，流程结束。</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/06/02/使用composer构建一个简单的php框架之搭建MVC(三)/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/06/02/使用composer构建一个简单的php框架之搭建路由(二)/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          使用composer构建一个简单的php框架之搭建路由（二）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/06/02/使用composer构建一个简单的PHP框架之ORM(四)/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">使用composer构建一个简单的php框架之ORM（四）</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <section id="comments" style="margin:10px;padding:10px;background:#fff;">
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "mjstUtcUPaEVJpt5xt5zWykf-gzGzoHsz",
+            app_key: "4CY7cYn38n302Lor7lqqLoJO",
+            placeholder: "来呀!快活呀!",
+            avatar:"mm"
+        });
+    }
+</script>
+
+    </section>
+ 
+
+  
+
+
 
           </div>
         </div>

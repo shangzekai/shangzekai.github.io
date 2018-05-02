@@ -169,7 +169,417 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-python常见数据类型" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      python常见数据类型操作方法
+    </h1>
+  
+
+        
+        <a href="/2017/05/06/python常见数据类型/" class="archive-article-date">
+  	<time datetime="2017-05-06T13:05:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#数字操作"><span class="toc-text">数字操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字符串操作"><span class="toc-text">字符串操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-去除空格"><span class="toc-text">1. 去除空格</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-字符串的连接"><span class="toc-text">2. 字符串的连接</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-查找字符串"><span class="toc-text">3. 查找字符串</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-判断是否包含指定字符串"><span class="toc-text">4. 判断是否包含指定字符串</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-字符串大小写转换"><span class="toc-text">5. 字符串大小写转换</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-字符串长度"><span class="toc-text">6. 字符串长度</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-将字符串放入中心位置可指定长度以及位置两边字符"><span class="toc-text">7. 将字符串放入中心位置可指定长度以及位置两边字符</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-字符串统计"><span class="toc-text">8. 字符串统计</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#9-字符串的测试、判断函数"><span class="toc-text">9. 字符串的测试、判断函数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#10-字符串的切片"><span class="toc-text">10. 字符串的切片</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#11-字符串的分割"><span class="toc-text">11. 字符串的分割</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#列表"><span class="toc-text">列表</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-定义列表和访问列表中的元素"><span class="toc-text">1. 定义列表和访问列表中的元素</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-列表的切片"><span class="toc-text">2. 列表的切片</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-列表的增删改查"><span class="toc-text">3. 列表的增删改查</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#元组"><span class="toc-text">元组</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#字典操作"><span class="toc-text">字典操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#集合操作"><span class="toc-text">集合操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#文件的操作"><span class="toc-text">文件的操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-打开文件"><span class="toc-text">1. 打开文件</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-对文件的操作"><span class="toc-text">2. 对文件的操作</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-打开文件的另一种姿势"><span class="toc-text">3. 打开文件的另一种姿势</span></a></li></ol></li></ol>
+          <hr/>
+        </div>
+        
+        <h4 id="数字操作"><a href="#数字操作" class="headerlink" title="数字操作"></a><div id="title">数字操作</div></h4><p><img src="https://ooo.0o0.ooo/2017/05/24/59257f26ed081.png" alt="数字常见函数操作.png"></p>
+<h4 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a><div id="title">字符串操作</div></h4><h5 id="1-去除空格"><a href="#1-去除空格" class="headerlink" title="1. 去除空格"></a>1. 去除空格</h5><blockquote>
+<p><strong>删除字符串两边的指定字符，括号的写入指定字符，默认为空格</strong></p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">str = <span class="string">"hello world   "</span></div><div class="line">str.strip()  <span class="comment"># 去除左右两边的空格</span></div><div class="line">str.lstrip()  <span class="comment"># 去除左边的空格</span></div><div class="line">str.rstrip()  <span class="comment"># 去除右边的空格</span></div><div class="line">str.strip(’,’)  <span class="comment"># 去除两边指定的字符</span></div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h5 id="2-字符串的连接"><a href="#2-字符串的连接" class="headerlink" title="2. 字符串的连接"></a>2. 字符串的连接</h5><blockquote>
+<p>“+” 表示连接两个字符串</p>
+<p>注：此方法又称为 “万恶的加号”,因为使用加号连接2个字符串会调用静态函数string_concat(),在这个函数中会开辟一块大小是a+b的内存的和的存储单元，然后将a,b字符串拷贝进去。如果是n个字符串相连 那么会开辟n-1次内存，是非常耗费资源的</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">'hello '</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = <span class="string">'world'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print( a + b )</div><div class="line">hello world</div></pre></td></tr></table></figure>
+<p><strong>除了上述使用+号运算符之外，也可以使用join()进行连接</strong></p>
+<blockquote>
+<p>str.join:连接2个字符串,可指定连接符号</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a=<span class="string">'hello '</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b=<span class="string">'####'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a.join(b)</div><div class="line"><span class="string">'#hello #hello #hello #'</span></div></pre></td></tr></table></figure>
+<h5 id="3-查找字符串"><a href="#3-查找字符串" class="headerlink" title="3. 查找字符串"></a>3. 查找字符串</h5><blockquote>
+<p>str.index:检测字符串中是否包含子字符串str，可指定范围</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">a=<span class="string">'hello world'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a.index(<span class="string">'l'</span>)</div><div class="line"><span class="number">2</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a.index(<span class="string">'x'</span>)</div><div class="line">Traceback (most recent call last):</div><div class="line"> File <span class="string">"&lt;pyshell#40&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line"> a.index(<span class="string">'x'</span>)</div><div class="line">ValueError: substring <span class="keyword">not</span> found</div></pre></td></tr></table></figure>
+<blockquote>
+<p>str.find:检测字符串中是否包含子字符串str，可指定范围</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a=<span class="string">'hello world'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a.find(<span class="string">'l'</span>)</div><div class="line"><span class="number">2</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a.find(<span class="string">'x'</span>)</div><div class="line"><span class="number">-1</span></div></pre></td></tr></table></figure>
+<p><strong><font color="red">注意:两者的区别在于find()查找失败会返回-1，不影响程序的执行，而index如果没有查找到，则会报错</font></strong></p>
+<h5 id="4-判断是否包含指定字符串"><a href="#4-判断是否包含指定字符串" class="headerlink" title="4. 判断是否包含指定字符串"></a>4. 判断是否包含指定字符串</h5><blockquote>
+<p>用法：in | not in</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a=<span class="string">'hello world'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'hello'</span> <span class="keyword">in</span> a</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">'123'</span> <span class="keyword">not</span> <span class="keyword">in</span> a</div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure>
+<h5 id="5-字符串大小写转换"><a href="#5-字符串大小写转换" class="headerlink" title="5. 字符串大小写转换"></a>5. 字符串大小写转换</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">S.lower() <span class="comment">#转换为小写 </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">'Hello World'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(a.lower())</div><div class="line">hello world</div><div class="line"> </div><div class="line">S.upper() <span class="comment">#转换为大写 </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">'Hello World'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(a.upper())</div><div class="line">HELLO WORLD</div><div class="line"> </div><div class="line"> </div><div class="line">S.swapcase() <span class="comment">#大小写互换 </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">'Hello World'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(a.swapcase())</div><div class="line">hELLO wORLD</div><div class="line"> </div><div class="line">S.capitalize() <span class="comment">#首字母大写 </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">'Hello World'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(a.capitalize())</div><div class="line">Hello world</div></pre></td></tr></table></figure>
+<h5 id="6-字符串长度"><a href="#6-字符串长度" class="headerlink" title="6. 字符串长度"></a>6. 字符串长度</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">str.len</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">'hello world'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(len(a))</div><div class="line"><span class="number">11</span></div></pre></td></tr></table></figure>
+<h5 id="7-将字符串放入中心位置可指定长度以及位置两边字符"><a href="#7-将字符串放入中心位置可指定长度以及位置两边字符" class="headerlink" title="7. 将字符串放入中心位置可指定长度以及位置两边字符"></a>7. 将字符串放入中心位置可指定长度以及位置两边字符</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">str.center()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">'hello world'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(a.center(<span class="number">40</span>,<span class="string">'*'</span>))</div><div class="line">**************hello world***************</div></pre></td></tr></table></figure>
+<h5 id="8-字符串统计"><a href="#8-字符串统计" class="headerlink" title="8. 字符串统计"></a>8. 字符串统计</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>a = <span class="string">'hello world'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>print(a.count(<span class="string">'l'</span>))</div><div class="line"><span class="number">3</span></div></pre></td></tr></table></figure>
+<h5 id="9-字符串的测试、判断函数"><a href="#9-字符串的测试、判断函数" class="headerlink" title="9. 字符串的测试、判断函数"></a>9. 字符串的测试、判断函数</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">S.startswith(prefix[,start[,end]]) <span class="comment">#是否以prefix开头 </span></div><div class="line">S.endswith(suffix[,start[,end]]) <span class="comment">#以suffix结尾 </span></div><div class="line">S.isalnum()    <span class="comment">#是否全是字母和数字，并至少有一个字符 </span></div><div class="line">S.isalpha()    <span class="comment">#是否全是字母，并至少有一个字符 </span></div><div class="line">S.isdigit()    <span class="comment">#是否全是数字，并至少有一个字符 </span></div><div class="line">S.isspace()    <span class="comment">#是否全是空白字符，并至少有一个字符 </span></div><div class="line">S.islower()    <span class="comment">#S中的字母是否全是小写 </span></div><div class="line">S.isupper()    <span class="comment">#S中的字母是否便是大写 </span></div><div class="line">S.istitle()    <span class="comment">#S是否是首字母大写的</span></div></pre></td></tr></table></figure>
+<h5 id="10-字符串的切片"><a href="#10-字符串的切片" class="headerlink" title="10. 字符串的切片"></a>10. 字符串的切片</h5><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">str = '0123456789′</div><div class="line">print(str[0:3]) #截取第一位到第三位的字符</div><div class="line">print(str[:]) #截取字符串的全部字符</div><div class="line">print(str[2]) #截取第三个字符</div><div class="line">print(str[-1]) #截取倒数第一个字符</div><div class="line">print(str[-3:-1]) #截取倒数第三位与倒数第一位之前的字符</div><div class="line">print(str[-3:]) #截取倒数第三位到结尾</div></pre></td></tr></table></figure>
+<h5 id="11-字符串的分割"><a href="#11-字符串的分割" class="headerlink" title="11. 字符串的分割"></a>11. 字符串的分割</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">delimiter = <span class="string">','</span> </div><div class="line">mylist = [<span class="string">'Brazil'</span>, <span class="string">'Russia'</span>, <span class="string">'India'</span>, <span class="string">'China'</span>] </div><div class="line">delimiter.join(mylist)</div></pre></td></tr></table></figure>
+<p><strong><font color="red">注意：字符串对象是不可改变的，也就是说在python创建一个字符串后，你不能把这个字符中的某一部分改变。任何上面的函数改变了字符串后，都会返回一个新的字符串，原字串并没有变。</font></strong></p>
+<hr>
+<h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a><div id="title">列表</div></h4><blockquote>
+<p>列表是我们最以后最常用的数据类型之一，通过列表可以对数据实现最方便的存储、修改等操作</p>
+</blockquote>
+<h5 id="1-定义列表和访问列表中的元素"><a href="#1-定义列表和访问列表中的元素" class="headerlink" title="1. 定义列表和访问列表中的元素"></a>1. 定义列表和访问列表中的元素</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">names = [<span class="string">'Alex'</span>,<span class="string">"Tenglan"</span>,<span class="string">'Eric'</span>]</div></pre></td></tr></table></figure>
+<p><strong>通过下标访问列表中的元素，下标从0开始计数</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>names[<span class="number">0</span>]</div><div class="line"><span class="string">'Alex'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names[<span class="number">2</span>]</div><div class="line"><span class="string">'Eric'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names[<span class="number">-1</span>]</div><div class="line"><span class="string">'Eric'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names[<span class="number">-2</span>] <span class="comment">#还可以倒着取</span></div><div class="line"><span class="string">'Tenglan'</span></div></pre></td></tr></table></figure>
+<h5 id="2-列表的切片"><a href="#2-列表的切片" class="headerlink" title="2. 列表的切片"></a>2. 列表的切片</h5><p><img src="https://ooo.0o0.ooo/2017/05/13/591683321109a.png" alt="libiao.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>names = [<span class="string">"Alex"</span>,<span class="string">"Tenglan"</span>,<span class="string">"Eric"</span>,<span class="string">"Rain"</span>,<span class="string">"Tom"</span>,<span class="string">"Amy"</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names[<span class="number">1</span>:<span class="number">4</span>]  <span class="comment">#取下标1至下标4之间的数字，包括1，不包括4</span></div><div class="line">[<span class="string">'Tenglan'</span>, <span class="string">'Eric'</span>, <span class="string">'Rain'</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names[<span class="number">1</span>:<span class="number">-1</span>] <span class="comment">#取下标1至-1的值，不包括-1</span></div><div class="line">[<span class="string">'Tenglan'</span>, <span class="string">'Eric'</span>, <span class="string">'Rain'</span>, <span class="string">'Tom'</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names[<span class="number">0</span>:<span class="number">3</span>] </div><div class="line">[<span class="string">'Alex'</span>, <span class="string">'Tenglan'</span>, <span class="string">'Eric'</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names[:<span class="number">3</span>] <span class="comment">#如果是从头开始取，0可以忽略，跟上句效果一样</span></div><div class="line">[<span class="string">'Alex'</span>, <span class="string">'Tenglan'</span>, <span class="string">'Eric'</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names[<span class="number">3</span>:] <span class="comment">#如果想取最后一个，必须不能写-1，只能这么写</span></div><div class="line">[<span class="string">'Rain'</span>, <span class="string">'Tom'</span>, <span class="string">'Amy'</span>] </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names[<span class="number">3</span>:<span class="number">-1</span>] <span class="comment">#这样-1就不会被包含了</span></div><div class="line">[<span class="string">'Rain'</span>, <span class="string">'Tom'</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names[<span class="number">0</span>::<span class="number">2</span>] <span class="comment">#后面的2是代表，每隔一个元素，就取一个</span></div><div class="line">[<span class="string">'Alex'</span>, <span class="string">'Eric'</span>, <span class="string">'Tom'</span>] </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names[::<span class="number">2</span>] <span class="comment">#和上句效果一样</span></div><div class="line">[<span class="string">'Alex'</span>, <span class="string">'Eric'</span>, <span class="string">'Tom'</span>]</div></pre></td></tr></table></figure>
+<h5 id="3-列表的增删改查"><a href="#3-列表的增删改查" class="headerlink" title="3. 列表的增删改查"></a>3. 列表的增删改查</h5><ul>
+<li>追加</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>names</div><div class="line">[<span class="string">'Alex'</span>, <span class="string">'Tenglan'</span>, <span class="string">'Eric'</span>, <span class="string">'Rain'</span>, <span class="string">'Tom'</span>, <span class="string">'Amy'</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names.append(<span class="string">"我是新来的"</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names</div><div class="line">[<span class="string">'Alex'</span>, <span class="string">'Tenglan'</span>, <span class="string">'Eric'</span>, <span class="string">'Rain'</span>, <span class="string">'Tom'</span>, <span class="string">'Amy'</span>, <span class="string">'我是新来的'</span>]</div></pre></td></tr></table></figure>
+<ul>
+<li>插入</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>names</div><div class="line">[<span class="string">'Alex'</span>, <span class="string">'Tenglan'</span>, <span class="string">'Eric'</span>, <span class="string">'Rain'</span>, <span class="string">'Tom'</span>, <span class="string">'Amy'</span>, <span class="string">'我是新来的'</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names.insert(<span class="number">2</span>,<span class="string">"强行从Eric前面插入"</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names</div><div class="line">[<span class="string">'Alex'</span>, <span class="string">'Tenglan'</span>, <span class="string">'强行从Eric前面插入'</span>, <span class="string">'Eric'</span>, <span class="string">'Rain'</span>, <span class="string">'Tom'</span>, <span class="string">'Amy'</span>, <span class="string">'我是新来的'</span>]</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names.insert(<span class="number">5</span>,<span class="string">"从eric后面插入试试新姿势"</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names</div><div class="line">[<span class="string">'Alex'</span>, <span class="string">'Tenglan'</span>, <span class="string">'强行从Eric前面插入'</span>, <span class="string">'Eric'</span>, <span class="string">'Rain'</span>, <span class="string">'从eric后面插入试试新姿势'</span>, <span class="string">'Tom'</span>, <span class="string">'Amy'</span>, <span class="string">'我是新来的'</span>]</div></pre></td></tr></table></figure>
+<ul>
+<li>修改</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>names</div><div class="line">[<span class="string">'Alex'</span>, <span class="string">'Tenglan'</span>, <span class="string">'强行从Eric前面插入'</span>, <span class="string">'Eric'</span>, <span class="string">'Rain'</span>, <span class="string">'从eric后面插入试试新姿势'</span>, <span class="string">'Tom'</span>, <span class="string">'Amy'</span>, <span class="string">'我是新来的'</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names[<span class="number">2</span>] = <span class="string">"该换人了"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names</div><div class="line">[<span class="string">'Alex'</span>, <span class="string">'Tenglan'</span>, <span class="string">'该换人了'</span>, <span class="string">'Eric'</span>, <span class="string">'Rain'</span>, <span class="string">'从eric后面插入试试新姿势'</span>, <span class="string">'Tom'</span>, <span class="string">'Amy'</span>, <span class="string">'我是新来的'</span>]</div></pre></td></tr></table></figure>
+<ul>
+<li>删除</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> names[<span class="number">2</span>] </div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names</div><div class="line">[<span class="string">'Alex'</span>, <span class="string">'Tenglan'</span>, <span class="string">'Eric'</span>, <span class="string">'Rain'</span>, <span class="string">'从eric后面插入试试新姿势'</span>, <span class="string">'Tom'</span>, <span class="string">'Amy'</span>, <span class="string">'我是新来的'</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> names[<span class="number">4</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names</div><div class="line">[<span class="string">'Alex'</span>, <span class="string">'Tenglan'</span>, <span class="string">'Eric'</span>, <span class="string">'Rain'</span>, <span class="string">'Tom'</span>, <span class="string">'Amy'</span>, <span class="string">'我是新来的'</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names.remove(<span class="string">"Eric"</span>) <span class="comment">#删除指定元素</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names</div><div class="line">[<span class="string">'Alex'</span>, <span class="string">'Tenglan'</span>, <span class="string">'Rain'</span>, <span class="string">'Tom'</span>, <span class="string">'Amy'</span>, <span class="string">'我是新来的'</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names.pop() <span class="comment">#删除列表最后一个值 </span></div><div class="line"><span class="string">'我是新来的'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names</div><div class="line">[<span class="string">'Alex'</span>, <span class="string">'Tenglan'</span>, <span class="string">'Rain'</span>, <span class="string">'Tom'</span>, <span class="string">'Amy'</span>]</div></pre></td></tr></table></figure>
+<ul>
+<li>扩展</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>names</div><div class="line">[<span class="string">'Alex'</span>, <span class="string">'Tenglan'</span>, <span class="string">'Rain'</span>, <span class="string">'Tom'</span>, <span class="string">'Amy'</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names.extend(b)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names</div><div class="line">[<span class="string">'Alex'</span>, <span class="string">'Tenglan'</span>, <span class="string">'Rain'</span>, <span class="string">'Tom'</span>, <span class="string">'Amy'</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div></pre></td></tr></table></figure>
+<ul>
+<li>拷贝</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>names</div><div class="line">[<span class="string">'Alex'</span>, <span class="string">'Tenglan'</span>, <span class="string">'Rain'</span>, <span class="string">'Tom'</span>, <span class="string">'Amy'</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>name_copy = names.copy()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>name_copy</div><div class="line">[<span class="string">'Alex'</span>, <span class="string">'Tenglan'</span>, <span class="string">'Rain'</span>, <span class="string">'Tom'</span>, <span class="string">'Amy'</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div></pre></td></tr></table></figure>
+<blockquote>
+<p>深拷贝和浅拷贝的区别？</p>
+</blockquote>
+<ul>
+<li>浅拷贝，在内存中只额外创建第一层数据</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> copy</div><div class="line">  </div><div class="line">n1 = &#123;<span class="string">"k1"</span>: <span class="string">"wu"</span>, <span class="string">"k2"</span>: <span class="number">123</span>, <span class="string">"k3"</span>: [<span class="string">"alex"</span>, <span class="number">456</span>]&#125;</div><div class="line">  </div><div class="line">n3 = copy.copy(n1)</div><div class="line"></div><div class="line"></div><div class="line">print(n3)</div><div class="line"></div><div class="line">&gt;&gt;&gt;&#123;<span class="string">"k1"</span>: <span class="string">"wu"</span>, <span class="string">"k2"</span>: <span class="number">123</span>, <span class="string">"k3"</span>: [<span class="string">"alex"</span>, <span class="number">456</span>]&#125;</div><div class="line"></div><div class="line">n3[k3][<span class="number">0</span>] = <span class="string">"fengjie"</span></div><div class="line"></div><div class="line">print(n3)</div><div class="line"></div><div class="line">&gt;&gt;&gt;&#123;<span class="string">"k1"</span>: <span class="string">"wu"</span>, <span class="string">"k2"</span>: <span class="number">123</span>, <span class="string">"k3"</span>: [<span class="string">"fengjie"</span>, <span class="number">456</span>]&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://ooo.0o0.ooo/2017/05/14/5917ba9e85cad.png" alt="copy.png"></p>
+<ul>
+<li>深拷贝,在内存中将所有的数据重新创建一份</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> copy</div><div class="line">  </div><div class="line">n1 = &#123;<span class="string">"k1"</span>: <span class="string">"wu"</span>, <span class="string">"k2"</span>: <span class="number">123</span>, <span class="string">"k3"</span>: [<span class="string">"alex"</span>, <span class="number">456</span>]&#125;</div><div class="line">  </div><div class="line">n3 = copy.deepcopy(n1)</div><div class="line"></div><div class="line">print(n3)</div><div class="line"></div><div class="line">&gt;&gt;&gt;&#123;<span class="string">"k1"</span>: <span class="string">"wu"</span>, <span class="string">"k2"</span>: <span class="number">123</span>, <span class="string">"k3"</span>: [<span class="string">"alex"</span>, <span class="number">456</span>]&#125;</div><div class="line"></div><div class="line">n3[k3][<span class="number">0</span>] = <span class="string">"fengjie"</span></div><div class="line"></div><div class="line">print(n3)</div><div class="line"></div><div class="line">&gt;&gt;&gt;&#123;<span class="string">"k1"</span>: <span class="string">"wu"</span>, <span class="string">"k2"</span>: <span class="number">123</span>, <span class="string">"k3"</span>: [<span class="string">"alex"</span>, <span class="number">456</span>]&#125;</div></pre></td></tr></table></figure>
+<p><img src="https://ooo.0o0.ooo/2017/05/14/5917ba9e86ab2.png" alt="deepcopy.png"></p>
+<ul>
+<li>统计</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>names</div><div class="line">[<span class="string">'Alex'</span>, <span class="string">'Tenglan'</span>, <span class="string">'Amy'</span>, <span class="string">'Tom'</span>, <span class="string">'Amy'</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names.count(<span class="string">"Amy"</span>)</div><div class="line"><span class="number">2</span></div></pre></td></tr></table></figure>
+<ul>
+<li>排序&amp;翻转</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>names</div><div class="line">[<span class="string">'Alex'</span>, <span class="string">'Tenglan'</span>, <span class="string">'Amy'</span>, <span class="string">'Tom'</span>, <span class="string">'Amy'</span>, <span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names.sort() <span class="comment">#排序</span></div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">TypeError: unorderable types: int() &lt; str()   <span class="comment">#3.0里不同数据类型不能放在一起排序了，擦</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names[<span class="number">-3</span>] = <span class="string">'1'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names[<span class="number">-2</span>] = <span class="string">'2'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names[<span class="number">-1</span>] = <span class="string">'3'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names</div><div class="line">[<span class="string">'Alex'</span>, <span class="string">'Amy'</span>, <span class="string">'Amy'</span>, <span class="string">'Tenglan'</span>, <span class="string">'Tom'</span>, <span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names.sort()</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names</div><div class="line">[<span class="string">'1'</span>, <span class="string">'2'</span>, <span class="string">'3'</span>, <span class="string">'Alex'</span>, <span class="string">'Amy'</span>, <span class="string">'Amy'</span>, <span class="string">'Tenglan'</span>, <span class="string">'Tom'</span>]</div><div class="line"></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names.reverse() <span class="comment">#反转</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names</div><div class="line">[<span class="string">'Tom'</span>, <span class="string">'Tenglan'</span>, <span class="string">'Amy'</span>, <span class="string">'Amy'</span>, <span class="string">'Alex'</span>, <span class="string">'3'</span>, <span class="string">'2'</span>, <span class="string">'1'</span>]</div></pre></td></tr></table></figure>
+<ul>
+<li>获取下标</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>names</div><div class="line">[<span class="string">'Tom'</span>, <span class="string">'Tenglan'</span>, <span class="string">'Amy'</span>, <span class="string">'Amy'</span>, <span class="string">'Alex'</span>, <span class="string">'3'</span>, <span class="string">'2'</span>, <span class="string">'1'</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>names.index(<span class="string">"Amy"</span>)</div><div class="line"><span class="number">2</span> <span class="comment">#只返回找到的第一个下标</span></div></pre></td></tr></table></figure>
+<h4 id="元组"><a href="#元组" class="headerlink" title="元组"></a><div id="title">元组</div></h4><blockquote>
+<p>元组其实跟列表差不多，也是存一组数，只不是它一旦创建，便不能再修改，所以又叫只读列表</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">names = (<span class="string">"alex"</span>,<span class="string">"jack"</span>,<span class="string">"eric"</span>)</div></pre></td></tr></table></figure>
+<blockquote>
+<p>它只有2个方法，一个是count,一个是index，完毕。　　</p>
+</blockquote>
+<p><strong>程序：购物车程序</strong></p>
+<p>需求:</p>
+<ol>
+<li>启动程序后，让用户输入工资，然后打印商品列表</li>
+<li>允许用户根据商品编号购买商品</li>
+<li>用户选择商品后，检测余额是否够，够就直接扣款，不够就提醒 </li>
+<li>可随时退出，退出时，打印已购买商品和余额</li>
+</ol>
+<h4 id="字典操作"><a href="#字典操作" class="headerlink" title="字典操作"></a><div id="title">字典操作</div></h4><blockquote>
+<p>字典一种key - value 的数据类型，使用就像我们上学用的字典，通过笔划、字母来查对应页的详细内容。</p>
+</blockquote>
+<ul>
+<li>定义</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">info = &#123;</div><div class="line">    <span class="string">'stu1101'</span>: <span class="string">"TengLan Wu"</span>,</div><div class="line">    <span class="string">'stu1102'</span>: <span class="string">"LongZe Luola"</span>,</div><div class="line">    <span class="string">'stu1103'</span>: <span class="string">"XiaoZe Maliya"</span>,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>特点</li>
+</ul>
+<blockquote>
+<p>dict是无序的<br>key必须是唯一的,so 天生去重</p>
+</blockquote>
+<ul>
+<li>增加</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>info[<span class="string">"stu1104"</span>] = <span class="string">"苍井空"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>info</div><div class="line">&#123;<span class="string">'stu1102'</span>: <span class="string">'LongZe Luola'</span>, <span class="string">'stu1104'</span>: <span class="string">'苍井空'</span>, <span class="string">'stu1103'</span>: <span class="string">'XiaoZe Maliya'</span>, <span class="string">'stu1101'</span>: <span class="string">'TengLan Wu'</span>&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>修改</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>info[<span class="string">'stu1101'</span>] = <span class="string">"武藤兰"</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>info</div><div class="line">&#123;<span class="string">'stu1102'</span>: <span class="string">'LongZe Luola'</span>, <span class="string">'stu1103'</span>: <span class="string">'XiaoZe Maliya'</span>, <span class="string">'stu1101'</span>: <span class="string">'武藤兰'</span>&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>删除</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>info</div><div class="line">&#123;<span class="string">'stu1102'</span>: <span class="string">'LongZe Luola'</span>, <span class="string">'stu1103'</span>: <span class="string">'XiaoZe Maliya'</span>, <span class="string">'stu1101'</span>: <span class="string">'武藤兰'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>info.pop(<span class="string">"stu1101"</span>) <span class="comment">#标准删除姿势</span></div><div class="line"><span class="string">'武藤兰'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>info</div><div class="line">&#123;<span class="string">'stu1102'</span>: <span class="string">'LongZe Luola'</span>, <span class="string">'stu1103'</span>: <span class="string">'XiaoZe Maliya'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">del</span> info[<span class="string">'stu1103'</span>] <span class="comment">#换个姿势删除</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>info</div><div class="line">&#123;<span class="string">'stu1102'</span>: <span class="string">'LongZe Luola'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>info = &#123;<span class="string">'stu1102'</span>: <span class="string">'LongZe Luola'</span>, <span class="string">'stu1103'</span>: <span class="string">'XiaoZe Maliya'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>info</div><div class="line">&#123;<span class="string">'stu1102'</span>: <span class="string">'LongZe Luola'</span>, <span class="string">'stu1103'</span>: <span class="string">'XiaoZe Maliya'</span>&#125; <span class="comment">#随机删除</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>info.popitem()</div><div class="line">(<span class="string">'stu1102'</span>, <span class="string">'LongZe Luola'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>info</div><div class="line">&#123;<span class="string">'stu1103'</span>: <span class="string">'XiaoZe Maliya'</span>&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>查找</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>info = &#123;<span class="string">'stu1102'</span>: <span class="string">'LongZe Luola'</span>, <span class="string">'stu1103'</span>: <span class="string">'XiaoZe Maliya'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="string">"stu1102"</span> <span class="keyword">in</span> info <span class="comment">#标准用法</span></div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>info.get(<span class="string">"stu1102"</span>)  <span class="comment">#获取</span></div><div class="line"><span class="string">'LongZe Luola'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>info[<span class="string">"stu1102"</span>] <span class="comment">#同上，但是看下面</span></div><div class="line"><span class="string">'LongZe Luola'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>info[<span class="string">"stu1105"</span>]  <span class="comment">#如果一个key不存在，就报错，get不会，不存在只返回None</span></div><div class="line">Traceback (most recent call last):</div><div class="line">  File <span class="string">"&lt;stdin&gt;"</span>, line <span class="number">1</span>, <span class="keyword">in</span> &lt;module&gt;</div><div class="line">KeyError: <span class="string">'stu1105'</span></div></pre></td></tr></table></figure>
+<ul>
+<li>多级字典嵌套及操作</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">av_catalog = &#123;</div><div class="line">    <span class="string">"欧美"</span>:&#123;</div><div class="line">        <span class="string">"www.youporn.com"</span>: [<span class="string">"很多免费的,世界最大的"</span>,<span class="string">"质量一般"</span>],</div><div class="line">        <span class="string">"www.pornhub.com"</span>: [<span class="string">"很多免费的,也很大"</span>,<span class="string">"质量比yourporn高点"</span>],</div><div class="line">        <span class="string">"letmedothistoyou.com"</span>: [<span class="string">"多是自拍,高质量图片很多"</span>,<span class="string">"资源不多,更新慢"</span>],</div><div class="line">        <span class="string">"x-art.com"</span>:[<span class="string">"质量很高,真的很高"</span>,<span class="string">"全部收费,屌比请绕过"</span>]</div><div class="line">    &#125;,</div><div class="line">    <span class="string">"日韩"</span>:&#123;</div><div class="line">        <span class="string">"tokyo-hot"</span>:[<span class="string">"质量怎样不清楚,个人已经不喜欢日韩范了"</span>,<span class="string">"听说是收费的"</span>]</div><div class="line">    &#125;,</div><div class="line">    <span class="string">"大陆"</span>:&#123;</div><div class="line">        <span class="string">"1024"</span>:[<span class="string">"全部免费,真好,好人一生平安"</span>,<span class="string">"服务器在国外,慢"</span>]</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">av_catalog[<span class="string">"大陆"</span>][<span class="string">"1024"</span>][<span class="number">1</span>] += <span class="string">",可以用爬虫爬下来"</span></div><div class="line">print(av_catalog[<span class="string">"大陆"</span>][<span class="string">"1024"</span>])</div><div class="line"><span class="comment">#ouput </span></div><div class="line">[<span class="string">'全部免费,真好,好人一生平安'</span>, <span class="string">'服务器在国外,慢,可以用爬虫爬下来'</span>]</div></pre></td></tr></table></figure>
+<ul>
+<li>其他姿势</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#values</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>info.values()</div><div class="line">dict_values([<span class="string">'LongZe Luola'</span>, <span class="string">'XiaoZe Maliya'</span>])</div><div class="line"></div><div class="line"><span class="comment">#keys</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>info.keys()</div><div class="line">dict_keys([<span class="string">'stu1102'</span>, <span class="string">'stu1103'</span>])</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">#setdefault</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>info.setdefault(<span class="string">"stu1106"</span>,<span class="string">"Alex"</span>)</div><div class="line"><span class="string">'Alex'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>info</div><div class="line">&#123;<span class="string">'stu1102'</span>: <span class="string">'LongZe Luola'</span>, <span class="string">'stu1103'</span>: <span class="string">'XiaoZe Maliya'</span>, <span class="string">'stu1106'</span>: <span class="string">'Alex'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>info.setdefault(<span class="string">"stu1102"</span>,<span class="string">"龙泽萝拉"</span>)</div><div class="line"><span class="string">'LongZe Luola'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>info</div><div class="line">&#123;<span class="string">'stu1102'</span>: <span class="string">'LongZe Luola'</span>, <span class="string">'stu1103'</span>: <span class="string">'XiaoZe Maliya'</span>, <span class="string">'stu1106'</span>: <span class="string">'Alex'</span>&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">#update </span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>info</div><div class="line">&#123;<span class="string">'stu1102'</span>: <span class="string">'LongZe Luola'</span>, <span class="string">'stu1103'</span>: <span class="string">'XiaoZe Maliya'</span>, <span class="string">'stu1106'</span>: <span class="string">'Alex'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>b = &#123;<span class="number">1</span>:<span class="number">2</span>,<span class="number">3</span>:<span class="number">4</span>, <span class="string">"stu1102"</span>:<span class="string">"龙泽萝拉"</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>info.update(b)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>info</div><div class="line">&#123;<span class="string">'stu1102'</span>: <span class="string">'龙泽萝拉'</span>, <span class="number">1</span>: <span class="number">2</span>, <span class="number">3</span>: <span class="number">4</span>, <span class="string">'stu1103'</span>: <span class="string">'XiaoZe Maliya'</span>, <span class="string">'stu1106'</span>: <span class="string">'Alex'</span>&#125;</div><div class="line"></div><div class="line"><span class="comment">#items</span></div><div class="line">info.items()</div><div class="line">dict_items([(<span class="string">'stu1102'</span>, <span class="string">'龙泽萝拉'</span>), (<span class="number">1</span>, <span class="number">2</span>), (<span class="number">3</span>, <span class="number">4</span>), (<span class="string">'stu1103'</span>, <span class="string">'XiaoZe Maliya'</span>), (<span class="string">'stu1106'</span>, <span class="string">'Alex'</span>)])</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">#通过一个列表生成默认dict,有个没办法解释的坑，少用吧这个</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>dict.fromkeys([<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],<span class="string">'testd'</span>)</div><div class="line">&#123;<span class="number">1</span>: <span class="string">'testd'</span>, <span class="number">2</span>: <span class="string">'testd'</span>, <span class="number">3</span>: <span class="string">'testd'</span>&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>循环列表</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#方法1</span></div><div class="line"><span class="keyword">for</span> key <span class="keyword">in</span> info:</div><div class="line">    print(key,info[key])</div><div class="line"></div><div class="line"><span class="comment">#方法2</span></div><div class="line"><span class="keyword">for</span> k,v <span class="keyword">in</span> info.items(): <span class="comment">#会先把dict转成list,数据里大时莫用</span></div><div class="line">    print(k,v)</div><div class="line"></div><div class="line"><span class="comment">#方法3</span></div><div class="line">li = [<span class="number">11</span>,<span class="number">22</span>,<span class="number">33</span>]</div><div class="line"><span class="keyword">for</span> k,v <span class="keyword">in</span> enumerate(li, <span class="number">1</span>):</div><div class="line">    print(k,v)</div></pre></td></tr></table></figure>
+<p>程序练习</p>
+<p>程序: 三级菜单</p>
+<p>要求: </p>
+<ol>
+<li>打印省、市、县三级菜单</li>
+<li>可返回上一级</li>
+<li>可随时退出程序</li>
+</ol>
+<hr>
+<h4 id="集合操作"><a href="#集合操作" class="headerlink" title="集合操作"></a><div id="title">集合操作</div></h4><blockquote>
+<p>集合是一个无序的，不重复的数据组合，它的主要作用如下：</p>
+<p>去重，把一个列表变成集合，就自动去重了<br>关系测试，测试两组数据之前的交集、差集、并集等关系</p>
+</blockquote>
+<p>常见操作：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">s = set([<span class="number">3</span>,<span class="number">5</span>,<span class="number">9</span>,<span class="number">10</span>])      <span class="comment">#创建一个数值集合  </span></div><div class="line">t = set(<span class="string">"Hello"</span>)         <span class="comment">#创建一个唯一字符的集合  </span></div><div class="line">a = t | s          <span class="comment"># t 和 s的并集  </span></div><div class="line">b = t &amp; s          <span class="comment"># t 和 s的交集  </span></div><div class="line">c = t – s          <span class="comment"># 求差集（项在t中，但不在s中）  </span></div><div class="line">d = t ^ s          <span class="comment"># 对称差集（项在t或s中，但不会同时出现在二者中） </span></div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">基本操作：  </div><div class="line">  </div><div class="line">t.add(<span class="string">'x'</span>)            <span class="comment"># 添加一项  </span></div><div class="line">  </div><div class="line">s.update([<span class="number">10</span>,<span class="number">37</span>,<span class="number">42</span>])  <span class="comment"># 在s中添加多项  </span></div><div class="line">  </div><div class="line"></div><div class="line">使用remove()可以删除一项：  </div><div class="line">  </div><div class="line">t.remove(<span class="string">'H'</span>)  </div><div class="line">  </div><div class="line">  </div><div class="line">len(s)  </div><div class="line">set 的长度  </div><div class="line">  </div><div class="line">x <span class="keyword">in</span> s  </div><div class="line">测试 x 是否是 s 的成员  </div><div class="line">  </div><div class="line">x <span class="keyword">not</span> <span class="keyword">in</span> s  </div><div class="line">测试 x 是否不是 s 的成员  </div><div class="line">  </div><div class="line">s.issubset(t)  </div><div class="line">s &lt;= t  </div><div class="line">测试是否 s 中的每一个元素都在 t 中  </div><div class="line">  </div><div class="line">s.issuperset(t)  </div><div class="line">s &gt;= t  </div><div class="line">测试是否 t 中的每一个元素都在 s 中  </div><div class="line">  </div><div class="line">s.union(t)  </div><div class="line">s | t  </div><div class="line">返回一个新的 set 包含 s 和 t 中的每一个元素  </div><div class="line">  </div><div class="line">s.intersection(t)  </div><div class="line">s &amp; t  </div><div class="line">返回一个新的 set 包含 s 和 t 中的公共元素  </div><div class="line">  </div><div class="line">s.difference(t)  </div><div class="line">s - t  </div><div class="line">返回一个新的 set 包含 s 中有但是 t 中没有的元素  </div><div class="line">  </div><div class="line">s.symmetric_difference(t)  </div><div class="line">s ^ t  </div><div class="line">返回一个新的 set 包含 s 和 t 中不重复的元素  </div><div class="line">  </div><div class="line">s.copy()  </div><div class="line">返回 set “s”的一个浅复制</div></pre></td></tr></table></figure>
+<h4 id="文件的操作"><a href="#文件的操作" class="headerlink" title="文件的操作"></a><div id="title">文件的操作</div></h4><h5 id="1-打开文件"><a href="#1-打开文件" class="headerlink" title="1. 打开文件"></a>1. 打开文件</h5><blockquote>
+<p>文件句柄 = open(‘文件路径’, ‘模式’)</p>
+<p>打开文件时，需要指定文件路径和以何等方式打开文件，打开后，即可获取该文件句柄，日后通过此文件句柄对该文件操作。</p>
+</blockquote>
+<p><strong>打开文件的模式有：</strong></p>
+<ul>
+<li>r ，只读模式【默认】</li>
+<li>w， 只写模式【不可读；不存在则创建；存在则清空内容；】</li>
+<li>x， 只写模式【不可读；不存在则创建，存在则报错】</li>
+<li>a， 追加模式【可读；   不存在则创建；存在则只追加内容；】</li>
+</ul>
+<p>“+” 表示可以同时读写某个文件</p>
+<ul>
+<li>r+， 读写【可读，可写】</li>
+<li>w+， 写读【可读，可写】</li>
+<li>x+ ，写读【可读，可写】</li>
+<li>a+， 写读【可读，可写】</li>
+</ul>
+<p>“b”表示以字节的方式操作</p>
+<ul>
+<li>rb  或 r+b</li>
+<li>wb 或 w+b</li>
+<li>xb 或 w+b</li>
+<li>ab 或 a+b</li>
+</ul>
+<p><strong><font color="red">注意：以b方式打开时，读取到的内容是字节类型，写入时也需要提供字节类型</font></strong></p>
+<h5 id="2-对文件的操作"><a href="#2-对文件的操作" class="headerlink" title="2. 对文件的操作"></a>2. 对文件的操作</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TextIOWrapper</span><span class="params">(_TextIOBase)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">close</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        关闭文件</div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fileno</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        文件描述符  </div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">flush</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        刷新文件内部缓冲区</div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">isatty</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        判断文件是否是同意tty设备</div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">read</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        读取指定字节数据</div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">readable</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        是否可读</div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">readline</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        仅读取一行数据</div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">seek</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        指定文件中指针位置</div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">seekable</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        指针是否可操作</div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">tell</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        获取指针位置</div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">truncate</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        截断数据，仅保留指定之前数据</div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">writable</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        是否可写</div><div class="line">        <span class="keyword">pass</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">write</span><span class="params">(self, *args, **kwargs)</span>:</span> <span class="comment"># real signature unknown</span></div><div class="line">        写内容</div><div class="line">        <span class="keyword">pass</span></div></pre></td></tr></table></figure>
+<h5 id="3-打开文件的另一种姿势"><a href="#3-打开文件的另一种姿势" class="headerlink" title="3. 打开文件的另一种姿势"></a>3. 打开文件的另一种姿势</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">with</span> open(<span class="string">'log'</span>,<span class="string">'r'</span>) <span class="keyword">as</span> f:</div><div class="line">        </div><div class="line">    ...</div></pre></td></tr></table></figure>
+<blockquote>
+<p>当with代码块执行完毕时，内部会自动关闭并释放文件资源</p>
+</blockquote>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Python/" class="article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/06/python常见数据类型/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/05/06/Python简介/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          初识Python
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/06/python函数/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Python函数基础</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <section id="comments" style="margin:10px;padding:10px;background:#fff;">
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "mjstUtcUPaEVJpt5xt5zWykf-gzGzoHsz",
+            app_key: "4CY7cYn38n302Lor7lqqLoJO",
+            placeholder: "来呀!快活呀!",
+            avatar:"mm"
+        });
+    }
+</script>
+
+    </section>
+ 
+
+  
+
+
 
           </div>
         </div>

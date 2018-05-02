@@ -166,7 +166,302 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-Http协议" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Http协议总结
+    </h1>
+  
+
+        
+        <a href="/2017/10/06/Http协议/" class="archive-article-date">
+  	<time datetime="2017-10-06T04:18:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#请求过程"><span class="toc-text">请求过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP-0-9"><span class="toc-text">HTTP/0.9</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP-1-0"><span class="toc-text">HTTP/1.0</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#简介"><span class="toc-text">简介</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#请求格式"><span class="toc-text">请求格式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#回应格式"><span class="toc-text">回应格式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Content-Type"><span class="toc-text">Content-Type</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Content-Encoding"><span class="toc-text">Content-Encoding</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Content-Length"><span class="toc-text">Content-Length</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#缺点"><span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP-1-1"><span class="toc-text">HTTP/1.1</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#持久连接"><span class="toc-text">持久连接</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#管道机制"><span class="toc-text">管道机制</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#分块传输编码"><span class="toc-text"> 分块传输编码</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#其他功能"><span class="toc-text">其他功能</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#缺点-1"><span class="toc-text">缺点</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#HTTP-2-X"><span class="toc-text">HTTP/2.X</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#二进制协议"><span class="toc-text">二进制协议</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#多工"><span class="toc-text">多工</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#服务器推送"><span class="toc-text">服务器推送</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#响应状态码"><span class="toc-text">响应状态码</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#状态码类别"><span class="toc-text">状态码类别</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#常见状态码"><span class="toc-text">常见状态码</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Get和Post的区别"><span class="toc-text">Get和Post的区别</span></a></li></ol>
+          <hr/>
+        </div>
+        
+        <h4 id="请求过程"><a href="#请求过程" class="headerlink" title="请求过程"></a><div id="title">请求过程</div></h4><p><img src="https://i.loli.net/2018/04/05/5ac588207674e.jpg" alt="http协议.jpg"></p>
+<a id="more"></a>
+<h4 id="HTTP-0-9"><a href="#HTTP-0-9" class="headerlink" title="HTTP/0.9"></a><div id="title">HTTP/0.9</div></h4><p><code>HTTP</code> 是基于 <code>TCP/IP</code> 协议的应用层协议。它不涉及数据包<code>（packet）</code>传输，主要规定了客户端和服务器之间的通信格式，默认使用<code>80</code>端口。</p>
+<p>最早版本是1991年发布的<code>0.9</code>版。该版本极其简单，只有一个命令<code>GET</code>。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">GET /index.html</div></pre></td></tr></table></figure>
+<p>上面命令表示，TCP 连接（connection）建立后，客户端向服务器请求（request）网页index.html。</p>
+<p>协议规定，服务器只能回应HTML格式的字符串，不能回应别的格式。</p>
+<figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&lt;html&gt;</div><div class="line">  &lt;body&gt;Hello World&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p>服务器发送完毕，就关闭TCP连接。</p>
+<h4 id="HTTP-1-0"><a href="#HTTP-1-0" class="headerlink" title="HTTP/1.0"></a><div id="title">HTTP/1.0</div></h4><h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a><div id="title">简介</div></h5><p>1996年5月，HTTP/1.0 版本发布，内容大大增加。</p>
+<ul>
+<li><p>首先，任何格式的内容都可以发送。这使得互联网不仅可以传输文字，还能传输图像、视频、二进制文件。这为互联网的大发展奠定了基础。</p>
+</li>
+<li><p>其次，除了GET命令，还引入了POST命令和HEAD命令，丰富了浏览器与服务器的互动手段。</p>
+</li>
+<li><p>再次，HTTP请求和回应的格式也变了。除了数据部分，每次通信都必须包括头信息（HTTP header），用来描述一些元数据。</p>
+</li>
+<li><p>其他的新增功能还包括状态码（<code>status code</code>）、<code>多字符集支持</code>、多部分发送（<code>multi-part type</code>）、<code>权限（authorization）</code>、<code>缓存（cache）</code>、<code>内容编码（content encoding）</code>等。</p>
+</li>
+</ul>
+<h5 id="请求格式"><a href="#请求格式" class="headerlink" title="请求格式"></a><div id="title">请求格式</div></h5><figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">GET</span> <span class="string">/</span> HTTP/1.0</div><div class="line"><span class="attribute">User-Agent</span>: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5)</div><div class="line"><span class="attribute">Accept</span>: */*</div></pre></td></tr></table></figure>
+<p>第一行是请求命令，必须在尾部添加协议版本<code>（HTTP/1.0）</code>。后面就是多行头信息，描述客户端的情况。</p>
+<h5 id="回应格式"><a href="#回应格式" class="headerlink" title="回应格式"></a><div id="title">回应格式</div></h5><figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">HTTP/1.0 <span class="number">200</span> OK </div><div class="line"><span class="attribute">Content-Type</span>: text/plain</div><div class="line"><span class="attribute">Content-Encoding</span>: gzip</div><div class="line"><span class="attribute">Content-Length</span>: 3495</div><div class="line"><span class="attribute">Expires</span>: Thu, 05 Dec 1997 16:00:00 GMT</div><div class="line"><span class="attribute">Last-Modified</span>: Wed, 5 August 1996 15:55:28 GMT</div><div class="line"><span class="attribute">Server</span>: Apache 0.84</div><div class="line"></div><div class="line"><span class="undefined">&lt;html&gt;</div><div class="line">  &lt;body&gt;Hello World&lt;/body&gt;</div><div class="line">&lt;/html&gt;</span></div></pre></td></tr></table></figure>
+<p>回应的格式是<code>头信息 + 一个空行（\r\n） + 数据</code></p>
+<h5 id="Content-Type"><a href="#Content-Type" class="headerlink" title="Content-Type"></a><div id="title">Content-Type</div></h5><p>服务器回应的时候，必须告诉客户端，数据是什么格式，这就是Content-Type字段的作用。</p>
+<p>下面是一些常见的Content-Type字段的值。</p>
+<figure class="highlight leaf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">text/plain</div><div class="line"></div><div class="line">text/html</div><div class="line"></div><div class="line">text/css</div><div class="line"></div><div class="line">image/jpeg</div><div class="line"></div><div class="line">image/png</div><div class="line"></div><div class="line">image/svg+xml</div><div class="line"></div><div class="line">audio/mp4</div><div class="line"></div><div class="line">video/mp4</div><div class="line"></div><div class="line">application/javascript</div><div class="line"></div><div class="line">application/pdf</div><div class="line"></div><div class="line">application/zip</div><div class="line"></div><div class="line">application/atom+xml</div></pre></td></tr></table></figure>
+<p>这些数据类型总称为<code>MIME type</code>，每个值包括一级类型和二级类型，之间用斜杠分隔。</p>
+<p><code>MIME type</code>还可以在尾部使用分号，添加参数。</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">Content-Type</span>: text/html; charset=utf-8</div></pre></td></tr></table></figure>
+<p>上面的类型表明，发送的是网页，而且编码是UTF-8。</p>
+<p>客户端请求的时候，可以使用Accept字段声明自己可以接受哪些数据格式。</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">Accept</span>: */*</div></pre></td></tr></table></figure>
+<p>上面代码中，客户端声明自己可以接受任何格式的数据。</p>
+<p><code>MIME type</code>不仅用在<code>HTTP</code>协议，还可以用在其他地方，比如HTML网页。</p>
+<figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /&gt;</div></pre></td></tr></table></figure>
+<h5 id="Content-Encoding"><a href="#Content-Encoding" class="headerlink" title="Content-Encoding"></a><div id="title">Content-Encoding</div></h5><p>由于发送的数据可以是任何格式，因此可以把数据压缩后再发送。<code>Content-Encoding</code>字段说明数据的压缩方法。</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">Content-Encoding</span>: gzip</div><div class="line"><span class="attribute">Content-Encoding</span>: compress</div><div class="line"><span class="attribute">Content-Encoding</span>: deflate</div></pre></td></tr></table></figure>
+<p>客户端在请求时，用<code>Accept-Encoding</code>字段说明自己可以接受哪些压缩方法</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">Accept-Encoding</span>: gzip, deflate</div></pre></td></tr></table></figure>
+<h5 id="Content-Length"><a href="#Content-Length" class="headerlink" title="Content-Length"></a><div id="title">Content-Length</div></h5><p>一个TCP连接现在可以传送多个回应，势必就要有一种机制，区分数据包是属于哪一个回应的。这就是Content-length字段的作用，声明本次回应的数据长度。</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">Content-Length</span>: 3495</div></pre></td></tr></table></figure>
+<p>上面代码告诉浏览器，本次回应的长度是3495个字节，后面的字节就属于下一个回应了。</p>
+<h5 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a><div id="title">缺点</div></h5><p>HTTP/1.0 版的主要缺点是，每个TCP连接只能发送一个请求。发送数据完毕，连接就关闭，如果还要请求其他资源，就必须再新建一个连接。</p>
+<p>TCP连接的新建成本很高，因为需要客户端和服务器三次握手，并且开始时发送速率较慢（slow start）。所以，HTTP 1.0版本的性能比较差。随着网页加载的外部资源越来越多，这个问题就愈发突出了。</p>
+<p>为了解决这个问题，有些浏览器在请求时，用了一个非标准的<code>Connection</code>字段。</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">Connection</span>: keep-alive</div></pre></td></tr></table></figure>
+<p>这个字段要求服务器不要关闭TCP连接，以便其他请求复用。服务器同样回应这个字段。</p>
+<h4 id="HTTP-1-1"><a href="#HTTP-1-1" class="headerlink" title="HTTP/1.1"></a><div id="title">HTTP/1.1</div></h4><p>1997年1月，HTTP/1.1 版本发布，只比 1.0 版本晚了半年。它进一步完善了 HTTP 协议，一直用到了20年后的今天，直到现在还是最流行的版本。</p>
+<h5 id="持久连接"><a href="#持久连接" class="headerlink" title="持久连接"></a><div id="title">持久连接</div></h5><p>1.1 版的最大变化，就是引入了持久连接（<code>persistent connection</code>），即TCP连接默认不关闭，可以被多个请求复用，不用声明<code>Connection: keep-alive</code>。</p>
+<p>不过，规范的做法是，客户端在最后一个请求时，发送<code>Connection: close</code>，明确要求服务器关闭TCP连接。</p>
+<p>目前，对于同一个域名，大多数浏览器允许同时建立6个持久连接。</p>
+<h5 id="管道机制"><a href="#管道机制" class="headerlink" title="管道机制"></a><div id="title">管道机制</div></h5><p>1.1 版还引入了管道机制（pipelining），即在同一个TCP连接里面，客户端可以同时发送多个请求。这样就进一步改进了HTTP协议的效率。</p>
+<p>举例来说，客户端需要请求两个资源。以前的做法是，在同一个TCP连接里面，先发送A请求，然后等待服务器做出回应，收到后再发出B请求。管道机制则是允许浏览器同时发出A请求和B请求，但是服务器还是按照顺序，先回应A请求，完成后再回应B请求。</p>
+<h5 id="分块传输编码"><a href="#分块传输编码" class="headerlink" title=" 分块传输编码"></a><div id="title"> 分块传输编码</div></h5><p>使用<code>Content-Length</code>字段的前提条件是，服务器发送回应之前，必须知道回应的数据长度。</p>
+<p>对于一些很耗时的动态操作来说，这意味着，服务器要等到所有操作完成，才能发送数据，显然这样的效率不高。更好的处理方法是，产生一块数据，就发送一块，采用”流模式”（stream）取代”缓存模式”（buffer）。</p>
+<p>因此，1.1版规定可以不使用<code>Content-Length</code>字段，而使用”分块传输编码”（chunked transfer encoding）。只要请求或回应的头信息有<code>Transfer-Encoding</code>字段，就表明回应将由数量未定的数据块组成。</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">Transfer-Encoding</span>: chunked</div></pre></td></tr></table></figure>
+<p>每个非空的数据块之前，会有一个16进制的数值，表示这个块的长度。最后是一个大小为0的块，就表示本次回应的数据发送完了。下面是一个例子。</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 <span class="number">200</span> OK</div><div class="line"><span class="attribute">Content-Type</span>: text/plain</div><div class="line"><span class="attribute">Transfer-Encoding</span>: chunked</div><div class="line"></div><div class="line"><span class="undefined">25</div><div class="line">This is the data in the first chunk</div><div class="line"></div><div class="line">1C</div><div class="line">and this is the second one</div><div class="line"></div><div class="line">3</div><div class="line">con</div><div class="line"></div><div class="line">8</div><div class="line">sequence</div><div class="line"></div><div class="line">0</span></div></pre></td></tr></table></figure>
+<h5 id="其他功能"><a href="#其他功能" class="headerlink" title="其他功能"></a><div id="title">其他功能</div></h5><p>1.1版还新增了许多动词方法：<code>PUT、PATCH、HEAD、 OPTIONS、DELETE</code>。</p>
+<p>另外，客户端请求的头信息新增了Host字段，用来指定服务器的域名。</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">Host</span>: www.example.com</div></pre></td></tr></table></figure>
+<p>有了Host字段，就可以将请求发往同一台服务器上的不同网站，为虚拟主机的兴起打下了基础。</p>
+<h5 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a><div id="title">缺点</div></h5><p>虽然1.1版允许复用TCP连接，但是同一个TCP连接里面，所有的数据通信是按次序进行的。服务器只有处理完一个回应，才会进行下一个回应。要是前面的回应特别慢，后面就会有许多请求排队等着。这称为”队头堵塞”<code>（Head-of-line blocking）</code></p>
+<p>为了避免这个问题，只有两种方法：一是减少请求数，二是同时多开持久连接。这导致了很多的网页优化技巧，比如合并脚本和样式表、将图片嵌入CSS代码、域名分片（domain sharding）等等</p>
+<h4 id="HTTP-2-X"><a href="#HTTP-2-X" class="headerlink" title="HTTP/2.X"></a><div id="title">HTTP/2.X</div></h4><blockquote>
+<p>2015年，HTTP/2 发布。它不叫 HTTP/2.0，是因为标准委员会不打算再发布子版本了，下一个新版本将是 HTTP/3。</p>
+</blockquote>
+<h4 id="二进制协议"><a href="#二进制协议" class="headerlink" title="二进制协议"></a><div id="title">二进制协议</div></h4><p><code>HTTP/1.1</code> 版的头信息肯定是文本（ASCII编码），数据体可以是文本，也可以是二进制。<code>HTTP/2</code> 则是一个彻底的二进制协议，头信息和数据体都是二进制，并且统称为”帧”（frame）：头信息帧和数据帧。</p>
+<h5 id="多工"><a href="#多工" class="headerlink" title="多工"></a><div id="title">多工</div></h5><p><code>HTTP/2</code> 复用TCP连接，在一个连接里，客户端和浏览器都可以同时发送多个请求或回应，而且不用按照顺序一一对应，这样就避免了”队头堵塞”。</p>
+<p>举例来说，在一个TCP连接里面，服务器同时收到了A请求和B请求，于是先回应A请求，结果发现处理过程非常耗时，于是就发送A请求已经处理好的部分， 接着回应B请求，完成后，再发送A请求剩下的部分。</p>
+<p>这样双向的、实时的通信，就叫做多工（Multiplexing）。</p>
+<h5 id="服务器推送"><a href="#服务器推送" class="headerlink" title="服务器推送"></a><div id="title">服务器推送</div></h5><p><code>HTTP/2</code> 允许服务器未经请求，主动向客户端发送资源，这叫做服务器推送（server push）。</p>
+<p>常见场景是客户端请求一个网页，这个网页里面包含很多静态资源。正常情况下，客户端必须收到网页后，解析HTML源码，发现有静态资源，再发出静态资源请求。其实，服务器可以预期到客户端请求网页后，很可能会再请求静态资源，所以就主动把这些静态资源随着网页一起发给客户端了。</p>
+<h4 id="响应状态码"><a href="#响应状态码" class="headerlink" title="响应状态码"></a><div id="title">响应状态码</div></h4><h5 id="状态码类别"><a href="#状态码类别" class="headerlink" title="状态码类别"></a><div id="title">状态码类别</div></h5><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">1XX Informational（信息性状态码）接收的请求正在处理</div><div class="line"></div><div class="line">2XX Success（成功状态码） 请求正常处理完毕</div><div class="line"></div><div class="line">3XX Redirection（重定向状态码） 需要进行附加操作以完成请求</div><div class="line"></div><div class="line">4XX Client Error（客户端错误状态码）服务器无法处理请求</div><div class="line"></div><div class="line">5XX Server Error（服务器错误状态码）服务器处理请求出错</div></pre></td></tr></table></figure>
+<h5 id="常见状态码"><a href="#常见状态码" class="headerlink" title="常见状态码"></a><div id="title">常见状态码</div></h5><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">200：请求被正常处理</div><div class="line">301：永久性重定向</div><div class="line">302：临时重定向</div><div class="line">401：请求需要认证</div><div class="line">403：请求的对应资源禁止被访问</div><div class="line">404：服务器无法找到对应资源</div><div class="line">500：服务器内部错误</div><div class="line">503：服务器正忙</div></pre></td></tr></table></figure>
+<h4 id="Get和Post的区别"><a href="#Get和Post的区别" class="headerlink" title="Get和Post的区别"></a><div id="title">Get和Post的区别</div></h4><ul>
+<li><p><code>get</code>重点在从服务器上获取资源，<code>post</code>重点在向服务器发送数据；</p>
+</li>
+<li><p><code>get</code>传输数据是通过<code>URL</code>请求，以<code>field（字段）= value</code>的形式，置于<code>URL</code>后，并用”?”连接，多个请求数据间用”&amp;”连接，如<code>http://127.0.0.1/Test/login.action?name=admin&amp;password=admin</code>，这个过程用户是可见的；<br><code>post</code>传输数据通过<code>Http</code>的<code>post</code>机制，将字段与对应值封存在请求实体中发送给服务器，这个过程对用户是不可见的；</p>
+</li>
+<li><p><code>Get</code>传输的数据量小，因为受<code>URL</code>长度限制，但效率较高；<code>Post</code>可以传输大量数据，所以上传文件时只能用<code>Post</code>方式；</p>
+</li>
+<li><code>get</code>是不安全的，因为URL是可见的，可能会泄露私密信息，如密码等；<code>post</code>较<code>get</code>安全性较高；</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/10/06/Http协议/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/10/07/为什么是Python/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          为啥选择python
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/10/06/常见的Http认证机制/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">常见的Http认证机制</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <section id="comments" style="margin:10px;padding:10px;background:#fff;">
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "mjstUtcUPaEVJpt5xt5zWykf-gzGzoHsz",
+            app_key: "4CY7cYn38n302Lor7lqqLoJO",
+            placeholder: "来呀!快活呀!",
+            avatar:"mm"
+        });
+    }
+</script>
+
+    </section>
+ 
+
+  
+
+
 
           </div>
         </div>

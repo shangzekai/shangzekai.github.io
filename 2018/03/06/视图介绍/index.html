@@ -164,7 +164,244 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-视图介绍" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Yaf之视图
+    </h1>
+  
+
+        
+        <a href="/2018/03/06/视图介绍/" class="archive-article-date">
+  	<time datetime="2018-03-06T03:18:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#视图介绍"><span class="toc-text">视图介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#render-和display-函数"><span class="toc-text">render()和display()函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#设置和获取模板目录"><span class="toc-text">设置和获取模板目录</span></a></li></ol>
+          <hr/>
+        </div>
+        
+        <h4 id="视图介绍"><a href="#视图介绍" class="headerlink" title="视图介绍"></a><div id="title">视图介绍</div></h4><blockquote>
+<p>所谓视图，就是用来展示给用户的界面部分。我们可以用控制器的<code>getView()</code>方法返回一个视图的实例，然后我们调用其<code>assign()</code>方法来给视图中的每个变量进行赋值。而且需要注意的是，Yaf会自动渲染视图，而且默认的文件后缀名为<code>phtml</code>。</p>
+</blockquote>
+<a id="more"></a>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TestController</span> <span class="keyword">extends</span> <span class="title">Yaf_Controller_Abstract</span></div><div class="line"></span>&#123;</div><div class="line">	<span class="keyword">public</span> <span class="function"><span class="keyword">function</span>  <span class="title">indexAction</span><span class="params">()</span></div><div class="line">	</span>&#123;</div><div class="line">		<span class="comment">//定义数据</span></div><div class="line">		$msg = <span class="keyword">array</span>(<span class="string">"name"</span>=&gt;<span class="string">"zhangsan"</span>,<span class="string">"age"</span>=&gt;<span class="number">23</span>);</div><div class="line">		</div><div class="line">		<span class="comment">## 第一种方式</span></div><div class="line">		<span class="comment">//获取视图</span></div><div class="line">		$view = <span class="keyword">$this</span>-&gt;getView();</div><div class="line">		<span class="comment">//赋值一个标量</span></div><div class="line">		$view-&gt;assign(<span class="string">"name"</span>,<span class="string">"lisi"</span>);</div><div class="line">		<span class="comment">//赋值一个数组</span></div><div class="line">		$view-&gt;assign(<span class="string">"msg"</span>,$msg);</div><div class="line">		</div><div class="line">		<span class="comment">## 第二种方式</span></div><div class="line">		<span class="keyword">$this</span>-&gt;getView()-&gt;name = <span class="string">"value"</span>;</div><div class="line">		或者</div><div class="line">		<span class="keyword">$this</span>-&gt;_view-&gt;name = <span class="string">"value"</span>;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后我们在views目录下新建一个test目录，然后在里面创建一个index.phtml文件，然后我们写入如下内容:</p>
+<figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>您的姓名是:<span class="php"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> $name; <span class="meta">?&gt;</span></span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>姓名:<span class="php"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> $msg[<span class="string">"name"</span>]; <span class="meta">?&gt;</span></span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">p</span>&gt;</span>年龄:<span class="php"><span class="meta">&lt;?php</span> <span class="keyword">echo</span> $msg[<span class="string">"age"</span>]; <span class="meta">?&gt;</span></span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></div></pre></td></tr></table></figure>
+<p>然后，我们直接进行访问即可看到输出结果。</p>
+<h4 id="render-和display-函数"><a href="#render-和display-函数" class="headerlink" title="render()和display()函数"></a><div id="title"><code>render()</code>和<code>display()</code>函数</div></h4><ul>
+<li>render() : 渲染一个试图模板，并得到一个结果</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">IndexController</span> <span class="keyword">extends</span> <span class="title">Yaf_Controller_Abstract</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> funciton indexAction() &#123;</div><div class="line">      <span class="keyword">echo</span> <span class="keyword">$this</span>-&gt;getView()-&gt;render(<span class="keyword">$this</span>-&gt;_script_path . <span class="string">"/test.phtml"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>display() : 渲染一个视图模板, 并直接输出给请求端</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">IndexController</span> <span class="keyword">extends</span> <span class="title">Yaf_Controller_Abstract</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> funciton indexAction() &#123;</div><div class="line">      <span class="keyword">$this</span>-&gt;getView()-&gt;display(<span class="keyword">$this</span>-&gt;_script_path . <span class="string">"/test.phtml"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<h4 id="设置和获取模板目录"><a href="#设置和获取模板目录" class="headerlink" title="设置和获取模板目录"></a><div id="title">设置和获取模板目录</div></h4><ul>
+<li>setScriptPath : 设置模板的基目录, 默认的<code>Yaf_Dispatcher</code>会设置此目录为<code>APPLICATION_PATH . &quot;/views&quot;</code>.</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"> <span class="class"><span class="keyword">class</span> <span class="title">IndexController</span> <span class="keyword">extends</span> <span class="title">Yaf_Controller_Abstract</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> funciton indexAction() &#123;</div><div class="line">     <span class="keyword">$this</span>-&gt;getView()-&gt;setScriptPath(<span class="string">"/tmp/views/"</span>);</div><div class="line">    &#125;</div><div class="line"> &#125;</div><div class="line"> <span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+<ul>
+<li>getScriptPath : 获取当前的模板目录</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"> <span class="class"><span class="keyword">class</span> <span class="title">IndexController</span> <span class="keyword">extends</span> <span class="title">Yaf_Controller_Abstract</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> funciton indexAction() &#123;</div><div class="line">     <span class="keyword">echo</span>  <span class="keyword">$this</span>-&gt;getView()-&gt;getScriptPath();</div><div class="line">    &#125;</div><div class="line"> &#125;</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Yaf</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/YAF/" class="article-tag-list-link color4">YAF</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2018/03/06/视图介绍/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2018/03/06/Yaf模型/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Yaf之模型
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/03/05/Yaf插件介绍/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Yaf之插件</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <section id="comments" style="margin:10px;padding:10px;background:#fff;">
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "mjstUtcUPaEVJpt5xt5zWykf-gzGzoHsz",
+            app_key: "4CY7cYn38n302Lor7lqqLoJO",
+            placeholder: "来呀!快活呀!",
+            avatar:"mm"
+        });
+    }
+</script>
+
+    </section>
+ 
+
+  
+
+
 
           </div>
         </div>

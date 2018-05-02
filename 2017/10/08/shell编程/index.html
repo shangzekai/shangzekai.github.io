@@ -164,7 +164,333 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-shell编程" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      shell编程
+    </h1>
+  
+
+        
+        <a href="/2017/10/08/shell编程/" class="archive-article-date">
+  	<time datetime="2017-10-08T04:18:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-08</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#第一个shell程序介绍"><span class="toc-text">第一个shell程序介绍</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#执行程序"><span class="toc-text">执行程序</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#关于输入、输出和错误输出"><span class="toc-text">关于输入、输出和错误输出</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#举例说明"><span class="toc-text">举例说明</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#shell特殊参数【命令行参数】"><span class="toc-text">shell特殊参数【命令行参数】</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#变量赋值和引用"><span class="toc-text">变量赋值和引用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Shell里的流程控制"><span class="toc-text">Shell里的流程控制</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#If语句"><span class="toc-text">If语句</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#case-语句"><span class="toc-text">case 语句</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#while-for循环"><span class="toc-text">while/for循环</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Shell里的一些特殊符号"><span class="toc-text">Shell里的一些特殊符号</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Shell里的函数"><span class="toc-text">Shell里的函数</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Shell脚本示例"><span class="toc-text">Shell脚本示例</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#脚本调试"><span class="toc-text">脚本调试</span></a></li></ol></li></ol>
+          <hr/>
+        </div>
+        
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
+<p>麻雀虽小，五脏俱全！</p>
+</blockquote>
+<a id="more"></a>
+<h5 id="第一个shell程序介绍"><a href="#第一个shell程序介绍" class="headerlink" title="第一个shell程序介绍"></a><div id="title">第一个shell程序介绍</div></h5><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"># This <span class="keyword">is</span> <span class="keyword">a</span> very simple example</div><div class="line"><span class="keyword">echo</span> <span class="string">"Hello World"</span></div></pre></td></tr></table></figure>
+<ul>
+<li><p><code>#!/bin/bash</code> 表明该文件是一个 <code>BASH</code> 程序，需要由 <code>/bin</code> 目录下的 <code>bash</code> 程序来解释执行。<code>BASH</code> 这个程序一般是存放在 <code>/bin</code> 目录下，如果你的 Linux 系统比较特别，<code>bash</code> 也有可能被存放在 <code>/sbin 、/usr/local/bin 、/usr/bin 、/usr/sbin 或 /usr/local/sbin</code> 这样的目录下；如果还找不到，你可以用 <code>&quot;locate bash&quot; &quot;whereis bash&quot;</code> 这三个命令找出 bash 所在的位置；如果仍然找不到，那你可能需要自己动手安装一个 <code>BASH</code> 软件包了</p>
+</li>
+<li><p>第二行的 “<code># This is a ...</code>“ 就是 <code>BASH</code> 程序的注释，在 <code>BASH</code> 程序中从<code>#</code>号（注意：后面紧接着是<code>!</code>号的除外）开始到行尾的多有部分均被看作是程序的注释</p>
+</li>
+<li>三行的 <code>echo</code> 语句的功能是把 <code>echo</code> 后面的字符串输出到标准输出中去</li>
+<li>需要注意的是<code>BASH</code> 中的绝大多数语句结尾处都没有分号。</li>
+</ul>
+<h5 id="执行程序"><a href="#执行程序" class="headerlink" title="执行程序"></a><div id="title">执行程序</div></h5><p><strong>显式指定 <code>BASH</code> 去执行</strong></p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ bash hello</div><div class="line">$ <span class="keyword">sh</span> hello </div><div class="line"></div><div class="line">这里 <span class="keyword">sh</span> 是指向 bash 的一个链接，</div><div class="line">lrwxrwxrwx <span class="number">1</span> root root <span class="number">4</span> Aug <span class="number">20</span> <span class="number">05</span>:<span class="number">41</span> /bin/<span class="keyword">sh</span> -&gt; bash</div></pre></td></tr></table></figure>
+<p><strong>隐式执行</strong></p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ chmod a+x hello</div><div class="line">$ ./hello</div></pre></td></tr></table></figure>
+<h4 id="关于输入、输出和错误输出"><a href="#关于输入、输出和错误输出" class="headerlink" title="关于输入、输出和错误输出"></a><div id="title">关于输入、输出和错误输出</div></h4><blockquote>
+<p>在字符终端环境中，标准输入/标准输出的概念很好理解。输入即指对一个应用程序 或命令的输入，无论是从键盘输入还是从别的文件输入；输出即指应用程序或命令产生的一些信息；与 <code>Windows</code> 系统下不同的是，<code>Linux</code> 系统下还有一个<code>标准错误输出</code>的概念，这个概念主要是为程序调试和系统维护目的而设置的，错误输出于标准输出分开可以让一些高级的错误信息不干扰正常的输出 信息，从而方便一般用户的使用。</p>
+</blockquote>
+<p>在 Linux 系统中：标准输入(<code>stdin</code>)默认为键盘输入；标准输出(<code>stdout</code>)默认为屏幕输出；标准错误输出(<code>stderr</code>)默认也是输出到屏幕.</p>
+<p>在 <code>BASH</code> 中使用这些概念时,</p>
+<ul>
+<li>将标准输出表示为 <code>1</code></li>
+<li>将标准错误输出表示为<code>2</code></li>
+</ul>
+<h5 id="举例说明"><a href="#举例说明" class="headerlink" title="举例说明"></a><div id="title">举例说明</div></h5><blockquote>
+<p>输入、输出及标准错误输出主要用于 I/O 的重定向。先看这个例子：</p>
+</blockquote>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">ls</span> &gt; ls_result</div><div class="line">$ <span class="keyword">ls</span> -<span class="keyword">l</span> &gt;&gt; ls_result</div></pre></td></tr></table></figure>
+<p>上面这两个命令分别将 <code>ls</code> 命令的结果输出重定向到 <code>ls_result</code> 文件中和追加到 <code>ls_result</code> 文件中，而不是输出到屏幕上。</p>
+<ul>
+<li><code>&gt;</code>就是输出（标准输出和标准错误输出）重定向的代表符号</li>
+<li><code>&gt;&gt;</code> 则表示不清除原来的而追加输入</li>
+</ul>
+<p>下面再来看一个稍微复杂的例子：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">find</span> /home -name lost* <span class="number">2</span>&gt; err_result</div></pre></td></tr></table></figure>
+<p>这个命令在 <code>&gt;</code> 符号之前多了一个 <code>2</code>，<code>2&gt;</code> 表示将标准错误输出重定向到<code>err_result</code>中</p>
+<p>要想让标准错误输出和标准输入一样都被存入到文件中，那该怎么办呢？看下面这个例子：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">find</span> /home -name lost* &gt; all_result <span class="number">2</span>&gt;&amp; <span class="number">1</span></div></pre></td></tr></table></figure>
+<p>上面这个例子中将首先将标准错误输出也重定向到标准输出中，再将标准输出重定向到 all_result 这个文件中。这样我们就可以将所有的输出都存储到文件中了</p>
+<p>如果那些出错信息并不重要，下面这个命令可以让你避开众多无用出错信息的干扰：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">find</span> /home -name lost* <span class="number">2</span>&gt; /dev/null</div></pre></td></tr></table></figure>
+<p>再试验一下如下几种重定向方式，看看会出什么结果，为什么？</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ <span class="keyword">find</span> /home -name lost* &gt; all_result <span class="number">1</span>&gt;&amp; <span class="number">2</span></div><div class="line">$ <span class="keyword">find</span> /home -name lost* <span class="number">2</span>&gt; all_result <span class="number">1</span>&gt;&amp; <span class="number">2</span></div><div class="line">$ <span class="keyword">find</span> /home -name lost* <span class="number">2</span>&gt;&amp; <span class="number">1</span> &gt; all_result</div></pre></td></tr></table></figure>
+<h4 id="shell特殊参数【命令行参数】"><a href="#shell特殊参数【命令行参数】" class="headerlink" title="shell特殊参数【命令行参数】"></a><div id="title">shell特殊参数【命令行参数】</div></h4><p>shell 针对参数已经有设定好一些变量名称，对应如下： </p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">/path/<span class="keyword">to</span>/scriptname  opt1  opt2  opt3  opt4  </div><div class="line">         $<span class="number">0</span>           $<span class="number">1</span>    $<span class="number">2</span>    $<span class="number">3</span>    $<span class="number">4</span></div></pre></td></tr></table></figure>
+<p>执行的脚本档名为 <code>$0</code> 这个变量，第一个接的参数就是 <code>$1</code>  后面类推</p>
+<p><strong>特殊变量</strong></p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$# ：代表后接的参数『个数』，以上面为例这里显示为『 <span class="number">4</span> 』； </div><div class="line">$@ ：代表『 <span class="string">"$1"</span> <span class="string">"$2"</span> <span class="string">"$3"</span> <span class="string">"$4"</span> 』之意，每个变量是独立的(用双引号括起来)； </div><div class="line">$* ：代表『 <span class="string">"$1c$2c$3c$4"</span> 』，其中 <span class="keyword">c</span> 为分隔字符，默认为空格键， 所以本例中代表『 <span class="string">"$1 $2 $3 $4"</span> 』之意。</div></pre></td></tr></table></figure>
+<h4 id="变量赋值和引用"><a href="#变量赋值和引用" class="headerlink" title="变量赋值和引用"></a><div id="title">变量赋值和引用</div></h4><p><code>Shell</code>编程中，使用变量无需事先声明，同时变量名的命名须遵循如下规则：</p>
+<ul>
+<li>首个字符必须为字母（a-z，A-Z） 或者_</li>
+<li>中间不能有空格，可以使用下划线（_）</li>
+<li>不能使用其他标点符号</li>
+<li>需要给变量赋值时，可以这么写：</li>
+</ul>
+<figure class="highlight leaf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">变量名=值</div></pre></td></tr></table></figure>
+<p>要取用一个变量的值，只需在变量名前面加一个$ ( 注意: 给变量赋值的时候，不能在”=”两边留空格 )</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"># 对变量赋值：</div><div class="line"><span class="keyword">a</span>=<span class="string">"hello world"</span>  #等号两边均不能有空格存在</div><div class="line"></div><div class="line"># 打印变量<span class="keyword">a</span>的值：</div><div class="line"><span class="keyword">echo</span> <span class="string">"A is:"</span> $<span class="keyword">a</span></div><div class="line">有时候变量名可能会和其它文字混淆，比如：</div><div class="line">num=<span class="number">2</span></div><div class="line"><span class="keyword">echo</span> <span class="string">"this is the $numnd"</span></div></pre></td></tr></table></figure>
+<p>上述脚本并不会输出<code>this is the 2nd</code>. 这是由于shell会去搜索变量<code>numnd</code>的值，而实际上这个变量此时并没有值。这时，我们可以用花括号来告诉<code>shell</code>要打印的是<code>num</code>变量：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">num=<span class="number">2</span></div><div class="line"><span class="keyword">echo</span> <span class="string">"this is the $&#123;num&#125;nd"</span></div><div class="line">其输出结果为：this <span class="keyword">is</span> the <span class="number">2</span>nd</div><div class="line"></div><div class="line">注意花括号的位置：</div><div class="line">num=<span class="number">2</span></div><div class="line"><span class="keyword">echo</span> <span class="string">"this is the &#123;$num&#125;nd"</span></div><div class="line">其输出结果为：this <span class="keyword">is</span> the &#123;<span class="number">2</span>&#125;nd</div></pre></td></tr></table></figure>
+<p>需要注意shell的默认赋值是字符串赋值。比如：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var=<span class="number">1</span></div><div class="line">var=$var+<span class="number">1</span></div><div class="line"><span class="keyword">echo</span> $var</div><div class="line">打印出来的不是<span class="number">2</span>而是<span class="number">1</span>＋<span class="number">1</span>。</div></pre></td></tr></table></figure>
+<p>为了达到我们想要的效果有以下几种表达方式：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">let</span> <span class="string">"var+=1"</span></div><div class="line">var=<span class="string">"$[$var+1]"</span></div><div class="line">((var++))</div><div class="line">var=$(($var+<span class="number">1</span>))</div><div class="line">var=<span class="string">"$(expr "</span>$var<span class="string">" + 1)"</span></div></pre></td></tr></table></figure>
+<h4 id="Shell里的流程控制"><a href="#Shell里的流程控制" class="headerlink" title="Shell里的流程控制"></a><div id="title">Shell里的流程控制</div></h4><h5 id="If语句"><a href="#If语句" class="headerlink" title="If语句"></a><div id="title">If语句</div></h5><p><code>if</code>表达式如果条件为真，则执行then后的部分:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">if ....; then</div><div class="line">  ....</div><div class="line">elif ....; then</div><div class="line">  ....</div><div class="line">else</div><div class="line">  ....</div><div class="line">fi</div></pre></td></tr></table></figure>
+<blockquote>
+<p>大多数情况下，可以使用测试命令来对条件进行测试，比如可以比较字符串、判断文件是否存在及是否可读等等</p>
+</blockquote>
+<p>通常用<code>[ ]</code> 来表示条件测试，==注意这里的空格很重要，要确保方括号前后的空格==</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">[ -<span class="keyword">f</span> <span class="string">"somefile"</span> ] ：判断是否是一个文件</div><div class="line">[-d <span class="string">"Directory"</span>] ： 判断目录是否存在</div><div class="line">[ -<span class="keyword">x</span> <span class="string">"/bin/ls"</span> ] ：判断/bin/<span class="keyword">ls</span>是否存在并有可执行权限</div><div class="line">[ -n <span class="string">"$var"</span> ] ：判断$var变量是否有值</div></pre></td></tr></table></figure>
+<p>下面是一个简单的if语句：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">if [ $&#123;SHELL&#125; == "/bin/bash" ]; then</div><div class="line">   echo "your login shell is the bash (bourne again shell)"</div><div class="line">else</div><div class="line">   echo "your login shell is not bash but $&#123;SHELL&#125;"</div><div class="line">fi</div></pre></td></tr></table></figure>
+<h5 id="case-语句"><a href="#case-语句" class="headerlink" title="case 语句"></a><div id="title">case 语句</div></h5><blockquote>
+<p><code>case</code>表达式可以用来匹配一个给定的字符串，而不是数字（可别和<code>php</code>语言里的<code>switch...case</code>混淆）</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">case ... in</div><div class="line">   do something here ;;</div><div class="line">esac</div></pre></td></tr></table></figure>
+<p>当给程序输入<code>start</code>时，显示<code>service is running!</code>;</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line">read -p "请输入参数：" var</div><div class="line">case $var in</div><div class="line">    start)</div><div class="line">        echo service is running</div><div class="line">    ;;</div><div class="line">    stop)</div><div class="line">        echo service is stoped</div><div class="line">    ;;</div><div class="line">    reload)</div><div class="line">        echo service is reload</div><div class="line">    ;;</div><div class="line">    *)</div><div class="line">        echo xxxxx</div><div class="line">    ;;</div><div class="line">esac</div></pre></td></tr></table></figure>
+<h5 id="while-for循环"><a href="#while-for循环" class="headerlink" title="while/for循环"></a><div id="title">while/for循环</div></h5><p><strong>在shell中，可以使用如下循环：</strong></p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> [ condition ]  &lt;==中括号内的状态就是判断表达式 </div><div class="line"><span class="keyword">do</span>            &lt;== <span class="keyword">do</span> 是循环的开始！ </div><div class="line">  程序段落 </div><div class="line">done          &lt;== done 是循环的结束</div></pre></td></tr></table></figure>
+<p>只要测试表达式条件为真，则<code>while</code>循环将一直运行。关键字<code>break</code>用来跳出循环，而关键字<code>continue</code>则可以跳过一个循环的余下部分，直接跳到下一次循环中。</p>
+<p>for循环会查看一个字符串列表（字符串用空格分隔），并将其赋给一个变量：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">for var in ....; do</div><div class="line">   ....</div><div class="line">done</div></pre></td></tr></table></figure>
+<p>下面的示例会把A B C分别打印到屏幕上：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line">for var in A B C; do</div><div class="line">   echo "var is $var"</div><div class="line">done</div></pre></td></tr></table></figure>
+<p>下面是一个实用的脚本<code>showrpm</code>，其功能是打印一些RPM包的统计信息：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line"># list a content summary of a number of RPM packages</div><div class="line"># USAGE: showrpm rpmfile1 rpmfile2 ...</div><div class="line"># EXAMPLE: showrpm /cdrom/RedHat/RPMS/*.rpm</div><div class="line"></div><div class="line">for rpmpackage in "$@"; do</div><div class="line">   if [ -r "$rpmpackage" ];then</div><div class="line">      echo "=============== $rpmpackage =============="</div><div class="line">      rpm -qi -p $rpmpackage</div><div class="line">   else</div><div class="line">      echo "ERROR: cannot read file $rpmpackage"</div><div class="line">   fi</div><div class="line">done</div></pre></td></tr></table></figure>
+<p>这里出现了第二个特殊变量<code>$@</code>，该变量包含有输入的所有命令行参数值。如果你运行<code>showrpm openssh.rpm w3m.rpm webgrep.rpm</code>，那么 <code>$@</code> 就包含有 3 个字符串，即<code>openssh.rpm</code>, <code>w3m.rpm</code>和 <code>webgrep.rpm</code></p>
+<h5 id="Shell里的一些特殊符号"><a href="#Shell里的一些特殊符号" class="headerlink" title="Shell里的一些特殊符号"></a><div id="title">Shell里的一些特殊符号</div></h5><p>先来看一个例子，假设在当前目录下有两个jpg文件：<code>mail.jpg</code>和<code>tux.jpg</code></p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line"><span class="keyword">echo</span> *.jpg</div><div class="line">运行结果为：</div><div class="line">mail.jpg tux.jpg</div></pre></td></tr></table></figure>
+<p>引号（单引号和双引号）可以防止通配符<code>*</code>的匹配：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line"><span class="keyword">echo</span> <span class="string">"*.jpg"</span></div><div class="line"><span class="keyword">echo</span> <span class="string">'*.jpg'</span></div><div class="line">其运行结果为：</div><div class="line">*.jpg</div><div class="line">*.jpg</div></pre></td></tr></table></figure>
+<p>其中单引号更严格一些，它可以防止任何特殊字符匹配：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"></div><div class="line"><span class="keyword">echo</span> $SHELL</div><div class="line"><span class="keyword">echo</span> <span class="string">"$SHELL"</span></div><div class="line"><span class="keyword">echo</span> <span class="string">'$SHELL'</span></div><div class="line">运行结果为：</div><div class="line">/bin/bash</div><div class="line">/bin/bash</div><div class="line">$SHELL</div></pre></td></tr></table></figure>
+<p>此外还有一种防止这种扩展的方法，即使用转义字符——反斜杆:<code>\</code></p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">echo</span> \*.jpg</div><div class="line"><span class="keyword">echo</span> \$SHELL</div><div class="line">输出结果为：</div><div class="line">*.jpg</div><div class="line">$SHELL</div></pre></td></tr></table></figure>
+<h5 id="Shell里的函数"><a href="#Shell里的函数" class="headerlink" title="Shell里的函数"></a><div id="title">Shell里的函数</div></h5><p>如果你写过比较复杂的脚本，就会发现可能在几个地方使用了相同的代码，这时如果用上函数，会方便很多。函数的大致样子如下：</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fname</span><span class="params">()</span> &#123; </span></div><div class="line">  程序段 </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>函数没有必要声明。只要在执行之前出现定义就行</p>
+<p>那个 <code>fname</code> 就是我们的自定义的执行指令名称,而程序段就是我们要他执行的内容了。 要注意的是，因为 <code>shell script</code> 的执行方式是由上而下，由左而史， 因此在 <code>shell script</code> 当中的 <code>function</code> 的设定一定要在程序的最前面， 这样才能够在执行时被找找到可用的程序段</p>
+<p><strong>我们自定义一个名为 printit 的函数来使用</strong><br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash </div><div class="line"></div><div class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin </div><div class="line">export PATH </div><div class="line"> </div><div class="line">function printit()&#123; </div><div class="line">  echo -n "Your choice is "     # 加上 -n 可以不断行继续在同一行显示 </div><div class="line">&#125; </div><div class="line"> </div><div class="line">echo "This program will print your selection !"</div><div class="line"></div><div class="line">case $1 in </div><div class="line">  "one") </div><div class="line">  printit; echo $1 | tr 'a-z' 'A-Z'  # 将参数做大小写转换！ </div><div class="line">  ;; </div><div class="line">  "two") </div><div class="line">  printit; echo $1 | tr 'a-z' 'A-Z' </div><div class="line">  ;; </div><div class="line">  "three") </div><div class="line">  printit; echo $1 | tr 'a-z' 'A-Z' </div><div class="line">  ;; </div><div class="line">  *) </div><div class="line">  echo "Usage $0 &#123;one|two|three&#125;" </div><div class="line">  ;; </div><div class="line">esac</div></pre></td></tr></table></figure></p>
+<p>以上面的例子来说，做了一个函数名称为 <code>printit</code> ，所以，当我在后续的程序段里面， 叧要执行 <code>printit</code> 的话，就表示我的 <code>shell script</code> 要去执行<code>『 function printit .... 』</code> 里面的那几个程序段落</p>
+<p>另外， <code>function</code> 也是拥有内建变量, 他的内建变量与 <code>shell script</code> 很类似， 函数名称代表示 <code>$0</code> ，而后续接变量也是以 <code>$1</code>, <code>$2</code>… 来取代的, 这里很容易搞错, 因为<code>『 function fname() { 程序段 } 』</code>内的 <code>$0</code>, <code>$1</code>… 等等与 <code>shell script</code> 的 <code>$0</code> 是不同的。</p>
+<p>以上面程序来说，假如我执行：<code>『 sh test.sh one 』</code> 这表示在 <code>shell script</code> 内的 <code>$1</code> 为 “one” 这个字符串。但是在 <code>printit()</code> 内的 <code>$1</code> 则不这个 <code>one</code> 无关。 </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">[root@www scripts]# vi sh12-3.sh </div><div class="line">#!/bin/bash </div><div class="line"></div><div class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin </div><div class="line">export PATH </div><div class="line"> </div><div class="line">function printit()&#123; </div><div class="line">  echo "Your choice is $1"   # 这个 $1 必须要参考底下指令的下达 </div><div class="line">&#125; </div><div class="line"> </div><div class="line">echo "This program will print your selection !" </div><div class="line">case $1 in </div><div class="line">  "one") </div><div class="line">  printit 1  # 请注意， printit 指令后面还有接参数！ </div><div class="line">  ;; </div><div class="line">  "two") </div><div class="line">  printit 2</div><div class="line">  ;; </div><div class="line">  "three") </div><div class="line">  printit 3 </div><div class="line">  ;; </div><div class="line">  *) </div><div class="line">  echo "Usage $0 &#123;one|two|three&#125;" </div><div class="line">  ;; </div><div class="line">esac</div></pre></td></tr></table></figure>
+<p>在上面的例子当中，如果你输入<code>『 sh sh12-3.sh one 』</code>就会出现<code>『 Your choice is 1 』</code>的字样, 为什么是 1 呢？因为在程序段落当中，我们是写了<code>『 printit 1 』</code>那个<code>1</code> 就会成为 <code>function</code> 当中的 <code>$1</code></p>
+<h4 id="Shell脚本示例"><a href="#Shell脚本示例" class="headerlink" title="Shell脚本示例"></a><div id="title">Shell脚本示例</div></h4><h5 id="脚本调试"><a href="#脚本调试" class="headerlink" title="脚本调试"></a><div id="title">脚本调试</div></h5><p>最简单的调试方法当然是使用<code>echo</code>命令。你可以在任何怀疑出错的地方用<code>echo</code>打印变量值，这也是大部分<code>shell</code>程序员花费80%的时间用于调试的原因。<code>Shell</code>脚本的好处在于无需重新编译，而插入一个<code>echo</code>命令也不需要多少时间。</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">[root@www ~]# <span class="keyword">sh</span> [-nvx] scripts.<span class="keyword">sh</span> </div><div class="line">选项不参数： </div><div class="line">-n  ：不要执行 script，仅查询语法的问题； </div><div class="line">-v  ：再执行 sccript 前，先将 scripts 的内容输出到屏幕上； </div><div class="line">-<span class="keyword">x</span>  ：将使用到的 script 内容显示到屏幕上，这是很有用的参数！</div></pre></td></tr></table></figure>
+<p>范例一：测试 sh16.sh 有无语法的问题？ </p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">[root@www ~]# <span class="keyword">sh</span> -n sh16.<span class="keyword">sh</span>  </div><div class="line"># 若语法没有问题，则不会显示任何信息！</div></pre></td></tr></table></figure>
+<p>范例二：将 sh15.sh 的执行过程全部列出来～ </p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">[root@www ~]# <span class="keyword">sh</span> -<span class="keyword">x</span> sh15.<span class="keyword">sh</span>  </div><div class="line">+ </div><div class="line">PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:/root/bin </div><div class="line">+ export PATH </div><div class="line">+ <span class="keyword">for</span> animal in dog <span class="keyword">cat</span> elephant </div><div class="line">+ <span class="keyword">echo</span> <span class="string">'There are dogs.... '</span> </div><div class="line">There are dogs.... </div><div class="line">+ <span class="keyword">for</span> animal in dog <span class="keyword">cat</span> elephant </div><div class="line">+ <span class="keyword">echo</span> <span class="string">'There are cats.... '</span> </div><div class="line">There are cats.... </div><div class="line">+ <span class="keyword">for</span> animal in dog <span class="keyword">cat</span> elephant </div><div class="line">+ <span class="keyword">echo</span> <span class="string">'There are elephants.... '</span> </div><div class="line">There are elephants....</div></pre></td></tr></table></figure>
+<p><strong>nginx日志按日期自动切割脚本如下</strong></p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">#nginx日志切割脚本</div><div class="line">#!/bin/bash</div><div class="line">#设置日志文件存放目录</div><div class="line">logs_path=<span class="string">"/usr/local/nginx/logs/"</span></div><div class="line">#设置pid文件</div><div class="line">pid_path=<span class="string">"/usr/local/nginx/nginx.pid"</span></div><div class="line"></div><div class="line">#重命名日志文件</div><div class="line">mv $&#123;logs_path&#125;access.<span class="built_in">log</span> $&#123;logs_path&#125;access_$(date -d <span class="string">"yesterday"</span> +<span class="string">"%Y%m%d"</span>).<span class="built_in">log</span></div><div class="line"></div><div class="line">#向nginx主进程发信号重新打开日志</div><div class="line">kill -USR1 `<span class="keyword">cat</span> $&#123;pid_path&#125;`</div><div class="line"></div><div class="line">crontab 设置作业</div><div class="line"><span class="number">0</span> <span class="number">0</span> * * * bash /usr/local/nginx/nginx_log.<span class="keyword">sh</span> 这样就每天的<span class="number">0</span>点<span class="number">0</span>分把nginx日志重命名为日期格式，并重新生成今天的新日志文件。</div></pre></td></tr></table></figure>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Linux/" class="article-tag-list-link color1">Linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/10/08/shell编程/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/10/08/php中的curl库/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          PHP 中的 cURL 库
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/10/08/vi的介绍/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Linux文本编辑器</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <section id="comments" style="margin:10px;padding:10px;background:#fff;">
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "mjstUtcUPaEVJpt5xt5zWykf-gzGzoHsz",
+            app_key: "4CY7cYn38n302Lor7lqqLoJO",
+            placeholder: "来呀!快活呀!",
+            avatar:"mm"
+        });
+    }
+</script>
+
+    </section>
+ 
+
+  
+
+
 
           </div>
         </div>

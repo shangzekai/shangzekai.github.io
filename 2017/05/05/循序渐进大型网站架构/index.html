@@ -178,7 +178,388 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-循序渐进大型网站架构" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      循序渐进大型网站架构
+    </h1>
+  
+
+        
+        <a href="/2017/05/05/循序渐进大型网站架构/" class="archive-article-date">
+  	<time datetime="2017-05-05T15:52:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#前言"><span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#目标"><span class="toc-text">目标</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#架构体系演进"><span class="toc-text">架构体系演进</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-单机时代"><span class="toc-text">1. 单机时代</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-缓存出场"><span class="toc-text">2. 缓存出场</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-数据库和应用逻辑分离"><span class="toc-text">3. 数据库和应用逻辑分离</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-数据库主从分离"><span class="toc-text">4. 数据库主从分离</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-应用服务集群"><span class="toc-text">5. 应用服务集群</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#6-集中式缓存、Session集中存储"><span class="toc-text">6. 集中式缓存、Session集中存储</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#7-动静分离"><span class="toc-text">7. 动静分离</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8-反向代理和CDN加速网站响应"><span class="toc-text">8. 反向代理和CDN加速网站响应</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#9-使用NoSQL缓存和搜索引擎"><span class="toc-text">9. 使用NoSQL缓存和搜索引擎</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#如何保证高可用"><span class="toc-text">如何保证高可用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#应用垂直拆分"><span class="toc-text">应用垂直拆分</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#消息队列"><span class="toc-text">消息队列</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分库分表"><span class="toc-text">分库分表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#总结"><span class="toc-text">总结</span></a></li></ol>
+          <hr/>
+        </div>
+        
+        <p>转载：陶邦仁</p>
+<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
+<p>随着互联网的不断发展，以及网站负载的不断增高，一个成熟网站的架构需要满足下面的几点，才能为用户提供稳定可用的服务</p>
+</blockquote>
+<a id="more"></a>
+<ul>
+<li>高并发、大流量：PV 量巨大；</li>
+<li>高可用：7*24 小时不间断服务；</li>
+<li>海量数据：文件数目分分钟 xxTB；</li>
+<li>用户分布广泛，网络情况复杂：网络运营商；</li>
+<li>安全环境恶劣：黑客的攻击；</li>
+<li>需求快速变更，发布频繁：快速适应市场，满足用户需求；</li>
+<li>渐进式发展：慢慢地运营出大型网站；</li>
+</ul>
+<h4 id="目标"><a href="#目标" class="headerlink" title="目标"></a><div id="title">目标</div></h4><blockquote>
+<p>解决了上述问题之后，我们需要达到一个什么样的目标和目的呢？<br><img src="https://ooo.0o0.ooo/2017/06/15/59422c470355e.jpg" alt="目标.jpg"></p>
+<p>每个目标背后面临着技术、设计、维护等诸多方面的挑战； 而目标本身的期望值也会根据实际情况进行调整，这也意味着网站架构建设是个不断调整的过程。</p>
+<p>有了问题，也定了伟大的目标，那么网站在不同阶段面对不同的问题，是如何解决的？又是如何一步步成长为大型网站架构，实现这些伟大的目标呢？</p>
+</blockquote>
+<h4 id="架构体系演进"><a href="#架构体系演进" class="headerlink" title="架构体系演进"></a><div id="title">架构体系演进</div></h4><h5 id="1-单机时代"><a href="#1-单机时代" class="headerlink" title="1. 单机时代"></a>1. 单机时代</h5><blockquote>
+<p>草根时期，快速开发网站并上线。当然，通常只是先试水，用户规模也没有形成，经济能力和投入也非常有限。应用程序、数据库、文件等所有资源都集中在一台 Server上，典型案例：基于 LAMP 架构的 PHP 网站；</p>
+</blockquote>
+<p><img src="https://ooo.0o0.ooo/2017/06/15/59422cd9cf224.jpg" alt="lamp架构.jpg"></p>
+<blockquote>
+<p>优点：简单、快速迭代达成业务目标；<br>缺点：存在单点、谈不上高可用；<br>技术点：应用设计要保证可扩展；</p>
+</blockquote>
+<h5 id="2-缓存出场"><a href="#2-缓存出场" class="headerlink" title="2. 缓存出场"></a>2. 缓存出场</h5><blockquote>
+<p>当网站发展到有一定的业务量和用户规模，网站的访问速度变慢，主要瓶颈是在数据库上，所以此时再用草根时代的架构显然已经不能满足我们业务的需求了，那想提升网站速度，就需要解决数据库上的瓶颈，于是，缓存出场了。</p>
+</blockquote>
+<p><img src="https://ooo.0o0.ooo/2017/06/15/59422de8e10c1.jpg" alt="缓存时代.jpg"></p>
+<p><strong>单机时代+缓存</strong></p>
+<blockquote>
+<p>优点：简单有效、方便维护；<br>缺点：存在单点、谈不上高可用；<br>技术点：客户端（浏览器）缓存、前端页面缓存、页面片段缓存、本地数据缓存/数据库缓存、远程缓存；</p>
+</blockquote>
+<p><strong>缓存分类：</strong></p>
+<blockquote>
+<p>页面缓存：客户端缓存，减少对网站的访问；<br>本地缓存：访问速度快，但数据量有限，减少对DB查询；<br>远程缓存：远程访问，可以集群，因此容量不受限制；</p>
+</blockquote>
+<h5 id="3-数据库和应用逻辑分离"><a href="#3-数据库和应用逻辑分离" class="headerlink" title="3. 数据库和应用逻辑分离"></a>3. 数据库和应用逻辑分离</h5><blockquote>
+<p>市场反响还不错，用户量每天在增长，数据库疯狂读写，逐渐发现一台服务器快撑不住了。于是，决定把数据服务和应用逻辑业务做分离。</p>
+</blockquote>
+<p><img src="https://ooo.0o0.ooo/2017/06/15/59422f30a3385.jpg" alt="数据库和应用逻辑分离.jpg"></p>
+<p><strong>数据库和应用逻辑分离</strong></p>
+<blockquote>
+<p>优点：简单有效、方便维护、提高不同Server对硬件资源的利用率；<br>缺点：存在单点、谈不上高可用；<br>技术点：文件服务器部署、数据库服务器，扩展数据访问模块；</p>
+</blockquote>
+<p><strong>分离后三台 Server 对硬件资源的需求各不相同：</strong></p>
+<blockquote>
+<p>应用服务器：需要更快更强大的 CPU；<br>数据库服务器：需要更快的硬盘和更大的内存；<br>文件服务器：需要更大的硬盘；</p>
+</blockquote>
+<h5 id="4-数据库主从分离"><a href="#4-数据库主从分离" class="headerlink" title="4. 数据库主从分离"></a>4. 数据库主从分离</h5><blockquote>
+<p>单台数据库也感觉快撑不住了，一般都会尝试做“读写分离”。由于大部分互联网“读多写少”的特性所决定的。Salve的台数，取决于按业务评估的读写比例</p>
+</blockquote>
+<p><img src="https://ooo.0o0.ooo/2017/06/15/59422fd4cd27d.jpg" alt="数据库读写分离.jpg"></p>
+<p><strong>数据库读写分离</strong></p>
+<blockquote>
+<p>优点：简单有效、降低数据库单台压力；<br>缺点：读写分离，增加程序难度，架构变复杂，维护难度增加；<br>技术点：数据库主从同步部署，扩展数据访问模块，实现读写分离；</p>
+</blockquote>
+<h5 id="5-应用服务集群"><a href="#5-应用服务集群" class="headerlink" title="5. 应用服务集群"></a>5. 应用服务集群</h5><blockquote>
+<p>数据库层面是缓解了，但是应用程序层面也出现了瓶颈，由于访问量增大，加上早期程序员水平有限写的代码也很烂，人员流动性也大，很难去维护和优化。所以，很常用的办法还是“堆机器”。</p>
+</blockquote>
+<p><img src="https://ooo.0o0.ooo/2017/06/15/5942305643fdb.jpg" alt="负载均衡.jpg"></p>
+<p><strong>应用出现瓶颈 负载均衡集群</strong></p>
+<blockquote>
+<p>优点：增加服务器和HA机制，系统性能及可用性得到保证；<br>缺点：应用之间缓存、Session一致性问题；<br>技术点：负载均衡；</p>
+</blockquote>
+<p><strong>通过集群解决高并发、海量数据问题的常用手段，实现系统的可伸缩性。通过负载均衡调度器，可将用户访问分发到集群中的某台 Server 上，应用服务器的负载压力不再成为整个网站的瓶颈</strong></p>
+<h5 id="6-集中式缓存、Session集中存储"><a href="#6-集中式缓存、Session集中存储" class="headerlink" title="6. 集中式缓存、Session集中存储"></a>6. 集中式缓存、Session集中存储</h5><blockquote>
+<p>加机器谁都会加，关键是加完之后得有效果，加完之后可能会引发一些问题。例如非常常见的：集群应用之间页面输出缓存和本地缓存一致性的问题，Session保存的问题……</p>
+</blockquote>
+<p><img src="https://ooo.0o0.ooo/2017/06/15/59423101d930f.jpg" alt="集中式缓存.jpg"></p>
+<p><strong>集中式缓存 Session集中存储</strong></p>
+<blockquote>
+<p>优点：应用之间缓存、Session一致，存储无限制，可以扩展；<br>缺点：不如本地缓存访问快，缓存服务器、Session服务器等仍存在单点问题；<br>技术点：缓存服务器部署、Session集中存储方案；</p>
+</blockquote>
+<h5 id="7-动静分离"><a href="#7-动静分离" class="headerlink" title="7. 动静分离"></a>7. 动静分离</h5><blockquote>
+<p>动静分离也是提高网站响应速度的一种常用方式。将动态请求与静态请求分离开，尽量减少对应用服务器的压力。同时，可以再进一步对静态请求，进行缓存，以加快响应速度。可以需要开发人员配合（把静态资源放独立站点下），也可以不需要开发人员配合（利用7层反向代理来处理，根据后缀名等信息来判断资源类型）</p>
+</blockquote>
+<p><img src="https://ooo.0o0.ooo/2017/06/15/5942318cb7758.jpg" alt="动静分离.jpg"></p>
+<p><strong>动静分离好处</strong></p>
+<blockquote>
+<p>优点：减轻应用负载压力，针对静态文件缓存；<br>缺点：静态文件缓存更新失效问题；<br>技术点：动静分离、静态文件缓存方案；</p>
+</blockquote>
+<h5 id="8-反向代理和CDN加速网站响应"><a href="#8-反向代理和CDN加速网站响应" class="headerlink" title="8. 反向代理和CDN加速网站响应"></a>8. 反向代理和CDN加速网站响应</h5><blockquote>
+<p>使用反向代理和CDN加速网站响应：CDN和反向代理的基本原理都是缓存，区别在于：</p>
+</blockquote>
+<ul>
+<li>CDN部署在网络提供商的机房；</li>
+<li>反向代理则部署在网站的中心机房；</li>
+</ul>
+<blockquote>
+<p>使用 CDN 和反向代理的目的都是尽早返回数据给用户，一方面加快用户访问速度，另一方面也减轻后端服务器的负载压力</p>
+</blockquote>
+<p><img src="https://ooo.0o0.ooo/2017/06/15/59423282a6a69.jpg" alt="反向代理.jpg"></p>
+<p><strong>使用CDN和反向代理加速网站响应</strong></p>
+<blockquote>
+<p>优点：减轻应用负载压力，异地缓存有效解决不同地方用户访问过慢的问题；<br>缺点：成本大幅增加，架构进一步复杂化，也维护难度进一步增大，静态文件缓存更新失效问题；<br>技术点：CDN、反向代理方案；</p>
+</blockquote>
+<h5 id="9-使用NoSQL缓存和搜索引擎"><a href="#9-使用NoSQL缓存和搜索引擎" class="headerlink" title="9. 使用NoSQL缓存和搜索引擎"></a>9. 使用NoSQL缓存和搜索引擎</h5><blockquote>
+<p>到这里，已经基本做到了DB层面和应用层面的横向扩展了，可以开始关注一些其它方面，例如：站内搜索的精准度，对DB的依赖，开始引入全文索引、NoSQL</p>
+<p>NoSQL和搜索引擎都是源自互联网的技术手段，对可伸缩的分布式特性具有更好的支持。应用服务器则通过一个统一数据访问模块访问各种数据，减轻应用程序管理诸多数据源的麻烦</p>
+</blockquote>
+<p><img src="https://ooo.0o0.ooo/2017/06/15/59423377a4887.jpg" alt="NoSQL搜索.jpg"></p>
+<p><strong>优缺点</strong></p>
+<blockquote>
+<p>优点：降低DB依赖；<br>缺点：单点问题，谈不上高可用；<br>技术点：NoSQL、搜索引擎、分布式；</p>
+</blockquote>
+<p><strong>到目前为止，一个能够承载日均百万级访问量的中型网站架构基本介绍完了</strong></p>
+<h4 id="如何保证高可用"><a href="#如何保证高可用" class="headerlink" title="如何保证高可用"></a><div id="title">如何保证高可用</div></h4><blockquote>
+<p>在做扩展满足了基本的性能需求后，我们会逐渐关注“可用性”（也就是我们通常听别人吹牛时说的SLA、几个9）。如何保证真正“高可用”，也是个难题。</p>
+<p>对关键应用/服务，做集群冗余负载，这也是保证高可用比较常用的手段</p>
+</blockquote>
+<ul>
+<li>文件系统、数据库系统集群；</li>
+<li>静态内容服务器集群；</li>
+<li>CDN服务器集群；</li>
+<li>反向代理服务器集群；</li>
+<li>负载均衡调度器集群；</li>
+<li>分布式NoSQL服务器集群；</li>
+<li>搜索引擎服务器集群；</li>
+<li>分布式缓存服务器集群；</li>
+<li>分布式Session服务器集群</li>
+</ul>
+<p><img src="https://ooo.0o0.ooo/2017/06/15/5942348d7995a.jpg" alt="集群冗余负载.jpg"></p>
+<p><strong>集群保证高可用</strong></p>
+<blockquote>
+<p>优点：集群负载，保证高可用；<br>缺点：数据一致性、数据有状态问题；<br>技术点：负载调度器、集群方案；</p>
+</blockquote>
+<p>截止目前为止，都没有怎么去改动应用程序的架构，或者说通俗点，都不怎么需要大面积的修改代码。</p>
+<p>如果上面那些手段都用光了，还是支撑不住怎么办？不停的加机器也不是办法啊？</p>
+<h4 id="应用垂直拆分"><a href="#应用垂直拆分" class="headerlink" title="应用垂直拆分"></a><div id="title">应用垂直拆分</div></h4><blockquote>
+<p>随着业务越来越复杂，网站的功能越来越多，虽然部署层面是采用的集群，但是应用程序架构层面还是“集中式”的，这样会导致很多耦合，不便于开发、维护，而且容易“一荣俱损”。所以，通常会把网站拆分出不同的子站点来单独宿主</p>
+<p>通过分而治之的手段将整个网站业务分成不同的产品线，如首页、商铺、订单、卖家、买家等拆分成不同的产品线，分归不同的业务团队负责。各个应用之间可以通过建立一个超链接建立关系，也可以通过消息队列进行数据分发</p>
+</blockquote>
+<p><img src="https://ooo.0o0.ooo/2017/06/15/5942354e89e5c.jpg" alt="应用垂直拆分.jpg"></p>
+<p><strong>应用垂直拆分</strong></p>
+<blockquote>
+<p>优点：降低耦合、分压；<br>缺点：应用架构复杂；<br>技术点：业务抽取拆分</p>
+</blockquote>
+<h4 id="消息队列"><a href="#消息队列" class="headerlink" title="消息队列"></a><div id="title">消息队列</div></h4><blockquote>
+<p>应用、服务之间还是会出现一些依赖问题，这时候，高吞吐量的解耦利器出现了</p>
+</blockquote>
+<p><img src="https://ooo.0o0.ooo/2017/06/15/594236224ebe1.jpg" alt="消息队列.jpg"></p>
+<p><strong>消息队列（服务间异步解耦 高吞吐量）</strong></p>
+<blockquote>
+<p>优点：提高吞吐量、应用、服务之间解耦；<br>缺点：存在消息消费延迟问题；<br>技术点：消息队列技术方案；</p>
+</blockquote>
+<h4 id="分库分表"><a href="#分库分表" class="headerlink" title="分库分表"></a><div id="title">分库分表</div></h4><blockquote>
+<p>最后，再介绍一个大型互联网公司都用的绝技–分库分表。个人经验，不是业务发展和各方面非常迫切，不要轻易走这一步。</p>
+<p>因为分库分表谁都会干，关键是拆完之后怎么办。目前，市面上还没有完全开源免费的方案，能让你一劳永逸地解决数据库拆分问题。</p>
+</blockquote>
+<p>分库分表：</p>
+<ul>
+<li>横向拆分；</li>
+<li>纵向拆分；</li>
+<li>分布式数据库访问层；</li>
+<li>数据库中间件（代理）；</li>
+</ul>
+<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a><div id="title">总结</div></h4><blockquote>
+<p>上面讲述了在网站业务发展的不同阶段，会面临不同的问题，针对不同的问题，会选择不同的架构。大型网站架构就是在不同阶段时解决不同问题的过程中慢慢演进来的。</p>
+</blockquote>
+<p><strong>最后几句话，送给有缘的你：</strong></p>
+<ul>
+<li>一切以解决业务目标为首要任务；</li>
+<li>没有以业务为目标的任何架构、技术，都是毫无意义的耍流氓；</li>
+<li>再牛逼的架构、再牛逼的技术，不能够解决业务的问题，你也只能算是会架构、会技术的工匠，而不能算是真正意义上的架构师；</li>
+<li>业务成就了技术，平台成就了人，事业成就了人，而不是相反</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网站</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">发展</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/网站/" class="article-tag-list-link color3">网站</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/05/05/循序渐进大型网站架构/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/05/05/Redis学习目录/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Redis学习目录
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/05/05/MemCache分布式算法/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MemCache分布式算法总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <section id="comments" style="margin:10px;padding:10px;background:#fff;">
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "mjstUtcUPaEVJpt5xt5zWykf-gzGzoHsz",
+            app_key: "4CY7cYn38n302Lor7lqqLoJO",
+            placeholder: "来呀!快活呀!",
+            avatar:"mm"
+        });
+    }
+</script>
+
+    </section>
+ 
+
+  
+
+
 
           </div>
         </div>

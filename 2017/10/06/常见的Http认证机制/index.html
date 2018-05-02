@@ -167,7 +167,327 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-常见的Http认证机制" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      常见的Http认证机制
+    </h1>
+  
+
+        
+        <a href="/2017/10/06/常见的Http认证机制/" class="archive-article-date">
+  	<time datetime="2017-10-06T04:18:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#基于cookie的认证机制"><span class="toc-text">基于cookie的认证机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基于HTTP-Basic-Auth的认证机制"><span class="toc-text">基于HTTP Basic Auth的认证机制</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#基于JWT的Http-Token认证机制"><span class="toc-text">基于JWT的Http Token认证机制</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#JWT介绍"><span class="toc-text">JWT介绍</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#JWT的组成"><span class="toc-text">JWT的组成</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#JWT的使用流程"><span class="toc-text">JWT的使用流程</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JWT服务端验证过程"><span class="toc-text">JWT服务端验证过程</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#优势之处"><span class="toc-text">优势之处</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#如何确保安全"><span class="toc-text">如何确保安全</span></a></li></ol></li></ol>
+          <hr/>
+        </div>
+        
+        <h4 id="基于cookie的认证机制"><a href="#基于cookie的认证机制" class="headerlink" title="基于cookie的认证机制"></a><div id="title">基于cookie的认证机制</div></h4><blockquote>
+<p>Cookie认证机制就是为一次请求认证在服务端创建一个Session对象，同时在客户端的浏览器端创建了一个Cookie对象；通过客户端带上来Cookie对象来与服务器端的session对象匹配来实现状态管理的。默认的，当我们关闭浏览器的时候，cookie会被删除。但可以通过修改cookie 的expire time使cookie在一定时间内有效；</p>
+</blockquote>
+<a id="more"></a>
+<h4 id="基于HTTP-Basic-Auth的认证机制"><a href="#基于HTTP-Basic-Auth的认证机制" class="headerlink" title="基于HTTP Basic Auth的认证机制"></a><div id="title">基于HTTP Basic Auth的认证机制</div></h4><blockquote>
+<p>应该来谈一谈基于token的认证和传统的session认证的区别.</p>
+<p>我们知道，http协议本身是一种无状态的协议，而这就意味着如果用户向我们的应用提供了用户名和密码来进行用户认证，那么下一次请求时，用户还要再一次进行用户认证才行，因为根据http协议，我们并不能知道是哪个用户发出的请求，所以为了让我们的应用能识别是哪个用户发出的请求，我们只能在服务器存储一份用户登录的信息，这份登录信息会在响应时传递给浏览器，告诉其保存为cookie,以便下次请求时发送给我们的应用，这样我们的应用就能识别请求来自哪个用户了,这就是传统的基于session认证。</p>
+</blockquote>
+<p><strong>带来的问题？</strong></p>
+<ul>
+<li><p>Session: 每个用户经过我们的应用认证之后，我们的应用都要在服务端做一次记录，以方便用户下次请求的鉴别，通常而言session都是保存在内存中，而随着认证用户的增多，服务端的开销会明显增大。</p>
+</li>
+<li><p>扩展性: 用户认证之后，服务端做认证记录，如果认证的记录被保存在内存中的话，这意味着用户下次请求还必须要请求在这台服务器上,这样才能拿到授权的资源，这样在分布式的应用上，相应的限制了负载均衡器的能力。这也意味着限制了应用的扩展能力。</p>
+</li>
+<li><p>CSRF: 因为是基于cookie来进行用户识别的, cookie如果被截获，用户就会很容易受到跨站请求伪造的攻击。</p>
+</li>
+</ul>
+<blockquote>
+<p>基于 HTTP Basic Auth的鉴权机制类似于http协议也是无状态的，它不需要在服务端去保留用户的认证信息或者会话信息。这就意味着不需要去考虑用户在哪一台服务器登录了，这就为应用的扩展提供了便利。尤其是移动端</p>
+<p>HTTP Basic Auth简单点说, 就是每次请求API时,将用户的username和password放到header头中，然后在服务端进行验证。但由于有把用户名密码暴露给第三方客户端的风险，在生产环境下被使用的越来越少。</p>
+</blockquote>
+<p><strong>一个简单的例子如下：</strong></p>
+<p>客户端的请求（用户名“”Aladdin”，口令, password “open sesame”）：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">GET</span> <span class="string">/private/index.html</span> HTTP/1.0</div><div class="line"><span class="attribute">Host</span>: localhost</div><div class="line"><span class="attribute">Authorization</span>: Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</div></pre></td></tr></table></figure>
+<p>Authorization消息头的用户名和口令的值可以容易地编码和解码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">echo</span> base64_encode(<span class="string">"Aladdin:open sesame"</span>).<span class="string">"\n"</span>;</div><div class="line"><span class="keyword">echo</span> base64_decode(<span class="string">"QWxhZGRpbjpvcGVuIHNlc2FtZQ=="</span>).<span class="string">"\n"</span>;</div></pre></td></tr></table></figure>
+<p>服务端的应答：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">HTTP/1.0 <span class="number">200</span> OK</div><div class="line"><span class="attribute">Server</span>: HTTPd/1.0</div><div class="line"><span class="attribute">Date</span>: Sat, 27 Nov 2004 10:19:07 GMT</div><div class="line"><span class="attribute">Content-Type</span>: text/html</div><div class="line"><span class="attribute">Content-Length</span>: 10476</div></pre></td></tr></table></figure>
+<p><strong>那怎样解决不安全的问题呢？</strong></p>
+<h4 id="基于JWT的Http-Token认证机制"><a href="#基于JWT的Http-Token认证机制" class="headerlink" title="基于JWT的Http Token认证机制"></a><div id="title">基于JWT的Http Token认证机制</div></h4><h5 id="JWT介绍"><a href="#JWT介绍" class="headerlink" title="JWT介绍"></a><div id="title">JWT介绍</div></h5><blockquote>
+<p>Json web token (JWT), 是为了在网络应用环境间传递声明而执行的一种基于JSON的开放标准（(RFC 7519).该token被设计为紧凑且安全的，特别适用于分布式站点的单点登录（SSO）场景。JWT的声明一般被用来在身份提供者和服务提供者间传递被认证的用户身份信息，以便于从资源服务器获取资源，也可以增加一些额外的其它业务逻辑所必须的声明信息，该token也可直接被用于认证，也可被加密。</p>
+</blockquote>
+<h5 id="JWT的组成"><a href="#JWT的组成" class="headerlink" title="JWT的组成"></a><div id="title">JWT的组成</div></h5><blockquote>
+<p>JWT就是一个字符串，经过加密处理与校验处理的字符串，由三个部分组成。基于token的身份验证可以替代传统的cookie+session身份验证方法。三个部分分别如下：</p>
+</blockquote>
+<figure class="highlight leaf"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">header.payload.signature</div></pre></td></tr></table></figure>
+<p><strong>header部分组成:</strong></p>
+<figure class="highlight leaf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">"typ":"JWT",</div><div class="line">"alg":"HS256"</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>这就是一个json串，两个字段都是必须的,alg字段指定了生成signature的算法，默认值为 HS256,可以自己指定其他的加密算法，如RSA.经过base64encode就可以得到 header.</p>
+</blockquote>
+<p><strong>payload 部分组成</strong></p>
+<blockquote>
+<p>简单的写法：</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$payload=[</div><div class="line">    <span class="string">'iss'</span> =&gt; $issuer, <span class="comment">//签发者</span></div><div class="line">    <span class="string">'iat'</span> =&gt; $_SERVER[<span class="string">'REQUEST_TIME'</span>], <span class="comment">//什么时候签发的</span></div><div class="line">    <span class="string">'exp'</span> =&gt; $_SERVER[<span class="string">'REQUEST_TIME'</span>] + <span class="number">7200</span> <span class="comment">//过期时间</span></div><div class="line">    <span class="string">'uid'</span>=&gt;<span class="number">1111</span></div><div class="line">];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>复杂点：官方说法,三个部分组成(Reserved claims，Public claims,Private claims)</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">$payload   = [</div><div class="line">    <span class="comment">#非必须。issuer 请求实体，可以是发起请求的用户的信息，也可是jwt的签发者。</span></div><div class="line">    <span class="string">"iss"</span>       =&gt; <span class="string">"http://example.org"</span>,</div><div class="line">    <span class="comment">#非必须。issued at。 token创建时间，unix时间戳格式</span></div><div class="line">    <span class="string">"iat"</span>       =&gt; $_SERVER[<span class="string">'REQUEST_TIME'</span>],</div><div class="line">    <span class="comment">#非必须。expire 指定token的生命周期。unix时间戳格式</span></div><div class="line">    <span class="string">"exp"</span>       =&gt; $_SERVER[<span class="string">'REQUEST_TIME'</span>] + <span class="number">7200</span>,</div><div class="line">    <span class="comment">#非必须。接收该JWT的一方。</span></div><div class="line">    <span class="string">"aud"</span>       =&gt; <span class="string">"http://example.com"</span>,</div><div class="line">    <span class="comment">#非必须。该JWT所面向的用户</span></div><div class="line">    <span class="string">"sub"</span>       =&gt; <span class="string">"jrocket@example.com"</span>,</div><div class="line">    <span class="comment"># 非必须。not before。如果当前时间在nbf里的时间之前，则Token不被接受；一般都会留一些余地，比如几分钟。</span></div><div class="line">    <span class="string">"nbf"</span>       =&gt; <span class="number">1357000000</span>,</div><div class="line">    <span class="comment"># 非必须。JWT ID。针对当前token的唯一标识</span></div><div class="line">    <span class="string">"jti"</span>       =&gt; <span class="string">'222we'</span>,</div><div class="line">    <span class="comment"># 自定义字段</span></div><div class="line">    <span class="string">"GivenName"</span> =&gt; <span class="string">"Jonny"</span>,</div><div class="line">    <span class="comment"># 自定义字段</span></div><div class="line">    <span class="string">"name"</span>   =&gt; <span class="string">"Rocket"</span>,</div><div class="line">    <span class="comment"># 自定义字段</span></div><div class="line">    <span class="string">"Email"</span>     =&gt; <span class="string">"jrocket@example.com"</span>,</div><div class="line"> </div><div class="line">];</div></pre></td></tr></table></figure>
+<blockquote>
+<p>payload 也是一个json数据，是表明用户身份的数据，可以自己自定义字段，很灵活。你也可以简单的使用，比如简单的方式。经过<code>json_encode</code>和<code>base64_encode</code>就可得到<code>payload</code></p>
+</blockquote>
+<p><strong>signature组成部分</strong></p>
+<blockquote>
+<p>将 header和 payload使用header中指定的加密算法加密，当然加密过程还需要自定秘钥，自己生成一个字符串就可以了。</p>
+</blockquote>
+<p><strong>官网的例子：</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">HMACSHA256(</div><div class="line">  base64UrlEncode(header) + &quot;.&quot; +</div><div class="line">  base64UrlEncode(payload),</div><div class="line">  secret)</div></pre></td></tr></table></figure>
+<p><strong>我们可以自己写一个</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">base64url_encode</span><span class="params">($data)</span> </span>&#123; </div><div class="line">  <span class="keyword">return</span> rtrim(strtr(base64_encode($data), <span class="string">'+/'</span>, <span class="string">'-_'</span>), <span class="string">'='</span>); </div><div class="line">&#125; </div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">base64url_decode</span><span class="params">($data)</span> </span>&#123; </div><div class="line">  <span class="keyword">return</span> base64_decode(str_pad(strtr($data, <span class="string">'-_'</span>, <span class="string">'+/'</span>), strlen($data) % <span class="number">4</span>, <span class="string">'='</span>, STR_PAD_RIGHT)); </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">encode</span><span class="params">(array $payload, string $key, string $alg = <span class="string">'SHA256'</span>)</span></span>&#123;</div><div class="line">        $key = md5($key);</div><div class="line">        $jwt = <span class="keyword">self</span>::urlsafeB64Encode(json_encode([<span class="string">'type'</span> =&gt; <span class="string">'JWT'</span>, <span class="string">'alg'</span> =&gt; $alg])) . <span class="string">'.'</span> . <span class="keyword">self</span>::urlsafeB64Encode(json_encode($payload));</div><div class="line">        <span class="keyword">return</span> $jwt . <span class="string">'.'</span> . <span class="keyword">self</span>::signature($jwt, $key, $alg);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">   <span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">signature</span><span class="params">(string $input, string $key, string $alg)</span></div><div class="line">    </span>&#123;</div><div class="line">        <span class="keyword">return</span> hash_hmac($alg, $input, $key);</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<p><strong>这三个部分使用<code>.</code>连接起来就是高大上的JWT,然后就可以使用了</strong></p>
+<h5 id="JWT的使用流程"><a href="#JWT的使用流程" class="headerlink" title="JWT的使用流程"></a><div id="title">JWT的使用流程</div></h5><p><img src="https://i.loli.net/2018/04/04/5ac4daf2db516.jpg" alt="jwt登录.jpg"></p>
+<blockquote>
+<p>解释一下：</p>
+</blockquote>
+<ul>
+<li><p>第一次认证：第一次登录，用户从浏览器输入用户名/密码，提交后到服务器的登录处理的<code>Action</code>层（Login Action）</p>
+</li>
+<li><p><code>Login Action</code>调用认证服务进行用户名密码认证，如果认证通过，<code>Login Action</code>层调用用户信息服务获取用户信息（包括完整的用户信息及对应权限信息）</p>
+</li>
+<li><p>返回用户信息后，<code>Login Action</code>从配置文件中获取<code>Token</code>签名生成的秘钥信息，进行<code>Token</code>的生成</p>
+</li>
+<li><p>生成<code>Token</code>的过程中可以调用第三方的<code>JWT Lib</code>生成签名后的<code>JWT</code>数据</p>
+</li>
+<li><p>完成<code>JWT</code>数据签名后，将其设置到<code>COOKIE</code>对象中，并重定向到首页，完成登录过程</p>
+</li>
+</ul>
+<h4 id="JWT服务端验证过程"><a href="#JWT服务端验证过程" class="headerlink" title="JWT服务端验证过程"></a><div id="title">JWT服务端验证过程</div></h4><blockquote>
+<p>基于<code>Token</code>的认证机制会在每一次请求中都带上完成签名的<code>Token</code>信息，这个<code>Token</code>信息可能在<code>COOKIE</code><br>中，也可能在<code>HTTP</code>的<code>Authorization</code>头中</p>
+</blockquote>
+<p><img src="https://i.loli.net/2018/04/04/5ac4daafa08ae.jpg" alt="jwt请求.jpg"></p>
+<ul>
+<li>客户端（APP客户端或浏览器）通过<code>GET</code>或<code>POST</code>请求访问资源（页面或调用API）</li>
+<li>认证服务作为一个Middleware HOOK 对请求进行拦截，首先在<code>cookie</code>中查找<code>Token</code>信息，如果没有找到，则在<code>HTTP Authorization Head</code>中查找；</li>
+<li>如果找到<code>Token</code>信息，则根据配置文件中的签名加密秘钥，调用<code>JWT Lib</code>对<code>Token</code>信息进行解密和解码；</li>
+<li>完成解码并验证签名通过后，对<code>Token</code>中的<code>exp</code>、<code>nbf</code>、<code>aud</code>等信息进行验证；</li>
+<li>全部通过后，根据获取的用户的角色权限信息，进行对请求的资源的权限逻辑判断；</li>
+<li>如果权限逻辑判断通过则通过<code>Response</code>对象返回；否则则返回<code>HTTP 401</code>；</li>
+</ul>
+<p><strong>验证代码：</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="function"><span class="keyword">function</span> <span class="title">decode</span><span class="params">(string $jwt, string $key)</span></div><div class="line">    </span>&#123;</div><div class="line">        $tokens = explode(<span class="string">'.'</span>, $jwt);</div><div class="line">        $key    = md5($key);</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (count($tokens) != <span class="number">3</span>)</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">        <span class="keyword">list</span>($header64, $payload64, $sign) = $tokens;</div><div class="line"></div><div class="line">        $header = json_decode(<span class="keyword">self</span>::urlsafeB64Decode($header64), JSON_OBJECT_AS_ARRAY);</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">empty</span>($header[<span class="string">'alg'</span>]))</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (<span class="keyword">self</span>::signature($header64 . <span class="string">'.'</span> . $payload64, $key, $header[<span class="string">'alg'</span>]) !== $sign)</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">        $payload = json_decode(<span class="keyword">self</span>::urlsafeB64Decode($payload64), JSON_OBJECT_AS_ARRAY);</div><div class="line"></div><div class="line">        $time = $_SERVER[<span class="string">'REQUEST_TIME'</span>];</div><div class="line">        <span class="keyword">if</span> (<span class="keyword">isset</span>($payload[<span class="string">'iat'</span>]) &amp;&amp; $payload[<span class="string">'iat'</span>] &gt; $time)</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">        <span class="keyword">if</span> (<span class="keyword">isset</span>($payload[<span class="string">'exp'</span>]) &amp;&amp; $payload[<span class="string">'exp'</span>] &lt; $time)</div><div class="line">            <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line"></div><div class="line">        <span class="keyword">return</span> $payload;</div><div class="line">    &#125;</div></pre></td></tr></table></figure>
+<h5 id="优势之处"><a href="#优势之处" class="headerlink" title="优势之处"></a><div id="title">优势之处</div></h5><ul>
+<li><p><strong>支持跨域访问</strong>: <code>Cookie</code>是不允许垮域访问的，这一点对<code>Token</code>机制是不存在的，前提是传输的用户认证信息通过HTTP头传输.</p>
+</li>
+<li><p><strong>去耦</strong>: 不需要绑定到一个特定的身份验证方案。<code>Token</code>可以在任何地方生成，只要在你的<code>API</code>被调用的时候，你可以进行<code>Token</code>生成调用即可. 也可以用一套token认证代码来面对浏览器类客户端和非浏览器类客户端；</p>
+</li>
+<li><p><strong>更适用于移动应用</strong>: 当你的客户端是一个原生平台<code>（iOS, Android，Windows 8等</code>）时，<code>Cookie</code>是不被支持的，这时采用<code>Token</code>认证机制就会简单得多</p>
+</li>
+<li><strong>CSRF</strong>:因为不再依赖于<code>Cookie</code>，所以你就不需要考虑对<code>CSRF</code>（跨站请求伪造）的防范。</li>
+<li><p><strong>性能</strong>: <code>Token</code>中包含足够多的信息，在后续请求中减少查询数据库的几率</p>
+</li>
+<li><p><strong>基于标准化</strong>:你的API可以采用标准化的 <code>JSON Web Token (JWT)</code>, 这个标准已经存在多个后端库<code>（.NET, Ruby, Java,Python, PHP）</code>和多家公司的支持<code>（如：Firebase,Google, Microsoft)</code></p>
+</li>
+</ul>
+<h5 id="如何确保安全"><a href="#如何确保安全" class="headerlink" title="如何确保安全"></a><div id="title">如何确保安全</div></h5><ul>
+<li><p>如何保证用户名/密码验证过程的安全性：因为在验证过程中，需要用户输入用户名和密码，在这一过程中，用户名、密码等敏感信息需要在网络中传输。因此，在这个过程中建议采用HTTPS，通过SSL加密传输，以确保通道的安全性。</p>
+</li>
+<li><p>如果你是将用户提交的字符串存储到数据库的话（也针对SQL注入攻击），你需要在前端和服务端分别做过滤；</p>
+</li>
+</ul>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>编码不易,且行且珍惜!<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/zhifubao.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/weixin.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="http://s.jiathis.com/qrcode.php?url=http://yoursite.com/2017/10/06/常见的Http认证机制/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2017/10/06/Http协议/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          Http协议总结
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/10/05/PHP的运行模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">PHP的运行模式以及底层原理讲解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <section id="comments" style="margin:10px;padding:10px;background:#fff;">
+      <div id="vcomment" class="comment"></div> 
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+    window.onload = function() {
+        new Valine({
+            el: '.comment',
+            notify: notify,
+            verify: verify,
+            app_id: "mjstUtcUPaEVJpt5xt5zWykf-gzGzoHsz",
+            app_key: "4CY7cYn38n302Lor7lqqLoJO",
+            placeholder: "来呀!快活呀!",
+            avatar:"mm"
+        });
+    }
+</script>
+
+    </section>
+ 
+
+  
+
+
 
           </div>
         </div>
