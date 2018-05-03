@@ -26,7 +26,7 @@
 <meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9dcb8f21f7.jpg">
 <meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9dd3d26ee2.jpg">
 <meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9ea3400a26.jpg">
-<meta property="og:updated_time" content="2018-05-02T06:39:13.000Z">
+<meta property="og:updated_time" content="2018-05-03T11:48:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP的运行模式以及底层原理讲解">
 <meta name="twitter:description" content="PHP的运行模式 SAPI:Server Application Programming Interface 服务器端应用编程端口。它就是PHP与其它应用交互的接口，PHP脚本要执行有很多种方式，通过Web服务器，或者直接在命令行下，也可以嵌入在其他程序中 SAPI提供了一个和外部通信的接口, 常见的有五大运行模式：   cgi (通用网关接口Common Gateway Interface) f">
@@ -338,20 +338,20 @@ onmouseup="document.selection.empty()">-->
 <li>Nginx本质上是反向代理服务器，需要反向代理就选它</li>
 </ul>
 <h4 id="PHP运行机制与原理"><a href="#PHP运行机制与原理" class="headerlink" title="PHP运行机制与原理"></a><div id="title">PHP运行机制与原理</div></h4><p><img src="https://i.loli.net/2018/04/08/5ac9b897811a3.jpg" alt="运行原理.jpg"></p>
-<ol>
-<li><p>扫描(scanning) ,先进行语法分析和此法分析，然后将<code>index.php</code>内容变成一个个语言片段(<code>token</code>)</p>
+<ul>
+<li><p>扫描(scanning) : 先进行语法分析和词法分析，然后将<code>index.php</code>内容变成一个个语言片段(<code>token</code>)</p>
 </li>
-<li><p>解析(parsing) , 词法分析后, 就需要根据一个个<code>token</code>去组成有意义的表达式</p>
+<li><p>解析(parsing) : 词法分析后, 就需要根据一个个<code>token</code>去组成有意义的表达式</p>
 </li>
-</ol>
+</ul>
 <blockquote>
-<p>Parsing首先会丢弃<code>Tokens Array</code>中的多余的空格，然后将剩余的<code>Tokens</code>转换成一个一个的简单的表达式将一个个语言片段变成有意义的表达式</p>
+<p><code>Parsing</code>首先会丢弃<code>Tokens Array</code>中的多余的空格，然后将剩余的<code>Tokens</code>转换成一个一个的简单的表达式</p>
 </blockquote>
-<ol>
-<li>编译(complication),将表达式编译成中间码(<code>opcode</code>)</li>
-<li>执行(execution),将中间码一条一条的执行</li>
-<li>输出(output buffer),将要输出的内容输出到缓冲区</li>
-</ol>
+<ul>
+<li>编译(complication) : 将表达式编译成中间码(<code>opcode</code>)</li>
+<li>执行(execution) : 将中间码一条一条的执行</li>
+<li>输出(output buffer): 将要输出的内容输出到缓冲区</li>
+</ul>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$code = <span class="string">&lt;&lt;&lt;'PHP_CODE'</div><div class="line">&lt;?php</div><div class="line">echo 'hello world';</div><div class="line"><span class="subst">$data</span> = 1+1;</div><div class="line">echo <span class="subst">$data</span>;</div><div class="line">PHP_CODE;</span></div><div class="line"></div><div class="line">print_r(token_get_all($code));</div></pre></td></tr></table></figure>
 <p>分析这个返回结果我们可以发现，源码中的字符串，字符，空格，都会原样返回。每个源代码中的字符，都会出现在相应的顺序处。</p>
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Array</span>(</div><div class="line">    [<span class="number">0</span>] =&gt; <span class="number">316</span> 				<span class="comment">//tokenid,也就是"词"id </span></div><div class="line">    [<span class="number">1</span>] =&gt; <span class="string">"Hello, world\n"</span>		<span class="comment">//"词"具体的内容</span></div><div class="line">    [<span class="number">2</span>] =&gt; <span class="number">3</span>				<span class="comment">//所在的位置,行数</span></div><div class="line">)</div></pre></td></tr></table></figure>
@@ -390,9 +390,9 @@ onmouseup="document.selection.empty()">-->
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$a = <span class="number">3</span>;</div><div class="line">$b = &amp;$a;</div><div class="line"></div><div class="line">$b = <span class="number">5</span>;</div><div class="line"></div><div class="line"><span class="keyword">echo</span> $a, $b;</div></pre></td></tr></table></figure>
 <p><img src="https://i.loli.net/2018/04/08/5ac9c570c2774.png" alt="引用传值.png"></p>
 <p><strong>我们可以把引用看作是把这个变量的内存地址给复制了过来</strong></p>
-<h6 id="内存回收机制"><a href="#内存回收机制" class="headerlink" title="内存回收机制"></a><div id="title">内存回收机制</div></h6><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">zend_uint refcount_gc; <span class="comment">//这个用来标记有多少个变量</span></div><div class="line">zend_uchar is_ref_gc; <span class="comment">//这个用来标记用引用的方式</span></div></pre></td></tr></table></figure>
+<h6 id="内存回收机制"><a href="#内存回收机制" class="headerlink" title="内存回收机制"></a><div id="title">内存回收机制</div></h6><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">zend_uint refcount__gc; <span class="comment">// 用于保存 zval 本身被引用的次数</span></div><div class="line">zend_uchar is_ref__gc; <span class="comment">// 用于标记是否被&amp;</span></div></pre></td></tr></table></figure>
 <blockquote>
-<p>看看是不是垃圾就看 refcount_gc 是不是为0 </p>
+<p>看看是不是垃圾就看 <code>refcount__gc</code> 是不是为0 </p>
 </blockquote>
 <h5 id="数组"><a href="#数组" class="headerlink" title="数组"></a><div id="title">数组</div></h5><h6 id="数组Key和Value的限制条件"><a href="#数组Key和Value的限制条件" class="headerlink" title="数组Key和Value的限制条件"></a><div id="title">数组Key和Value的限制条件</div></h6><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">$arr = <span class="keyword">array</span>(</div><div class="line">        <span class="number">1</span> =&gt; <span class="string">'a'</span>,</div><div class="line">        <span class="string">"1"</span> =&gt; <span class="string">"b"</span>,</div><div class="line">        <span class="number">1.5</span> =&gt; <span class="string">"c"</span>,</div><div class="line">        <span class="keyword">true</span> =&gt; <span class="string">"d"</span></div><div class="line">    );</div><div class="line">var_dump($arr);</div><div class="line"></div><div class="line">$arr = <span class="keyword">array</span>(</div><div class="line">        <span class="string">"foo"</span> =&gt; <span class="string">'bar'</span>,</div><div class="line">        <span class="string">"bar"</span> =&gt; <span class="string">"foo"</span>,</div><div class="line">        <span class="number">100</span> =&gt; <span class="number">-100</span>,</div><div class="line">        <span class="number">-100</span> =&gt; <span class="number">100</span></div><div class="line">    );</div><div class="line">var_dump($arr);</div></pre></td></tr></table></figure>
 <ul>
