@@ -202,7 +202,7 @@ onmouseup="document.selection.empty()">-->
 </ul>
 <h5 id="请求格式"><a href="#请求格式" class="headerlink" title="请求格式"></a><div id="title">请求格式</div></h5><figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">GET</span> <span class="string">/</span> HTTP/1.0</div><div class="line"><span class="attribute">User-Agent</span>: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5)</div><div class="line"><span class="attribute">Accept</span>: */*</div></pre></td></tr></table></figure>
 <p>第一行是请求命令，必须在尾部添加协议版本<code>（HTTP/1.0）</code>。后面就是多行头信息，描述客户端的情况。</p>
-<h5 id="回应格式"><a href="#回应格式" class="headerlink" title="回应格式"></a><div id="title">回应格式</div></h5><figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">HTTP/1.0 <span class="number">200</span> OK </div><div class="line"><span class="attribute">Content-Type</span>: text/plain</div><div class="line"><span class="attribute">Content-Encoding</span>: gzip</div><div class="line"><span class="attribute">Content-Length</span>: 3495</div><div class="line"><span class="attribute">Expires</span>: Thu, 05 Dec 1997 16:00:00 GMT</div><div class="line"><span class="attribute">Last-Modified</span>: Wed, 5 August 1996 15:55:28 GMT</div><div class="line"><span class="attribute">Server</span>: Apache 0.84</div><div class="line"></div><div class="line"><span class="undefined">&lt;html&gt;</div><div class="line">  &lt;body&gt;Hello World&lt;/body&gt;</div><div class="line">&lt;/html&gt;</span></div></pre></td></tr></table></figure>
+<h5 id="回应格式"><a href="#回应格式" class="headerlink" title="回应格式"></a><div id="title">回应格式</div></h5><figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">HTTP/1.0 <span class="number">200</span> OK </div><div class="line"><span class="attribute">Content-Type</span>: text/plain</div><div class="line"><span class="attribute">Content-Encoding</span>: gzip</div><div class="line"><span class="attribute">Content-Length</span>: 3495</div><div class="line"><span class="attribute">Expires</span>: Thu, 05 Dec 1997 16:00:00 GMT</div><div class="line"><span class="attribute">Last-Modified</span>: Wed, 5 August 1996 15:55:28 GMT</div><div class="line"><span class="attribute">Server</span>: Apache 0.84</div><div class="line"></div><div class="line"><span class="javascript">&lt;html&gt;</div><div class="line">  &lt;body&gt;Hello World&lt;/body&gt;</div><div class="line">&lt;<span class="regexp">/html&gt;</span></span></div></pre></td></tr></table></figure>
 <p>回应的格式是<code>头信息 + 一个空行（\r\n） + 数据</code></p>
 <h5 id="Content-Type"><a href="#Content-Type" class="headerlink" title="Content-Type"></a><div id="title">Content-Type</div></h5><p>服务器回应的时候，必须告诉客户端，数据是什么格式，这就是Content-Type字段的作用。</p>
 <p>下面是一些常见的Content-Type字段的值。</p>
@@ -239,7 +239,7 @@ onmouseup="document.selection.empty()">-->
 <p>因此，1.1版规定可以不使用<code>Content-Length</code>字段，而使用”分块传输编码”（chunked transfer encoding）。只要请求或回应的头信息有<code>Transfer-Encoding</code>字段，就表明回应将由数量未定的数据块组成。</p>
 <figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">Transfer-Encoding</span>: chunked</div></pre></td></tr></table></figure>
 <p>每个非空的数据块之前，会有一个16进制的数值，表示这个块的长度。最后是一个大小为0的块，就表示本次回应的数据发送完了。下面是一个例子。</p>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 <span class="number">200</span> OK</div><div class="line"><span class="attribute">Content-Type</span>: text/plain</div><div class="line"><span class="attribute">Transfer-Encoding</span>: chunked</div><div class="line"></div><div class="line"><span class="undefined">25</div><div class="line">This is the data in the first chunk</div><div class="line"></div><div class="line">1C</div><div class="line">and this is the second one</div><div class="line"></div><div class="line">3</div><div class="line">con</div><div class="line"></div><div class="line">8</div><div class="line">sequence</div><div class="line"></div><div class="line">0</span></div></pre></td></tr></table></figure>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 <span class="number">200</span> OK</div><div class="line"><span class="attribute">Content-Type</span>: text/plain</div><div class="line"><span class="attribute">Transfer-Encoding</span>: chunked</div><div class="line"></div><div class="line"><span class="python"><span class="number">25</span></div><div class="line">This <span class="keyword">is</span> the data <span class="keyword">in</span> the first chunk</div><div class="line"></div><div class="line"><span class="number">1</span>C</div><div class="line"><span class="keyword">and</span> this <span class="keyword">is</span> the second one</div><div class="line"></div><div class="line"><span class="number">3</span></div><div class="line">con</div><div class="line"></div><div class="line"><span class="number">8</span></div><div class="line">sequence</div><div class="line"></div><div class="line"><span class="number">0</span></span></div></pre></td></tr></table></figure>
 <h5 id="其他功能"><a href="#其他功能" class="headerlink" title="其他功能"></a><div id="title">其他功能</div></h5><p>1.1版还新增了许多动词方法：<code>PUT、PATCH、HEAD、 OPTIONS、DELETE</code>。</p>
 <p>另外，客户端请求的头信息新增了Host字段，用来指定服务器的域名。</p>
 <figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="attribute">Host</span>: www.example.com</div></pre></td></tr></table></figure>
@@ -543,11 +543,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
+                <a href="javascript:void(0)" class="js-tag color1">Flask</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Flask</a>
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -576,6 +576,10 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Yaf</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -620,10 +624,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">发展</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
             
             <div class="clearfix"></div>
