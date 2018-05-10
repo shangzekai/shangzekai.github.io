@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="http://yoursite.com">
   <title>Python函数基础 | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="背景现在老板让你写一个监控程序，监控服务器的系统状况，当cpu＼memory＼disk等指标的使用量超过阀值时即发邮件报警，你掏空了所有的知识量，写出了以下代码">
+  <meta name="description" content="背景       现在老板让你写一个监控程序，监控服务器的系统状况，当cpu＼memory＼disk等指标的使用量超过阀值时即发邮件报警，你掏空了所有的知识量，写出了以下代码">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python函数基础">
 <meta property="og:url" content="http://yoursite.com/2017/05/06/python函数/index.html">
 <meta property="og:site_name" content="Python">
-<meta property="og:description" content="背景现在老板让你写一个监控程序，监控服务器的系统状况，当cpu＼memory＼disk等指标的使用量超过阀值时即发邮件报警，你掏空了所有的知识量，写出了以下代码">
-<meta property="og:updated_time" content="2017-06-01T08:51:01.000Z">
+<meta property="og:description" content="背景       现在老板让你写一个监控程序，监控服务器的系统状况，当cpu＼memory＼disk等指标的使用量超过阀值时即发邮件报警，你掏空了所有的知识量，写出了以下代码">
+<meta property="og:updated_time" content="2018-05-10T06:38:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python函数基础">
-<meta name="twitter:description" content="背景现在老板让你写一个监控程序，监控服务器的系统状况，当cpu＼memory＼disk等指标的使用量超过阀值时即发邮件报警，你掏空了所有的知识量，写出了以下代码">
+<meta name="twitter:description" content="背景       现在老板让你写一个监控程序，监控服务器的系统状况，当cpu＼memory＼disk等指标的使用量超过阀值时即发邮件报警，你掏空了所有的知识量，写出了以下代码">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
@@ -177,7 +177,10 @@ onmouseup="document.selection.empty()">-->
           <hr/>
         </div>
         
-        <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a><div id="title">背景</div></h4><p><strong>现在老板让你写一个监控程序，监控服务器的系统状况，当cpu＼memory＼disk等指标的使用量超过阀值时即发邮件报警，你掏空了所有的知识量，写出了以下代码</strong></p>
+        <h4 id="背景"><a href="#背景" class="headerlink" title="背景"></a><div id="title">背景</div></h4><video width="352" height="264" controls autobuffer=""><br>    <source src="../media/cat.mp4" type="video/mp4; codecs="avc1.42E01E, mp4a.40.2""><br></video>
+
+
+<p><strong>现在老板让你写一个监控程序，监控服务器的系统状况，当cpu＼memory＼disk等指标的使用量超过阀值时即发邮件报警，你掏空了所有的知识量，写出了以下代码</strong></p>
 <a id="more"></a>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">while</span> <span class="keyword">True</span>：</div><div class="line">    <span class="keyword">if</span> cpu利用率 &gt; <span class="number">90</span>%:</div><div class="line">        <span class="comment">#发送邮件提醒</span></div><div class="line">        连接邮箱服务器</div><div class="line">        发送邮件</div><div class="line">        关闭连接</div><div class="line">     </div><div class="line">    <span class="keyword">if</span> 硬盘使用空间 &gt; <span class="number">90</span>%:</div><div class="line">        <span class="comment">#发送邮件提醒</span></div><div class="line">        连接邮箱服务器</div><div class="line">        发送邮件</div><div class="line">        关闭连接</div><div class="line">     </div><div class="line">    <span class="keyword">if</span> 内存占用 &gt; <span class="number">80</span>%:</div><div class="line">        <span class="comment">#发送邮件提醒</span></div><div class="line">        连接邮箱服务器</div><div class="line">        发送邮件</div><div class="line">        关闭连接</div></pre></td></tr></table></figure>
 <p><strong>此时我们看上述的代码，我们发现如果有100个维度需要监控的话，你难道要吭哧吭哧的写100次吗，等你写完自己都想离职了吧！因此，我们来分析上述的代码存在的问题</strong></p>
