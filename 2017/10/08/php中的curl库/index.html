@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/10/08/php中的curl库/index.html">
 <meta property="og:site_name" content="Python">
 <meta property="og:description" content="概述 在设计之初，cURL （Client URL Library）是一种作为使用 URL 语法传输数据的命令行工具。通过 cURL 库，我们可以在 PHP 脚本中自由地使用某种协议来获取或者提交数据，比如获取 HTTP 请求数据。简单的来说，cURL 是客户端向服务器请求资源的工具。">
-<meta property="og:updated_time" content="2018-05-11T12:15:28.000Z">
+<meta property="og:updated_time" content="2018-05-11T13:03:53.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP 中的 cURL 库">
 <meta name="twitter:description" content="概述 在设计之初，cURL （Client URL Library）是一种作为使用 URL 语法传输数据的命令行工具。通过 cURL 库，我们可以在 PHP 脚本中自由地使用某种协议来获取或者提交数据，比如获取 HTTP 请求数据。简单的来说，cURL 是客户端向服务器请求资源的工具。">
@@ -209,11 +209,9 @@ onmouseup="document.selection.empty()">-->
 <p>我们可以使用 -A 来自定义用户代理，例如下面的命令将伪装成安卓火狐浏览器对网页进行请求： </p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -A “Mozilla/5.0 (Android; Mobile; rv:35.0) Gecko/35.0 Firefox/35.0” http://www.baidu.com</div></pre></td></tr></table></figure>
 <p>6.使用 -H 自定义 header<br>当我们需要传递特定的 header 的时候，可以仿照以下命令来写： </p>
-<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -H “Referer: www.example.<span class="keyword">com</span>” -H “User-Agen<span class="variable">t:</span> Custom-User-Agent” http://www.baidu.<span class="keyword">com</span></div></pre></td></tr></table></figure>
-<p>可以看到，当我们使用 -H 来自定义 User-Agent 时，需要使用 “User-Agent: xxx” 的格式。</p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -H “Referer: www.example.<span class="keyword">com</span>”  http://www.baidu.<span class="keyword">com</span></div></pre></td></tr></table></figure>
 <p>我们能够直接在 header 中传递 Cookie，格式与上面的例子一样： </p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -H “Cookie: JSESSIONID=D0112A5063D938586B659EF8F939BE24” http://www.example.<span class="keyword">com</span></div></pre></td></tr></table></figure>
-<p>另一种方式会在下面介绍。</p>
 <p>7.使用 -c 保存 Cookie<br>当我们使用 cURL 访问页面的时候，默认是不会保存 Cookie 的。有些情况下我们希望保存 Cookie 以便下次访问时使用。例如登陆了某个网站，我们希望再次访问该网站时保持登陆的状态，这时就可以现将登陆时的 Cookie 保存起来，下次访问时再读取。</p>
 <p>-c 后面跟上要保存的文件名。 </p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -<span class="keyword">c</span> <span class="string">"cookie-example"</span> http://www.baidu.<span class="keyword">com</span></div></pre></td></tr></table></figure>
