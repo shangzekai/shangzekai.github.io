@@ -15,7 +15,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/10/08/php中的curl库/index.html">
 <meta property="og:site_name" content="Python">
 <meta property="og:description" content="概述 在设计之初，cURL （Client URL Library）是一种作为使用 URL 语法传输数据的命令行工具。通过 cURL 库，我们可以在 PHP 脚本中自由地使用某种协议来获取或者提交数据，比如获取 HTTP 请求数据。简单的来说，cURL 是客户端向服务器请求资源的工具。">
-<meta property="og:updated_time" content="2018-05-11T09:52:04.000Z">
+<meta property="og:updated_time" content="2018-05-11T12:15:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="PHP 中的 cURL 库">
 <meta name="twitter:description" content="概述 在设计之初，cURL （Client URL Library）是一种作为使用 URL 语法传输数据的命令行工具。通过 cURL 库，我们可以在 PHP 脚本中自由地使用某种协议来获取或者提交数据，比如获取 HTTP 请求数据。简单的来说，cURL 是客户端向服务器请求资源的工具。">
@@ -186,14 +186,10 @@ onmouseup="document.selection.empty()">-->
 <figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$content = file_get_contents(<span class="string">"https://segmentfault.com"</span>);</div><div class="line">var_dump($content);</div></pre></td></tr></table></figure>
 <p>虽然 <code>file_get_contents()</code> 函数使用起来很方便，但是不够灵活，也没法进行错误处理。在一些复杂的请求中，不能够设置请求头、<code>Cookie</code>、代理、认证等相关信息，更不能向某个服务器提交表单数据，上传文件。</p>
 <p><code>cURl</code> 库不但支持丰富的网络协议，而且提供了设置各种 <code>URL</code> 请求参数的方法，功能强大。<code>cURL</code> 的使用场景有很多，比如访问网页资源，获取 <code>WebService</code> 接口数据、下载 <code>FTP</code> 服务器文件。</p>
-<h4 id="curl命令行常见用法"><a href="#curl命令行常见用法" class="headerlink" title="curl命令行常见用法"></a><div id="title">curl命令行常见用法</div></h4><ol>
-<li>获取页面内容</li>
-</ol>
+<h4 id="curl命令行常见用法"><a href="#curl命令行常见用法" class="headerlink" title="curl命令行常见用法"></a><div id="title">curl命令行常见用法</div></h4><p>1.获取页面内容</p>
 <p>当我们不加任何选项使用 curl 时，默认会发送 GET 请求来获取链接内容到标准输出。 </p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl http://www.baidu.<span class="keyword">com</span></div></pre></td></tr></table></figure>
-<ol>
-<li>显示 HTTP 头</li>
-</ol>
+<p>2.显示 HTTP 头</p>
 <p>如果我们只想要显示 HTTP 头，而不显示文件内容，可以使用 -I 选项： </p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -I http://www.baidu.<span class="keyword">com</span></div></pre></td></tr></table></figure>
 <p>输出为：<br><figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 200 OK</div><div class="line">Server: nginx/1.10.3</div><div class="line">Date: Thu, 11 May 2017 08:24:45 GMT</div><div class="line">Content-Type: text/html; charset=utf-8</div><div class="line">Content-Length: 24206</div><div class="line">Connection: keep-alive</div><div class="line">X-Powered-By: Express</div><div class="line">Cache-Control: public, max-age=0</div><div class="line">ETag: W/"5e8e-Yw5ZdnVVly9/aEnMX7fVXQ"</div><div class="line">Vary: Accept-Encoding</div></pre></td></tr></table></figure></p>
@@ -201,54 +197,41 @@ onmouseup="document.selection.empty()">-->
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -i http://www.baidu.<span class="keyword">com</span></div></pre></td></tr></table></figure>
 <p>输出为：</p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 200 OK</div><div class="line">Server: nginx/1.10.3</div><div class="line">Date: Thu, 11 May 2017 08:25:46 GMT</div><div class="line">Content-Type: text/html; charset=utf-8</div><div class="line">Content-Length: 24206</div><div class="line">Connection: keep-alive</div><div class="line">X-Powered-By: Express</div><div class="line">Cache-Control: public, max-age=0</div><div class="line">ETag: W/"5e8e-Yw5ZdnVVly9/aEnMX7fVXQ"</div><div class="line">Vary: Accept-Encoding</div><div class="line"></div><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang="en"&gt;</div><div class="line">......</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<ol>
-<li>将链接保存到文件<br>我们可以使用 &gt; 符号将输出重定向到本地文件中。 </li>
-</ol>
+<p>3.将链接保存到文件<br>我们可以使用 &gt; 符号将输出重定向到本地文件中。 </p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl http://www.codebelief.<span class="keyword">com</span> &gt; <span class="built_in">index</span>.html</div></pre></td></tr></table></figure>
 <p>也可以通过 curl 自带的 -o/-O 选项将内容保存到文件中。</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">-<span class="keyword">o</span>（小写的 <span class="keyword">o</span>）：结果会被保存到命令行中提供的文件名 </div><div class="line">-O（大写的 O）：URL 中的文件名会被用作保存输出的文件名 </div><div class="line">curl -<span class="keyword">o</span> <span class="built_in">index</span>.html http://www.codebelief.<span class="keyword">com</span> </div><div class="line">curl -O http://www.codebelief.<span class="keyword">com</span>/page/<span class="number">2</span>/</div></pre></td></tr></table></figure>
-<ol>
-<li>同时下载多个文件</li>
-</ol>
+<p>4.同时下载多个文件</p>
 <p>我们可以使用 -o 或 -O 选项来同时指定多个链接，按照以下格式编写命令：<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -O http://www.codebelief.<span class="keyword">com</span>/page/<span class="number">2</span>/ -O http://www.codebelief.<span class="keyword">com</span>/page/<span class="number">3</span>/</div></pre></td></tr></table></figure></p>
 <p>或者： </p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -<span class="keyword">o</span> page1.html http://www.codebelief.<span class="keyword">com</span>/page/<span class="number">1</span>/ -<span class="keyword">o</span> page2.html http://www.codebelief.<span class="keyword">com</span>/page/<span class="number">2</span>/</div></pre></td></tr></table></figure>
-<ol>
-<li>使用 -A 自定义 User-Agent</li>
-<li>我们可以使用 -A 来自定义用户代理，例如下面的命令将伪装成安卓火狐浏览器对网页进行请求： </li>
-</ol>
+<p>5.使用 -A 自定义 User-Agent</p>
+<p>我们可以使用 -A 来自定义用户代理，例如下面的命令将伪装成安卓火狐浏览器对网页进行请求： </p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -A “Mozilla/5.0 (Android; Mobile; rv:35.0) Gecko/35.0 Firefox/35.0” http://www.baidu.com</div></pre></td></tr></table></figure>
-<ol>
-<li>使用 -H 自定义 header<br>当我们需要传递特定的 header 的时候，可以仿照以下命令来写： </li>
-</ol>
+<p>6.使用 -H 自定义 header<br>当我们需要传递特定的 header 的时候，可以仿照以下命令来写： </p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -H “Referer: www.example.<span class="keyword">com</span>” -H “User-Agen<span class="variable">t:</span> Custom-User-Agent” http://www.baidu.<span class="keyword">com</span></div></pre></td></tr></table></figure>
 <p>可以看到，当我们使用 -H 来自定义 User-Agent 时，需要使用 “User-Agent: xxx” 的格式。</p>
 <p>我们能够直接在 header 中传递 Cookie，格式与上面的例子一样： </p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -H “Cookie: JSESSIONID=D0112A5063D938586B659EF8F939BE24” http://www.example.<span class="keyword">com</span></div></pre></td></tr></table></figure>
 <p>另一种方式会在下面介绍。</p>
-<ol>
-<li>使用 -c 保存 Cookie<br>当我们使用 cURL 访问页面的时候，默认是不会保存 Cookie 的。有些情况下我们希望保存 Cookie 以便下次访问时使用。例如登陆了某个网站，我们希望再次访问该网站时保持登陆的状态，这时就可以现将登陆时的 Cookie 保存起来，下次访问时再读取。</li>
-</ol>
+<p>7.使用 -c 保存 Cookie<br>当我们使用 cURL 访问页面的时候，默认是不会保存 Cookie 的。有些情况下我们希望保存 Cookie 以便下次访问时使用。例如登陆了某个网站，我们希望再次访问该网站时保持登陆的状态，这时就可以现将登陆时的 Cookie 保存起来，下次访问时再读取。</p>
 <p>-c 后面跟上要保存的文件名。 </p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -<span class="keyword">c</span> <span class="string">"cookie-example"</span> http://www.baidu.<span class="keyword">com</span></div></pre></td></tr></table></figure>
-<ol>
-<li>使用 -b 读取 Cookie</li>
-</ol>
+<p>8.使用 -b 读取 Cookie</p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -<span class="keyword">b</span> “cookie-example” http://www.example.<span class="keyword">com</span></div></pre></td></tr></table></figure>
 <p>即 -b 后面既可以是 Cookie 字符串，也可以是保存了 Cookie 的文件名。</p>
-<ol>
-<li>使用 -d 发送 POST 请求</li>
-</ol>
+<p>9.使用 -d 发送 POST 请求</p>
 <p>我们以登陆网页为例来进行说明使用 cURL 发送 POST 请求的方法。假设有一个登录页面 www.example.com/login，只需要提交用户名和密码便可登录。我们可以使用 cURL 来完成这一 POST 请求，</p>
 <p>-d 用于指定发送的数据，-X 用于指定发送数据的方式： </p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -d “userName=tom&amp;passwd=<span class="number">123456</span>” -<span class="keyword">X</span> POST http://www.example.<span class="keyword">com</span>/login</div></pre></td></tr></table></figure>
 <p>在使用 -d 的情况下，如果省略 -X，则默认为 POST 方式： </p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -d “userName=tom&amp;passwd=<span class="number">123456</span>” http://www.example.<span class="keyword">com</span>/login</div></pre></td></tr></table></figure>
-<p>强制使用 GET 方式<br>发送数据时，不仅可以使用 POST 方式，也可以使用 GET 方式，例如： </p>
+<p>10.强制使用 GET 方式 </p>
+<p>发送数据时，不仅可以使用 POST 方式，也可以使用 GET 方式，例如： </p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -d “somedata” -<span class="keyword">X</span> GET http://www.example.<span class="keyword">com</span>/api</div></pre></td></tr></table></figure>
 <p>或者使用 -G 选项： </p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -d “somedata” -G http://www.example.<span class="keyword">com</span>/api</div></pre></td></tr></table></figure>
-<p>带 Cookie 登录 </p>
+<p>11.带 Cookie 登录 </p>
 <p>当然，如果我们再次访问该网站，仍然会变成未登录的状态。我们可以用之前提到的方法保存 Cookie，在每次访问网站时都带上该 Cookie 以保持登录状态。 </p>
 <figure class="highlight vim"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">curl -<span class="keyword">c</span> “cookie-login” -d “userName=tom&amp;passwd=<span class="number">123456</span>” http://www.example.<span class="keyword">com</span>/login</div></pre></td></tr></table></figure>
 <p>再次访问该网站时，使用以下命令： </p>
