@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Python">
 <meta property="og:description" content="前言 之前，我们对session的理解只是停留在使用session_start()上，然后获取其中保存的值。但如果不知道里面的机制，在开发中遇到了新的问题，还是比较麻烦的">
 <meta property="og:image" content="https://i.loli.net/2018/04/05/5ac5df0e5a15d.png">
-<meta property="og:updated_time" content="2018-04-05T14:30:48.000Z">
+<meta property="og:updated_time" content="2018-06-01T05:52:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Session 和 cookie">
 <meta name="twitter:description" content="前言 之前，我们对session的理解只是停留在使用session_start()上，然后获取其中保存的值。但如果不知道里面的机制，在开发中遇到了新的问题，还是比较麻烦的">
@@ -193,7 +193,8 @@ onmouseup="document.selection.empty()">-->
 <li>小明访问某一网站 <code>example.com</code> 的登录页面, 此时通过浏览器发了一个<code>http request</code>请求,此时<code>http header</code>头域的<code>cookie</code>值可以是空的</li>
 <li>xx.com服务器收到这个请求,并接受了小明提交过来的登录数据,判断用户名和密码都正确,这个时候服务器会”种下一个cookie”–一般是将小明的用户名发给客户端,通常是”<code>Set-Cookie: session-id=12345;</code>“这个字符串通过<code>http response</code>返回给客户端(浏览器)</li>
 <li>浏览器收到<code>http response</code>返回来的信息发现<code>cookie</code>了,然后将该信息写入到浏览器的某个存储文件中去</li>
-<li>小明再访问<code>xx.com</code>的其他页面的时候,请求的<code>http header</code>中会带着这个<code>cookie</code>，<br>服务器端程序会找<code>cookie</code>,并根据<code>cookie</code>取出客户端想要的信息并返回给客户端</li>
+<li>小明再访问<code>xx.com</code>的其他页面的时候,请求的<code>http header</code>中会带着这个<code>cookie</code>，</li>
+<li>服务器端程序会找<code>cookie</code>,并根据<code>cookie</code>取出客户端想要的信息并返回给客户端</li>
 </ul>
 <h4 id="session的调用机制"><a href="#session的调用机制" class="headerlink" title="session的调用机制"></a><div id="title">session的调用机制</div></h4><ul>
 <li>用户请求服务端程序<code>login.php</code>填写数据后提交</li>
