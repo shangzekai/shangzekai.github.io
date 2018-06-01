@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Python">
 <meta property="og:description" content="前言 之前，我们对session的理解只是停留在使用session_start()上，然后获取其中保存的值。但如果不知道里面的机制，在开发中遇到了新的问题，还是比较麻烦的">
 <meta property="og:image" content="https://i.loli.net/2018/04/05/5ac5df0e5a15d.png">
-<meta property="og:updated_time" content="2018-06-01T05:52:16.000Z">
+<meta property="og:updated_time" content="2018-06-01T05:57:08.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Session 和 cookie">
 <meta name="twitter:description" content="前言 之前，我们对session的理解只是停留在使用session_start()上，然后获取其中保存的值。但如果不知道里面的机制，在开发中遇到了新的问题，还是比较麻烦的">
@@ -207,7 +207,7 @@ onmouseup="document.selection.empty()">-->
 <p>保存的是一些被序列化后的值</p>
 </blockquote>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cityID|i:0;cityName|s:3:&quot;all&quot;;fanwe_lang|s:5:&quot;zh-cn&quot;;fanwe_currency|a:4:&#123;s:2:&quot;id&quot;;s:1:&quot;1&quot;;s:6:&quot;name_1&quot;;s:9:&quot;人民币&quot;;s:4:&quot;unit&quot;;s:3:&quot;￥&quot;;s:5:&quot;radio&quot;;s:6:&quot;1.0000&quot;;&#125;_fanwe_hash__|s:32:&quot;77c18770c6cb5d89444c407aaa3e8477&quot;;</div></pre></td></tr></table></figure>
-<p>1、每一个session的值是以分号”;”分开的。比如 <code>cityID|i:0;cityName|s:3:&quot;all&quot;</code>;”就是一个完整的session值结束</p>
+<p>1、每一个session的值是以分号”;”分开的。比如 <code>cityName|s:3:&quot;all&quot;</code>;”就是一个完整的session值结束</p>
 <p>2、里面的读取规则：符号“|”前面表示<code>session</code>名称。符号后面是该session的具体信息。包括：数据类型，字符长度，如这一段：<code>fanwe_lang|s:5:&quot;zh-cn&quot;</code>;  <code>fanwe_lang</code>是变量的名称，变量值是<code>zh-cn</code>,长度刚好是<code>5</code></p>
 <h4 id="session-start干了啥"><a href="#session-start干了啥" class="headerlink" title="session_start干了啥"></a><div id="title">session_start干了啥</div></h4><blockquote>
 <p><code>session_start()</code>已经封装了发送<code>cookie</code>的操作(发送一个名称为<code>PHPSESSID</code>的<code>cookie</code>到浏览器)。那这样的话就涉及到http的一个原理:头部信息必须在内容之前发送才行。所以，使用此函数之前，不能有输出内容。</p>
