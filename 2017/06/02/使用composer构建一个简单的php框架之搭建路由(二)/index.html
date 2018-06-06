@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Python">
 <meta property="og:description" content="前言 上一篇中我们已经建立了一个空的 Composer 项目，本篇将讲述如何构建路由。推荐 https://github.com/NoahBuscher/Macaw，对应的 Composer 包为 noahbuscher/macaw">
 <meta property="og:image" content="https://i.loli.net/2017/10/26/59f153cc9ef36.png">
-<meta property="og:updated_time" content="2017-10-26T03:23:50.000Z">
+<meta property="og:updated_time" content="2018-06-06T02:33:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用composer构建一个简单的php框架之搭建路由（二）">
 <meta name="twitter:description" content="前言 上一篇中我们已经建立了一个空的 Composer 项目，本篇将讲述如何构建路由。推荐 https://github.com/NoahBuscher/Macaw，对应的 Composer 包为 noahbuscher/macaw">
@@ -181,7 +181,7 @@ onmouseup="document.selection.empty()">-->
         </div>
         
         <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
-<p>上一篇中我们已经建立了一个空的 Composer 项目，本篇将讲述如何构建路由。推荐 <a href="https://github.com/NoahBuscher/Macaw，对应的" target="_blank" rel="external">https://github.com/NoahBuscher/Macaw，对应的</a> Composer 包为 noahbuscher/macaw </p>
+<p>上一篇中我们已经建立了一个空的 Composer 项目，本篇将讲述如何构建路由。推荐 <code>https://github.com/NoahBuscher/Macaw</code>，对应的 Composer 包为 noahbuscher/macaw </p>
 </blockquote>
 <a id="more"></a>
 <h4 id="安装macaw"><a href="#安装macaw" class="headerlink" title="安装macaw"></a><div id="title">安装macaw</div></h4><p><strong>我们可以直接编辑composer.json文件，添加即可：</strong><br><figure class="highlight leaf"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  "require": &#123;</div><div class="line">    "noahbuscher/macaw": "dev-master"</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
@@ -193,23 +193,22 @@ onmouseup="document.selection.empty()">-->
 <p><strong>然后我们查看vendor文件夹下面是否有这个文件即可</strong></p>
 <h4 id="使用macaw"><a href="#使用macaw" class="headerlink" title="使用macaw"></a><div id="title">使用macaw</div></h4><p>新建 public 文件夹，这个文件夹将是用户唯一可见的部分。在文件夹下新建 index.php 文件：<br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="comment">// Autoload 自动载入</span></div><div class="line"><span class="keyword">require</span> <span class="string">'../vendor/autoload.php'</span>;</div><div class="line"></div><div class="line"><span class="comment">// 路由配置</span></div><div class="line"><span class="keyword">require</span> <span class="string">'../config/routes.php'</span>;</div></pre></td></tr></table></figure></p>
 <p>上面一行表示引入 Composer 的自动载入功能，下面一行表示载入路由配置文件。新建 config 文件夹，在里面新建 routs.php 文件，内容如下：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">use</span> <span class="title">NoahBuscher</span>\<span class="title">Macaw</span>\<span class="title">Macaw</span>;</div><div class="line"></div><div class="line">Macaw::get(<span class="string">'fuck'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</div><div class="line">  <span class="keyword">echo</span> <span class="string">"成功！"</span>;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">Macaw::get(<span class="string">'(:all)'</span>, <span class="function"><span class="keyword">function</span><span class="params">($fu)</span> </span>&#123;</div><div class="line">  <span class="keyword">echo</span> <span class="string">'未匹配到路由&lt;br&gt;'</span>.$fu;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">Macaw::dispatch();</div></pre></td></tr></table></figure>
-<p>Macaw 的文档位于 <a href="https://github.com/NoahBuscher/Macaw，请按照你的" target="_blank" rel="external">https://github.com/NoahBuscher/Macaw，请按照你的</a> HTTP 服务软件类型自行设置伪静态，其实跟绝大多数框架一样：“将所有非静态文件全部指向 index.php”。</p>
-<p>然后，将某一个端口用 Apache 或 Nginx 分配给 MFFC/public 目录，这一步十分建议用 Apache 或者 Nginx 做。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">use</span> <span class="title">NoahBuscher</span>\<span class="title">Macaw</span>\<span class="title">Macaw</span>;</div><div class="line"></div><div class="line">Macaw::get(<span class="string">'hello'</span>, <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</div><div class="line">  <span class="keyword">echo</span> <span class="string">"成功！"</span>;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">Macaw::get(<span class="string">'(:all)'</span>, <span class="function"><span class="keyword">function</span><span class="params">($fu)</span> </span>&#123;</div><div class="line">  <span class="keyword">echo</span> <span class="string">'未匹配到路由&lt;br&gt;'</span>.$fu;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">Macaw::dispatch();</div></pre></td></tr></table></figure>
+<p><code>Macaw</code> 的文档位于 <code>https://github.com/NoahBuscher/Macaw</code>，请按照你的 HTTP 服务软件类型自行设置伪静态，其实跟绝大多数框架一样：“将所有非静态文件全部指向 index.php”。</p>
+<p>然后，将某一个端口用 <code>Apache</code> 或 <code>Nginx</code> 分配给 <code>public</code> 目录，这一步十分建议用 <code>Apache</code> 或者 <code>Nginx</code> 做。</p>
 <p>如果使用 PHP 内置 HTTP 服务器：</p>
 <blockquote>
 <p>cd public &amp;&amp; php -S 127.0.0.1:3000</p>
 </blockquote>
-<p>将导致路由的 Macaw::get(‘fuck’ 必须写成 Macaw::get(‘/fuck’ 才能响应。</p>
-<p>目前的代码使用 Apache + mod_php 和 Nginx + php-fpm 方式均没有问题。</p>
-<p><strong>配置成功之后，返回如下：</strong><br><img src="https://i.loli.net/2017/10/26/59f153cc9ef36.png" alt="成功.png"></p>
+<p>将导致路由的 <code>Macaw::get(&#39;hello&#39;</code> 必须写成 <code>Macaw::get(&#39;/hello&#39;</code> 才能响应。</p>
+<p><strong>配置成功之后，返回如下：</strong></p>
+<p><img src="https://i.loli.net/2017/10/26/59f153cc9ef36.png" alt="成功.png"></p>
 <p>如果页面乱码，请调整编码为 UTF-8。如果你成功看到以上页面，那么恭喜你，路由配置成功！</p>
-<p>Macaw 只有一个文件，去除空行总共也就一百行多一点，通过代码我们能直接看明白它是怎么工作的。下面我简略分析一下：</p>
-<p>1.Composer 的自动加载在每次 URL 驱动 public/index.php 之后会在内存中维护一个全量命名空间类名到文件名的数组，这样当我们在代码中使用某个类的时候，将自动载入该类所在的文件。</p>
-<p>2.我们在路由文件中载入了 Macaw 类：“use NoahBuscher\Macaw\Macaw;”，接着调用了两次静态方法 ::get()，这个方法是不存在的，将由 vendor/codingbean/macaw/Macaw.php 中的 __callstatic() 接管。</p>
-<p>3.这个函数接受两个参数，<code>$method</code> 和 <code>$params</code>，前者是具体的 function 名称，在这里就是 get，后者是这次调用传递的参数，即 Macaw::get(‘fuck’,function(){…}) 中的两个参数。第一个参数是我们想要监听的 URL 值，第二个参数是一个 PHP 闭包，作为回调，代表 URL 匹配成功后我们想要做的事情。</p>
-<p>4.__callstatic() 做的事情也很简单，分别将目标URL（即 /fuck）、HTTP方法（即 GET）和回调代码压入 <code>$routes</code>、<code>$methods</code> 和 <code>$callbacks</code> 三个 Macaw 类的静态成员变量（数组）中。</p>
-<p>5.路由文件最后一行的 Macaw::dispatch(); 方法才是真正处理当前 URL 的地方。能直接匹配到的会直接调用回调，不能直接匹配到的将利用正则进行匹配。</p>
+<p><code>Macaw</code> 只有一个文件，去除空行总共也就一百行多一点，通过代码我们能直接看明白它是怎么工作的。下面我简略分析一下：</p>
+<p>1.<code>Composer</code> 的自动加载在每次 <code>URL</code> 驱动 <code>public/index.php</code> 之后会在内存中维护一个全量命名空间类名到文件名的数组，这样当我们在代码中使用某个类的时候，将自动载入该类所在的文件。</p>
+<p>2.我们在路由文件中载入了 Macaw 类：<code>use NoahBuscher\Macaw\Macaw;</code>，接着调用了两次静态方法 <code>::get()</code>，这个方法是不存在的，将由<code>vendor/codingbean/macaw/Macaw.php</code> 中的 <code>__callstatic()</code> 接管。</p>
+<p>3.这个函数接受两个参数，<code>$method</code> 和 <code>$params</code>，前者是具体的 <code>function</code> 名称，在这里就是 <code>get</code>，后者是这次调用传递的参数，即 <code>Macaw::get(&#39;hello&#39;,function(){...})</code> 中的两个参数。第一个参数是我们想要监听的 <code>URL</code> 值，第二个参数是一个 <code>PHP</code> 闭包，作为回调，代表 <code>URL</code> 匹配成功后我们想要做的事情。</p>
+<p>4.路由文件最后一行的 <code>Macaw::dispatch()</code>; 方法才是真正处理当前 <code>URL</code> 的地方。能直接匹配到的会直接调用回调，不能直接匹配到的将利用正则进行匹配。</p>
 
       
 
