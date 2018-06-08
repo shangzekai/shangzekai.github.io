@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Python">
 <meta property="og:description" content="前言 上一篇中我们已经建立了一个空的 Composer 项目，本篇将讲述如何构建路由。推荐 https://github.com/NoahBuscher/Macaw，对应的 Composer 包为 noahbuscher/macaw">
 <meta property="og:image" content="https://i.loli.net/2017/10/26/59f153cc9ef36.png">
-<meta property="og:updated_time" content="2018-06-06T02:33:55.000Z">
+<meta property="og:updated_time" content="2018-06-08T08:54:04.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用composer构建一个简单的php框架之搭建路由（二）">
 <meta name="twitter:description" content="前言 上一篇中我们已经建立了一个空的 Composer 项目，本篇将讲述如何构建路由。推荐 https://github.com/NoahBuscher/Macaw，对应的 Composer 包为 noahbuscher/macaw">
@@ -204,11 +204,6 @@ onmouseup="document.selection.empty()">-->
 <p><strong>配置成功之后，返回如下：</strong></p>
 <p><img src="https://i.loli.net/2017/10/26/59f153cc9ef36.png" alt="成功.png"></p>
 <p>如果页面乱码，请调整编码为 UTF-8。如果你成功看到以上页面，那么恭喜你，路由配置成功！</p>
-<p><code>Macaw</code> 只有一个文件，去除空行总共也就一百行多一点，通过代码我们能直接看明白它是怎么工作的。下面我简略分析一下：</p>
-<p>1.<code>Composer</code> 的自动加载在每次 <code>URL</code> 驱动 <code>public/index.php</code> 之后会在内存中维护一个全量命名空间类名到文件名的数组，这样当我们在代码中使用某个类的时候，将自动载入该类所在的文件。</p>
-<p>2.我们在路由文件中载入了 Macaw 类：<code>use NoahBuscher\Macaw\Macaw;</code>，接着调用了两次静态方法 <code>::get()</code>，这个方法是不存在的，将由<code>vendor/codingbean/macaw/Macaw.php</code> 中的 <code>__callstatic()</code> 接管。</p>
-<p>3.这个函数接受两个参数，<code>$method</code> 和 <code>$params</code>，前者是具体的 <code>function</code> 名称，在这里就是 <code>get</code>，后者是这次调用传递的参数，即 <code>Macaw::get(&#39;hello&#39;,function(){...})</code> 中的两个参数。第一个参数是我们想要监听的 <code>URL</code> 值，第二个参数是一个 <code>PHP</code> 闭包，作为回调，代表 <code>URL</code> 匹配成功后我们想要做的事情。</p>
-<p>4.路由文件最后一行的 <code>Macaw::dispatch()</code>; 方法才是真正处理当前 <code>URL</code> 的地方。能直接匹配到的会直接调用回调，不能直接匹配到的将利用正则进行匹配。</p>
 
       
 
