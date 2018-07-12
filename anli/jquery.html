@@ -6,19 +6,18 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Yaf之配置和类加载方式 | Python</title>
+  <title>JQuery案例 | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="配置说明 我们必须在Yaf_Application初始化的时候给出配置文件中的配置，其中Yaf的必不可少的配置项只有一个，那就是application.directory，它表示当前应用程序的绝对路径。 其实这个配置项也可以没有，至少从框架层面上做到了”零配置”，但是鸟哥认为，如果一个配置项都没有，就显得太寒酸了，于是就加了这么一个配置项。">
-<meta name="keywords" content="Yaf">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Yaf之配置和类加载方式">
-<meta property="og:url" content="http://yoursite.com/2018/03/02/yaf配置说明/index.html">
+  <meta name="description" content="图片轮播 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101">
+<meta property="og:type" content="website">
+<meta property="og:title" content="JQuery案例">
+<meta property="og:url" content="http://yoursite.com/anli/jquery.html">
 <meta property="og:site_name" content="Python">
-<meta property="og:description" content="配置说明 我们必须在Yaf_Application初始化的时候给出配置文件中的配置，其中Yaf的必不可少的配置项只有一个，那就是application.directory，它表示当前应用程序的绝对路径。 其实这个配置项也可以没有，至少从框架层面上做到了”零配置”，但是鸟哥认为，如果一个配置项都没有，就显得太寒酸了，于是就加了这么一个配置项。">
-<meta property="og:updated_time" content="2018-03-08T08:47:34.000Z">
+<meta property="og:description" content="图片轮播 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101">
+<meta property="og:updated_time" content="2018-07-12T02:19:04.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Yaf之配置和类加载方式">
-<meta name="twitter:description" content="配置说明 我们必须在Yaf_Application初始化的时候给出配置文件中的配置，其中Yaf的必不可少的配置项只有一个，那就是application.directory，它表示当前应用程序的绝对路径。 其实这个配置项也可以没有，至少从框架层面上做到了”零配置”，但是鸟哥认为，如果一个配置项都没有，就显得太寒酸了，于是就加了这么一个配置项。">
+<meta name="twitter:title" content="JQuery案例">
+<meta name="twitter:description" content="图片轮播 123456789101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899100101">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
@@ -152,20 +151,20 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-yaf配置说明" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="page-undefined" class="article article-type-page " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Yaf之配置和类加载方式
+      JQuery案例
     </h1>
   
 
         
-        <a href="/2018/03/02/yaf配置说明/" class="archive-article-date">
-  	<time datetime="2018-03-02T03:18:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-02</time>
+        <a href="/anli/jquery.html" class="archive-article-date">
+  	<time datetime="2017-05-07T01:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
 </a>
         
       </header>
@@ -174,201 +173,19 @@ onmouseup="document.selection.empty()">-->
       
 	
         <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#配置说明"><span class="toc-text">配置说明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#全局配置"><span class="toc-text">全局配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#本地可选配置"><span class="toc-text">本地可选配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#application配置"><span class="toc-text">application配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#类库加载方式"><span class="toc-text">类库加载方式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#自动加载"><span class="toc-text">自动加载</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#全局类和本地类"><span class="toc-text">全局类和本地类</span></a></li></ol></li></ol>
+          
           <hr/>
         </div>
         
-        <h4 id="配置说明"><a href="#配置说明" class="headerlink" title="配置说明"></a><div id="title">配置说明</div></h4><blockquote>
-<p>我们必须在Yaf_Application初始化的时候给出配置文件中的配置，其中Yaf的必不可少的配置项只有一个，那就是application.directory，它表示当前应用程序的绝对路径。</p>
-<p>其实这个配置项也可以没有，至少从框架层面上做到了”零配置”，但是鸟哥认为，如果一个配置项都没有，就显得太寒酸了，于是就加了这么一个配置项。</p>
-</blockquote>
-<a id="more"></a>
-<p><strong>一般的，yaf配置又分为全局配置和项目配置</strong></p>
-<h4 id="全局配置"><a href="#全局配置" class="headerlink" title="全局配置"></a><div id="title">全局配置</div></h4><table>
-<thead>
-<tr>
-<th style="text-align:center">选项名称</th>
-<th style="text-align:center">默认值</th>
-<th style="text-align:center">可修改范围</th>
-<th style="text-align:center">更新记录</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">yaf.environ</td>
-<td style="text-align:center">product</td>
-<td style="text-align:center">PHP_INI_ALL</td>
-<td style="text-align:center">环境名称, 当用INI作为Yaf的配置文件时, 这个指明了Yaf将要在INI配置中读取的节的名字</td>
-</tr>
-<tr>
-<td style="text-align:center">yaf.library</td>
-<td style="text-align:center">NULL</td>
-<td style="text-align:center">PHP_INI_ALL</td>
-<td style="text-align:center">全局类库的目录路径</td>
-</tr>
-<tr>
-<td style="text-align:center">yaf.cache_config</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">PHP_INI_SYSTEM</td>
-<td style="text-align:center">是否缓存配置文件(只针对INI配置文件生效), 打开此选项可在复杂配置的情况下提高性能</td>
-</tr>
-<tr>
-<td style="text-align:center">yaf.name_suffix</td>
-<td style="text-align:center">1</td>
-<td style="text-align:center">PHP_INI_ALL</td>
-<td style="text-align:center">在处理Controller, Action, Plugin, Model的时候, 类名中关键信息是否是后缀式, 比如UserModel, 而在前缀模式下则是ModelUser</td>
-</tr>
-<tr>
-<td style="text-align:center">yaf.name_separator</td>
-<td style="text-align:center">“”</td>
-<td style="text-align:center">PHP_INI_ALL</td>
-<td style="text-align:center">在处理Controller, Action, Plugin, Model的时候, 前缀和名字之间的分隔符, 默认为空, 也就是UserPlugin, 加入设置为”_”, 则判断的依据就会变成:”User_Plugin”, 这个主要是为了兼容ST已有的命名规范</td>
-</tr>
-<tr>
-<td style="text-align:center">yaf.forward_limit</td>
-<td style="text-align:center">5</td>
-<td style="text-align:center">PHP_INI_ALL</td>
-<td style="text-align:center">forward最大嵌套深度</td>
-</tr>
-<tr>
-<td style="text-align:center">yaf.use_namespace</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">PHP_INI_ALL</td>
-<td style="text-align:center">开启的情况下, Yaf将会使用命名空间方式注册自己的类, 比如Yaf_Application将会变成Yaf\Application</td>
-</tr>
-<tr>
-<td style="text-align:center">yaf.use_spl_autoload</td>
-<td style="text-align:center">0</td>
-<td style="text-align:center">PHP_INI_ALL</td>
-<td style="text-align:center">开启的情况下, Yaf在加载不成功的情况下, 会继续让PHP的自动加载函数加载, 从性能考虑, 除非特殊情况, 否则保持这个选项关闭</td>
-</tr>
-</tbody>
-</table>
-<p><strong>注意：</strong></p>
-<p><strong>在开启yaf.cache_config的情况下, Yaf会使用INI文件路径作为Key, 这就有一个陷阱, 就是如果在一台服务器上同时运行俩个应用, 那么它们必须不能使用同一个路径名下的INI配置文件, 否则就会出现Application Path混乱的问题. 所以, 尽量不要使用相对路径.</strong></p>
-<h4 id="本地可选配置"><a href="#本地可选配置" class="headerlink" title="本地可选配置"></a><div id="title">本地可选配置</div></h4><table>
-<thead>
-<tr>
-<th style="text-align:center">选项名称</th>
-<th style="text-align:center">值类型</th>
-<th style="text-align:center">默认值</th>
-<th style="text-align:center">说明</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">application.ext</td>
-<td style="text-align:center">String</td>
-<td style="text-align:center">php</td>
-<td style="text-align:center">PHP脚本的扩展名</td>
-</tr>
-<tr>
-<td style="text-align:center">application.bootstrap</td>
-<td style="text-align:center">String</td>
-<td style="text-align:center">Bootstrapplication.php</td>
-<td style="text-align:center">Bootstrap路径(绝对路径)</td>
-</tr>
-<tr>
-<td style="text-align:center">application.library</td>
-<td style="text-align:center">String</td>
-<td style="text-align:center">application.directory + “/library”</td>
-<td style="text-align:center">本地(自身)类库的绝对目录地址</td>
-</tr>
-<tr>
-<td style="text-align:center">application.baseUri</td>
-<td style="text-align:center">String</td>
-<td style="text-align:center">null</td>
-<td style="text-align:center">在路由中, 需要忽略的路径前缀, 一般不需要设置, Yaf会自动判断.</td>
-</tr>
-<tr>
-<td style="text-align:center">application.dispatcher.defaultModule</td>
-<td style="text-align:center">String</td>
-<td style="text-align:center">index</td>
-<td style="text-align:center">默认的模块</td>
-</tr>
-<tr>
-<td style="text-align:center">application.dispatcher.throwException</td>
-<td style="text-align:center">Bool</td>
-<td style="text-align:center">True</td>
-<td style="text-align:center">在出错的时候, 是否抛出异常</td>
-</tr>
-<tr>
-<td style="text-align:center">application.dispatcher.catchException</td>
-<td style="text-align:center">Bool</td>
-<td style="text-align:center">False</td>
-<td style="text-align:center">是否使用默认的异常捕获Controller, 如果开启, 在有未捕获的异常的时候, 控制权会交给ErrorController的errorAction方法, 可以通过$request-&gt;getException()获得此异常对象</td>
-</tr>
-<tr>
-<td style="text-align:center"></td>
-</tr>
-<tr>
-<td style="text-align:center">application.dispatcher.defaultController</td>
-<td style="text-align:center">String</td>
-<td style="text-align:center">index</td>
-<td style="text-align:center">默认的控制器</td>
-</tr>
-<tr>
-<td style="text-align:center">application.dispatcher.defaultAction</td>
-<td style="text-align:center">String</td>
-<td style="text-align:center">index</td>
-<td style="text-align:center">默认的动作</td>
-</tr>
-<tr>
-<td style="text-align:center">application.view.ext</td>
-<td style="text-align:center">String</td>
-<td style="text-align:center">phtml</td>
-<td style="text-align:center">视图模板扩展名</td>
-</tr>
-<tr>
-<td style="text-align:center">application.modules</td>
-<td style="text-align:center">String</td>
-<td style="text-align:center">Index</td>
-<td style="text-align:center">声明存在的模块名, 请注意, 如果你要定义这个值, 一定要定义Index Module</td>
-</tr>
-<tr>
-<td style="text-align:center">application.system.*</td>
-<td style="text-align:center">String</td>
-<td style="text-align:center">*</td>
-<td style="text-align:center">通过这个属性, 可以修改yaf的runtime configure, 比如application.system.lowcase_path, 但是请注意只有PHP_INI_ALL的配置项才可以在这里被修改, 此选项从2.2.0开始引入</td>
-</tr>
-</tbody>
-</table>
-<h4 id="application配置"><a href="#application配置" class="headerlink" title="application配置"></a><div id="title">application配置</div></h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">[common]</div><div class="line">application.directory = APPLICATION_PATH  &quot;/application&quot;</div><div class="line">application.dispatcher.catchException = TRUE</div><div class="line">application.test = &apos;123&apos;</div><div class="line"></div><div class="line">[redis]</div><div class="line">cache.redis.host = &apos;&apos;</div><div class="line">cache.redis.port = &apos;&apos;</div><div class="line">cache.redis.user = &apos;&apos;</div><div class="line">cache.redis.password = &apos;&apos;</div><div class="line"></div><div class="line">[product : common]</div><div class="line">[develop : common : redis]</div></pre></td></tr></table></figure>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="comment"># 获取配置</span></div><div class="line">$res = Yaf\Application::app()-&gt;getConfig();</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
-<h4 id="类库加载方式"><a href="#类库加载方式" class="headerlink" title="类库加载方式"></a><div id="title">类库加载方式</div></h4><h5 id="自动加载"><a href="#自动加载" class="headerlink" title="自动加载"></a>自动加载</h5><blockquote>
-<p>Yaf在启动的时候，出于性能的考虑, 对于框架相关的MVC类, Yaf会自动加载一次</p>
-</blockquote>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">类型</th>
-<th style="text-align:center">后缀</th>
-<th style="text-align:center">映射路径</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">控制器</td>
-<td style="text-align:center">Controller</td>
-<td style="text-align:center">默认模块下为{项目路径}/controllers/, 否则为{项目路径}/modules/{模块名}/controllers/</td>
-</tr>
-<tr>
-<td style="text-align:center">数据模型</td>
-<td style="text-align:center">Model</td>
-<td style="text-align:center">{项目路径}/models/</td>
-</tr>
-<tr>
-<td style="text-align:center">插件</td>
-<td style="text-align:center">Plugin</td>
-<td style="text-align:center">{项目路径}/plugins/</td>
-</tr>
-</tbody>
-</table>
-<p><strong>而对于非框架MVC相关的类, Yaf支持全局类和自身类的两种加载方式, 并且Yaf支持大小写敏感和不敏感两种方式来处理文件路径.</strong></p>
-<h5 id="全局类和本地类"><a href="#全局类和本地类" class="headerlink" title="全局类和本地类"></a>全局类和本地类</h5><p>全局类是指, 所有产品之间共享的类, 这些类库的路径是通过application.library在php.ini配置</p>
-<p>本地类是指, 产品自身的类库, 这些类库的路径是通过在产品的配置文件中, 通过application.library配置的.</p>
-<p><strong>手动导入类</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">&lt;?php</div><div class="line"></div><div class="line">//绝对路径</div><div class="line">Yaf\Loader::import("/usr/local/foo.php);</div><div class="line"></div><div class="line">//相对路径, 会在APPLICATION_PATH."/library"下加载</div><div class="line">Yaf\loader::import("plugins/User.php");</div><div class="line">?&gt;</div></pre></td></tr></table></figure>
+        <p><strong>图片轮播</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang="en"&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset="UTF-8"&gt;</div><div class="line">    &lt;title&gt;Title&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;style&gt;</div><div class="line">    *&#123;</div><div class="line">        margin:0;</div><div class="line">        padding:0;</div><div class="line">    &#125;</div><div class="line">    .ig&#123;</div><div class="line">        position: absolute;</div><div class="line">    &#125;</div><div class="line">    img&#123;</div><div class="line">        width:500px;</div><div class="line">        height:400px;</div><div class="line">    &#125;</div><div class="line">    .btn&#123;</div><div class="line">        position: absolute;</div><div class="line">        height:90px;</div><div class="line">        width:60px;</div><div class="line">        background-color: black;</div><div class="line">        opacity: 0.5;</div><div class="line">        color: #ffffff;</div><div class="line">        text-align: center;</div><div class="line">        line-height: 90px;</div><div class="line">        font-size: 40px;</div><div class="line">        top:150px;</div><div class="line">        cursor: pointer;</div><div class="line">        /*display: none;*/</div><div class="line">    &#125;</div><div class="line">    .btn2&#123;</div><div class="line">        left:440px;</div><div class="line">    &#125;</div><div class="line">    #tbs&#123;</div><div class="line">        position: absolute;</div><div class="line">        top:350px;</div><div class="line">        left:150px;</div><div class="line">    &#125;</div><div class="line">    .tb&#123;</div><div class="line">        width:30px;</div><div class="line">        height:30px;</div><div class="line">        background-color: #2459a2;</div><div class="line">        color: white;</div><div class="line">        text-align: center;</div><div class="line">        line-height: 30px;</div><div class="line">        float: left;</div><div class="line">        margin-right:10px;</div><div class="line">        border-radius:50%;</div><div class="line">        cursor: pointer;</div><div class="line">    &#125;</div><div class="line">    .bg&#123;</div><div class="line">        background-color: red;</div><div class="line">    &#125;</div><div class="line">&lt;/style&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div id="igs"&gt;</div><div class="line">        &lt;div class="ig"&gt;&lt;img src="1.jpg" alt=""&gt;&lt;/div&gt;</div><div class="line">        &lt;div class="ig"&gt;&lt;img src="2.jpg" alt=""&gt;&lt;/div&gt;</div><div class="line">        &lt;div class="ig"&gt;&lt;img src="3.jpg" alt=""&gt;&lt;/div&gt;</div><div class="line">        &lt;div class="ig"&gt;&lt;img src="4.jpg" alt=""&gt;&lt;/div&gt;</div><div class="line">        &lt;div class="ig"&gt;&lt;img src="5.jpg" alt=""&gt;&lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;div class="btn btn1"&gt;&lt;&lt;/div&gt;&lt;div class="btn btn2"&gt;&gt;&lt;/div&gt;</div><div class="line">    &lt;div id="tbs"&gt;</div><div class="line">        &lt;div class="tb bg"&gt;1&lt;/div&gt;</div><div class="line">        &lt;div class="tb"&gt;2&lt;/div&gt;</div><div class="line">        &lt;div class="tb"&gt;3&lt;/div&gt;</div><div class="line">        &lt;div class="tb"&gt;4&lt;/div&gt;</div><div class="line">        &lt;div class="tb"&gt;5&lt;/div&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;script src="jquery.js"&gt;&lt;/script&gt;</div><div class="line"></div><div class="line">&lt;script&gt;</div><div class="line">    var mytimer;</div><div class="line">    var i = 0;</div><div class="line"></div><div class="line">    $(function () &#123;</div><div class="line">//        $("#igs").hover(</div><div class="line">//            function()&#123;</div><div class="line">//                $(".btn").show();</div><div class="line">//            &#125;,</div><div class="line">//            function()&#123;</div><div class="line">//                $(".btn").hide();</div><div class="line">//            &#125;</div><div class="line">//        );</div><div class="line">        $(".ig").eq(0).show().siblings().hide();</div><div class="line"></div><div class="line">        showTime();</div><div class="line"></div><div class="line">        $(".tb").hover(function()&#123;</div><div class="line">            clearInterval(mytimer);</div><div class="line">            i = $(this).index();</div><div class="line">            show();</div><div class="line">        &#125;,function()&#123;</div><div class="line">            showTime();</div><div class="line">        &#125;);</div><div class="line">        </div><div class="line">        $(".btn1").click(function () &#123;</div><div class="line">            clearInterval(mytimer);</div><div class="line"></div><div class="line">            if(i == 0)&#123;</div><div class="line">                i = 4;</div><div class="line">            &#125;else&#123;</div><div class="line">                i = i - 1;</div><div class="line">            &#125;</div><div class="line"></div><div class="line">            show();</div><div class="line">            showTime();</div><div class="line">        &#125;);</div><div class="line">        $(".btn2").click(function()&#123;</div><div class="line">            clearInterval(mytimer);</div><div class="line"></div><div class="line">            if(i == 4)&#123;</div><div class="line">                i = 0;</div><div class="line">            &#125;else&#123;</div><div class="line">                i = i + 1;</div><div class="line">            &#125;</div><div class="line">            show();</div><div class="line">            showTime();</div><div class="line">        &#125;);</div><div class="line">    &#125;);</div><div class="line"></div><div class="line">    function show()&#123;</div><div class="line">        $(".ig").eq(i).fadeIn(300).siblings().fadeOut(300);</div><div class="line">        $(".tb").eq(i).addClass("bg").siblings().removeClass("bg");</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    function showTime()&#123;</div><div class="line">        mytimer = setInterval(function () &#123;</div><div class="line">            i = i + 1;</div><div class="line">            if(i == 5)&#123;</div><div class="line">                i = 0;</div><div class="line">            &#125;</div><div class="line">            // 过渡不生硬的话  使用fadeIn 和 fadeOut的效果</div><div class="line">            show();</div><div class="line">        &#125;,2000);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&lt;/script&gt;</div><div class="line"></div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p><strong>案例：五星好评</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang="en"&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset="UTF-8"&gt;</div><div class="line">    &lt;title&gt;Title&lt;/title&gt;</div><div class="line">    &lt;link rel="stylesheet" href="http://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.css"&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;style&gt;</div><div class="line">    .box&#123;</div><div class="line">        width: 110px;</div><div class="line">        height:40px;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&lt;/style&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div class="box"&gt;</div><div class="line">        &lt;span class="fa fa-star-o" aria-hidden="true"&gt;&lt;/span&gt;</div><div class="line">        &lt;span class="fa fa-star-o" aria-hidden="true"&gt;&lt;/span&gt;</div><div class="line">        &lt;span class="fa fa-star-o" aria-hidden="true"&gt;&lt;/span&gt;</div><div class="line">        &lt;span class="fa fa-star-o" aria-hidden="true"&gt;&lt;/span&gt;</div><div class="line">        &lt;span class="fa fa-star-o" aria-hidden="true"&gt;&lt;/span&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;script src="jquery.js"&gt;&lt;/script&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    var i;</div><div class="line">    $(".fa").hover(</div><div class="line">        function()&#123;</div><div class="line">            i = $(this).index();</div><div class="line"></div><div class="line">            $(".fa:eq("+i+")").removeClass("fa-star-o").addClass("fa-star").css("color","red");</div><div class="line">            $(".fa:lt("+i+")").removeClass("fa-star-o").addClass("fa-star").css("color","red");</div><div class="line"></div><div class="line">            $(".fa:gt("+i+")").removeClass("fa-star").addClass("fa-star-o").css("color","red");</div><div class="line"></div><div class="line">        &#125;,</div><div class="line">        function () &#123;</div><div class="line">            if(i == 0)&#123;</div><div class="line">                $(".fa").removeClass("fa-star").addClass("fa-star-o").css("color","red");</div><div class="line">            &#125;</div><div class="line"></div><div class="line">        &#125;</div><div class="line">    );</div><div class="line"></div><div class="line">//    $(".fa").mouseout()</div><div class="line"></div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>案例：表格的全选反选和取消</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang="en"&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset="UTF-8"&gt;</div><div class="line">    &lt;title&gt;Title&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;input type="button" value="全选" onclick="selectAll()"&gt;</div><div class="line">&lt;input type="button" value="取消" onclick="cancelAll()"&gt;</div><div class="line">&lt;input type="button" value="反选" onclick="reverseAll()"&gt;</div><div class="line"></div><div class="line">&lt;table border="1" width="400px"&gt;</div><div class="line">    &lt;tr&gt;</div><div class="line">        &lt;td&gt;1&lt;/td&gt;</div><div class="line">        &lt;td&gt;2&lt;/td&gt;</div><div class="line">        &lt;td&gt;3&lt;/td&gt;</div><div class="line">        &lt;td&gt;&lt;input type="checkbox"&gt;&lt;/td&gt;</div><div class="line">    &lt;/tr&gt;</div><div class="line">    &lt;tr&gt;</div><div class="line">        &lt;td&gt;1&lt;/td&gt;</div><div class="line">        &lt;td&gt;2&lt;/td&gt;</div><div class="line">        &lt;td&gt;3&lt;/td&gt;</div><div class="line">        &lt;td&gt;&lt;input type="checkbox"&gt;&lt;/td&gt;</div><div class="line">    &lt;/tr&gt;</div><div class="line">    &lt;tr&gt;</div><div class="line">        &lt;td&gt;1&lt;/td&gt;</div><div class="line">        &lt;td&gt;2&lt;/td&gt;</div><div class="line">        &lt;td&gt;3&lt;/td&gt;</div><div class="line">        &lt;td&gt;&lt;input type="checkbox"&gt;&lt;/td&gt;</div><div class="line">    &lt;/tr&gt;</div><div class="line">&lt;/table&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;script src="jquery.js"&gt;&lt;/script&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    function selectAll()&#123;</div><div class="line">        $("input[type='checkbox']").prop("checked",true);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    function cancelAll()&#123;</div><div class="line">        $("input[type='checkbox']").prop("checked",true);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    function reverseAll()&#123;</div><div class="line">        $("input[type='checkbox']").each(function()&#123;</div><div class="line">//            console.log(1);</div><div class="line">//            console.log((this)); // 当前循环的每一个元素</div><div class="line">//</div><div class="line">//            if(this.checked)&#123;</div><div class="line">//                this.checked = false;</div><div class="line">//            &#125;else&#123;</div><div class="line">//                this.checked = true;</div><div class="line">//            &#125;</div><div class="line">            s = $(this).prop("checked");</div><div class="line">            console.log(s);</div><div class="line">            if(s)&#123;</div><div class="line">                $(this).prop("checked",false);</div><div class="line">            &#125;else &#123;</div><div class="line">                $(this).prop("checked",true);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">//            var status = $(this).prop("checked") ? false : true;</div><div class="line"></div><div class="line">//            $(this).prop("checked", status);</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>案例：左侧菜单显示</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang="en"&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset="UTF-8"&gt;</div><div class="line">    &lt;title&gt;Title&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;input type="button" value="全选" onclick="selectAll()"&gt;</div><div class="line">&lt;input type="button" value="取消" onclick="cancelAll()"&gt;</div><div class="line">&lt;input type="button" value="反选" onclick="reverseAll()"&gt;</div><div class="line"></div><div class="line">&lt;table border="1" width="400px"&gt;</div><div class="line">    &lt;tr&gt;</div><div class="line">        &lt;td&gt;1&lt;/td&gt;</div><div class="line">        &lt;td&gt;2&lt;/td&gt;</div><div class="line">        &lt;td&gt;3&lt;/td&gt;</div><div class="line">        &lt;td&gt;&lt;input type="checkbox"&gt;&lt;/td&gt;</div><div class="line">    &lt;/tr&gt;</div><div class="line">    &lt;tr&gt;</div><div class="line">        &lt;td&gt;1&lt;/td&gt;</div><div class="line">        &lt;td&gt;2&lt;/td&gt;</div><div class="line">        &lt;td&gt;3&lt;/td&gt;</div><div class="line">        &lt;td&gt;&lt;input type="checkbox"&gt;&lt;/td&gt;</div><div class="line">    &lt;/tr&gt;</div><div class="line">    &lt;tr&gt;</div><div class="line">        &lt;td&gt;1&lt;/td&gt;</div><div class="line">        &lt;td&gt;2&lt;/td&gt;</div><div class="line">        &lt;td&gt;3&lt;/td&gt;</div><div class="line">        &lt;td&gt;&lt;input type="checkbox"&gt;&lt;/td&gt;</div><div class="line">    &lt;/tr&gt;</div><div class="line">&lt;/table&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;script src="jquery.js"&gt;&lt;/script&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    function selectAll()&#123;</div><div class="line">        $("input[type='checkbox']").prop("checked",true);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    function cancelAll()&#123;</div><div class="line">        $("input[type='checkbox']").prop("checked",true);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    function reverseAll()&#123;</div><div class="line">        $("input[type='checkbox']").each(function()&#123;</div><div class="line">//            console.log(1);</div><div class="line">//            console.log((this)); // 当前循环的每一个元素</div><div class="line">//</div><div class="line">//            if(this.checked)&#123;</div><div class="line">//                this.checked = false;</div><div class="line">//            &#125;else&#123;</div><div class="line">//                this.checked = true;</div><div class="line">//            &#125;</div><div class="line">            s = $(this).prop("checked");</div><div class="line">            console.log(s);</div><div class="line">            if(s)&#123;</div><div class="line">                $(this).prop("checked",false);</div><div class="line">            &#125;else &#123;</div><div class="line">                $(this).prop("checked",true);</div><div class="line">            &#125;</div><div class="line"></div><div class="line">//            var status = $(this).prop("checked") ? false : true;</div><div class="line"></div><div class="line">//            $(this).prop("checked", status);</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>案例：Modal弹出框</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang="en"&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset="UTF-8"&gt;</div><div class="line">    &lt;title&gt;Title&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;style&gt;</div><div class="line">    .hide&#123;</div><div class="line">        display: none;</div><div class="line">    &#125;</div><div class="line">    .show&#123;</div><div class="line">        display: block;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    .shadow&#123;</div><div class="line">        position: fixed;</div><div class="line">        top:0;</div><div class="line">        right:0;</div><div class="line">        left:0;</div><div class="line">        bottom:0;</div><div class="line">        opacity:0.6;</div><div class="line">        background-color: #000;</div><div class="line">        z-index: 10;</div><div class="line">    &#125;</div><div class="line">    .modal&#123;</div><div class="line">        position: fixed;</div><div class="line">        top:10%;</div><div class="line">        left:20%;</div><div class="line">        right:20%;</div><div class="line">        bottom:30%;</div><div class="line">        background-color: wheat;</div><div class="line">        z-index: 11;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&lt;/style&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;input type="button" onclick="addEle();" value="添加"/&gt;</div><div class="line">&lt;table border="1" width="400px" id="info"&gt;</div><div class="line">    &lt;tr&gt;</div><div class="line">        &lt;td target="ip"&gt;192.168.1.1&lt;/td&gt;</div><div class="line">        &lt;td target="port"&gt;80&lt;/td&gt;</div><div class="line">        &lt;td&gt;</div><div class="line">            &lt;input type="button" value="编辑" class="edit"/&gt;</div><div class="line">        &lt;/td&gt;</div><div class="line">        &lt;td&gt;</div><div class="line">            &lt;input type="button" value="删除"/&gt;</div><div class="line">        &lt;/td&gt;</div><div class="line">    &lt;/tr&gt;</div><div class="line">    &lt;tr&gt;</div><div class="line">        &lt;td target="ip"&gt;192.168.1.2&lt;/td&gt;</div><div class="line">        &lt;td target="port"&gt;81&lt;/td&gt;</div><div class="line">        &lt;td&gt;</div><div class="line">            &lt;input type="button" value="编辑" class="edit"/&gt;</div><div class="line">        &lt;/td&gt;</div><div class="line">        &lt;td&gt;</div><div class="line">            &lt;input type="button" value="删除"/&gt;</div><div class="line">        &lt;/td&gt;</div><div class="line">    &lt;/tr&gt;</div><div class="line">    &lt;tr&gt;</div><div class="line">        &lt;td target="ip"&gt;192.168.1.3&lt;/td&gt;</div><div class="line">        &lt;td target="port"&gt;82&lt;/td&gt;</div><div class="line">        &lt;td&gt;</div><div class="line">            &lt;input type="button" value="编辑" class="edit"/&gt;</div><div class="line">        &lt;/td&gt;</div><div class="line">        &lt;td&gt;</div><div class="line">            &lt;input type="button" value="删除"/&gt;</div><div class="line">        &lt;/td&gt;</div><div class="line">    &lt;/tr&gt;</div><div class="line">&lt;/table&gt;</div><div class="line"></div><div class="line">&lt;div class="modal hide"&gt;</div><div class="line">    主机IP：&lt;input type="text" value="" name="ip"/&gt;&lt;p&gt;</div><div class="line">    端口号：&lt;input type="text" value="" name="port"/&gt;&lt;p&gt;</div><div class="line">    &lt;input type="button" value="确认"&gt;</div><div class="line">    &lt;input type="button" value="取消" onclick="cancelModel()"&gt;</div><div class="line">&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;div class="shadow hide"&gt;&lt;/div&gt;</div><div class="line"></div><div class="line">&lt;/body&gt;</div><div class="line">&lt;script src="jquery.js"&gt;&lt;/script&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    function addEle()&#123;</div><div class="line">//        $(".hide").removeClass("hide");</div><div class="line">        $(".hide").css("display","block");</div><div class="line">    &#125;</div><div class="line">    function cancelModel()&#123;</div><div class="line">//        $(".modal, .shadow").addClass("hide");</div><div class="line">        $(".hide").css("display","none");</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    //循环的为class=edit的绑定点击事件  不能直接进行绑定</div><div class="line">    $(".edit").click(function()&#123;</div><div class="line">        $(".hide").css("display","block");</div><div class="line"></div><div class="line">        var tds = $(this).parent("td").siblings("td");</div><div class="line">        console.log(tds);</div><div class="line"></div><div class="line">        tds.each(function()&#123;</div><div class="line">           console.log(this);</div><div class="line"></div><div class="line">           var k = $(this).attr("target");</div><div class="line">           var v = $(this).text();</div><div class="line">           $("input[name=" + k + "]").val(v);</div><div class="line"></div><div class="line">        &#125;);</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">//        var ip = $(tds[0]).text();</div><div class="line">//        var port = $(tds[1]).text();</div><div class="line">////        console.log(ip + "---" + port);</div><div class="line">//</div><div class="line">//        $("input[name='ip']").val(ip);</div><div class="line">//        $("input[name='port']").val(port);</div><div class="line">    &#125;)</div><div class="line"></div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>案例：tab切换</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"></div><div class="line">        <span class="selector-class">.item</span>&#123;</div><div class="line">            <span class="attribute">height</span>:<span class="number">38px</span>;</div><div class="line">            <span class="attribute">line-height</span>: <span class="number">38px</span>;</div><div class="line">            <span class="comment">/*border:1px solid red;*/</span></div><div class="line">            <span class="attribute">background-color</span>: <span class="number">#204982</span>;</div><div class="line">            <span class="attribute">width</span>:<span class="number">300px</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="selector-class">.menu</span>&#123;</div><div class="line">            <span class="attribute">float</span>: left;</div><div class="line">            <span class="attribute">border-right</span>: <span class="number">1px</span> solid green;</div><div class="line">            <span class="attribute">padding</span>:<span class="number">0</span> <span class="number">10px</span>;</div><div class="line">            <span class="attribute">color</span>:white;</div><div class="line">            <span class="attribute">cursor</span>: pointer;</div><div class="line">        &#125;</div><div class="line"></div><div class="line"></div><div class="line">        <span class="selector-class">.hide</span>&#123;</div><div class="line">            <span class="attribute">display</span>: none;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        <span class="selector-class">.active</span>&#123;</div><div class="line">            <span class="attribute">background-color</span>: <span class="number">#2459a2</span>;</div><div class="line">        &#125;</div><div class="line">    </span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">style</span>=<span class="string">"width: 700px;margin: 0 auto;"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"menu active"</span> <span class="attr">a</span>=<span class="string">"1"</span>&gt;</span>菜单一<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"menu"</span> <span class="attr">a</span>=<span class="string">"2"</span>&gt;</span>菜单二<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"menu"</span> <span class="attr">a</span>=<span class="string">"3"</span>&gt;</span>菜单三<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line"></div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"content"</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"info"</span> <span class="attr">b</span>=<span class="string">"1"</span>&gt;</span>内容一<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"info hide"</span> <span class="attr">b</span>=<span class="string">"2"</span>&gt;</span>内容二<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"info hide"</span> <span class="attr">b</span>=<span class="string">"3"</span>&gt;</span>内容三<span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">div</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"jquery.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></div><div class="line">        $(<span class="string">".menu"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            $(<span class="keyword">this</span>).addClass(<span class="string">'active'</span>).siblings().removeClass(<span class="string">'active'</span>);</div><div class="line">            <span class="keyword">var</span> attr = $(<span class="keyword">this</span>).attr(<span class="string">'a'</span>);</div><div class="line">            $(<span class="keyword">this</span>).parent().siblings().children(<span class="string">"[b='"</span> + attr +<span class="string">"']"</span>).removeClass(<span class="string">'hide'</span>).siblings().addClass(<span class="string">'hide'</span>);</div><div class="line">        &#125;);</div><div class="line">    </span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
+<p><strong>案例：添加左右项目</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang="en"&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset="UTF-8"&gt;</div><div class="line">    &lt;title&gt;Title&lt;/title&gt;</div><div class="line">    &lt;style&gt;</div><div class="line">        select&#123;</div><div class="line">            width:147px;</div><div class="line">            height:210px;</div><div class="line">        &#125;</div><div class="line">        div&#123;</div><div class="line">            float: left;</div><div class="line">            padding:0 10px;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">    &lt;/style&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">&lt;div&gt;</div><div class="line">    &lt;select name="" id="fish" multiple&gt;&lt;/select&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div id="btn"&gt;</div><div class="line">    &lt;input type="button" value="---&gt;" onclick="toRight();"/&gt;&lt;p&gt;</div><div class="line">    &lt;input type="button" value="===&gt;" onclick="TotalRight();"/&gt;&lt;p&gt;</div><div class="line">    &lt;input type="button" value="&lt;---" onclick="toLeft();"/&gt;&lt;p&gt;</div><div class="line">    &lt;input type="button" value="&lt;===" onclick="TotalLeft();"/&gt;&lt;p&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;div&gt;</div><div class="line">    &lt;select name="" id="fruit" multiple&gt;</div><div class="line">        &lt;option value=""&gt;火龙果&lt;/option&gt;</div><div class="line">        &lt;option value=""&gt;香蕉&lt;/option&gt;</div><div class="line">        &lt;option value=""&gt;苹果&lt;/option&gt;</div><div class="line">        &lt;option value=""&gt;榴莲&lt;/option&gt;</div><div class="line">        &lt;option value=""&gt;草莓&lt;/option&gt;</div><div class="line">        &lt;option value=""&gt;草鱼&lt;/option&gt;</div><div class="line">        &lt;option value=""&gt;鲶鱼&lt;/option&gt;</div><div class="line">        &lt;option value=""&gt;娃娃鱼&lt;/option&gt;</div><div class="line">    &lt;/select&gt;</div><div class="line">&lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;script src="jquery.js"&gt;&lt;/script&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    function toLeft()&#123;</div><div class="line">        $("#fruit option:selected").appendTo($("#fish"));</div><div class="line">    &#125;</div><div class="line">    function TotalLeft()&#123;</div><div class="line">        $("#fruit option").appendTo($("#fish"));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    function toRight()&#123;</div><div class="line">        $("#fish option:selected").appendTo($("#fruit"));</div><div class="line">    &#125;</div><div class="line">    function TotalRight()&#123;</div><div class="line">        $("#fish option").appendTo($("#fruit"));</div><div class="line">    &#125;</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<p><strong>案例：阻止事件发生</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div></pre></td><td class="code"><pre><div class="line">&lt;html lang=<span class="string">"en"</span>&gt;</div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Title<span class="tag">&lt;/<span class="name">title</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"jquery.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></div><div class="line">    $(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">        <span class="comment">// DOM之前的做法 a标签中加上onclick="return dianji();"</span></div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">dianji</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            alert(<span class="string">'dsadsa'</span>);</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        &#125;</div><div class="line"></div><div class="line"></div><div class="line">        $(<span class="string">"a"</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">            alert(<span class="string">'dsadsa'</span>);</div><div class="line">            <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">        &#125;);</div><div class="line">    &#125;)</div><div class="line"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.baidu.com"</span> &gt;</span>撸一波<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
 
       
 
@@ -408,34 +225,8 @@ onmouseup="document.selection.empty()">-->
     <div class="article-info article-info-index">
       
       
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Yaf</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/YAF/" class="article-tag-list-link color4">YAF</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
 
       
 
@@ -445,25 +236,6 @@ onmouseup="document.selection.empty()">-->
 </article>
 
   
-<nav id="article-nav">
-  
-    <a href="/2018/03/02/生成一个YAF程序/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Yaf之第一个程序HelloWorld
-        
-      </div>
-    </a>
-  
-  
-    <a href="/2018/02/02/Python操作MySQL数据库/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Python操作MySQL数据库</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
 
 
 
@@ -510,7 +282,6 @@ onmouseup="document.selection.empty()">-->
   
 
 
-
           </div>
         </div>
       </div>
@@ -539,7 +310,7 @@ src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">-->
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
+		isPost: false,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
