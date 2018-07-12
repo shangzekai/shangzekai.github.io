@@ -202,7 +202,7 @@ onmouseup="document.selection.empty()">-->
 </ul>
 <h5 id="请求格式"><a href="#请求格式" class="headerlink" title="请求格式"></a><div id="title">请求格式</div></h5><figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">GET</span> <span class="string">/</span> HTTP/1.0</div><div class="line"><span class="attribute">User-Agent</span>: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5)</div><div class="line"><span class="attribute">Accept</span>: */*</div></pre></td></tr></table></figure>
 <p>第一行是请求命令，必须在尾部添加协议版本<code>（HTTP/1.0）</code>。后面就是多行头信息，描述客户端的情况。</p>
-<h5 id="回应格式"><a href="#回应格式" class="headerlink" title="回应格式"></a><div id="title">回应格式</div></h5><figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">HTTP/1.0 <span class="number">200</span> OK </div><div class="line"><span class="attribute">Content-Type</span>: text/plain</div><div class="line"><span class="attribute">Content-Encoding</span>: gzip</div><div class="line"><span class="attribute">Content-Length</span>: 3495</div><div class="line"><span class="attribute">Expires</span>: Thu, 05 Dec 1997 16:00:00 GMT</div><div class="line"><span class="attribute">Last-Modified</span>: Wed, 5 August 1996 15:55:28 GMT</div><div class="line"><span class="attribute">Server</span>: Apache 0.84</div><div class="line"></div><div class="line"><span class="javascript">&lt;html&gt;</div><div class="line">  &lt;body&gt;Hello World&lt;/body&gt;</div><div class="line">&lt;<span class="regexp">/html&gt;</span></span></div></pre></td></tr></table></figure>
+<h5 id="回应格式"><a href="#回应格式" class="headerlink" title="回应格式"></a><div id="title">回应格式</div></h5><figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">HTTP/1.0 <span class="number">200</span> OK </div><div class="line"><span class="attribute">Content-Type</span>: text/plain</div><div class="line"><span class="attribute">Content-Encoding</span>: gzip</div><div class="line"><span class="attribute">Content-Length</span>: 3495</div><div class="line"><span class="attribute">Expires</span>: Thu, 05 Dec 1997 16:00:00 GMT</div><div class="line"><span class="attribute">Last-Modified</span>: Wed, 5 August 1996 15:55:28 GMT</div><div class="line"><span class="attribute">Server</span>: Apache 0.84</div><div class="line"></div><div class="line"><span class="undefined">&lt;html&gt;</div><div class="line">  &lt;body&gt;Hello World&lt;/body&gt;</div><div class="line">&lt;/html&gt;</span></div></pre></td></tr></table></figure>
 <p>回应的格式是<code>头信息 + 一个空行（\r\n） + 数据</code></p>
 <h5 id="Content-Type"><a href="#Content-Type" class="headerlink" title="Content-Type"></a><div id="title">Content-Type</div></h5><p>服务器回应的时候，必须告诉客户端，数据是什么格式，这就是Content-Type字段的作用。</p>
 <p>下面是一些常见的Content-Type字段的值。</p>
@@ -350,8 +350,8 @@ onmouseup="document.selection.empty()">-->
     </a>
   
   
-    <a href="/2017/10/05/session和cookie/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Session 和 cookie</div>
+    <a href="/2017/10/05/PHP的运行模式/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">PHP的运行模式以及底层原理讲解</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -503,6 +503,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">闲谈</a>
               </li>
              
@@ -527,11 +535,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">基础</a>
+                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -543,15 +547,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Flask</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">PHP</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Flask</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -591,15 +591,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">模块</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">编码</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
               </li>
              
               <li class="article-tag-list-item">
