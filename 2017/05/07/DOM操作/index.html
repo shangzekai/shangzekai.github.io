@@ -17,7 +17,7 @@
 <meta property="og:description" content="一、前戏截止到目前为止，我们已经学习了javascript的一些简单的语法，但是使用这些简单的语法，并不能做出一些我们经常看到的一些效果，比如说表格的全选和反选等，因此为了能够操作网页上的元素，我们需要继续学习BOM相关的知识。">
 <meta property="og:image" content="https://i.loli.net/2018/08/01/5b611ee9938ea.jpg">
 <meta property="og:image" content="http://i.imgur.com/sksySIc.png">
-<meta property="og:updated_time" content="2018-08-01T03:06:17.000Z">
+<meta property="og:updated_time" content="2018-08-01T03:18:34.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DOM操作学习目录">
 <meta name="twitter:description" content="一、前戏截止到目前为止，我们已经学习了javascript的一些简单的语法，但是使用这些简单的语法，并不能做出一些我们经常看到的一些效果，比如说表格的全选和反选等，因此为了能够操作网页上的元素，我们需要继续学习BOM相关的知识。">
@@ -211,7 +211,7 @@ onmouseup="document.selection.empty()">-->
 <h4 id="7-screen对象"><a href="#7-screen对象" class="headerlink" title="7.screen对象"></a>7.screen对象</h4><blockquote>
 <p>screen对象中包含了用户显示器屏幕相关信息。通过该对象，可以访问用户显示器屏幕宽、高、色深等信息。</p>
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">screen对象：用于获取某些关于用户屏幕的信息，也可用<span class="built_in">window</span>.screen引用它  </div><div class="line"></div><div class="line">screen.width/height  <span class="comment">//屏幕的宽度与高度，以像素计  </span></div><div class="line"></div><div class="line">screen.availWidth/availHeight  <span class="comment">//窗口可以使用的屏幕的宽度和高度，以像素计 </span></div><div class="line"></div><div class="line"><span class="built_in">window</span>.moveTo(<span class="number">0</span>, <span class="number">0</span>);  </div><div class="line"></div><div class="line"><span class="built_in">window</span>.resizeTo(screen.availWidth, screen.availHeight);  <span class="comment">//填充用户的屏幕</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">screen对象：用于获取某些关于用户屏幕的信息，也可用<span class="built_in">window</span>.screen引用它  </div><div class="line"></div><div class="line">screen.width/height  <span class="comment">//屏幕的宽度与高度，以像素计</span></div></pre></td></tr></table></figure>
 <p><strong>上面的三个对象中，我们主要学习的是DOM对象，通过DOM编程，可以轻易的实现我们常见的一些效果</strong></p>
 <hr>
 <h3 id="二、DOM对象–查找元素"><a href="#二、DOM对象–查找元素" class="headerlink" title="二、DOM对象–查找元素"></a><div id="title">二、DOM对象–查找元素</div></h3><h4 id="1-直接查找"><a href="#1-直接查找" class="headerlink" title="1.直接查找"></a>1.直接查找</h4><blockquote>
