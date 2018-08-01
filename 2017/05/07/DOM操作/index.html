@@ -17,7 +17,7 @@
 <meta property="og:description" content="一、前戏截止到目前为止，我们已经学习了javascript的一些简单的语法，但是使用这些简单的语法，并不能做出一些我们经常看到的一些效果，比如说表格的全选和反选等，因此为了能够操作网页上的元素，我们需要继续学习BOM相关的知识。">
 <meta property="og:image" content="https://i.loli.net/2018/08/01/5b611ee9938ea.jpg">
 <meta property="og:image" content="http://i.imgur.com/sksySIc.png">
-<meta property="og:updated_time" content="2018-08-01T02:58:53.000Z">
+<meta property="og:updated_time" content="2018-08-01T03:06:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DOM操作学习目录">
 <meta name="twitter:description" content="一、前戏截止到目前为止，我们已经学习了javascript的一些简单的语法，但是使用这些简单的语法，并不能做出一些我们经常看到的一些效果，比如说表格的全选和反选等，因此为了能够操作网页上的元素，我们需要继续学习BOM相关的知识。">
@@ -177,7 +177,7 @@ onmouseup="document.selection.empty()">-->
       
 	
         <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、前戏"><span class="toc-text">一、前戏</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、DOM对象–查找元素"><span class="toc-text">二、DOM对象–查找元素</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-直接查找"><span class="toc-text">1.直接查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-间接查找"><span class="toc-text">2.间接查找</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、DOM对象–属性操作"><span class="toc-text">三、DOM对象–属性操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-操作内容"><span class="toc-text">1.操作内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-操作属性"><span class="toc-text">2.操作属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-样式操作"><span class="toc-text">3.样式操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-操作标签"><span class="toc-text">4.操作标签</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、事件"><span class="toc-text">四、事件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-常见的一些事件"><span class="toc-text">1.常见的一些事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-绑定事件的三种方式"><span class="toc-text">2.绑定事件的三种方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、window对象"><span class="toc-text">五、window对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-window对象常见的方法"><span class="toc-text">1.window对象常见的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-window对象常见的属性"><span class="toc-text">2.window对象常见的属性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、常见的案例"><span class="toc-text">六、常见的案例</span></a></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#一、前戏"><span class="toc-text">一、前戏</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-window对象"><span class="toc-text">1.window对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-DOM（document）相关对象"><span class="toc-text">2.DOM（document）相关对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-frames对象"><span class="toc-text">3.frames对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-navigator对象"><span class="toc-text">4.navigator对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-history对象"><span class="toc-text">5.history对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-location对象"><span class="toc-text">6.location对象</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-screen对象"><span class="toc-text">7.screen对象</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#二、DOM对象–查找元素"><span class="toc-text">二、DOM对象–查找元素</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-直接查找"><span class="toc-text">1.直接查找</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-间接查找"><span class="toc-text">2.间接查找</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#三、DOM对象–属性操作"><span class="toc-text">三、DOM对象–属性操作</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-操作内容"><span class="toc-text">1.操作内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-操作属性"><span class="toc-text">2.操作属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-样式操作"><span class="toc-text">3.样式操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-操作标签"><span class="toc-text">4.操作标签</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#四、事件"><span class="toc-text">四、事件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-常见的一些事件"><span class="toc-text">1.常见的一些事件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-绑定事件的三种方式"><span class="toc-text">2.绑定事件的三种方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#五、window对象"><span class="toc-text">五、window对象</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-window对象常见的方法"><span class="toc-text">1.window对象常见的方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-window对象常见的属性"><span class="toc-text">2.window对象常见的属性</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#六、常见的案例"><span class="toc-text">六、常见的案例</span></a></li></ol>
           <hr/>
         </div>
         
@@ -185,51 +185,30 @@ onmouseup="document.selection.empty()">-->
 <p><strong>BOM是指浏览器对象模型，它是对一系列在浏览器环境中使用对象的统称，这些对象提供了访问浏览器的功能。在BOM对象中，window对象是最顶层对象，在浏览器环境中它是一个Global全局对象，其它对象（如：DOM对象）对是这个对象的属性（子对象）</strong></p>
 <p><img src="https://i.loli.net/2018/08/01/5b611ee9938ea.jpg" alt="bom.jpg"></p>
 <p><strong>BOM中的对象</strong></p>
-<ol>
-<li>window对象<blockquote>
+<h4 id="1-window对象"><a href="#1-window对象" class="headerlink" title="1.window对象"></a>1.window对象</h4><blockquote>
 <p>window对象对象表示一个浏览器窗口或一个frame框架，它处于对象层次的最顶端，它提供了处理浏览器窗口的方法和属性。window对象是浏览器对象中的默认对象，所以可以隐式地引用window对象的属性和方法。</p>
 </blockquote>
-</li>
-</ol>
 <p>如，以下两行代码是等价的：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">new</span> <span class="built_in">Date</span>();</div><div class="line"><span class="comment">// 等价于</span></div><div class="line"><span class="keyword">new</span> <span class="built_in">window</span>.Date();</div></pre></td></tr></table></figure>
-<ol>
-<li>DOM（document）相关对象</li>
-</ol>
-<blockquote>
+<h4 id="2-DOM（document）相关对象"><a href="#2-DOM（document）相关对象" class="headerlink" title="2.DOM（document）相关对象"></a>2.DOM（document）相关对象</h4><blockquote>
 <p>document是window对象的了个属性，它是一个Document对象实例，表示当前窗口中文档对象。通过该对象，可以对文档和文档中元素、节点等进行操作。</p>
 </blockquote>
-<ol>
-<li>frames对象</li>
-</ol>
-<blockquote>
+<h4 id="3-frames对象"><a href="#3-frames对象" class="headerlink" title="3.frames对象"></a>3.frames对象</h4><blockquote>
 <p>frames对象是一个集合，表示当前页面中使用的子框架。如果页面中使用了框架，将产生一个框架集合frames，在集合中可以用数字下标（从0开始）或名字索引框架。集全中的每一个对象，包含了框架的页面布局信息，以及每一个框架所对应的window对象。</p>
 </blockquote>
-<ol>
-<li>navigator对象</li>
-</ol>
-<blockquote>
+<h4 id="4-navigator对象"><a href="#4-navigator对象" class="headerlink" title="4.navigator对象"></a>4.navigator对象</h4><blockquote>
 <p>navigator是指浏览器对象，该对象提供了当前正在使用的浏览器的信息。navigator对象中的属性是只读的，在W3C在HTML5标准中，对该对象进行了规范。</p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="string">`navigator`</span>对象：包含大量有关Web浏览器的信息，在检测浏览器及操作系统上非常有用，也可用<span class="built_in">window</span>.navigator引用它  </div><div class="line"></div><div class="line"><span class="string">`navigator.appCodeName`</span>  <span class="comment">//浏览器代码名的字符串表示  </span></div><div class="line"></div><div class="line">navigator.appName  <span class="comment">//官方浏览器名的字符串表示  </span></div><div class="line"></div><div class="line">navigator.appVersion  <span class="comment">//浏览器版本信息的字符串表示  </span></div><div class="line"></div><div class="line">navigator.cookieEnabled  <span class="comment">//如果启用cookie返回true，否则返回false  </span></div><div class="line"></div><div class="line">navigator.javaEnabled  <span class="comment">//如果启用java返回true，否则返回false  </span></div><div class="line"></div><div class="line">navigator.platform  <span class="comment">//浏览器所在计算机平台的字符串表示  </span></div><div class="line"></div><div class="line">navigator.userAgent  <span class="comment">//用户代理头的字符串表示</span></div></pre></td></tr></table></figure>
-<ol>
-<li>history对象<blockquote>
+<h4 id="5-history对象"><a href="#5-history对象" class="headerlink" title="5.history对象"></a>5.history对象</h4><blockquote>
 <p>history对象来保存浏览器历史记录信息，也就是用户访问的页面。浏览器的前进与后退功能本质上就是history的操作。history对象记录了用户浏览过的页面，通过该对象提供的API可以实现与浏览器前进/后退类似的导航功能。</p>
 </blockquote>
-</li>
-</ol>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">history.length  <span class="comment">// 保存历史记录的数量。</span></div><div class="line">history.back()  <span class="comment">// 加载 history 列表中的前一个 URL</span></div><div class="line">history.go()   <span class="comment">// 加载 history 列表中的某个具体页面</span></div></pre></td></tr></table></figure>
-<ol>
-<li>location对象</li>
-</ol>
-<blockquote>
+<h4 id="6-location对象"><a href="#6-location对象" class="headerlink" title="6.location对象"></a>6.location对象</h4><blockquote>
 <p>location是一个静态对象，该对象是对当前窗口URL地址的解析。该对象提供了可以访问URL中不同部分的信息属性，通过location对象也可以实现页面或锚点跳转等功能。</p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">location对象：表示载入窗口的URL，也可用<span class="built_in">window</span>.location引用它  </div><div class="line"></div><div class="line">location.href  <span class="comment">//当前载入页面的完整URL，如http://www.somewhere.com/pictures/index.html  </span></div><div class="line"></div><div class="line">location.portocol  <span class="comment">//URL中使用的协议，即双斜杠之前的部分，如http </span></div><div class="line"></div><div class="line">location.host  <span class="comment">//服务器的名字，如www.wrox.com  </span></div><div class="line"></div><div class="line">location.hostname  <span class="comment">//通常等于host，有时会省略前面的www  </span></div><div class="line"></div><div class="line">location.port  <span class="comment">//URL声明的请求的端口，默认情况下，大多数URL没有端口信息，如8080 </span></div><div class="line"></div><div class="line">location.pathname  <span class="comment">//URL中主机名后的部分，如/pictures/index.htm  </span></div><div class="line"></div><div class="line">location.reload(<span class="literal">true</span> | <span class="literal">false</span>);  <span class="comment">//重新载入当前页面，为false时从浏览器缓存中重载，为true时从服务器端重载，默认为false</span></div></pre></td></tr></table></figure>
-<ol>
-<li>screen对象</li>
-</ol>
-<blockquote>
+<h4 id="7-screen对象"><a href="#7-screen对象" class="headerlink" title="7.screen对象"></a>7.screen对象</h4><blockquote>
 <p>screen对象中包含了用户显示器屏幕相关信息。通过该对象，可以访问用户显示器屏幕宽、高、色深等信息。</p>
 </blockquote>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">screen对象：用于获取某些关于用户屏幕的信息，也可用<span class="built_in">window</span>.screen引用它  </div><div class="line"></div><div class="line">screen.width/height  <span class="comment">//屏幕的宽度与高度，以像素计  </span></div><div class="line"></div><div class="line">screen.availWidth/availHeight  <span class="comment">//窗口可以使用的屏幕的宽度和高度，以像素计 </span></div><div class="line"></div><div class="line"><span class="built_in">window</span>.moveTo(<span class="number">0</span>, <span class="number">0</span>);  </div><div class="line"></div><div class="line"><span class="built_in">window</span>.resizeTo(screen.availWidth, screen.availHeight);  <span class="comment">//填充用户的屏幕</span></div></pre></td></tr></table></figure>
