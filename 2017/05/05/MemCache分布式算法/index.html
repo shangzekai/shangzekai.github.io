@@ -5,14 +5,14 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="https://yoursite.com">
+  <link rel="dns-prefetch" href="https://www.shangzekai.xyz">
   <title>MemCache分布式算法总结 | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="前言 memcached虽然称为“分布式”缓存服务器，但服务器端并没有“分布式”功能。服务器端仅包括内存存储功能，其实现非常简单。至于memcached的分布式，则是完全由客户端程序实现的。这种分布式是memcached的最大特点  分布式的两种算法1. 取模算法 这种算法非常的简单，就是“根据服务器台数的余数进行分散”。 求得键的整数哈希值，再除以服务器台数，根据其余数来选择服务器,将serve">
 <meta name="keywords" content="基础,NoSQL">
 <meta property="og:type" content="article">
 <meta property="og:title" content="MemCache分布式算法总结">
-<meta property="og:url" content="https://yoursite.com/2017/05/05/MemCache分布式算法/index.html">
+<meta property="og:url" content="https://www.shangzekai.xyz/2017/05/05/MemCache分布式算法/index.html">
 <meta property="og:site_name" content="Python">
 <meta property="og:description" content="前言 memcached虽然称为“分布式”缓存服务器，但服务器端并没有“分布式”功能。服务器端仅包括内存存储功能，其实现非常简单。至于memcached的分布式，则是完全由客户端程序实现的。这种分布式是memcached的最大特点  分布式的两种算法1. 取模算法 这种算法非常的简单，就是“根据服务器台数的余数进行分散”。 求得键的整数哈希值，再除以服务器台数，根据其余数来选择服务器,将serve">
 <meta property="og:image" content="https://ooo.0o0.ooo/2017/06/15/5941e204edfb4.png">
