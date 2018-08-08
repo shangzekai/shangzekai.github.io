@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>https://www.shangzekai.xyz/2017/05/07/Javascript%E7%B1%BB%E5%BA%93%E4%BD%9C%E7%94%A8%E4%BB%A5%E5%8F%8A%E5%AF%B9%E6%AF%94/</loc>
+    <lastmod>2018-08-08T05:20:36.000Z</lastmod>
+    <data>
+        <display>
+        <title>JQuery学习目录</title>
+        <pubTime>2017-05-07T01:55:09.000Z</pubTime>
+        
+        <tag>基础</tag>
+         
+        <tag>Jquery</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://www.shangzekai.xyz/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://www.shangzekai.xyz/2017/05/07/javascript%E5%9F%BA%E7%A1%80%E5%AD%A6%E4%B9%A0%E7%9B%AE%E5%BD%95/</loc>
     <lastmod>2018-08-01T07:35:15.000Z</lastmod>
     <data>
@@ -1669,28 +1691,6 @@
         <tag>HTML</tag>
          
         <tag>BootStrap</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端" url="https://www.shangzekai.xyz/categories/%E5%89%8D%E7%AB%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.shangzekai.xyz/2017/05/07/Javascript%E7%B1%BB%E5%BA%93%E4%BD%9C%E7%94%A8%E4%BB%A5%E5%8F%8A%E5%AF%B9%E6%AF%94/</loc>
-    <lastmod>2017-06-01T10:44:55.000Z</lastmod>
-    <data>
-        <display>
-        <title>JQuery学习目录</title>
-        <pubTime>2017-05-07T01:55:09.000Z</pubTime>
-        
-        <tag>基础</tag>
-         
-        <tag>Jquery</tag>
          
          
            
