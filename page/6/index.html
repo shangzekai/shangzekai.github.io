@@ -149,6 +149,81 @@ onmouseup="document.selection.empty()">-->
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-BeautifulSoup介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/05/BeautifulSoup介绍/">Beautiful Soup的用法</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/05/BeautifulSoup介绍/" class="archive-article-date">
+  	<time datetime="2017-05-05T01:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
+<p>之前我们学习了正则表达式，它的内容其实还是很多的，如果一个正则匹配稍有差池，那可能就不能获得到我们想要的内容，而且有的同学对写正则表达式的写法用得不熟练，但都没有关系，我们还有一个更强大的工具，叫Beautiful Soup，有了它我们可以很方便地提取出HTML或XML标签中的内容，实在是爬取数据之利器</p>
+</blockquote>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/爬虫/" class="article-tag-list-link color3">爬虫</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/05/BeautifulSoup介绍/">展开全文 >></a>
+        </p>
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-PyQuery的用法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1212,108 +1287,9 @@ onmouseup="document.selection.empty()">-->
 
 
   
-    <article id="post-PHP代码优化24条真经" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/02/PHP代码优化24条真经/">PHP代码优化24条真经</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/02/PHP代码优化24条真经/" class="archive-article-date">
-  	<time datetime="2017-04-02T15:52:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-	
-        <blockquote>
-<p>摘要：一些你可能忽略的东西，看看你有几条在平时的工作中再用！</p>
-</blockquote>
-<ol>
-<li>echo比print快。</li>
-<li>使用echo的多重参数代替字符串连接。</li>
-<li>在执行for循环之前确定最大循环数，不要每循环一次都计算最大值，最好运用foreach代替。</li>
-<li>对global变量，应该用完就unset()掉。</li>
-<li>用单引号代替双引号来包含字符串，这样做会更快一些。因为PHP会在双引号包围的字符串中搜寻变量，单引号则不会。</li>
-<li>函数代替正则表达式完成相同功能。</li>
-<li>当执行变量$i的递增或递减时，$i++会比++$i慢一些。这种差异是PHP特有的，并不适用于其他语言，++$i更快是因为它只需要3条指令(opcodes)，$i++则需要4条指令。后置递增实际上会产生一个临时变量，这个临时变量随后被递增。而前置递增直接在原值上递增。</li>
-<li>使用选择分支语句（switch case）好于使用多个if，else if语句。</li>
-<li>利用var_dump进行PHP代码调试。如果你在寻找php调试技术，我必须说var_dump应该是你要找的目标，在显示php信息方面这个命令可以满足你的所有需要，而调试代码的多数情况与得到PHP中的数值有关。</li>
-<li>在包含文件时使用完整路径，解析操作系统路径所需的时间会更少。</li>
-<li>动辄创建全局数值是一种糟糕的做法，不过有时候实际情况的确又需要这么做。对于数据库表或数据库连接信息使用全局数值是一个不错的想法，但不要在你的PHP代码中频繁使用全局数值。另外，更好的一种做法是把你的全局变量存放在一个config.php文件中。</li>
-<li>如果你想知道脚本开始执行的时刻，使用$_SERVER[‘REQUEST_TIME’]要好于time()。</li>
-<li>打开apache的mod_deflate模块。</li>
-<li>用@屏蔽错误消息的做法非常低效。</li>
-<li>尽量采用大量的PHP内置函数。</li>
-<li>递增一个未预定义的局部变量要比递增一个预定义的局部变量慢9至10倍。</li>
-<li>派生类中的方法运行起来要快于在基类中定义的同样的方法。</li>
-<li>仅定义一个局部变量而没在函数中调用它，同样会减慢速度（其程度相当于递增一个局部变量）</li>
-<li>Apache解析一个PHP脚本的时间要比解析一个静态HTML页面慢2至10倍。尽量多用静态HTML页面，少用脚本。</li>
-<li>正如之前提到的，任何php网站中最重要的部分有99%的可能是数据库。因此，你需要非常熟悉如何正确的使用sql，学会关联表和更多高级的数据库技术。</li>
-<li>调用带有一个参数的空函数，其花费的时间相当于执行7至8次的局部变量递增操作。</li>
-<li>当操作字符串并需要检验其长度是否满足某种要求时，你想当然地会使用strlen()函数。此函数执行起来相当快，因为它不做任何计算，只返回zval结构（C的内置数据结构，用于存储PHP变量）中存储的已知字符串长度。</li>
-<li>并不是所有情况都必须使用面向对象开发，面向对象往往开销很大，每个方法和对象调用都会消耗很多内存。</li>
-<li>除非脚本可以缓存，否则每次调用时都会重新编译一次。引入一套PHP缓存机制通常可以提升25%至100%的性能，以免除编译开销。</li>
-</ol>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/02/PHP代码优化24条真经/">展开全文 >></a>
-        </p>
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span>
+      <a class="extend prev" rel="prev" href="/page/5/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/7/">Next &raquo;</a>
     </nav>
   
 
