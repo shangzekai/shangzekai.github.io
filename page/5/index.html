@@ -149,6 +149,84 @@ onmouseup="document.selection.empty()">-->
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-爬虫入门基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/06/爬虫入门基础/">爬虫扫盲入门基础</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/06/爬虫入门基础/" class="archive-article-date">
+  	<time datetime="2017-05-06T00:56:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-06</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="前戏"><a href="#前戏" class="headerlink" title="前戏"></a><div id="title">前戏</div></h4><p><strong>亲爱的朋友：</strong></p>
+<ul>
+<li>想不想在夜深人静的时候，看一些更睡不着的图片…</li>
+<li>想不想在杂乱的数据中，获取到你想要的东西…</li>
+<li>…</li>
+</ul>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">模块</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/爬虫/" class="article-tag-list-link color3">爬虫</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/06/爬虫入门基础/">展开全文 >></a>
+        </p>
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-知乎上赞数最高的若干回答" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -451,6 +529,114 @@ onmouseup="document.selection.empty()">-->
 
 
   
+    <article id="post-MemCache分布式算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/05/MemCache分布式算法/">MemCache分布式算法总结</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/05/MemCache分布式算法/" class="archive-article-date">
+  	<time datetime="2017-05-05T15:52:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
+<p>memcached虽然称为“分布式”缓存服务器，但服务器端并没有“分布式”功能。服务器端仅包括内存存储功能，其实现非常简单。至于memcached的分布式，则是完全由客户端程序实现的。这种分布式是memcached的最大特点</p>
+</blockquote>
+<h4 id="分布式的两种算法"><a href="#分布式的两种算法" class="headerlink" title="分布式的两种算法"></a><div id="title">分布式的两种算法</div></h4><h5 id="1-取模算法"><a href="#1-取模算法" class="headerlink" title="1. 取模算法"></a>1. 取模算法</h5><blockquote>
+<p>这种算法非常的简单，就是“根据服务器台数的余数进行分散”。 求得键的整数哈希值，再除以服务器台数，根据其余数来选择服务器,<br>将server的hash值与server的总台数进行求余,即hash%N</p>
+<p>在php客户端中，默认采用该算法，也可以在ini中设置：Memcached::OPT_DISTRIBUTION=Memcached::DISTRIBUTION_MODULA</p>
+</blockquote>
+<p><img src="https://ooo.0o0.ooo/2017/06/15/5941e204edfb4.png" alt="取余算法.png"></p>
+<blockquote>
+<p>但我们来看一下这种算法对缓存命中率的影响：<br>我们假设有8台服务器，运行中突然down一台，则求余的底数变成7<br>我们来推算一下产生的后果：</p>
+</blockquote>
+<p><img src="https://ooo.0o0.ooo/2017/06/15/5941e2d4bd4ed.png" alt="取余算法后果.png"></p>
+<blockquote>
+<p>一般地,我们从数学上归纳之:<br>有N台服务器，变成了N-1台服务器，<br>所以 命中率在服务器down的短期内，急遽下降至1/(N-1)<br>所以 服务器越多，则down机的后果越严重！</p>
+</blockquote>
+<h5 id="2-一致性hash算法"><a href="#2-一致性hash算法" class="headerlink" title="2. 一致性hash算法"></a>2. 一致性hash算法</h5><blockquote>
+<p>为了解决上述取模算法遇到的问题，我们可以使用另一种分布式算法，即一致性hash算法，所谓的一致性hash算法，就是把服务器的各个节点放在钟表的各个时刻上，同时，我们也将要存储的key也映射到钟表的某个时刻上，该key延钟表顺时针走，碰到第一个比他小的节点之后，则key就落在这台服务器上</p>
+</blockquote>
+<p><img src="https://ooo.0o0.ooo/2017/06/15/5941e430c7f9b.png" alt="一致性hash算法.png"></p>
+<blockquote>
+<p>疑问1:时钟上的指针最大才11点,如果我有上百个memcached节点怎么办?<br>答: 时钟只是为了便于理解做的比喻,在实际应用中,我们可以在圆环上分布[0,2^32-1]的数字,<br>这样,全世界的服务器都可以装下了.</p>
+<p>疑问2:我该如何把”节点名”,”键名”转化成整数?<br>答: 你可以用现在的函数,如crc32().<br>也可以自己去设计转化规则,但注意转化后的碰撞率要低.<br>即不同的节点名,转换为相同的整数的概率要低.</p>
+</blockquote>
+<p><strong>好了，那我们再考虑一下当某个节点Down了之后，后产生什么样的影响？</strong></p>
+<p><strong>当某个节点down后,只影响该节点顺时针之后的1个节点,而其他节点不受影响.因此，Consistent Hashing最大限度地抑制了键的重新分布</strong></p>
+<p><img src="https://ooo.0o0.ooo/2017/06/15/5941e4d6ea696.png" alt="hash.png"><br>我们通过上图看到，6号节点down后，所有的压力都转移到7号节点上，造成了7号节点服务器的压力特别的大，那我们考虑是否能够将6号节点的压力注意到其余的节点上呢？</p>
+<p>所以我们引入了虚拟节点的概念：</p>
+<p>虚拟节点即—-N个真实节点,把每个真实节点映射成M个虚拟节点, 再把M*N个虚拟节点,</p>
+<p>散列在圆环上. 各真实节点对应的虚拟节点相互交错分布</p>
+<p>这样,某真实节点down后,则把其影响平均分担到其他所有节点上</p>
+<p><img src="https://ooo.0o0.ooo/2017/06/15/5941e4d76bdac.png" alt="hash2.png"></p>
+<p>好了，上面就是一致性hash的理论知识点，接下来我们来考虑一下怎样实现？</p>
+<p>下面是用php来实现的代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Consistent</span> </span>&#123;</div><div class="line">    <span class="keyword">protected</span> $_nodes = <span class="keyword">array</span>();</div><div class="line"></div><div class="line">    <span class="comment">//生成一个数值  </span></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">_hash</span><span class="params">($str)</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> sprintf(<span class="string">"%u"</span>,crc32($str));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">find</span><span class="params">($key)</span></span>&#123;</div><div class="line">        $point = <span class="keyword">$this</span>-&gt;_hash($key);</div><div class="line">        $pos  = current(<span class="keyword">$this</span>-&gt;_nodes);</div><div class="line"></div><div class="line">        <span class="keyword">foreach</span>(<span class="keyword">$this</span>-&gt;_nodes <span class="keyword">as</span> $k=&gt;$v)&#123;</div><div class="line">                <span class="keyword">if</span>($point &lt;= $k)&#123;</div><div class="line">                        $pos = $v;</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> $pos;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">addServer</span><span class="params">($server)</span></span>&#123;</div><div class="line">        <span class="keyword">for</span>($i=<span class="number">1</span>;$i&lt;=<span class="number">32</span>;$i++)&#123;</div><div class="line">                $pos = <span class="keyword">$this</span>-&gt;_hash($server.<span class="string">"-"</span>.$i);</div><div class="line">                <span class="keyword">$this</span>-&gt;_nodes[$pos] = $server;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        ksort(<span class="keyword">$this</span>-&gt;_nodes,SORT_REGULAR);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">printNodes</span><span class="params">()</span></span>&#123;</div><div class="line">        print_r(<span class="keyword">$this</span>-&gt;_nodes);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$cons = <span class="keyword">new</span> Consistent();</div><div class="line"></div><div class="line">$cons-&gt;addServer(<span class="string">'a'</span>);</div><div class="line">$cons-&gt;addServer(<span class="string">'b'</span>);</div><div class="line">$cons-&gt;addServer(<span class="string">'c'</span>);</div><div class="line"></div><div class="line"><span class="keyword">echo</span> $cons-&gt;_hash(<span class="string">'name'</span>).<span class="string">"&lt;br/&gt;"</span>;</div><div class="line"><span class="keyword">echo</span> <span class="string">'应该落在'</span>.$cons-&gt;find(<span class="string">'name'</span>).<span class="string">"&lt;br/&gt;"</span>;</div><div class="line"></div><div class="line">$cons-&gt;printNodes();</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NoSQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/NoSQL/" class="article-tag-list-link color1">NoSQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/05/MemCache分布式算法/">展开全文 >></a>
+        </p>
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-Redis学习目录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -513,6 +699,82 @@ onmouseup="document.selection.empty()">-->
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/05/05/Redis学习目录/">展开全文 >></a>
+        </p>
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-循序渐进大型网站架构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/05/循序渐进大型网站架构/">循序渐进大型网站架构</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/05/循序渐进大型网站架构/" class="archive-article-date">
+  	<time datetime="2017-05-05T15:52:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>转载：陶邦仁</p>
+<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
+<p>随着互联网的不断发展，以及网站负载的不断增高，一个成熟网站的架构需要满足下面的几点，才能为用户提供稳定可用的服务</p>
+</blockquote>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网站</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">发展</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/网站/" class="article-tag-list-link color3">网站</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/05/循序渐进大型网站架构/">展开全文 >></a>
         </p>
       
 
@@ -645,190 +907,6 @@ onmouseup="document.selection.empty()">-->
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/05/05/MySQL大数据分页/">展开全文 >></a>
-        </p>
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-MemCache分布式算法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/05/MemCache分布式算法/">MemCache分布式算法总结</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/05/MemCache分布式算法/" class="archive-article-date">
-  	<time datetime="2017-05-05T15:52:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-	
-        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
-<p>memcached虽然称为“分布式”缓存服务器，但服务器端并没有“分布式”功能。服务器端仅包括内存存储功能，其实现非常简单。至于memcached的分布式，则是完全由客户端程序实现的。这种分布式是memcached的最大特点</p>
-</blockquote>
-<h4 id="分布式的两种算法"><a href="#分布式的两种算法" class="headerlink" title="分布式的两种算法"></a><div id="title">分布式的两种算法</div></h4><h5 id="1-取模算法"><a href="#1-取模算法" class="headerlink" title="1. 取模算法"></a>1. 取模算法</h5><blockquote>
-<p>这种算法非常的简单，就是“根据服务器台数的余数进行分散”。 求得键的整数哈希值，再除以服务器台数，根据其余数来选择服务器,<br>将server的hash值与server的总台数进行求余,即hash%N</p>
-<p>在php客户端中，默认采用该算法，也可以在ini中设置：Memcached::OPT_DISTRIBUTION=Memcached::DISTRIBUTION_MODULA</p>
-</blockquote>
-<p><img src="https://ooo.0o0.ooo/2017/06/15/5941e204edfb4.png" alt="取余算法.png"></p>
-<blockquote>
-<p>但我们来看一下这种算法对缓存命中率的影响：<br>我们假设有8台服务器，运行中突然down一台，则求余的底数变成7<br>我们来推算一下产生的后果：</p>
-</blockquote>
-<p><img src="https://ooo.0o0.ooo/2017/06/15/5941e2d4bd4ed.png" alt="取余算法后果.png"></p>
-<blockquote>
-<p>一般地,我们从数学上归纳之:<br>有N台服务器，变成了N-1台服务器，<br>所以 命中率在服务器down的短期内，急遽下降至1/(N-1)<br>所以 服务器越多，则down机的后果越严重！</p>
-</blockquote>
-<h5 id="2-一致性hash算法"><a href="#2-一致性hash算法" class="headerlink" title="2. 一致性hash算法"></a>2. 一致性hash算法</h5><blockquote>
-<p>为了解决上述取模算法遇到的问题，我们可以使用另一种分布式算法，即一致性hash算法，所谓的一致性hash算法，就是把服务器的各个节点放在钟表的各个时刻上，同时，我们也将要存储的key也映射到钟表的某个时刻上，该key延钟表顺时针走，碰到第一个比他小的节点之后，则key就落在这台服务器上</p>
-</blockquote>
-<p><img src="https://ooo.0o0.ooo/2017/06/15/5941e430c7f9b.png" alt="一致性hash算法.png"></p>
-<blockquote>
-<p>疑问1:时钟上的指针最大才11点,如果我有上百个memcached节点怎么办?<br>答: 时钟只是为了便于理解做的比喻,在实际应用中,我们可以在圆环上分布[0,2^32-1]的数字,<br>这样,全世界的服务器都可以装下了.</p>
-<p>疑问2:我该如何把”节点名”,”键名”转化成整数?<br>答: 你可以用现在的函数,如crc32().<br>也可以自己去设计转化规则,但注意转化后的碰撞率要低.<br>即不同的节点名,转换为相同的整数的概率要低.</p>
-</blockquote>
-<p><strong>好了，那我们再考虑一下当某个节点Down了之后，后产生什么样的影响？</strong></p>
-<p><strong>当某个节点down后,只影响该节点顺时针之后的1个节点,而其他节点不受影响.因此，Consistent Hashing最大限度地抑制了键的重新分布</strong></p>
-<p><img src="https://ooo.0o0.ooo/2017/06/15/5941e4d6ea696.png" alt="hash.png"><br>我们通过上图看到，6号节点down后，所有的压力都转移到7号节点上，造成了7号节点服务器的压力特别的大，那我们考虑是否能够将6号节点的压力注意到其余的节点上呢？</p>
-<p>所以我们引入了虚拟节点的概念：</p>
-<p>虚拟节点即—-N个真实节点,把每个真实节点映射成M个虚拟节点, 再把M*N个虚拟节点,</p>
-<p>散列在圆环上. 各真实节点对应的虚拟节点相互交错分布</p>
-<p>这样,某真实节点down后,则把其影响平均分担到其他所有节点上</p>
-<p><img src="https://ooo.0o0.ooo/2017/06/15/5941e4d76bdac.png" alt="hash2.png"></p>
-<p>好了，上面就是一致性hash的理论知识点，接下来我们来考虑一下怎样实现？</p>
-<p>下面是用php来实现的代码：</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Consistent</span> </span>&#123;</div><div class="line">    <span class="keyword">protected</span> $_nodes = <span class="keyword">array</span>();</div><div class="line"></div><div class="line">    <span class="comment">//生成一个数值  </span></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">_hash</span><span class="params">($str)</span></span>&#123;</div><div class="line">        <span class="keyword">return</span> sprintf(<span class="string">"%u"</span>,crc32($str));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">find</span><span class="params">($key)</span></span>&#123;</div><div class="line">        $point = <span class="keyword">$this</span>-&gt;_hash($key);</div><div class="line">        $pos  = current(<span class="keyword">$this</span>-&gt;_nodes);</div><div class="line"></div><div class="line">        <span class="keyword">foreach</span>(<span class="keyword">$this</span>-&gt;_nodes <span class="keyword">as</span> $k=&gt;$v)&#123;</div><div class="line">                <span class="keyword">if</span>($point &lt;= $k)&#123;</div><div class="line">                        $pos = $v;</div><div class="line">                        <span class="keyword">break</span>;</div><div class="line">                &#125;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">return</span> $pos;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">addServer</span><span class="params">($server)</span></span>&#123;</div><div class="line">        <span class="keyword">for</span>($i=<span class="number">1</span>;$i&lt;=<span class="number">32</span>;$i++)&#123;</div><div class="line">                $pos = <span class="keyword">$this</span>-&gt;_hash($server.<span class="string">"-"</span>.$i);</div><div class="line">                <span class="keyword">$this</span>-&gt;_nodes[$pos] = $server;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        ksort(<span class="keyword">$this</span>-&gt;_nodes,SORT_REGULAR);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">printNodes</span><span class="params">()</span></span>&#123;</div><div class="line">        print_r(<span class="keyword">$this</span>-&gt;_nodes);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">$cons = <span class="keyword">new</span> Consistent();</div><div class="line"></div><div class="line">$cons-&gt;addServer(<span class="string">'a'</span>);</div><div class="line">$cons-&gt;addServer(<span class="string">'b'</span>);</div><div class="line">$cons-&gt;addServer(<span class="string">'c'</span>);</div><div class="line"></div><div class="line"><span class="keyword">echo</span> $cons-&gt;_hash(<span class="string">'name'</span>).<span class="string">"&lt;br/&gt;"</span>;</div><div class="line"><span class="keyword">echo</span> <span class="string">'应该落在'</span>.$cons-&gt;find(<span class="string">'name'</span>).<span class="string">"&lt;br/&gt;"</span>;</div><div class="line"></div><div class="line">$cons-&gt;printNodes();</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NoSQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/NoSQL/" class="article-tag-list-link color1">NoSQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/05/MemCache分布式算法/">展开全文 >></a>
-        </p>
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-循序渐进大型网站架构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/05/循序渐进大型网站架构/">循序渐进大型网站架构</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/05/循序渐进大型网站架构/" class="archive-article-date">
-  	<time datetime="2017-05-05T15:52:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>转载：陶邦仁</p>
-<h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
-<p>随着互联网的不断发展，以及网站负载的不断增高，一个成熟网站的架构需要满足下面的几点，才能为用户提供稳定可用的服务</p>
-</blockquote>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网站</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">发展</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/网站/" class="article-tag-list-link color3">网站</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/05/循序渐进大型网站架构/">展开全文 >></a>
         </p>
       
 
@@ -1286,150 +1364,6 @@ onmouseup="document.selection.empty()">-->
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/05/05/Python操作MySQL的方式/">展开全文 >></a>
-        </p>
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-Django的介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/05/Django的介绍/">Django [基础篇]</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/05/Django的介绍/" class="archive-article-date">
-  	<time datetime="2017-05-05T10:51:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-	
-        <h5 id="Django的介绍"><a href="#Django的介绍" class="headerlink" title="Django的介绍"></a><div id="title">Django的介绍</div></h5><blockquote>
-<p><a href="http://www.shangzekai.xyz/2018/01/02/Flask%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6%E7%AE%80%E4%BB%8B/" target="_blank" rel="external">常用PYTHON WEB开发框架简介
-</a></p>
-</blockquote>
-<h5 id="Django安装"><a href="#Django安装" class="headerlink" title="Django安装"></a><div id="title">Django安装</div></h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip3 install Django</div></pre></td></tr></table></figure>
-<h5 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a><div id="title">基本配置</div></h5><h6 id="一、创建django程序"><a href="#一、创建django程序" class="headerlink" title="一、创建django程序"></a><div id="title">一、创建django程序</div></h6><ul>
-<li>终端命令：<code>django-admin startproject sitename</code></li>
-<li>IDE创建Django程序时，本质上都是自动执行上述命令</li>
-<li>启动程序：<code>python manage.py runserver 0.0.0.0</code></li>
-</ul>
-<h6 id="二、django目录结构"><a href="#二、django目录结构" class="headerlink" title="二、django目录结构"></a><div id="title">二、django目录结构</div></h6><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">➜  mysite tree</div><div class="line">.</div><div class="line">├── manage.py          管理Django程序</div><div class="line">└── mysite</div><div class="line">    ├── __init__.py   </div><div class="line">    ├── settings.py     项目配置文件</div><div class="line">    ├── urls.py         url对应的文件</div><div class="line">    └── wsgi.py         遵循wsgi规范</div></pre></td></tr></table></figure>
-<h6 id="三、一个简单的django程序"><a href="#三、一个简单的django程序" class="headerlink" title="三、一个简单的django程序"></a><div id="title">三、一个简单的django程序</div></h6><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.shortcuts <span class="keyword">import</span> HttpResponse</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">index</span><span class="params">(request)</span>:</span></div><div class="line">    <span class="keyword">return</span> HttpResponse(<span class="string">'helloworld'</span>)</div><div class="line"></div><div class="line">urlpatterns = [</div><div class="line">    path(<span class="string">'admin/'</span>, admin.site.urls),</div><div class="line">    path(<span class="string">'index/'</span>, index),</div><div class="line">]</div></pre></td></tr></table></figure>
-<h6 id="四、创建app模块"><a href="#四、创建app模块" class="headerlink" title="四、创建app模块"></a><div id="title">四、创建app模块</div></h6><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">python manage.py startapp xxx</div></pre></td></tr></table></figure>
-<p>创建成功之后的目录结构如下：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">➜  monitor tree</div><div class="line">.</div><div class="line">├── __init__.py             </div><div class="line">├── admin.py             Django提供的后台管理程序</div><div class="line">├── apps.py              对当前的app进行配置</div><div class="line">├── migrations           修改数据库相关的表结构</div><div class="line">    └── __init__.py</div><div class="line">├── models.py            通过命令，创建相关的数据表</div><div class="line">├── tests.py             单元测试文件</div><div class="line">└── views.py             业务逻辑代码</div></pre></td></tr></table></figure>
-<h6 id="五、模板及其静态文件的配置"><a href="#五、模板及其静态文件的配置" class="headerlink" title="五、模板及其静态文件的配置"></a><div id="title">五、模板及其静态文件的配置</div></h6><ul>
-<li>配置模板路径</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">TEMPLATES = [</div><div class="line">    &#123;</div><div class="line">        <span class="string">'BACKEND'</span>: <span class="string">'django.template.backends.django.DjangoTemplates'</span>,</div><div class="line">        <span class="string">'DIRS'</span>: [os.path.join(BASE_DIR, <span class="string">'templates'</span>)]</div><div class="line">        ,</div><div class="line">        <span class="string">'APP_DIRS'</span>: <span class="keyword">True</span>,</div><div class="line">        <span class="string">'OPTIONS'</span>: &#123;</div><div class="line">            <span class="string">'context_processors'</span>: [</div><div class="line">                <span class="string">'django.template.context_processors.debug'</span>,</div><div class="line">                <span class="string">'django.template.context_processors.request'</span>,</div><div class="line">                <span class="string">'django.contrib.auth.context_processors.auth'</span>,</div><div class="line">                <span class="string">'django.contrib.messages.context_processors.messages'</span>,</div><div class="line">            ],</div><div class="line">        &#125;,</div><div class="line">    &#125;,</div><div class="line">]</div></pre></td></tr></table></figure>
-<ul>
-<li>配置静态文件路径</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">STATIC_URL = <span class="string">'/static/'</span></div><div class="line">STATICFILES_DIR = (</div><div class="line">    os.path.join(BASE_DIR, <span class="string">'static'</span>)，</div><div class="line">)</div></pre></td></tr></table></figure>
-<h5 id="路由系统"><a href="#路由系统" class="headerlink" title="路由系统"></a><div id="title">路由系统</div></h5><p>1、单一路由对应</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">url(<span class="string">r'^index$'</span>, views.index),</div></pre></td></tr></table></figure>
-<p>2、基于正则的路由</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">url(<span class="string">r'^index/(\d*)'</span>, views.index),</div><div class="line">url(<span class="string">r'^manage/(?P&lt;name&gt;\w*)/(?P&lt;id&gt;\d*)'</span>, views.manage),</div></pre></td></tr></table></figure>
-<p>3、添加额外的参数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">url(<span class="string">r'^manage/(?P&lt;name&gt;\w*)'</span>, views.manage,&#123;<span class="string">'id'</span>:<span class="number">333</span>&#125;),</div></pre></td></tr></table></figure>
-<p>4、为路由映射设置名称</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">url(<span class="string">r'^home'</span>, views.home, name=<span class="string">'h1'</span>),</div><div class="line">url(<span class="string">r'^index/(\d*)'</span>, views.index, name=<span class="string">'h2'</span>),</div></pre></td></tr></table></figure>
-<p>5、根据app对路由规则进行分类</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">url(<span class="string">r'^web/'</span>,include(<span class="string">'web.urls'</span>)),</div></pre></td></tr></table></figure>
-<h5 id="模板系统"><a href="#模板系统" class="headerlink" title="模板系统"></a><div id="title">模板系统</div></h5><blockquote>
-<p>模版的创建过程，对于模版，其实就是读取模版（其中嵌套着模版标签），然后将 Model 中获取的数据插入到模版中，最后将信息返回给用户。</p>
-</blockquote>
-<p>模板中也有自己的语言，该语言可以实现数据展示</p>
-<figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&#123;&#123; item &#125;&#125;</div><div class="line">&#123;% for item in item_list %&#125;  &lt;a&gt;&#123;&#123; item &#125;&#125;&lt;/a&gt;  &#123;% endfor %&#125;</div><div class="line">　　forloop.counter</div><div class="line">　　forloop.first</div><div class="line">　　forloop.last </div><div class="line">&#123;% if ordered_warranty %&#125;  &#123;% else %&#125; &#123;% endif %&#125;</div><div class="line">母板：&#123;% block title %&#125;&#123;% endblock %&#125;</div><div class="line">子板：&#123;% extends "base.html" %&#125;</div><div class="line">　　　&#123;% block title %&#125;&#123;% endblock %&#125;</div><div class="line">帮助方法：</div><div class="line">&#123;&#123; item.event_start|date:"Y-m-d H:i:s"&#125;&#125;</div><div class="line">&#123;&#123; bio|truncatewords:"30" &#125;&#125;</div><div class="line">&#123;&#123; my_list|first|upper &#125;&#125;</div><div class="line">&#123;&#123; name|lower &#125;&#125;</div></pre></td></tr></table></figure>
-<h5 id="模型操作"><a href="#模型操作" class="headerlink" title="模型操作"></a><div id="title">模型操作</div></h5><p>到目前为止，当我们的程序涉及到数据库相关操作时，我们一般都会这么搞：</p>
-<ul>
-<li>创建数据库，设计表结构和字段</li>
-<li>使用 MySQLdb 来连接数据库，并编写数据访问层代码</li>
-<li>业务逻辑层去调用数据访问层执行数据库操作</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> MySQLdb</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">GetList</span><span class="params">(sql)</span>:</span></div><div class="line">    db = MySQLdb.connect(user=<span class="string">'root'</span>, db=<span class="string">'test'</span>, passwd=<span class="string">'1234'</span>, host=<span class="string">'localhost'</span>)</div><div class="line">    cursor = db.cursor()</div><div class="line">    cursor.execute(sql)</div><div class="line">    data = cursor.fetchall()</div><div class="line">    db.close()</div><div class="line">    <span class="keyword">return</span> data</div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">GetSingle</span><span class="params">(sql)</span>:</span></div><div class="line">    db = MySQLdb.connect(user=<span class="string">'root'</span>, db=<span class="string">'test'</span>, passwd=<span class="string">'1234'</span>, host=<span class="string">'localhost'</span>)</div><div class="line">    cursor = db.cursor()</div><div class="line">    cursor.execute(sql)</div><div class="line">    data = cursor.fetchone()</div><div class="line">    db.close()</div><div class="line">    <span class="keyword">return</span> data</div></pre></td></tr></table></figure>
-<p>django为使用一种新的方式，即：关系对象映射（Object Relational Mapping，简称ORM）。</p>
-<ul>
-<li>PHP：activerecord</li>
-<li>Java：Hibernate </li>
-<li>C#：Entity Framework</li>
-</ul>
-<p>django中遵循 Code Frist的原则，即：根据代码中定义的类来自动生成数据库表。</p>
-<p>一、创建表</p>
-<p>1、基本结构</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> django.db <span class="keyword">import</span> models</div><div class="line">  </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">userinfo</span><span class="params">(models.Model)</span>:</span></div><div class="line">    name = models.CharField(max_length=<span class="number">30</span>)</div><div class="line">    email = models.EmailField()</div><div class="line">    memo = models.TextField()</div></pre></td></tr></table></figure>
-<p>2、字段</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div><div class="line">121</div><div class="line">122</div><div class="line">123</div><div class="line">124</div><div class="line">125</div><div class="line">126</div><div class="line">127</div><div class="line">128</div><div class="line">129</div><div class="line">130</div><div class="line">131</div><div class="line">132</div><div class="line">133</div><div class="line">134</div><div class="line">135</div><div class="line">136</div><div class="line">137</div><div class="line">138</div><div class="line">139</div><div class="line">140</div><div class="line">141</div><div class="line">142</div><div class="line">143</div><div class="line">144</div><div class="line">145</div><div class="line">146</div><div class="line">147</div><div class="line">148</div><div class="line">149</div></pre></td><td class="code"><pre><div class="line">AutoField(Field)</div><div class="line">        - int自增列，必须填入参数 primary_key=<span class="keyword">True</span></div><div class="line"></div><div class="line">BigAutoField(AutoField)</div><div class="line">        - bigint自增列，必须填入参数 primary_key=<span class="keyword">True</span></div><div class="line"></div><div class="line">        注：当model中如果没有自增列，则自动会创建一个列名为id的列</div><div class="line">        <span class="keyword">from</span> django.db <span class="keyword">import</span> models</div><div class="line"></div><div class="line">        <span class="class"><span class="keyword">class</span> <span class="title">UserInfo</span><span class="params">(models.Model)</span>:</span></div><div class="line">            <span class="comment"># 自动创建一个列名为id的且为自增的整数列</span></div><div class="line">            username = models.CharField(max_length=<span class="number">32</span>)</div><div class="line"></div><div class="line">        <span class="class"><span class="keyword">class</span> <span class="title">Group</span><span class="params">(models.Model)</span>:</span></div><div class="line">            <span class="comment"># 自定义自增列</span></div><div class="line">            nid = models.AutoField(primary_key=<span class="keyword">True</span>)</div><div class="line">            name = models.CharField(max_length=<span class="number">32</span>)</div><div class="line"></div><div class="line">    SmallIntegerField(IntegerField):</div><div class="line">        - 小整数 <span class="number">-32768</span> ～ <span class="number">32767</span></div><div class="line"></div><div class="line">    PositiveSmallIntegerField(PositiveIntegerRelDbTypeMixin, IntegerField)</div><div class="line">        - 正小整数 <span class="number">0</span> ～ <span class="number">32767</span></div><div class="line">    IntegerField(Field)</div><div class="line">        - 整数列(有符号的) <span class="number">-2147483648</span> ～ <span class="number">2147483647</span></div><div class="line"></div><div class="line">    PositiveIntegerField(PositiveIntegerRelDbTypeMixin, IntegerField)</div><div class="line">        - 正整数 <span class="number">0</span> ～ <span class="number">2147483647</span></div><div class="line"></div><div class="line">    BigIntegerField(IntegerField):</div><div class="line">        - 长整型(有符号的) <span class="number">-9223372036854775808</span> ～ <span class="number">9223372036854775807</span></div><div class="line"></div><div class="line">    自定义无符号整数字段</div><div class="line"></div><div class="line">        <span class="class"><span class="keyword">class</span> <span class="title">UnsignedIntegerField</span><span class="params">(models.IntegerField)</span>:</span></div><div class="line">            <span class="function"><span class="keyword">def</span> <span class="title">db_type</span><span class="params">(self, connection)</span>:</span></div><div class="line">                <span class="keyword">return</span> <span class="string">'integer UNSIGNED'</span></div><div class="line"></div><div class="line">        PS: 返回值为字段在数据库中的属性，Django字段默认的值为：</div><div class="line">            <span class="string">'AutoField'</span>: <span class="string">'integer AUTO_INCREMENT'</span>,</div><div class="line">            <span class="string">'BigAutoField'</span>: <span class="string">'bigint AUTO_INCREMENT'</span>,</div><div class="line">            <span class="string">'BinaryField'</span>: <span class="string">'longblob'</span>,</div><div class="line">            <span class="string">'BooleanField'</span>: <span class="string">'bool'</span>,</div><div class="line">            <span class="string">'CharField'</span>: <span class="string">'varchar(%(max_length)s)'</span>,</div><div class="line">            <span class="string">'CommaSeparatedIntegerField'</span>: <span class="string">'varchar(%(max_length)s)'</span>,</div><div class="line">            <span class="string">'DateField'</span>: <span class="string">'date'</span>,</div><div class="line">            <span class="string">'DateTimeField'</span>: <span class="string">'datetime'</span>,</div><div class="line">            <span class="string">'DecimalField'</span>: <span class="string">'numeric(%(max_digits)s, %(decimal_places)s)'</span>,</div><div class="line">            <span class="string">'DurationField'</span>: <span class="string">'bigint'</span>,</div><div class="line">            <span class="string">'FileField'</span>: <span class="string">'varchar(%(max_length)s)'</span>,</div><div class="line">            <span class="string">'FilePathField'</span>: <span class="string">'varchar(%(max_length)s)'</span>,</div><div class="line">            <span class="string">'FloatField'</span>: <span class="string">'double precision'</span>,</div><div class="line">            <span class="string">'IntegerField'</span>: <span class="string">'integer'</span>,</div><div class="line">            <span class="string">'BigIntegerField'</span>: <span class="string">'bigint'</span>,</div><div class="line">            <span class="string">'IPAddressField'</span>: <span class="string">'char(15)'</span>,</div><div class="line">            <span class="string">'GenericIPAddressField'</span>: <span class="string">'char(39)'</span>,</div><div class="line">            <span class="string">'NullBooleanField'</span>: <span class="string">'bool'</span>,</div><div class="line">            <span class="string">'OneToOneField'</span>: <span class="string">'integer'</span>,</div><div class="line">            <span class="string">'PositiveIntegerField'</span>: <span class="string">'integer UNSIGNED'</span>,</div><div class="line">            <span class="string">'PositiveSmallIntegerField'</span>: <span class="string">'smallint UNSIGNED'</span>,</div><div class="line">            <span class="string">'SlugField'</span>: <span class="string">'varchar(%(max_length)s)'</span>,</div><div class="line">            <span class="string">'SmallIntegerField'</span>: <span class="string">'smallint'</span>,</div><div class="line">            <span class="string">'TextField'</span>: <span class="string">'longtext'</span>,</div><div class="line">            <span class="string">'TimeField'</span>: <span class="string">'time'</span>,</div><div class="line">            <span class="string">'UUIDField'</span>: <span class="string">'char(32)'</span>,</div><div class="line"></div><div class="line">    BooleanField(Field)</div><div class="line">        - 布尔值类型</div><div class="line"></div><div class="line">    NullBooleanField(Field):</div><div class="line">        - 可以为空的布尔值</div><div class="line"></div><div class="line">    CharField(Field)</div><div class="line">        - 字符类型</div><div class="line">        - 必须提供max_length参数， max_length表示字符长度</div><div class="line"></div><div class="line">    TextField(Field)</div><div class="line">        - 文本类型</div><div class="line"></div><div class="line">    EmailField(CharField)：</div><div class="line">        - 字符串类型，Django Admin以及ModelForm中提供验证机制</div><div class="line"></div><div class="line">    IPAddressField(Field)</div><div class="line">        - 字符串类型，Django Admin以及ModelForm中提供验证 IPV4 机制</div><div class="line"></div><div class="line">    GenericIPAddressField(Field)</div><div class="line">        - 字符串类型，Django Admin以及ModelForm中提供验证 Ipv4和Ipv6</div><div class="line">        - 参数：</div><div class="line">            protocol，用于指定Ipv4或Ipv6， <span class="string">'both'</span>,<span class="string">"ipv4"</span>,<span class="string">"ipv6"</span></div><div class="line">            unpack_ipv4， 如果指定为<span class="keyword">True</span>，则输入::ffff:<span class="number">192.0</span><span class="number">.2</span><span class="number">.1</span>时候，可解析为<span class="number">192.0</span><span class="number">.2</span><span class="number">.1</span>，开启刺功能，需要protocol=<span class="string">"both"</span></div><div class="line"></div><div class="line">    URLField(CharField)</div><div class="line">        - 字符串类型，Django Admin以及ModelForm中提供验证 URL</div><div class="line"></div><div class="line">    SlugField(CharField)</div><div class="line">        - 字符串类型，Django Admin以及ModelForm中提供验证支持 字母、数字、下划线、连接符（减号）</div><div class="line"></div><div class="line">    CommaSeparatedIntegerField(CharField)</div><div class="line">        - 字符串类型，格式必须为逗号分割的数字</div><div class="line"></div><div class="line">    UUIDField(Field)</div><div class="line">        - 字符串类型，Django Admin以及ModelForm中提供对UUID格式的验证</div><div class="line"></div><div class="line">    FilePathField(Field)</div><div class="line">        - 字符串，Django Admin以及ModelForm中提供读取文件夹下文件的功能</div><div class="line">        - 参数：</div><div class="line">                path,                      文件夹路径</div><div class="line">                match=<span class="keyword">None</span>,                正则匹配</div><div class="line">                recursive=<span class="keyword">False</span>,           递归下面的文件夹</div><div class="line">                allow_files=<span class="keyword">True</span>,          允许文件</div><div class="line">                allow_folders=<span class="keyword">False</span>,       允许文件夹</div><div class="line"></div><div class="line">    FileField(Field)</div><div class="line">        - 字符串，路径保存在数据库，文件上传到指定目录</div><div class="line">        - 参数：</div><div class="line">            upload_to = <span class="string">""</span>      上传文件的保存路径</div><div class="line">            storage = <span class="keyword">None</span>      存储组件，默认django.core.files.storage.FileSystemStorage</div><div class="line"></div><div class="line">    ImageField(FileField)</div><div class="line">        - 字符串，路径保存在数据库，文件上传到指定目录</div><div class="line">        - 参数：</div><div class="line">            upload_to = <span class="string">""</span>      上传文件的保存路径</div><div class="line">            storage = <span class="keyword">None</span>      存储组件，默认django.core.files.storage.FileSystemStorage</div><div class="line">            width_field=<span class="keyword">None</span>,   上传图片的高度保存的数据库字段名（字符串）</div><div class="line">            height_field=<span class="keyword">None</span>   上传图片的宽度保存的数据库字段名（字符串）</div><div class="line"></div><div class="line">    DateTimeField(DateField)</div><div class="line">        - 日期+时间格式 YYYY-MM-DD HH:MM[:ss[.uuuuuu]][TZ]</div><div class="line"></div><div class="line">    DateField(DateTimeCheckMixin, Field)</div><div class="line">        - 日期格式      YYYY-MM-DD</div><div class="line"></div><div class="line">    TimeField(DateTimeCheckMixin, Field)</div><div class="line">        - 时间格式      HH:MM[:ss[.uuuuuu]]</div><div class="line"></div><div class="line">    DurationField(Field)</div><div class="line">        - 长整数，时间间隔，数据库中按照bigint存储，ORM中获取的值为datetime.timedelta类型</div><div class="line"></div><div class="line">    FloatField(Field)</div><div class="line">        - 浮点型</div><div class="line"></div><div class="line">    DecimalField(Field)</div><div class="line">        - <span class="number">10</span>进制小数</div><div class="line">        - 参数：</div><div class="line">            max_digits，小数总长度</div><div class="line">            decimal_places，小数位长度</div><div class="line"></div><div class="line">    BinaryField(Field)</div><div class="line">        - 二进制类型</div></pre></td></tr></table></figure>
-<p>2、参数</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">null                数据库中字段是否可以为空</div><div class="line">    db_column           数据库中字段的列名</div><div class="line">    db_tablespace</div><div class="line">    default             数据库中字段的默认值</div><div class="line">    primary_key         数据库中字段是否为主键</div><div class="line">    db_index            数据库中字段是否可以建立索引</div><div class="line">    unique              数据库中字段是否可以建立唯一索引</div><div class="line">    unique_for_date     数据库中字段【日期】部分是否可以建立唯一索引</div><div class="line">    unique_for_month    数据库中字段【月】部分是否可以建立唯一索引</div><div class="line">    unique_for_year     数据库中字段【年】部分是否可以建立唯一索引</div><div class="line"></div><div class="line">    verbose_name        Admin中显示的字段名称</div><div class="line">    blank               Admin中是否允许用户输入为空</div><div class="line">    editable            Admin中是否可以编辑</div><div class="line">    help_text           Admin中该字段的提示信息</div><div class="line">    choices             Admin中显示选择框的内容，用不变动的数据放在内存中从而避免跨表操作</div><div class="line">                        如：gf = models.IntegerField(choices=[(<span class="number">0</span>, <span class="string">'何穗'</span>),(<span class="number">1</span>, <span class="string">'大表姐'</span>),],default=<span class="number">1</span>)</div><div class="line"></div><div class="line">    error_messages      自定义错误信息（字典类型），从而定制想要显示的错误信息；</div><div class="line">                        字典健：null, blank, invalid, invalid_choice, unique, <span class="keyword">and</span> unique_for_date</div><div class="line">                        如：&#123;<span class="string">'null'</span>: <span class="string">"不能为空."</span>, <span class="string">'invalid'</span>: <span class="string">'格式错误'</span>&#125;</div><div class="line"></div><div class="line">    validators          自定义错误验证（列表类型），从而定制想要的验证规则</div><div class="line">                        <span class="keyword">from</span> django.core.validators <span class="keyword">import</span> RegexValidator</div><div class="line">                        <span class="keyword">from</span> django.core.validators <span class="keyword">import</span> EmailValidator,URLValidator,DecimalValidator,\</div><div class="line">                        MaxLengthValidator,MinLengthValidator,MaxValueValidator,MinValueValidator</div><div class="line">                        如：</div><div class="line">                            test = models.CharField(</div><div class="line">                                max_length=<span class="number">32</span>,</div><div class="line">                                error_messages=&#123;</div><div class="line">                                    <span class="string">'c1'</span>: <span class="string">'优先错信息1'</span>,</div><div class="line">                                    <span class="string">'c2'</span>: <span class="string">'优先错信息2'</span>,</div><div class="line">                                    <span class="string">'c3'</span>: <span class="string">'优先错信息3'</span>,</div><div class="line">                                &#125;,</div><div class="line">                                validators=[</div><div class="line">                                    RegexValidator(regex=<span class="string">'root_\d+'</span>, message=<span class="string">'错误了'</span>, code=<span class="string">'c1'</span>),</div><div class="line">                                    RegexValidator(regex=<span class="string">'root_112233\d+'</span>, message=<span class="string">'又错误了'</span>, code=<span class="string">'c2'</span>),</div><div class="line">                                    EmailValidator(message=<span class="string">'又错误了'</span>, code=<span class="string">'c3'</span>), ]</div><div class="line">                            )</div></pre></td></tr></table></figure>
-<p>2、连表操作</p>
-<ul>
-<li>一对多：models.ForeignKey(其他表)</li>
-<li>多对多：models.ManyToManyField(其他表)</li>
-<li>一对一：models.OneToOneField(其他表)</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">应用场景：</div><div class="line"></div><div class="line">一对多：当一张表中创建一行数据时，有一个单选的下拉框（可以被重复选择）</div><div class="line">例如：创建用户信息时候，需要选择一个用户类型【普通用户】【金牌用户】【铂金用户】等。</div><div class="line">多对多：在某表中创建一行数据是，有一个可以多选的下拉框</div><div class="line">例如：创建用户信息，需要为用户指定多个爱好</div><div class="line">一对一：在某表中创建一行数据时，有一个单选的下拉框（下拉框中的内容被用过一次就消失了</div><div class="line">例如：原有含10列数据的一张表保存相关信息，经过一段时间之后，10列无法满足需求，需要为原来的表再添加5列数据</div></pre></td></tr></table></figure>
-<p>二、操作表的方式</p>
-<p>1、基本操作</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 增</span></div><div class="line">    <span class="comment">#</span></div><div class="line">    <span class="comment"># models.Tb1.objects.create(c1='xx', c2='oo')  增加一条数据，可以接受字典类型数据 **kwargs</span></div><div class="line"></div><div class="line">    <span class="comment"># obj = models.Tb1(c1='xx', c2='oo')</span></div><div class="line">    <span class="comment"># obj.save()</span></div><div class="line"></div><div class="line">    <span class="comment"># 查</span></div><div class="line">    <span class="comment">#</span></div><div class="line">    <span class="comment"># models.Tb1.objects.get(id=123)         # 获取单条数据，不存在则报错（不建议）</span></div><div class="line">    <span class="comment"># models.Tb1.objects.all()               # 获取全部</span></div><div class="line">    <span class="comment"># models.Tb1.objects.filter(name='seven') # 获取指定条件的数据</span></div><div class="line"></div><div class="line">    <span class="comment"># 删</span></div><div class="line">    <span class="comment">#</span></div><div class="line">    <span class="comment"># models.Tb1.objects.filter(name='seven').delete() # 删除指定条件的数据</span></div><div class="line"></div><div class="line">    <span class="comment"># 改</span></div><div class="line">    <span class="comment"># models.Tb1.objects.filter(name='seven').update(gender='0')  # 将指定条件的数据更新，均支持 **kwargs</span></div><div class="line">    <span class="comment"># obj = models.Tb1.objects.get(id=1)</span></div><div class="line">    <span class="comment"># obj.c1 = '111'</span></div><div class="line">    <span class="comment"># obj.save()                                                 # 修改单条数据</span></div></pre></td></tr></table></figure>
-<p>2、进阶操作</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 获取个数</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># models.Tb1.objects.filter(name='seven').count()</span></div><div class="line"></div><div class="line"><span class="comment"># 大于，小于</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># models.Tb1.objects.filter(id__gt=1)              # 获取id大于1的值</span></div><div class="line"><span class="comment"># models.Tb1.objects.filter(id__gte=1)              # 获取id大于等于1的值</span></div><div class="line"><span class="comment"># models.Tb1.objects.filter(id__lt=10)             # 获取id小于10的值</span></div><div class="line"><span class="comment"># models.Tb1.objects.filter(id__lte=10)             # 获取id小于10的值</span></div><div class="line"><span class="comment"># models.Tb1.objects.filter(id__lt=10, id__gt=1)   # 获取id大于1 且 小于10的值</span></div><div class="line"></div><div class="line"><span class="comment"># in</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># models.Tb1.objects.filter(id__in=[11, 22, 33])   # 获取id等于11、22、33的数据</span></div><div class="line"><span class="comment"># models.Tb1.objects.exclude(id__in=[11, 22, 33])  # not in</span></div><div class="line"></div><div class="line"><span class="comment"># isnull</span></div><div class="line"><span class="comment"># Entry.objects.filter(pub_date__isnull=True)</span></div><div class="line"></div><div class="line"><span class="comment"># contains</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># models.Tb1.objects.filter(name__contains="ven")</span></div><div class="line"><span class="comment"># models.Tb1.objects.filter(name__icontains="ven") # icontains大小写不敏感</span></div><div class="line"><span class="comment"># models.Tb1.objects.exclude(name__icontains="ven")</span></div><div class="line"></div><div class="line"><span class="comment"># range</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># models.Tb1.objects.filter(id__range=[1, 2])   # 范围bettwen and</span></div><div class="line"></div><div class="line"><span class="comment"># 其他类似</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># startswith，istartswith, endswith, iendswith,</span></div><div class="line"></div><div class="line"><span class="comment"># order by</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># models.Tb1.objects.filter(name='seven').order_by('id')    # asc</span></div><div class="line"><span class="comment"># models.Tb1.objects.filter(name='seven').order_by('-id')   # desc</span></div><div class="line"></div><div class="line"><span class="comment"># group by</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># from django.db.models import Count, Min, Max, Sum</span></div><div class="line"><span class="comment"># models.Tb1.objects.filter(c1=1).values('id').annotate(c=Count('num'))</span></div><div class="line"><span class="comment"># SELECT "app01_tb1"."id", COUNT("app01_tb1"."num") AS "c" FROM "app01_tb1" WHERE "app01_tb1"."c1" = 1 GROUP BY "app01_tb1"."id"</span></div><div class="line"></div><div class="line"><span class="comment"># limit 、offset</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># models.Tb1.objects.all()[10:20]</span></div><div class="line"></div><div class="line"><span class="comment"># regex正则匹配，iregex 不区分大小写</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Entry.objects.get(title__regex=r'^(An?|The) +')</span></div><div class="line"><span class="comment"># Entry.objects.get(title__iregex=r'^(an?|the) +')</span></div><div class="line"></div><div class="line"><span class="comment"># date</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Entry.objects.filter(pub_date__date=datetime.date(2005, 1, 1))</span></div><div class="line"><span class="comment"># Entry.objects.filter(pub_date__date__gt=datetime.date(2005, 1, 1))</span></div><div class="line"></div><div class="line"><span class="comment"># year</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Entry.objects.filter(pub_date__year=2005)</span></div><div class="line"><span class="comment"># Entry.objects.filter(pub_date__year__gte=2005)</span></div><div class="line"></div><div class="line"><span class="comment"># month</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Entry.objects.filter(pub_date__month=12)</span></div><div class="line"><span class="comment"># Entry.objects.filter(pub_date__month__gte=6)</span></div><div class="line"></div><div class="line"><span class="comment"># day</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Entry.objects.filter(pub_date__day=3)</span></div><div class="line"><span class="comment"># Entry.objects.filter(pub_date__day__gte=3)</span></div><div class="line"></div><div class="line"><span class="comment"># week_day</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Entry.objects.filter(pub_date__week_day=2)</span></div><div class="line"><span class="comment"># Entry.objects.filter(pub_date__week_day__gte=2)</span></div><div class="line"></div><div class="line"><span class="comment"># hour</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Event.objects.filter(timestamp__hour=23)</span></div><div class="line"><span class="comment"># Event.objects.filter(time__hour=5)</span></div><div class="line"><span class="comment"># Event.objects.filter(timestamp__hour__gte=12)</span></div><div class="line"></div><div class="line"><span class="comment"># minute</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Event.objects.filter(timestamp__minute=29)</span></div><div class="line"><span class="comment"># Event.objects.filter(time__minute=46)</span></div><div class="line"><span class="comment"># Event.objects.filter(timestamp__minute__gte=29)</span></div><div class="line"></div><div class="line"><span class="comment"># second</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Event.objects.filter(timestamp__second=31)</span></div><div class="line"><span class="comment"># Event.objects.filter(time__second=2)</span></div><div class="line"><span class="comment"># Event.objects.filter(timestamp__second__gte=31)</span></div></pre></td></tr></table></figure>
-<p>3、一对一操作</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">user_info_obj = models.UserInfo.objects.filter(id=<span class="number">1</span>).first()</div><div class="line"><span class="keyword">print</span> user_info_obj.user_type</div><div class="line"><span class="keyword">print</span> user_info_obj.get_user_type_display()</div><div class="line"><span class="keyword">print</span> user_info_obj.userprofile.password</div><div class="line"> </div><div class="line">user_info_obj = models.UserInfo.objects.filter(id=<span class="number">1</span>).values(<span class="string">'email'</span>, <span class="string">'userprofile__username'</span>).first()</div><div class="line"><span class="keyword">print</span> user_info_obj.keys()</div><div class="line"><span class="keyword">print</span> user_info_obj.values()</div></pre></td></tr></table></figure>
-<p>4、多对多操作</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line">user_info_obj = models.UserInfo.objects.get(name=<span class="string">u'武沛齐'</span>)</div><div class="line">user_info_objs = models.UserInfo.objects.all()</div><div class="line"> </div><div class="line">group_obj = models.UserGroup.objects.get(caption=<span class="string">'CEO'</span>)</div><div class="line">group_objs = models.UserGroup.objects.all()</div><div class="line"> </div><div class="line"><span class="comment"># 添加数据</span></div><div class="line"><span class="comment">#group_obj.user_info.add(user_info_obj)</span></div><div class="line"><span class="comment">#group_obj.user_info.add(*user_info_objs)</span></div><div class="line"> </div><div class="line"><span class="comment"># 删除数据</span></div><div class="line"><span class="comment">#group_obj.user_info.remove(user_info_obj)</span></div><div class="line"><span class="comment">#group_obj.user_info.remove(*user_info_objs)</span></div><div class="line"> </div><div class="line"><span class="comment"># 添加数据</span></div><div class="line"><span class="comment">#user_info_obj.usergroup_set.add(group_obj)</span></div><div class="line"><span class="comment">#user_info_obj.usergroup_set.add(*group_objs)</span></div><div class="line"> </div><div class="line"><span class="comment"># 删除数据</span></div><div class="line"><span class="comment">#user_info_obj.usergroup_set.remove(group_obj)</span></div><div class="line"><span class="comment">#user_info_obj.usergroup_set.remove(*group_objs)</span></div><div class="line"> </div><div class="line"><span class="comment"># 获取数据</span></div><div class="line"><span class="comment">#print group_obj.user_info.all()</span></div><div class="line"><span class="comment">#print group_obj.user_info.all().filter(id=1)</span></div><div class="line"> </div><div class="line"><span class="comment"># 获取数据</span></div><div class="line"><span class="comment">#print user_info_obj.usergroup_set.all()</span></div><div class="line"><span class="comment">#print user_info_obj.usergroup_set.all().filter(caption='CEO')</span></div><div class="line"><span class="comment">#print user_info_obj.usergroup_set.all().filter(caption='DBA')</span></div></pre></td></tr></table></figure>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Python/" class="article-tag-list-link color2">Python</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/05/Django的介绍/">展开全文 >></a>
         </p>
       
 

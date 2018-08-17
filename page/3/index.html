@@ -149,19 +149,19 @@ onmouseup="document.selection.empty()">-->
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-session共享问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-PHP的运行模式" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/10/05/session共享问题/">Session共享问题</a>
+      <a class="article-title" href="/2017/10/05/PHP的运行模式/">PHP的运行模式以及底层原理讲解</a>
     </h1>
   
 
         
-        <a href="/2017/10/05/session共享问题/" class="archive-article-date">
+        <a href="/2017/10/05/PHP的运行模式/" class="archive-article-date">
   	<time datetime="2017-10-05T04:18:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-05</time>
 </a>
         
@@ -169,9 +169,18 @@ onmouseup="document.selection.empty()">-->
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="为啥会有这个问题？"><a href="#为啥会有这个问题？" class="headerlink" title="为啥会有这个问题？"></a><div id="title">为啥会有这个问题？</div></h4><blockquote>
-<p>随着网站访问量的增加，初期的一台服务器已经完全不能支持业务，这个时候我们就需要增加服务器设备，来抗住请求的增量。如下所示：</p>
+        <h4 id="PHP的运行模式"><a href="#PHP的运行模式" class="headerlink" title="PHP的运行模式"></a><div id="title">PHP的运行模式</div></h4><blockquote>
+<p><code>SAPI:Server Application Programming Interface</code> 服务器端应用编程端口。它就是PHP与其它应用交互的接口，PHP脚本要执行有很多种方式，通过Web服务器，或者直接在命令行下，也可以嵌入在其他程序中</p>
+<p><code>SAPI</code>提供了一个和外部通信的接口, 常见的有五大运行模式：</p>
 </blockquote>
+<ul>
+<li>cgi (通用网关接口Common Gateway Interface)</li>
+<li>fast-cgi (fast-cgi 是cgi的升级版本)</li>
+<li>cli (Command Line Interface)</li>
+<li>isapi (Internet Server Application Program Interface，是微软提供的一套面向Internet服务的API接口)</li>
+<li>apache2handler (将php作为apache的模块, nginx类似)</li>
+<li>其他(continuity, embed, litespeed, milter等)</li>
+</ul>
       
 
       
@@ -206,7 +215,7 @@ onmouseup="document.selection.empty()">-->
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/10/05/session共享问题/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/10/05/PHP的运行模式/">展开全文 >></a>
         </p>
       
 
@@ -278,6 +287,77 @@ onmouseup="document.selection.empty()">-->
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/10/05/session和cookie/">展开全文 >></a>
+        </p>
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-session共享问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/10/05/session共享问题/">Session共享问题</a>
+    </h1>
+  
+
+        
+        <a href="/2017/10/05/session共享问题/" class="archive-article-date">
+  	<time datetime="2017-10-05T04:18:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="为啥会有这个问题？"><a href="#为啥会有这个问题？" class="headerlink" title="为啥会有这个问题？"></a><div id="title">为啥会有这个问题？</div></h4><blockquote>
+<p>随着网站访问量的增加，初期的一台服务器已经完全不能支持业务，这个时候我们就需要增加服务器设备，来抗住请求的增量。如下所示：</p>
+</blockquote>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/10/05/session共享问题/">展开全文 >></a>
         </p>
       
 
@@ -1142,81 +1222,6 @@ onmouseup="document.selection.empty()">-->
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/06/02/使用composer构建一个简单的PHP框架之ORM(四)/">展开全文 >></a>
-        </p>
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-html基础目录" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/07/html基础目录/">HTML基础学习目录</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/07/html基础目录/" class="archive-article-date">
-  	<time datetime="2017-05-07T12:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="web运行本质"><a href="#web运行本质" class="headerlink" title="web运行本质"></a><div id="title">web运行本质</div></h3><blockquote>
-<p>对于所有的Web应用，本质上其实就是一个socket服务端，用户的浏览器其实就是一个socket客户端</p>
-</blockquote>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">HTML</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/前端/" class="article-tag-list-link color3">前端</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/07/html基础目录/">展开全文 >></a>
         </p>
       
 
