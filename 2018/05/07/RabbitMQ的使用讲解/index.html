@@ -6,33 +6,27 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.shangzekai.xyz">
-  <title>PHP的运行模式以及底层原理讲解 | Python</title>
+  <title>RabbitMQ队列 | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="PHP的运行模式 SAPI:Server Application Programming Interface 服务器端应用编程端口。它就是PHP与其它应用交互的接口，PHP脚本要执行有很多种方式，通过Web服务器，或者直接在命令行下，也可以嵌入在其他程序中 SAPI提供了一个和外部通信的接口, 常见的有五大运行模式：   cgi (通用网关接口Common Gateway Interface) f">
-<meta name="keywords" content="PHP">
+  <meta name="description" content="为啥要使用MQ 以常见的订单系统为例，用户点击【下单】按钮之后的业务逻辑可能包括：扣减库存、生成相应单据、发红包、发短信通知。在业务发展初期这些逻辑可能放在一起同步执行，随着业务的发展订单量增长，需要提升系统服务的性能，这时可以将一些不需要立即生效的操作拆分出来异步执行，比如发放红包、发短信通知等。这种场景下就可以用 MQ ，在下单的主流程（比如扣减库存、生成相应单据）完成之后发送一条消息到 MQ">
+<meta name="keywords" content="NoSQL">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PHP的运行模式以及底层原理讲解">
-<meta property="og:url" content="https://www.shangzekai.xyz/2017/10/05/PHP的运行模式/index.html">
+<meta property="og:title" content="RabbitMQ队列">
+<meta property="og:url" content="https://www.shangzekai.xyz/2018/05/07/RabbitMQ的使用讲解/index.html">
 <meta property="og:site_name" content="Python">
-<meta property="og:description" content="PHP的运行模式 SAPI:Server Application Programming Interface 服务器端应用编程端口。它就是PHP与其它应用交互的接口，PHP脚本要执行有很多种方式，通过Web服务器，或者直接在命令行下，也可以嵌入在其他程序中 SAPI提供了一个和外部通信的接口, 常见的有五大运行模式：   cgi (通用网关接口Common Gateway Interface) f">
-<meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9b7468b035.jpg">
-<meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9b897811a3.jpg">
-<meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9be201106a.jpg">
-<meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9beb87e89e.jpg">
-<meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9c172e0620.png">
-<meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9c45298d58.png">
-<meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9c570c2774.png">
-<meta property="og:image" content="https://i.loli.net/2018/05/04/5aebfbb8abe1b.png">
-<meta property="og:image" content="https://i.loli.net/2018/05/04/5aebfbb8a1dd9.png">
-<meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9eec1bdf26.png">
-<meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9dcb8f21f7.jpg">
-<meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9dd3d26ee2.jpg">
-<meta property="og:image" content="https://i.loli.net/2018/04/08/5ac9ea3400a26.jpg">
-<meta property="og:updated_time" content="2018-05-04T11:14:32.000Z">
+<meta property="og:description" content="为啥要使用MQ 以常见的订单系统为例，用户点击【下单】按钮之后的业务逻辑可能包括：扣减库存、生成相应单据、发红包、发短信通知。在业务发展初期这些逻辑可能放在一起同步执行，随着业务的发展订单量增长，需要提升系统服务的性能，这时可以将一些不需要立即生效的操作拆分出来异步执行，比如发放红包、发短信通知等。这种场景下就可以用 MQ ，在下单的主流程（比如扣减库存、生成相应单据）完成之后发送一条消息到 MQ">
+<meta property="og:image" content="https://i.loli.net/2018/08/16/5b750a845d5c5.png">
+<meta property="og:image" content="https://i.loli.net/2018/08/16/5b750a845d5c2.png">
+<meta property="og:image" content="https://i.loli.net/2018/08/16/5b751788db1eb.png">
+<meta property="og:image" content="https://i.loli.net/2018/08/17/5b7639419f5c1.png">
+<meta property="og:image" content="https://i.loli.net/2018/08/16/5b7530c3e5b1c.png">
+<meta property="og:image" content="https://i.loli.net/2018/08/17/5b763941a2fcc.png">
+<meta property="og:image" content="https://i.loli.net/2018/08/17/5b763941b2c91.png">
+<meta property="og:updated_time" content="2018-08-17T07:51:38.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="PHP的运行模式以及底层原理讲解">
-<meta name="twitter:description" content="PHP的运行模式 SAPI:Server Application Programming Interface 服务器端应用编程端口。它就是PHP与其它应用交互的接口，PHP脚本要执行有很多种方式，通过Web服务器，或者直接在命令行下，也可以嵌入在其他程序中 SAPI提供了一个和外部通信的接口, 常见的有五大运行模式：   cgi (通用网关接口Common Gateway Interface) f">
-<meta name="twitter:image" content="https://i.loli.net/2018/04/08/5ac9b7468b035.jpg">
+<meta name="twitter:title" content="RabbitMQ队列">
+<meta name="twitter:description" content="为啥要使用MQ 以常见的订单系统为例，用户点击【下单】按钮之后的业务逻辑可能包括：扣减库存、生成相应单据、发红包、发短信通知。在业务发展初期这些逻辑可能放在一起同步执行，随着业务的发展订单量增长，需要提升系统服务的性能，这时可以将一些不需要立即生效的操作拆分出来异步执行，比如发放红包、发短信通知等。这种场景下就可以用 MQ ，在下单的主流程（比如扣减库存、生成相应单据）完成之后发送一条消息到 MQ">
+<meta name="twitter:image" content="https://i.loli.net/2018/08/16/5b750a845d5c5.png">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
@@ -166,20 +160,20 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-PHP的运行模式" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-RabbitMQ的使用讲解" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      PHP的运行模式以及底层原理讲解
+      RabbitMQ队列
     </h1>
   
 
         
-        <a href="/2017/10/05/PHP的运行模式/" class="archive-article-date">
-  	<time datetime="2017-10-05T04:18:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-05</time>
+        <a href="/2018/05/07/RabbitMQ的使用讲解/" class="archive-article-date">
+  	<time datetime="2018-05-07T12:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-07</time>
 </a>
         
       </header>
@@ -188,333 +182,126 @@ onmouseup="document.selection.empty()">-->
       
 	
         <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP的运行模式"><span class="toc-text">PHP的运行模式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#CLI运行模式"><span class="toc-text">CLI运行模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#CGI运行模式"><span class="toc-text">CGI运行模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#FASTCGI运行模式"><span class="toc-text">FASTCGI运行模式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#模块运行模式"><span class="toc-text">模块运行模式</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#服务器网络I-O模型"><span class="toc-text">服务器网络I/O模型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#I-O多路复用"><span class="toc-text">I/O多路复用</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#两个网络模型的区别"><span class="toc-text">两个网络模型的区别</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#如何选择"><span class="toc-text">如何选择</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP运行机制与原理"><span class="toc-text">PHP运行机制与原理</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#提高PHP代码运行效率"><span class="toc-text">提高PHP代码运行效率</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#PHP底层源码分析"><span class="toc-text">PHP底层源码分析</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#字符串"><span class="toc-text">字符串</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#变量存储"><span class="toc-text">变量存储</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#变量类型"><span class="toc-text">变量类型</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#传值赋值和传引用赋值"><span class="toc-text">传值赋值和传引用赋值</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#垃圾回收机制"><span class="toc-text">垃圾回收机制</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#什么是垃圾"><span class="toc-text">什么是垃圾?</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#为啥要清理垃圾"><span class="toc-text">为啥要清理垃圾</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#如何回收垃圾"><span class="toc-text">如何回收垃圾</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#数组"><span class="toc-text">数组</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#数组Key和Value的限制条件"><span class="toc-text">数组Key和Value的限制条件</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#数组元素的访问"><span class="toc-text">数组元素的访问</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#unset删除数组元素"><span class="toc-text">unset删除数组元素</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#数组遍历"><span class="toc-text">数组遍历</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#数组和常见的数据结构"><span class="toc-text">数组和常见的数据结构</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#数组内部实现"><span class="toc-text">数组内部实现</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#数组函数分类"><span class="toc-text">数组函数分类</span></a></li></ol></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#为啥要使用MQ"><span class="toc-text">为啥要使用MQ</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MQ的介绍"><span class="toc-text">MQ的介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#队列，生产者，消费者"><span class="toc-text">队列，生产者，消费者</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RabbitMQ架构介绍"><span class="toc-text">RabbitMQ架构介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RabbitMQ安装"><span class="toc-text">RabbitMQ安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Exchange类型"><span class="toc-text">Exchange类型</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#direct"><span class="toc-text">direct</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#单条消息丢失"><span class="toc-text">单条消息丢失</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#消息队列宕机"><span class="toc-text">消息队列宕机</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#消息的能者多劳"><span class="toc-text">消息的能者多劳</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#fanout"><span class="toc-text">fanout</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#topic"><span class="toc-text">topic</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RabbitMQ服务器的管理"><span class="toc-text">RabbitMQ服务器的管理</span></a></li></ol>
           <hr/>
         </div>
         
-        <h4 id="PHP的运行模式"><a href="#PHP的运行模式" class="headerlink" title="PHP的运行模式"></a><div id="title">PHP的运行模式</div></h4><blockquote>
-<p><code>SAPI:Server Application Programming Interface</code> 服务器端应用编程端口。它就是PHP与其它应用交互的接口，PHP脚本要执行有很多种方式，通过Web服务器，或者直接在命令行下，也可以嵌入在其他程序中</p>
-<p><code>SAPI</code>提供了一个和外部通信的接口, 常见的有五大运行模式：</p>
+        <h4 id="为啥要使用MQ"><a href="#为啥要使用MQ" class="headerlink" title="为啥要使用MQ"></a><div id="title">为啥要使用MQ</div></h4><blockquote>
+<p>以常见的订单系统为例，用户点击【下单】按钮之后的业务逻辑可能包括：扣减库存、生成相应单据、发红包、发短信通知。在业务发展初期这些逻辑可能放在一起同步执行，随着业务的发展订单量增长，需要提升系统服务的性能，这时可以将一些不需要立即生效的操作拆分出来异步执行，比如发放红包、发短信通知等。这种场景下就可以用 MQ ，在下单的主流程（比如扣减库存、生成相应单据）完成之后发送一条消息到 MQ 让主流程快速完结，而由另外的单独线程拉取MQ的消息（或者由 MQ 推送消息），当发现 MQ 中有发红包或发短信之类的消息时，执行相应的业务逻辑。</p>
 </blockquote>
-<ul>
-<li>cgi (通用网关接口Common Gateway Interface)</li>
-<li>fast-cgi (fast-cgi 是cgi的升级版本)</li>
-<li>cli (Command Line Interface)</li>
-<li>isapi (Internet Server Application Program Interface，是微软提供的一套面向Internet服务的API接口)</li>
-<li>apache2handler (将php作为apache的模块, nginx类似)</li>
-<li>其他(continuity, embed, litespeed, milter等)</li>
-</ul>
 <a id="more"></a>
-<h5 id="CLI运行模式"><a href="#CLI运行模式" class="headerlink" title="CLI运行模式"></a><div id="title">CLI运行模式</div></h5><blockquote>
-<p>Command Line Interface的简称，即PHP命令行接口，在windows和linux下都支持PHP-CLI模式,它可以直接在命令行下运行,那就意味着完全可以不要任何http容器. 例如 php test.php </p>
+<h4 id="MQ的介绍"><a href="#MQ的介绍" class="headerlink" title="MQ的介绍"></a><div id="title">MQ的介绍</div></h4><blockquote>
+<p><code>MQ</code>全称为<code>Message Queue</code>, 消息队列（<code>MQ</code>）是一种应用程序对应用程序的通信方法。<code>MQ</code>是消费-生产者模型的一个典型的代表，一端往消息队列中不断写入消息，而另一端则可以读取队列中的消息。消息发布者只管把消息发布到 MQ 中而不用管谁来取，消息使用者只管从 MQ 中取消息而不管是谁发布的。这样发布者和使用者都不用知道对方的存在。</p>
+<p>你可以想想在生活中的一种场景：当你把信件的投进邮筒，邮递员肯定最终会将信件送给收件人。我们可以把MQ比作 邮局和邮递员。</p>
+<p>MQ和邮局的主要区别是,它不处理消息,但是,它会接受数据、存储消息数据、转发消息</p>
 </blockquote>
-<p><strong>应用场景</strong></p>
-<ul>
-<li>定时任务</li>
-<li>开发桌面应用就是使用PHP-CLI和GTK包</li>
-<li>开发shell脚本</li>
-</ul>
-<p><strong>优点和缺点</strong></p>
-<ul>
-<li><p>利用crontab去跑php，可以给服务器减压，当然在这里有一个条件，就是实时性要求不高。比如：sns中的好友动态，这个实时要求不高，但是数据量比较大，这个时候定时跑的话，会给web服务器，数据库服务器分担不小的压力。</p>
-</li>
-<li><p>就是我们要定时去完成某一事情，比如：我要删除一个月前，用户留言，这个时候，写的php脚本在crontab去执行，一天跑一次就行了。而不是手动去执行php程序。</p>
-</li>
-<li>无法为普通用户提供http服务</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span>  </div><div class="line">print_r($argv);  </div><div class="line"><span class="keyword">echo</span> <span class="string">"\n"</span>;  </div><div class="line"><span class="keyword">echo</span> $argc;  </div><div class="line"><span class="keyword">echo</span> <span class="string">"\n"</span>;  </div><div class="line"></div><div class="line">root@ubuntu:~$ php test.php aaa ccc  bbbb  </div><div class="line"><span class="keyword">Array</span>  </div><div class="line">(  </div><div class="line"> [<span class="number">0</span>] =&gt; test.php    <span class="comment">//参数0，文件本身  </span></div><div class="line"> [<span class="number">1</span>] =&gt; aaa         <span class="comment">//参数1  </span></div><div class="line"> [<span class="number">2</span>] =&gt; ccc         <span class="comment">//参数2  </span></div><div class="line"> [<span class="number">3</span>] =&gt; bbbb        <span class="comment">//参数3  </span></div><div class="line">)  </div><div class="line">  </div><div class="line"><span class="number">4</span>      <span class="comment">//$argc的值，参数的总数</span></div></pre></td></tr></table></figure>
-<h5 id="CGI运行模式"><a href="#CGI运行模式" class="headerlink" title="CGI运行模式"></a><div id="title">CGI运行模式</div></h5><blockquote>
-<p>CGI即通用网关接口(<code>Common Gateway Interface</code>)，它是一段程序, 通俗的讲CGI就象是一座桥，把网页和WEB服务器中的执行程序连接起来，它把http服务器接收的指令传递给执行程序，再把执行程序的结果返还给http服务器。CGI 的跨平台性能极佳，几乎可以在任何操作系统上实现。</p>
+<h4 id="队列，生产者，消费者"><a href="#队列，生产者，消费者" class="headerlink" title="队列，生产者，消费者"></a><div id="title">队列，生产者，消费者</div></h4><blockquote>
+<p>队列是RabbitMQ的内部对象，用于存储消息。生产者（下图中的P）生产消息并投递到队列中，消费者（下图中的C）可以从队列中获取消息并消费。</p>
 </blockquote>
-<p><strong>执行过程</strong> </p>
-<ul>
-<li>http服务器接受到用户请求后, 例如 index.php,会通过它配置的CGI服务来执行</li>
-<li>生成一个php-cgi.exe的进程,并执行php程序    </li>
-<li>执行的返回结果交给http服务器    </li>
-</ul>
-<p><strong>应用场景</strong></p>
-<ul>
-<li>提供http服务</li>
-</ul>
-<p><strong>优点和缺点</strong></p>
-<ul>
-<li>跨平台,几乎可以在任何操作系统上实现.</li>
-<li>web和server是独立的,结构清晰,可控性强</li>
-<li>性能比较差,来一个请求,fork一个进程,100个请求就会fork100进程,消耗资源较多(fork-and-execute 模式)</li>
-<li>最近几年已经很少见到使用这种模式了</li>
-</ul>
-<h5 id="FASTCGI运行模式"><a href="#FASTCGI运行模式" class="headerlink" title="FASTCGI运行模式"></a><div id="title">FASTCGI运行模式</div></h5><blockquote>
-<p>快速通用网关接口（<code>Fast Common Gateway Interface／FastCGI</code>）是一种让交互程序与Web服务器通信的协议。FastCGI是早期通用网关接口（CGI）的增强版本。FastCGI致力于减少Web服务器与CGI程序之间互动的开销，从而使服务器可以同时处理更多的网页请求。。</p>
-</blockquote>
-<p><strong>执行过程</strong></p>
-<ul>
-<li>web服务器启动时 ,载入FastCGI进程管理器</li>
-<li>FastCGI进程管理器会启动多个CGI进程等待web服务器的链接.</li>
-<li>当客户端请求到达Web Server时，FastCGI进程管理器选择并连接到一个CGI解释器。Web server将环境变量和标准输入发送到FastCGI子进程php-cgi</li>
-<li>FastCGI子进程完成处理后将标准输出和错误信息从同一连接返回Web Server。当FastCGI子进程关闭连接时，请求便告处理完成。FastCGI子进程接着等待并处理来自FastCGI进程管理器(运行在Web Server中)的下一个连接。 在CGI模式中，php-cgi在此便退出了。</li>
-</ul>
-<p><strong>应用场景</strong></p>
-<ul>
-<li>提供http服务</li>
-</ul>
-<p><strong>优点和缺点</strong></p>
-<ul>
-<li>跨平台,几乎可以在任何操作系统上实现.</li>
-<li>web和server是独立的,结构清晰,可控性强,并不需要web升级而变化</li>
-<li>支持大并发</li>
-<li>多进程,消耗较多内存</li>
-</ul>
-<h5 id="模块运行模式"><a href="#模块运行模式" class="headerlink" title="模块运行模式"></a><div id="title">模块运行模式</div></h5><blockquote>
-<p>模块模式指将php作为web服务器的一个模块运行</p>
-</blockquote>
-<p><strong>应用场景</strong></p>
-<ul>
-<li>提供http服务</li>
-</ul>
-<p><strong>优点和缺点</strong></p>
-<ul>
-<li>安装配置方便，不需要安装代码解析程序</li>
-<li>支持多线程，占用资源少</li>
-<li>支持大并发</li>
-</ul>
-<h4 id="服务器网络I-O模型"><a href="#服务器网络I-O模型" class="headerlink" title="服务器网络I/O模型"></a><div id="title">服务器网络I/O模型</div></h4><p><strong>大访问量下Apache和Nginx谁性能高？</strong></p>
-<p><strong>为什么大访问量下Nginx性能更高？</strong></p>
+<p><img src="https://i.loli.net/2018/08/16/5b750a845d5c5.png" alt="rabbit1.png"></p>
 <blockquote>
-<p>两者采用的服务器的模式不一样</p>
+<p>多个消费者可以订阅同一个队列，这时队列中的消息会被平均分摊给多个消费者进行处理，而不是每个消费者都收到所有的消息并处理。</p>
 </blockquote>
+<p><img src="https://i.loli.net/2018/08/16/5b750a845d5c2.png" alt="rabbit2.png"></p>
+<p><strong>队列的作用：</strong></p>
 <ul>
-<li><p>Apache所采用的select网络I/O模型非常低效</p>
+<li>存储消息、数据</li>
+<li>保证消息的顺序</li>
+<li>保证数据的正确交付</li>
+</ul>
+<p><strong><font color="red">为啥不直接使用Queue而是RabbitMQ？</font></strong></p>
+<h4 id="RabbitMQ架构介绍"><a href="#RabbitMQ架构介绍" class="headerlink" title="RabbitMQ架构介绍"></a><div id="title">RabbitMQ架构介绍</div></h4><p><img src="https://i.loli.net/2018/08/16/5b751788db1eb.png" alt="rabbit4.png"></p>
+<ul>
+<li><p>Publisher</p>
+<blockquote>
+<p>消息的生产者，也是一个向交换器发布消息的客户端应用程序。</p>
+</blockquote>
 </li>
-<li><p>Nginx使用了最新的epoll（Linux 2.6内核）和kqueue（freebsd）网络I/O模型</p>
+<li><p>Exchange</p>
+<blockquote>
+<p>交换器，用来接收生产者发送的消息并将这些消息路由给服务器中的队列。</p>
+</blockquote>
+</li>
+<li><p>Queue</p>
+<blockquote>
+<p>消息队列，用来保存消息直到发送给消费者。它是消息的容器，也是消息的终点。一个消息可投入一个或多个队列。消息一直在队列里面，等待消费者连接到这个队列将其取走。</p>
+</blockquote>
+</li>
+<li><p>Channel</p>
+<blockquote>
+<p>信道，多路复用连接中的一条独立的双向数据流通道</p>
+</blockquote>
+</li>
+<li><p>Consumer</p>
+<blockquote>
+<p>消息的消费者，表示一个从消息队列中取得消息的客户端应用程序</p>
+</blockquote>
 </li>
 </ul>
-<h5 id="I-O多路复用"><a href="#I-O多路复用" class="headerlink" title="I/O多路复用"></a><div id="title">I/O多路复用</div></h5><blockquote>
-<p>IO多路复用是指内核一旦发现进程指定的一个或者多个IO条件准备读取，它就通知该进程</p>
-</blockquote>
-<p>IO多路复用适用如下场合：</p>
-<p>1）当客户处理多个描述字时（一般是交互式输入和网络套接口），必须使用I/O复用</p>
-<p>2）如果一个TCP服务器既要处理监听套接口，又要处理已连接套接口，一般也要用到I/O复用。</p>
-<p>3）如果一个服务器即要处理TCP，又要处理UDP，一般要使用I/O复用。</p>
-<p>4）如果一个服务器要处理多个服务或多个协议，一般要使用I/O复用。</p>
-<blockquote>
-<p>与多进程和多线程技术相比，I/O多路复用技术的最大优势是系统开销小，系统不必创建进程/线程，也不必维护这些进程/线程，从而大大减小了系统的开销</p>
-</blockquote>
-<h5 id="两个网络模型的区别"><a href="#两个网络模型的区别" class="headerlink" title="两个网络模型的区别"></a><div id="title">两个网络模型的区别</div></h5><p><img src="https://i.loli.net/2018/04/08/5ac9b7468b035.jpg" alt="网络模型3.jpg"></p>
-<hr>
-<p><strong>select的优点：</strong></p>
-<blockquote>
-<p><code>select</code>目前几乎在所有的平台上支持，其良好跨平台支持也是它的一个优点。</p>
-</blockquote>
-<p><strong>select的缺点：</strong></p>
-<ol>
-<li><p><code>select</code>的一个缺点在于单个进程能够监视的文件描述符的数量存在最大限制，在Linux上一般为1024，可以通过修改宏定义甚至重新编译内核的方式提升这一限制，但是这样也会造成效率的降低。</p>
-</li>
-<li><p>对socket进行扫描时是线性扫描，即采用轮询的方法，效率较低。当套接字比较多的时候，每次select()都要通过遍历FD_SETSIZE个Socket来完成调度，不管哪个Socket是活跃的，都遍历一遍。这会浪费很多CPU时间。如果能给套接字注册某个回调函数，当他们活跃时，自动完成相关操作，那就避免了轮询，这正是epoll与kqueue做的。</p>
-</li>
-<li><p>需要维护一个用来存放大量fd的数据结构，这样会使得用户空间和内核空间在传递该结构时复制开销大。</p>
-</li>
-</ol>
-<p><strong>epoll介绍</strong></p>
-<blockquote>
-<p>epoll是在2.6内核中提出的，是之前的select和poll的增强版本。相对于select和poll来说，epoll更加灵活，没有描述符限制。epoll使用一个文件描述符管理多个描述符，将用户关系的文件描述符的事件存放到内核的一个事件表中，这样在用户空间和内核空间的copy只需一次。</p>
-</blockquote>
-<p><strong>epoll的优点</strong></p>
-<ol>
-<li><p>没有最大并发连接的限制，能打开的FD的上限远大于1024（1G的内存上能监听约10万个端口）</p>
-</li>
-<li><p>效率提升，不是轮询的方式，不会随着FD数目的增加效率下降。只有活跃可用的FD才会调用<code>callback</code>函数；即Epoll最大的优点就在于它只管你“活跃”的连接，而跟连接总数无关，因此在实际的网络环境中，Epoll的效率就会远远高于select和poll。</p>
-</li>
-<li><p>内存拷贝，利用<code>mmap()</code>文件映射内存加速与内核空间的消息传递；即epoll使用mmap减少复制开销。</p>
-</li>
-</ol>
-<hr>
-<h5 id="如何选择"><a href="#如何选择" class="headerlink" title="如何选择"></a><div id="title">如何选择</div></h5><p>综上，在选择select，epoll时要根据具体的使用场合以及这两种方式的自身特点：</p>
+<h4 id="RabbitMQ安装"><a href="#RabbitMQ安装" class="headerlink" title="RabbitMQ安装"></a><div id="title">RabbitMQ安装</div></h4><ul>
+<li>server端的安装</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">安装 http://www.rabbitmq.com/install-standalone-mac.html</div></pre></td></tr></table></figure>
 <ul>
-<li>表面上看epoll的性能最好，但是在连接数少并且连接都十分活跃的情况下，select性能可能比epoll好，毕竟epoll的通知机制需要很多函数回调</li>
-<li>select低效是因为每次它都需要轮询。但低效也是相对的，视情况而定，也可通过良好的设计改善</li>
-<li>一般访问量网站优先选择Apache，它稳定可靠</li>
-<li>Apache模块非常丰富，为了用它的模块得选它</li>
-<li>Apache的rewrite非常强大，rewrite多就选择它</li>
-<li>大访问量优先选择Nginx，它支持更多的并发连接</li>
-<li>处理的都是静态内容（html，图片），首选Nginx</li>
-<li>Nginx本质上是反向代理服务器，需要反向代理就选它</li>
+<li>API的安装</li>
 </ul>
-<h4 id="PHP运行机制与原理"><a href="#PHP运行机制与原理" class="headerlink" title="PHP运行机制与原理"></a><div id="title">PHP运行机制与原理</div></h4><p><img src="https://i.loli.net/2018/04/08/5ac9b897811a3.jpg" alt="运行原理.jpg"></p>
-<ul>
-<li><p>扫描(scanning) : 先进行语法分析和词法分析，然后将<code>index.php</code>内容变成一个个语言片段(<code>token</code>)</p>
-</li>
-<li><p>解析(parsing) : 词法分析后, 就需要根据一个个<code>token</code>去组成有意义的表达式</p>
-</li>
-</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">pip install pika</div><div class="line"><span class="keyword">or</span></div><div class="line">easy_install pika</div><div class="line"><span class="keyword">or</span></div><div class="line">源码</div><div class="line">https://pypi.python.org/pypi/pika</div></pre></td></tr></table></figure>
+<h4 id="Exchange类型"><a href="#Exchange类型" class="headerlink" title="Exchange类型"></a><div id="title">Exchange类型</div></h4><blockquote>
+<p>Exchange分发消息时根据类型的不同分发策略有区别，目前共四种类型：direct、fanout、topic、headers 。headers 匹配消息的 header头部字节 而不是路由键，此外 headers 交换器和 direct 交换器完全一致，但性能差很多，目前几乎用不到了，所以直接看另外三种类型：</p>
+</blockquote>
+<h5 id="direct"><a href="#direct" class="headerlink" title="direct"></a><div id="title">direct</div></h5><p><img src="https://i.loli.net/2018/08/17/5b7639419f5c1.png" alt="direct.png"></p>
 <blockquote>
-<p><code>Parsing</code>首先会丢弃<code>Tokens Array</code>中的多余的空格，然后将剩余的<code>Tokens</code>转换成一个一个的简单的表达式</p>
+<p>消息中的路由键（routing key）如果和 Binding 中的 binding key 一致， 交换器就将消息发到对应的队列中。路由键与队列名完全匹配，如果一个队列绑定到交换机要求路由键为“dog”，则只转发 routing key 标记为“dog”的消息，不会转发“dog.puppy”，也不会转发“dog.guard”等等。它是完全匹配、单播的模式</p>
 </blockquote>
-<ul>
-<li>编译(complication) : 将表达式编译成中间码(<code>opcode</code>)</li>
-<li>执行(execution) : 将中间码一条一条的执行</li>
-<li>输出(output buffer): 将要输出的内容输出到缓冲区</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$code = <span class="string">&lt;&lt;&lt;'PHP_CODE'</div><div class="line">&lt;?php</div><div class="line">echo 'hello world';</div><div class="line"><span class="subst">$data</span> = 1+1;</div><div class="line">echo <span class="subst">$data</span>;</div><div class="line">PHP_CODE;</span></div><div class="line"></div><div class="line">print_r(token_get_all($code));</div></pre></td></tr></table></figure>
-<p>分析这个返回结果我们可以发现，源码中的字符串，字符，空格，都会原样返回。每个源代码中的字符，都会出现在相应的顺序处。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">Array</span>(</div><div class="line">    [<span class="number">0</span>] =&gt; <span class="number">316</span> 				<span class="comment">//tokenid,也就是"词"id </span></div><div class="line">    [<span class="number">1</span>] =&gt; <span class="string">"Hello, world\n"</span>		<span class="comment">//"词"具体的内容</span></div><div class="line">    [<span class="number">2</span>] =&gt; <span class="number">3</span>				<span class="comment">//所在的位置,行数</span></div><div class="line">)</div></pre></td></tr></table></figure>
-<p><code>Token ID</code> (在<code>Zend</code>内部该<code>Token</code>的对应码)<br>具体的定义可以在<code>zend_language_parser.h</code>中找到</p>
-<h5 id="提高PHP代码运行效率"><a href="#提高PHP代码运行效率" class="headerlink" title="提高PHP代码运行效率"></a><div id="title">提高PHP代码运行效率</div></h5><ul>
-<li>压缩代码，去除无用的注释或空白</li>
-<li>尽量使用<code>PHP</code>内置函数或扩展函数</li>
-<li>用<code>apc/xcache/opcache</code>等缓存<code>PHP</code>的<code>opcode</code></li>
-<li>缓存复杂和耗时运算的结果</li>
-<li>能异步处理的任务不要马上处理，如发邮件</li>
-</ul>
-<h4 id="PHP底层源码分析"><a href="#PHP底层源码分析" class="headerlink" title="PHP底层源码分析"></a><div id="title">PHP底层源码分析</div></h4><h5 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a><div id="title">字符串</div></h5><h6 id="变量存储"><a href="#变量存储" class="headerlink" title="变量存储"></a><div id="title">变量存储</div></h6><blockquote>
-<p>php 的变量是用一个结构体-zval来保存的， 在Zend/zend.h中我们可以看到zval的定义.</p>
-</blockquote>
-<p><img src="https://i.loli.net/2018/04/08/5ac9be201106a.jpg" alt="zval1.jpg"></p>
-<h6 id="变量类型"><a href="#变量类型" class="headerlink" title="变量类型"></a><div id="title">变量类型</div></h6><p>变量的值使用<code>zvalue_value value</code>存储，此联合体内包括：</p>
-<ol>
-<li>整型/浮点/长整型/bool值 </li>
-<li>字符串</li>
-<li>数组/关联数组</li>
-<li>对象</li>
-<li>资源</li>
-</ol>
-<p><img src="https://i.loli.net/2018/04/08/5ac9beb87e89e.jpg" alt="zval2.jpg"></p>
-<h6 id="传值赋值和传引用赋值"><a href="#传值赋值和传引用赋值" class="headerlink" title="传值赋值和传引用赋值"></a><div id="title">传值赋值和传引用赋值</div></h6><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$a = <span class="number">3</span>;</div><div class="line">$b = $a;</div></pre></td></tr></table></figure>
-<p><strong>是否产生了两个结构体？</strong></p>
-<p><img src="https://i.loli.net/2018/04/08/5ac9c172e0620.png" alt="变量的引用1.png"></p>
-<p><strong>cow 写时复制</strong></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$a = <span class="number">3</span>;</div><div class="line">$b = $a;</div><div class="line"></div><div class="line">$b = <span class="number">5</span>;</div><div class="line"></div><div class="line"><span class="keyword">echo</span> $a, $b;</div></pre></td></tr></table></figure>
-<p><strong>既然<code>$a, $b</code>都指向同一个结构体，那当改变<code>$b</code>的值得时候，<code>$a</code>的值为啥不会改变？</strong></p>
+<p><strong>生产者</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pika</div><div class="line"> </div><div class="line"><span class="comment"># ######################### 生产者 #########################</span></div><div class="line">credentials = pika.PlainCredentials(<span class="string">'用户名'</span>, <span class="string">'密码'</span>)</div><div class="line">connection = pika.BlockingConnection(pika.ConnectionParameters(host=<span class="string">'localhost'</span>, credentials=credentials))</div><div class="line"></div><div class="line">channel = connection.channel()</div><div class="line">channel.exchange_declare(exchange=<span class="string">'mydirect'</span>,type=<span class="string">'direct'</span>)</div><div class="line"></div><div class="line">channel.basic_publish(exchange=<span class="string">'mydirect'</span>, routing_key=<span class="string">'test'</span>, body=<span class="string">'hello test'</span>)</div><div class="line"></div><div class="line">print(<span class="string">" [x] Sent 'Hello World!'"</span>)</div><div class="line">connection.close()</div></pre></td></tr></table></figure>
+<p><strong>消费者</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># ########################## 消费者 ##########################</span></div><div class="line"></div><div class="line">credentials = pika.PlainCredentials(<span class="string">'用户名'</span>, <span class="string">'密码'</span>)</div><div class="line"></div><div class="line">connection = pika.BlockingConnection(pika.ConnectionParameters(</div><div class="line">        host=<span class="string">'localhost'</span>,credentials))</div><div class="line">channel = connection.channel()</div><div class="line"> </div><div class="line">channel.exchange_declare(exchange=<span class="string">'mydirect'</span>, type=<span class="string">'direct'</span>)</div><div class="line"></div><div class="line">channel.queue_bind(exchange=<span class="string">'mydirect'</span>, queue=<span class="string">'test'</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">callback</span><span class="params">(ch, method, properties, body)</span>:</span></div><div class="line">    print(<span class="string">" [x] Received %r"</span> % body)</div><div class="line"> </div><div class="line">channel.basic_consume(callback,</div><div class="line">                      queue=<span class="string">'hello'</span>,</div><div class="line">                      no_ack=<span class="keyword">True</span>)</div><div class="line"> </div><div class="line">print(<span class="string">' [*] Waiting for messages. To exit press CTRL+C'</span>)</div><div class="line">channel.start_consuming()</div></pre></td></tr></table></figure>
+<p><strong>远程连接rabbitmq server的话，需要配置权限</strong></p>
 <blockquote>
-<p>因为两者，有一方修改值得时候，才会进行分裂。这种结构体一开始共用，到某一方修改值得时候，才分裂，就叫做写时复制 <code>copy on write</code></p>
+<p>首先在rabbitmq server上创建一个用户</p>
 </blockquote>
-<p><img src="https://i.loli.net/2018/04/08/5ac9c45298d58.png" alt="cow.png"></p>
-<p><strong>继续看：</strong></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$a = <span class="number">3</span>;</div><div class="line">$b = &amp;$a;</div><div class="line"></div><div class="line">$b = <span class="number">5</span>;</div><div class="line"></div><div class="line"><span class="keyword">echo</span> $a, $b;</div></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2018/04/08/5ac9c570c2774.png" alt="引用传值.png"></p>
-<p><strong>我们可以把引用看作是把这个变量的内存地址给复制了过来</strong></p>
-<h5 id="垃圾回收机制"><a href="#垃圾回收机制" class="headerlink" title="垃圾回收机制"></a><div id="title">垃圾回收机制</div></h5><h6 id="什么是垃圾"><a href="#什么是垃圾" class="headerlink" title="什么是垃圾?"></a><div id="title">什么是垃圾?</div></h6><blockquote>
-<p>垃圾主要是针对内存的, 如果一个对象struct, 并没有任何变量引用它,那这个对象就是垃圾. </p>
-</blockquote>
-<h6 id="为啥要清理垃圾"><a href="#为啥要清理垃圾" class="headerlink" title="为啥要清理垃圾"></a><div id="title">为啥要清理垃圾</div></h6><blockquote>
-<p>不是有人说php线程结束的时候会销毁所有的变量,关闭所有打开的句柄资源,不都是自动的吗?为什么我们还需要清理?</p>
-</blockquote>
-<ul>
-<li>如果php开启了很多内存空间,但是却没有销毁它.内存会一点点的被吃掉,最终导致内存溢出!</li>
-<li>如果你写的php代码是个需要长时间执行的呢,例如弄成守护进程?</li>
-</ul>
-<h6 id="如何回收垃圾"><a href="#如何回收垃圾" class="headerlink" title="如何回收垃圾"></a><div id="title">如何回收垃圾</div></h6><ul>
-<li>第一步, 从所有变量中找到垃圾 (所有的变量怎么来的? 怎样才能知道其中的某个变量是垃圾?)</li>
-<li>第二步, 找到垃圾后,清除垃圾(怎么清除?怎么才算真的清除垃圾?)</li>
-</ul>
-<p><strong>1.如何找到垃圾</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">sudo rabbitmqctl  add_user zhangsan <span class="number">123456</span></div></pre></td></tr></table></figure>
 <blockquote>
-<p>从所有变量中找到垃圾, 所有的变量<code>get_defined_vars</code>函数能够看到所有已经定义的变量,那意味着php本身能存储所有变量或已开辟的内存空间,具体在<code>zend_globals.h</code>中<code>struct _zend_executor_globals</code> 中看到</p>
+<p>同时还要配置权限，允许从外面访问</p>
 </blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">struct _zend_executor_globals &#123;</div><div class="line">    <span class="comment">//略</span></div><div class="line">    HashTable *active_symbol_table;<span class="comment">//局部变量的符号表</span></div><div class="line">    HashTable symbol_table;<span class="comment">//全局变量的符号表</span></div><div class="line">    <span class="comment">//略</span></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">sudo rabbitmqctl set_permissions -p / zhangsan <span class="string">".*"</span> <span class="string">".*"</span> <span class="string">".*"</span></div><div class="line"></div><div class="line"><span class="comment"># 命令讲解</span></div><div class="line">set_permissions [-p vhost] &#123;user&#125; &#123;conf&#125; &#123;write&#125; &#123;read&#125;</div></pre></td></tr></table></figure>
+<h5 id="单条消息丢失"><a href="#单条消息丢失" class="headerlink" title="单条消息丢失"></a><div id="title">单条消息丢失</div></h5><blockquote>
+<p>在生产者端，需要加上一个属性</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">channel.basic_publish(exchange=<span class="string">'mydirect'</span>,</div><div class="line">                      routing_key=<span class="string">'task_queue'</span>,</div><div class="line">                      body=message,</div><div class="line">                      properties=pika.BasicProperties(</div><div class="line">                          delivery_mode=<span class="number">2</span>, <span class="comment"># make message persistent</span></div><div class="line">                      )</div><div class="line">                    )</div></pre></td></tr></table></figure>
 <blockquote>
-<p>能找到所有的变量了,怎么找到垃圾? 按照我们的想法,一定会在这个变量上面打个标签,这个是垃圾,可以清理了!这个标签在哪里呢?</p>
+<p>在消费者端，需要加上确认消息代码</p>
 </blockquote>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">zend_uint refcount__gc; <span class="comment">// 用来标记有多少个变量指向它</span></div><div class="line">zend_uchar is_ref__gc; <span class="comment">// 用来标记是否用引用的方式指向它</span></div></pre></td></tr></table></figure>
-<p><strong>2.如何清理掉</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">callback</span><span class="params">(ch, method, properties, body)</span>:</span></div><div class="line">    print(<span class="string">" [x] Received %r"</span> % body)</div><div class="line">    time.sleep(<span class="number">10</span>)</div><div class="line">    print(<span class="string">" [x] Done"</span>)</div><div class="line">    print(<span class="string">"method.delivery_tag"</span>,method.delivery_tag)</div><div class="line">    ch.basic_ack(delivery_tag=method.delivery_tag)</div></pre></td></tr></table></figure>
+<p><strong>并且，我们需要去掉<code>no_ack=true</code>这段代码</strong></p>
+<h5 id="消息队列宕机"><a href="#消息队列宕机" class="headerlink" title="消息队列宕机"></a><div id="title">消息队列宕机</div></h5><blockquote>
+<p>如果你的服务器宕机了，所有的消息都会丢失，咋办？</p>
+<p>channel.queue_declare(queue=’test’, durable=True)</p>
+</blockquote>
+<p><strong>注意：队列必须在第一次声明的时候，就必须要持久化，途中设置回报错</strong></p>
+<h5 id="消息的能者多劳"><a href="#消息的能者多劳" class="headerlink" title="消息的能者多劳"></a><div id="title">消息的能者多劳</div></h5><blockquote>
+<p>服务器的性能大小不一，有的服务器处理的快，有的服务器处理的慢，因此默认的轮询方式不能够满足我们的需求，我们要的是 能者多劳，最大限度的发挥我们机器的性能. 为解决此问题，可以在各个消费者端，配置perfetch=1,意思就是告诉RabbitMQ在我这个消费者当前消息还没处理完的时候就不要再给我发新消息了。</p>
+</blockquote>
+<p><img src="https://i.loli.net/2018/08/16/5b7530c3e5b1c.png" alt="prefetch-count.png"></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">channel.basic_qos(prefetch_count=<span class="number">1</span>)</div><div class="line"></div><div class="line">channel.basic_consume(callback,</div><div class="line">                      queue=<span class="string">'task_queue'</span>)</div></pre></td></tr></table></figure>
+<h5 id="fanout"><a href="#fanout" class="headerlink" title="fanout"></a><div id="title">fanout</div></h5><p><img src="https://i.loli.net/2018/08/17/5b763941a2fcc.png" alt="fanout.png"></p>
 <blockquote>
-<p>看看是不是垃圾就看 <code>refcount__gc</code> 是不是为0，找到0的就清除,并回收内存(5.2以及以前版本)<br>但是，我们在php5.3之后，采用了新的算法，即引用计数系统中的同步周期回收(Concurrent Cycle Collection in Reference Counted Systems)算法来清除</p>
+<p>每个发到 fanout 类型交换器的消息都会分到所有绑定的队列上去。fanout 交换器不处理路由键，只是简单的将队列绑定到交换器上，每个发送到交换器的消息都会被转发到与该交换器绑定的所有队列上。很像子网广播，每台子网内的主机都获得了一份复制的消息。fanout 类型转发消息是最快的。</p>
 </blockquote>
-<p><strong>先让我们来看一个简单的例子：</strong></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"></div><div class="line"><span class="comment"># 把数组作为一个元素添加到自己</span></div><div class="line">$a = <span class="keyword">array</span>( <span class="string">'one'</span> );</div><div class="line">$a[] =&amp; $a;</div><div class="line">xdebug_debug_zval( <span class="string">'a'</span> );</div><div class="line"><span class="meta">?&gt;</span></div></pre></td></tr></table></figure>
-<p><strong>输出</strong></p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">a: (refcount=<span class="number">2</span>, is_ref=<span class="number">1</span>)=<span class="keyword">array</span> (</div><div class="line">   <span class="number">0</span> =&gt; (refcount=<span class="number">1</span>, is_ref=<span class="number">0</span>)=<span class="string">'one'</span>,</div><div class="line">   <span class="number">1</span> =&gt; (refcount=<span class="number">2</span>, is_ref=<span class="number">1</span>)=...</div><div class="line">)</div></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2018/05/04/5aebfbb8abe1b.png" alt="自引用.png"></p>
-<p>能看到数组变量 (a) 同时也是这个数组的第二个元素(1) 指向的变量容器中“refcount”为 2。上面的输出结果中的”…”说明发生了递归操作, 显然在这种情况下意味着”…”指向原始数组。</p>
-<p>跟刚刚一样，对一个变量调用unset，将删除这个符号，且它指向的变量容器中的引用次数也减1。所以，如果我们在执行完上面的代码后，对变量$a调用unset, 那么变量 $a 和数组元素 “1” 所指向的变量容器的引用次数减1, 从”2”变成”1”. 如下:</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">(refcount=<span class="number">1</span>, is_ref=<span class="number">1</span>)=<span class="keyword">array</span> (</div><div class="line">   <span class="number">0</span> =&gt; (refcount=<span class="number">1</span>, is_ref=<span class="number">0</span>)=<span class="string">'one'</span>,</div><div class="line">   <span class="number">1</span> =&gt; (refcount=<span class="number">1</span>, is_ref=<span class="number">1</span>)=...</div><div class="line">)</div></pre></td></tr></table></figure>
-<p><img src="https://i.loli.net/2018/05/04/5aebfbb8a1dd9.png" alt="自引用2.png"></p>
-<p><strong>3.引发思考</strong></p>
-<p>尽管不再有某个作用域中的任何符号指向这个结构(就是变量容器)，由于数组元素“1”仍然指向数组本身，所以这个容器不能被清除 。因为没有另外的符号指向它，用户没有办法清除这个结构，结果就会导致内存泄漏。庆幸的是，php将在脚本执行结束时清除这个数据结构，但是在php清除之前，将耗费不少内存。</p>
-<p>如果上面的情况发生仅仅一两次倒没什么，但是如果出现几千次，甚至几十万次的内存泄漏，这显然是个大问题。这样的问题往往发生在长时间运行的脚本中，比如请求基本上不会结束的守护进程(deamons)或者单元测试中的大的套件(sets)中。有这样一个例子：在给巨大的eZ(一个知名的PHP Library) 组件库的模板组件做单元测试时，就可能会出现问题。有时测试可能需要耗用2GB的内存，而测试服务器很可能没有这么大的内存。</p>
-<p><strong>4.php5.3的删除算法介绍</strong></p>
+<p><strong>生产者代码</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pika</div><div class="line"></div><div class="line">credentials = pika.PlainCredentials(<span class="string">'用户名'</span>, <span class="string">'密码'</span>)</div><div class="line"></div><div class="line">parameters = pika.ConnectionParameters(host=<span class="string">'localhost'</span>,credentials=credentials)</div><div class="line">connection = pika.BlockingConnection(parameters)</div><div class="line"></div><div class="line">channel = connection.channel()</div><div class="line"></div><div class="line"><span class="comment"># 开始连接exchange</span></div><div class="line">channel.exchange_declare(exchange=<span class="string">'myfanout'</span>,type=<span class="string">'fanout'</span>)</div><div class="line"></div><div class="line">message = sys.argv[<span class="number">1</span>] <span class="keyword">if</span>(len(sys.argv[<span class="number">1</span>])&gt;<span class="number">1</span>) <span class="keyword">else</span> <span class="string">"info"</span></div><div class="line">channel.basic_publish(exchange=<span class="string">'myfanout'</span>,</div><div class="line">                      routing_key=<span class="string">''</span>,</div><div class="line">                      body=message)</div><div class="line">                      </div><div class="line">print(<span class="string">"publish done %s"</span> % message)</div><div class="line">connection.close()</div></pre></td></tr></table></figure>
+<p><strong>消费者代码</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pika</div><div class="line">credentials = pika.PlainCredentials(<span class="string">'用户名'</span>, <span class="string">'密码'</span>)</div><div class="line"></div><div class="line">parameters = pika.ConnectionParameters(host=<span class="string">'localhost'</span>,credentials=credentials)</div><div class="line">connection = pika.BlockingConnection(parameters)</div><div class="line"></div><div class="line">channel = connection.channel() </div><div class="line">channel.exchange_declare(exchange=<span class="string">'myfanout'</span>, type=<span class="string">'fanout'</span>)</div><div class="line"></div><div class="line">queue_obj = channel.queue_declare(exclusive=<span class="keyword">True</span>) <span class="comment">#不指定queue名字,rabbit会随机分配一个名字,exclusive=True会在使用此queue的消费者断开后,自动将queue删除</span></div><div class="line">queue_name = queue_obj.method.queue</div><div class="line">print(<span class="string">'queue name'</span>,queue_name,queue_obj)</div><div class="line"></div><div class="line">channel.queue_bind(exchange=<span class="string">'myfanout'</span>,queue=queue_name) <span class="comment">#绑定队列到Exchange</span></div><div class="line"></div><div class="line">print(<span class="string">' [*] Waiting for logs. To exit press CTRL+C'</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">callback</span><span class="params">(ch, method, properties, body)</span>:</span></div><div class="line">    print(<span class="string">" [x] %r"</span> % body)</div><div class="line"></div><div class="line">channel.basic_consume(callback,queue=queue_name, no_ack=<span class="keyword">True</span>)</div><div class="line"></div><div class="line">channel.start_consuming()</div></pre></td></tr></table></figure>
+<h5 id="topic"><a href="#topic" class="headerlink" title="topic"></a><div id="title">topic</div></h5><p><img src="https://i.loli.net/2018/08/17/5b763941b2c91.png" alt="topic.png"></p>
 <blockquote>
-<p>在php5.3中，采用模拟删除每个疑似变量。模拟删除时将变量引用数减”1”，然后再进行模拟恢复，但恢复是有条件的，当有其他变量指向该值时才对其做模拟恢复。这样剩下的一堆没能恢复的就是该删除的了，在步骤 D 中遍历出来真的删除掉</p>
+<p>topic 交换器通过模式匹配分配消息的路由键属性，将路由键和某个模式进行匹配，此时队列需要绑定到一个模式上。它将路由键和绑定键的字符串切分成单词，这些单词之间用点隔开。它同样也会识别两个通配符：符号“#”和符号“”。#匹配0个或多个单词，匹配不多不少一个单词。</p>
 </blockquote>
-<p><strong>5.什么时候回收？</strong></p>
-<ul>
-<li>当我们存储的疑似垃圾的区域满了的时候,就会被执行清除垃圾的操作,前提是开启了垃圾回收机制,当然,默认是打开的<code>php.ini</code> 设置允许你修改它：<code>zend.enable_gc</code></li>
-<li>修改配置<code>zend.enable_gc</code> ，也能通过分别调用<code>gc_enable()</code> 和 <code>gc_disable()</code>函数来打开和关闭垃圾回收机制。调用这些函数，与修改配置项来打开或关闭垃圾回收机制的效果是一样的。你还能调用<code>gc_collect_cycles()</code>函数达到这个目的。它能强制执行周期回收。</li>
-</ul>
-<h5 id="数组"><a href="#数组" class="headerlink" title="数组"></a><div id="title">数组</div></h5><h6 id="数组Key和Value的限制条件"><a href="#数组Key和Value的限制条件" class="headerlink" title="数组Key和Value的限制条件"></a><div id="title">数组Key和Value的限制条件</div></h6><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">$arr = <span class="keyword">array</span>(</div><div class="line">        <span class="number">1</span> =&gt; <span class="string">'a'</span>,</div><div class="line">        <span class="string">"1"</span> =&gt; <span class="string">"b"</span>,</div><div class="line">        <span class="number">1.5</span> =&gt; <span class="string">"c"</span>,</div><div class="line">        <span class="keyword">true</span> =&gt; <span class="string">"d"</span></div><div class="line">    );</div><div class="line">var_dump($arr);</div><div class="line"></div><div class="line">$arr = <span class="keyword">array</span>(</div><div class="line">        <span class="string">"foo"</span> =&gt; <span class="string">'bar'</span>,</div><div class="line">        <span class="string">"bar"</span> =&gt; <span class="string">"foo"</span>,</div><div class="line">        <span class="number">100</span> =&gt; <span class="number">-100</span>,</div><div class="line">        <span class="number">-100</span> =&gt; <span class="number">100</span></div><div class="line">    );</div><div class="line">var_dump($arr);</div></pre></td></tr></table></figure>
-<ul>
-<li>key 可以是 integer 或者 string。</li>
-<li>value 可以是任意类型。</li>
-</ul>
-<p><strong>key 会有如下的强制转换:</strong></p>
-<ul>
-<li>包含有合法整型值的字符串会被转换为整型</li>
-<li>浮点数和布尔值也会被转换为整型</li>
-<li>键名 null 实际会被储存为 “”</li>
-<li>数组和对象不能被用为键名</li>
-<li>相同键名，之前会被覆盖</li>
-</ul>
-<h6 id="数组元素的访问"><a href="#数组元素的访问" class="headerlink" title="数组元素的访问"></a><div id="title">数组元素的访问</div></h6><blockquote>
-<p>获取数组元素的值有哪些方法？</p>
-</blockquote>
-<ul>
-<li>方括号，数组单元可以通过 array[key] 语法来访问。</li>
-<li>花括号也可以，例如 <code>$array[42] 和 $array{42}</code> 效果相同。</li>
-<li>自 PHP 5.4 起可以用数组间接引用函数或方法调用的结果。</li>
-</ul>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getArr</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">array</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>);</div><div class="line">&#125;</div><div class="line">$element = getArr()[<span class="number">1</span>];</div><div class="line">var_dump($element);</div></pre></td></tr></table></figure>
-<h6 id="unset删除数组元素"><a href="#unset删除数组元素" class="headerlink" title="unset删除数组元素"></a><div id="title">unset删除数组元素</div></h6><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$arr = <span class="keyword">array</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>);</div><div class="line"></div><div class="line"><span class="keyword">foreach</span>($arr <span class="keyword">as</span> $k=&gt;$v)&#123;</div><div class="line">    <span class="keyword">unset</span>($arr[$k]);</div><div class="line">&#125;</div><div class="line">$arr[] = <span class="number">6</span>;</div><div class="line"></div><div class="line">print_r($arr);</div></pre></td></tr></table></figure>
-<p><strong>unset删除之后，并不会重置数组的索引</strong></p>
-<h6 id="数组遍历"><a href="#数组遍历" class="headerlink" title="数组遍历"></a><div id="title">数组遍历</div></h6><ul>
-<li><code>for</code> ：语句循环遍历 </li>
-<li><code>foreach</code> ：循环遍历 </li>
-<li><code>array_walk、array_map</code> ：回调遍历</li>
-<li><code>current和next</code> ：内部指针遍历</li>
-</ul>
-<p><strong>一般php推荐使用foreach来遍历数组。</strong></p>
-<h6 id="数组和常见的数据结构"><a href="#数组和常见的数据结构" class="headerlink" title="数组和常见的数据结构"></a><div id="title">数组和常见的数据结构</div></h6><p><strong>链表</strong></p>
-<blockquote>
-<p>链表能存储多个数据元素，他就像一条线一样，把所有存储的数据元素连在一起，所以也称作是线性的数据结构。</p>
-</blockquote>
-<p><img src="https://i.loli.net/2018/04/08/5ac9eec1bdf26.png" alt="链表.png"></p>
-<p><strong>散列表</strong></p>
-<blockquote>
-<p>散列表（Hash table，也叫哈希表），是根据关键字（Key value）而直接访问在内存存储位置的一种数据结构。</p>
-</blockquote>
-<p><strong>栈</strong></p>
-<blockquote>
-<p>栈作为一种数据结构，是一种只能在一端进行插入和删除操作的特殊线性表。它按照后进先出的原则存储数据（LIFO, Last In First Out）。</p>
-</blockquote>
-<p><strong>队列</strong></p>
-<blockquote>
-<p>队列就是是先进先出（FIFO, First-In-First-Out）的线性表。队列只允许在后端（称为rear）进行插入操作，在前端（称为front）进行删除操作。</p>
-</blockquote>
-<h6 id="数组内部实现"><a href="#数组内部实现" class="headerlink" title="数组内部实现"></a><div id="title">数组内部实现</div></h6><ul>
-<li>实现数组使用了两个数据结构，一个是<code>HashTable</code>,另一个是<code>bucket</code>。</li>
-<li><code>HashTable</code>结构体用于保存整个数组需要的基本信息。</li>
-<li><code>Bucket</code>结构体用于保存具体的数据内容。</li>
-</ul>
-<p><img src="https://i.loli.net/2018/04/08/5ac9dcb8f21f7.jpg" alt="hashtable1.jpg"></p>
-<p><strong>HashTable是什么？</strong></p>
-<blockquote>
-<p>哈希表，是根据关键字（<code>Key value</code>）而直接访问在内存存储位置的数据结构。也就是说，它通过把键值通过一个函数的计算，映射到表中一个位置来访问记录，这加快了查找速度。使得普通的查找和插入、删除操作都可以在<code>O(1)</code> 的时间内完成。这个映射函数称做<code>哈希函数</code>，存放记录的数组称做哈希表。</p>
-</blockquote>
-<p><img src="https://i.loli.net/2018/04/08/5ac9dd3d26ee2.jpg" alt="hashtable2.jpg"></p>
-<p><strong>HashTable结构体的表示：</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> _<span class="title">hashtable</span> &#123;</span></div><div class="line">    uint nTableSize;        <span class="comment">// hash Bucket的大小，最小为8，以2x增长。</span></div><div class="line">    uint nTableMask;        <span class="comment">// nTableSize-1 </span></div><div class="line">    uint nNumOfElements;    <span class="comment">// hash Bucket中当前存在的元素个数，count()函数会直接返回此值。</span></div><div class="line">    ulong nNextFreeElement; <span class="comment">// 下一个数字索引的位置</span></div><div class="line">    Bucket *pInternalPointer;   <span class="comment">// 当前遍历的指针, current遍历函数使用</span></div><div class="line">    Bucket *pListHead;          <span class="comment">// 存储数组头元素指针</span></div><div class="line">    Bucket *pListTail;          <span class="comment">// 存储数组尾元素指针</span></div><div class="line">    Bucket **arBuckets;         <span class="comment">// 存储hash数组,实际的存储容器</span></div><div class="line">    <span class="keyword">unsigned</span> <span class="keyword">char</span> nApplyCount; <span class="comment">// 标记当前hash Bucket被递归访问的次数（防止多次递归）</span></div><div class="line">&#125; HashTable;</div></pre></td></tr></table></figure>
-<p><strong>Bucket结构体：</strong></p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">bucket</span> &#123;</span></div><div class="line">    ulong h;            <span class="comment">// 对char *key进行hash后的值，或者是用户指定的数字索引值</span></div><div class="line">    uint nKeyLength;    <span class="comment">// hash关键字的长度，如果数组索引为数字，此值为0</span></div><div class="line">    <span class="keyword">void</span> *pData;        <span class="comment">// 指向value，一般是用户数据的副本，如果是指针数据，则指向pDataPtr</span></div><div class="line">    <span class="keyword">void</span> *pDataPtr;     <span class="comment">//如果是指针数据，此值会指向真正的value，同时上面pData会指向此值</span></div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">bucket</span> *<span class="title">pListNext</span>;</span>   <span class="comment">// 整个hash表的下一元素</span></div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">bucket</span> *<span class="title">pListLast</span>;</span>   <span class="comment">// 整个hash表该元素的上一个元素</span></div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">bucket</span> *<span class="title">pNext</span>;</span>       <span class="comment">// 存放在同一个hash Bucket内的下一个元素</span></div><div class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">bucket</span> *<span class="title">pLast</span>;</span>       <span class="comment">// 同一个hash bucket的上一个元素</span></div><div class="line">    <span class="keyword">const</span> <span class="keyword">char</span> *arKey;          <span class="comment">// 保存当前key所对应的字符串值</span></div><div class="line">&#125; Bucket;</div></pre></td></tr></table></figure>
-<p><strong>总结成一张图，如下：</strong></p>
-<p><img src="https://i.loli.net/2018/04/08/5ac9ea3400a26.jpg" alt="hashtable数组.jpg"></p>
-<h6 id="数组函数分类"><a href="#数组函数分类" class="headerlink" title="数组函数分类"></a><div id="title">数组函数分类</div></h6><ul>
-<li>数组遍历相关函数：如<code>prev, next, current, end,reset, each</code>等</li>
-<li>数组排序相关：如<code>sort, rsort, asort, arsort, ksort, krsort, uasort, uksort</code></li>
-<li>数组查找相关: 如<code>in_array, array_search, array_key_exists</code>等</li>
-<li>数组分割、合并相关：<code>array_slice, array_splice, implode, array_chunk, array_combine</code>等</li>
-<li>数组交并差：如<code>array_merge, array_diff, array_diff_*, array_intersect, array_intersect_*</code></li>
-<li>作为stack/queue容器的数组：如<code>array_push, array_pop, array_shift</code></li>
-<li>其他的数组操作：<code>array_fill, array_flip, array_sum, array_reverse</code>等</li>
-</ul>
-
+<p><strong>生产者代码</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pika</div><div class="line"><span class="keyword">import</span> sys</div><div class="line"></div><div class="line">credentials = pika.PlainCredentials(<span class="string">'用户名'</span>, <span class="string">'密码'</span>)</div><div class="line"></div><div class="line">parameters = pika.ConnectionParameters(host=<span class="string">'localhost'</span>,credentials=credentials)</div><div class="line">connection = pika.BlockingConnection(parameters)</div><div class="line"></div><div class="line">channel = connection.channel() <span class="comment">#队列连接通道</span></div><div class="line"></div><div class="line">channel.exchange_declare(exchange=<span class="string">'mytopic'</span>,type=<span class="string">'topic'</span>)</div><div class="line"></div><div class="line">log_level =  sys.argv[<span class="number">1</span>] <span class="keyword">if</span> len(sys.argv) &gt; <span class="number">1</span> <span class="keyword">else</span> <span class="string">'all.info'</span></div><div class="line"></div><div class="line">message = <span class="string">' '</span>.join(sys.argv[<span class="number">1</span>:]) <span class="keyword">or</span> <span class="string">"all.info: Hello World!"</span></div><div class="line"></div><div class="line">channel.basic_publish(exchange=<span class="string">'topic_log'</span>,</div><div class="line">                      routing_key=log_level,</div><div class="line">                      body=message)</div><div class="line">print(<span class="string">" [x] Sent %r"</span> % message)</div><div class="line">connection.close()</div></pre></td></tr></table></figure>
+<p><strong>消费者</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> pika,sys</div><div class="line">credentials = pika.PlainCredentials(<span class="string">'用户名'</span>, <span class="string">'密码'</span>)</div><div class="line">parameters = pika.ConnectionParameters(host=<span class="string">'localhost'</span>,credentials=credentials)</div><div class="line">connection = pika.BlockingConnection(parameters)</div><div class="line"></div><div class="line">channel = connection.channel() </div><div class="line"></div><div class="line">queue_obj = channel.queue_declare(exclusive=<span class="keyword">True</span>) <span class="comment">#不指定queue名字,rabbit会随机分配一个名字,exclusive=True会在使用此queue的消费者断开后,自动将queue删除</span></div><div class="line">queue_name = queue_obj.method.queue</div><div class="line"></div><div class="line">log_levels = sys.argv[<span class="number">1</span>:] <span class="comment"># info warning errr</span></div><div class="line"></div><div class="line"><span class="keyword">if</span> <span class="keyword">not</span> log_levels:</div><div class="line">    sys.stderr.write(<span class="string">"Usage: %s [info] [warning] [error]\n"</span> % sys.argv[<span class="number">0</span>])</div><div class="line">    sys.exit(<span class="number">1</span>)</div><div class="line"></div><div class="line"></div><div class="line"><span class="keyword">for</span> level <span class="keyword">in</span> log_levels:</div><div class="line">    channel.queue_bind(exchange=<span class="string">'topic_log'</span>,</div><div class="line">                       queue=queue_name,</div><div class="line">                       routing_key=level) </div><div class="line"></div><div class="line">print(<span class="string">' [*] Waiting for logs. To exit press CTRL+C'</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">callback</span><span class="params">(ch, method, properties, body)</span>:</span></div><div class="line">    print(<span class="string">" [x] %r"</span> % body)</div><div class="line"></div><div class="line">channel.basic_consume(callback,queue=queue_name, no_ack=<span class="keyword">True</span>)</div><div class="line"></div><div class="line">channel.start_consuming()</div></pre></td></tr></table></figure>
+<h4 id="RabbitMQ服务器的管理"><a href="#RabbitMQ服务器的管理" class="headerlink" title="RabbitMQ服务器的管理"></a><div id="title">RabbitMQ服务器的管理</div></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">./sbin/rabbitmq-server -detached   <span class="comment"># 后台启动</span></div><div class="line"></div><div class="line">./sbin/rabbitmqctl status   <span class="comment"># 查看状态</span></div><div class="line"></div><div class="line">./sbin/rabbitmqctl stop    <span class="comment"># 关闭</span></div><div class="line"></div><div class="line">./sbin/rabbitmqctl list_queues  <span class="comment"># 查看queue</span></div></pre></td></tr></table></figure>
       
 
       
@@ -558,7 +345,7 @@ onmouseup="document.selection.empty()">-->
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NoSQL</a>
         		</li>
       		
 		</ul>
@@ -571,7 +358,7 @@ onmouseup="document.selection.empty()">-->
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
+        			<a href="/categories/NoSQL/" class="article-tag-list-link color1">NoSQL</a>
         		</li>
       		
 		</ul>
@@ -588,18 +375,18 @@ onmouseup="document.selection.empty()">-->
   
 <nav id="article-nav">
   
-    <a href="/2017/10/06/Http协议/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2117/05/07/声明/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Http协议总结
+          声明
         
       </div>
     </a>
   
   
-    <a href="/2017/10/05/session共享问题/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Session共享问题</div>
+    <a href="/2018/05/07/少年得志大不幸:/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">从中国好声音谈人生的高开低走和低开高走</div>
       <i class="icon-circle-right"></i>
     </a>
   
