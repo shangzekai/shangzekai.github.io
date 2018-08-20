@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.shangzekai.xyz">
-  <title>分类 | Python</title>
+  <title>Torando基础讲解 | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="分类">
-<meta property="og:url" content="https://www.shangzekai.xyz/categories/index.html">
+  <meta name="description" content="Torando的介绍 Tornado 是一个Python web框架和异步网络库， 通过使用非阻塞网络I/O， Tornado可以支撑上万级的连接，处理 长连接, WebSockets ，和其他需要与每个用户保持长久连接的应用.">
+<meta name="keywords" content="python">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Torando基础讲解">
+<meta property="og:url" content="https://www.shangzekai.xyz/2018/05/08/Torando基础介绍/index.html">
 <meta property="og:site_name" content="Python">
-<meta property="og:updated_time" content="2017-05-25T03:45:14.000Z">
+<meta property="og:description" content="Torando的介绍 Tornado 是一个Python web框架和异步网络库， 通过使用非阻塞网络I/O， Tornado可以支撑上万级的连接，处理 长连接, WebSockets ，和其他需要与每个用户保持长久连接的应用.">
+<meta property="og:image" content="https://i.loli.net/2018/08/20/5b7a2edce6c70.png">
+<meta property="og:updated_time" content="2018-08-20T06:52:52.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="分类">
+<meta name="twitter:title" content="Torando基础讲解">
+<meta name="twitter:description" content="Torando的介绍 Tornado 是一个Python web框架和异步网络库， 通过使用非阻塞网络I/O， Tornado可以支撑上万级的连接，处理 长连接, WebSockets ，和其他需要与每个用户保持长久连接的应用.">
+<meta name="twitter:image" content="https://i.loli.net/2018/08/20/5b7a2edce6c70.png">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
@@ -148,31 +154,203 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-undefined" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-Torando基础介绍" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      分类
+      Torando基础讲解
     </h1>
   
 
         
-        <a href="/categories/index.html" class="archive-article-date">
-  	<time datetime="2017-05-25T03:42:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-25</time>
+        <a href="/2018/05/08/Torando基础介绍/" class="archive-article-date">
+  	<time datetime="2018-05-08T12:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-	<div class="category-all-page">
-		<div class="category-all">
-			<ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/GIT/">GIT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/Linux/">Linux</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/MySQL/">MySQL</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/NoSQL/">NoSQL</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/">PHP</a><span class="category-list-count">33</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/PHP/YAF/">YAF</a><span class="category-list-count">9</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/Python/">Python</a><span class="category-list-count">12</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/前端/">前端</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/声明/">声明</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/工具/">工具</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/爬虫/">爬虫</a><span class="category-list-count">10</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/网站/">网站</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/闲谈/">闲谈</a><span class="category-list-count">6</span></li></ul>
-		</div>
-	</div>
+	
+        <div id="toc" class="article-toc">
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Torando的介绍"><span class="toc-text">Torando的介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Torando和Django的比较"><span class="toc-text">Torando和Django的比较</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Torando入门程序"><span class="toc-text">Torando入门程序</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#Application对象"><span class="toc-text">Application对象</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#RequestHandler子类"><span class="toc-text">RequestHandler子类</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Torando快速开始"><span class="toc-text">Torando快速开始</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#路由系统"><span class="toc-text">路由系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#模板引擎"><span class="toc-text">模板引擎</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#母版"><span class="toc-text">母版</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#导入"><span class="toc-text">导入</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#自定义UIMethod以UIModule"><span class="toc-text">自定义UIMethod以UIModule</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#静态文件"><span class="toc-text">静态文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Model的讲解"><span class="toc-text">Model的讲解</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#防止SQL注入"><span class="toc-text">防止SQL注入</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#使用pymysql操作"><span class="toc-text">使用pymysql操作</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cookie的设置"><span class="toc-text">cookie的设置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CSRF"><span class="toc-text">CSRF</span></a></li></ol>
+          <hr/>
+        </div>
+        
+        <h4 id="Torando的介绍"><a href="#Torando的介绍" class="headerlink" title="Torando的介绍"></a><div id="title">Torando的介绍</div></h4><blockquote>
+<p><code>Tornado</code> 是一个<code>Python web</code>框架和异步网络库， 通过使用非阻塞网络<code>I/O</code>， <code>Tornado</code>可以支撑上万级的连接，处理 <code>长连接, WebSockets</code> ，和其他需要与每个用户保持长久连接的应用.</p>
+</blockquote>
+<a id="more"></a>
+<h4 id="Torando和Django的比较"><a href="#Torando和Django的比较" class="headerlink" title="Torando和Django的比较"></a><div id="title">Torando和Django的比较</div></h4><table>
+<thead>
+<tr>
+<th style="text-align:center">特性</th>
+<th style="text-align:center">Django</th>
+<th style="text-align:center">Torando</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">路由系统</td>
+<td style="text-align:center">有</td>
+<td style="text-align:center">有</td>
+</tr>
+<tr>
+<td style="text-align:center">视图函数</td>
+<td style="text-align:center">有</td>
+<td style="text-align:center">有</td>
+</tr>
+<tr>
+<td style="text-align:center">模板引擎</td>
+<td style="text-align:center">有</td>
+<td style="text-align:center">有</td>
+</tr>
+<tr>
+<td style="text-align:center">ORM操作</td>
+<td style="text-align:center">有</td>
+<td style="text-align:center">无</td>
+</tr>
+<tr>
+<td style="text-align:center">cookie</td>
+<td style="text-align:center">有</td>
+<td style="text-align:center">有</td>
+</tr>
+<tr>
+<td style="text-align:center">session</td>
+<td style="text-align:center">有</td>
+<td style="text-align:center">无</td>
+</tr>
+<tr>
+<td style="text-align:center">缓存，信号，Form，Admin</td>
+<td style="text-align:center">有</td>
+<td style="text-align:center">无</td>
+</tr>
+</tbody>
+</table>
+<h4 id="Torando入门程序"><a href="#Torando入门程序" class="headerlink" title="Torando入门程序"></a><div id="title">Torando入门程序</div></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> tornado.ioloop</div><div class="line"><span class="keyword">import</span> tornado.web</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainHandler</span><span class="params">(tornado.web.RequestHandler)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self)</span>:</span></div><div class="line">        self.write(<span class="string">"Hello, world"</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">make_app</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">return</span> tornado.web.Application([</div><div class="line">        (<span class="string">r"/"</span>, MainHandler),</div><div class="line">    ])</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    app = make_app()</div><div class="line">    app.listen(<span class="number">8888</span>)</div><div class="line">    tornado.ioloop.IOLoop.current().start()</div></pre></td></tr></table></figure>
+<p><strong>执行过程：</strong></p>
+<ul>
+<li>第一步：执行脚本，监听 <code>8888</code> 端口</li>
+<li>第二步：浏览器客户端访问 <code>/  --&gt;  http://127.0.0.1:8888/</code></li>
+<li>第三步：服务器接受请求，并交由对应的类处理该请求</li>
+<li>第四步：类接受到请求之后，根据请求方式（<code>post/get/delete...</code>）的不同调用并执行相应的方法</li>
+<li>第五步：方法返回值的字符串内容发送浏览器</li>
+</ul>
+<h5 id="Application对象"><a href="#Application对象" class="headerlink" title="Application对象"></a><div id="title">Application对象</div></h5><blockquote>
+<p>Application 对象是负责全局配置的, 包括映射请求转发给处理程序的路由 表.</p>
+</blockquote>
+<h5 id="RequestHandler子类"><a href="#RequestHandler子类" class="headerlink" title="RequestHandler子类"></a><div id="title">RequestHandler子类</div></h5><blockquote>
+<p>Tornado web 应用程序的大部分工作是在 RequestHandler 子类下完成的. 处理子类的主入口点是一个命名为处理HTTP方法的函数: get(), post(), 等等. 每个处理程序可以定义一个或者多个这种方法来处理不同 的HTTP动作</p>
+</blockquote>
+<h4 id="Torando快速开始"><a href="#Torando快速开始" class="headerlink" title="Torando快速开始"></a><div id="title">Torando快速开始</div></h4><blockquote>
+<p>由一个简单的Demo来说，MVC的结构框架</p>
+</blockquote>
+<p><a href="http://www.shangzekai.xyz/2017/05/05/web%E6%A1%86%E6%9E%B6%E7%9A%84%E6%9C%AC%E8%B4%A8/">MVC的形象解释</a>  <a href="http://www.shangzekai.xyz/2018/03/02/Yaf%E4%BB%8B%E7%BB%8D/">MVC的原理</a></p>
+<h4 id="路由系统"><a href="#路由系统" class="headerlink" title="路由系统"></a><div id="title">路由系统</div></h4><blockquote>
+<p>路由系统其实就是 <code>url</code> 和 类 的对应关系，这里不同于其他框架，其他很多框架均是 <code>url</code> 对应 函数，<code>Tornado</code>中每个<code>url</code>对应的是一个类。</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> tornado.ioloop</div><div class="line"><span class="keyword">import</span> tornado.web</div><div class="line">   </div><div class="line">   </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainHandler</span><span class="params">(tornado.web.RequestHandler)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self)</span>:</span></div><div class="line">        self.write(<span class="string">"Hello, world"</span>)</div><div class="line">   </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">StoryHandler</span><span class="params">(tornado.web.RequestHandler)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self, story_id)</span>:</span></div><div class="line">        self.write(<span class="string">"You requested the story "</span> + story_id)</div><div class="line">   </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BuyHandler</span><span class="params">(tornado.web.RequestHandler)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self)</span>:</span></div><div class="line">        self.write(<span class="string">"buy.wupeiqi.com/index"</span>)</div><div class="line">   </div><div class="line">application = tornado.web.Application([</div><div class="line">    (<span class="string">r"/index"</span>, MainHandler),</div><div class="line">    (<span class="string">r"/story/([0-9]+)"</span>, StoryHandler),</div><div class="line">])</div><div class="line">   </div><div class="line">application.add_handlers(<span class="string">'buy.wupeiqi.com$'</span>, [</div><div class="line">    (<span class="string">r'/index'</span>,BuyHandler),</div><div class="line">])</div><div class="line">   </div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    application.listen(<span class="number">80</span>)</div><div class="line">    tornado.ioloop.IOLoop.instance().start()</div></pre></td></tr></table></figure>
+<h4 id="模板引擎"><a href="#模板引擎" class="headerlink" title="模板引擎"></a><div id="title">模板引擎</div></h4><p><code>Tornao</code>中的模板语言和<code>django</code>中类似，模板引擎将模板文件载入内存，然后将数据嵌入其中，最终获取到一个完整的字符串，再将字符串返回给请求者</p>
+<p><code>Tornado</code> 的模板支持“控制语句”和“表达语句”，控制语句是使用 <code>{%` 和 `%}</code> 包起来的 例如 <code>{% if len(items) > 2 %}</code>。表达语句是使用 <code>{{` 和 `}}</code> 包起来的，例如 <code>{{ items[0] }}</code>。</p>
+<p>控制语句和对应的 <code>Python</code> 语句的格式基本完全相同。我们支持 <code>if、for、while 和 try</code>，这些语句逻辑结束的位置需要用 <code>{% end %}</code> 做标记。还通过 <code>extends</code> 和 <code>block</code> 语句实现了模板继承。这些在 <code>template</code> 模块 的代码文档中有着详细的描述。</p>
+<p>注：在使用模板前需要在<code>setting</code>中设置模板路径：<code>&quot;template_path&quot; : &quot;tpl&quot;</code></p>
+<figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/&gt;</div><div class="line">    &lt;title&gt;XXX&lt;/title&gt;</div><div class="line">    &lt;link href="<span class="template-variable">&#123;&#123;static_url(<span class="string">"css/common.css"</span>)&#125;&#125;</span>" rel="stylesheet" /&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;div&gt;</div><div class="line">        &lt;ul&gt;</div><div class="line">            &#123;% for item in list_info %&#125;</div><div class="line">                &lt;li&gt;<span class="template-variable">&#123;&#123;item&#125;&#125;</span>&lt;/li&gt;</div><div class="line">            &#123;% end %&#125;</div><div class="line">        &lt;/ul&gt;</div><div class="line">    &lt;/div&gt;</div><div class="line">    &lt;script src="<span class="template-variable">&#123;&#123;static_url(<span class="string">"js/jquery-1.8.2.min.js"</span>)&#125;&#125;</span>"&gt;&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p><strong>在模板中默认提供了一些函数、字段、类以供模板使用</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">escape: tornado.escape.xhtml_escape 的別名</div><div class="line">xhtml_escape: tornado.escape.xhtml_escape 的別名</div><div class="line">url_escape: tornado.escape.url_escape 的別名</div><div class="line">json_encode: tornado.escape.json_encode 的別名</div><div class="line">squeeze: tornado.escape.squeeze 的別名</div><div class="line">linkify: tornado.escape.linkify 的別名</div><div class="line">datetime: Python 的 datetime 模组</div><div class="line">request: handler.request 的別名</div><div class="line">current_user: handler.current_user 的別名</div><div class="line">static_url: <span class="keyword">for</span> handler.static_url 的別名</div><div class="line">xsrf_form_html: handler.xsrf_form_html 的別名</div></pre></td></tr></table></figure>
+<h5 id="母版"><a href="#母版" class="headerlink" title="母版"></a><div id="title">母版</div></h5><figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/&gt;</div><div class="line">    &lt;title&gt;XXX&lt;/title&gt;</div><div class="line">    &lt;link href="<span class="template-variable">&#123;&#123;static_url(<span class="string">"css/common.css"</span>)&#125;&#125;</span>" rel="stylesheet" /&gt;</div><div class="line">    &#123;% block CSS %&#125;&#123;% end %&#125;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">    &lt;div class="pg-header"&gt;</div><div class="line"></div><div class="line">    &lt;/div&gt;</div><div class="line">    </div><div class="line">    &#123;% block RenderBody %&#125;&#123;% end %&#125;</div><div class="line">   </div><div class="line">    &lt;script src="<span class="template-variable">&#123;&#123;static_url(<span class="string">"js/jquery-1.8.2.min.js"</span>)&#125;&#125;</span>"&gt;&lt;/script&gt;</div><div class="line">    </div><div class="line">    &#123;% block JavaScript %&#125;&#123;% end %&#125;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p><strong>index.html</strong><br><figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">&#123;% extends 'layout.html'%&#125;</div><div class="line">&#123;% block CSS %&#125;</div><div class="line">    &lt;link href="<span class="template-variable">&#123;&#123;static_url(<span class="string">"css/index.css"</span>)&#125;&#125;</span>" rel="stylesheet" /&gt;</div><div class="line">&#123;% end %&#125;</div><div class="line"></div><div class="line">&#123;% block RenderBody %&#125;</div><div class="line">    &lt;h1&gt;Index&lt;/h1&gt;</div><div class="line"></div><div class="line">    &lt;ul&gt;</div><div class="line">    &#123;%  for item in li %&#125;</div><div class="line">        &lt;li&gt;<span class="template-variable">&#123;&#123;item&#125;&#125;</span>&lt;/li&gt;</div><div class="line">    &#123;% end %&#125;</div><div class="line">    &lt;/ul&gt;</div><div class="line"></div><div class="line">&#123;% end %&#125;</div><div class="line"></div><div class="line">&#123;% block JavaScript %&#125;</div><div class="line">    </div><div class="line">&#123;% end %&#125;</div></pre></td></tr></table></figure></p>
+<h5 id="导入"><a href="#导入" class="headerlink" title="导入"></a><div id="title">导入</div></h5><figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;div&gt;</div><div class="line">    &lt;ul&gt;</div><div class="line">        &lt;li&gt;1024&lt;/li&gt;</div><div class="line">        &lt;li&gt;42区&lt;/li&gt;</div><div class="line">    &lt;/ul&gt;</div><div class="line">&lt;/div&gt;</div></pre></td></tr></table></figure>
+<p><strong>index.html</strong><br><figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/&gt;</div><div class="line">    &lt;title&gt;XXX&lt;/title&gt;</div><div class="line">    &lt;link href="<span class="template-variable">&#123;&#123;static_url(<span class="string">"css/common.css"</span>)&#125;&#125;</span>" rel="stylesheet" /&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line"></div><div class="line">    &lt;div class="pg-header"&gt;</div><div class="line">        &#123;% include 'header.html' %&#125;</div><div class="line">    &lt;/div&gt;</div><div class="line">    </div><div class="line">    &lt;script src="<span class="template-variable">&#123;&#123;static_url(<span class="string">"js/jquery-1.8.2.min.js"</span>)&#125;&#125;</span>"&gt;&lt;/script&gt;</div><div class="line">    </div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<h5 id="自定义UIMethod以UIModule"><a href="#自定义UIMethod以UIModule" class="headerlink" title="自定义UIMethod以UIModule"></a><div id="title">自定义UIMethod以UIModule</div></h5><p><strong>定义</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># uimethods.py</span></div><div class="line"> </div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">tab</span><span class="params">(self)</span>:</span></div><div class="line">    <span class="keyword">return</span> <span class="string">'UIMethod'</span></div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> tornado.web <span class="keyword">import</span> UIModule</div><div class="line"><span class="keyword">from</span> tornado <span class="keyword">import</span> escape</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">custom</span><span class="params">(UIModule)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">render</span><span class="params">(self, *args, **kwargs)</span>:</span></div><div class="line">        <span class="keyword">return</span> escape.xhtml_escape(<span class="string">'&lt;h1&gt;helloworld&lt;/h1&gt;'</span>)</div></pre></td></tr></table></figure>
+<p><strong>注册</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> uimodules <span class="keyword">as</span> md</div><div class="line"><span class="keyword">import</span> uimethods <span class="keyword">as</span> mt</div><div class="line"></div><div class="line">settings = &#123;</div><div class="line">    <span class="string">'template_path'</span>: <span class="string">'template'</span>,</div><div class="line">    <span class="string">'static_path'</span>: <span class="string">'static'</span>,</div><div class="line">    <span class="string">'static_url_prefix'</span>: <span class="string">'/static/'</span>,</div><div class="line">    <span class="string">'ui_methods'</span>: mt,</div><div class="line">    <span class="string">'ui_modules'</span>: md,</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p><strong>使用</strong></p>
+<figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head lang="en"&gt;</div><div class="line">    &lt;meta charset="UTF-8"&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;link href="<span class="template-variable">&#123;&#123;static_url(<span class="string">"commons.css"</span>)&#125;&#125;</span>" rel="stylesheet" /&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;h1&gt;hello&lt;/h1&gt;</div><div class="line">    &#123;% module custom(123) %&#125;</div><div class="line">    &#123;&#123; tab() &#125;&#125;</div><div class="line">&lt;/body&gt;</div></pre></td></tr></table></figure>
+<h4 id="静态文件"><a href="#静态文件" class="headerlink" title="静态文件"></a><div id="title">静态文件</div></h4><p>对于静态文件，可以配置静态文件的目录和前段使用时的前缀，并且Tornaodo还支持静态文件缓存。</p>
+<p><strong>app.py</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> tornado.ioloop</div><div class="line"><span class="keyword">import</span> tornado.web</div><div class="line"> </div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainHandler</span><span class="params">(tornado.web.RequestHandler)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self)</span>:</span></div><div class="line">        self.render(<span class="string">'home/index.html'</span>)</div><div class="line"> </div><div class="line">settings = &#123;</div><div class="line">    <span class="string">'template_path'</span>: <span class="string">'template'</span>,</div><div class="line">    <span class="string">'static_path'</span>: <span class="string">'static'</span>,</div><div class="line">    <span class="string">'static_url_prefix'</span>: <span class="string">'/static/'</span>,</div><div class="line">&#125;</div><div class="line"> </div><div class="line">application = tornado.web.Application([</div><div class="line">    (<span class="string">r"/index"</span>, MainHandler),</div><div class="line">], **settings)</div><div class="line"> </div><div class="line"> </div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    application.listen(<span class="number">80</span>)</div><div class="line">    tornado.ioloop.IOLoop.instance().start()</div></pre></td></tr></table></figure>
+<p><strong>index.html</strong></p>
+<figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">&lt;head lang="en"&gt;</div><div class="line">    &lt;meta charset="UTF-8"&gt;</div><div class="line">    &lt;title&gt;&lt;/title&gt;</div><div class="line">    &lt;link href="<span class="template-variable">&#123;&#123;static_url(<span class="string">"commons.css"</span>)&#125;&#125;</span>" rel="stylesheet" /&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;h1&gt;hello&lt;/h1&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p><strong>静态文件缓存实现</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_content_version</span><span class="params">(cls, abspath)</span>:</span></div><div class="line">        <span class="string">"""Returns a version string for the resource at the given path.</div><div class="line"></div><div class="line">        This class method may be overridden by subclasses.  The</div><div class="line">        default implementation is a hash of the file's contents.</div><div class="line"></div><div class="line">        .. versionadded:: 3.1</div><div class="line">        """</span></div><div class="line">        data = cls.get_content(abspath)</div><div class="line">        hasher = hashlib.md5()</div><div class="line">        <span class="keyword">if</span> isinstance(data, bytes):</div><div class="line">            hasher.update(data)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">for</span> chunk <span class="keyword">in</span> data:</div><div class="line">                hasher.update(chunk)</div><div class="line">        <span class="keyword">return</span> hasher.hexdigest()</div></pre></td></tr></table></figure>
+<h4 id="Model的讲解"><a href="#Model的讲解" class="headerlink" title="Model的讲解"></a><div id="title">Model的讲解</div></h4><blockquote>
+<p>在<code>Tornado3.0</code>版本以前提供<code>tornado.database</code>模块用来操作<code>MySQL</code>数据库，而从<code>3.0</code>版本开始，此模块就被独立出来，作为<code>torndb</code>包单独提供。<code>torndb</code>只是对<code>MySQLdb</code>的简单封装，不支持<code>Python 3</code></p>
+</blockquote>
+<p><strong>user.py</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pymysql</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">UserModel</span><span class="params">()</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            self.db = pymysql.Connection(host=<span class="string">'127.0.0.1'</span>, database=<span class="string">'test'</span>, user=<span class="string">'root'</span>, password=<span class="string">'123qwe'</span>, charset=<span class="string">'utf8'</span>)</div><div class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</div><div class="line">            <span class="keyword">return</span> self.write(e)</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">getInfo</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">try</span>:</div><div class="line">            cursor = self.db.cursor()</div><div class="line">            temp = <span class="string">"select * from admin"</span></div><div class="line">            effect_row = cursor.execute(temp)</div><div class="line">            result = cursor.fetchall()</div><div class="line">            self.db.commit()</div><div class="line">            cursor.close()</div><div class="line">            self.db.close()</div><div class="line">        </div><div class="line">            <span class="keyword">return</span> result</div><div class="line">        <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</div><div class="line">            <span class="keyword">return</span> self.write(e)</div></pre></td></tr></table></figure></p>
+<h5 id="防止SQL注入"><a href="#防止SQL注入" class="headerlink" title="防止SQL注入"></a><div id="title">防止SQL注入</div></h5><p><strong>搭建一个登陆的环境</strong></p>
+<p><strong>app.py</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/usr/bin/env python3</span></div><div class="line"><span class="comment"># -*- coding: utf-8 -*-</span></div><div class="line"> </div><div class="line"><span class="keyword">import</span> tornado.ioloop</div><div class="line"><span class="keyword">import</span> tornado.web</div><div class="line"><span class="keyword">import</span> pymysql</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">LoginHandler</span><span class="params">(tornado.web.RequestHandler)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self)</span>:</span></div><div class="line">        self.render(<span class="string">'login.html'</span>)</div><div class="line"> </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">post</span><span class="params">(self, *args, **kwargs)</span>:</span></div><div class="line">        username = self.get_argument(<span class="string">'username'</span>,<span class="keyword">None</span>)</div><div class="line">        pwd = self.get_argument(<span class="string">'pwd'</span>, <span class="keyword">None</span>)</div><div class="line"> </div><div class="line">        <span class="comment"># 创建数据库连接</span></div><div class="line">        conn = pymysql.connect(host=<span class="string">'127.0.0.1'</span>, port=<span class="number">3306</span>, user=<span class="string">'root'</span>, passwd=<span class="string">'123456'</span>, db=<span class="string">'shop'</span>)</div><div class="line">        cursor = conn.cursor()</div><div class="line"> </div><div class="line">        <span class="comment"># %s 要加上'' 否则会出现KeyboardInterrupt的错误</span></div><div class="line">        temp = <span class="string">"select name from userinfo where name='%s' and password='%s'"</span> % (username, pwd)</div><div class="line">        effect_row = cursor.execute(temp)</div><div class="line">        result = cursor.fetchone()</div><div class="line">        conn.commit()</div><div class="line">        cursor.close()</div><div class="line">        conn.close()</div><div class="line"> </div><div class="line">        <span class="keyword">if</span> result:</div><div class="line">            self.write(<span class="string">'登录成功！'</span>)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            self.write(<span class="string">'登录失败！'</span>)</div><div class="line"> </div><div class="line"> </div><div class="line">settings = &#123;</div><div class="line">    <span class="string">'template_path'</span>:<span class="string">'template'</span>,</div><div class="line">&#125;</div><div class="line"></div><div class="line">application = tornado.web.Application([</div><div class="line">    (<span class="string">r"/login"</span>, LoginHandler),</div><div class="line">],**settings)</div><div class="line"> </div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    application.listen(<span class="number">8000</span>)</div><div class="line">    tornado.ioloop.IOLoop.instance().start()</div></pre></td></tr></table></figure>
+<p><strong>在template文件夹下，放入login.html文件：</strong></p>
+<figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang="en"&gt;</div><div class="line">&lt;head&gt;</div><div class="line">    &lt;meta charset="UTF-8"&gt;</div><div class="line">    &lt;title&gt;Title&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">    &lt;form method="post" action="/login"&gt;</div><div class="line">        &lt;input type="text" name="username" placeholder="用户名"/&gt;</div><div class="line">        &lt;input type="text" name="pwd" placeholder="密码"/&gt;</div><div class="line">        &lt;input type="submit" value="提交" /&gt;</div><div class="line">    &lt;/form&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>至此一个简单的登陆系统就说完了，按照正常的方式都能登陆成功，接下来我们看一下，非法用户的登陆</p>
+</blockquote>
+<p><img src="https://i.loli.net/2018/08/20/5b7a2edce6c70.png" alt="非法登录.png"></p>
+<p>看一下服务端执行的SQL语句，就不难理解了，密码部分被注释掉了：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> userinfo <span class="keyword">where</span> <span class="keyword">name</span>=<span class="string">'dyan'</span> <span class="comment">-- n' and password='000'</span></div><div class="line"></div><div class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> userinfo <span class="keyword">where</span> <span class="keyword">name</span>=<span class="string">'badguy'</span> <span class="keyword">or</span> <span class="number">1</span>=<span class="number">1</span> <span class="comment">-- y' and password='000'</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>这种情况就是由于字符串拼接查询，造成注入，因此我们需要使用<code>pymysql</code>提供的参数化查询</p>
+</blockquote>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">effect_row = cursor.execute("<span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> userinfo <span class="keyword">where</span> <span class="keyword">name</span>=<span class="string">'%s'</span> <span class="keyword">and</span> <span class="keyword">password</span>=<span class="string">'%s'</span><span class="string">",(username, pwd))</span></div></pre></td></tr></table></figure>
+<p><strong>这样改完之后，我们再看，会发现报错，但是不会登陆成功了，看看内部执行的语句，主要是对’符号做了转义防止注入</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> userinfo <span class="keyword">where</span> <span class="keyword">name</span>=<span class="string">''</span>dyan\<span class="string">' -- n'' and password=''123''</span></div></pre></td></tr></table></figure>
+<h5 id="使用pymysql操作"><a href="#使用pymysql操作" class="headerlink" title="使用pymysql操作"></a><div id="title">使用pymysql操作</div></h5><ul>
+<li>执行sql</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pymysql</div><div class="line"> </div><div class="line"><span class="comment"># 创建连接</span></div><div class="line">conn = pymysql.connect(host=<span class="string">'127.0.0.1'</span>, port=<span class="number">3306</span>, user=<span class="string">'blog'</span>, passwd=<span class="string">'123456'</span>, db=<span class="string">'blog'</span>, charset=<span class="string">'utf8'</span>)</div><div class="line"> </div><div class="line"><span class="comment"># 创建游标, 查询数据默认为元组类型</span></div><div class="line">cursor = conn.cursor()</div><div class="line"> </div><div class="line"> </div><div class="line"><span class="comment"># 执行SQL，并返回收影响行数</span></div><div class="line">row1 = cursor.execute(<span class="string">"update users set password = '123'"</span>)</div><div class="line">print(row1)</div><div class="line"><span class="comment"># 执行SQL，并返回受影响行数</span></div><div class="line">row2 = cursor.execute(<span class="string">"update users set password = '456' where id &gt; %s"</span>, (<span class="number">1</span>,))</div><div class="line">print(row2)</div><div class="line"><span class="comment"># 执行SQL，并返回受影响行数（使用pymysql的参数化语句防止SQL注入）</span></div><div class="line">row3 = cursor.executemany(<span class="string">"insert into users(username, password, email)values(%s, %s, %s)"</span>, [(<span class="string">"ceshi3"</span>, <span class="string">'333'</span>, <span class="string">'ceshi3@11.com'</span>), (<span class="string">"ceshi4"</span>, <span class="string">'444'</span>, <span class="string">'ceshi4@qq.com'</span>)])</div><div class="line">print(row3)</div><div class="line"> </div><div class="line"><span class="comment"># 提交，不然无法保存新建或者修改的数据</span></div><div class="line">conn.commit()</div></pre></td></tr></table></figure>
+<ul>
+<li>获取查询数据</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pymysql</div><div class="line"> </div><div class="line"><span class="comment"># 创建连接</span></div><div class="line">conn = pymysql.connect(host=<span class="string">'127.0.0.1'</span>, port=<span class="number">3306</span>, user=<span class="string">'blog'</span>, passwd=<span class="string">'123456'</span>, db=<span class="string">'blog'</span>, charset=<span class="string">'utf8'</span>)</div><div class="line"> </div><div class="line"><span class="comment"># 创建游标, 查询数据默认为元组类型</span></div><div class="line">cursor = conn.cursor()</div><div class="line">cursor.execute(<span class="string">"select * from users"</span>)</div><div class="line"> </div><div class="line"><span class="comment"># 获取第一行数据</span></div><div class="line">row_1 = cursor.fetchone()</div><div class="line">print(row_1)</div><div class="line"><span class="comment"># 获取前n行数据</span></div><div class="line">row_n = cursor.fetchmany(<span class="number">3</span>)</div><div class="line">print(row_n)</div></pre></td></tr></table></figure>
+<ul>
+<li>获取新创建数据自增ID</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pymysql</div><div class="line"> </div><div class="line"><span class="comment"># 创建连接</span></div><div class="line">conn = pymysql.connect(host=<span class="string">'127.0.0.1'</span>, port=<span class="number">3306</span>, user=<span class="string">'blog'</span>, passwd=<span class="string">'123456'</span>, db=<span class="string">'blog'</span>, charset=<span class="string">'utf8'</span>)</div><div class="line"> </div><div class="line"><span class="comment"># 创建游标, 查询数据默认为元组类型</span></div><div class="line">cursor = conn.cursor()</div><div class="line"> </div><div class="line">cursor.executemany(<span class="string">"insert into users(username, password, email)values(%s, %s, %s)"</span>, [(<span class="string">"ceshi3"</span>, <span class="string">'333'</span>, <span class="string">'ceshi3@11.com'</span>), (<span class="string">"ceshi4"</span>, <span class="string">'444'</span>, <span class="string">'ceshi4@qq.com'</span>)])</div><div class="line">new_id = cursor.lastrowid</div><div class="line">print(new_id)</div><div class="line"> </div><div class="line"> </div><div class="line"><span class="comment"># 提交，不然无法保存新建或者修改的数据</span></div><div class="line">conn.commit()</div><div class="line"><span class="comment"># 关闭游标</span></div><div class="line">cursor.close()</div><div class="line">conn.close</div></pre></td></tr></table></figure>
+<ul>
+<li>fetch数据类型<br><strong>关于默认获取的数据是元组类型，如果想要或者字典类型的数据，即</strong></li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pymysql</div><div class="line"> </div><div class="line"><span class="comment"># 创建连接</span></div><div class="line">conn = pymysql.connect(host=<span class="string">'127.0.0.1'</span>, port=<span class="number">3306</span>, user=<span class="string">'blog'</span>, passwd=<span class="string">'123456'</span>, db=<span class="string">'blog'</span>, charset=<span class="string">'utf8'</span>)</div><div class="line"> </div><div class="line"><span class="comment"># 游标设置为字典类型</span></div><div class="line">cursor = conn.cursor(cursor=pymysql.cursors.DictCursor)</div><div class="line"><span class="comment"># 左连接查询</span></div><div class="line">r = cursor.execute(<span class="string">"select * from users as u left join articles as a on u.id = a.user_id where a.user_id = 2"</span>)</div><div class="line">result = cursor.fetchall()</div><div class="line">print(result)</div><div class="line"> </div><div class="line"><span class="comment"># 查询一个表的所有字段名</span></div><div class="line">c = cursor.execute(<span class="string">"SHOW FULL COLUMNS FROM users FROM blog"</span>)</div><div class="line">cc = cursor.fetchall()</div><div class="line"></div><div class="line"><span class="comment"># 提交，不然无法保存新建或者修改的数据</span></div><div class="line">conn.commit()</div><div class="line"><span class="comment"># 关闭游标</span></div><div class="line">cursor.close()</div><div class="line"><span class="comment"># 关闭连接</span></div><div class="line">conn.close()</div></pre></td></tr></table></figure>
+<p><strong>执行结果</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">[&#123;<span class="string">'user_id'</span>: <span class="number">2</span>, <span class="string">'id'</span>: <span class="number">2</span>, <span class="string">'password'</span>: <span class="string">'456'</span>, <span class="string">'email'</span>: <span class="string">'xinlei2017@test.com'</span>, <span class="string">'a.id'</span>: <span class="number">2</span>, <span class="string">'content'</span>: <span class="string">'成名之路'</span>, <span class="string">'title'</span>: <span class="string">'星光大道'</span>, <span class="string">'username'</span>: <span class="string">'tangtang'</span>&#125;]</div></pre></td></tr></table></figure>
+<h4 id="cookie的设置"><a href="#cookie的设置" class="headerlink" title="cookie的设置"></a><div id="title">cookie的设置</div></h4><blockquote>
+<p>Tornado中可以对cookie进行操作，并且还可以对cookie进行签名以放置伪造</p>
+</blockquote>
+<ul>
+<li>基本操作</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainHandler</span><span class="params">(tornado.web.RequestHandler)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.get_cookie(<span class="string">"mycookie"</span>):</div><div class="line">            self.set_cookie(<span class="string">"mycookie"</span>, <span class="string">"myvalue"</span>)</div><div class="line">            self.write(<span class="string">"Your cookie was not set yet!"</span>)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            self.write(<span class="string">"Your cookie was set!"</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li>加密cookie（签名）</li>
+</ul>
+<blockquote>
+<p><code>Cookie</code> 很容易被恶意的客户端伪造。加入你想在 <code>cookie</code> 中保存当前登陆用户的 <code>id</code> 之类的信息，你需要对 <code>cookie</code> 作签名以防止伪造。<code>Tornado</code> 通过 <code>set_secure_cookie</code> 和 <code>get_secure_cookie</code> 方法直接支持了这种功能。 要使用这些方法，你需要在创建应用时提供一个密钥，名字为 <code>cookie_secret</code>。 你可以把它作为一个关键词参数传入应用的设置中：</p>
+</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainHandler</span><span class="params">(tornado.web.RequestHandler)</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">get</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">if</span> <span class="keyword">not</span> self.get_secure_cookie(<span class="string">"mycookie"</span>):</div><div class="line">            self.set_secure_cookie(<span class="string">"mycookie"</span>, <span class="string">"myvalue"</span>)</div><div class="line">            self.write(<span class="string">"Your cookie was not set yet!"</span>)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            self.write(<span class="string">"Your cookie was set!"</span>)</div><div class="line">             </div><div class="line">application = tornado.web.Application([</div><div class="line">    (<span class="string">r"/"</span>, MainHandler),</div><div class="line">], cookie_secret=<span class="string">"61oETzKXQAGaYdkL5gEmGeJJFuYh7EQnp2XdTP1o/Vo="</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li>签名cookie的本质</li>
+</ul>
+<p><strong>写cookie过程：</strong></p>
+<ol>
+<li>将值进行base64加密</li>
+<li>对除值以外的内容进行签名，哈希算法（无法逆向解析）</li>
+<li>拼接 签名 + 加密值</li>
+</ol>
+<p><strong>读cookie过程：</strong></p>
+<ol>
+<li>读取 签名 + 加密值</li>
+<li>对签名进行验证</li>
+<li>base64解密，获取值内容</li>
+</ol>
+<h4 id="CSRF"><a href="#CSRF" class="headerlink" title="CSRF"></a><div id="title">CSRF</div></h4><p><strong>配置</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">settings = &#123;</div><div class="line">    <span class="string">"xsrf_cookies"</span>: <span class="keyword">True</span>,</div><div class="line">&#125;</div><div class="line">application = tornado.web.Application([</div><div class="line">    (<span class="string">r"/"</span>, MainHandler),</div><div class="line">    (<span class="string">r"/login"</span>, LoginHandler),</div><div class="line">], **settings)</div></pre></td></tr></table></figure>
+<p><strong>使用</strong></p>
+<figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&lt;form action="/new_message" method="post"&gt;</div><div class="line">  &#123;&#123; xsrf_form_html() &#125;&#125;</div><div class="line">  &#123;% module xsrf_form_html() %&#125;</div><div class="line">  &lt;input type="text" name="message"/&gt;</div><div class="line">  &lt;input type="submit" value="Post"/&gt;</div><div class="line">&lt;/form&gt;</div></pre></td></tr></table></figure>
+
       
 
       
@@ -211,8 +389,30 @@ onmouseup="document.selection.empty()">-->
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/Python/" class="article-tag-list-link color2">Python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
 
@@ -222,8 +422,69 @@ onmouseup="document.selection.empty()">-->
 </article>
 
   
+<nav id="article-nav">
+  
+    <a href="/2117/05/07/声明/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          声明
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/05/07/少年得志大不幸:/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">从中国好声音谈人生的高开低走和低开高走</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
+
+
+
+  
+  
+  
+
+  
+
+  
+
+  
+
+
+  <section id="comments" class="comments">
+    <style>
+      .comments{margin:30px;padding:10px;background:#fff}
+      @media screen and (max-width:800px){.comments{margin:auto;padding:10px;background:#fff}}
+    </style>
+    <div id="vcomment" class="comment"></div>
+<script src="https://cdnjs.cat.net/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src="https://unpkg.com/valine/dist/Valine.min.js"></script>
+<script>
+   var notify = 'false' == true ? true : false;
+   var verify = 'false' == true ? true : false;
+   new Valine({
+            av: AV,
+            el: '#vcomment',
+            notify: notify,
+            verify: verify,
+            app_id: "mjstUtcUPaEVJpt5xt5zWykf-gzGzoHsz",
+            app_key: "4CY7cYn38n302Lor7lqqLoJO",
+            placeholder: "来呀!快活呀!",
+            avatar: "mm"
+    });
+</script>
+
+  </section>
+
+
+
+  
 
 
 
@@ -261,7 +522,7 @@ src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">-->
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,

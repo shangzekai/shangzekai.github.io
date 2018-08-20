@@ -224,28 +224,28 @@ onmouseup="document.selection.empty()">-->
 
 
   
-    <article id="post-RabbitMQ的使用讲解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Torando基础介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/07/RabbitMQ的使用讲解/">RabbitMQ队列</a>
+      <a class="article-title" href="/2018/05/08/Torando基础介绍/">Torando基础讲解</a>
     </h1>
   
 
         
-        <a href="/2018/05/07/RabbitMQ的使用讲解/" class="archive-article-date">
-  	<time datetime="2018-05-07T12:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-07</time>
+        <a href="/2018/05/08/Torando基础介绍/" class="archive-article-date">
+  	<time datetime="2018-05-08T12:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-08</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="为啥要使用MQ"><a href="#为啥要使用MQ" class="headerlink" title="为啥要使用MQ"></a><div id="title">为啥要使用MQ</div></h4><blockquote>
-<p>以常见的订单系统为例，用户点击【下单】按钮之后的业务逻辑可能包括：扣减库存、生成相应单据、发红包、发短信通知。在业务发展初期这些逻辑可能放在一起同步执行，随着业务的发展订单量增长，需要提升系统服务的性能，这时可以将一些不需要立即生效的操作拆分出来异步执行，比如发放红包、发短信通知等。这种场景下就可以用 MQ ，在下单的主流程（比如扣减库存、生成相应单据）完成之后发送一条消息到 MQ 让主流程快速完结，而由另外的单独线程拉取MQ的消息（或者由 MQ 推送消息），当发现 MQ 中有发红包或发短信之类的消息时，执行相应的业务逻辑。</p>
+        <h4 id="Torando的介绍"><a href="#Torando的介绍" class="headerlink" title="Torando的介绍"></a><div id="title">Torando的介绍</div></h4><blockquote>
+<p><code>Tornado</code> 是一个<code>Python web</code>框架和异步网络库， 通过使用非阻塞网络<code>I/O</code>， <code>Tornado</code>可以支撑上万级的连接，处理 <code>长连接, WebSockets</code> ，和其他需要与每个用户保持长久连接的应用.</p>
 </blockquote>
       
 
@@ -259,7 +259,7 @@ onmouseup="document.selection.empty()">-->
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NoSQL</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
         		</li>
       		
 		</ul>
@@ -272,7 +272,7 @@ onmouseup="document.selection.empty()">-->
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/NoSQL/" class="article-tag-list-link color1">NoSQL</a>
+        			<a href="/categories/Python/" class="article-tag-list-link color2">Python</a>
         		</li>
       		
 		</ul>
@@ -281,78 +281,7 @@ onmouseup="document.selection.empty()">-->
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/07/RabbitMQ的使用讲解/">展开全文 >></a>
-        </p>
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-啥叫星轨" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/07/啥叫星轨/">星轨</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/07/啥叫星轨/" class="archive-article-date">
-  	<time datetime="2018-05-07T12:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="啥叫星轨"><a href="#啥叫星轨" class="headerlink" title="啥叫星轨"></a><div id="title">啥叫星轨</div></h4><blockquote>
-<p>一星轨表示一个一线明星出轨所带来的流量，微博的服务器现在能同时扛8星轨。</p>
-</blockquote>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NoSQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/NoSQL/" class="article-tag-list-link color1">NoSQL</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/07/啥叫星轨/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/05/08/Torando基础介绍/">展开全文 >></a>
         </p>
       
 
@@ -437,6 +366,77 @@ onmouseup="document.selection.empty()">-->
 
 
   
+    <article id="post-啥叫星轨" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/07/啥叫星轨/">星轨</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/07/啥叫星轨/" class="archive-article-date">
+  	<time datetime="2018-05-07T12:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="啥叫星轨"><a href="#啥叫星轨" class="headerlink" title="啥叫星轨"></a><div id="title">啥叫星轨</div></h4><blockquote>
+<p>一星轨表示一个一线明星出轨所带来的流量，微博的服务器现在能同时扛8星轨。</p>
+</blockquote>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NoSQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/NoSQL/" class="article-tag-list-link color1">NoSQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/07/啥叫星轨/">展开全文 >></a>
+        </p>
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-git的介绍和使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -495,6 +495,77 @@ onmouseup="document.selection.empty()">-->
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/05/07/git的介绍和使用/">展开全文 >></a>
+        </p>
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-RabbitMQ的使用讲解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/07/RabbitMQ的使用讲解/">RabbitMQ队列</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/07/RabbitMQ的使用讲解/" class="archive-article-date">
+  	<time datetime="2018-05-07T12:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="为啥要使用MQ"><a href="#为啥要使用MQ" class="headerlink" title="为啥要使用MQ"></a><div id="title">为啥要使用MQ</div></h4><blockquote>
+<p>以常见的订单系统为例，用户点击【下单】按钮之后的业务逻辑可能包括：扣减库存、生成相应单据、发红包、发短信通知。在业务发展初期这些逻辑可能放在一起同步执行，随着业务的发展订单量增长，需要提升系统服务的性能，这时可以将一些不需要立即生效的操作拆分出来异步执行，比如发放红包、发短信通知等。这种场景下就可以用 MQ ，在下单的主流程（比如扣减库存、生成相应单据）完成之后发送一条消息到 MQ 让主流程快速完结，而由另外的单独线程拉取MQ的消息（或者由 MQ 推送消息），当发现 MQ 中有发红包或发短信之类的消息时，执行相应的业务逻辑。</p>
+</blockquote>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NoSQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/NoSQL/" class="article-tag-list-link color1">NoSQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/07/RabbitMQ的使用讲解/">展开全文 >></a>
         </p>
       
 
@@ -658,75 +729,6 @@ onmouseup="document.selection.empty()">-->
 
 
   
-    <article id="post-php常见的一些概念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/05/php常见的一些概念/">PHP中常见的一些概念</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/05/php常见的一些概念/" class="archive-article-date">
-  	<time datetime="2018-03-05T03:18:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-05</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a><div id="title">MVC</div></h4><p>MVC是一个设计模式，它强制性的使应用程序的输入、处理和输出分开。使用MVC应用程序被分成三个核心部件：<strong>模型（M）</strong>、<strong>视图（V）</strong>、<strong>控制器（C）</strong>，它们各自处理自己的任务。</p>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Yaf</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/05/php常见的一些概念/">展开全文 >></a>
-        </p>
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
     <article id="post-Yaf插件介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -791,6 +793,75 @@ onmouseup="document.selection.empty()">-->
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/03/05/Yaf插件介绍/">展开全文 >></a>
+        </p>
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-php常见的一些概念" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/03/05/php常见的一些概念/">PHP中常见的一些概念</a>
+    </h1>
+  
+
+        
+        <a href="/2018/03/05/php常见的一些概念/" class="archive-article-date">
+  	<time datetime="2018-03-05T03:18:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a><div id="title">MVC</div></h4><p>MVC是一个设计模式，它强制性的使应用程序的输入、处理和输出分开。使用MVC应用程序被分成三个核心部件：<strong>模型（M）</strong>、<strong>视图（V）</strong>、<strong>控制器（C）</strong>，它们各自处理自己的任务。</p>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Yaf</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/03/05/php常见的一些概念/">展开全文 >></a>
         </p>
       
 
@@ -953,19 +1024,19 @@ onmouseup="document.selection.empty()">-->
 
 
   
-    <article id="post-YAF的流程图" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-Yaf介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/02/YAF的流程图/">Yaf之流程图</a>
+      <a class="article-title" href="/2018/03/02/Yaf介绍/">Yaf之介绍和安装</a>
     </h1>
   
 
         
-        <a href="/2018/03/02/YAF的流程图/" class="archive-article-date">
+        <a href="/2018/03/02/Yaf介绍/" class="archive-article-date">
   	<time datetime="2018-03-02T03:18:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-02</time>
 </a>
         
@@ -973,7 +1044,9 @@ onmouseup="document.selection.empty()">-->
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="YAF的流程图"><a href="#YAF的流程图" class="headerlink" title="YAF的流程图"></a><div id="title">YAF的流程图</div></h4>
+        <h4 id="Yaf介绍"><a href="#Yaf介绍" class="headerlink" title="Yaf介绍"></a><div id="title">Yaf介绍</div></h4><blockquote>
+<p>Yaf是”Yet Another Framework”的简写，翻译成汉语即”另一个框架”。Yaf的作者，也就是大名鼎鼎的鸟哥。它是使用C语言开发的PHP框架，相比那些使用PHP编写的PHP框架来说，几乎不会带来额外的性能开销。而且所有的框架类，无需编译，在PHP启动的时候加载，并且常驻内存。即它有着更快的执行速度，更少的内存占用，这一点在性能测试上确实会比较明显。需要指出的是，Yaf是一个轻量级的框架，它自带的功能并不多，很多东西还是需要我们去实现的。</p>
+</blockquote>
       
 
       
@@ -1012,7 +1085,7 @@ onmouseup="document.selection.empty()">-->
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/02/YAF的流程图/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/03/02/Yaf介绍/">展开全文 >></a>
         </p>
       
 
@@ -1086,81 +1159,6 @@ onmouseup="document.selection.empty()">-->
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/03/02/生成一个YAF程序/">展开全文 >></a>
-        </p>
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-Yaf介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/02/Yaf介绍/">Yaf之介绍和安装</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/02/Yaf介绍/" class="archive-article-date">
-  	<time datetime="2018-03-02T03:18:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="Yaf介绍"><a href="#Yaf介绍" class="headerlink" title="Yaf介绍"></a><div id="title">Yaf介绍</div></h4><blockquote>
-<p>Yaf是”Yet Another Framework”的简写，翻译成汉语即”另一个框架”。Yaf的作者，也就是大名鼎鼎的鸟哥。它是使用C语言开发的PHP框架，相比那些使用PHP编写的PHP框架来说，几乎不会带来额外的性能开销。而且所有的框架类，无需编译，在PHP启动的时候加载，并且常驻内存。即它有着更快的执行速度，更少的内存占用，这一点在性能测试上确实会比较明显。需要指出的是，Yaf是一个轻量级的框架，它自带的功能并不多，很多东西还是需要我们去实现的。</p>
-</blockquote>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Yaf</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/YAF/" class="article-tag-list-link color4">YAF</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/02/Yaf介绍/">展开全文 >></a>
         </p>
       
 
