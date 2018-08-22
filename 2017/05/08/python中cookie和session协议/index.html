@@ -6,19 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.shangzekai.xyz">
-  <title>使用Python操作Redis及其简单应用 | Python</title>
+  <title>Python中Session和Cookie | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="安装Redis模块1. pip安装">
-<meta name="keywords" content="基础,NoSQL">
+  <meta name="description" content="Http协议请求和响应Http协议用于客户端与服务端的通信，客户端发出请求，服务端返回响应。下面我们以访问https://www.sogou.com/搜狗首页为例，来看看请求报文和响应报文  下面是从客户端访问服务器的请求报文的截取内容： 1234GET / HTTP/1.1Host: www.sogou.comConnection: keep-aliveCache-Control: max-ag">
+<meta name="keywords" content="python">
 <meta property="og:type" content="article">
-<meta property="og:title" content="使用Python操作Redis及其简单应用">
-<meta property="og:url" content="https://www.shangzekai.xyz/2017/05/05/Python操作redis及其应用/index.html">
+<meta property="og:title" content="Python中Session和Cookie">
+<meta property="og:url" content="https://www.shangzekai.xyz/2017/05/08/python中cookie和session协议/index.html">
 <meta property="og:site_name" content="Python">
-<meta property="og:description" content="安装Redis模块1. pip安装">
-<meta property="og:updated_time" content="2017-06-06T11:33:23.000Z">
+<meta property="og:description" content="Http协议请求和响应Http协议用于客户端与服务端的通信，客户端发出请求，服务端返回响应。下面我们以访问https://www.sogou.com/搜狗首页为例，来看看请求报文和响应报文  下面是从客户端访问服务器的请求报文的截取内容： 1234GET / HTTP/1.1Host: www.sogou.comConnection: keep-aliveCache-Control: max-ag">
+<meta property="og:updated_time" content="2018-08-21T06:41:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用Python操作Redis及其简单应用">
-<meta name="twitter:description" content="安装Redis模块1. pip安装">
+<meta name="twitter:title" content="Python中Session和Cookie">
+<meta name="twitter:description" content="Http协议请求和响应Http协议用于客户端与服务端的通信，客户端发出请求，服务端返回响应。下面我们以访问https://www.sogou.com/搜狗首页为例，来看看请求报文和响应报文  下面是从客户端访问服务器的请求报文的截取内容： 1234GET / HTTP/1.1Host: www.sogou.comConnection: keep-aliveCache-Control: max-ag">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
@@ -152,20 +152,20 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-Python操作redis及其应用" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-python中cookie和session协议" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      使用Python操作Redis及其简单应用
+      Python中Session和Cookie
     </h1>
   
 
         
-        <a href="/2017/05/05/Python操作redis及其应用/" class="archive-article-date">
-  	<time datetime="2017-05-05T15:52:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
+        <a href="/2017/05/08/python中cookie和session协议/" class="archive-article-date">
+  	<time datetime="2017-05-08T12:45:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-08</time>
 </a>
         
       </header>
@@ -174,55 +174,73 @@ onmouseup="document.selection.empty()">-->
       
 	
         <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#安装Redis模块"><span class="toc-text">安装Redis模块</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-pip安装"><span class="toc-text">1. pip安装</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-源码安装"><span class="toc-text">2. 源码安装</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Python操作Redis"><span class="toc-text">Python操作Redis</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#pipeline操作"><span class="toc-text">pipeline操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#常见的一些应用场景"><span class="toc-text">常见的一些应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-统计页面点击数"><span class="toc-text">1. 统计页面点击数</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-如何保存一个对象数据"><span class="toc-text">2. 如何保存一个对象数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-社交圈子数据"><span class="toc-text">3. 社交圈子数据</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-反垃圾系统"><span class="toc-text">4. 反垃圾系统</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#5-Pub-Sub构建实时消息系统"><span class="toc-text">5. Pub/Sub构建实时消息系统</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#Http协议"><span class="toc-text">Http协议</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#请求和响应"><span class="toc-text">请求和响应</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#http是无状态协议"><span class="toc-text">http是无状态协议</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用Cookie和Session管理状态"><span class="toc-text">使用Cookie和Session管理状态</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Cookie和Session配合使用"><span class="toc-text">Cookie和Session配合使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Django中操作cookie"><span class="toc-text">Django中操作cookie</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Django中操作session"><span class="toc-text">Django中操作session</span></a></li></ol>
           <hr/>
         </div>
         
-        <h4 id="安装Redis模块"><a href="#安装Redis模块" class="headerlink" title="安装Redis模块"></a><div id="title">安装Redis模块</div></h4><h5 id="1-pip安装"><a href="#1-pip安装" class="headerlink" title="1. pip安装"></a>1. pip安装</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip3 install redis</div></pre></td></tr></table></figure>
-<a id="more"></a>
-<h5 id="2-源码安装"><a href="#2-源码安装" class="headerlink" title="2. 源码安装"></a>2. 源码安装</h5><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">wget https://pypi.python.org/packages/source/r/redis/redis<span class="number">-2.9</span><span class="number">.1</span>.tar.gz</div><div class="line">tar xvzf redis<span class="number">-2.9</span><span class="number">.1</span>.tar.gz</div><div class="line">cd redis<span class="number">-2.9</span><span class="number">.1</span></div><div class="line">python setup.py install</div></pre></td></tr></table></figure>
-<h4 id="Python操作Redis"><a href="#Python操作Redis" class="headerlink" title="Python操作Redis"></a><div id="title">Python操作Redis</div></h4><blockquote>
-<p>redis连接实例是线程安全的，可以直接将redis连接实例设置为一个全局变量，直接使用</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span><span class="keyword">import</span> redis</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r = redis.Redis(host=<span class="string">'localhost'</span>,port=<span class="number">6379</span>,password=<span class="string">''</span>, db=<span class="number">0</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.set(<span class="string">'guo'</span>,<span class="string">'shuai'</span>)</div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.get(<span class="string">'guo'</span>)</div><div class="line"><span class="string">'shuai'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r[<span class="string">'guo'</span>]            </div><div class="line"><span class="string">'shuai'</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.keys()</div><div class="line">[<span class="string">'guo'</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.dbsize()         <span class="comment">#当前数据库包含多少条数据       </span></div><div class="line"><span class="number">1L</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.delete(<span class="string">'guo'</span>)</div><div class="line"><span class="number">1</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.save()               <span class="comment">#执行“检查点”操作，将数据写回磁盘。保存时阻塞</span></div><div class="line"><span class="keyword">True</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.get(<span class="string">'guo'</span>);</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.flushdb()        <span class="comment">#清空r中的所有数据</span></div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure>
+        <h4 id="Http协议"><a href="#Http协议" class="headerlink" title="Http协议"></a><div id="title">Http协议</div></h4><h5 id="请求和响应"><a href="#请求和响应" class="headerlink" title="请求和响应"></a><div id="title">请求和响应</div></h5><p>Http协议用于客户端与服务端的通信，客户端发出请求，服务端返回响应。下面我们以访问<a href="https://www.sogou.com/搜狗首页为例，来看看请求报文和响应报文" target="_blank" rel="external">https://www.sogou.com/搜狗首页为例，来看看请求报文和响应报文</a></p>
+<!--mmore-->
+<p>下面是从客户端访问服务器的请求报文的截取内容：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">GET</span> <span class="string">/</span> HTTP/1.1</div><div class="line"><span class="attribute">Host</span>: www.sogou.com</div><div class="line"><span class="attribute">Connection</span>: keep-alive</div><div class="line"><span class="attribute">Cache-Control</span>: max-age=0</div></pre></td></tr></table></figure>
+<p>第一行的GET表示请求方法；随后的 / 表示请求访问的资源对象（request-URI），这里是根页面；最后的HTTP/1.1是协议和版本号。<br>第二行开始是首部字段：Host字段表示服务器域名。（这里只截取了部分首部字段，实际的字段更多）<br>http请求报文由请求方法、URI、HTTP版本、HTTP首部字段构成。</p>
+<p>下面是服务器返回的响应报文的截取内容：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 <span class="number">200</span> OK</div><div class="line"><span class="attribute">Server</span>: nginx</div><div class="line"><span class="attribute">Date</span>: Tue, 19 Sep 2017 08:37:38 GMT</div><div class="line"><span class="attribute">Content-Type</span>: text/html; charset=UTF-8</div><div class="line"><span class="attribute">Transfer-Encoding</span>: chunked</div><div class="line"><span class="attribute">Connection</span>: keep-alive</div><div class="line"></div><div class="line"><span class="undefined">&lt;html&gt;</div><div class="line">......</span></div></pre></td></tr></table></figure>
+<p>第一行的HTTP/1.1表示服务器对应的HTTP版本； 200 OK表示请求处理结果的状态码和原因短语。<br>第二行开始是首部字段，包括服务器安装的软件版本，响应日期等。<br>响应报文包括响应头和响应体。<br>响应头由HTTP版本、状态码、原因短语、首部字段组成。<br>最下面的<code>&lt;html&gt;</code>开始是响应体，也就是用户在浏览器上看到的具体网页，由两组\r\n换行符与上面的响应头分隔。</p>
+<h4 id="http是无状态协议"><a href="#http是无状态协议" class="headerlink" title="http是无状态协议"></a><div id="title">http是无状态协议</div></h4><p>使用http协议通信时，每当有新请求到达时，就会有对应的新的响应产生。http协议本身并不保留之前的一切请求或响应报文的信息。这是为了更快地处理大量事物，确保协议的可伸缩性，也能减轻服务器的压力。而且由于不需要保存状态，http协议本身比较简单，能被应用在各种场景里。<br>但是这种无状态的特征，导致要求登录认证的web页面无法记录用户的已登录状态，用户每次跳转到新页面都要重新登录。</p>
+<h4 id="使用Cookie和Session管理状态"><a href="#使用Cookie和Session管理状态" class="headerlink" title="使用Cookie和Session管理状态"></a><div id="title">使用Cookie和Session管理状态</div></h4><p>既要保留http无状态的特征，又要记录用户的登录状态，于是引入了<code>Cookie</code>技术。服务器在响应头部中加入<code>Set-Cookie</code>字段，通知客户端（浏览器）保存<code>Cookie</code>，下次客户端再发送请求时，在请求头部中加入这<code>Cookie</code>后发送出去。服务器通过判断客户端发过来的<code>Cookie</code>，就能知道来的人是谁。<br><code>cookie</code>虽然解决了保存状态的需求，但是<code>cookie</code>也有限制：</p>
+<ul>
+<li>cookie最大支持4096字节，记录的信息有限</li>
+<li>cookie本身保存在客户端，安全性不足</li>
+</ul>
+<p>基于以上两点，需要某种新的东西，它能支持更多的字节，并且保存在服务器，拥有更高的安全性，这就是<code>session</code>。<br><code>session</code>是通过<code>cookie</code>来管理的，服务器在响应头部的<code>Set-Cookie</code>字段中向请求用户发放<code>Session ID</code>；现在<code>cookie</code>不在本地保存用户的敏感信息，只保存一个代表用户身份的令牌（<code>Session ID</code>）；当用户再次发送请求时，只需发送包含<code>Session ID</code>的<code>Cookie</code>，服务器通过<code>Session ID</code>取出保存在服务器上的用户信息。</p>
+<p>cookie 的安全性问题可以通过签名/加密cookie来解决</p>
+<h4 id="Cookie和Session配合使用"><a href="#Cookie和Session配合使用" class="headerlink" title="Cookie和Session配合使用"></a><div id="title">Cookie和Session配合使用</div></h4><p>cookie和session储存数据是通过键值对的方式，因此我们可以像操作字典一样，来写入或读取数据：</p>
+<ul>
+<li><p>用户发起请求：</p>
+<ul>
+<li>写浏览器<code>cookie: {session_id: ‘随机字符串’}</code></li>
+</ul>
+</li>
+<li><p>用户认证成功后：</p>
+<ul>
+<li>写入用户信息到服务器<code>session</code>:<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="string">'随机字符串'</span>: &#123;key: value，......&#125;，</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<p>因此，每次用户请求都在<code>cookie</code>中携带<code>session_id</code>这个令牌，服务器根据<code>session_id</code>的值，从服务器中取出用户的信息。</p>
+<h4 id="Django中操作cookie"><a href="#Django中操作cookie" class="headerlink" title="Django中操作cookie"></a><div id="title">Django中操作cookie</div></h4><p>拿到请求的cookie信息：</p>
 <blockquote>
-<p>我们发现，其实python操作redis中使用的方法非常的简单，和我们之前在命令行学习redis的时候，使用的方法是一样的</p>
+<p>cookie_info = request.COOKIES   </p>
 </blockquote>
-<h4 id="pipeline操作"><a href="#pipeline操作" class="headerlink" title="pipeline操作"></a><div id="title">pipeline操作</div></h4><blockquote>
-<p>管道（pipeline）是redis在提供单个请求中缓冲多条服务器命令的基类的子类。它通过减少服务器-客户端之间反复的TCP数据库包，从而大大提高了执行批量命令的功能</p>
-</blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>p = r.pipeline()        --创建一个管道</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>p.set(<span class="string">'hello'</span>,<span class="string">'redis'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>p.sadd(<span class="string">'faz'</span>,<span class="string">'baz'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>p.incr(<span class="string">'num'</span>)</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>p.execute()</div><div class="line">[<span class="keyword">True</span>, <span class="number">1</span>, <span class="number">1</span>]</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.get(<span class="string">'hello'</span>)</div><div class="line"><span class="string">'redis'</span></div></pre></td></tr></table></figure>
+<p>从请求对象中提取加盐cookie:</p>
 <blockquote>
-<p>管道的命令可以写在一起，如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>p.set(<span class="string">'hello'</span>,<span class="string">'redis'</span>).sadd(<span class="string">'faz'</span>,<span class="string">'baz'</span>).incr(<span class="string">'num'</span>).execute()</div></pre></td></tr></table></figure></p>
+<p>request.get_signed_cookie(“key”,salt=”mysaltstr”);</p>
 </blockquote>
-<h4 id="常见的一些应用场景"><a href="#常见的一些应用场景" class="headerlink" title="常见的一些应用场景"></a><div id="title">常见的一些应用场景</div></h4><h5 id="1-统计页面点击数"><a href="#1-统计页面点击数" class="headerlink" title="1. 统计页面点击数"></a>1. 统计页面点击数</h5><blockquote>
-<p>论坛的每个帖子都要记录点击次数，而点击次数比回帖的次数的多得多。如果使用关系数据库来存储点击，可能存在大量的行级锁争用。所以，点击数的增加使用redis的INCR命令最好不过了</p>
-</blockquote>
-<p><strong>当redis服务器启动时，可以从关系数据库读入点击数,假设1237这个页面被访问了34634次，因此我们使用如下的方法初始化：</strong></p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.set(<span class="string">"visit:1237:totals"</span>,<span class="number">34634</span>)</div><div class="line"><span class="keyword">True</span></div></pre></td></tr></table></figure>
-<p><strong>每当有一个页面点击，则使用INCR增加点击数即可</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.incr(<span class="string">"visit:1237:totals"</span>)</div><div class="line"><span class="number">34635</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.incr(<span class="string">"visit:1237:totals"</span>)</div><div class="line"><span class="number">34636</span></div></pre></td></tr></table></figure></p>
-<p><strong>页面载入的时候则可直接获取这个值</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.get (<span class="string">"visit:1237:totals"</span>)</div><div class="line"><span class="string">'34636'</span></div></pre></td></tr></table></figure></p>
+<p>在响应对象上写入cookie：<br>先拿到响应对象：</p>
 <blockquote>
-<p>类似的场景：当页面登录发送验证码的时候，为了控制用户发送的次数，也可以采用这种方法进行频率控制</p>
+<p>response_obj=redirect(“/url_path/“)<br>response_obj=HttpResponse(“content”)<br>response_obj=render(request,”html”)</p>
 </blockquote>
-<h5 id="2-如何保存一个对象数据"><a href="#2-如何保存一个对象数据" class="headerlink" title="2. 如何保存一个对象数据"></a>2. 如何保存一个对象数据</h5><blockquote>
-<p>由于非关系数据库没有固定的列，因此如何去存储一个数据对象，我们可以使用hash类型保存多样化的对象</p>
-<p>比如说，我们想要保存用户的年龄，email，手机号等内容</p>
+<p>在响应对象上设置cookie:</p>
+<blockquote>
+<p>response_obj.set_cookie(“key”,”value”,max_age=60)</p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.hset(<span class="string">'users:jdoe'</span>,  <span class="string">'name'</span>, <span class="string">"John Doe"</span>)</div><div class="line"><span class="number">1L</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.hset(<span class="string">'users:jdoe'</span>, <span class="string">'email'</span>, <span class="string">'John@test.com'</span>)</div><div class="line"><span class="number">1L</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.hset(<span class="string">'users:jdoe'</span>,  <span class="string">'phone'</span>, <span class="string">'1555313940'</span>)</div><div class="line"><span class="number">1L</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.hincrby(<span class="string">'users:jdoe'</span>, <span class="string">'visits'</span>, <span class="number">1</span>)</div><div class="line"><span class="number">1L</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.hgetall(<span class="string">'users:jdoe'</span>)</div><div class="line">&#123;<span class="string">'phone'</span>: <span class="string">'1555313940'</span>, <span class="string">'name'</span>: <span class="string">'John Doe'</span>, <span class="string">'visits'</span>: <span class="string">'1'</span>, <span class="string">'email'</span>: <span class="string">'John@test.com'</span>&#125;</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.hkeys(<span class="string">'users:jdoe'</span>)</div><div class="line">[<span class="string">'name'</span>, <span class="string">'email'</span>, <span class="string">'phone'</span>, <span class="string">'visits'</span>]</div></pre></td></tr></table></figure>
-<h5 id="3-社交圈子数据"><a href="#3-社交圈子数据" class="headerlink" title="3. 社交圈子数据"></a>3. 社交圈子数据</h5><blockquote>
-<p>在社交网站中，每一个圈子(circle)都有自己的用户群。通过圈子可以找到有共同特征（比如某一体育活动、游戏、电影等爱好者）的人。当一个用户加入一个或几个圈子后，系统可以向这个用户推荐圈子中的人</p>
+<p>设置加盐cookie:</p>
+<blockquote>
+<p>response_obj.set_signed_cookie(“key”,”value”,max_age=60, salt=”mysaltstr”)</p>
 </blockquote>
-<p><strong>我们定义这样两个圈子,并加入一些圈子成员</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.sadd(<span class="string">'circle:game:lol'</span>,<span class="string">'user:debugo'</span>)</div><div class="line"><span class="number">1</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.sadd(<span class="string">'circle:game:lol'</span>,<span class="string">'user:leo'</span>)</div><div class="line"><span class="number">1</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.sadd(<span class="string">'circle:game:lol'</span>,<span class="string">'user:Guo'</span>)</div><div class="line"><span class="number">1</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.sadd(<span class="string">'circle:soccer:InterMilan'</span>,<span class="string">'user:Guo'</span>)</div><div class="line"><span class="number">1</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.sadd(<span class="string">'circle:soccer:InterMilan'</span>,<span class="string">'user:Levis'</span>)</div><div class="line"><span class="number">1</span></div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.sadd(<span class="string">'circle:soccer:InterMilan'</span>,<span class="string">'user:leo'</span>)</div><div class="line"><span class="number">1</span></div></pre></td></tr></table></figure></p>
-<p><strong>获得某一圈子的成员</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.smembers(<span class="string">'circle:game:lol'</span>)</div><div class="line">set([<span class="string">'user:Guo'</span>, <span class="string">'user:debugo'</span>, <span class="string">'user:leo'</span>])</div></pre></td></tr></table></figure></p>
-<p><strong>使用集合运算来得到几个圈子的共同成员</strong><br><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.sinter(<span class="string">'circle:game:lol'</span>, <span class="string">'circle:soccer:InterMilan'</span>)</div><div class="line">set([<span class="string">'user:Guo'</span>, <span class="string">'user:leo'</span>])</div><div class="line"><span class="meta">&gt;&gt;&gt; </span>r.sunion(<span class="string">'circle:game:lol'</span>, <span class="string">'circle:soccer:InterMilan'</span>)</div><div class="line">set([<span class="string">'user:Levis'</span>, <span class="string">'user:Guo'</span>, <span class="string">'user:debugo'</span>, <span class="string">'user:leo'</span>])</div></pre></td></tr></table></figure></p>
-<h5 id="4-反垃圾系统"><a href="#4-反垃圾系统" class="headerlink" title="4. 反垃圾系统"></a>4. 反垃圾系统</h5><blockquote>
-<p>获取某段时间所有数据排重值,这个使用Redis的set数据结构最合适了，只需要不断地将数据往set中扔就行了，set意为集合，所以会自动排重</p>
+<h4 id="Django中操作session"><a href="#Django中操作session" class="headerlink" title="Django中操作session"></a><div id="title">Django中操作session</div></h4><p>设置session字典内容：</p>
+<blockquote>
+<p>request.session[key] = value</p>
 </blockquote>
-<h5 id="5-Pub-Sub构建实时消息系统"><a href="#5-Pub-Sub构建实时消息系统" class="headerlink" title="5. Pub/Sub构建实时消息系统"></a>5. Pub/Sub构建实时消息系统</h5><blockquote>
-<p>Redis的Pub/Sub系统可以构建实时的消息系统，比如很多用Pub/Sub构建的实时聊天系统的例子。</p>
+<p>提取session字典内容：</p>
+<blockquote>
+<p>request.session.get[key]</p>
 </blockquote>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">使用办法:</div><div class="line">订阅端: Subscribe 频道名称</div><div class="line">发布端: publish 频道名称 发布内容</div><div class="line"></div><div class="line">客户端例子:</div><div class="line">redis <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>&gt; subscribe news</div><div class="line">Reading messages... (press Ctrl-C to quit)</div><div class="line"><span class="number">1</span>) <span class="string">"subscribe"</span></div><div class="line"><span class="number">2</span>) <span class="string">"news"</span></div><div class="line"><span class="number">3</span>) (integer) <span class="number">1</span></div><div class="line"><span class="number">1</span>) <span class="string">"message"</span></div><div class="line"><span class="number">2</span>) <span class="string">"news"</span></div><div class="line"><span class="number">3</span>) <span class="string">"good good study"</span></div><div class="line"><span class="number">1</span>) <span class="string">"message"</span></div><div class="line"><span class="number">2</span>) <span class="string">"news"</span></div><div class="line"><span class="number">3</span>) <span class="string">"day day up"</span></div><div class="line"></div><div class="line">服务端例子:</div><div class="line">redis <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>&gt; publish news <span class="string">'good good study'</span></div><div class="line">(integer) <span class="number">1</span></div><div class="line">redis <span class="number">127.0</span><span class="number">.0</span><span class="number">.1</span>:<span class="number">6379</span>&gt; publish news <span class="string">'day day up'</span></div><div class="line">(integer) <span class="number">1</span></div></pre></td></tr></table></figure>
+<p>删除session:</p>
+<blockquote>
+<p>del request.session[key]</p>
+</blockquote>
 
       
 
@@ -267,11 +285,7 @@ onmouseup="document.selection.empty()">-->
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NoSQL</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
         		</li>
       		
 		</ul>
@@ -284,7 +298,7 @@ onmouseup="document.selection.empty()">-->
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/NoSQL/" class="article-tag-list-link color1">NoSQL</a>
+        			<a href="/categories/Python/" class="article-tag-list-link color2">Python</a>
         		</li>
       		
 		</ul>
@@ -301,18 +315,18 @@ onmouseup="document.selection.empty()">-->
   
 <nav id="article-nav">
   
-    <a href="/2017/05/05/NoSQL入门学习/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/06/02/使用composer构建一个简单的PHP框架之ORM(四)/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          NoSQL入门学习
+          使用composer构建一个简单的php框架之ORM（四）
         
       </div>
     </a>
   
   
-    <a href="/2017/05/05/MySQL初级部分/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">MySQL基础学习目录</div>
+    <a href="/2017/05/07/html基础目录/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">HTML基础学习目录</div>
       <i class="icon-circle-right"></i>
     </a>
   
