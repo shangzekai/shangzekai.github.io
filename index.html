@@ -369,77 +369,6 @@ onmouseup="document.selection.empty()">-->
 
 
   
-    <article id="post-git的介绍和使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/07/git的介绍和使用/">git的使用和讲解</a>
-    </h1>
-  
-
-        
-        <a href="/2018/05/07/git的介绍和使用/" class="archive-article-date">
-  	<time datetime="2018-05-07T12:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="git的光速入门"><a href="#git的光速入门" class="headerlink" title="git的光速入门"></a><div id="title">git的光速入门</div></h3><h4 id="git是什么？"><a href="#git是什么？" class="headerlink" title="git是什么？"></a>git是什么？</h4><blockquote>
-<p>git 是一种版本控制器，更直白的说，团队开发的时候，管理代码使用的软件</p>
-</blockquote>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">GIT</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/GIT/" class="article-tag-list-link color4">GIT</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/07/git的介绍和使用/">展开全文 >></a>
-        </p>
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
     <article id="post-啥叫星轨" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -498,6 +427,148 @@ onmouseup="document.selection.empty()">-->
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/05/07/啥叫星轨/">展开全文 >></a>
+        </p>
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-RabbitMQ的使用讲解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/07/RabbitMQ的使用讲解/">RabbitMQ队列</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/07/RabbitMQ的使用讲解/" class="archive-article-date">
+  	<time datetime="2018-05-07T12:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="为啥要使用MQ"><a href="#为啥要使用MQ" class="headerlink" title="为啥要使用MQ"></a><div id="title">为啥要使用MQ</div></h4><blockquote>
+<p>以常见的订单系统为例，用户点击【下单】按钮之后的业务逻辑可能包括：扣减库存、生成相应单据、发红包、发短信通知。在业务发展初期这些逻辑可能放在一起同步执行，随着业务的发展订单量增长，需要提升系统服务的性能，这时可以将一些不需要立即生效的操作拆分出来异步执行，比如发放红包、发短信通知等。这种场景下就可以用 MQ ，在下单的主流程（比如扣减库存、生成相应单据）完成之后发送一条消息到 MQ 让主流程快速完结，而由另外的单独线程拉取MQ的消息（或者由 MQ 推送消息），当发现 MQ 中有发红包或发短信之类的消息时，执行相应的业务逻辑。</p>
+</blockquote>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NoSQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/NoSQL/" class="article-tag-list-link color1">NoSQL</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/07/RabbitMQ的使用讲解/">展开全文 >></a>
+        </p>
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
+    <article id="post-git的介绍和使用" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/05/07/git的介绍和使用/">git的使用和讲解</a>
+    </h1>
+  
+
+        
+        <a href="/2018/05/07/git的介绍和使用/" class="archive-article-date">
+  	<time datetime="2018-05-07T12:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-07</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="git的光速入门"><a href="#git的光速入门" class="headerlink" title="git的光速入门"></a><div id="title">git的光速入门</div></h3><h4 id="git是什么？"><a href="#git是什么？" class="headerlink" title="git是什么？"></a>git是什么？</h4><blockquote>
+<p>git 是一种版本控制器，更直白的说，团队开发的时候，管理代码使用的软件</p>
+</blockquote>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">GIT</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/GIT/" class="article-tag-list-link color4">GIT</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2018/05/07/git的介绍和使用/">展开全文 >></a>
         </p>
       
 
@@ -582,28 +653,29 @@ onmouseup="document.selection.empty()">-->
 
 
   
-    <article id="post-RabbitMQ的使用讲解" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-为啥需要websocket" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/05/07/RabbitMQ的使用讲解/">RabbitMQ队列</a>
+      <a class="article-title" href="/2018/04/05/为啥需要websocket/">websocket讲解</a>
     </h1>
   
 
         
-        <a href="/2018/05/07/RabbitMQ的使用讲解/" class="archive-article-date">
-  	<time datetime="2018-05-07T12:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-05-07</time>
+        <a href="/2018/04/05/为啥需要websocket/" class="archive-article-date">
+  	<time datetime="2018-04-05T12:45:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-04-05</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="为啥要使用MQ"><a href="#为啥要使用MQ" class="headerlink" title="为啥要使用MQ"></a><div id="title">为啥要使用MQ</div></h4><blockquote>
-<p>以常见的订单系统为例，用户点击【下单】按钮之后的业务逻辑可能包括：扣减库存、生成相应单据、发红包、发短信通知。在业务发展初期这些逻辑可能放在一起同步执行，随着业务的发展订单量增长，需要提升系统服务的性能，这时可以将一些不需要立即生效的操作拆分出来异步执行，比如发放红包、发短信通知等。这种场景下就可以用 MQ ，在下单的主流程（比如扣减库存、生成相应单据）完成之后发送一条消息到 MQ 让主流程快速完结，而由另外的单独线程拉取MQ的消息（或者由 MQ 推送消息），当发现 MQ 中有发红包或发短信之类的消息时，执行相应的业务逻辑。</p>
+        <h4 id="为啥需要websocket"><a href="#为啥需要websocket" class="headerlink" title="为啥需要websocket"></a><div id="title">为啥需要websocket</div></h4><p>初次接触 WebSocket 的人，都会问同样的问题：我们已经有了 HTTP 协议，为什么还需要另一个协议？它能带来什么好处？</p>
+<blockquote>
+<p>答案很简单，因为 HTTP 协议有一个缺陷：通信只能由客户端发起。</p>
 </blockquote>
       
 
@@ -617,7 +689,7 @@ onmouseup="document.selection.empty()">-->
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NoSQL</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">python</a>
         		</li>
       		
 		</ul>
@@ -630,7 +702,7 @@ onmouseup="document.selection.empty()">-->
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/NoSQL/" class="article-tag-list-link color1">NoSQL</a>
+        			<a href="/categories/Python/" class="article-tag-list-link color2">Python</a>
         		</li>
       		
 		</ul>
@@ -639,7 +711,7 @@ onmouseup="document.selection.empty()">-->
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2018/05/07/RabbitMQ的使用讲解/">展开全文 >></a>
+          <a class="article-more-a" href="/2018/04/05/为啥需要websocket/">展开全文 >></a>
         </p>
       
 
@@ -1158,82 +1230,6 @@ onmouseup="document.selection.empty()">-->
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2018/03/02/生成一个YAF程序/">展开全文 >></a>
-        </p>
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-yaf配置说明" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/03/02/yaf配置说明/">Yaf之配置和类加载方式</a>
-    </h1>
-  
-
-        
-        <a href="/2018/03/02/yaf配置说明/" class="archive-article-date">
-  	<time datetime="2018-03-02T03:18:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2018-03-02</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="配置说明"><a href="#配置说明" class="headerlink" title="配置说明"></a><div id="title">配置说明</div></h4><blockquote>
-<p>我们必须在Yaf_Application初始化的时候给出配置文件中的配置，其中Yaf的必不可少的配置项只有一个，那就是application.directory，它表示当前应用程序的绝对路径。</p>
-<p>其实这个配置项也可以没有，至少从框架层面上做到了”零配置”，但是鸟哥认为，如果一个配置项都没有，就显得太寒酸了，于是就加了这么一个配置项。</p>
-</blockquote>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Yaf</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/YAF/" class="article-tag-list-link color4">YAF</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2018/03/02/yaf配置说明/">展开全文 >></a>
         </p>
       
 
