@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://i.loli.net/2018/08/26/5b822a743c33d.png">
 <meta property="og:image" content="https://i.loli.net/2018/08/26/5b822a7478f6a.png">
 <meta property="og:image" content="https://i.loli.net/2018/08/28/5b84e8d37c689.jpg">
-<meta property="og:updated_time" content="2018-08-29T06:26:48.000Z">
+<meta property="og:updated_time" content="2018-08-29T06:38:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="数据结构和算法">
 <meta name="twitter:description" content="数据结构和算法概述数据结构的定义 我们如何把现实中大量而且非常复杂的问题以特定的数据类型(个体)和特定的存储结构(个体的关系)保存到相应的主存储器(内存)中，以及在此基础上为实现某个功能而执行的相应操作，这个相应的操作也叫做算法">
@@ -260,9 +260,7 @@ onmouseup="document.selection.empty()">-->
 </ul>
 </li>
 </ul>
-<h5 id="离散存储-链表"><a href="#离散存储-链表" class="headerlink" title="离散存储(链表)"></a><div id="title">离散存储(链表)</div></h5><ol>
-<li>定义：</li>
-</ol>
+<h5 id="离散存储-链表"><a href="#离散存储-链表" class="headerlink" title="离散存储(链表)"></a><div id="title">离散存储(链表)</div></h5><p>1.定义：</p>
 <ul>
 <li>n个节点离散分配</li>
 <li>彼此通过指针相连</li>
@@ -294,9 +292,7 @@ onmouseup="document.selection.empty()">-->
 </table>
 <p><img src="https://i.loli.net/2018/08/27/5b836d0aaceb4.jpg" alt="单链表.jpg"></p>
 <p><strong>data为自定义的数据，next为下一个节点的地址。</strong></p>
-<ol>
-<li>专业术语：</li>
-</ol>
+<p>2.专业术语：</p>
 <ul>
 <li>首节点：第一个有效节点</li>
 <li>尾节点：最后一个有效节点</li>
@@ -304,18 +300,14 @@ onmouseup="document.selection.empty()">-->
 <li>头指针：指向头结点的指针变量</li>
 <li>尾指针：指向尾节点的指针变量</li>
 </ul>
-<ol>
-<li>链表的分类：</li>
-</ol>
+<p>3.链表的分类：</p>
 <ul>
 <li>单链表</li>
 <li>双链表  每一个节点有两个指针域</li>
 <li>循环链表  能通过任何一个节点找到其他所有的节点</li>
 <li>非循环链表</li>
 </ul>
-<ol>
-<li>算法：</li>
-</ol>
+<p>4.算法：</p>
 <ul>
 <li>增加</li>
 <li>删除</li>
@@ -324,23 +316,17 @@ onmouseup="document.selection.empty()">-->
 <li>总长度</li>
 </ul>
 <p><strong>有一堆数据1,2,3,5,6,7我们要在3和5之间插入4,如果用数组，我们会怎么做？当然是将5之后的数据往后退一位，然后再插入4,这样非常麻烦，但是如果用链表，我就直接在3和5之间插入4就行，听着就很方便</strong></p>
-<ol>
-<li>如果希望通过一个函数来对链表进行处理操作，至少需要接受链表的哪些参数？</li>
-</ol>
+<p>5.如果希望通过一个函数来对链表进行处理操作，至少需要接受链表的哪些参数？</p>
 <blockquote>
 <p>只需要一个参数，头结点即可，因为我们可以通过头结点来推算出链表的其他所有的参数</p>
 </blockquote>
 <p><img src="https://i.loli.net/2018/08/27/5b836d0ad3af1.jpg" alt="链表的操作.jpg"></p>
-<ol>
-<li>单链表的算法</li>
-</ol>
+<p>6.单链表的算法</p>
 <div><div class="fold_hider"><div class="close hider_title">点击显/隐</div></div><div class="fold">
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div><div class="line">95</div><div class="line">96</div><div class="line">97</div><div class="line">98</div><div class="line">99</div><div class="line">100</div><div class="line">101</div><div class="line">102</div><div class="line">103</div><div class="line">104</div><div class="line">105</div><div class="line">106</div><div class="line">107</div><div class="line">108</div><div class="line">109</div><div class="line">110</div><div class="line">111</div><div class="line">112</div><div class="line">113</div><div class="line">114</div><div class="line">115</div><div class="line">116</div><div class="line">117</div><div class="line">118</div><div class="line">119</div><div class="line">120</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Hero</span><span class="params">(object)</span>:</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, no=<span class="number">0</span>, name=<span class="string">""</span>, nickname=<span class="string">""</span>, pNext=None)</span>:</span></div><div class="line"></div><div class="line">        self.no = no</div><div class="line">        self.name = name</div><div class="line">        self.nickname = nickname</div><div class="line">        self.pNext = pNext</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">getHero</span><span class="params">(head, no)</span>:</span></div><div class="line">    cur = head</div><div class="line">    <span class="keyword">while</span> cur.pNext != <span class="keyword">None</span>:</div><div class="line"></div><div class="line">        <span class="keyword">if</span> cur.no == no:</div><div class="line">            print(<span class="string">"找到的英雄的编号是： %s，姓名是：%s，外号是：%s"</span> % (cur.no, cur.name, cur.nickname))</div><div class="line">            <span class="keyword">break</span></div><div class="line">        cur = cur.pNext</div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        print(<span class="string">"没有这个英雄"</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(head, hero)</span>:</span></div><div class="line">    <span class="comment"># 1. 直接在链表的最后加上</span></div><div class="line">    <span class="comment"># 先找到链表的最后</span></div><div class="line">    cur = head</div><div class="line">    <span class="comment"># while cur.pNext != None:</span></div><div class="line">    <span class="comment">#     cur = cur.pNext</span></div><div class="line">    <span class="comment"># # 当退出链表的时候，就算是队尾了</span></div><div class="line">    <span class="comment"># cur.pNext = hero</span></div><div class="line"></div><div class="line"></div><div class="line">    <span class="comment"># 2. 指定位置进行添加</span></div><div class="line">    <span class="keyword">while</span> cur.pNext != <span class="keyword">None</span>:</div><div class="line">        <span class="keyword">if</span> cur.pNext.no &gt;= hero.no:</div><div class="line">            <span class="comment"># 找到位置</span></div><div class="line">            <span class="keyword">break</span></div><div class="line">        <span class="comment"># 继续往下走</span></div><div class="line">        cur = cur.pNext</div><div class="line"></div><div class="line">    hero.pNext = cur.pNext</div><div class="line">    cur.pNext = hero</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">showAll</span><span class="params">(head)</span>:</span></div><div class="line">    cur = head</div><div class="line"></div><div class="line">    <span class="keyword">while</span> cur.pNext != <span class="keyword">None</span>:</div><div class="line">        print(<span class="string">"英雄的编号是： %s，姓名是：%s，外号是：%s"</span> % (cur.pNext.no,cur.pNext.name,cur.pNext.nickname))</div><div class="line">        cur = cur.pNext</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">delHero</span><span class="params">(head, no)</span>:</span></div><div class="line"></div><div class="line">    cur = head</div><div class="line">    <span class="keyword">while</span> cur.pNext != <span class="keyword">None</span>:</div><div class="line">        <span class="keyword">if</span> cur.pNext.no == no:</div><div class="line">            <span class="comment"># 开始删除</span></div><div class="line">            cur.pNext = cur.pNext.pNext</div><div class="line"></div><div class="line">            <span class="keyword">break</span></div><div class="line">        cur = cur.pNext</div><div class="line"></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        print(<span class="string">'没有找到'</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">updateHero</span><span class="params">(head, no, name)</span>:</span></div><div class="line">    cur = head</div><div class="line"></div><div class="line">    <span class="keyword">while</span> cur.pNext != <span class="keyword">None</span>:</div><div class="line">        <span class="keyword">if</span> cur.pNext.no == no:</div><div class="line">            cur.pNext.name = name</div><div class="line">            <span class="keyword">break</span></div><div class="line">        cur = cur.pNext</div><div class="line"></div><div class="line">    <span class="keyword">else</span>:</div><div class="line">        print(<span class="string">'没有找到英雄'</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">is_empty</span><span class="params">(head)</span>:</span></div><div class="line">    <span class="keyword">if</span> head.pNext == <span class="keyword">None</span>:</div><div class="line">        <span class="keyword">return</span> <span class="keyword">True</span></div><div class="line"></div><div class="line">    <span class="keyword">return</span> <span class="keyword">False</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">length</span><span class="params">(head)</span>:</span></div><div class="line">    cnt = <span class="number">0</span></div><div class="line">    cur = head</div><div class="line">    <span class="keyword">while</span> cur.pNext != <span class="keyword">None</span>:</div><div class="line">        cnt = cnt + <span class="number">1</span></div><div class="line">        cur = cur.pNext</div><div class="line">    <span class="keyword">return</span> cnt</div><div class="line"></div><div class="line"><span class="comment"># 创建一个head头，该head只是一个头，不存放数据</span></div><div class="line">head = Hero()</div><div class="line"><span class="comment"># print(is_empty(head))</span></div><div class="line"></div><div class="line">hero = Hero(<span class="number">1</span>, <span class="string">'宋江'</span>, <span class="string">'及时雨'</span>)</div><div class="line"><span class="comment"># head.pNext = hero</span></div><div class="line">add(head, hero)</div><div class="line"></div><div class="line">hero = Hero(<span class="number">2</span>, <span class="string">'卢俊义'</span>, <span class="string">'玉麒麟'</span>)</div><div class="line"><span class="comment"># hero.pNext = hero2</span></div><div class="line">add(head, hero)</div><div class="line"></div><div class="line">hero = Hero(<span class="number">6</span>, <span class="string">'林冲'</span>, <span class="string">'豹子头'</span>)</div><div class="line">add(head, hero)</div><div class="line"></div><div class="line">hero = Hero(<span class="number">3</span>, <span class="string">'吴用'</span>, <span class="string">'智多星'</span>)</div><div class="line">add(head, hero)</div><div class="line"></div><div class="line"><span class="comment"># 遍历所有的英雄</span></div><div class="line">showAll(head)</div><div class="line"></div><div class="line"><span class="comment"># delHero(head, 3)</span></div><div class="line"></div><div class="line"><span class="comment"># print('删除之后的排列：')</span></div><div class="line"></div><div class="line">updateHero(head,<span class="number">3</span>,<span class="string">'张三'</span>)</div><div class="line">print(<span class="string">'###############修改之后的排列：################'</span>)</div><div class="line"></div><div class="line">showAll(head)</div><div class="line"></div><div class="line">print(length(head))</div><div class="line"><span class="comment"># getHero(head, 3)</span></div></pre></td></tr></table></figure>
 
 </div></div>
-<ol>
-<li>双向链表</li>
-</ol>
+<p>7.双向链表</p>
 <blockquote>
 <p>双链表中每个节点有两个指针：一个指向后面节点、一个指向前面节点</p>
 </blockquote>
@@ -352,15 +338,11 @@ onmouseup="document.selection.empty()">-->
 <p>删除：</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">p = curNode.next</div><div class="line">curNode.next = p.next</div><div class="line">p.next.prior = curNode</div><div class="line"><span class="keyword">del</span> p</div></pre></td></tr></table></figure>
 <p><img src="https://i.loli.net/2018/08/27/5b836d0ad0e42.png" alt="双链表的操作.png"></p>
-<ol>
-<li>循环链表</li>
-</ol>
+<p>8.循环链表</p>
 <blockquote>
 <p>循环链表是另一种形式的链式存贮结构。它的特点是表中最后一个结点的指针域指向头结点，整个链表形成一个环。</p>
 </blockquote>
-<ol>
-<li>约瑟夫问题</li>
-</ol>
+<p>9.约瑟夫问题</p>
 <blockquote>
 <p>设编号为1，2，… n的n个人围坐一圈，约定编号为k（1&lt;=k&lt;=n）的人从1开始报数，数到m 的那个人出列，它的下一位又从1开始报数，数到m的那个人又出列，依次类推，直到所有人出列为止，由此产生一个出队编号的序列</p>
 </blockquote>
@@ -475,11 +457,7 @@ onmouseup="document.selection.empty()">-->
 <li>树有且仅有一个根节点</li>
 <li>有若干个互不相交的子树，这些子树本身也是一颗树</li>
 </ul>
-<p>通俗的定义：</p>
-<ol>
-<li>树就是由节点和边组成的</li>
-<li>每一个节点只能有一个父节点，但可以有多个子节点。但有一个节点例外，该节点没有父节点，此节点就称为根节点</li>
-</ol>
+<p>通俗的定义：<br>1.树就是由节点和边组成的<br>2.每一个节点只能有一个父节点，但可以有多个子节点。但有一个节点例外，该节点没有父节点，此节点就称为根节点</p>
 <h6 id="树的专业术语"><a href="#树的专业术语" class="headerlink" title="树的专业术语"></a><div id="title">树的专业术语</div></h6><ul>
 <li>节点</li>
 <li>父节点</li>
@@ -578,37 +556,27 @@ onmouseup="document.selection.empty()">-->
 </ul>
 </li>
 </ul>
-<h6 id="二叉树具体的操作"><a href="#二叉树具体的操作" class="headerlink" title="二叉树具体的操作"></a><div id="title">二叉树具体的操作</div></h6><ol>
-<li>二叉树的先序遍历[先访问根节点]</li>
-</ol>
+<h6 id="二叉树具体的操作"><a href="#二叉树具体的操作" class="headerlink" title="二叉树具体的操作"></a><div id="title">二叉树具体的操作</div></h6><p>1.二叉树的先序遍历[先访问根节点]</p>
 <ul>
 <li>先访问根节点 </li>
 <li>再先序遍历左子树</li>
 <li>再先序遍历右子树</li>
 </ul>
-<ol>
-<li>二叉树的中序遍历 [中间访问根节点]</li>
-</ol>
+<p>2.二叉树的中序遍历 [中间访问根节点]</p>
 <ul>
 <li>先中序遍历左子树</li>
 <li>再访问根节点</li>
 <li>再中序遍历右子树</li>
 </ul>
-<ol>
-<li>二叉树的后序遍历 [最后访问根节点]</li>
-</ol>
+<p>3.二叉树的后序遍历 [最后访问根节点]</p>
 <ul>
 <li>先中序遍历左子树</li>
 <li>再中序遍历右子树</li>
 <li>再访问根节点</li>
 </ul>
-<ol>
-<li>已知先序和中序，如何求出后序？</li>
-</ol>
+<p>4.已知先序和中序，如何求出后序？</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">#### 例一</div><div class="line">先序：ABCDEFGH</div><div class="line">中序：BDCEAFHG</div><div class="line"></div><div class="line">求后序？</div><div class="line">后序：DECBHGFA</div><div class="line"></div><div class="line">#### 例二</div><div class="line">先序：ABDGHCEFI</div><div class="line">中序：GDHBAECIF</div><div class="line"></div><div class="line">求后序？</div><div class="line">后序：GHDBEIFCA</div></pre></td></tr></table></figure>
-<ol>
-<li>已知中序和后序，如何求出先序？</li>
-</ol>
+<p>5.已知中序和后序，如何求出先序？</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">中序：BDCEAFHG</div><div class="line">后序：DECBHGFA</div><div class="line"></div><div class="line">求先序？</div><div class="line">先序：ABCDEFGH</div></pre></td></tr></table></figure>
 <h6 id="树的应用"><a href="#树的应用" class="headerlink" title="树的应用"></a><div id="title">树的应用</div></h6><ul>
 <li>树是数据库中数据组织的一种重要形式</li>
