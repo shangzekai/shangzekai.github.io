@@ -48,6 +48,22 @@
 onselectstart="return false" onselect="document.selection.empty()"
 oncopy="document.selection.empty()" onbeforecopy="return false"
 onmouseup="document.selection.empty()">-->
+<style>
+.hider_title{
+    font-family: "Microsoft Yahei";
+    cursor: pointer;
+}
+.close:after{
+    content: "▼";
+}
+.open:after{
+    content: "▲";
+}
+
+.feed-link a {
+  display: inline-block;
+}
+</style>
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -890,4 +906,14 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
 </div>
   </div>
 </body>
+<script>
+$(document).ready(function(){
+    $(document).on('click', '.fold_hider', function(){
+        $('>.fold', this.parentNode).slideToggle();
+        $('>:first', this).toggleClass('open');
+    });
+    //默认情况下展开
+    $("div.fold").css("display","open");
+});
+</script>
 </html>

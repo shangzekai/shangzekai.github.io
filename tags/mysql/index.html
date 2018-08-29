@@ -43,6 +43,22 @@
 onselectstart="return false" onselect="document.selection.empty()"
 oncopy="document.selection.empty()" onbeforecopy="return false"
 onmouseup="document.selection.empty()">-->
+<style>
+.hider_title{
+    font-family: "Microsoft Yahei";
+    cursor: pointer;
+}
+.close:after{
+    content: "▼";
+}
+.open:after{
+    content: "▲";
+}
+
+.feed-link a {
+  display: inline-block;
+}
+</style>
 <body>
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
@@ -710,16 +726,18 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
 </div>
   </div>
 </body>
+<script>
+$(document).ready(function(){
+    $(document).on('click', '.fold_hider', function(){
+        $('>.fold', this.parentNode).slideToggle();
+        $('>:first', this).toggleClass('open');
+    });
+    //默认情况下展开
+    $("div.fold").css("display","open");
+});
+</script>
 </html>
-se
-      permalink: false
-      excerpt: false
-      categories: false
-      tags: true
-</pre>
-          </p>
-          <li class="search-li" q-repeat="items" q-show="isShow">
-            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+xt="title"></span></a>
             <p class="search-time">
               <i class="icon-calendar icon"></i>
               <span q-text="date|dateformat"></span>
@@ -837,4 +855,14 @@ se
 </div>
   </div>
 </body>
+<script>
+$(document).ready(function(){
+    $(document).on('click', '.fold_hider', function(){
+        $('>.fold', this.parentNode).slideToggle();
+        $('>:first', this).toggleClass('open');
+    });
+    //默认情况下展开
+    $("div.fold").css("display","open");
+});
+</script>
 </html>
