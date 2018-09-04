@@ -4,6 +4,46 @@
 
     
   <url>
+    <loc>https://www.shangzekai.xyz/2018/05/07/git%E7%9A%84%E4%BB%8B%E7%BB%8D%E5%92%8C%E4%BD%BF%E7%94%A8/</loc>
+    <lastmod>2018-09-04T09:41:49.000Z</lastmod>
+    <data>
+        <display>
+        <title>git的使用和讲解</title>
+        <pubTime>2018-05-07T12:55:09.000Z</pubTime>
+        
+        <tag>GIT</tag>
+         
+         
+           
+             
+              <breadCrumb title="GIT" url="https://www.shangzekai.xyz/categories/GIT/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.shangzekai.xyz/2017/04/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/</loc>
+    <lastmod>2018-09-04T09:28:14.000Z</lastmod>
+    <data>
+        <display>
+        <title>数据结构和算法</title>
+        <pubTime>2017-04-05T12:45:09.000Z</pubTime>
+        
+        <tag>python</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="https://www.shangzekai.xyz/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://www.shangzekai.xyz/2117/05/07/%E5%A3%B0%E6%98%8E/</loc>
     <lastmod>2018-08-30T02:46:23.000Z</lastmod>
     <data>
@@ -17,26 +57,6 @@
            
              
               <breadCrumb title="声明" url="https://www.shangzekai.xyz/categories/%E5%A3%B0%E6%98%8E/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.shangzekai.xyz/2017/04/05/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95%E6%A6%82%E8%BF%B0/</loc>
-    <lastmod>2018-08-29T06:38:23.000Z</lastmod>
-    <data>
-        <display>
-        <title>数据结构和算法</title>
-        <pubTime>2017-04-05T12:45:09.000Z</pubTime>
-        
-        <tag>python</tag>
-         
-         
-           
-             
-              <breadCrumb title="Python" url="https://www.shangzekai.xyz/categories/Python/"/>
           
         </display>
     </data>
@@ -157,26 +177,6 @@
            
              
               <breadCrumb title="NoSQL" url="https://www.shangzekai.xyz/categories/NoSQL/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.shangzekai.xyz/2018/05/07/git%E7%9A%84%E4%BB%8B%E7%BB%8D%E5%92%8C%E4%BD%BF%E7%94%A8/</loc>
-    <lastmod>2018-08-16T02:35:48.000Z</lastmod>
-    <data>
-        <display>
-        <title>git的使用和讲解</title>
-        <pubTime>2018-05-07T12:55:09.000Z</pubTime>
-        
-        <tag>GIT</tag>
-         
-         
-           
-             
-              <breadCrumb title="GIT" url="https://www.shangzekai.xyz/categories/GIT/"/>
           
         </display>
     </data>

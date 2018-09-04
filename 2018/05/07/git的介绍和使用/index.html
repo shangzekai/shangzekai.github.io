@@ -20,7 +20,7 @@
 <meta property="og:image" content="https://i.loli.net/2018/08/15/5b73f1a0b5547.png">
 <meta property="og:image" content="https://i.loli.net/2018/08/15/5b73f3008003c.png">
 <meta property="og:image" content="https://i.loli.net/2018/08/15/5b73f9ec3a714.png">
-<meta property="og:updated_time" content="2018-08-16T02:35:48.000Z">
+<meta property="og:updated_time" content="2018-09-04T09:41:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="git的使用和讲解">
 <meta name="twitter:description" content="git的光速入门git是什么？ git 是一种版本控制器，更直白的说，团队开发的时候，管理代码使用的软件">
@@ -286,8 +286,8 @@ onmouseup="document.selection.empty()">-->
 </ul>
 <p><img src="https://i.loli.net/2018/08/15/5b73f3008003c.png" alt="工作区和暂存区.png"></p>
 <h4 id="改动日志查看"><a href="#改动日志查看" class="headerlink" title="改动日志查看"></a>改动日志查看</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git log : 查看项目日志</div><div class="line">git log file : 查看某个文件日志</div><div class="line">git log . :查看本目录日志</div><div class="line">git reflog: 查看详细做了啥</div></pre></td></tr></table></figure>
-<p>若果感觉有点乱，可以使用<code>git log --pretty=online</code> 让日志单行显示</p>
-<h4 id="版本的切换"><a href="#版本的切换" class="headerlink" title="版本的切换"></a>版本的切换</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git reset --hard^^^</div></pre></td></tr></table></figure>
+<p>若果感觉有点乱，可以使用<code>git log --pretty=oneline</code> 让日志单行显示</p>
+<h4 id="版本的切换"><a href="#版本的切换" class="headerlink" title="版本的切换"></a>版本的切换</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git reset --hard &quot;head^^^&quot;</div></pre></td></tr></table></figure>
 <p><code>--hard</code>代表的是当前版本，后面的<code>^</code>符号代表的是退回到第几个版本，几个<code>^</code>符号就代表退回第几个</p>
 <p>但是这种方式不是很灵活，因此不建议大家使用这种方式切换，我们使用：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git reset --hard 2580d</div></pre></td></tr></table></figure>
