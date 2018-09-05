@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>https://www.shangzekai.xyz/2017/05/05/Redis%E5%AD%A6%E4%B9%A0%E7%9B%AE%E5%BD%95/</loc>
+    <lastmod>2018-09-05T11:28:46.000Z</lastmod>
+    <data>
+        <display>
+        <title>Redis学习目录</title>
+        <pubTime>2017-05-05T15:52:08.000Z</pubTime>
+        
+        <tag>基础</tag>
+         
+        <tag>NoSQL</tag>
+         
+         
+           
+             
+              <breadCrumb title="NoSQL" url="https://www.shangzekai.xyz/categories/NoSQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://www.shangzekai.xyz/2018/05/07/RabbitMQ%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AE%B2%E8%A7%A3/</loc>
     <lastmod>2018-09-05T06:09:21.000Z</lastmod>
     <data>
@@ -1735,28 +1757,6 @@
         <display>
         <title>使用Python操作Redis及其简单应用</title>
         <pubTime>2017-05-05T15:52:06.000Z</pubTime>
-        
-        <tag>基础</tag>
-         
-        <tag>NoSQL</tag>
-         
-         
-           
-             
-              <breadCrumb title="NoSQL" url="https://www.shangzekai.xyz/categories/NoSQL/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.shangzekai.xyz/2017/05/05/Redis%E5%AD%A6%E4%B9%A0%E7%9B%AE%E5%BD%95/</loc>
-    <lastmod>2017-06-06T09:27:40.000Z</lastmod>
-    <data>
-        <display>
-        <title>Redis学习目录</title>
-        <pubTime>2017-05-05T15:52:08.000Z</pubTime>
         
         <tag>基础</tag>
          

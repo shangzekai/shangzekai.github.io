@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.shangzekai.xyz/2017/05/05/Redis%E5%AD%A6%E4%B9%A0%E7%9B%AE%E5%BD%95/</loc>
+    
+    <lastmod>2018-09-05T11:28:46.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.shangzekai.xyz/2018/05/07/RabbitMQ%E7%9A%84%E4%BD%BF%E7%94%A8%E8%AE%B2%E8%A7%A3/</loc>
     
     <lastmod>2018-09-05T06:09:21.000Z</lastmod>
@@ -628,13 +635,6 @@
     <loc>https://www.shangzekai.xyz/2017/05/05/Python%E6%93%8D%E4%BD%9Credis%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/</loc>
     
     <lastmod>2017-06-06T11:33:23.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.shangzekai.xyz/2017/05/05/Redis%E5%AD%A6%E4%B9%A0%E7%9B%AE%E5%BD%95/</loc>
-    
-    <lastmod>2017-06-06T09:27:40.000Z</lastmod>
     
   </url>
   
