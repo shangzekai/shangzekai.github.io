@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Python">
 <meta property="og:description" content="Torando的介绍 Tornado 是一个Python web框架和异步网络库， 通过使用非阻塞网络I/O， Tornado可以支撑上万级的连接，处理 长连接, WebSockets ，和其他需要与每个用户保持长久连接的应用.">
 <meta property="og:image" content="https://i.loli.net/2018/08/20/5b7a2edce6c70.png">
-<meta property="og:updated_time" content="2018-09-06T08:58:41.000Z">
+<meta property="og:updated_time" content="2018-09-06T10:22:45.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Torando基础讲解">
 <meta name="twitter:description" content="Torando的介绍 Tornado 是一个Python web框架和异步网络库， 通过使用非阻塞网络I/O， Tornado可以支撑上万级的连接，处理 长连接, WebSockets ，和其他需要与每个用户保持长久连接的应用.">
@@ -316,7 +316,7 @@ onmouseup="document.selection.empty()">-->
 <blockquote>
 <p>这种情况就是由于字符串拼接查询，造成注入，因此我们需要使用<code>pymysql</code>提供的参数化查询</p>
 </blockquote>
-<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">effect_row = cursor.execute("<span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> userinfo <span class="keyword">where</span> <span class="keyword">name</span>=<span class="string">'%s'</span> <span class="keyword">and</span> <span class="keyword">password</span>=<span class="string">'%s'</span><span class="string">",(username, pwd))</span></div></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">effect_row = cursor.execute("<span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> userinfo <span class="keyword">where</span> <span class="keyword">name</span>=%s <span class="keyword">and</span> <span class="keyword">password</span>=%s<span class="string">", (name,password))</span></div></pre></td></tr></table></figure>
 <p><strong>这样改完之后，我们再看，会发现报错，但是不会登陆成功了，看看内部执行的语句，主要是对’符号做了转义防止注入</strong></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">select</span> <span class="keyword">name</span> <span class="keyword">from</span> userinfo <span class="keyword">where</span> <span class="keyword">name</span>=<span class="string">''</span>dyan\<span class="string">' -- n'' and password=''123''</span></div></pre></td></tr></table></figure>
 <h5 id="使用pymysql操作"><a href="#使用pymysql操作" class="headerlink" title="使用pymysql操作"></a><div id="title">使用pymysql操作</div></h5><ul>
