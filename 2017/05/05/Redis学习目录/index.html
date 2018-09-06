@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://www.shangzekai.xyz/2017/05/05/Redis学习目录/index.html">
 <meta property="og:site_name" content="Python">
 <meta property="og:description" content="Redis的官方定义 Redis is an open source, BSD licensed, advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.redis">
-<meta property="og:updated_time" content="2018-09-05T11:28:46.000Z">
+<meta property="og:updated_time" content="2018-09-06T00:13:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Redis学习目录">
 <meta name="twitter:description" content="Redis的官方定义 Redis is an open source, BSD licensed, advanced key-value store. It is often referred to as a data structure server since keys can contain strings, hashes, lists, sets and sorted sets.redis">
@@ -345,12 +345,8 @@ onmouseup="document.selection.empty()">-->
 <li><p>linsert  key after|before search value</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">作用: 在key链表中寻找’search’,并在search值之前|之后,.插入value</div><div class="line">注: 一旦找到一个search后,命令就结束了,因此不会插入多个value</div></pre></td></tr></table></figure>
 </li>
-<li><p>rpoplpush source dest</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">作用: 把source的尾部拿出,放在dest的头部,</div><div class="line">并返回 该单元值</div></pre></td></tr></table></figure>
-</li>
 </ul>
 <blockquote>
-<p>业务逻辑:<br>1:rpoplpush task bak<br>2:接收返回值,并做业务处理<br>3:如果成功,rpop bak 清除任务. 如不成功,下次从bak表里取任务</p>
 <p>场景: 长轮询Ajax,在线聊天时,能够用到</p>
 </blockquote>
 <h5 id="4-集合set操作"><a href="#4-集合set操作" class="headerlink" title="4. 集合set操作"></a>4. 集合set操作</h5><ul>
