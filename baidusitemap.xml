@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://www.shangzekai.xyz/2018/05/08/%E8%87%AA%E5%AE%9A%E4%B9%89Session%E7%BB%84%E4%BB%B6/</loc>
+    <lastmod>2018-09-06T12:44:45.000Z</lastmod>
+    <data>
+        <display>
+        <title>自定义Session</title>
+        <pubTime>2018-05-08T12:45:09.000Z</pubTime>
+        
+        <tag>python</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="https://www.shangzekai.xyz/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://www.shangzekai.xyz/2018/05/08/Torando%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D/</loc>
     <lastmod>2018-09-06T12:27:40.000Z</lastmod>
     <data>
@@ -132,26 +152,6 @@
         <display>
         <title>websocket讲解</title>
         <pubTime>2018-04-05T12:45:09.000Z</pubTime>
-        
-        <tag>python</tag>
-         
-         
-           
-             
-              <breadCrumb title="Python" url="https://www.shangzekai.xyz/categories/Python/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.shangzekai.xyz/2018/05/08/%E8%87%AA%E5%AE%9A%E4%B9%89Session%E7%BB%84%E4%BB%B6/</loc>
-    <lastmod>2018-08-22T04:23:31.000Z</lastmod>
-    <data>
-        <display>
-        <title>Torando自定义Session组件</title>
-        <pubTime>2018-05-08T12:45:09.000Z</pubTime>
         
         <tag>python</tag>
          
