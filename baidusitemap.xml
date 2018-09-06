@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://www.shangzekai.xyz/2018/05/08/Torando%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D/</loc>
+    <lastmod>2018-09-06T08:58:41.000Z</lastmod>
+    <data>
+        <display>
+        <title>Torando基础讲解</title>
+        <pubTime>2018-05-08T12:55:09.000Z</pubTime>
+        
+        <tag>python</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="https://www.shangzekai.xyz/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://www.shangzekai.xyz/2017/05/05/Redis%E5%AD%A6%E4%B9%A0%E7%9B%AE%E5%BD%95/</loc>
     <lastmod>2018-09-06T00:13:10.000Z</lastmod>
     <data>
@@ -152,26 +172,6 @@
         <display>
         <title>Python中Session和Cookie</title>
         <pubTime>2017-05-08T12:45:09.000Z</pubTime>
-        
-        <tag>python</tag>
-         
-         
-           
-             
-              <breadCrumb title="Python" url="https://www.shangzekai.xyz/categories/Python/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.shangzekai.xyz/2018/05/08/Torando%E5%9F%BA%E7%A1%80%E4%BB%8B%E7%BB%8D/</loc>
-    <lastmod>2018-08-20T06:52:52.000Z</lastmod>
-    <data>
-        <display>
-        <title>Torando基础讲解</title>
-        <pubTime>2018-05-08T12:55:09.000Z</pubTime>
         
         <tag>python</tag>
          
