@@ -5,7 +5,7 @@
     
   <url>
     <loc>https://www.shangzekai.xyz/2017/04/07/pandas%E7%9A%84%E4%BB%8B%E7%BB%8D/</loc>
-    <lastmod>2018-09-13T02:28:44.000Z</lastmod>
+    <lastmod>2018-09-13T02:29:17.000Z</lastmod>
     <data>
         <display>
         <title>python爬虫之数据分析包pandas</title>
@@ -15,6 +15,9 @@
            
              
               <breadCrumb title="爬虫" url="https://www.shangzekai.xyz/categories/%E7%88%AC%E8%99%AB/"/>
+          
+             
+              <breadCrumb title="数据分析" url="https://www.shangzekai.xyz/categories/%E7%88%AC%E8%99%AB/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
           
         </display>
     </data>
