@@ -8,16 +8,16 @@
   <link rel="dns-prefetch" href="https://www.shangzekai.xyz">
   <title>python爬虫之数据分析包pandas | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="pandas的介绍 pandas 是基于 Numpy 构建的含有更高级数据结构和工具的数据分析包类似于 Numpy 的核心是 ndarray，pandas 也是围绕着 Series 和 DataFrame &amp;gt;两个核心数据结构  点击此处展开内容">
+  <meta name="description" content="pandas的介绍 pandas 是基于 Numpy 构建的含有更高级数据结构和工具的数据分析包类似于 Numpy 的核心是 ndarray，pandas 也是围绕着 Series 和 DataFrame &amp;gt;两个核心数据结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python爬虫之数据分析包pandas">
 <meta property="og:url" content="https://www.shangzekai.xyz/2017/04/07/pandas的介绍/index.html">
 <meta property="og:site_name" content="Python">
-<meta property="og:description" content="pandas的介绍 pandas 是基于 Numpy 构建的含有更高级数据结构和工具的数据分析包类似于 Numpy 的核心是 ndarray，pandas 也是围绕着 Series 和 DataFrame &amp;gt;两个核心数据结构  点击此处展开内容">
-<meta property="og:updated_time" content="2018-04-03T08:07:22.000Z">
+<meta property="og:description" content="pandas的介绍 pandas 是基于 Numpy 构建的含有更高级数据结构和工具的数据分析包类似于 Numpy 的核心是 ndarray，pandas 也是围绕着 Series 和 DataFrame &amp;gt;两个核心数据结构">
+<meta property="og:updated_time" content="2018-09-13T02:28:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python爬虫之数据分析包pandas">
-<meta name="twitter:description" content="pandas的介绍 pandas 是基于 Numpy 构建的含有更高级数据结构和工具的数据分析包类似于 Numpy 的核心是 ndarray，pandas 也是围绕着 Series 和 DataFrame &amp;gt;两个核心数据结构  点击此处展开内容">
+<meta name="twitter:description" content="pandas的介绍 pandas 是基于 Numpy 构建的含有更高级数据结构和工具的数据分析包类似于 Numpy 的核心是 ndarray，pandas 也是围绕着 Series 和 DataFrame &amp;gt;两个核心数据结构">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
@@ -193,16 +193,15 @@ onmouseup="document.selection.empty()">-->
       
 	
         <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#pandas的介绍"><span class="toc-text">pandas的介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-pandas的两大数据结构"><span class="toc-text">2.pandas的两大数据结构</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#pandas的介绍"><span class="toc-text">pandas的介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#pandas的引入方式"><span class="toc-text">pandas的引入方式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#pandas的两大数据结构"><span class="toc-text">pandas的两大数据结构</span></a></li></ol></li></ol>
           <hr/>
         </div>
         
         <h4 id="pandas的介绍"><a href="#pandas的介绍" class="headerlink" title="pandas的介绍"></a><div id="title">pandas的介绍</div></h4><blockquote>
 <p>pandas 是基于 Numpy 构建的含有更高级数据结构和工具的数据分析包<br>类似于 Numpy 的核心是 ndarray，pandas 也是围绕着 Series 和 DataFrame &gt;两个核心数据结构</p>
 </blockquote>
-<div onclick="ishidden('X')" class="fold_hide">点击此处展开内容</div><br><span id="X" style="display:none;"><br><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line">$a = <span class="number">3</span>;</div><div class="line">$b = <span class="number">4</span>;</div><div class="line"></div><div class="line"><span class="keyword">if</span>($a = <span class="number">3</span> || $b = <span class="number">6</span>)&#123;</div><div class="line">    $a++;</div><div class="line">    ++$b;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">echo</span> $a, $b;</div></pre></td></tr></table></figure><br><br></span><br><br><a id="more"></a><br><br>##### <div id="title">1.pandas的引入方式</div>
-
-<ul>
+<a id="more"></a>
+<h5 id="pandas的引入方式"><a href="#pandas的引入方式" class="headerlink" title="pandas的引入方式"></a><div id="title">pandas的引入方式</div></h5><ul>
 <li><p>安装方式</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">pip3 install pandas</div></pre></td></tr></table></figure>
 </li>
@@ -210,7 +209,7 @@ onmouseup="document.selection.empty()">-->
 <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</div></pre></td></tr></table></figure>
 </li>
 </ul>
-<h5 id="2-pandas的两大数据结构"><a href="#2-pandas的两大数据结构" class="headerlink" title="2.pandas的两大数据结构"></a><div id="title">2.pandas的两大数据结构</div></h5><ul>
+<h5 id="pandas的两大数据结构"><a href="#pandas的两大数据结构" class="headerlink" title="pandas的两大数据结构"></a><div id="title">pandas的两大数据结构</div></h5><ul>
 <li><strong>Series</strong></li>
 </ul>
 <p>Series可以看作是一个定长的有序字典。基本任意的一维数据都可以用来构造Series对象：</p>
