@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="Python">
 <meta property="og:description" content="视图 视图是一个虚拟表（非真实存在），其本质是【根据SQL语句获取动态的数据集，并为其命名】，用户使用时只需使用【名称】即可获取结果集，并可以将其当作表来使用">
 <meta property="og:image" content="https://ooo.0o0.ooo/2017/05/17/591bee1454e9f.png">
-<meta property="og:updated_time" content="2018-10-11T07:22:31.000Z">
+<meta property="og:updated_time" content="2018-10-11T08:18:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL高级学习目录">
 <meta name="twitter:description" content="视图 视图是一个虚拟表（非真实存在），其本质是【根据SQL语句获取动态的数据集，并为其命名】，用户使用时只需使用【名称】即可获取结果集，并可以将其当作表来使用">
@@ -196,7 +196,7 @@ onmouseup="document.selection.empty()">-->
       
 	
         <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#视图"><span class="toc-text">视图</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-创建视图"><span class="toc-text">1. 创建视图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-使用视图"><span class="toc-text">2. 使用视图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-删除视图"><span class="toc-text">3. 删除视图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-修改视图"><span class="toc-text">4. 修改视图</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#函数"><span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-常见内置函数"><span class="toc-text">1. 常见内置函数</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#事务"><span class="toc-text">事务</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-事务的ACID特性"><span class="toc-text">1. 事务的ACID特性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-事务的用法"><span class="toc-text">2. 事务的用法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-事务常见的执行流程"><span class="toc-text">3. 事务常见的执行流程</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#索引"><span class="toc-text">索引</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-索引的概念"><span class="toc-text">1. 索引的概念</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-常见的索引类型"><span class="toc-text">2. 常见的索引类型</span></a></li></ol></li></ol>
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#视图"><span class="toc-text">视图</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-创建视图"><span class="toc-text">1. 创建视图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-使用视图"><span class="toc-text">2. 使用视图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-删除视图"><span class="toc-text">3. 删除视图</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#4-修改视图"><span class="toc-text">4. 修改视图</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#函数"><span class="toc-text">函数</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-常见内置函数"><span class="toc-text">1. 常见内置函数</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#事务"><span class="toc-text">事务</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#1-事务的ACID特性"><span class="toc-text">1. 事务的ACID特性</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-事务的用法"><span class="toc-text">2. 事务的用法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-事务常见的执行流程"><span class="toc-text">3. 事务常见的执行流程</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#索引"><span class="toc-text">索引</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#0-索引的时间复杂度"><span class="toc-text">0. 索引的时间复杂度</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#0-索引的好处和坏处"><span class="toc-text">0. 索引的好处和坏处</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#1-索引的概念"><span class="toc-text">1. 索引的概念</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-常见的索引类型"><span class="toc-text">2. 常见的索引类型</span></a></li></ol></li></ol>
           <hr/>
         </div>
         
@@ -321,7 +321,19 @@ onmouseup="document.selection.empty()">-->
 <li>修改订单状态为已付款</li>
 </ul>
 <p>这三步需保证原子性,请用事务来控制此过程</p>
-<h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a><div id="title">索引</div></h4><h5 id="1-索引的概念"><a href="#1-索引的概念" class="headerlink" title="1. 索引的概念"></a>1. 索引的概念</h5><blockquote>
+<h4 id="索引"><a href="#索引" class="headerlink" title="索引"></a><div id="title">索引</div></h4><h5 id="0-索引的时间复杂度"><a href="#0-索引的时间复杂度" class="headerlink" title="0. 索引的时间复杂度"></a>0. 索引的时间复杂度</h5><blockquote>
+<p>设有N条记录，如果不用索引，那平均查找N/2次，但是用了索引之后呢？</p>
+</blockquote>
+<p>一般情况下，是以2为底，N的对数</p>
+<p>这块就涉及到二叉树的查找了</p>
+<h5 id="0-索引的好处和坏处"><a href="#0-索引的好处和坏处" class="headerlink" title="0. 索引的好处和坏处"></a>0. 索引的好处和坏处</h5><ul>
+<li>好处：加快了查询的速度</li>
+<li>坏处：降低了增删改的速度，增大了表的文件大小(索引文件甚至比数据文件都还要大)</li>
+</ul>
+<blockquote>
+<p>大数据量进行导入别的数据表的时候，怎么办</p>
+</blockquote>
+<h5 id="1-索引的概念"><a href="#1-索引的概念" class="headerlink" title="1. 索引的概念"></a>1. 索引的概念</h5><blockquote>
 <p>类似于字典中的目录，如何快速找到某个字?<br>可以给字典加目录</p>
 <p>对数据库来说,索引的作用即是给 “数据” 加目录</p>
 <p>所以所谓的索引，是数据库中专门用于帮助用户快速查询数据的一种数据结构</p>
@@ -332,7 +344,6 @@ onmouseup="document.selection.empty()">-->
 <blockquote>
 <p>普通索引仅有一个功能：加速查询</p>
 </blockquote>
-<p><strong>索引的创建</strong></p>
 <p>1) 创建表 + 索引</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">create table in1(</div><div class="line">    nid int not null auto_increment primary key,</div><div class="line">    name varchar(32) not null,</div><div class="line">    email varchar(64) not null,</div><div class="line">    extra text,</div><div class="line">    index ix_name (name)</div><div class="line">)</div></pre></td></tr></table></figure>
 <p>2) 创建索引</p>
