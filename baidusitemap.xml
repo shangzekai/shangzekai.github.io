@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>https://www.shangzekai.xyz/2017/05/05/Python%E6%93%8D%E4%BD%9CMySQL%E7%9A%84%E6%96%B9%E5%BC%8F/</loc>
+    <lastmod>2018-10-12T03:24:49.000Z</lastmod>
+    <data>
+        <display>
+        <title>Python操作MySQL的方式</title>
+        <pubTime>2017-05-05T12:54:09.000Z</pubTime>
+        
+        <tag>基础</tag>
+         
+        <tag>mysql</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="https://www.shangzekai.xyz/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://www.shangzekai.xyz/2017/05/05/MySQL%E9%AB%98%E7%BA%A7%E9%83%A8%E5%88%86/</loc>
     <lastmod>2018-10-11T08:18:36.000Z</lastmod>
     <data>
@@ -2084,28 +2106,6 @@
         <tag>Python</tag>
          
         <tag>模块</tag>
-         
-         
-           
-             
-              <breadCrumb title="Python" url="https://www.shangzekai.xyz/categories/Python/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.shangzekai.xyz/2017/05/05/Python%E6%93%8D%E4%BD%9CMySQL%E7%9A%84%E6%96%B9%E5%BC%8F/</loc>
-    <lastmod>2017-06-01T08:50:42.000Z</lastmod>
-    <data>
-        <display>
-        <title>Python操作MySQL的方式</title>
-        <pubTime>2017-05-05T12:54:09.000Z</pubTime>
-        
-        <tag>基础</tag>
-         
-        <tag>mysql</tag>
          
          
            
