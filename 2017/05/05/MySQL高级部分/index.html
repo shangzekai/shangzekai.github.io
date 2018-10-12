@@ -17,7 +17,7 @@
 <meta property="og:description" content="外键 外键主要是用来保证数据的一致性和完整性">
 <meta property="og:image" content="https://i.loli.net/2018/10/12/5bc0645597a53.jpg">
 <meta property="og:image" content="https://ooo.0o0.ooo/2017/05/17/591bee1454e9f.png">
-<meta property="og:updated_time" content="2018-10-12T09:07:52.000Z">
+<meta property="og:updated_time" content="2018-10-12T09:29:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="MySQL高级学习目录">
 <meta name="twitter:description" content="外键 外键主要是用来保证数据的一致性和完整性">
@@ -205,7 +205,7 @@ onmouseup="document.selection.empty()">-->
 <p>外键主要是用来保证数据的一致性和完整性</p>
 </blockquote>
 <a id="more"></a>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">create table userinfo(</div><div class="line">    id int primary key auto_increment,</div><div class="line">    username varchar(64) not null default &apos;&apos;,</div><div class="line">    dep_id int not null default 0,</div><div class="line">    constraint fk_user_dep foreign key (&apos;dep_id&apos;) reference department(&apos;id&apos;)</div><div class="line">)engine=Innodb charset=utf8;</div><div class="line"></div><div class="line"></div><div class="line">create table department(</div><div class="line">    id int primary key auto_increment,</div><div class="line">    caption varchar(128) not null default &apos;&apos;</div><div class="line">)engine=InnoDB charset=utf8;</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">create table userinfo(</div><div class="line">    id int primary key auto_increment,</div><div class="line">    username varchar(64) not null default &apos;&apos;,</div><div class="line">    dep_id int not null default 0,</div><div class="line">    constraint fk_user_dep foreign key (dep_id) references department(id)</div><div class="line">)engine=Innodb charset=utf8;</div><div class="line"></div><div class="line"></div><div class="line">create table department(</div><div class="line">    id int primary key auto_increment,</div><div class="line">    caption varchar(128) not null default &apos;&apos;</div><div class="line">)engine=InnoDB charset=utf8;</div></pre></td></tr></table></figure>
 <p><strong>上面其实就是一对多的关系</strong></p>
 <p><strong>多对多的关系</strong></p>
 <p><img src="https://i.loli.net/2018/10/12/5bc0645597a53.jpg" alt="多对多.jpg"></p>
