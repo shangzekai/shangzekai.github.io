@@ -410,7 +410,7 @@ onmouseup="document.selection.empty()">-->
 <figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">GET</span> <span class="string">/</span> HTTP/1.1</div><div class="line"><span class="attribute">Host</span>: www.sogou.com</div><div class="line"><span class="attribute">Connection</span>: keep-alive</div><div class="line"><span class="attribute">Cache-Control</span>: max-age=0</div></pre></td></tr></table></figure>
 <p>第一行的GET表示请求方法；随后的 / 表示请求访问的资源对象（request-URI），这里是根页面；最后的HTTP/1.1是协议和版本号。<br>第二行开始是首部字段：Host字段表示服务器域名。（这里只截取了部分首部字段，实际的字段更多）<br>http请求报文由请求方法、URI、HTTP版本、HTTP首部字段构成。</p>
 <p>下面是服务器返回的响应报文的截取内容：</p>
-<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 <span class="number">200</span> OK</div><div class="line"><span class="attribute">Server</span>: nginx</div><div class="line"><span class="attribute">Date</span>: Tue, 19 Sep 2017 08:37:38 GMT</div><div class="line"><span class="attribute">Content-Type</span>: text/html; charset=UTF-8</div><div class="line"><span class="attribute">Transfer-Encoding</span>: chunked</div><div class="line"><span class="attribute">Connection</span>: keep-alive</div><div class="line"></div><div class="line"><span class="undefined">&lt;html&gt;</div><div class="line">......</span></div></pre></td></tr></table></figure>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">HTTP/1.1 <span class="number">200</span> OK</div><div class="line"><span class="attribute">Server</span>: nginx</div><div class="line"><span class="attribute">Date</span>: Tue, 19 Sep 2017 08:37:38 GMT</div><div class="line"><span class="attribute">Content-Type</span>: text/html; charset=UTF-8</div><div class="line"><span class="attribute">Transfer-Encoding</span>: chunked</div><div class="line"><span class="attribute">Connection</span>: keep-alive</div><div class="line"></div><div class="line"><span class="htmlbars"><span class="xml"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">......</span></span></div></pre></td></tr></table></figure>
 <p>第一行的HTTP/1.1表示服务器对应的HTTP版本； 200 OK表示请求处理结果的状态码和原因短语。<br>第二行开始是首部字段，包括服务器安装的软件版本，响应日期等。<br>响应报文包括响应头和响应体。<br>响应头由HTTP版本、状态码、原因短语、首部字段组成。<br>最下面的<code>&lt;html&gt;</code>开始是响应体，也就是用户在浏览器上看到的具体网页，由两组\r\n换行符与上面的响应头分隔。</p>
 <h4 id="http是无状态协议"><a href="#http是无状态协议" class="headerlink" title="http是无状态协议"></a><div id="title">http是无状态协议</div></h4><p>使用http协议通信时，每当有新请求到达时，就会有对应的新的响应产生。http协议本身并不保留之前的一切请求或响应报文的信息。这是为了更快地处理大量事物，确保协议的可伸缩性，也能减轻服务器的压力。而且由于不需要保存状态，http协议本身比较简单，能被应用在各种场景里。<br>但是这种无状态的特征，导致要求登录认证的web页面无法记录用户的已登录状态，用户每次跳转到新页面都要重新登录。</p>
 <h4 id="使用Cookie和Session管理状态"><a href="#使用Cookie和Session管理状态" class="headerlink" title="使用Cookie和Session管理状态"></a><div id="title">使用Cookie和Session管理状态</div></h4><p>既要保留http无状态的特征，又要记录用户的登录状态，于是引入了<code>Cookie</code>技术。服务器在响应头部中加入<code>Set-Cookie</code>字段，通知客户端（浏览器）保存<code>Cookie</code>，下次客户端再发送请求时，在请求头部中加入这<code>Cookie</code>后发送出去。服务器通过判断客户端发过来的<code>Cookie</code>，就能知道来的人是谁。<br><code>cookie</code>虽然解决了保存状态的需求，但是<code>cookie</code>也有限制：</p>
@@ -688,7 +688,7 @@ onmouseup="document.selection.empty()">-->
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="一、JS如何引入及基本语法规范"><a href="#一、JS如何引入及基本语法规范" class="headerlink" title="一、JS如何引入及基本语法规范"></a><div id="title">一、JS如何引入及基本语法规范</div></h2><p><strong>1.页面内的script代码书写格式</strong><br><!--�497--></p>
+        <h2 id="一、JS如何引入及基本语法规范"><a href="#一、JS如何引入及基本语法规范" class="headerlink" title="一、JS如何引入及基本语法规范"></a><div id="title">一、JS如何引入及基本语法规范</div></h2><p><strong>1.页面内的script代码书写格式</strong><br><!--�528--></p>
       
 
       
@@ -1270,7 +1270,7 @@ onmouseup="document.selection.empty()">-->
 <h4 id="字符串操作"><a href="#字符串操作" class="headerlink" title="字符串操作"></a><div id="title">字符串操作</div></h4><h5 id="1-去除空格"><a href="#1-去除空格" class="headerlink" title="1. 去除空格"></a>1. 去除空格</h5><blockquote>
 <p><strong>删除字符串两边的指定字符，括号的写入指定字符，默认为空格</strong></p>
 </blockquote>
-<!--�674-->
+<!--�715-->
       
 
       
@@ -1435,14 +1435,6 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">闲谈</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">电影</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">HTML</a>
               </li>
              
@@ -1459,11 +1451,11 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+                <a href="javascript:void(0)" class="js-tag color3">闲谈</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">基础</a>
+                <a href="javascript:void(0)" class="js-tag color3">电影</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1475,7 +1467,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
+                <a href="javascript:void(0)" class="js-tag color4">CSS</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Flask</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1483,7 +1483,7 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Flask</a>
+                <a href="javascript:void(0)" class="js-tag color2">Jquery</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1503,11 +1503,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Yaf</a>
+                <a href="javascript:void(0)" class="js-tag color1">MySql</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">MySql</a>
+                <a href="javascript:void(0)" class="js-tag color2">python</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Yaf</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1515,19 +1519,15 @@ return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){v
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GIT</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">工具</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">基础　</a>
+                <a href="javascript:void(0)" class="js-tag color4">GIT</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">python</a>
+                <a href="javascript:void(0)" class="js-tag color4">基础　</a>
               </li>
              
               <li class="article-tag-list-item">
