@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>https://www.shangzekai.xyz/2017/05/07/DOM%E6%93%8D%E4%BD%9C/</loc>
+    <lastmod>2018-10-22T09:28:47.000Z</lastmod>
+    <data>
+        <display>
+        <title>DOM操作学习目录</title>
+        <pubTime>2017-05-07T10:55:09.000Z</pubTime>
+        
+        <tag>js</tag>
+         
+        <tag>DOM</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://www.shangzekai.xyz/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://www.shangzekai.xyz/2017/05/07/html%E5%9F%BA%E7%A1%80%E7%9B%AE%E5%BD%95/</loc>
     <lastmod>2018-10-16T02:42:10.000Z</lastmod>
     <data>
@@ -410,28 +432,6 @@
         <tag>js</tag>
          
         <tag>基础　</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端" url="https://www.shangzekai.xyz/categories/%E5%89%8D%E7%AB%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.shangzekai.xyz/2017/05/07/DOM%E6%93%8D%E4%BD%9C/</loc>
-    <lastmod>2018-08-01T06:51:29.000Z</lastmod>
-    <data>
-        <display>
-        <title>DOM操作学习目录</title>
-        <pubTime>2017-05-07T10:55:09.000Z</pubTime>
-        
-        <tag>js</tag>
-         
-        <tag>DOM</tag>
          
          
            
