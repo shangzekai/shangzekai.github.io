@@ -4,6 +4,50 @@
 
     
   <url>
+    <loc>https://www.shangzekai.xyz/2017/05/06/python%E6%A8%A1%E5%9D%97%E4%B9%8Brequests%E5%92%8Cre/</loc>
+    <lastmod>2018-10-30T02:44:32.000Z</lastmod>
+    <data>
+        <display>
+        <title>Python常用模块之requests，urllib和re</title>
+        <pubTime>2017-05-06T15:54:09.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>模块</tag>
+         
+         
+           
+             
+              <breadCrumb title="爬虫" url="https://www.shangzekai.xyz/categories/%E7%88%AC%E8%99%AB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.shangzekai.xyz/2017/05/06/%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80/</loc>
+    <lastmod>2018-10-30T02:35:19.000Z</lastmod>
+    <data>
+        <display>
+        <title>爬虫扫盲入门基础</title>
+        <pubTime>2017-05-06T00:56:09.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>模块</tag>
+         
+         
+           
+             
+              <breadCrumb title="爬虫" url="https://www.shangzekai.xyz/categories/%E7%88%AC%E8%99%AB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://www.shangzekai.xyz/2017/05/07/DOM%E6%93%8D%E4%BD%9C/</loc>
     <lastmod>2018-10-29T03:19:47.000Z</lastmod>
     <data>
@@ -1312,50 +1356,6 @@
         <display>
         <title>使用Requests和正则表达式抓取电影排行榜Top100</title>
         <pubTime>2017-04-07T02:56:09.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>模块</tag>
-         
-         
-           
-             
-              <breadCrumb title="爬虫" url="https://www.shangzekai.xyz/categories/%E7%88%AC%E8%99%AB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.shangzekai.xyz/2017/05/06/python%E6%A8%A1%E5%9D%97%E4%B9%8Brequests%E5%92%8Cre/</loc>
-    <lastmod>2017-11-10T10:23:12.000Z</lastmod>
-    <data>
-        <display>
-        <title>Python常用模块之requests，urllib和re</title>
-        <pubTime>2017-05-06T15:54:09.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>模块</tag>
-         
-         
-           
-             
-              <breadCrumb title="爬虫" url="https://www.shangzekai.xyz/categories/%E7%88%AC%E8%99%AB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.shangzekai.xyz/2017/05/06/%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80/</loc>
-    <lastmod>2017-11-10T10:03:44.000Z</lastmod>
-    <data>
-        <display>
-        <title>爬虫扫盲入门基础</title>
-        <pubTime>2017-05-06T00:56:09.000Z</pubTime>
         
         <tag>Python</tag>
          
