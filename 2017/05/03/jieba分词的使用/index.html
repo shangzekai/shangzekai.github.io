@@ -8,17 +8,17 @@
   <link rel="dns-prefetch" href="https://www.shangzekai.xyz">
   <title>jieba分词的简单使用 | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="12345678910111213141516171819202122#author:shangzekaiimport jiebafrom wordcloud import WordCloudimport matplotlib.pyplot as plt# 打开文件fp = open(&apos;aa.txt&apos;).read()wordlist = jieba.cut(fp, cut_all=True)spa">
+  <meta name="description" content="jieba分词的介绍 “结巴”中文分词：做最好的Python中文分词组件 “Jieba”   jieba分词的特点 支持三种分词模式：  精确模式，试图将句子最精确地切开，适合文本分析； 全模式，把句子中所有的可以成词的词语都扫描出来, 速度非常快，但是不能解决歧义； 搜索引擎模式，在精确模式的基础上，对长词再次切分，提高召回率，适合用于搜索引擎分词。   支持繁体分词  支持自定义词典   ji">
 <meta name="keywords" content="Python,模块">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jieba分词的简单使用">
 <meta property="og:url" content="https://www.shangzekai.xyz/2017/05/03/jieba分词的使用/index.html">
 <meta property="og:site_name" content="Python">
-<meta property="og:description" content="12345678910111213141516171819202122#author:shangzekaiimport jiebafrom wordcloud import WordCloudimport matplotlib.pyplot as plt# 打开文件fp = open(&apos;aa.txt&apos;).read()wordlist = jieba.cut(fp, cut_all=True)spa">
-<meta property="og:updated_time" content="2018-11-02T13:27:20.000Z">
+<meta property="og:description" content="jieba分词的介绍 “结巴”中文分词：做最好的Python中文分词组件 “Jieba”   jieba分词的特点 支持三种分词模式：  精确模式，试图将句子最精确地切开，适合文本分析； 全模式，把句子中所有的可以成词的词语都扫描出来, 速度非常快，但是不能解决歧义； 搜索引擎模式，在精确模式的基础上，对长词再次切分，提高召回率，适合用于搜索引擎分词。   支持繁体分词  支持自定义词典   ji">
+<meta property="og:updated_time" content="2018-11-02T13:45:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jieba分词的简单使用">
-<meta name="twitter:description" content="12345678910111213141516171819202122#author:shangzekaiimport jiebafrom wordcloud import WordCloudimport matplotlib.pyplot as plt# 打开文件fp = open(&apos;aa.txt&apos;).read()wordlist = jieba.cut(fp, cut_all=True)spa">
+<meta name="twitter:description" content="jieba分词的介绍 “结巴”中文分词：做最好的Python中文分词组件 “Jieba”   jieba分词的特点 支持三种分词模式：  精确模式，试图将句子最精确地切开，适合文本分析； 全模式，把句子中所有的可以成词的词语都扫描出来, 速度非常快，但是不能解决歧义； 搜索引擎模式，在精确模式的基础上，对长词再次切分，提高召回率，适合用于搜索引擎分词。   支持繁体分词  支持自定义词典   ji">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
@@ -194,11 +194,30 @@ onmouseup="document.selection.empty()">-->
       
 	
         <div id="toc" class="article-toc">
-          
+          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#jieba分词的介绍"><span class="toc-text">jieba分词的介绍</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#jieba分词的特点"><span class="toc-text">jieba分词的特点</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#jieba分词实例"><span class="toc-text">jieba分词实例</span></a></li></ol>
           <hr/>
         </div>
         
-        <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">#author:shangzekai</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> jieba</div><div class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line"><span class="comment"># 打开文件</span></div><div class="line">fp = open(<span class="string">'aa.txt'</span>).read()</div><div class="line"></div><div class="line">wordlist = jieba.cut(fp, cut_all=<span class="keyword">True</span>)</div><div class="line"></div><div class="line">spaclist = <span class="string">" "</span>.join(wordlist)</div><div class="line"></div><div class="line">wordcloud = WordCloud(background_color=<span class="string">"white"</span>,width=<span class="number">1000</span>, height=<span class="number">860</span>, font_path=<span class="string">'simkai.ttf'</span>).generate(spaclist)</div><div class="line"></div><div class="line"></div><div class="line">plt.imshow(wordcloud)</div><div class="line">plt.axis(<span class="string">"off"</span>)</div><div class="line">plt.show()</div><div class="line"></div><div class="line">wordcloud.to_file(<span class="string">'test.png'</span>)</div></pre></td></tr></table></figure>
+        <h4 id="jieba分词的介绍"><a href="#jieba分词的介绍" class="headerlink" title="jieba分词的介绍"></a><div id="title">jieba分词的介绍</div></h4><blockquote>
+<p>“结巴”中文分词：做最好的Python中文分词组件 “Jieba” </p>
+</blockquote>
+<h4 id="jieba分词的特点"><a href="#jieba分词的特点" class="headerlink" title="jieba分词的特点"></a><div id="title">jieba分词的特点</div></h4><ul>
+<li><p>支持三种分词模式：</p>
+<ul>
+<li>精确模式，试图将句子最精确地切开，适合文本分析；</li>
+<li>全模式，把句子中所有的可以成词的词语都扫描出来, 速度非常快，但是不能解决歧义；</li>
+<li>搜索引擎模式，在精确模式的基础上，对长词再次切分，提高召回率，适合用于搜索引擎分词。</li>
+</ul>
+</li>
+<li><p>支持繁体分词</p>
+</li>
+<li><p>支持自定义词典</p>
+</li>
+</ul>
+<h4 id="jieba分词实例"><a href="#jieba分词实例" class="headerlink" title="jieba分词实例"></a><div id="title">jieba分词实例</div></h4><figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> jieba</div><div class="line"></div><div class="line">seg_list = jieba.cut(<span class="string">"我来到北京清华大学"</span>,cut_all=<span class="keyword">True</span>)</div><div class="line"><span class="keyword">print</span> <span class="string">"Full Mode:"</span>, <span class="string">"/ "</span>.join(seg_list) <span class="comment">#全模式</span></div><div class="line"></div><div class="line">seg_list = jieba.cut(<span class="string">"我来到北京清华大学"</span>,cut_all=<span class="keyword">False</span>)</div><div class="line"><span class="keyword">print</span> <span class="string">"Default Mode:"</span>, <span class="string">"/ "</span>.join(seg_list) <span class="comment">#精确模式</span></div><div class="line"></div><div class="line">seg_list = jieba.cut(<span class="string">"他来到了网易杭研大厦"</span>) <span class="comment">#默认是精确模式</span></div><div class="line"><span class="keyword">print</span> <span class="string">", "</span>.join(seg_list)</div><div class="line"></div><div class="line">seg_list = jieba.cut_for_search(<span class="string">"小明硕士毕业于中国科学院计算所，后在日本京都大学深造"</span>) <span class="comment">#搜索引擎模式</span></div><div class="line"><span class="keyword">print</span> <span class="string">", "</span>.join(seg_list)</div></pre></td></tr></table></figure>
+<p><strong>最终输出：</strong></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">全模式】: 我/ 来到/ 北京/ 清华/ 清华大学/ 华大/ 大学</div><div class="line"></div><div class="line">【精确模式】: 我/ 来到/ 北京/ 清华大学</div><div class="line"></div><div class="line">【新词识别】：他, 来到, 了, 网易, 杭研, 大厦    (此处，“杭研”并没有在词典中，但是也被Viterbi算法识别出来了)</div><div class="line"></div><div class="line">【搜索引擎模式】： 小明, 硕士, 毕业, 于, 中国, 科学, 学院, 科学院, 中国科学院, 计算, 计算所, 后, 在, 日本, 京都, 大学, 日本京都大学, 深造</div></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">#author:shangzekai</span></div><div class="line"></div><div class="line"><span class="keyword">import</span> jieba</div><div class="line"><span class="keyword">from</span> wordcloud <span class="keyword">import</span> WordCloud</div><div class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</div><div class="line"></div><div class="line"><span class="comment"># 打开文件</span></div><div class="line">fp = open(<span class="string">'aa.txt'</span>).read()</div><div class="line"></div><div class="line">wordlist = jieba.cut(fp, cut_all=<span class="keyword">True</span>)</div><div class="line"></div><div class="line">spaclist = <span class="string">" "</span>.join(wordlist)</div><div class="line"></div><div class="line">wordcloud = WordCloud(background_color=<span class="string">"white"</span>,width=<span class="number">1000</span>, height=<span class="number">860</span>, font_path=<span class="string">'simkai.ttf'</span>).generate(spaclist)</div><div class="line"></div><div class="line"></div><div class="line">plt.imshow(wordcloud)</div><div class="line">plt.axis(<span class="string">"off"</span>)</div><div class="line">plt.show()</div><div class="line"></div><div class="line">wordcloud.to_file(<span class="string">'test.png'</span>)</div></pre></td></tr></table></figure>
 
       
 
