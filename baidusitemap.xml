@@ -4,6 +4,50 @@
 
     
   <url>
+    <loc>https://www.shangzekai.xyz/2017/05/07/Javascript%E7%B1%BB%E5%BA%93%E4%BD%9C%E7%94%A8%E4%BB%A5%E5%8F%8A%E5%AF%B9%E6%AF%94/</loc>
+    <lastmod>2018-11-02T06:06:10.000Z</lastmod>
+    <data>
+        <display>
+        <title>JQuery学习目录</title>
+        <pubTime>2017-05-07T01:55:09.000Z</pubTime>
+        
+        <tag>基础</tag>
+         
+        <tag>Jquery</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://www.shangzekai.xyz/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.shangzekai.xyz/2017/05/07/DOM%E6%93%8D%E4%BD%9C/</loc>
+    <lastmod>2018-11-02T05:49:43.000Z</lastmod>
+    <data>
+        <display>
+        <title>DOM操作学习目录</title>
+        <pubTime>2017-05-07T10:55:09.000Z</pubTime>
+        
+        <tag>js</tag>
+         
+        <tag>DOM</tag>
+         
+         
+           
+             
+              <breadCrumb title="前端" url="https://www.shangzekai.xyz/categories/%E5%89%8D%E7%AB%AF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://www.shangzekai.xyz/2017/05/05/%E4%BD%BF%E7%94%A8selenium%E6%A8%A1%E6%8B%9F%E6%89%8B%E6%9C%BA%E7%99%BB%E9%99%86%E7%BD%91%E7%AB%99/</loc>
     <lastmod>2018-11-02T05:19:58.000Z</lastmod>
     <data>
@@ -191,28 +235,6 @@
            
              
               <breadCrumb title="爬虫" url="https://www.shangzekai.xyz/categories/%E7%88%AC%E8%99%AB/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.shangzekai.xyz/2017/05/07/DOM%E6%93%8D%E4%BD%9C/</loc>
-    <lastmod>2018-10-29T03:19:47.000Z</lastmod>
-    <data>
-        <display>
-        <title>DOM操作学习目录</title>
-        <pubTime>2017-05-07T10:55:09.000Z</pubTime>
-        
-        <tag>js</tag>
-         
-        <tag>DOM</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端" url="https://www.shangzekai.xyz/categories/%E5%89%8D%E7%AB%AF/"/>
           
         </display>
     </data>
@@ -587,28 +609,6 @@
            
              
               <breadCrumb title="闲谈" url="https://www.shangzekai.xyz/categories/%E9%97%B2%E8%B0%88/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.shangzekai.xyz/2017/05/07/Javascript%E7%B1%BB%E5%BA%93%E4%BD%9C%E7%94%A8%E4%BB%A5%E5%8F%8A%E5%AF%B9%E6%AF%94/</loc>
-    <lastmod>2018-08-08T05:20:36.000Z</lastmod>
-    <data>
-        <display>
-        <title>JQuery学习目录</title>
-        <pubTime>2017-05-07T01:55:09.000Z</pubTime>
-        
-        <tag>基础</tag>
-         
-        <tag>Jquery</tag>
-         
-         
-           
-             
-              <breadCrumb title="前端" url="https://www.shangzekai.xyz/categories/%E5%89%8D%E7%AB%AF/"/>
           
         </display>
     </data>

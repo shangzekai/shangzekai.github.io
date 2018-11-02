@@ -17,7 +17,7 @@
 <meta property="og:description" content="一、前戏截止到目前为止，我们已经学习了javascript的一些简单的语法，但是使用这些简单的语法，并不能做出一些我们经常看到的一些效果，比如说表格的全选和反选等，因此为了能够操作网页上的元素，我们需要继续学习BOM相关的知识。">
 <meta property="og:image" content="https://i.loli.net/2018/08/01/5b611ee9938ea.jpg">
 <meta property="og:image" content="http://i.imgur.com/sksySIc.png">
-<meta property="og:updated_time" content="2018-10-29T03:19:47.000Z">
+<meta property="og:updated_time" content="2018-11-02T05:49:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DOM操作学习目录">
 <meta name="twitter:description" content="一、前戏截止到目前为止，我们已经学习了javascript的一些简单的语法，但是使用这些简单的语法，并不能做出一些我们经常看到的一些效果，比如说表格的全选和反选等，因此为了能够操作网页上的元素，我们需要继续学习BOM相关的知识。">
@@ -291,6 +291,10 @@ onmouseup="document.selection.empty()">-->
 <p>获得焦点事件——–onfocus<br>失去焦点事件——–onblur<br>内容改变事件——–onchange<br>载入页面———–onload<br>单击事件———–onclick<br>鼠标移入事件——–onmouseover<br>鼠标移出事件——–onmouseout</p>
 </blockquote>
 <p><strong>案例：onchange 多级菜单联动</strong></p>
+<div><div class="fold_hider"><div class="close hider_title">点击显/隐</div></div><div class="fold">
+<figure class="highlight htmlbars"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div></pre></td><td class="code"><pre><div class="line">&lt;body&gt;</div><div class="line">    &lt;select name="province" id="province" onchange="ld();"&gt;</div><div class="line">        &lt;option value="-1"&gt;请选择&lt;/option&gt;</div><div class="line">        &lt;option value="0"&gt;北京&lt;/option&gt;</div><div class="line">        &lt;option value="1"&gt;山西&lt;/option&gt;</div><div class="line">    &lt;/select&gt;</div><div class="line">    &lt;select name="city" id="city"&gt;</div><div class="line"></div><div class="line">    &lt;/select&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;script&gt;</div><div class="line">    var citys = [</div><div class="line">        ["海淀","东城","西城","朝阳"],</div><div class="line">        ["太原","大同","运城","晋中"]</div><div class="line">    ];</div><div class="line">    function ld()&#123;</div><div class="line">        var provinces = document.getElementById("province");</div><div class="line">        var opts;</div><div class="line"></div><div class="line">        if(provinces.value == -1)&#123;</div><div class="line">            opts = '';</div><div class="line">            document.getElementById("city").innerHTML = opts;</div><div class="line">            return;</div><div class="line">        &#125;</div><div class="line">        var areas = citys[provinces.value];</div><div class="line">        for(var i = 0; i &lt; areas.length; i++)&#123;</div><div class="line">            opts += "&lt;option value='" + i + "'&gt;" + areas[i] + "&lt;/option&gt;";</div><div class="line">        &#125;</div><div class="line">        document.getElementById("city").innerHTML = opts;</div><div class="line">    &#125;</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure>
+
+</div></div>
 <h4 id="2-绑定事件的三种方式"><a href="#2-绑定事件的三种方式" class="headerlink" title="2.绑定事件的三种方式"></a>2.绑定事件的三种方式</h4><blockquote>
 <p>面试题：写一个行为，样式，结构相分离的页面？    </p>
 </blockquote>

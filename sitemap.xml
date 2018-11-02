@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.shangzekai.xyz/2017/05/07/Javascript%E7%B1%BB%E5%BA%93%E4%BD%9C%E7%94%A8%E4%BB%A5%E5%8F%8A%E5%AF%B9%E6%AF%94/</loc>
+    
+    <lastmod>2018-11-02T06:06:10.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://www.shangzekai.xyz/2017/05/07/DOM%E6%93%8D%E4%BD%9C/</loc>
+    
+    <lastmod>2018-11-02T05:49:43.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://www.shangzekai.xyz/2017/05/05/%E4%BD%BF%E7%94%A8selenium%E6%A8%A1%E6%8B%9F%E6%89%8B%E6%9C%BA%E7%99%BB%E9%99%86%E7%BD%91%E7%AB%99/</loc>
     
     <lastmod>2018-11-02T05:19:58.000Z</lastmod>
@@ -61,13 +75,6 @@
     <loc>https://www.shangzekai.xyz/2017/05/06/%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8%E5%9F%BA%E7%A1%80/</loc>
     
     <lastmod>2018-10-30T02:35:19.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.shangzekai.xyz/2017/05/07/DOM%E6%93%8D%E4%BD%9C/</loc>
-    
-    <lastmod>2018-10-29T03:19:47.000Z</lastmod>
     
   </url>
   
@@ -201,13 +208,6 @@
     <loc>https://www.shangzekai.xyz/2018/05/07/%E5%B0%91%E5%B9%B4%E5%BE%97%E5%BF%97%E5%A4%A7%E4%B8%8D%E5%B9%B8:/</loc>
     
     <lastmod>2018-08-15T06:36:32.000Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://www.shangzekai.xyz/2017/05/07/Javascript%E7%B1%BB%E5%BA%93%E4%BD%9C%E7%94%A8%E4%BB%A5%E5%8F%8A%E5%AF%B9%E6%AF%94/</loc>
-    
-    <lastmod>2018-08-08T05:20:36.000Z</lastmod>
     
   </url>
   
