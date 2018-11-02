@@ -6,23 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://www.shangzekai.xyz">
-  <title>Session共享问题 | Python</title>
+  <title>使用selenium爬取淘宝零食 | Python</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="为啥会有这个问题？ 随着网站访问量的增加，初期的一台服务器已经完全不能支持业务，这个时候我们就需要增加服务器设备，来抗住请求的增量。如下所示：">
-<meta name="keywords" content="PHP">
+  <meta name="description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394from selenium import">
+<meta name="keywords" content="Python,爬虫">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Session共享问题">
-<meta property="og:url" content="https://www.shangzekai.xyz/2017/10/05/session共享问题/index.html">
+<meta property="og:title" content="使用selenium爬取淘宝零食">
+<meta property="og:url" content="https://www.shangzekai.xyz/2017/05/05/使用selenium爬取淘宝零食/index.html">
 <meta property="og:site_name" content="Python">
-<meta property="og:description" content="为啥会有这个问题？ 随着网站访问量的增加，初期的一台服务器已经完全不能支持业务，这个时候我们就需要增加服务器设备，来抗住请求的增量。如下所示：">
-<meta property="og:image" content="https://i.loli.net/2018/04/06/5ac755c33b666.jpg">
-<meta property="og:image" content="https://i.loli.net/2018/04/06/5ac75dc722604.png">
-<meta property="og:image" content="https://i.loli.net/2018/04/06/5ac75e444444d.png">
-<meta property="og:updated_time" content="2018-04-06T12:11:52.000Z">
+<meta property="og:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394from selenium import">
+<meta property="og:updated_time" content="2018-11-02T02:50:17.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Session共享问题">
-<meta name="twitter:description" content="为啥会有这个问题？ 随着网站访问量的增加，初期的一台服务器已经完全不能支持业务，这个时候我们就需要增加服务器设备，来抗住请求的增量。如下所示：">
-<meta name="twitter:image" content="https://i.loli.net/2018/04/06/5ac755c33b666.jpg">
+<meta name="twitter:title" content="使用selenium爬取淘宝零食">
+<meta name="twitter:description" content="12345678910111213141516171819202122232425262728293031323334353637383940414243444546474849505152535455565758596061626364656667686970717273747576777879808182838485868788899091929394from selenium import">
   
     <link rel="alternative" href="/atom.xml" title="Python" type="application/atom+xml">
   
@@ -176,20 +172,20 @@ onmouseup="document.selection.empty()">-->
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-session共享问题" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-使用selenium爬取淘宝零食" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      Session共享问题
+      使用selenium爬取淘宝零食
     </h1>
   
 
         
-        <a href="/2017/10/05/session共享问题/" class="archive-article-date">
-  	<time datetime="2017-10-05T04:18:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-10-05</time>
+        <a href="/2017/05/05/使用selenium爬取淘宝零食/" class="archive-article-date">
+  	<time datetime="2017-05-05T01:56:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
 </a>
         
       </header>
@@ -198,85 +194,11 @@ onmouseup="document.selection.empty()">-->
       
 	
         <div id="toc" class="article-toc">
-          <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#为啥会有这个问题？"><span class="toc-text">为啥会有这个问题？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#session共享方案"><span class="toc-text">session共享方案</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#session复制"><span class="toc-text">session复制</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#session存储客户端"><span class="toc-text">session存储客户端</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#访问规则"><span class="toc-text">访问规则</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#Session中间层"><span class="toc-text">Session中间层</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#NFS做中间层"><span class="toc-text">NFS做中间层</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#关系型数据库做中间层"><span class="toc-text">关系型数据库做中间层</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#非关系型数据库做中间层"><span class="toc-text">非关系型数据库做中间层</span></a></li></ol></li></ol></li></ol>
+          
           <hr/>
         </div>
         
-        <h4 id="为啥会有这个问题？"><a href="#为啥会有这个问题？" class="headerlink" title="为啥会有这个问题？"></a><div id="title">为啥会有这个问题？</div></h4><blockquote>
-<p>随着网站访问量的增加，初期的一台服务器已经完全不能支持业务，这个时候我们就需要增加服务器设备，来抗住请求的增量。如下所示：</p>
-</blockquote>
-<a id="more"></a>
-<p><img src="https://i.loli.net/2018/04/06/5ac755c33b666.jpg" alt="负载均衡111.jpg"></p>
-<blockquote>
-<p>负载均衡的目的本来就是要为了平均分配请求，所以没有固定第一次访问和第二次访问是同一台服务器，实际上无法确定的。第一秒访问可能是a服务器，第二秒访问的可能是c服务器。这样的话，生成的<code>session</code>文件不可能恰巧都在同一台服务器上，所以，当同一个登录会员，访问第一台服务器生成了一个<code>session</code>数据。第二秒负载请求到第三台服务器，结果获取不到刚才生成的<code>session</code>数据。</p>
-</blockquote>
-<p><strong>==只有涉及到多台后端服务器(php,java等处理服务器)的时候，才涉及到session读取不到的问题==</strong></p>
-<h4 id="session共享方案"><a href="#session共享方案" class="headerlink" title="session共享方案"></a><div id="title">session共享方案</div></h4><h5 id="session复制"><a href="#session复制" class="headerlink" title="session复制"></a><div id="title">session复制</div></h5><blockquote>
-<p>使用一些文件同步工具(linux下的rsync)，当a服务器中的<code>session</code>数据有更改的时候，就会把这些更改也同步到b，c服务器上去。通过复制的方式，最终a，b，c各个服务器上都拷贝了一份<code>session</code>数据。</p>
-</blockquote>
-<p><strong>坏处</strong></p>
-<ul>
-<li><p>速度慢。复制数据会出现延迟。比如第一秒访问是a服务器，修改了session数据，负载均衡，可能下一秒访问是b服务器，session数据如果没有被复制到b服务器，则是读取不到session数据的，出现时间上的延迟。这种复制数据要消耗很多网络带宽的。在实际中业界用得比较少。机器的数量越多，复制数据的性能损耗越大。不具备高度扩展性。</p>
-</li>
-<li><p>复制session的方式，无论是网络带宽成本还是硬件开销上都很大的。</p>
-</li>
-</ul>
-<h5 id="session存储客户端"><a href="#session存储客户端" class="headerlink" title="session存储客户端"></a><div id="title">session存储客户端</div></h5><blockquote>
-<p>把原来存储在服务器磁盘上的<code>session</code>数据存储到客户端的<code>cookie</code>中，一般是把<code>session</code>数据按照自己定义的加密规则，加密后后存在<code>cookie</code>中</p>
-</blockquote>
-<p><strong>坏处</strong></p>
-<p>好处是服务器的压力减小了，因为<code>session</code>数据不存在服务器磁盘上。根本就不会出现<code>session</code>读取不到的问题</p>
-<ul>
-<li><p>网络请求占用很多。每次请求时，客户端都要通过<code>cookie</code>发送<code>session</code>数据给服务器</p>
-</li>
-<li><p>浏览器对<code>cookie</code>的大小存在限制。每个浏览器限制是不同的。</p>
-<ul>
-<li><code>Firefox</code>和<code>Safari</code>允许<code>cookie</code>多达4097个字节</li>
-<li><code>Opera</code>允许<code>cookie</code>多达4096个字节</li>
-<li><code>Internet Explorer</code>允许<code>cookie</code>多达4095个字节</li>
-</ul>
-</li>
-<li><p>一般<code>session</code>中存的都是重要性数据(帐号、昵称、用户id等)，会存在安全问题</p>
-</li>
-<li><p>淘宝以前用过这种方式，把session数据存储到cookie中，根据cookie来识别用户</p>
-</li>
-</ul>
-<h5 id="访问规则"><a href="#访问规则" class="headerlink" title="访问规则"></a><div id="title">访问规则</div></h5><blockquote>
-<p>设计用一种算法(简单理解为规则)，什么机制下<code>session</code>是保存在哪台服务器下，那么读取的时候就按照这种规则去读取，就能定位到原来的服务器。其原理是存session和读session数据保证都在一台服务器操作，就不会需要涉及到共享，具体实现方式是通过约定一种分发机制来实现。也叫做sticky模式(粘性会话模式)，同一个用户的访问请求都被派送到同一个服务器上。</p>
-</blockquote>
-<p><strong>坏处</strong></p>
-<p>如果这台机子挂掉了，那么后续的请求按照session的规则还是会分发到这台服务器上去，但是现在不可用了，比如用户编号是1-200涉及到的session数据保存到a服务器上去。所以只要一台出问题，1-200的用户就无法实现登录了。后面就不可用了</p>
-<h5 id="Session中间层"><a href="#Session中间层" class="headerlink" title="Session中间层"></a><div id="title">Session中间层</div></h5><blockquote>
-<p>做一个中间层服务器，专门来存储所有访问涉及到的session。也就是所有的session都存储在这里。服务器端统一从这里读取session数据。</p>
-</blockquote>
-<p><img src="https://i.loli.net/2018/04/06/5ac75dc722604.png" alt="session集群框架.png"></p>
-<h6 id="NFS做中间层"><a href="#NFS做中间层" class="headerlink" title="NFS做中间层"></a><div id="title">NFS做中间层</div></h6><blockquote>
-<p>通过nfs的方式，各个php服务器操作session数据的时候，是读取本地磁盘目录，但实际上是一个共享网络文件。各个php服务器实际上操作的都是同一个目录的文件。</p>
-</blockquote>
-<p><img src="https://i.loli.net/2018/04/06/5ac75e444444d.png" alt="session框架222.png"></p>
-<h6 id="关系型数据库做中间层"><a href="#关系型数据库做中间层" class="headerlink" title="关系型数据库做中间层"></a><div id="title">关系型数据库做中间层</div></h6><blockquote>
-<p>把以前存储在文件中的<code>session</code>数据存储到数据库中去，那么这样做，其实就不用到php内置的session机制了(像session_start()之类的函数都不需要去用了)。</p>
-<p>从数据库拿session数据，约定什么情况下数据过期了然后自动清理，这里是指删除数据库中的行。保存在文件中的时候，php有垃圾回收机制会去自动清理过期的session文件。</p>
-<p>有些做法跟这种思想是类似的：比如ecshop、phpcms是把session数据都存储在数据库中去。服务端就是从数据库中拿session的数据。</p>
-</blockquote>
-<p><strong>坏处</strong></p>
-<ul>
-<li><p>放在数据库里面，访问量小没有问题。大流量网站这么做，只会拖慢速度。因为得查询数据库，造成数据库压力大。高并发访问的情况下,会出现很大的性能问题。</p>
-</li>
-<li><p>在线人数决定了其瓶颈，主要问题是影响性能。在线人数,因为登录的session数据存储在数据库中，只要是登录的用户就会涉及到频繁操作数据库。</p>
-</li>
-<li><p>小网站，同时1-2万个人在线情况下。应该没什么问题。</p>
-</li>
-</ul>
-<p>==对于大访问量的网站，数据库存储session方法可行性有待商榷。==</p>
-<blockquote>
-<p>访问量大的话，一个用户访问了n多个页面，哪怕是刷新页面，都需要去数据库取<code>session</code>数据。数据库的承受压力，确实很恐怖。pv是多少，就要请求多少次数据库服务器。</p>
-<p>访问每个页面都会去数据库查询是否登录，或者添加数据进数据库的<code>sessions</code>表</p>
-<p>保存在文件中的时候，则交给了操作系统去控制。一个用户怎么刷新页面，查看其他页面，都只需要读取单个<code>session</code>文件(<code>sess_74dd7807n2mfml49a1i12hkc45</code>)。</p>
-</blockquote>
-<h6 id="非关系型数据库做中间层"><a href="#非关系型数据库做中间层" class="headerlink" title="非关系型数据库做中间层"></a><div id="title">非关系型数据库做中间层</div></h6><blockquote>
-<p>将<code>session</code>数据保存在<code>memcached</code>，<code>redis</code>之类内存数据库中，因为内存的数据读取速度是很快的，与磁盘读取的速度不是一个数量级的, 所以性能很高，用户并发量很大的时候尤其合适。而且方便统计在线人数，内存数据库系统能够控制内存中的过期数据自动失效(刚好符合session过期需要)。</p>
-</blockquote>
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</div><div class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</div><div class="line"><span class="keyword">from</span> selenium.webdriver.support.ui <span class="keyword">import</span> WebDriverWait</div><div class="line"><span class="keyword">from</span> selenium.webdriver.support <span class="keyword">import</span> expected_conditions <span class="keyword">as</span> EC</div><div class="line"><span class="keyword">from</span> selenium.common.exceptions <span class="keyword">import</span> TimeoutException</div><div class="line"><span class="keyword">from</span> pyquery <span class="keyword">import</span> PyQuery <span class="keyword">as</span> pq</div><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</div><div class="line"></div><div class="line">SERVICE_ARGS = [<span class="string">'--load-image=false'</span>]</div><div class="line"></div><div class="line">chromedriver = <span class="string">r"/Users/shangzekai/Downloads/chromedriver"</span></div><div class="line">browser = webdriver.Chrome(chromedriver)</div><div class="line"><span class="comment"># 此处，我们可以使用phantomjs，来进行爬取</span></div><div class="line"><span class="comment"># browser = webdriver.PhantomJS(service_args=SERVICE_ARGS)</span></div><div class="line"><span class="comment"># browser.set_window_size(1400,900)</span></div><div class="line"></div><div class="line">wait = WebDriverWait(browser, <span class="number">10</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        browser.get(<span class="string">'https://www.jd.com'</span>)</div><div class="line">        input = wait.until(</div><div class="line">            EC.presence_of_element_located((By.CSS_SELECTOR, <span class="string">"#key"</span>))</div><div class="line">        )</div><div class="line"></div><div class="line">        submit = wait.until(</div><div class="line">            EC.element_to_be_clickable((By.CSS_SELECTOR, <span class="string">'#search &gt; div &gt; div.form &gt; button'</span>))</div><div class="line">        )</div><div class="line">        input.send_keys(<span class="string">'零食'</span>)</div><div class="line">        submit.click()</div><div class="line">        get_products()</div><div class="line"></div><div class="line">    <span class="keyword">except</span> TimeoutException:</div><div class="line">        search()</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">next_page</span><span class="params">(page_num)</span>:</span></div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        input = wait.until(</div><div class="line">            EC.presence_of_element_located((By.CSS_SELECTOR, <span class="string">"#J_bottomPage &gt; span.p-skip &gt; input"</span>))</div><div class="line">        )</div><div class="line">        submit = wait.until(</div><div class="line">            EC.element_to_be_clickable((By.CSS_SELECTOR, <span class="string">'#J_bottomPage &gt; span.p-skip &gt; a'</span>))</div><div class="line">        )</div><div class="line">        input.clear()</div><div class="line">        input.send_keys(page_num)</div><div class="line">        submit.click()</div><div class="line"></div><div class="line">        wait.until(</div><div class="line">            EC.text_to_be_present_in_element((By.CSS_SELECTOR, <span class="string">'#J_bottomPage &gt; span.p-num &gt; a.curr'</span>), str(page_num))</div><div class="line">        )</div><div class="line">        get_products()</div><div class="line">    <span class="keyword">except</span> TimeoutException:</div><div class="line">        next_page(page_num)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_products</span><span class="params">()</span>:</span></div><div class="line"></div><div class="line">    wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, <span class="string">'#J_goodsList &gt; ul'</span>)))</div><div class="line"></div><div class="line">    <span class="comment"># doc = pq(browser.page_source)</span></div><div class="line">    <span class="comment"># items = doc('.gl-item').items()</span></div><div class="line">    <span class="comment">#</span></div><div class="line">    <span class="comment"># for item in items:</span></div><div class="line">    <span class="comment">#     product = &#123;</span></div><div class="line">    <span class="comment">#         '图片' : item.remove_namespaces().find('.p-img &gt; img').attr('src'),</span></div><div class="line">    <span class="comment">#         '价格' : item.remove_namespaces().find('.p-price &gt; strong &gt; i').text(),</span></div><div class="line">    <span class="comment">#         '标题' : item.remove_namespaces().find('.p-name.p-name-type-2 &gt; a &gt; em').text(),</span></div><div class="line">    <span class="comment">#         '销量' : item.remove_namespaces().find('.p-commit &gt; strong').text()</span></div><div class="line">    <span class="comment">#     &#125;</span></div><div class="line">    <span class="comment">#     print(product)</span></div><div class="line"></div><div class="line">    soup = BeautifulSoup(browser.page_source, <span class="string">'html.parser'</span>)</div><div class="line">    items = soup.find_all(<span class="string">'li'</span>, attrs=&#123;<span class="string">'class'</span>: <span class="string">'gl-item'</span>&#125;)</div><div class="line"></div><div class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> items:</div><div class="line">        img = item.find(<span class="string">'img'</span>).get(<span class="string">'src'</span>)</div><div class="line">        <span class="keyword">if</span> img == <span class="keyword">None</span>:</div><div class="line">            img = item.find(<span class="string">'img'</span>).get(<span class="string">'data-lazy-img'</span>)</div><div class="line">        product = &#123;</div><div class="line">            <span class="string">'图片'</span>: img,</div><div class="line">            <span class="string">'标题'</span>: item.find(<span class="string">'div'</span>, attrs=&#123;<span class="string">'class'</span>: <span class="string">'p-name p-name-type-2'</span>&#125;).get_text().strip(),</div><div class="line">            <span class="string">'价格'</span>: item.find(<span class="string">'i'</span>).get_text(),</div><div class="line">            <span class="string">'销量'</span>: item.find(<span class="string">'div'</span>, attrs=&#123;<span class="string">'class'</span>: <span class="string">'p-commit'</span>&#125;).get_text().strip()[:<span class="number">-3</span>]</div><div class="line">        &#125;</div><div class="line">        print(product)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    search()</div><div class="line"></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>, <span class="number">101</span>):</div><div class="line">        next_page(i)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div></pre></td></tr></table></figure>
 
       
 
@@ -321,7 +243,11 @@ onmouseup="document.selection.empty()">-->
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">PHP</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
         		</li>
       		
 		</ul>
@@ -334,7 +260,7 @@ onmouseup="document.selection.empty()">-->
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/PHP/" class="article-tag-list-link color4">PHP</a>
+        			<a href="/categories/爬虫/" class="article-tag-list-link color3">爬虫</a>
         		</li>
       		
 		</ul>
@@ -351,18 +277,18 @@ onmouseup="document.selection.empty()">-->
   
 <nav id="article-nav">
   
-    <a href="/2017/10/06/Http协议/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/05/05/Python爬虫自动登录GitHub/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          Http协议总结
+          Python爬虫自动登录GitHub
         
       </div>
     </a>
   
   
-    <a href="/2017/10/05/session和cookie/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Session 和 cookie</div>
+    <a href="/2017/05/05/BeautifulSoup介绍/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Beautiful Soup的用法</div>
       <i class="icon-circle-right"></i>
     </a>
   

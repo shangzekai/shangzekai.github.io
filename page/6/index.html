@@ -848,6 +848,81 @@ onmouseup="document.selection.empty()">-->
 
 
   
+    <article id="post-使用selenium爬取淘宝零食" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/05/使用selenium爬取淘宝零食/">使用selenium爬取淘宝零食</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/05/使用selenium爬取淘宝零食/" class="archive-article-date">
+  	<time datetime="2017-05-05T01:56:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div><div class="line">92</div><div class="line">93</div><div class="line">94</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</div><div class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</div><div class="line"><span class="keyword">from</span> selenium.webdriver.support.ui <span class="keyword">import</span> WebDriverWait</div><div class="line"><span class="keyword">from</span> selenium.webdriver.support <span class="keyword">import</span> expected_conditions <span class="keyword">as</span> EC</div><div class="line"><span class="keyword">from</span> selenium.common.exceptions <span class="keyword">import</span> TimeoutException</div><div class="line"><span class="keyword">from</span> pyquery <span class="keyword">import</span> PyQuery <span class="keyword">as</span> pq</div><div class="line"><span class="keyword">from</span> bs4 <span class="keyword">import</span> BeautifulSoup</div><div class="line"></div><div class="line">SERVICE_ARGS = [<span class="string">'--load-image=false'</span>]</div><div class="line"></div><div class="line">chromedriver = <span class="string">r"/Users/shangzekai/Downloads/chromedriver"</span></div><div class="line">browser = webdriver.Chrome(chromedriver)</div><div class="line"><span class="comment"># 此处，我们可以使用phantomjs，来进行爬取</span></div><div class="line"><span class="comment"># browser = webdriver.PhantomJS(service_args=SERVICE_ARGS)</span></div><div class="line"><span class="comment"># browser.set_window_size(1400,900)</span></div><div class="line"></div><div class="line">wait = WebDriverWait(browser, <span class="number">10</span>)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">search</span><span class="params">()</span>:</span></div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        browser.get(<span class="string">'https://www.jd.com'</span>)</div><div class="line">        input = wait.until(</div><div class="line">            EC.presence_of_element_located((By.CSS_SELECTOR, <span class="string">"#key"</span>))</div><div class="line">        )</div><div class="line"></div><div class="line">        submit = wait.until(</div><div class="line">            EC.element_to_be_clickable((By.CSS_SELECTOR, <span class="string">'#search &gt; div &gt; div.form &gt; button'</span>))</div><div class="line">        )</div><div class="line">        input.send_keys(<span class="string">'零食'</span>)</div><div class="line">        submit.click()</div><div class="line">        get_products()</div><div class="line"></div><div class="line">    <span class="keyword">except</span> TimeoutException:</div><div class="line">        search()</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">next_page</span><span class="params">(page_num)</span>:</span></div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        input = wait.until(</div><div class="line">            EC.presence_of_element_located((By.CSS_SELECTOR, <span class="string">"#J_bottomPage &gt; span.p-skip &gt; input"</span>))</div><div class="line">        )</div><div class="line">        submit = wait.until(</div><div class="line">            EC.element_to_be_clickable((By.CSS_SELECTOR, <span class="string">'#J_bottomPage &gt; span.p-skip &gt; a'</span>))</div><div class="line">        )</div><div class="line">        input.clear()</div><div class="line">        input.send_keys(page_num)</div><div class="line">        submit.click()</div><div class="line"></div><div class="line">        wait.until(</div><div class="line">            EC.text_to_be_present_in_element((By.CSS_SELECTOR, <span class="string">'#J_bottomPage &gt; span.p-num &gt; a.curr'</span>), str(page_num))</div><div class="line">        )</div><div class="line">        get_products()</div><div class="line">    <span class="keyword">except</span> TimeoutException:</div><div class="line">        next_page(page_num)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_products</span><span class="params">()</span>:</span></div><div class="line"></div><div class="line">    wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, <span class="string">'#J_goodsList &gt; ul'</span>)))</div><div class="line"></div><div class="line">    <span class="comment"># doc = pq(browser.page_source)</span></div><div class="line">    <span class="comment"># items = doc('.gl-item').items()</span></div><div class="line">    <span class="comment">#</span></div><div class="line">    <span class="comment"># for item in items:</span></div><div class="line">    <span class="comment">#     product = &#123;</span></div><div class="line">    <span class="comment">#         '图片' : item.remove_namespaces().find('.p-img &gt; img').attr('src'),</span></div><div class="line">    <span class="comment">#         '价格' : item.remove_namespaces().find('.p-price &gt; strong &gt; i').text(),</span></div><div class="line">    <span class="comment">#         '标题' : item.remove_namespaces().find('.p-name.p-name-type-2 &gt; a &gt; em').text(),</span></div><div class="line">    <span class="comment">#         '销量' : item.remove_namespaces().find('.p-commit &gt; strong').text()</span></div><div class="line">    <span class="comment">#     &#125;</span></div><div class="line">    <span class="comment">#     print(product)</span></div><div class="line"></div><div class="line">    soup = BeautifulSoup(browser.page_source, <span class="string">'html.parser'</span>)</div><div class="line">    items = soup.find_all(<span class="string">'li'</span>, attrs=&#123;<span class="string">'class'</span>: <span class="string">'gl-item'</span>&#125;)</div><div class="line"></div><div class="line">    <span class="keyword">for</span> item <span class="keyword">in</span> items:</div><div class="line">        img = item.find(<span class="string">'img'</span>).get(<span class="string">'src'</span>)</div><div class="line">        <span class="keyword">if</span> img == <span class="keyword">None</span>:</div><div class="line">            img = item.find(<span class="string">'img'</span>).get(<span class="string">'data-lazy-img'</span>)</div><div class="line">        product = &#123;</div><div class="line">            <span class="string">'图片'</span>: img,</div><div class="line">            <span class="string">'标题'</span>: item.find(<span class="string">'div'</span>, attrs=&#123;<span class="string">'class'</span>: <span class="string">'p-name p-name-type-2'</span>&#125;).get_text().strip(),</div><div class="line">            <span class="string">'价格'</span>: item.find(<span class="string">'i'</span>).get_text(),</div><div class="line">            <span class="string">'销量'</span>: item.find(<span class="string">'div'</span>, attrs=&#123;<span class="string">'class'</span>: <span class="string">'p-commit'</span>&#125;).get_text().strip()[:<span class="number">-3</span>]</div><div class="line">        &#125;</div><div class="line">        print(product)</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></div><div class="line">    search()</div><div class="line"></div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">2</span>, <span class="number">101</span>):</div><div class="line">        next_page(i)</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</div><div class="line">    main()</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/爬虫/" class="article-tag-list-link color3">爬虫</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/05/使用selenium爬取淘宝零食/">展开全文 >></a>
+        </p>
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-BeautifulSoup介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1284,81 +1359,6 @@ onmouseup="document.selection.empty()">-->
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/05/04/日志文件记录的重要性/">展开全文 >></a>
-        </p>
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-vim树形菜单设置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/04/vim树形菜单设置/">vim树形菜单</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/04/vim树形菜单设置/" class="archive-article-date">
-  	<time datetime="2017-05-04T15:54:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="前戏"><a href="#前戏" class="headerlink" title="前戏"></a><div id="title">前戏</div></h4><blockquote>
-<p>linux下的vim编辑器是一个好东西，但是如何将它打造成一款编辑的神奇，更加有效的帮助我们进行开发呢，下面来介绍两种方法，让你飞起来</p>
-</blockquote>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">日志</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">零碎</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/工具/" class="article-tag-list-link color3">工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/04/vim树形菜单设置/">展开全文 >></a>
         </p>
       
 
