@@ -4,6 +4,50 @@
 
     
   <url>
+    <loc>https://www.shangzekai.xyz/2017/05/05/%E4%BD%BF%E7%94%A8selenium%E7%99%BB%E9%99%86github%E7%BD%91%E7%AB%99/</loc>
+    <lastmod>2018-11-02T02:19:16.000Z</lastmod>
+    <data>
+        <display>
+        <title>使用selenium登陆github网站</title>
+        <pubTime>2017-05-05T01:55:09.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>爬虫</tag>
+         
+         
+           
+             
+              <breadCrumb title="爬虫" url="https://www.shangzekai.xyz/categories/%E7%88%AC%E8%99%AB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>https://www.shangzekai.xyz/2017/04/07/%E6%8A%93%E5%8F%96%E4%BB%8A%E6%97%A5%E5%A4%B4%E6%9D%A1%E5%9B%BE%E7%89%87/</loc>
+    <lastmod>2018-11-02T02:17:27.000Z</lastmod>
+    <data>
+        <display>
+        <title>抓取今日头条图片</title>
+        <pubTime>2017-04-07T02:55:09.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+        <tag>模块</tag>
+         
+         
+           
+             
+              <breadCrumb title="爬虫" url="https://www.shangzekai.xyz/categories/%E7%88%AC%E8%99%AB/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://www.shangzekai.xyz/2017/05/06/%E4%BD%BF%E7%94%A8%E4%BB%A3%E7%90%86%E6%8A%93%E5%8F%96%E5%BE%AE%E4%BF%A1%E7%9A%84%E6%96%87%E7%AB%A0/</loc>
     <lastmod>2018-11-01T07:52:40.000Z</lastmod>
     <data>
@@ -1383,28 +1427,6 @@
            
              
               <breadCrumb title="PHP" url="https://www.shangzekai.xyz/categories/PHP/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.shangzekai.xyz/2017/04/07/%E6%8A%93%E5%8F%96%E4%BB%8A%E6%97%A5%E5%A4%B4%E6%9D%A1%E5%9B%BE%E7%89%87/</loc>
-    <lastmod>2017-11-17T03:18:51.000Z</lastmod>
-    <data>
-        <display>
-        <title>抓取今日头条图片</title>
-        <pubTime>2017-04-07T02:55:09.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-        <tag>模块</tag>
-         
-         
-           
-             
-              <breadCrumb title="爬虫" url="https://www.shangzekai.xyz/categories/%E7%88%AC%E8%99%AB/"/>
           
         </display>
     </data>

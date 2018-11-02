@@ -169,19 +169,19 @@ onmouseup="document.selection.empty()">-->
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-MemCache介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-NoSQL入门学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/05/MemCache介绍/">MemCache介绍和基本命令</a>
+      <a class="article-title" href="/2017/05/05/NoSQL入门学习/">NoSQL入门学习</a>
     </h1>
   
 
         
-        <a href="/2017/05/05/MemCache介绍/" class="archive-article-date">
+        <a href="/2017/05/05/NoSQL入门学习/" class="archive-article-date">
   	<time datetime="2017-05-05T15:52:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
 </a>
         
@@ -189,9 +189,9 @@ onmouseup="document.selection.empty()">-->
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="MemCache介绍"><a href="#MemCache介绍" class="headerlink" title="MemCache介绍"></a><div id="title">MemCache介绍</div></h4><blockquote>
-<p>free&amp;opensource,high-performance,distributed  memory object caching system</p>
-<p>自由&amp;开放源码, 高性能,分布式的内存对象缓存系统<br>由livejounal旗下的danga公司开发的老牌nosql应用</p>
+        <h4 id="NoSQL出现的原因"><a href="#NoSQL出现的原因" class="headerlink" title="NoSQL出现的原因"></a><div id="title">NoSQL出现的原因</div></h4><blockquote>
+<p>随着近几年大数据的不断火爆，数据量已经不是之前的G级别，有的时候数据量一天就能达到T级别，甚至PT级别，因此此时我们再使用传统的数据库来进行存储数据的时候，显然已经不能满足我们的需要了</p>
+<p>并且现在用户的个人信息，社交网络，地理位置，用户生成的数据和用户操作日志已经成倍的增加。我们如果要对这些用户数据进行挖掘，那SQL数据库已经不适合这些应用了, NoSQL数据库的发展却能很好的处理这些大的数据。这个时候，基于内存存储的Key-Value数据库就呼之欲出了</p>
 </blockquote>
       
 
@@ -231,7 +231,7 @@ onmouseup="document.selection.empty()">-->
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/05/MemCache介绍/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/05/05/NoSQL入门学习/">展开全文 >></a>
         </p>
       
 
@@ -923,6 +923,81 @@ onmouseup="document.selection.empty()">-->
 
 
   
+    <article id="post-使用selenium登陆github网站" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/05/使用selenium登陆github网站/">使用selenium登陆github网站</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/05/使用selenium登陆github网站/" class="archive-article-date">
+  	<time datetime="2017-05-05T01:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">import</span> time</div><div class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</div><div class="line"><span class="keyword">from</span> selenium.webdriver.common.by <span class="keyword">import</span> By</div><div class="line"><span class="keyword">from</span> selenium.webdriver.support.ui <span class="keyword">import</span> WebDriverWait</div><div class="line"><span class="keyword">from</span> selenium.webdriver.support <span class="keyword">import</span> expected_conditions <span class="keyword">as</span> EC</div><div class="line"></div><div class="line"><span class="comment"># def login_github(username, password):</span></div><div class="line"><span class="comment">#     chromedriver = r"/Users/shangzekai/Downloads/chromedriver"</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#     browser = webdriver.Chrome(chromedriver)</span></div><div class="line"><span class="comment">#     try:</span></div><div class="line"><span class="comment">#         browser.get('http://www.github.com/login')</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#         time.sleep(5)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#         name = browser.find_element_by_id('login_field')</span></div><div class="line"><span class="comment">#         pwd = browser.find_element_by_id('password')</span></div><div class="line"><span class="comment">#         btn = browser.find_element_by_name('commit')</span></div><div class="line"><span class="comment">#         time.sleep(5)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#         name.send_keys(username)</span></div><div class="line"><span class="comment">#         pwd.send_keys(password)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#         time.sleep(5)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#         btn.click()</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#         print(browser.page_source.find('Incorrect username or password.') != -1)</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment">#     except Exception as e:</span></div><div class="line"><span class="comment">#         print(e)</span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">login_github</span><span class="params">(username, password)</span>:</span></div><div class="line">    chromedriver = <span class="string">r"/Users/shangzekai/Downloads/chromedriver"</span></div><div class="line"></div><div class="line">    browser = webdriver.Chrome(chromedriver)</div><div class="line">    <span class="keyword">try</span>:</div><div class="line">        browser.get(<span class="string">'http://www.github.com/login'</span>)</div><div class="line">        wait = WebDriverWait(browser, <span class="number">10</span>)</div><div class="line"></div><div class="line">        <span class="comment"># name = browser.find_element_by_id('login_field')</span></div><div class="line">        name = wait.until(EC.presence_of_element_located((By.ID, <span class="string">'login_field'</span>)))</div><div class="line">        <span class="comment"># pwd = browser.find_element_by_id('password')</span></div><div class="line">        pwd = wait.until(EC.presence_of_element_located((By.ID, <span class="string">'password'</span>)))</div><div class="line">        <span class="comment"># btn = browser.find_element_by_name('commit')</span></div><div class="line">        btn = wait.until(EC.element_to_be_clickable((By.NAME,<span class="string">'commit'</span>)))</div><div class="line">        <span class="comment"># time.sleep(5)</span></div><div class="line"></div><div class="line">        name.send_keys(username)</div><div class="line">        pwd.send_keys(password)</div><div class="line"></div><div class="line">        <span class="comment"># time.sleep(5)</span></div><div class="line"></div><div class="line">        btn.click()</div><div class="line"></div><div class="line">        print(browser.page_source.find(<span class="string">'Incorrect username or password.'</span>) != <span class="number">-1</span>)</div><div class="line"></div><div class="line">    <span class="keyword">except</span> Exception <span class="keyword">as</span> e:</div><div class="line">        print(e)</div><div class="line"></div><div class="line">login_github(<span class="string">'shangzeki@163.com'</span>, <span class="string">'shangzeki4095'</span>)</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/爬虫/" class="article-tag-list-link color3">爬虫</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/05/使用selenium登陆github网站/">展开全文 >></a>
+        </p>
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-PyQuery的用法" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1284,71 +1359,6 @@ onmouseup="document.selection.empty()">-->
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/05/04/vim树形菜单设置/">展开全文 >></a>
-        </p>
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-matplotlib的介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/04/08/matplotlib的介绍/">python爬虫之数据分析包matplotlib</a>
-    </h1>
-  
-
-        
-        <a href="/2017/04/08/matplotlib的介绍/" class="archive-article-date">
-  	<time datetime="2017-04-08T13:55:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-04-08</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="matplotlib的介绍"><a href="#matplotlib的介绍" class="headerlink" title="matplotlib的介绍"></a><div id="title">matplotlib的介绍</div></h4><blockquote>
-<p>Matplotlib是一个Python 2D绘图库，它可以在各种平台上以各种硬拷贝格式和交互式环境生成出具有出版品质的图形。 Matplotlib可用于Python脚本，Python和IPython shell，Jupyter笔记本，Web应用程序服务器和四个图形用户界面工具包</p>
-<p>Matplotlib试图让简单的事情变得更简单，让无法实现的事情变得可能实现。 只需几行代码即可生成绘图，直方图，功率谱，条形图，错误图，散点图等</p>
-</blockquote>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/爬虫/" class="article-tag-list-link color3">爬虫</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/数据分析/" class="article-tag-list-link color5">数据分析</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/04/08/matplotlib的介绍/">展开全文 >></a>
         </p>
       
 
