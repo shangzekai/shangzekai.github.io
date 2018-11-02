@@ -169,19 +169,19 @@ onmouseup="document.selection.empty()">-->
           <div id="js-content" class="content-ll">
             
   
-    <article id="post-NoSQL入门学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-MemCache介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/05/NoSQL入门学习/">NoSQL入门学习</a>
+      <a class="article-title" href="/2017/05/05/MemCache介绍/">MemCache介绍和基本命令</a>
     </h1>
   
 
         
-        <a href="/2017/05/05/NoSQL入门学习/" class="archive-article-date">
+        <a href="/2017/05/05/MemCache介绍/" class="archive-article-date">
   	<time datetime="2017-05-05T15:52:07.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
 </a>
         
@@ -189,9 +189,9 @@ onmouseup="document.selection.empty()">-->
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h4 id="NoSQL出现的原因"><a href="#NoSQL出现的原因" class="headerlink" title="NoSQL出现的原因"></a><div id="title">NoSQL出现的原因</div></h4><blockquote>
-<p>随着近几年大数据的不断火爆，数据量已经不是之前的G级别，有的时候数据量一天就能达到T级别，甚至PT级别，因此此时我们再使用传统的数据库来进行存储数据的时候，显然已经不能满足我们的需要了</p>
-<p>并且现在用户的个人信息，社交网络，地理位置，用户生成的数据和用户操作日志已经成倍的增加。我们如果要对这些用户数据进行挖掘，那SQL数据库已经不适合这些应用了, NoSQL数据库的发展却能很好的处理这些大的数据。这个时候，基于内存存储的Key-Value数据库就呼之欲出了</p>
+        <h4 id="MemCache介绍"><a href="#MemCache介绍" class="headerlink" title="MemCache介绍"></a><div id="title">MemCache介绍</div></h4><blockquote>
+<p>free&amp;opensource,high-performance,distributed  memory object caching system</p>
+<p>自由&amp;开放源码, 高性能,分布式的内存对象缓存系统<br>由livejounal旗下的danga公司开发的老牌nosql应用</p>
 </blockquote>
       
 
@@ -231,7 +231,7 @@ onmouseup="document.selection.empty()">-->
 
       
         <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/05/NoSQL入门学习/">展开全文 >></a>
+          <a class="article-more-a" href="/2017/05/05/MemCache介绍/">展开全文 >></a>
         </p>
       
 
@@ -923,6 +923,81 @@ onmouseup="document.selection.empty()">-->
 
 
   
+    <article id="post-使用selenium模拟手机登陆网站" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/05/05/使用selenium模拟手机登陆网站/">使用selenium模拟手机端的操作</a>
+    </h1>
+  
+
+        
+        <a href="/2017/05/05/使用selenium模拟手机登陆网站/" class="archive-article-date">
+  	<time datetime="2017-05-05T01:55:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-05</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+	
+        <figure class="highlight python"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">from</span> selenium <span class="keyword">import</span> webdriver</div><div class="line"><span class="keyword">import</span> time</div><div class="line"></div><div class="line"><span class="comment"># 设置</span></div><div class="line"></div><div class="line">mobilesetting = &#123;<span class="string">'deviceName'</span>:<span class="string">"iPhone 6 Plus"</span>&#125;</div><div class="line">options = webdriver.ChromeOptions()</div><div class="line">options.add_experimental_option(<span class="string">"mobileEmulation"</span>, mobilesetting)</div><div class="line"></div><div class="line">driver = webdriver.Chrome(options=options)</div><div class="line">driver.set_window_size(<span class="number">400</span>,<span class="number">800</span>)</div><div class="line"></div><div class="line"><span class="comment">#driver.maximize_window() # 全屏</span></div><div class="line"></div><div class="line">driver.get(<span class="string">'http://www.baidu.com'</span>)</div><div class="line"></div><div class="line">driver.back()</div><div class="line"></div><div class="line">driver.forward()</div><div class="line"></div><div class="line">driver.close()</div></pre></td></tr></table></figure>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">Python</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">爬虫</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/爬虫/" class="article-tag-list-link color3">爬虫</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/05/05/使用selenium模拟手机登陆网站/">展开全文 >></a>
+        </p>
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+  
     <article id="post-BeautifulSoup介绍" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1286,81 +1361,6 @@ onmouseup="document.selection.empty()">-->
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2017/05/04/一些零碎知识点/">展开全文 >></a>
-        </p>
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-  
-    <article id="post-日志文件记录的重要性" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/05/04/日志文件记录的重要性/">日志文件记录的重要性</a>
-    </h1>
-  
-
-        
-        <a href="/2017/05/04/日志文件记录的重要性/" class="archive-article-date">
-  	<time datetime="2017-05-04T15:54:08.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-05-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="前言"><a href="#前言" class="headerlink" title="前言"></a><div id="title">前言</div></h4><blockquote>
-<p>我们一般在开发或者维护网站的过程中，会遇到一些不可预知的错误，为了能够更好的查询和定位到这些错误，我们需要将程序可能出现错误的地方记录日志，这样的话能够方便我们排查问题，进而解决问题</p>
-</blockquote>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">日志</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">零碎</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/工具/" class="article-tag-list-link color3">工具</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2017/05/04/日志文件记录的重要性/">展开全文 >></a>
         </p>
       
 
