@@ -15,7 +15,7 @@
 <meta property="og:url" content="https://www.shangzekai.xyz/2017/05/07/javascript基础学习目录/index.html">
 <meta property="og:site_name" content="Python">
 <meta property="og:description" content="一、JS如何引入及基本语法规范1.页面内的script代码书写格式">
-<meta property="og:updated_time" content="2018-11-02T06:07:59.000Z">
+<meta property="og:updated_time" content="2018-11-03T11:05:59.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JavaScript基础学习目录">
 <meta name="twitter:description" content="一、JS如何引入及基本语法规范1.页面内的script代码书写格式">
@@ -354,7 +354,7 @@ onmouseup="document.selection.empty()">-->
 <font color="red">函数内部无论是使用参数,还是使用局部变量,都到AO上找.</font>
 
 </blockquote>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">t</span>(<span class="params">age</span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(age);</div><div class="line">        <span class="keyword">var</span> age = <span class="number">99</span>;</div><div class="line">        <span class="built_in">console</span>.log(age);</div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">age</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">console</span>.log(age);</div><div class="line">&#125;</div><div class="line">t(<span class="number">12</span>);</div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">t</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        <span class="built_in">console</span>.log(age);</div><div class="line">        <span class="keyword">var</span> age = <span class="number">99</span>;</div><div class="line">        <span class="built_in">console</span>.log(age);</div><div class="line">        <span class="function"><span class="keyword">function</span> <span class="title">age</span>(<span class="params"></span>) </span>&#123;</div><div class="line">        &#125;</div><div class="line">        <span class="built_in">console</span>.log(age);</div><div class="line">&#125;</div><div class="line">t();</div></pre></td></tr></table></figure>
 <blockquote>
 <p>分析过程：<br>   1、分析参数，有一个参数，形成一个 AO.age=undefined;<br>   2、分析变量声明，有一个 var age, 发现 AO 上面已经有一个 AO.age，因此不做任何处理<br>   3、分析函数声明，有一个 function age(){} 声明， 则把原有的 age 覆盖成 AO.age=function(){};</p>
 <p>   最终，AO上的属性只有一个age，并且值为一个函数声明</p>
