@@ -4,6 +4,28 @@
 
     
   <url>
+    <loc>https://www.shangzekai.xyz/2017/05/05/Python%E6%93%8D%E4%BD%9Credis%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/</loc>
+    <lastmod>2018-11-23T02:28:30.000Z</lastmod>
+    <data>
+        <display>
+        <title>使用Python操作Redis及其简单应用</title>
+        <pubTime>2017-05-05T15:52:06.000Z</pubTime>
+        
+        <tag>基础</tag>
+         
+        <tag>NoSQL</tag>
+         
+         
+           
+             
+              <breadCrumb title="NoSQL" url="https://www.shangzekai.xyz/categories/NoSQL/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://www.shangzekai.xyz/2017/05/05/Django%E7%9A%84%E4%BB%8B%E7%BB%8D/</loc>
     <lastmod>2018-11-22T04:24:19.000Z</lastmod>
     <data>
@@ -2004,28 +2026,6 @@
            
              
               <breadCrumb title="前端" url="https://www.shangzekai.xyz/categories/%E5%89%8D%E7%AB%AF/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.shangzekai.xyz/2017/05/05/Python%E6%93%8D%E4%BD%9Credis%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/</loc>
-    <lastmod>2017-06-06T11:33:23.000Z</lastmod>
-    <data>
-        <display>
-        <title>使用Python操作Redis及其简单应用</title>
-        <pubTime>2017-05-05T15:52:06.000Z</pubTime>
-        
-        <tag>基础</tag>
-         
-        <tag>NoSQL</tag>
-         
-         
-           
-             
-              <breadCrumb title="NoSQL" url="https://www.shangzekai.xyz/categories/NoSQL/"/>
           
         </display>
     </data>
