@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>https://www.shangzekai.xyz/2017/05/05/Django%E7%9A%84%E4%BB%8B%E7%BB%8D/</loc>
+    <lastmod>2018-11-27T06:06:59.000Z</lastmod>
+    <data>
+        <display>
+        <title>Django [基础篇]</title>
+        <pubTime>2017-05-05T10:51:09.000Z</pubTime>
+        
+        <tag>Python</tag>
+         
+         
+           
+             
+              <breadCrumb title="Python" url="https://www.shangzekai.xyz/categories/Python/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>https://www.shangzekai.xyz/2017/05/05/Python%E6%93%8D%E4%BD%9Credis%E5%8F%8A%E5%85%B6%E5%BA%94%E7%94%A8/</loc>
     <lastmod>2018-11-23T02:28:30.000Z</lastmod>
     <data>
@@ -19,26 +39,6 @@
            
              
               <breadCrumb title="NoSQL" url="https://www.shangzekai.xyz/categories/NoSQL/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>https://www.shangzekai.xyz/2017/05/05/Django%E7%9A%84%E4%BB%8B%E7%BB%8D/</loc>
-    <lastmod>2018-11-22T04:24:19.000Z</lastmod>
-    <data>
-        <display>
-        <title>Django [基础篇]</title>
-        <pubTime>2017-05-05T10:51:09.000Z</pubTime>
-        
-        <tag>Python</tag>
-         
-         
-           
-             
-              <breadCrumb title="Python" url="https://www.shangzekai.xyz/categories/Python/"/>
           
         </display>
     </data>
